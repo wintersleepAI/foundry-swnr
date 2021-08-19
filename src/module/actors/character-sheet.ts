@@ -296,7 +296,7 @@ export class CharacterActorSheet extends ActorSheet<
       console.log(html);
       const rollMode = game.settings.get("core", "rollMode");
       const form = <HTMLFormElement>html[0].querySelector("form");
-      const formula = `1d20cs>(@target - @modifier)`;
+      const formula = `1d20cs>=(@target - @modifier)`;
       const roll = new Roll(formula, {
         modifier: parseInt(
           (<HTMLInputElement>form.querySelector('[name="modifier"]')).value
