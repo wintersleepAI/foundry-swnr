@@ -219,6 +219,8 @@ export class CharacterActorSheet extends ActorSheet<
         "1d20 + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat.mod + @effectiveSkillRank",
         rollData
       ).roll();
+      const hitExplainTip = "1d20 +burst +mod +CharAB +WpnAB +Stat +Skill";
+
       rollData.hitRoll = +(hitRoll.dice[0].total?.toString() ?? 0);
       const damageRoll = new Roll(
         weapon.data.data.damage +
@@ -228,9 +230,15 @@ export class CharacterActorSheet extends ActorSheet<
             : ""),
         rollData
       ).roll();
+      const damageExplainTip = `${weapon.data.data.damage}` + " +burst +statMod" +  (weapon.data.data.skillBoostsDamage
+        ? ` +${skill.data.data.rank}`
+        : "")
+
       const diceTooltip = {
         hit: await hitRoll.render(),
         damage: await damageRoll.render(),
+        hitExplain: hitExplainTip,
+        damageExplain: damageExplainTip
       };
       const dialogData = {
         actor: this.actor,

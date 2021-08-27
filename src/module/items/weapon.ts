@@ -60,14 +60,18 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       "1d20 + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat + @effectiveSkillRank",
       rollData
     ).roll();
+    const hitExplainTip = "1d20 +burst +mod +CharAB +WpnAB +Stat +Skill";
     rollData.hitRoll = +(hitRoll.dice[0].total?.toString() ?? 0);
     const damageRoll = new Roll(
       this.data.data.damage + " + @burstFire + @stat + @damageBonus",
       rollData
     ).roll();
+    const damageExplainTip = "roll +burst +statBonus +dmgBonus"
     const diceTooltip = {
       hit: await hitRoll.render(),
       damage: await damageRoll.render(),
+      hitExplain: hitExplainTip,
+      damageExplain: damageExplainTip,
     };
     const dialogData = {
       actor: this.actor,
