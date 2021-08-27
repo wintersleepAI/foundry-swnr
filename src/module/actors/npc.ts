@@ -29,6 +29,10 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
   ): void {
     super._onCreate(data, options, userId);
     if (this.data["items"]["length"] || game.userId !== userId) return;
+    console.log("creating npc");
+    console.log(this.data);
+    this.data.data["hitDice"]=1;
+    // Can't figure out how to get this to work: this.actor.update({"data.hitDic": 1});
 
     this.createEmbeddedDocuments("Item", [
       {
