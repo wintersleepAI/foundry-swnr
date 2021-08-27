@@ -97,4 +97,28 @@
       {{/select}}
     </select>
   </div>
+  {{#if (eq "weapon" item.type)}}
+  <div class="flex flex-col items-center">
+    {{localize 'swnr.item.range'}}:
+    <span><input
+      type="number"
+      class="w-12 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+      step="1"
+      name="data.range.normal"
+      min="0"
+      data-dtype="Number"
+      value="{{data.data.range.normal}}"
+    /> /
+    <input
+      type="number"
+      class="w-12 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+      step="1"
+      name="data.range.max"
+      min="0"
+      data-dtype="Number"
+      value="{{data.data.range.max}}"
+    />
+    </span>
+  </div>
+  {{/if}}
 </div>

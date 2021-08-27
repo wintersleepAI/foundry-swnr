@@ -409,6 +409,7 @@ swnr:
     locationOther: Other
     locationStowed: Stowed
     locationReadied: Readied
+    range: Range
   weapon:
     shock:
       label: Shock Damage
