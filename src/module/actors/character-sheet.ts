@@ -276,24 +276,31 @@ export class CharacterActorSheet extends ActorSheet<
       );
 
       // Show shock damage
-      if (weapon.data.data.shock && weapon.data.data.shock.dmg > 0) {
-        let shock_content = `Shock Damage Base ${weapon.data.data.shock.dmg} \ AC ${weapon.data.data.shock.ac}`;
-        console.log(rollData);
-        const shockRoll = new Roll(
-           "0" +
-             " + @shockDmg + @stat.mod " , //+
-          //   (weapon.data.data.skillBoostsDamage
-          //     ? ` + ${skill.data.data.rank}`
-          //     : ""),
-          rollData
-        ).roll();
-        console.log(shockRoll);
-        ChatMessage.create({
-          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-          content: shock_content,
-      });
+      if (game.settings.get("swnr","addShockMessage")) {
+        if (weapon.data.data.shock && weapon.data.data.shock.dmg > 0) {
+          let shock_content = `${weapon.name} Shock Damage Base ${weapon.data.data.shock.dmg} \ AC ${weapon.data.data.shock.ac}`;
+          console.log(rollData);
+          const shockRoll = new Roll(
+             "0" +
+               " + @shockDmg + @stat.mod " +
+               (weapon.data.data.skillBoostsDamage
+                 ? ` + ${skill.data.data.rank}`
+                 : ""),
+            rollData
+          ).roll();
+          console.log(shockRoll);
+          ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            flavor: shock_content,
+            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+            roll: JSON.stringify(shockRoll.toJSON()),
+          });
+        }
       }
+
     };
+
+
     const title = game.i18n.format("swnr.dialog.attackRoll", {
       actorName: this.actor.name,
       weaponName: weapon.name,
