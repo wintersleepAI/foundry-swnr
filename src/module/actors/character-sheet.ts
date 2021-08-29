@@ -213,6 +213,7 @@ export class CharacterActorSheet extends ActorSheet<
         modifier,
         effectiveSkillRank:
           skill.data.data.rank < 0 ? -2 : skill.data.data.rank,
+        shockDmg: weapon.data.data.shock?.dmg > 0 ? weapon.data.data.shock.dmg : 0
       };
       const hitRoll = new Roll(
         "1d20 + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat.mod + @effectiveSkillRank",
@@ -273,6 +274,25 @@ export class CharacterActorSheet extends ActorSheet<
           rollMode
         )
       );
+
+      // Show shock damage
+      if (weapon.data.data.shock && weapon.data.data.shock.dmg > 0) {
+        let shock_content = `Shock Damage Base ${weapon.data.data.shock.dmg} \ AC ${weapon.data.data.shock.ac}`;
+        console.log(rollData);
+        const shockRoll = new Roll(
+           "0" +
+             " + @shockDmg + @stat.mod " , //+
+          //   (weapon.data.data.skillBoostsDamage
+          //     ? ` + ${skill.data.data.rank}`
+          //     : ""),
+          rollData
+        ).roll();
+        console.log(shockRoll);
+        ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+          content: shock_content,
+      });
+      }
     };
     const title = game.i18n.format("swnr.dialog.attackRoll", {
       actorName: this.actor.name,
