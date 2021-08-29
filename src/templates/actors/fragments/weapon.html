@@ -27,6 +27,16 @@
             Ammo: {{item.data.data.ammo.value}}/{{item.data.data.ammo.max}}
           </div>
           {{/if}}
+          {{#if item.data.data.shock.dmg}}
+          <div>
+            Shock: {{item.data.data.shock.dmg}}/{{item.data.data.shock.ac}}
+          </div>
+          {{/if}}
+          {{#if item.data.data.range.normal}}
+          <div>
+            Range: {{item.data.data.range.normal}}/{{item.data.data.range.max}}
+          </div>
+          {{/if}}
           <div class="w-full absolute -left-0 -bottom-4 flex justify-around">
             <svg
               class="text-trueGray-600 h-4"
