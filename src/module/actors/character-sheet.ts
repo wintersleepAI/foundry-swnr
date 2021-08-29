@@ -279,7 +279,6 @@ export class CharacterActorSheet extends ActorSheet<
       if (game.settings.get("swnr","addShockMessage")) {
         if (weapon.data.data.shock && weapon.data.data.shock.dmg > 0) {
           let shock_content = `${weapon.name} Shock Damage Base ${weapon.data.data.shock.dmg} \ AC ${weapon.data.data.shock.ac}`;
-          console.log(rollData);
           const shockRoll = new Roll(
              "0" +
                " + @shockDmg + @stat.mod " +
@@ -288,7 +287,6 @@ export class CharacterActorSheet extends ActorSheet<
                  : ""),
             rollData
           ).roll();
-          console.log(shockRoll);
           ChatMessage.create({
             speaker: ChatMessage.getSpeaker({ actor: this.actor }),
             flavor: shock_content,
