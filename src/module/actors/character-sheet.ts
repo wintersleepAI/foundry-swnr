@@ -49,6 +49,7 @@ export class CharacterActorSheet extends ActorSheet<
     html.find(".save").on("click", this._onSaveThrow.bind(this));
     html.find(".item-edit").on("click", this._onItemEdit.bind(this));
     html.find(".item-delete").on("click", this._onItemDelete.bind(this));
+    html.find(".item-reload").on("click", this._onItemReload.bind(this));
     html
       .find(".hp-label")
       .on("click", limitConcurrency(this._onHpRoll.bind(this)));
@@ -135,6 +136,29 @@ export class CharacterActorSheet extends ActorSheet<
         this.actor.deleteEmbeddedDocuments("Item", [li.data("itemId")]);
       });
     });
+  }
+  _onItemReload(event: JQuery.ClickEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    const li = $(event.currentTarget).parents(".item");
+    const item = this.actor.getEmbeddedDocument("Item", li.data("itemId"));
+    if (!item) return;
+    let ammo_max = item.data.data.ammo?.max;
+    if (ammo_max != null) {
+      if (item.data.data.ammo.value < ammo_max){
+        console.log("Reloading", item);
+        item.update({"data.ammo.value": ammo_max})
+        let content = `<p> Reloaded ${item.name} </p>`
+        ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            content: content
+        });
+      } else {
+        ui.notifications?.info("Trying to reload a full item");
+      }
+    } else {
+      console.log("Unable to find ammo in item ", item.data.data);
+    }
   }
   async _onWeaponRoll(
     event: JQuery.ClickEvent<HTMLElement>

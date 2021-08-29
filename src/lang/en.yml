@@ -351,6 +351,7 @@ swnr:
     xp: XP
     delete-item: Delete Item
     edit-item: Edit Item
+    reload-item: Reload Item
     ask: Ask
     description: "Description:"
     ammoType: Ammo Type
