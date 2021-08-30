@@ -17,6 +17,7 @@ import { preloadTemplates } from "./module/preloadTemplates";
 import { SWNRActor, SWNRItem } from "./module/documents";
 import "./module/containerQueries";
 import registerHelpers from "./module/handlebar-helpers";
+import { tester, createSWNRMacro } from "./module/macro-bar";
 
 /* ------------------------------------ */
 /* Initialize system					*/
@@ -80,4 +81,6 @@ Hooks.once("ready", function () {
   // Reference a Compendium pack by it's collection ID
   // packImport();
   migrations();
+  tester();
+  Hooks.on("hotbarDrop", (bar, data, slot) => createSWNRMacro(data, slot));
 });

@@ -56,6 +56,19 @@ export class CharacterActorSheet extends ActorSheet<
       .find(".item.weapon .item-name")
       .on("click", this._onWeaponRoll.bind(this));
     html.find(".skill-load-button").on("click", this._onLoadSkills.bind(this));
+    // Drag events for macros.
+    if (this.actor.isOwner) {
+      let handler = ev => this._onDragStart(ev);
+      // Find all items on the character sheet.
+      html.find('.item').each((i, li) => {
+        console.log(" -",i , li);
+        // Ignore for the header row.
+        if (li.classList.contains("item-header")) return;
+        // Add draggable attribute and dragstart listener.
+        li.setAttribute("draggable", "true");
+        li.addEventListener("dragstart", handler, false);
+      });
+}
   }
   async _onLoadSkills(event: JQuery.ClickEvent): Promise<unknown> {
     event.preventDefault();
