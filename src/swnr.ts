@@ -34,6 +34,9 @@ Hooks.once("init", async function () {
   // Preload Handlebars templates
   await preloadTemplates();
   game.i18n.localize("swnr.title");
+  game["swnr"] = {
+    createSWNRMacro
+  };
 
   // Remove stock sheets
   Actors.unregisterSheet("core", ActorSheet);
