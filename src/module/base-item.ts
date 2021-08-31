@@ -14,20 +14,24 @@ async roll() {
     console.log("Cannot role without an actor");
     return;
   } 
-  console.log("rolling item ", this)
+  console.log("Rolling base item ", this)
   // Basic template rendering data
   const token = this.actor.token;
   const item = this.data;
   const actorData = this.actor ? this.actor.data.data : {};
   const itemData = item.data;
+  let content = `<h3> ${item.name} </h3>`
+  if ("description" in item.data) {
+    content+= `<span class="flavor-text"> ${item.data.description}</span>`;
+  } else {
+    content += "<span class='flavor-text'> No Description</span>"
+  }
 
-  // Define the roll formula.
-  let roll = new Roll('d20', actorData);// +@abilities.str.mod
-  let label = `Rolling ${item.name}`;
-  // Roll and send to chat.
-  roll.roll().toMessage({
+  ChatMessage.create({
     speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-    flavor: label
+    content: content, //${item.data.description}
+    //type: CONST.CHAT_MESSAGE_TYPES.OTHER,
   });
+
 }
 }
