@@ -1,8 +1,3 @@
-export function tester(): void {
-    ui.notifications?.error("tester");
-}
-
-
 export async function createSWNRMacro(data, slot) {
     if (game == null) return; // Quiet TS
     ui.notifications?.error("got it");
@@ -35,26 +30,20 @@ export async function createSWNRMacro(data, slot) {
  * @param {string} itemName
  * @return {Promise}
  */
- function rollItemMacro(itemName) {
-    if (game == null ){
-        return;
+ export function rollItemMacro(itemName: String) {
+    //if (game == null )  return; 
+    const speaker = ChatMessage.getSpeaker();
+    let actor;
+    if (speaker.token) {
+        actor = game.actors?.tokens[speaker.token];
+        if (!actor && speaker.actor) actor = game.actors?.get(speaker.actor); 
+        if (!actor) return ui.notifications?.error("Could not find actor for macro roll item. Select token");
+        const item = actor ? actor.items.find(i => i.name === itemName) : null;
+        if (!item) return ui.notifications?.warn(`${actor.name} does not have an item named ${itemName}`);
+
+        // Trigger the item roll
+        return item.roll();
+    } else {
+        ui.notifications?.error("Select token for macro roll item");
     }
-    console.log(itemName);
-      // Define the roll formula.
-    let roll = new Roll('d20', this.Actor);// +@abilities.str.mod
-    let label = `Rolling ${itemName}`;
-    // Roll and send to chat.
-    roll.roll().toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        flavor: label
-    });
-    // const speaker = ChatMessage.getSpeaker();
-    // let actor;
-    // if (speaker.token) actor = game.actors?.tokens[speaker.token];
-    // if (!actor) actor = game.actors?.get(speaker.actor);
-    // const item = actor ? actor.items.find(i => i.name === itemName) : null;
-    // if (!item) return ui.notifications?.warn(`Your controlled Actor does not have an item named ${itemName}`);
-  
-    // // Trigger the item roll
-    // return item.roll();
   }
