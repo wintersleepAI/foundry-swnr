@@ -114,6 +114,49 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     // });
   }
 
+  async rollForm(html: HTMLFormElement) {
+    console.log("Received ", html);
+    const form = <HTMLFormElement>html[0].querySelector("form");
+    const modifier = parseInt(
+      (<HTMLInputElement>form.querySelector('[name="modifier"]'))?.value
+    );
+    const burstFire = (<HTMLInputElement>(
+      form.querySelector('[name="burstFire"]')
+    ))?.checked
+      ? 2
+      : 0;
+    const skillId =
+      (<HTMLSelectElement>form.querySelector('[name="skill"]'))?.value ||
+      this.data.data.skill;
+    const skill = this.actor?.getEmbeddedDocument(
+      "Item",
+      skillId
+    ) as SWNRBaseItem<"skill">;
+
+    const stat = this.actor?.data.data["stats"][this.data.data.stat] || {
+      mod: 0,
+    };
+    console.log("look up", this.actor, skillId, skill,stat);
+    // 1d20 + attack bonus (PC plus weapon) + skill mod (-2 if untrained)
+    // weapon dice + stat mod + skill if enabled or punch.
+    // shock: damage + stat
+    // const skill = this.actor.items.filter(w => w.)
+    // Burst is +2 To hit and to damage
+
+    const rollData = {
+      actor: this.actor?.getRollData(),
+      weapon: this.data,
+      stat,
+      skill: skill,
+      hitRoll: <number | undefined>undefined,
+      burstFire,
+      modifier,
+      effectiveSkillRank:
+        skill.data.data.rank < 0 ? -2 : skill.data.data.rank,
+    };
+    console.log(rollData);
+  }
+
   async roll(): Promise<void> {
     console.log("Overloading roll");
     if (!this.actor) {
@@ -154,7 +197,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
         buttons: {
           roll: {
             label: game.i18n.localize("swnr.chat.roll"),
-            //callback: _doRoll,
+            callback: this.rollForm,
           },
         },
       },
