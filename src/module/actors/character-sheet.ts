@@ -61,7 +61,6 @@ export class CharacterActorSheet extends ActorSheet<
       let handler = ev => this._onDragStart(ev);
       // Find all items on the character sheet.
       html.find('.item').each((i, li) => {
-        console.log(" -",i , li);
         // Ignore for the header row.
         if (li.classList.contains("item-header")) return;
         // Add draggable attribute and dragstart listener.

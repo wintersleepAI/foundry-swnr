@@ -109,6 +109,11 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     getDocumentClass("ChatMessage").create(chatData);
     // });
   }
+
+  async roll() {
+    console.log("Overloading roll");
+  }
+
 }
 export const document = SWNRWeapon;
 export const name = "weapon";

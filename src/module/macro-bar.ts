@@ -1,20 +1,29 @@
 export async function createSWNRMacro(data, slot) {
     if (game == null) return; // Quiet TS
-    ui.notifications?.error("got it");
     if (data.type !== "Item") return;
     if (!("data" in data)) return ui.notifications?.warn("You can only create macro buttons for owned Items");
     const item = data.data;
+
+    console.log(data);
   
     // Create the macro command
     const command = `game.swnr.rollItemMacro("${item.name}");`;
-    let macro = game.macros?.entities.find(m => (m.name === item.name) && (m.data.command === command));
+    let macro = game.macros?.contents.find(m => (m.name === item.name) && (m.data.command === command));
     if (!macro) {
+      let image = item.img;
+      const icon_path = "systems/swnr/assets/icons/game-icons.net/item-icons"
+      if (item.type == "skill") image = `${icon_path}/book-white.svg` ;
+      else if (item.type == "armor") image = `${icon_path}/armor-white.svg` ;
+      else if (item.type == "weapon") image = `${icon_path}/weapon-white.svg` ;
+      else if (item.type == "power") image = `${icon_path}/psychic-waves-white.svg` ;
+      else console.log("Unknow item type, no icon ", item.type);
+
       macro = await Macro.create({
         name: item.name,
         type: "script",
-        img: item.img,
+        img: image,
         command: command,
-        flags: { "boilerplate.itemMacro": true }
+        flags: { "swnr.itemMacro": true }
       });
     }
     if (macro == null) {
