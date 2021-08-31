@@ -9,7 +9,7 @@ export class SWNRBaseItem<
  * @param {Event} event   The originating click event
  * @private
  */
-async roll() {
+async roll(): Promise<void> {
   if (this.actor == null) {
     console.log("Cannot role without an actor");
     return;

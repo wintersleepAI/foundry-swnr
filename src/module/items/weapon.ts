@@ -1,6 +1,10 @@
 import { SWNRBaseItem } from "./../base-item";
+import { ValidatedDialog } from "../ValidatedDialog";
+
 
 export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
+  popUpDialog?: Dialog;
+
   get ammo(): this["data"]["data"]["ammo"] {
     return this.data.data.ammo;
   }
@@ -110,8 +114,59 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     // });
   }
 
-  async roll() {
+  async roll(): Promise<void> {
     console.log("Overloading roll");
+    if (!this.actor) {
+      const message = `Called weapon.roll on item without an actor.`;
+      ui.notifications?.error(message);
+      new Error(message);
+      return;
+    }
+    if (!this.hasAmmo) {
+      ui.notifications?.error(`Your ${this.name} is out of ammo!`);
+      return;
+    }
+    console.log("rolling", this, this.data.data);
+    const title = game.i18n.format("swnr.dialog.attackRoll", {
+      actorName: this.actor?.name,
+      weaponName: this.name,
+    });
+    const ammo = this.data.data.ammo;
+    const burstFireHasAmmo =
+      ammo.type !== "none" && ammo.burst && ammo.value >= 3;
+
+    const dialogData = {
+      actor: this.actor.data,
+      weapon: this.data.data,
+      skills: this.actor.itemTypes.skill,
+      stat: this.actor.data.data["stats"][this.data.data.stat],
+      skill: this.data.data.skill,
+      burstFireHasAmmo,
+    };
+    const template = "systems/swnr/templates/dialogs/roll-attack.html";
+    const html = await renderTemplate(template, dialogData);
+    //this.popUpDialog?.close();
+    this.popUpDialog = new ValidatedDialog(
+      {
+        title: title,
+        content: html,
+        default: "roll",
+        buttons: {
+          roll: {
+            label: game.i18n.localize("swnr.chat.roll"),
+            //callback: _doRoll,
+          },
+        },
+      },
+      {
+        failCallback: (): void => {
+          ui.notifications?.error(game.i18n.localize("swnr.roll.skillNeeded"));
+        },
+        classes: ["swnr"],
+      }
+    );
+    const s = this.popUpDialog.render(true);
+
   }
 
 }

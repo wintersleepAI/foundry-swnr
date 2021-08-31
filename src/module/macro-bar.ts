@@ -3,12 +3,12 @@ export async function createSWNRMacro(data, slot) {
     if (data.type !== "Item") return;
     if (!("data" in data)) return ui.notifications?.warn("You can only create macro buttons for owned Items");
     const item = data.data;
-
-    console.log(data);
+    const id = data.data._id;
+    console.log("creating macro " , id, data);
   
     // Create the macro command
-    const command = `game.swnr.rollItemMacro("${item.name}");`;
-    let macro = game.macros?.contents.find(m => (m.name === item.name) && (m.data.command === command));
+    const command = `game.swnr.rollItemMacro("${id}","${item.name}");`;
+    let macro = game.macros?.contents.find(m => (m.id === id) && (m.data.command === command));
     if (!macro) {
       let image = item.img;
       const icon_path = "systems/swnr/assets/icons/game-icons.net/item-icons"
@@ -36,10 +36,10 @@ export async function createSWNRMacro(data, slot) {
 /**
  * Create a Macro from an Item drop.
  * Get an existing item macro if one exists, otherwise create a new one.
- * @param {string} itemName
+ * @param {string} itemId
  * @return {Promise}
  */
- export function rollItemMacro(itemName: String) {
+ export function rollItemMacro(itemId: String, itemName: String) {
     //if (game == null )  return; 
     const speaker = ChatMessage.getSpeaker();
     let actor;
@@ -47,8 +47,8 @@ export async function createSWNRMacro(data, slot) {
         actor = game.actors?.tokens[speaker.token];
         if (!actor && speaker.actor) actor = game.actors?.get(speaker.actor); 
         if (!actor) return ui.notifications?.error("Could not find actor for macro roll item. Select token");
-        const item = actor ? actor.items.find(i => i.name === itemName) : null;
-        if (!item) return ui.notifications?.warn(`${actor.name} does not have an item named ${itemName}`);
+        const item = actor ? actor.items.find(i => i.id === itemId) : null;
+        if (!item) return ui.notifications?.warn(`${actor.name} does not have the item ${itemName} you created the macro with`);
 
         // Trigger the item roll
         return item.roll();
