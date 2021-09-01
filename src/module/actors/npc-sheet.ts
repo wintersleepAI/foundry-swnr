@@ -64,6 +64,19 @@ export class NPCActorSheet extends ActorSheet<
     html.find(".skill").on("click", this._onSkill.bind(this));
     html.find(".saving-throw").on("click", this._onSavingThrow.bind(this));
     html.find(".hit-dice-roll").on("click", this._onHitDice.bind(this));
+
+    // Drag events for macros.
+    if (this.actor.isOwner) {
+      let handler = ev => this._onDragStart(ev);
+      // Find all items on the character sheet.
+      html.find('.item').each((i, li) => {
+        // Ignore for the header row.
+        if (li.classList.contains("item-header")) return;
+        // Add draggable attribute and dragstart listener.
+        li.setAttribute("draggable", "true");
+        li.addEventListener("dragstart", handler, false);
+      });
+    }
   }
 
   _onItemEdit(event: JQuery.ClickEvent): void {

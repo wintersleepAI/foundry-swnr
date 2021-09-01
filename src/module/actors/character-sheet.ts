@@ -68,7 +68,7 @@ export class CharacterActorSheet extends ActorSheet<
         li.setAttribute("draggable", "true");
         li.addEventListener("dragstart", handler, false);
       });
-}
+    }
   }
   async _onLoadSkills(event: JQuery.ClickEvent): Promise<unknown> {
     event.preventDefault();
@@ -288,8 +288,7 @@ export class CharacterActorSheet extends ActorSheet<
         if (weapon.data.data.shock && weapon.data.data.shock.dmg > 0) {
           let shock_content = `${weapon.name} Shock Damage Base ${weapon.data.data.shock.dmg} \ AC ${weapon.data.data.shock.ac}`;
           const shockRoll = new Roll(
-             "0" +
-               " + @shockDmg + @stat.mod " +
+               " @shockDmg + @stat.mod " +
                (weapon.data.data.skillBoostsDamage
                  ? ` + ${skill.data.data.rank}`
                  : ""),
