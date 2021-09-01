@@ -123,44 +123,7 @@ export class NPCActorSheet extends ActorSheet<
       console.error(`The item named ${weapon.name} is not a weapon.`);
       return;
     }
-
-    const template = await renderTemplate(
-      "systems/swnr/templates/dialogs/roll-attack.html",
-      { actor: this.actor.data, weapon, burstFireHasAmmo: weapon.canBurstFire }
-    );
-    const doRoll = async (html: JQuery<HTMLElement>) => {
-      const skill = html.find('[name="skilled"]').prop("checked")
-        ? this.actor.data.data.skillBonus
-        : 0;
-      const modifier = parseInt(html.find('[name="modifier"]').val() as string);
-      const burstMode =
-        html.find('[name="burstFire"]')?.prop("checked") ?? false;
-      const attackBonus = this.actor.data.data.ab;
-      const damageBonus = this.actor.data.data.attacks.bonusDamage;
-      console.log({ skill, modifier, burstMode, attackBonus, damageBonus });
-
-      await weapon.rollAttack(damageBonus, 0, skill, modifier, burstMode);
-    };
-    this.popUpDialog?.close();
-    this.popUpDialog = new Dialog(
-      {
-        title: game.i18n.format("swnr.dialog.attackRoll", {
-          actorName: this.actor.name,
-          weaponName: weapon.name,
-        }),
-        content: template,
-        default: "roll",
-        buttons: {
-          roll: {
-            label: "Roll",
-            icon: '<i class="fa fa-dice-d20"></i>',
-            callback: doRoll,
-          },
-        },
-      },
-      { classes: ["swnr"] }
-    );
-    this.popUpDialog.render(true);
+    return weapon.roll();
   }
 
   async _onReaction(event: JQuery.ClickEvent): Promise<void> {
