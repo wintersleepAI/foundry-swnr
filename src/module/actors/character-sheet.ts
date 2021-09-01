@@ -364,7 +364,7 @@ export class CharacterActorSheet extends ActorSheet<
     this.actor.update(update);
     return this;
   }
-  async _onSkillRoll(event: JQuery.ClickEvent): Promise<Application> {
+  async _onSkillRoll(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     console.log(event);
     const target = <HTMLElement>event.currentTarget;
@@ -374,74 +374,7 @@ export class CharacterActorSheet extends ActorSheet<
     const skill = <SWNRBaseItem<"skill">>(
       this.actor.getEmbeddedDocument("Item", skillID)
     );
-    const skillData = skill.data.data;
-    const skillName = skill.name;
-    const title = `${game.i18n.localize("swnr.chat.skillCheck")}: ${skillName}`;
-    const dialogData = {
-      title: title,
-      skillName: skillName,
-      skill: skillData,
-      data: this.actor.data,
-    };
-    const html = await renderTemplate(template, dialogData);
-    const _doRoll = (html: HTMLFormElement) => {
-      console.log(html);
-      const rollMode = game.settings.get("core", "rollMode");
-      const form = <HTMLFormElement>html[0].querySelector("form");
-      const dice = (<HTMLSelectElement>form.querySelector('[name="dicepool"]'))
-        .value;
-      const stat = this.actor.data.data.stats[
-        (<HTMLSelectElement>form.querySelector('[name="stat"]')).value
-      ];
-      const modifier = (<HTMLInputElement>(
-        form.querySelector('[name="modifier"]')
-      )).value;
-      const formula = `${dice} + @stat + @skill + @modifier`;
-      const roll = new Roll(formula, {
-        skill: skillData.rank,
-        modifier: modifier,
-        stat: stat.mod,
-      });
-      roll.roll();
-      console.log(roll.result);
-      const title = `${game.i18n.localize(
-        "swnr.chat.skillCheck"
-      )}: ${game.i18n.localize(
-        "swnr.stat.short." +
-          (<HTMLSelectElement>form.querySelector('[name="stat"]')).value
-      )}/${skillName}`;
-      roll.toMessage(
-        {
-          speaker: ChatMessage.getSpeaker(),
-          flavor: title,
-        },
-        { rollMode }
-      );
-      return roll;
-    };
-    this.popUpDialog?.close();
-    this.popUpDialog = new ValidatedDialog(
-      {
-        title: title,
-        content: html,
-        default: "roll",
-        buttons: {
-          roll: {
-            label: game.i18n.localize("swnr.chat.roll"),
-            callback: _doRoll,
-          },
-        },
-      },
-      {
-        failCallback: () => {
-          return;
-        },
-        classes: ["swnr"],
-      }
-    );
-    const s = this.popUpDialog.render(true);
-    if (s instanceof Promise) await s;
-    return this.popUpDialog;
+    skill.roll();
   }
   /** @override */
   async getData(): Promise<CharacterActorSheetData> {

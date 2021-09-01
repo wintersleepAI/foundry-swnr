@@ -56,7 +56,6 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       effectiveSkillRank: skillMod < 0 ? -2 : skillMod,
       shockDmg: this.data.data.shock?.dmg > 0 ? this.data.data.shock.dmg : 0
     };
-    console.log(rollData);
 
     const hitRoll = new Roll(
       "1d20 + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat + @effectiveSkillRank",
@@ -142,7 +141,6 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
   }
 
   async roll(): Promise<void> {
-    console.log("Overloading roll");
     if (!this.actor) {
       const message = `Called weapon.roll on item without an actor.`;
       ui.notifications?.error(message);
@@ -153,7 +151,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       ui.notifications?.error(`Your ${this.name} is out of ammo!`);
       return;
     }
-    console.log("rolling", this, this.data.data);
+
     const title = game.i18n.format("swnr.dialog.attackRoll", {
       actorName: this.actor?.name,
       weaponName: this.name,
@@ -170,13 +168,11 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       skill: this.data.data.skill,
       burstFireHasAmmo,
     };
-    console.log(dialogData);
     const template = "systems/swnr/templates/dialogs/roll-attack.html";
     const html = await renderTemplate(template, dialogData);
 
 
     const _rollForm = async (html: HTMLFormElement) => {
-      console.log("Received ", html, this);
       const form = <HTMLFormElement>html[0].querySelector("form");
       const modifier = parseInt(
         (<HTMLInputElement>form.querySelector('[name="modifier"]'))?.value
