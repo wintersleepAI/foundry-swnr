@@ -1,5 +1,6 @@
 import { SWNRBaseItem } from "./../base-item";
 import { ValidatedDialog } from "../ValidatedDialog";
+import { SWNRNPCActor } from "../actors/npc";
 
 
 export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
@@ -16,7 +17,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
   get hasAmmo(): boolean {
     return this.ammo.type === "none" || this.ammo.value > 0;
   }
-  
+
   async rollAttack(
     damageBonus: number,
     stat: number,
@@ -99,7 +100,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     ]);
     if (this.data.data.ammo.type !== "none") {
       const newAmmoTotal = this.data.data.ammo.value - 1 - burstFire;
-      await this.update({ "data.ammo.value": newAmmoTotal }, {});
+      await this.update({ "data.ammo.value": newAmmoTotal }, { });
       if (newAmmoTotal === 0)
         ui.notifications?.warn(`Your ${this.name} is now out of ammo!`);
     }
@@ -120,14 +121,14 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     // });
 
     // Show shock damage
-    if (game.settings.get("swnr","addShockMessage")) {
+    if (game.settings.get("swnr", "addShockMessage")) {
       if (this.data.data.shock && this.data.data.shock.dmg > 0) {
         let shock_content = `${this.name} Shock Damage Base ${this.data.data.shock.dmg} \ AC ${this.data.data.shock.ac}`;
         const shockRoll = new Roll(
-            " @shockDmg + @stat.mod " +
-              (damageBonus
-                ? ` + ${damageBonus}`
-                : ""),
+          " @shockDmg + @stat.mod " +
+          (damageBonus
+            ? ` + ${damageBonus}`
+            : ""),
           rollData
         ).roll();
         ChatMessage.create({
@@ -172,10 +173,10 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     console.log(dialogData);
     const template = "systems/swnr/templates/dialogs/roll-attack.html";
     const html = await renderTemplate(template, dialogData);
-    
-    
-    const _rollForm  = async (html: HTMLFormElement) => {
-      console.log("Received ", html , this);
+
+
+    const _rollForm = async (html: HTMLFormElement) => {
+      console.log("Received ", html, this);
       const form = <HTMLFormElement>html[0].querySelector("form");
       const modifier = parseInt(
         (<HTMLInputElement>form.querySelector('[name="modifier"]'))?.value
@@ -188,49 +189,48 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       const skillId =
         (<HTMLSelectElement>form.querySelector('[name="skill"]'))?.value ||
         this.data.data.skill;
-  
+
       const actorId = (<HTMLSelectElement>form.querySelector('[name="actorId"]'))?.value;
       const statName = (<HTMLSelectElement>form.querySelector('[name="statName"]'))?.value;
-      
+
       const actor = game.actors?.get(actorId);
       if (!actor) {
         console.log("Error actor no longer exists ", actorId);
         return;
       }
-  
+      let skillMod = 0;
+
       const skill = actor.getEmbeddedDocument(
         "Item",
         skillId
       ) as SWNRBaseItem<"skill">;
-  
-      const stat = actor.data.data["stats"]?.statName || {
-        mod: 0,
+
+      if (html.find('[name="skilled"]')) {
+        let npcSkillMod = html.find('[name="skilled"]').prop("checked")
+          ? actor.data.data["skillBonus"]
+          : 0;
+        if (!npcSkillMod) skillMod = npcSkillMod;
+      } else {
+
+        skillMod = skill.data.data.rank < 0 ? -2 : skill.data.data.rank;
+
+      }
+
+      const stat = actor.data.data["stats"]?.[statName] || {
+        mod: 0
       };
-      console.log("look up", actor, skillId, skill,stat);
+
       // 1d20 + attack bonus (PC plus weapon) + skill mod (-2 if untrained)
       // weapon dice + stat mod + skill if enabled or punch.
       // shock: damage + stat
       // const skill = this.actor.items.filter(w => w.)
       // Burst is +2 To hit and to damage
-  
-      const rollData = {
-        actor: this.actor?.getRollData(),
-        weapon: this.data,
-        stat,
-        skill: skill,
-        hitRoll: <number | undefined>undefined,
-        burstFire,
-        modifier,
-        effectiveSkillRank:
-          skill.data.data.rank < 0 ? -2 : skill.data.data.rank,
-      };
       const dmgBonus = this.data.data.skillBoostsDamage
         ? skill.data.data.rank : 0;
-      console.log(rollData, this);
-      return this.rollAttack(dmgBonus, stat.mod, skill.data.data.rank, modifier, burstFire);
+      return this.rollAttack(dmgBonus, stat.mod, skillMod, modifier, burstFire);
     }
-  
-    
+
+
     this.popUpDialog?.close();
     this.popUpDialog = new ValidatedDialog(
       {
