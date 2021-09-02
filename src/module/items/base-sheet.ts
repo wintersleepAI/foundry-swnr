@@ -1,8 +1,10 @@
 import { SWNRCharacterActor } from "../actors/character";
 import { SWNRNPCActor } from "../actors/npc";
+import { SWNRShipActor } from "../actors/ship";
+
 
 interface BaseSheetData extends ItemSheet.Data {
-  actor: SWNRCharacterActor | SWNRNPCActor | null;
+  actor: SWNRCharacterActor | SWNRNPCActor | SWNRShipActor | null;
 }
 export class BaseSheet extends ItemSheet<DocumentSheet.Options, BaseSheetData> {
   static get defaultOptions(): DocumentSheet.Options {

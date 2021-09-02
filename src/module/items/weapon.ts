@@ -1,7 +1,5 @@
 import { SWNRBaseItem } from "./../base-item";
 import { ValidatedDialog } from "../ValidatedDialog";
-import { SWNRNPCActor } from "../actors/npc";
-
 
 export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
   popUpDialog?: Dialog;

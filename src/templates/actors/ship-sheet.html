@@ -1,0 +1,26 @@
+<form class="{{cssClass}} -m-2 p-2 bg-gray-200">
+  <div class="">
+    <header class="sheet-header">
+    <div class="flex gap-2">
+      <img class="profile-img w-24 h-24 object-contain" src="{{ship.img}}" title="{{ship.name}}" data-edit="img" />
+      <div class="flex-grow grid grid-cols-3 items-center gap-1">
+        <input name="name"
+          class="text-2xl col-span-3 px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          type="text" value="{{ship.name}}" placeholder="{{localize 'swnr.sheet.name'}}" />
+      </div>
+      <div class="resources grid grid-2col">
+        <span>SHIP</span>
+        
+
+      </div>
+      <div class="abilities grid grid-3col">
+        {{!-- abilities here --}}
+      </div>
+    </div>
+    </header>
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Tab content goes here --}}
+    </section>
+  </div>
+</form
