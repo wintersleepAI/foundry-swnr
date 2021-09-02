@@ -3,7 +3,20 @@ Actor:
   types:
     - character
     - npc
+    - ship
   templates:
+    vehicle: 
+      cost: 0
+      health:
+        value: 15
+        max: 15
+      ac: 10
+      speed: 1
+      armor: 0
+      crew:
+        min: 1
+        max: 1
+      tl: 4
     living:
       health:
         value: 10
@@ -96,6 +109,13 @@ Actor:
       right:
         label: Bio/Notes
         contents: ""
+  ship:
+    templates:
+      - vehicle
+    power: 0
+    mass: 0
+    hard: 0
+    shipclass: "frigate"
 Item:
   types:
     - class

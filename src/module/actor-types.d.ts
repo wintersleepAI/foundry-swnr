@@ -1,8 +1,11 @@
 import { SWNRArmorTypes, AllItemClasses, ItemTypes } from "./item-types";
 
-type ActorTypes = "character" | "npc";
+type ActorTypes = "character" | "npc" | "ship" ;
 
 declare type SWNRStats = "str" | "dex" | "con" | "int" | "wis" | "cha";
+
+type SWNRShipTypes = "fighter" | "frigate" | "cruiser" | "capital";
+
 
 declare interface SWNRStatBase {
   base: number;
@@ -32,6 +35,23 @@ declare interface SWNRLivingTemplateBase {
     day: number;
   };
 }
+
+declare interface SWNRVehicleTemplateBase {
+  cost: number;
+  health: {
+    value: number;
+    max: number;
+  };
+  ac: number;
+  speed: number;
+  armor: number;
+  crew: {
+    min: number;
+    max: number;
+  }
+  tl: number;
+}
+
 declare interface SWNRLivingTemplateComputed {
   baseAc: number; //computed-active effects needed
   systemStrain: {
@@ -101,6 +121,17 @@ declare interface SWNRCharacterComputedData
   stats: { [key in SWNRStats]: SWNRStatComputed };
 }
 
+declare interface SWNRShipData extends SWNRVehicleTemplateBase {
+  power: number;
+  mass: number;
+  hard: number;
+  shipclass: SWNRShipTypes;
+}
+
+declare interface SWNRShipComputed {
+
+}
+
 declare interface SWNRNPCData extends SWNRLivingTemplateBase {
   armorType: SWNRArmorTypes;
   skillBonus: number;
@@ -138,11 +169,13 @@ declare global {
   interface DataConfig {
     Actor:
       | PCActorSource
-      | { type: "npc"; data: Merge<SWNRNPCData, SWNRLivingTemplateComputed> };
+      | { type: "npc"; data: Merge<SWNRNPCData, SWNRLivingTemplateComputed> }
+      | { type: "ship"; data: Merge<SWNRShipData, SWNRShipComputed> };
   }
   interface SourceConfig {
     Actor:
       | { type: "character"; data: SWNRCharacterBaseData }
-      | { type: "npc"; data: SWNRNPCData };
+      | { type: "npc"; data: SWNRNPCData }
+      | { type: "ship"; data: SWNRShipData };
   }
 }

@@ -46,6 +46,7 @@ type SWNRWeaponAmmoTypes =
   | "missile"
   | "special";
 
+
 interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
   stat: SWNRStats;
   secondStat: "none" | SWNRStats;
