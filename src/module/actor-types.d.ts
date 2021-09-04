@@ -4,8 +4,8 @@ type ActorTypes = "character" | "npc" | "ship" ;
 
 declare type SWNRStats = "str" | "dex" | "con" | "int" | "wis" | "cha";
 
-type SWNRShipTypes = "fighter" | "frigate" | "cruiser" | "capital";
-
+type SWNRShipClass = "fighter" | "frigate" | "cruiser" | "capital";
+type SWNRShipHullType = "strikeFighter" | "shuttle" | "freeMerchant" | "patrolBoat" | "corvette" | "heavyFrigate" | "bulkFreighter" | "fleetCruiser" | "battleship" | "carrier" | "smallStation" | "largeStation";
 
 declare interface SWNRStatBase {
   base: number;
@@ -42,12 +42,16 @@ declare interface SWNRVehicleTemplateBase {
     value: number;
     max: number;
   };
-  ac: number;
+  ac: {
+    value: number;
+    max: number;
+  };
   speed: number;
   armor: number;
   crew: {
     min: number;
     max: number;
+    current: number;
   }
   tl: number;
 }
@@ -122,10 +126,37 @@ declare interface SWNRCharacterComputedData
 }
 
 declare interface SWNRShipData extends SWNRVehicleTemplateBase {
-  power: number;
-  mass: number;
-  hard: number;
-  shipclass: SWNRShipTypes;
+  power: {
+    value: number;
+    max: number;
+  };
+  mass: {
+    value: number;
+    max: number;
+  };
+  hardpoints: {
+    value: number;
+    max: number;
+  };
+  lifeSupportDays: {
+    value: number;
+    max: number;
+  };
+  fuel : {
+    value: number;
+    max: number;
+  };
+  cargo : {
+    value: number;
+    max: number;
+  };
+  shipClass: SWNRShipClass;
+  shipHullType: SWNRShipHullType;
+  description: string;
+  mods: string;
+  operatingCost: 0;
+  maintanenceCost: number;
+  lastMaintanence: string;
 }
 
 declare interface SWNRShipComputed {

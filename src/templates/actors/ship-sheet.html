@@ -1,26 +1,348 @@
 <form class="{{cssClass}} -m-2 p-2 bg-gray-200">
-  <div class="">
-    <header class="sheet-header">
-    <div class="flex gap-2">
-      <img class="profile-img w-24 h-24 object-contain" src="{{ship.img}}" title="{{ship.name}}" data-edit="img" />
-      <div class="flex-grow grid grid-cols-3 items-center gap-1">
-        <input name="name"
-          class="text-2xl col-span-3 px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-          type="text" value="{{ship.name}}" placeholder="{{localize 'swnr.sheet.name'}}" />
-      </div>
-      <div class="resources grid grid-2col">
-        <span>SHIP</span>
-        
+<div>
+   <div class="flex gap-2">
+      <img
+        class="profile-img w-24 h-24 object-contain"
+        src="{{actor.img}}"
+        title="{{actor.name}}"
+        data-edit="img"
+      />
+      <!-- Grid div for header -->
+      <div class="flex-grow grid grid-cols-5 items-center gap-1">
+
+        <!-- name -->
+        <div class="name col-span-2 flex flex-col items-center">
+        <input
+          name="name"
+          class="text-2xl col-span-2 px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          type="text"
+          value="{{actor.name}}"
+          placeholder="{{localize 'swnr.sheet.name'}}"
+        />
+        <span>Ship Name</span>
+        </div>
+
+
+        <div class="cargo flex flex-col justify-center items-center">
+
+        <!-- Ship / Hull class -->
+        <select
+          name="data.shipHullType"
+          class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+          {{#select data.shipHullType}}
+          <option value="strikeFighter">
+            {{localize 'swnr.sheet.ship.shipHullType.strikeFighter'}}
+          </option>
+          <option value="shuttle">{{localize 'swnr.sheet.ship.shipHullType.shuttle'}}</option>
+          <option value="freeMerchant">{{localize 'swnr.sheet.ship.shipHullType.freeMerchant'}}</option>
+          <option value="patrolBoat">
+            {{localize 'swnr.sheet.ship.shipHullType.patrolBoat'}}
+          </option>
+          <option value="corvette">{{localize 'swnr.sheet.ship.shipHullType.corvette'}}</option>
+          <option value="heavyFrigate">{{localize 'swnr.sheet.ship.shipHullType.heavyFrigate'}}</option>
+          <option value="bulkFreighter">{{localize 'swnr.sheet.ship.shipHullType.bulkFreighter'}}</option>
+          <option value="fleetCruiser">{{localize 'swnr.sheet.ship.shipHullType.fleetCruiser'}}</option>
+          <option value="battleship">{{localize 'swnr.sheet.ship.shipHullType.battleship'}}</option>
+          <option value="carrier">{{localize 'swnr.sheet.ship.shipHullType.carrier'}}</option>
+          <option value="smallStation">{{localize 'swnr.sheet.ship.shipHullType.smallStation'}}</option>
+          <option value="largeStation">{{localize 'swnr.sheet.ship.shipHullType.largeStation'}}</option>
+          {{/select}}
+        </select>
+        {{localize 'swnr.sheet.ship.ship-hull-type'}}
+        </div>
+
+
+        <!-- Ship /  class -->
+        <div class="cargo flex flex-col justify-center items-center">
+        <select
+          name="data.shipClass"
+          class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+          {{#select data.shipClass}}
+          <option value="fighter">
+            {{localize 'swnr.sheet.ship.shipClass.fighter'}}
+          </option>
+          <option value="frigate">{{localize 'swnr.sheet.ship.shipClass.frigate'}}</option>
+          <option value="cruiser">{{localize 'swnr.sheet.ship.shipClass.cruiser'}}</option>
+          <option value="capital">
+            {{localize 'swnr.sheet.ship.shipClass.capital'}}
+          </option>
+          {{/select}}
+        </select>
+        {{localize 'swnr.sheet.ship.ship-class'}}
+
 
       </div>
-      <div class="abilities grid grid-3col">
-        {{!-- abilities here --}}
+
+
+        <!--cargo-->
+        <div class="cargo flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              step="1"
+              name="data.cargo.value"
+              value="{{actor.data.data.cargo.value}}"
+              data-dtype="Number"
+              min="0"
+            /><span>/</span
+            ><input
+              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              name="data.cargo.max"
+              value="{{actor.data.data.cargo.max}}"
+              step="1"
+              min="1"
+              data-dtype="Number"
+            />
+          </div>
+          <label class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.ship.cargo'}}
+          </label>
+        </div>
+
+        <!--HP-->
+        <div class="hp flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              step="1"
+              name="data.health.value"
+              value="{{actor.data.data.health.value}}"
+              data-dtype="Number"
+              min="0"
+            /><span>/</span
+            ><input
+              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              name="data.health.max"
+              value="{{actor.data.data.health.max}}"
+              step="1"
+              min="1"
+              data-dtype="Number"
+            />
+          </div>
+          <label class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.hp'}}
+          </label>
+        </div>
+
+        <div class="ac flex flex-col items-center">
+          <input
+            class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            type="number"
+            min="0"
+            name="data.ac"
+            value="{{actor.data.data.ac}}"
+          />
+          <label>{{localize 'swnr.sheet.armor-class'}}</label>
+        </div>
+
+        <!--Armor-->
+        <div class="armor flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              step="1"
+              name="data.armor.value"
+              value="{{actor.data.data.armor.value}}"
+              data-dtype="Number"
+              min="0"
+            /><span>/</span
+            ><input
+              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              name="data.armor.max"
+              value="{{actor.data.data.armor.max}}"
+              step="1"
+              min="1"
+              data-dtype="Number"
+            />
+          </div>
+          <label class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.armor'}}
+          </label>
+        </div>
+
+
+
+
+        <!--fuel-->
+        <div class="fuel flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              step="1"
+              name="data.fuel.value"
+              value="{{actor.data.data.fuel.value}}"
+              data-dtype="Number"
+              min="0"
+            /><span>/</span
+            ><input
+              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              name="data.fuel.max"
+              value="{{actor.data.data.fuel.max}}"
+              step="1"
+              min="1"
+              data-dtype="Number"
+            />
+          </div>
+          <label class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.ship.fuel'}}
+          </label>
+        </div>
+
+        <!--life support-->
+        <div class="life-support flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              step="1"
+              name="data.lifeSupportDays.value"
+              value="{{actor.data.data.lifeSupportDays.value}}"
+              data-dtype="Number"
+              min="0"
+            /><span>/</span
+            ><input
+              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              name="data.lifeSupportDays.max"
+              value="{{actor.data.data.lifeSupportDays.max}}"
+              step="1"
+              min="1"
+              data-dtype="Number"
+            />
+          </div>
+          <label class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.ship.life-support-days'}}
+          </label>
+        </div>
+
+
+        <!--crew-->
+        <div class="crew flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-2 text-center pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              step="1"
+              name="data.crew.min"
+              value="{{actor.data.data.crew.min}}"
+              data-dtype="Number"
+              min="0"
+            /><span>/</span>
+            <input
+              class="w-2 text-center pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              step="1"
+              name="data.crew.value"
+              value="{{actor.data.data.crew.value}}"
+              data-dtype="Number"
+              min="0"
+            /><span>/</span
+            ><input
+              class="w-3 text-center pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              name="data.crew.max"
+              value="{{actor.data.data.crew.max}}"
+              step="1"
+              min="1"
+              data-dtype="Number"
+            />
+          </div>
+          <label class="hp-label text-center hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.ship.crew'}}
+          </label>
+        </div>
+
+        <!--power-->
+        <div class="power flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              step="1"
+              name="data.power.value"
+              value="{{actor.data.data.power.value}}"
+              data-dtype="Number"
+              min="0"
+            /><span>/</span
+            ><input
+              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              name="data.power.max"
+              value="{{actor.data.data.power.max}}"
+              step="1"
+              min="1"
+              data-dtype="Number"
+            />
+          </div>
+          <label class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.ship.power'}}
+          </label>
+        </div>
+
+        <!--mass-->
+        <div class="mass flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              step="1"
+              name="data.mass.value"
+              value="{{actor.data.data.mass.value}}"
+              data-dtype="Number"
+              min="0"
+            /><span>/</span
+            ><input
+              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              name="data.mass.max"
+              value="{{actor.data.data.mass.max}}"
+              step="1"
+              min="1"
+              data-dtype="Number"
+            />
+          </div>
+          <label class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.ship.mass'}}
+          </label>
+        </div>
+
+        
+        <!-- Description -->
+        <div class="pr-0.5 text-lg">
+         Description
+        </div>
+
+
+        <!-- Mods -->
+        <div class="pr-0.5 text-lg">
+         Mods
+        </div>
+
+        <!-- cost -->
+        <div class="pr-0.5 text-lg">
+         Cost
+        </div>
+
+
       </div>
+
+
+    <div class="abilities grid grid-3col">
+      {{!-- abilities here --}}
     </div>
-    </header>
+
+
     {{!-- Sheet Body --}}
     <section class="sheet-body">
-        {{!-- Tab content goes here --}}
+      {{!-- Tab content goes here --}}
     </section>
   </div>
 </form
