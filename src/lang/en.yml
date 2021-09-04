@@ -334,6 +334,7 @@ swnr:
       evasion: Evasion
     name: Name
     armor-class: Armor Class
+    armor: Armor
     hp: HP
     permanent-strain: Permanent strain
     attack-bonus: Attack Bonus
@@ -368,6 +369,39 @@ swnr:
     vs: vs
     rollables: Rollables
     hit-dice: Hit Dice
+    ship:
+      life-support-days: Life Support Days
+      fuel: Fuel
+      power: Power
+      mass: mass
+      hard-points: Hardpoints
+      ship-class: Ship Class
+      ship-hull-type: Ship Hull Type
+      cargo: Cargo
+      operating-cost: Operating Cost
+      maintanence-cost: Maintanence Cost
+      last-maintanence: Last Maintanence
+      crew: Crew (min/cur/max)
+      shipHullType:
+        strikeFighter: Strike Fighter 
+        shuttle: Shuttle
+        freeMerchant: Free Merchant
+        patrolBoat: Patrol Boat
+        corvette: Corvette
+        heavyFrigate:  Heavy Frigate
+        bulkFreighter:  Bulk Freighter
+        fleetCruiser:  Fleet Cruiser
+        battleship:  Battleship
+        carrier: Carrier 
+        smallStation:  Small Station
+        largeStation: Large Station
+      shipClass: 
+        fighter: Fighter
+        frigate: Frigate
+        cruiser: Cruiser
+        capital: Capital
+      
+
   settings:
     useHomebrewLuckSave: Use Homebrew Luck saves?
     useHomebrewLuckSaveHint: Uses 16 - Level for the save, no modifiers, just pure luck

@@ -12,10 +12,13 @@ Actor:
         max: 15
       ac: 10
       speed: 1
-      armor: 0
+      armor: 
+        value: 1
+        max: 1
       crew:
         min: 1
         max: 1
+        value: 1
       tl: 4
     living:
       health:
@@ -112,10 +115,33 @@ Actor:
   ship:
     templates:
       - vehicle
-    power: 0
-    mass: 0
-    hard: 0
-    shipclass: "frigate"
+    power: 
+      value: 1
+      max: 1
+    mass: 
+      value: 1
+      max: 1
+    hardpoints:
+      value: 1
+      max: 1 
+    lifeSupportDays:
+      value: 1
+      max: 1 
+    fuel:
+      value: 1
+      max: 1 
+    cargo:
+      value: 10
+      max: 10 
+    shipClass: "frigate"
+    shipHullType: "shuttle"
+    description: ""
+    mods: "None"
+    operatingCost: 0
+    maintanenceCost: 0
+    lastMaintanence: ""
+
+
 Item:
   types:
     - class
