@@ -373,7 +373,7 @@ swnr:
       life-support-days: Life Support Days
       fuel: Fuel
       power: Power
-      mass: mass
+      mass: Mass
       hard-points: Hardpoints
       ship-class: Ship Class
       ship-hull-type: Ship Hull Type
@@ -401,6 +401,9 @@ swnr:
         frigate: Frigate
         cruiser: Cruiser
         capital: Capital
+      weapons: Weapons
+      defense: Defense
+      fittings: Fittings
       
 
   settings:
