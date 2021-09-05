@@ -380,6 +380,7 @@ swnr:
       cargo: Cargo
       operating-cost: Operating Cost
       maintanence-cost: Maintanence Cost
+      cost: Cost
       last-maintanence: Last Maintanence
       crew: Crew (min/cur/max)
       shipHullType:

@@ -29,7 +29,7 @@
         <select
           name="data.shipHullType"
           class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-          {{#select data.shipHullType}}
+          {{#select actor.data.data.shipHullType}}
           <option value="strikeFighter">
             {{localize 'swnr.sheet.ship.shipHullType.strikeFighter'}}
           </option>
@@ -55,7 +55,7 @@
         <!-- Ship /  class -->
         <div class="cargo flex flex-col justify-center items-center">
         <select
-          name="data.shipClass"
+          name="actor.data.data.shipClass"
           class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
           {{#select data.shipClass}}
           <option value="fighter">
@@ -128,6 +128,7 @@
           </label>
         </div>
 
+        <!--AC-->
         <div class="ac flex flex-col items-center">
           <input
             class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
@@ -315,20 +316,40 @@
         </div>
 
         
-        <!-- Description -->
-        <div class="pr-0.5 text-lg">
-         Description
+        <!--last Main-->
+        <div class="lastMaintanence flex flex-col items-center">
+          <input
+            class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            type="string"
+            min="0"
+            name="data.lastMaintanence"
+            value="{{actor.data.data.lastMaintanence}}"
+          />
+          <label>{{localize 'swnr.sheet.ship.last-maintanence'}}</label>
         </div>
-
-
-        <!-- Mods -->
-        <div class="pr-0.5 text-lg">
-         Mods
+  
+        <!--maintanenceCost-->
+        <div class="maintanenceCost flex flex-col items-center">
+          <input
+            class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            type="number"
+            min="0"
+            name="data.maintanenceCost"
+            value="{{actor.data.data.maintanenceCost}}"
+          />
+          <label>{{localize 'swnr.sheet.ship.maintanence-cost'}}</label>
         </div>
-
-        <!-- cost -->
-        <div class="pr-0.5 text-lg">
-         Cost
+  
+        <!--cost-->
+        <div class="cost flex flex-col items-center">
+          <input
+            class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            type="string"
+            min="0"
+            name="data.cost"
+            value="{{actor.data.data.cost}}"
+          />
+          <label>{{localize 'swnr.sheet.ship.cost'}}</label>
         </div>
 
 
@@ -339,10 +360,22 @@
       {{!-- abilities here --}}
     </div>
 
-
+  
     {{!-- Sheet Body --}}
     <section class="sheet-body">
       {{!-- Tab content goes here --}}
+
+            <!-- Description -->
+        {{!-- <div class="pr-0.5 text-lg">
+         Description
+        </div> --}}
+
+
+        <!-- Mods -->
+        {{!-- <div class="pr-0.5 text-lg">
+         Mods
+        </div> --}}
+
     </section>
   </div>
 </form
