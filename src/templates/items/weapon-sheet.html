@@ -86,23 +86,46 @@
         {{/select}}
       </select>
     </div>
-    {{#if owner}}
-    <div>
-      <div>{{localize 'swnr.sheet.skill'}}:</div>
-      <select
-        class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
-        name="data.skill"
-      >
-        {{#select data.data.skill}}
-        <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
-        {{#each actor.itemTypes.skill }}
-        <option value="{{this.id}}">
-          {{this.name}} {{this.data.data.rank}}
-        </option>
-        {{/each}} {{/select}}
-      </select>
+    <div class="grid md:grid-cols-2 gap-1">
+      <div >
+        <div>{{localize 'swnr.item.range'}}:</div>
+        <input
+          type="number"
+          class="w-12 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          step="1"
+          name="data.range.normal"
+          min="0"
+          data-dtype="Number"
+          value="{{data.data.range.normal}}"
+        /> /
+        <input
+          type="number"
+          class="w-12 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          step="1"
+          name="data.range.max"
+          min="0"
+          data-dtype="Number"
+          value="{{data.data.range.max}}"
+        />
+      </div>
+      <div>
+      {{#if owner}}
+        <div>{{localize 'swnr.sheet.skill'}}:</div>
+        <select
+          class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+          name="data.skill"
+        >
+          {{#select data.data.skill}}
+          <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
+          {{#each actor.itemTypes.skill }}
+          <option value="{{this.id}}">
+            {{this.name}} {{this.data.data.rank}}
+          </option>
+          {{/each}} {{/select}}
+        </select>
+      {{/if}}
+      </div>
     </div>
-    {{/if}}
     <div class="flex flex-wrap gap-1">
       <h3 class="text-base w-full">{{localize 'swnr.weapon.ammo'}}:</h3>
       <div>
