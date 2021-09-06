@@ -404,8 +404,6 @@ swnr:
       weapons: Weapons
       defense: Defense
       fittings: Fittings
-      
-
   settings:
     useHomebrewLuckSave: Use Homebrew Luck saves?
     useHomebrewLuckSaveHint: Uses 16 - Level for the save, no modifiers, just pure luck
