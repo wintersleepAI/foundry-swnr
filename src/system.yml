@@ -114,6 +114,12 @@ packs:
     module: swnr
     path: packs/tools-and-medical.db
     entity: Item
+  - name: ship-weapon
+    label: Ship Weapons
+    system: swnr
+    module: swnr
+    path: packs/ship-weapon.db
+    entity: Item    
 languages:
   - lang: en
     name: English

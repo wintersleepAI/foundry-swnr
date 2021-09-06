@@ -1,0 +1,17 @@
+<form class="{{cssClass}} -m-2 p-2 bg-gray-200">
+    {{> "systems/swnr/templates/items/fragments/desc.html"}}
+    {{> "systems/swnr/templates/items/fragments/item-base.html"}}
+
+    <div class="grid grid-cols-2">
+        <div class="flex flex-wrap gap-1">
+            <h3 class="text-base w-full">Damage:</h3>
+            <div>
+                {{!-- <div>{{localize 'swnr.weapon.damageFormula'}}:</div> --}}
+                <div>Formula:</div>
+                <input
+                    class="w-32 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                    type="text" name="data.damage" value="{{data.data.damage}}" />
+            </div>
+        </div>
+    </div>
+</form>

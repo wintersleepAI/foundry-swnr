@@ -4,7 +4,8 @@ import { SWNRWeapon } from "./items/weapon";
 
 type MetaItemTypes = "class" | "power" | "focus" | "skill";
 type RealItemTypes = "armor" | "weapon" | "item";
-type ItemTypes = RealItemTypes | MetaItemTypes;
+type ShipItemTypes = "shipWeapon";
+type ItemTypes = RealItemTypes | MetaItemTypes | ShipItemTypes;
 
 declare type ItemsWithCustomClasses = SWNRWeapon;
 declare type ItemTypesMissingCustomClasses = Exclude<
@@ -72,6 +73,10 @@ interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
   damage: string;
 }
 
+declare interface SWNRShipWeaponData extends SWNRBaseItemData{
+  damage: string;
+}
+
 declare interface SWNRArmorData extends SWNRBaseItemData {
   ac: number;
   shield: boolean;
@@ -117,7 +122,8 @@ declare global {
       | { type: "power"; data: SWNRPowerData }
       | { type: "item"; data: SWNRItemData }
       | { type: "focus"; data: SWNRFocusData }
-      | { type: "skill"; data: SWNRSkillData };
+      | { type: "skill"; data: SWNRSkillData }
+      | { type: "shipWeapon"; data: SWNRShipWeaponData};
   }
 
   interface SourceConfig {
@@ -128,6 +134,7 @@ declare global {
       | { type: "power"; data: SWNRPowerData }
       | { type: "item"; data: SWNRItemData }
       | { type: "focus"; data: SWNRFocusData }
-      | { type: "skill"; data: SWNRSkillData };
+      | { type: "skill"; data: SWNRSkillData }
+      | { type: "shipWeapon"; data: SWNRShipWeaponData };
   }
 }
