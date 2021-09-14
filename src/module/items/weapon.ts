@@ -81,7 +81,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       if (this.data.data.shock && this.data.data.shock.dmg > 0) {
         shock_content = `Shock Damage  AC ${this.data.data.shock.ac}`;
         const _shockRoll = new Roll(
-            " @shockDmg + @stat.mod " +
+            " @shockDmg + @stat " +
             (this.data.data.skillBoostsDamage
               ? ` + ${damageBonus}`
               : ""),
@@ -90,6 +90,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
         shock_roll = await _shockRoll.render();
       }
     }
+
     const dialogData = {
       actor: this.actor,
       weapon: this,
@@ -185,7 +186,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
         this.data.data.skill;
 
       const actorId = (<HTMLSelectElement>form.querySelector('[name="actorId"]'))?.value;
-      const statName = (<HTMLSelectElement>form.querySelector('[name="statName"]'))?.value;
+      const forStatName = (<HTMLSelectElement>form.querySelector('[name="statName"]'))?.value;
 
       const actor = game.actors?.get(actorId);
       if (!actor) {
@@ -206,6 +207,14 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
         if (!npcSkillMod) skillMod = npcSkillMod;
       } else {
         skillMod = skill.data.data.rank < 0 ? -2 : skill.data.data.rank;
+      }
+
+      // for finesse weapons take the stat with the higher mod
+      let statName = this.data.data.stat;
+      const secStatName = this.data.data.secondStat;
+      // check if there is 2nd stat name and its mod is better
+      if (secStatName != null && secStatName != "none" && actor.data.data["stats"]?.[statName].mod < actor.data.data["stats"]?.[secStatName].mod){
+        statName = secStatName;
       }
 
       const stat = actor.data.data["stats"]?.[statName] || {
