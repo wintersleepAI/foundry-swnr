@@ -50,6 +50,7 @@ export class CharacterActorSheet extends ActorSheet<
     html.find(".item-edit").on("click", this._onItemEdit.bind(this));
     html.find(".item-delete").on("click", this._onItemDelete.bind(this));
     html.find(".item-reload").on("click", this._onItemReload.bind(this));
+    html.find(".item-click").on("click", this._onItemClick.bind(this));
     html
       .find(".hp-label")
       .on("click", limitConcurrency(this._onHpRoll.bind(this)));
@@ -113,6 +114,21 @@ export class CharacterActorSheet extends ActorSheet<
     );
     return await this.popUpDialog.render(true);
   }
+  
+  // Clickable title/name or icon. Invoke Item.roll()
+  _onItemClick(event: JQuery.ClickEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    const itemId = event.currentTarget.parentElement.dataset.itemId;
+    const item = <SWNRBaseItem>(
+      this.actor.getEmbeddedDocument("Item", itemId)
+    );
+    //const wrapper = $(event.currentTarget).parents(".item");
+    //const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
+    if (!item) return;
+    item.roll();
+  }
+
   _onItemEdit(event: JQuery.ClickEvent): void {
     event.preventDefault();
     event.stopPropagation();
