@@ -34,7 +34,6 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       ui.notifications?.error(`Your ${this.name} is out of ammo!`);
       return;
     }
-
     const template = "systems/swnr/templates/chat/attack-roll.html";
     const burstFire = useBurst ? 2 : 0;
 
@@ -200,7 +199,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
         skillId
       ) as SWNRBaseItem<"skill">;
 
-      if (html.find('[name="skilled"]')) {
+      if (this.actor?.type=="npc" && html.find('[name="skilled"]')) {
         let npcSkillMod = html.find('[name="skilled"]').prop("checked")
           ? actor.data.data["skillBonus"]
           : 0;
@@ -208,7 +207,6 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       } else {
         skillMod = skill.data.data.rank < 0 ? -2 : skill.data.data.rank;
       }
-
       // for finesse weapons take the stat with the higher mod
       let statName = this.data.data.stat;
       const secStatName = this.data.data.secondStat;
