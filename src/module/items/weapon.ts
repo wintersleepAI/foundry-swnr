@@ -35,7 +35,6 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       return;
     }
 
-    console.log({ skillMod, modifier, useBurst, damageBonus });
     const template = "systems/swnr/templates/chat/attack-roll.html";
     const burstFire = useBurst ? 2 : 0;
 
@@ -74,6 +73,23 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       hitExplain: hitExplainTip,
       damageExplain: damageExplainTip,
     };
+    // Placeholder for shock damage
+    let shock_content: string | null = null;
+    let shock_roll: string | null  = null;
+    // Show shock damage
+    if (game.settings.get("swnr","addShockMessage")) {
+      if (this.data.data.shock && this.data.data.shock.dmg > 0) {
+        shock_content = `Shock Damage  AC ${this.data.data.shock.ac}`;
+        const _shockRoll = new Roll(
+            " @shockDmg + @stat.mod " +
+            (this.data.data.skillBoostsDamage
+              ? ` + ${damageBonus}`
+              : ""),
+          rollData
+        ).roll();
+        shock_roll = await _shockRoll.render();
+      }
+    }
     const dialogData = {
       actor: this.actor,
       weapon: this,
@@ -89,6 +105,8 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
         0,
         20
       ),
+      shock_roll,
+      shock_content,
     };
     const rollMode = game.settings.get("core", "rollMode");
     // const dice = hitRoll.dice.concat(damageRoll.dice)
@@ -118,26 +136,6 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     getDocumentClass("ChatMessage").applyRollMode(chatData, rollMode);
     getDocumentClass("ChatMessage").create(chatData);
     // });
-
-    // Show shock damage
-    if (game.settings.get("swnr", "addShockMessage")) {
-      if (this.data.data.shock && this.data.data.shock.dmg > 0) {
-        let shock_content = `${this.name} Shock Damage Base ${this.data.data.shock.dmg} \ AC ${this.data.data.shock.ac}`;
-        const shockRoll = new Roll(
-          " @shockDmg + @stat.mod " +
-          (damageBonus
-            ? ` + ${damageBonus}`
-            : ""),
-          rollData
-        ).roll();
-        ChatMessage.create({
-          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-          flavor: shock_content,
-          type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-          roll: JSON.stringify(shockRoll.toJSON()),
-        });
-      }
-    }
   }
 
   async roll(): Promise<void> {
@@ -207,9 +205,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
           : 0;
         if (!npcSkillMod) skillMod = npcSkillMod;
       } else {
-
         skillMod = skill.data.data.rank < 0 ? -2 : skill.data.data.rank;
-
       }
 
       const stat = actor.data.data["stats"]?.[statName] || {
@@ -225,7 +221,6 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
         ? skill.data.data.rank : 0;
       return this.rollAttack(dmgBonus, stat.mod, skillMod, modifier, burstFire);
     }
-
 
     this.popUpDialog?.close();
     this.popUpDialog = new ValidatedDialog(
@@ -247,7 +242,6 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
         classes: ["swnr"],
       }
     );
-    console.log("t1", this);
     const s = this.popUpDialog.render(true);
 
   }

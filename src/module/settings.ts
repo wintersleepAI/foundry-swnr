@@ -38,4 +38,5 @@ export const registerSettings = function (): void {
     type: Boolean,
     default: true,
   });
+
 };

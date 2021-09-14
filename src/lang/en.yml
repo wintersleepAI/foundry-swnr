@@ -374,7 +374,7 @@ swnr:
     useHomebrewLuckSave: Use Homebrew Luck saves?
     useHomebrewLuckSaveHint: Uses 16 - Level for the save, no modifiers, just pure luck
     addShockMessage: Add Shock Damage Message?
-    addShockMessageHint: When attacking this adds another seperate message log for shock damage. Useful for modules.
+    addShockMessageHint: When attacking this adds another roll for shock damage in the attack chat message.
   chat:
     dicepool: Dice Pool
     difficulty: Difficulty
