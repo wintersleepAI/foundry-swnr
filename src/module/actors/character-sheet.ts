@@ -180,7 +180,7 @@ export class CharacterActorSheet extends ActorSheet<
     if (!save) return;
     const target = <number>this.actor.data.data.save[save];
     const template = "systems/swnr/templates/dialogs/roll-save.html";
-    const title = game.i18n.format("swnr.titles.savingThrow", {
+    let title = game.i18n.format("swnr.titles.savingThrow", {
       throwType: game.i18n.localize("swnr.sheet.saves." + save),
     });
     const dialogData = {};
@@ -197,7 +197,11 @@ export class CharacterActorSheet extends ActorSheet<
         target: target,
       });
       roll.roll();
-      console.log(roll.result);
+      const save_text = game.i18n.format(parseInt(roll.result) >= 1
+        ? game.i18n.localize("swnr.npc.saving.success")
+        : game.i18n.localize("swnr.npc.saving.failure"),
+      { actor: this.actor.name });
+      title += `<br><b>${save_text}</b>`;
       roll.toMessage(
         {
           speaker: ChatMessage.getSpeaker(),
