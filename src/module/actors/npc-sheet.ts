@@ -64,6 +64,7 @@ export class NPCActorSheet extends ActorSheet<
     html.find(".skill").on("click", this._onSkill.bind(this));
     html.find(".saving-throw").on("click", this._onSavingThrow.bind(this));
     html.find(".hit-dice-roll").on("click", this._onHitDice.bind(this));
+    html.find(".item-reload").on("click", this._onItemReload.bind(this));
 
     // Drag events for macros.
     if (this.actor.isOwner) {
@@ -124,6 +125,29 @@ export class NPCActorSheet extends ActorSheet<
       return;
     }
     return weapon.roll();
+  }
+
+  _onItemReload(event: JQuery.ClickEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    const li = $(event.currentTarget).parents(".item");
+    const item = this.actor.getEmbeddedDocument("Item", li.data("itemId"));
+    if (!item) return;
+    let ammo_max = item.data.data.ammo?.max;
+    if (ammo_max != null) {
+      if (item.data.data.ammo.value < ammo_max){
+        item.update({"data.ammo.value": ammo_max})
+        let content = `<p> Reloaded ${item.name} </p>`
+        ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            content: content
+        });
+      } else {
+        ui.notifications?.info("Trying to reload a full item");
+      }
+    } else {
+      console.log("Unable to find ammo in item ", item.data.data);
+    }
   }
 
   async _onReaction(event: JQuery.ClickEvent): Promise<void> {
