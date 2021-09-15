@@ -184,26 +184,22 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
         (<HTMLSelectElement>form.querySelector('[name="skill"]'))?.value ||
         this.data.data.skill;
 
-      const actorId = (<HTMLSelectElement>form.querySelector('[name="actorId"]'))?.value;
-      const forStatName = (<HTMLSelectElement>form.querySelector('[name="statName"]'))?.value;
-
-      const actor = game.actors?.get(actorId);
-      if (!actor) {
-        console.log("Error actor no longer exists ", actorId);
+      if (!this.actor) {
+        console.log("Error actor no longer exists ");
         return;
       }
       let skillMod = 0;
 
-      const skill = actor.getEmbeddedDocument(
+      const skill = this.actor.getEmbeddedDocument(
         "Item",
         skillId
       ) as SWNRBaseItem<"skill">;
 
       if (this.actor?.type=="npc" && html.find('[name="skilled"]')) {
         let npcSkillMod = html.find('[name="skilled"]').prop("checked")
-          ? actor.data.data["skillBonus"]
+          ? this.actor.data.data["skillBonus"]
           : 0;
-        if (!npcSkillMod) skillMod = npcSkillMod;
+        if (npcSkillMod) skillMod = npcSkillMod;
       } else {
         skillMod = skill.data.data.rank < 0 ? -2 : skill.data.data.rank;
       }
@@ -211,11 +207,11 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       let statName = this.data.data.stat;
       const secStatName = this.data.data.secondStat;
       // check if there is 2nd stat name and its mod is better
-      if (secStatName != null && secStatName != "none" && actor.data.data["stats"]?.[statName].mod < actor.data.data["stats"]?.[secStatName].mod){
+      if (secStatName != null && secStatName != "none" && this.actor.data.data["stats"]?.[statName].mod < this.actor.data.data["stats"]?.[secStatName].mod){
         statName = secStatName;
       }
 
-      const stat = actor.data.data["stats"]?.[statName] || {
+      const stat = this.actor.data.data["stats"]?.[statName] || {
         mod: 0
       };
 
