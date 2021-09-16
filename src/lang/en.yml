@@ -368,6 +368,7 @@ swnr:
     vs: vs
     rollables: Rollables
     hit-dice: Hit Dice
+    tweaks: Tweaks
   settings:
     useRollNPCHD: Use NPC HD on token create?
     useRollNPCHDHint: When creating a npc token, if the HP or Hit Dice (HD) has not been rolled, it will roll d8 HD for health automatically.

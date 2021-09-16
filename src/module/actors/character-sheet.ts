@@ -37,7 +37,7 @@ export class CharacterActorSheet extends ActorSheet<
         {
           navSelector: ".pc-sheet-tabs",
           contentSelector: ".sheet-body",
-          initial: "biography",
+          initial: "combat",
         },
       ],
     });
@@ -419,7 +419,34 @@ export class CharacterActorSheet extends ActorSheet<
       }
     }
   }
+  _onConfigureActor(event) {
+    event.preventDefault();
+    console.log("config");
+  }
+
+  /**
+    * Extend and override the sheet header buttons
+    * @override
+    */
+  _getHeaderButtons() {
+    let buttons = super._getHeaderButtons();
+
+    // Token Configuration
+    const canConfigure = game.user.isGM || this.actor.owner;
+    if (this.options.editable && canConfigure) {
+      buttons = [
+        {
+          label: game.i18n.localize("swnr.sheet.tweaks"),
+          class: "configure-actor",
+          icon: "fas fa-code",
+          onclick: (ev) => this._onConfigureActor(ev),
+        },
+      ].concat(buttons);
+    }
+    return buttons;
+  }
 }
+
 Hooks.on(
   "renderChatMessage",
   (message: ChatMessage, html: JQuery, user: User) => {
