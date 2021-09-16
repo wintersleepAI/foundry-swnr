@@ -438,6 +438,11 @@ swnr:
     attackRoll: "{actorName} attacking with {weaponName}?"
     add-skills: Add Skills
     add-bulk-skills: Add Bulk Skills to {actor}
+    tweak-char: "Tweaking options for {actorName}"
+    save-changes: "Save Changes"
+    tweak:
+      adv-init: Initiative Advantage (roll 2x keep higher)
+
   roll:
     skillNeeded: Hey! You need to pick a skill!
   armor:
