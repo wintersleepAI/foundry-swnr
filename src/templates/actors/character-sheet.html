@@ -416,19 +416,22 @@
         <div class="tab combat" data-group="primary" data-tab="combat">
           <div class="grid grid-cols-3">
             <div>
-              {{#if actor.data.data.tweak.quickSkill1}}
-              {{ actor.data.data.tweak.quickSkill1 }}
-              {{/if}}
+              {{>
+              "systems/swnr/templates/actors/fragments/quick-skill.html" quickskill=actor.data.data.tweak.quickSkill1
+              skills=itemTypes.skill
+              type=actor.data.data.type actor=actor}}
             </div>
             <div>
-              {{#if actor.data.data.tweak.quickSkill2}}
-              {{ actor.data.data.tweak.quickSkill2 }}
-              {{/if}}
+              {{>
+              "systems/swnr/templates/actors/fragments/quick-skill.html" quickskill=actor.data.data.tweak.quickSkill2
+              skills=itemTypes.skill
+              type=actor.data.data.type actor=actor}}
             </div>
             <div>
-              {{#if actor.data.data.tweak.quickSkill3}}
-              {{ actor.data.data.tweak.quickSkill3 }}
-              {{/if}}
+              {{>
+              "systems/swnr/templates/actors/fragments/quick-skill.html" quickskill=actor.data.data.tweak.quickSkill3
+              skills=itemTypes.skill
+              type=actor.data.data.type actor=actor}}
             </div>
           </div>
           <div class="flex gap-1">
