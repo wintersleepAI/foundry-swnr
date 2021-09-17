@@ -445,7 +445,14 @@ swnr:
       quick-skill-1: Quick Skill 1
       quick-skill-2: Quick Skill 2
       quick-skill-3: Quick Skill 3
-
+    hp:
+      text: Select the base dice per level you want to roll (with con bonus added).
+      revised: Revised Expert/Psychic d6
+      revised-war: Revised Warrior/Partial Warrior d6+2
+      codex-mage: Arcanist / Magister d6-1
+      classic-psy: Classic Psychic d4
+      classic-exp: Classic Expert d6
+      classic-war: Classic Warrior d8
   roll:
     skillNeeded: Hey! You need to pick a skill!
   armor:

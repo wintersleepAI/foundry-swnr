@@ -64,7 +64,12 @@ export class NPCActorSheet extends ActorSheet<
     html.find(".skill").on("click", this._onSkill.bind(this));
     html.find(".saving-throw").on("click", this._onSavingThrow.bind(this));
     html.find(".hit-dice-roll").on("click", this._onHitDice.bind(this));
+<<<<<<< HEAD
     html.find(".item-reload").on("click", this._onItemReload.bind(this));
+=======
+    html.find('[name="data.health.max"]').on("input", this._onHPMaxChange.bind(this));
+
+>>>>>>> hp
 
     // Drag events for macros.
     if (this.actor.isOwner) {
@@ -125,6 +130,7 @@ export class NPCActorSheet extends ActorSheet<
       return;
     }
     return weapon.roll();
+<<<<<<< HEAD
   }
 
   _onItemReload(event: JQuery.ClickEvent): void {
@@ -148,6 +154,8 @@ export class NPCActorSheet extends ActorSheet<
     } else {
       console.log("Unable to find ammo in item ", item.data.data);
     }
+=======
+>>>>>>> hp
   }
 
   async _onReaction(event: JQuery.ClickEvent): Promise<void> {
@@ -202,11 +210,23 @@ export class NPCActorSheet extends ActorSheet<
     this.render();
   }
 
+<<<<<<< HEAD
+=======
+
+  async _onHPMaxChange(event: JQuery.ClickEvent): Promise<void> {
+    console.log("Changing NPC HP Max" ,  this, this.actor);
+    this.actor.update({"data.health_max_modified": 1});
+  }
+
+>>>>>>> hp
   // Set the max/value health based on D8 hit dice
   _onHitDice(event: JQuery.ClickEvent): void {
     event.preventDefault();
     event.stopPropagation();
-    this.actor.rollHitDice();
+    this.actor.rollHitDice(true);
+    // Set the modified to not roll on drag
+    this.actor.update({"data.health_max_modified": 1});
+
   }
 
   _onMorale(event: JQuery.ClickEvent): void {
