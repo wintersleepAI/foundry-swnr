@@ -45,7 +45,6 @@ export class SWNRSkill extends SWNRBaseItem<"skill"> {
         stat: stat.mod,
       });
       roll.roll();
-      console.log(roll.result);
       const title = `${game.i18n.localize(
         "swnr.chat.skillCheck"
       )}: ${game.i18n.localize(
