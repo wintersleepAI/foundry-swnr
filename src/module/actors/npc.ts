@@ -9,12 +9,12 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
   // Set the max/value health based on D8 hit dice
   rollHitDice(forceDieRoll: boolean): void {
     if (!forceDieRoll && this.data.data["health_max_modified"]){
-      console.log("You have modified the NPCs max health. Not rolling");
+      //For debug: console.log("You have modified the NPCs max health. Not rolling");
       return;
     }
-    console.log("rolling NPC hit dice", this);
-    if (this.data.data.hitDice != null) {
-      console.log(`Updating health using ${this.data.data.hitDice} hit die `);
+    //For debug: console.log("rolling NPC hit dice", this);
+    if (this.data.data.hitDice != null && this.data.data.hitDice > 0) {
+      //For debug: console.log(`Updating health using ${this.data.data.hitDice} hit die `);
       const roll = new Roll(`${this.data.data.hitDice}d8`).roll();
       if (roll != undefined && roll.total != undefined){
         const newHealth = roll.total;
@@ -56,15 +56,10 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
 }
 
 Hooks.on("createToken", (document, options, userId) => {
-<<<<<<< HEAD
   if (game.settings.get("swnr","useRollNPCHD")) {
     if (document.actor?.type == "npc") {
-      document.actor.rollHitDice();
+      document.actor.rollHitDice(false);
     }
-=======
-  if (document.actor?.type == "npc") {
-    document.actor.rollHitDice(false);
->>>>>>> hp
   }
 });
 
