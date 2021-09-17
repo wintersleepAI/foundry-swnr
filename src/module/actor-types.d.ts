@@ -70,6 +70,12 @@ declare interface SWNRCharacterBaseData
     balance: number;
     owed: number;
   };
+  tweak: {
+    advInit: boolean,
+    quickSkill1:  string,
+    quickSkill2:  string,
+    quickSkill3:  string
+  }
 }
 
 declare interface SWNRCharacterComputedData

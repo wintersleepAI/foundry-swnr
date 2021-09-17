@@ -136,26 +136,6 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     getDocumentClass("ChatMessage").applyRollMode(chatData, rollMode);
     getDocumentClass("ChatMessage").create(chatData);
     // });
-
-    // Show shock damage
-    if (game.settings.get("swnr", "addShockMessage")) {
-      if (this.data.data.shock && this.data.data.shock.dmg > 0) {
-        let shock_content = `${this.name} Shock Damage Base ${this.data.data.shock.dmg} \ AC ${this.data.data.shock.ac}`;
-        const shockRoll = new Roll(
-          " @shockDmg + @stat.mod " +
-          (damageBonus
-            ? ` + ${damageBonus}`
-            : ""),
-          rollData
-        ).roll();
-        ChatMessage.create({
-          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-          flavor: shock_content,
-          type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-          roll: JSON.stringify(shockRoll.toJSON()),
-        });
-      }
-    }
   }
 
   async roll(): Promise<void> {

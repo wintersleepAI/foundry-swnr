@@ -18,6 +18,7 @@ import { SWNRActor, SWNRItem } from "./module/documents";
 import "./module/containerQueries";
 import registerHelpers from "./module/handlebar-helpers";
 import { createSWNRMacro, rollItemMacro } from "./module/macro-bar";
+import { SWNRCombatant } from "./module/combat"
 
 /* ------------------------------------ */
 /* Initialize system					*/
@@ -26,6 +27,7 @@ Hooks.once("init", async function () {
   console.log("swnr | Initializing Stars Without Number Revised");
 
   // Assign custom classes and constants here
+  CONFIG.Combatant.documentClass = SWNRCombatant;
 
   // Register custom system settings
   registerSettings();

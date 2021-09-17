@@ -441,7 +441,7 @@ swnr:
     tweak-char: "Tweaking options for {actorName}"
     save-changes: "Save Changes"
     tweak:
-      adv-init: Initiative Advantage (roll 2x keep higher)
+      adv-init: Initiative Advantage (roll 2x and keep higher)
       quick-skill-1: Quick Skill 1
       quick-skill-2: Quick Skill 2
       quick-skill-3: Quick Skill 3
