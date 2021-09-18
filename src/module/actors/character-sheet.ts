@@ -362,9 +362,7 @@ export class CharacterActorSheet extends ActorSheet<
         baseRoll = "d6";
         boosts = -1 * currentLevel;
       } else {
-        console.log("Unknown type ", hpBaseInput);
-        ui.notifications?.error("Error on type: " +  hpBaseInput);
-        return;
+        baseRoll = "d6";
       }
       let formula = `${currentLevel}${baseRoll} + ${boosts} + ${constBonus}`;
 
@@ -385,7 +383,6 @@ export class CharacterActorSheet extends ActorSheet<
           "data.health_base_type": hpBaseInput,
           "data.health.max" : hpRoll
         });
-        console.log(msg);
         getDocumentClass("ChatMessage").create({
           speaker: ChatMessage.getSpeaker({ actor: this.actor }),
           flavor: msg,
