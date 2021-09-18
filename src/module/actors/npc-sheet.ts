@@ -65,7 +65,9 @@ export class NPCActorSheet extends ActorSheet<
     html.find(".saving-throw").on("click", this._onSavingThrow.bind(this));
     html.find(".hit-dice-roll").on("click", this._onHitDice.bind(this));
     html.find(".item-reload").on("click", this._onItemReload.bind(this));
+    html.find(".item-click").on("click", this._onItemClick.bind(this));
     html.find('[name="data.health.max"]').on("input", this._onHPMaxChange.bind(this));
+
 
     // Drag events for macros.
     if (this.actor.isOwner) {
@@ -87,6 +89,21 @@ export class NPCActorSheet extends ActorSheet<
     const wrapper = $(event.currentTarget).parents(".item");
     const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
     if (item instanceof Item) item.sheet?.render(true);
+  }
+
+
+  // Clickable title/name or icon. Invoke Item.roll()
+  _onItemClick(event: JQuery.ClickEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    const itemId = event.currentTarget.parentElement.dataset.itemId;
+    const item = <SWNRBaseItem>(
+      this.actor.getEmbeddedDocument("Item", itemId)
+    );
+    //const wrapper = $(event.currentTarget).parents(".item");
+    //const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
+    if (!item) return;
+    item.roll();
   }
 
   async _onItemDelete(event: JQuery.ClickEvent): Promise<void> {

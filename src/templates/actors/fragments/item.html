@@ -1,6 +1,6 @@
 <div class="item flex gap-1 flex-wrap items-center" data-item-id="{{item.id}}">
-  <img class="w-5 h-5" src="systems/swnr/assets/icons/game-icons.net/item-icons/{{item.type}}.svg"/>
-  <div class="item-name">{{item.name}}</div>
+  <a><img class="w-5 h-5 item-click" src="systems/swnr/assets/icons/game-icons.net/item-icons/{{item.type}}.svg"/></a>
+  <div class="item-name item-click"><a>{{item.name}}</a></div>
   <div class="flex gap-1 items-baseline">
     {{#if (eq item.type "item")}}
     <div>
