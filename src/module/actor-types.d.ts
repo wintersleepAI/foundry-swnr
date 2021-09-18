@@ -132,6 +132,13 @@ declare interface SWNRCharacterComputedData
 }
 
 declare interface SWNRShipData extends SWNRVehicleTemplateBase {
+
+  itemTypes: {
+    //todo: make a better type
+    [type in Exclude<ItemTypes, "focus" | "skill" | "weapon" | "armor" | "power">]: (AllItemClasses & {
+      type: type;
+    })[];
+  };
   power: {
     value: number;
     max: number;

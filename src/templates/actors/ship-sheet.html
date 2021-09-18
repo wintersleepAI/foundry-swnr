@@ -265,6 +265,11 @@
         <!-- weapons -->
         <div class="weapons pr-0.5 text-lg">
           <h3>{{localize 'swnr.sheet.ship.weapons'}}</h3>
+          aa
+            {{#each itemTypes.shipWeapon as |item id|}} 
+              {{item.name}} {{id}}
+            {{/each}}
+
         </div>
 
         <!-- defense -->

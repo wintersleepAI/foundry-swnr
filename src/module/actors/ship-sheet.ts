@@ -7,11 +7,8 @@ import { AllItemClasses } from "../item-types";
 
 
 interface ShipActorSheetData extends ActorSheet.Data {
+  shipWeapons?: Item[];
   itemTypes: SWNRShipActor["itemTypes"];
-  abilities: AllItemClasses & { data: { type: "power" | "focus" } };
-  equipment: AllItemClasses & {
-    data: { type: "armor" | "item" | "weapon" };
-  };
 }
 
 export class ShipActorSheet extends ActorSheet<
