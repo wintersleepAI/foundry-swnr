@@ -64,6 +64,8 @@ export class NPCActorSheet extends ActorSheet<
     html.find(".skill").on("click", this._onSkill.bind(this));
     html.find(".saving-throw").on("click", this._onSavingThrow.bind(this));
     html.find(".hit-dice-roll").on("click", this._onHitDice.bind(this));
+    html.find(".item-reload").on("click", this._onItemReload.bind(this));
+    html.find(".item-click").on("click", this._onItemClick.bind(this));
     html.find('[name="data.health.max"]').on("input", this._onHPMaxChange.bind(this));
 
 
@@ -87,6 +89,21 @@ export class NPCActorSheet extends ActorSheet<
     const wrapper = $(event.currentTarget).parents(".item");
     const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
     if (item instanceof Item) item.sheet?.render(true);
+  }
+
+
+  // Clickable title/name or icon. Invoke Item.roll()
+  _onItemClick(event: JQuery.ClickEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    const itemId = event.currentTarget.parentElement.dataset.itemId;
+    const item = <SWNRBaseItem>(
+      this.actor.getEmbeddedDocument("Item", itemId)
+    );
+    //const wrapper = $(event.currentTarget).parents(".item");
+    //const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
+    if (!item) return;
+    item.roll();
   }
 
   async _onItemDelete(event: JQuery.ClickEvent): Promise<void> {
@@ -126,6 +143,29 @@ export class NPCActorSheet extends ActorSheet<
       return;
     }
     return weapon.roll();
+  }
+
+  _onItemReload(event: JQuery.ClickEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    const li = $(event.currentTarget).parents(".item");
+    const item = this.actor.getEmbeddedDocument("Item", li.data("itemId"));
+    if (!item) return;
+    let ammo_max = item.data.data.ammo?.max;
+    if (ammo_max != null) {
+      if (item.data.data.ammo.value < ammo_max){
+        item.update({"data.ammo.value": ammo_max})
+        let content = `<p> Reloaded ${item.name} </p>`
+        ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            content: content
+        });
+      } else {
+        ui.notifications?.info("Trying to reload a full item");
+      }
+    } else {
+      console.log("Unable to find ammo in item ", item.data.data);
+    }
   }
 
   async _onReaction(event: JQuery.ClickEvent): Promise<void> {
@@ -180,9 +220,8 @@ export class NPCActorSheet extends ActorSheet<
     this.render();
   }
 
-
   async _onHPMaxChange(event: JQuery.ClickEvent): Promise<void> {
-    console.log("Changing NPC HP Max" ,  this, this.actor);
+    //console.log("Changing NPC HP Max" ,  this, this.actor);
     this.actor.update({"data.health_max_modified": 1});
   }
 
@@ -269,8 +308,6 @@ export class NPCActorSheet extends ActorSheet<
       }
     }
   }
-
-
 }
 export const sheet = NPCActorSheet;
 export const types = ["npc"];

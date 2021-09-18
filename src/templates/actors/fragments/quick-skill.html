@@ -1,0 +1,15 @@
+{{#if quickskill}}
+  {{#each skills as |item id|}} 
+    {{#if (eq item.id ../quickskill)}}
+      <div class="item skill skillRoll w-32 flex-grow space-y-1" data-item-id="{{item.id}}">
+        <a class="sheet-button inline-flex flex-wrap gap-2">
+            <div class="flex-shrink">
+            {{zeroWidthBreaker item.name}}
+            {{numberFormat item.data.data.rank decimals=0 sign=true}}
+            </div>
+            <i class="fas fa-dice-d20"></i>
+        </a>
+      </div>
+    {{/if}}
+  {{/each}}
+{{/if}}

@@ -21,6 +21,15 @@ export const registerSettings = function (): void {
     default: false,
   });
 
+  game.settings.register("swnr", "useRollNPCHD", {
+    name: "swnr.settings.useRollNPCHD",
+    hint: "swnr.settings.useRollNPCHDHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+  });
+
   game.settings.register("swnr", "addShockMessage", {
     name: "swnr.settings.addShockMessage",
     hint: "swnr.settings.addShockMessageHint",

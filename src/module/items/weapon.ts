@@ -77,6 +77,24 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       hitExplain: hitExplainTip,
       damageExplain: damageExplainTip,
     };
+    // Placeholder for shock damage
+    let shock_content: string | null = null;
+    let shock_roll: string | null  = null;
+    // Show shock damage
+    if (game.settings.get("swnr","addShockMessage")) {
+      if (this.data.data.shock && this.data.data.shock.dmg > 0) {
+        shock_content = `Shock Damage  AC ${this.data.data.shock.ac}`;
+        const _shockRoll = new Roll(
+            " @shockDmg + @stat " +
+            (this.data.data.skillBoostsDamage
+              ? ` + ${damageBonus}`
+              : ""),
+          rollData
+        ).roll();
+        shock_roll = await _shockRoll.render();
+      }
+    }
+
     const dialogData = {
       actor: this.actor,
       weapon: this,
@@ -92,6 +110,8 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
         0,
         20
       ),
+      shock_roll,
+      shock_content,
     };
     const rollMode = game.settings.get("core", "rollMode");
     // const dice = hitRoll.dice.concat(damageRoll.dice)
@@ -121,26 +141,6 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     getDocumentClass("ChatMessage").applyRollMode(chatData, rollMode);
     getDocumentClass("ChatMessage").create(chatData);
     // });
-
-    // Show shock damage
-    if (game.settings.get("swnr", "addShockMessage")) {
-      if (this.data.data.shock && this.data.data.shock.dmg > 0) {
-        let shock_content = `${this.name} Shock Damage Base ${this.data.data.shock.dmg} \ AC ${this.data.data.shock.ac}`;
-        const shockRoll = new Roll(
-          " @shockDmg + @stat " +
-          (damageBonus
-            ? ` + ${damageBonus}`
-            : ""),
-          rollData
-        ).roll();
-        ChatMessage.create({
-          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-          flavor: shock_content,
-          type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-          roll: JSON.stringify(shockRoll.toJSON()),
-        });
-      }
-    }
   }
 
   async roll(): Promise<void> {
@@ -198,10 +198,6 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
         (<HTMLSelectElement>form.querySelector('[name="skill"]'))?.value ||
         this.data.data.skill;
 
-      // const actorId = (<HTMLSelectElement>form.querySelector('[name="actorId"]'))?.value;
-      const formStatName = (<HTMLSelectElement>form.querySelector('[name="statName"]'))?.value;
-
-      // const actor = game.actors?.get(actorId);
       if (!this.actor) {
         console.log("Error actor no longer exists ");
         return;
@@ -213,18 +209,23 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
         skillId
       ) as SWNRBaseItem<"skill">;
 
-      if (html.find('[name="skilled"]')) {
+      if (this.actor?.type=="npc" && html.find('[name="skilled"]')) {
         let npcSkillMod = html.find('[name="skilled"]').prop("checked")
           ? this.actor.data.data["skillBonus"]
           : 0;
-        if (!npcSkillMod) skillMod = npcSkillMod;
+        if (npcSkillMod) skillMod = npcSkillMod;
       } else {
-
         skillMod = skill.data.data.rank < 0 ? -2 : skill.data.data.rank;
-
+      }
+      // for finesse weapons take the stat with the higher mod
+      let statName = this.data.data.stat;
+      const secStatName = this.data.data.secondStat;
+      // check if there is 2nd stat name and its mod is better
+      if (secStatName != null && secStatName != "none" && this.actor.data.data["stats"]?.[statName].mod < this.actor.data.data["stats"]?.[secStatName].mod){
+        statName = secStatName;
       }
 
-      const stat = this.actor.data.data["stats"]?.[formStatName] || {
+      const stat = this.actor.data.data["stats"]?.[statName] || {
         mod: 0
       };
       // 1d20 + attack bonus (PC plus weapon) + skill mod (-2 if untrained)
@@ -237,7 +238,6 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       return this.rollAttack(dmgBonus, stat.mod, skillMod, modifier, burstFire);
       // END roll form 
     }
-
 
     this.popUpDialog?.close();
     this.popUpDialog = new ValidatedDialog(
@@ -260,7 +260,6 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       }
     );
     const s = this.popUpDialog.render(true);
-
   }
 
 }

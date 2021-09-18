@@ -1,0 +1,45 @@
+<form class="bg-gray-200 -m-2 p-2 pb-4 flex flexcol gap-1 justify-between">
+  <div >
+    <label for="advantageInit">{{localize 'swnr.dialog.tweak.adv-init'}}: </label>
+    <input type="checkbox" name="advantageInit" id="advantageInit" {{checked actor.data.data.tweak.advInit}}>
+  </div>
+  {{#if (ne itemTypes.skill.length 0)}}
+    <div>
+      <label for="quickSkill1">{{localize 'swnr.dialog.tweak.quick-skill-1'}}: </label>
+      <select name="quickSkill1"  
+                  class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        {{#select actor.data.data.tweak.quickSkill1}}
+        <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
+        {{#each itemTypes.skill }}
+        <option value="{{this.id}}">{{this.name}} {{this.data.data.rank}}</option>
+        {{/each}}
+        {{/select}}
+      </select>
+    </div>
+    <div>
+      <label for="quickSkill2">{{localize 'swnr.dialog.tweak.quick-skill-1'}}: </label>
+      <select name="quickSkill2"  
+                  class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        {{#select actor.data.data.tweak.quickSkill2}}
+        <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
+        {{#each itemTypes.skill }}
+        <option value="{{this.id}}">{{this.name}} {{this.data.data.rank}}</option>
+        {{/each}}
+        {{/select}}
+      </select>
+    </div>
+    <div>
+      <label for="quickSkill3">{{localize 'swnr.dialog.tweak.quick-skill-1'}}: </label>
+      <select name="quickSkill3"  
+                  class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        {{#select actor.data.data.tweak.quickSkill3}}
+        <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
+        {{#each itemTypes.skill }}
+        <option value="{{this.id}}">{{this.name}} {{this.data.data.rank}}</option>
+        {{/each}}
+        {{/select}}
+      </select>
+    </div>
+  {{/if}}
+
+</form>

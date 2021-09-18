@@ -95,6 +95,7 @@ Actor:
     attacks:
       bonusDamage: 0
       number: 1
+    hitDice: 0
     armorType: "street"
     speed: 10
     moralScore: 6

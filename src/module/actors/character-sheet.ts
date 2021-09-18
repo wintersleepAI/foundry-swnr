@@ -37,7 +37,7 @@ export class CharacterActorSheet extends ActorSheet<
         {
           navSelector: ".pc-sheet-tabs",
           contentSelector: ".sheet-body",
-          initial: "biography",
+          initial: "combat",
         },
       ],
     });
@@ -203,13 +203,12 @@ export class CharacterActorSheet extends ActorSheet<
     if (!save) return;
     const target = <number>this.actor.data.data.save[save];
     const template = "systems/swnr/templates/dialogs/roll-save.html";
-    const title = game.i18n.format("swnr.titles.savingThrow", {
+    let title = game.i18n.format("swnr.titles.savingThrow", {
       throwType: game.i18n.localize("swnr.sheet.saves." + save),
     });
     const dialogData = {};
     const html = await renderTemplate(template, dialogData);
     const _doRoll = (html: HTMLFormElement) => {
-      console.log(html);
       const rollMode = game.settings.get("core", "rollMode");
       const form = <HTMLFormElement>html[0].querySelector("form");
       const formula = `1d20cs>=(@target - @modifier)`;
@@ -220,7 +219,11 @@ export class CharacterActorSheet extends ActorSheet<
         target: target,
       });
       roll.roll();
-      console.log(roll.result);
+      const save_text = game.i18n.format(parseInt(roll.result) >= 1
+        ? game.i18n.localize("swnr.npc.saving.success")
+        : game.i18n.localize("swnr.npc.saving.failure"),
+      { actor: this.actor.name });
+      title += `<br><b>${save_text}</b>`;
       roll.toMessage(
         {
           speaker: ChatMessage.getSpeaker(),
@@ -371,8 +374,11 @@ export class CharacterActorSheet extends ActorSheet<
         baseRoll ="d4";
       } else if (hpBaseInput == "classicWarrior") {
         baseRoll = "d8";
+      } else if (hpBaseInput == "codexMage") {
+        baseRoll = "d6";
+        boosts = -1 * currentLevel;
       } else {
-        console.log("Unknown type ", hpBaseInput);
+        baseRoll = "d6";
       }
       let formula = `${currentLevel}${baseRoll} + ${boosts} + ${constBonus}`;
 
@@ -393,7 +399,6 @@ export class CharacterActorSheet extends ActorSheet<
           "data.health_base_type": hpBaseInput,
           "data.health.max" : hpRoll
         });
-        console.log(msg);
         getDocumentClass("ChatMessage").create({
           speaker: ChatMessage.getSpeaker({ actor: this.actor }),
           flavor: msg,
@@ -502,7 +507,90 @@ export class CharacterActorSheet extends ActorSheet<
       }
     }
   }
+
+  async _onConfigureActor(event) {
+    event.preventDefault();
+    const template = "systems/swnr/templates/dialogs/tweak-char.html";
+    const data = {
+      actor: this.actor,
+      itemTypes: this.actor.itemTypes,
+    };
+    const html = await renderTemplate(template, data);
+    this.popUpDialog?.close();
+
+    const _saveTweakChar = (html: HTMLFormElement) => {
+      const form = <HTMLFormElement>html[0].querySelector("form");
+      const advantageInit = (<HTMLInputElement>(
+        form.querySelector('[name="advantageInit"]')
+      ))?.checked
+        ? true
+        : false;
+      const quickSkill1 =
+        (<HTMLSelectElement>form.querySelector('[name="quickSkill1"]'))?.value ||
+        null;
+      const skill1 = quickSkill1 ? this.actor.getEmbeddedDocument(
+          "Item",
+          quickSkill1
+        ) as SWNRBaseItem<"skill"> : null;
+      const quickSkill2 =
+        (<HTMLSelectElement>form.querySelector('[name="quickSkill2"]'))?.value ||
+        null;
+      const quickSkill3 =
+          (<HTMLSelectElement>form.querySelector('[name="quickSkill3"]'))?.value ||
+          null;
+      const update =  {
+        "data.tweak" : {
+          "advInit": advantageInit,
+          "quickSkill1":  quickSkill1,
+          "quickSkill2":  quickSkill2,
+          "quickSkill3":  quickSkill3
+        }
+      };
+      this.actor.update(update);
+    }
+    this.popUpDialog = new Dialog(
+      {
+        title: game.i18n.format("swnr.dialog.tweak-char", {
+          actor: this.actor.name,
+        }),
+        content: html,
+        default: "saveChanges",
+        buttons: {
+          saveChanges: {
+            label: game.i18n.localize("swnr.dialog.save-changes"),
+            callback: _saveTweakChar,
+          },
+        },
+      },
+      { classes: ["swnr"] }
+    );
+    return await this.popUpDialog.render(true);
+  }
+
+  /**
+    * Extend and override the sheet header buttons
+    * @override
+    */
+  _getHeaderButtons() {
+    let buttons = super._getHeaderButtons();
+    // Token Configuration
+    const canConfigure = game.user?.isGM || this.actor.isOwner;
+    if (this.options.editable && canConfigure) {
+      // Insert tweaks into first spot on the array
+      buttons.splice(
+        0,0,
+          {
+            label: game.i18n.localize("swnr.sheet.tweaks"),
+            class: "configure-actor",
+            icon: "fas fa-code",
+            onclick: (ev) => this._onConfigureActor(ev),
+          }
+      );
+    }
+    return buttons;
+  }
 }
+
 Hooks.on(
   "renderChatMessage",
   (message: ChatMessage, html: JQuery, user: User) => {
