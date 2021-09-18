@@ -3,9 +3,9 @@ import { SWNRStats } from "./actor-types";
 import { SWNRWeapon } from "./items/weapon";
 
 type MetaItemTypes = "class" | "power" | "focus" | "skill";
-type RealItemTypes = "armor" | "weapon" | "item";
-type ShipItemTypes = "shipWeapon";
-type ItemTypes = RealItemTypes | MetaItemTypes | ShipItemTypes;
+type RealItemTypes = "armor" | "weapon" | "item" | "shipWeapon";
+//type ShipItemTypes = "shipWeapon";
+type ItemTypes = RealItemTypes | MetaItemTypes;// | ShipItemTypes;
 
 declare type ItemsWithCustomClasses = SWNRWeapon;
 declare type ItemTypesMissingCustomClasses = Exclude<
@@ -73,7 +73,7 @@ interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
   damage: string;
 }
 
-declare interface SWNRShipWeaponData extends SWNRBaseItemData{
+declare interface SWNRShipWeaponData extends SWNRDescData{
   damage: string;
 }
 

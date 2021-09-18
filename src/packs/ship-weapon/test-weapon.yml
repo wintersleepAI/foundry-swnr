@@ -1,10 +1,11 @@
 _id: XXaRGxI6f9zmXliu
-data:
-  cost: 0
+data:  
+  description: >-
+    You are keenly aware of your surroundings and virtually impossible to take
+    unaware. You have an instinctive alacrity of response that helps you act
+    before less wary persons can think to move.
   damage: 1d4
-  encumbrance: 0
-  location: other
-  quality: stock
-  tl: 0
 name: Test Ship Weapon
 type: shipWeapon
+flags: {}
+img: icons/svg/mystery-man.svg

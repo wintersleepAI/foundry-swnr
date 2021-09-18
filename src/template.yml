@@ -142,7 +142,6 @@ Actor:
     maintanenceCost: 0
     lastMaintanence: ""
 
-
 Item:
   types:
     - class
@@ -221,6 +220,10 @@ Item:
       - description
     level1: ""
     level2: ""
+  shipWeapon:
+    templates:
+      - description
+    damage: d4
   modItem:
     templates:
       - description
