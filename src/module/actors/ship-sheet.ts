@@ -49,7 +49,7 @@ export class ShipActorSheet extends ActorSheet<
       return mergeObject(super.defaultOptions, {
         classes: ["swnr", "sheet", "actor", "ship"],
         template: "systems/swnr/templates/actors/ship-sheet.html",
-        width: 750,
+        width: 800,
         height: 600,
         tabs: [
           {

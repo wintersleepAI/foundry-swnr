@@ -226,7 +226,7 @@
         <!--last Main-->
         <div class="lastMaintanence flex flex-col items-center">
           <input
-            class="w-12 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            class="w-16 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
             type="string" min="0" name="data.lastMaintanence" value="{{actor.data.data.lastMaintanence}}" />
           <label>{{localize 'swnr.sheet.ship.last-maintanence'}}</label>
         </div>
@@ -234,7 +234,7 @@
         <!--maintanenceCost-->
         <div class="maintanenceCost flex flex-col items-center">
           <input
-            class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            class="w-16 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
             type="number" min="0" name="data.maintanenceCost" value="{{actor.data.data.maintanenceCost}}" />
           <label>{{localize 'swnr.sheet.ship.maintanence-cost'}}</label>
         </div>
@@ -242,7 +242,7 @@
         <!--cost-->
         <div class="cost flex flex-col items-center">
           <input
-            class="w-12 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            class="w-16 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
             type="string" name="data.cost" value="{{actor.data.data.cost}}" />
           <label>{{localize 'swnr.sheet.ship.cost'}}</label>
         </div>
@@ -271,48 +271,148 @@
           <a class="item" data-tab="notes">
             {{localize 'swnr.sheet.ship.notes-tab'}}
           </a>
+
+          <a class="item" data-tab="crew">
+            {{localize 'swnr.sheet.ship.crew-tab'}}
+          </a>
         </nav>
 
         <section class="sheet-body">
           <div class="tab mods min-h-full" data-group="primary" data-tab="mods">
             <div class="grid grid-cols-2">
-              <div>
+              <div class="gap-2">
                 <!-- Left Col -->
-                <div class="stations pr-0.5 text-lg">
-                  <h3>{{localize 'swnr.sheet.ship.stations'}}</h3>
-                </div>
-
-
-                <div class="weapons pr-0.5 text-lg">
-                  <!-- weapons -->
-                  <h3>{{localize 'swnr.sheet.ship.weapons'}}</h3>
+                <div class="stations pr-0.5 ">
                   <div>
                     <li class="item-titles flexrow">
-                      <div class="item-caret"><i class="fas fa-caret-down"></i></div>
-                      <div class="item-name">{{localize "swnr.name"}}</div>
-                      <div class="item-dmg">{{localize "swnr.dmg"}}</div>
-                      <div class="item-qualities">{{localize "swnr.qualities"}}</div>
+                      <div class="role-name">{{localize 'swnr.sheet.ship.station.role'}}</div>
+
+                      <div class="role-crew">{{localize 'swnr.sheet.ship.station.crew'}}</div>
+                    </li>
+                    <ol class="item-list">
+                      <li class="item-entry">
+                        <div class="item flexrow" data-item-id="role-captain">
+                          <div>
+                            {{localize 'swnr.sheet.ship.station.captain'}}
+                          </div>
+                          <div>
+                            <select
+                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+
+                              <option></option>
+                              <option>Ra's al Ghul</option>
+                              <option>Bruce Wayne</option>
+
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item-entry">
+                        <div class="item flexrow" data-item-id="role-gunnery">
+                          <div>
+                            {{localize 'swnr.sheet.ship.station.gunnery'}}
+                          </div>
+                          <div>
+
+                            <select
+                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+                              <option></option>
+                              <option>Bruce Wayne</option>
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item-entry">
+                        <div class="item flexrow" data-item-id="role-engineering">
+                          <div>
+                            {{localize 'swnr.sheet.ship.station.engineering'}}
+                          </div>
+                          <div>
+
+                            <select
+                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+                              <option></option>
+                              <option>Ra's al Ghul</option>
+                                                            <option>Bruce Wayne</option>
+s
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item-entry">
+                        <div class="item flexrow" data-item-id="role-bridge">
+                          <div>
+                            {{localize 'swnr.sheet.ship.station.bridge'}}
+                          </div>
+                          <div>
+
+                            <select
+                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+                              <option></option>
+                              <option>Ra's al Ghul</option>                              <option>Bruce Wayne</option>
+
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item-entry">
+                        <div class="item flexrow" data-item-id="role-comms">
+                          <div>
+                            {{localize 'swnr.sheet.ship.station.comms'}}
+                          </div>
+                          <div>
+
+                            <select
+                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+                              <option></option>
+                              <option>Ra's al Ghul</option>                              <option>Bruce Wayne</option>
+
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                    </ol>
+                  </div>
+                </div><!-- end stations-->
+
+
+
+                <div class="weapons pr-0.5">
+                  <!-- weapons -->
+                  <div>
+                    <li class="item-titles flexrow">
+                      <!--<div class="item-caret"><i class="fas fa-caret-down"></i></div>-->
+                      <div class="item-name">{{localize 'swnr.sheet.ship.weapon'}}</div>
+                      <div class="item-dmg">{{localize 'swnr.sheet.ship.dmg'}}</div>
+                      <div class="item-qualities">{{localize 'swnr.sheet.ship.qualities'}}</div>
 
                       <div class="item-controls">
                       </div>
                     </li>
                     <ol class="item-list">
                       {{#each itemTypes.shipWeapon as |item id|}}
+                      {{log item}}
                       <li class="item-entry">
                         <div class="item flexrow" data-item-id="{{id}}">
                           <div class="item-name item-rollable flexrow">
-                          {{item.name}}
+                            {{item.name}}
                           </div>
                           <div>
-                            {{item.dmg}}
+                            {{item.data.data.damage}}
                           </div>
                           <div>
-
+                            Quality
                           </div>
                           <div class="item-controls">
-                            <a class="item-control item-edit" title='{{localize "WWN.Edit"}}'><i class="fas fa-edit"></i></a>
-                            <a class="item-control item-delete" title='{{localize "WWN.Delete"}}'><i class="fas fa-trash"></i></a>
-            
+                            <a class="item-control item-toggle-broken  {{#unless item.data.data.broken}}item-working{{/unless}}"
+                              title='{{localize "WWN.spells.Prepared"}}'>
+                              <i class="fas fa-heart-broken item-working"></i>
+                            </a>
+                            <a class="item-control item-edit" title='{{localize "WWN.Edit"}}'><i
+                                class="fas fa-edit"></i></a>
+                            <a class="item-control item-delete" title='{{localize "WWN.Delete"}}'><i
+                                class="fas fa-trash"></i></a>
+
                           </div>
                         </div>
                       </li>
@@ -326,29 +426,102 @@
               <div>
                 <!-- Right Col -->
                 <!-- defense -->
-                <div class="defense pr-0.5 text-lg">
-                  <h3>{{localize 'swnr.sheet.ship.defense'}}</h3>
-                </div>
+                <div class="defense pr-0.5">
 
-                <!-- fittings  -->
-                <div class=" fittings pr-0.5 text-lg">
-                  <h3>{{localize 'swnr.sheet.ship.fittings'}}</h3>
+                  <div>
+                    <li class="item-titles flexrow">
+                      <!--<div class="item-caret"><i class="fas fa-caret-down"></i></div>-->
+                      <div class="item-name">{{localize 'swnr.sheet.ship.defense'}} </div>
+                      <div class="item-effect">{{localize 'swnr.sheet.ship.effect'}}</div>
+                      <div class="item-controls">
+                      </div>
+                    </li>
+                    <ol class="item-list">
+                      {{#each itemTypes.shipWeapon as |item id|}}
+                      {{log item}}
+                      <li class="item-entry">
+                        <div class="item flexrow" data-item-id="{{id}}">
+                          <div class="item-name item-rollable flexrow">
+                            {{item.name}}
+                          </div>
+                          <div>
+                            Effect
+                          </div>
+                          <div class="item-controls">
+                            <a class="item-control item-toggle-broken  {{#unless item.data.data.broken}}item-working{{/unless}}"
+                              title='{{localize "WWN.spells.Prepared"}}'>
+                              <i class="fas fa-heart-broken item-working"></i>
+                            </a>
+                            <a class="item-control item-edit" title='{{localize "WWN.Edit"}}'><i
+                                class="fas fa-edit"></i></a>
+                            <a class="item-control item-delete" title='{{localize "WWN.Delete"}}'><i
+                                class="fas fa-trash"></i></a>
+
+                          </div>
+                      </li>
+                      {{/each}}
+                    </ol>
+                  </div>
+
+                  <!-- fittings  -->
+                  <div class=" fittings pr-0.5">
+
+                    <div>
+                      <li class="item-titles flexrow">
+                        <!--<div class="item-caret"><i class="fas fa-caret-down"></i></div>-->
+                        <div class="item-name">{{localize 'swnr.sheet.ship.fittings'}} </div>
+                        <div class="item-effect">{{localize 'swnr.sheet.ship.effect'}}</div>
+                        <div class="item-controls">
+                        </div>
+                      </li>
+                      <ol class="item-list">
+                        {{#each itemTypes.shipWeapon as |item id|}}
+                        {{log item}}
+                        <li class="item-entry">
+                          <div class="item flexrow" data-item-id="{{id}}">
+                            <div class="item-name item-rollable flexrow">
+                              {{item.name}}
+                            </div>
+                            <div>
+                              Effect
+                            </div>
+                            <div class="item-controls">
+                              <a class="item-control item-toggle-broken  {{#unless item.data.data.broken}}item-working{{/unless}}"
+                                title='{{localize "WWN.spells.Prepared"}}'>
+                                <i class="fas fa-heart-broken item-working"></i>
+                              </a>
+                              <a class="item-control item-edit" title='{{localize "WWN.Edit"}}'><i
+                                  class="fas fa-edit"></i></a>
+                              <a class="item-control item-delete" title='{{localize "WWN.Delete"}}'><i
+                                  class="fas fa-trash"></i></a>
+
+                            </div>
+                        </li>
+                        {{/each}}
+                      </ol>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="tab notes" data-group="primary" data-tab="notes">
-            <!-- Description -->
-            <div class="pr-0.5 text-lg">
-              Description
+            <div class="tab notes" data-group="primary" data-tab="notes">
+              <!-- Description -->
+              <div class="pr-0.5 text-lg">
+                Description
+              </div>
+
+
+              <!-- Mods -->
+              <div class="pr-0.5 text-lg">
+                Mods
+              </div>
+            </div>
+
+            <div class="tab crew min-h-full" data-group="primary" data-tab="crew">
+              Crew
             </div>
 
 
-            <!-- Mods -->
-            <div class="pr-0.5 text-lg">
-              Mods
-            </div>
-          </div>
         </section>
       </div>
     </div>

@@ -402,11 +402,25 @@ swnr:
         cruiser: Cruiser
         capital: Capital
       weapons: Weapons
+      weapon: Weapon
       defense: Defense
-      fittings: Fittings
+      fittings: Fitting
       stations: Stations
       weapons-tab: Weapons/Defense/Fittings
       notes-tab: Notes/ Description
+      crew-tab: Crew Members
+      name: Name
+      dmg: Dmg
+      qualities: Qualities
+      effect: Effect
+      station:
+        captain: Captain
+        gunnery: Gunnery
+        bridge: Bridge
+        engineering: Engineering
+        comms: Comms
+        role: Station
+        crew: Crew
     tweaks: Tweaks
   settings:
     useRollNPCHD: Use NPC HD on token create?
