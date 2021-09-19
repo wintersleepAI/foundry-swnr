@@ -374,6 +374,7 @@ swnr:
       fuel: Fuel
       power: Power
       mass: Mass
+      speed: Speed
       hard-points: Hardpoints
       ship-class: Ship Class
       ship-hull-type: Ship Hull Type

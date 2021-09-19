@@ -3,8 +3,8 @@ import { SWNRStats } from "./actor-types";
 import { SWNRWeapon } from "./items/weapon";
 
 type MetaItemTypes = "class" | "power" | "focus" | "skill";
-type RealItemTypes = "armor" | "weapon" | "item" | "shipWeapon";
-//type ShipItemTypes = "shipWeapon";
+type RealItemTypes = "armor" | "weapon" | "item" ;
+type ShipItemTypes = "shipWeapon";
 type ItemTypes = RealItemTypes | MetaItemTypes;// | ShipItemTypes;
 
 declare type ItemsWithCustomClasses = SWNRWeapon;

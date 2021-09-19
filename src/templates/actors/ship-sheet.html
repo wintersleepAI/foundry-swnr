@@ -223,6 +223,37 @@
         </div>
 
 
+        <!--speed-->
+        <div class="mass flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-center pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" step="1" name="data.speed" value="{{actor.data.data.speed}}" data-dtype="Number"
+              min="0" />
+          </div>
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.ship.speed'}}
+          </label>
+        </div>
+
+        <!--hardpoints-->
+        <div class="mass flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" step="1" name="data.hardpoints.value" value="{{actor.data.data.hardpoints.value}}" data-dtype="Number"
+              min="0" /><span>/</span><input
+              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" name="data.hardpoints.max" value="{{actor.data.data.hardpoints.max}}" step="1" min="1"
+              data-dtype="Number" />
+          </div>
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.ship.hard-points'}}
+          </label>
+        </div>
+
         <!--last Main-->
         <div class="lastMaintanence flex flex-col items-center">
           <input
