@@ -51,6 +51,13 @@ export class ShipActorSheet extends ActorSheet<
         template: "systems/swnr/templates/actors/ship-sheet.html",
         width: 750,
         height: 600,
+        tabs: [
+          {
+            navSelector: ".pc-sheet-tabs",
+            contentSelector: ".sheet-body",
+            initial: "mods",
+          },
+        ],
       });
     }
   

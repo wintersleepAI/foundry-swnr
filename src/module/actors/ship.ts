@@ -15,6 +15,15 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
   prepareDerivedData(): void {
     const data = this.data.data;
   }
+
+  _preCreatedata(actorDataConstructorData, options, user):
+   void {
+    // super._preCreate(actorDataConstructorData, options, user);
+    // console.log("testing precreate");
+    // const shipImg= "systems/swnr/assets/icons/spaceship.svg"; 
+    // actorDataConstructorData.data.img = shipImg;
+    // actorDataConstructorData.data.token.img = shipImg;
+  }
 }
 
 Hooks.on("createActor", (actorData: Actor) => {

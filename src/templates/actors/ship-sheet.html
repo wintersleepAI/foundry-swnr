@@ -81,7 +81,8 @@
               type="number" name="data.cargo.max" value="{{actor.data.data.cargo.max}}" step="1" min="1"
               data-dtype="Number" />
           </div>
-          <label class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
             {{localize 'swnr.sheet.ship.cargo'}}
           </label>
         </div>
@@ -247,53 +248,109 @@
         </div>
 
 
-      
-      
-      <!-- end Grid div for header -->
+
+
+        <!-- end Grid div for header -->
       </div>
 
 
       <div class="abilities grid grid-3col">
         {{!-- abilities here --}}
-        
+
       </div>
 
 
       {{!-- Sheet Body --}}
-      <section class="sheet-body">
-        {{!-- Tab content goes here --}}
-        <!-- weapons -->
-        <div class="weapons pr-0.5 text-lg">
-          <h3>{{localize 'swnr.sheet.ship.weapons'}}</h3>
-          aa
-            {{#each itemTypes.shipWeapon as |item id|}} 
-              {{item.name}} {{id}}
-            {{/each}}
 
-        </div>
+      <div class="w-full">
+        <nav class="pc-sheet-tabs tabs py-1 flex flex-wrap gap-2 border-t border-b border-trueGray-500 border1 mb-1"
+          data-group="primary">
+          <a class="item" data-tab="mods">
+            {{localize 'swnr.sheet.ship.weapons-tab'}}
+          </a>
+          <a class="item" data-tab="notes">
+            {{localize 'swnr.sheet.ship.notes-tab'}}
+          </a>
+        </nav>
 
-        <!-- defense -->
-        <div class="defense pr-0.5 text-lg">
-          <h3>{{localize 'swnr.sheet.ship.defense'}}</h3>
-        </div>
-
-        <!-- fittings  -->
-        <div class=" fittings pr-0.5 text-lg">
-          <h3>{{localize 'swnr.sheet.ship.fittings'}}</h3>
-        </div>
-
-
-        <!-- Description -->
-        <div class="pr-0.5 text-lg">
-          Description
-        </div>
+        <section class="sheet-body">
+          <div class="tab mods min-h-full" data-group="primary" data-tab="mods">
+            <div class="grid grid-cols-2">
+              <div>
+                <!-- Left Col -->
+                <div class="stations pr-0.5 text-lg">
+                  <h3>{{localize 'swnr.sheet.ship.stations'}}</h3>
+                </div>
 
 
-        <!-- Mods -->
-        <div class="pr-0.5 text-lg">
-          Mods
-        </div>
+                <div class="weapons pr-0.5 text-lg">
+                  <!-- weapons -->
+                  <h3>{{localize 'swnr.sheet.ship.weapons'}}</h3>
+                  <div>
+                    <li class="item-titles flexrow">
+                      <div class="item-caret"><i class="fas fa-caret-down"></i></div>
+                      <div class="item-name">{{localize "swnr.name"}}</div>
+                      <div class="item-dmg">{{localize "swnr.dmg"}}</div>
+                      <div class="item-qualities">{{localize "swnr.qualities"}}</div>
 
-      </section>
+                      <div class="item-controls">
+                      </div>
+                    </li>
+                    <ol class="item-list">
+                      {{#each itemTypes.shipWeapon as |item id|}}
+                      <li class="item-entry">
+                        <div class="item flexrow" data-item-id="{{id}}">
+                          <div class="item-name item-rollable flexrow">
+                          {{item.name}}
+                          </div>
+                          <div>
+                            {{item.dmg}}
+                          </div>
+                          <div>
+
+                          </div>
+                          <div class="item-controls">
+                            <a class="item-control item-edit" title='{{localize "WWN.Edit"}}'><i class="fas fa-edit"></i></a>
+                            <a class="item-control item-delete" title='{{localize "WWN.Delete"}}'><i class="fas fa-trash"></i></a>
+            
+                          </div>
+                        </div>
+                      </li>
+                      {{/each}}
+
+                    </ol>
+                  </div>
+
+                </div>
+              </div>
+              <div>
+                <!-- Right Col -->
+                <!-- defense -->
+                <div class="defense pr-0.5 text-lg">
+                  <h3>{{localize 'swnr.sheet.ship.defense'}}</h3>
+                </div>
+
+                <!-- fittings  -->
+                <div class=" fittings pr-0.5 text-lg">
+                  <h3>{{localize 'swnr.sheet.ship.fittings'}}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab notes" data-group="primary" data-tab="notes">
+            <!-- Description -->
+            <div class="pr-0.5 text-lg">
+              Description
+            </div>
+
+
+            <!-- Mods -->
+            <div class="pr-0.5 text-lg">
+              Mods
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
+  </div>
 </form

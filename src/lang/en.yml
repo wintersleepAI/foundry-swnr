@@ -404,6 +404,9 @@ swnr:
       weapons: Weapons
       defense: Defense
       fittings: Fittings
+      stations: Stations
+      weapons-tab: Weapons/Defense/Fittings
+      notes-tab: Notes/ Description
     tweaks: Tweaks
   settings:
     useRollNPCHD: Use NPC HD on token create?
