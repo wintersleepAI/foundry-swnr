@@ -34,6 +34,7 @@ declare interface SWNRBaseVehicleItemData {
   cost: number;
   power: number;
   mass: number;
+  broken: boolean;
 }
 
 type SWNRClassItemBaseData = SWNRDescData;
@@ -158,7 +159,6 @@ declare global {
       | { type: "focus"; data: SWNRFocusData }
       | { type: "skill"; data: SWNRSkillData }
       | { type: "shipWeapon"; data: SWNRShipWeaponData }
-      | { type: "shipWeapon"; data: SWNRShipWeaponData}
       | { type: "shipDefense"; data: SWNRShipDefenseData}
       | { type: "shipFitting"; data: SWNRShipFittingData};
   }

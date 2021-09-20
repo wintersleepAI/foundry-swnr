@@ -364,8 +364,7 @@
                               class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
                               <option></option>
                               <option>Ra's al Ghul</option>
-                                                            <option>Bruce Wayne</option>
-s
+                              <option>Bruce Wayne</option>
                             </select>
                           </div>
                         </div>
@@ -432,7 +431,7 @@ s
                             {{item.data.data.damage}}
                           </div>
                           <div>
-                            Quality
+                            {{item.data.data.qualities}}
                           </div>
                           <div class="item-controls">
                             <a class="item-control item-toggle-broken  {{#unless item.data.data.broken}}item-working{{/unless}}"
@@ -468,7 +467,7 @@ s
                       </div>
                     </li>
                     <ol class="item-list">
-                      {{#each itemTypes.shipWeapon as |item id|}}
+                      {{#each itemTypes.shipDefense as |item id|}}
                       {{log item}}
                       <li class="item-entry">
                         <div class="item flexrow" data-item-id="{{id}}">
@@ -476,7 +475,7 @@ s
                             {{item.name}}
                           </div>
                           <div>
-                            Effect
+                            {{item.data.data.effect}}
                           </div>
                           <div class="item-controls">
                             <a class="item-control item-toggle-broken  {{#unless item.data.data.broken}}item-working{{/unless}}"
@@ -506,7 +505,7 @@ s
                         </div>
                       </li>
                       <ol class="item-list">
-                        {{#each itemTypes.shipWeapon as |item id|}}
+                        {{#each itemTypes.shipFitting as |item id|}}
                         {{log item}}
                         <li class="item-entry">
                           <div class="item flexrow" data-item-id="{{id}}">
@@ -514,7 +513,7 @@ s
                               {{item.name}}
                             </div>
                             <div>
-                              Effect
+                              {{item.data.data.effect}}
                             </div>
                             <div class="item-controls">
                               <a class="item-control item-toggle-broken  {{#unless item.data.data.broken}}item-working{{/unless}}"

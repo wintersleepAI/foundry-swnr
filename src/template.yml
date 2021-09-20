@@ -154,6 +154,8 @@ Item:
     # - modShip
     - skill
     - shipWeapon
+    - shipDefense
+    - shipFitting
   templates:
     modBase:
       pretech:
@@ -171,6 +173,7 @@ Item:
       cost: 0
       power: 1
       mass: 1
+      broken: false
   class:
     templates:
       - description

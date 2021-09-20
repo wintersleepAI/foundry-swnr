@@ -414,6 +414,7 @@ swnr:
       dmg: Dmg
       qualities: Qualities
       effect: Effect
+      broken: Is Broken?
       station:
         captain: Captain
         gunnery: Gunnery

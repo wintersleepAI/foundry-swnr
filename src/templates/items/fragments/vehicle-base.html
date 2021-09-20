@@ -1,5 +1,5 @@
 
-<div class="grid grid-cols-3 gap-2 text-center">
+<div class="grid grid-cols-4 gap-2 text-center">
 
   <div class="flex flex-col items-center">
     {{localize 'swnr.item.cost'}}:
@@ -43,5 +43,14 @@
     />
   </div>
 
+  <!-- broken --> 
+  <div class="flex flex-row items-center">
+    {{localize 'swnr.sheet.ship.broken'}}:
+        <input
+          type="checkbox"
+          name="data.broken"
+          {{checked data.data.broken}}
+        />
+  </div>
 
 </div>
