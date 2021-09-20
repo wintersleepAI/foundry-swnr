@@ -1,10 +1,11 @@
 import { SWNRBaseItem } from "./base-item";
 import { SWNRStats } from "./actor-types";
 import { SWNRWeapon } from "./items/weapon";
+import { SWNRShipClass } from "./actor-types";
 
 type MetaItemTypes = "class" | "power" | "focus" | "skill";
 type RealItemTypes = "armor" | "weapon" | "item" ;
-type ShipItemTypes = "shipWeapon";
+type ShipItemTypes = "shipWeapon" | "shipFitting" | "shipDefense";
 type ItemTypes = RealItemTypes | MetaItemTypes;// | ShipItemTypes;
 
 declare type ItemsWithCustomClasses = SWNRWeapon;
@@ -27,6 +28,12 @@ declare interface SWNRBaseItemData {
   tl: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   location: "readied" | "stowed" | "other";
   quality: "stock" | "masterwork" | "makeshift";
+}
+
+declare interface SWNRBaseVehicleItemData {
+  cost: number;
+  power: number;
+  mass: number;
 }
 
 type SWNRClassItemBaseData = SWNRDescData;
@@ -73,8 +80,12 @@ interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
   damage: string;
 }
 
-declare interface SWNRShipWeaponData extends SWNRDescData{
+declare interface SWNRShipWeaponData extends SWNRBaseVehicleItemData, SWNRDescData{
   damage: string;
+  hardpoint: number;
+  shipClass: SWNRShipClass;
+  tl:  4 | 5 | 6;
+  qualities: string;
 }
 
 declare interface SWNRArmorData extends SWNRBaseItemData {

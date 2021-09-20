@@ -1,0 +1,47 @@
+
+<div class="grid grid-cols-3 gap-2 text-center">
+
+  <div class="flex flex-col items-center">
+    {{localize 'swnr.item.cost'}}:
+    <input
+      type="number"
+      class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+      step="1"
+      name="data.cost"
+      min="0"
+      data-dtype="Number"
+      value="{{data.data.cost}}"
+    />
+  </div>
+
+  <!-- power -->
+  <div class="flex flex-col items-center">
+    {{localize 'swnr.sheet.ship.power'}}:
+    <input
+      type="number"
+      class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+      step="1"
+      name="data.power"
+      min="0"
+      data-dtype="Number"
+      value="{{data.data.power}}"
+    />
+  </div>
+
+
+  <!-- mass -->
+  <div class="flex flex-col items-center">
+    {{localize 'swnr.sheet.ship.mass'}}:
+    <input
+      type="number"
+      class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+      step="1"
+      name="data.mass"
+      min="0"
+      data-dtype="Number"
+      value="{{data.data.mass}}"
+    />
+  </div>
+
+
+</div>

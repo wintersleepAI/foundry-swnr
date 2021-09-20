@@ -167,6 +167,10 @@ Item:
       location: other
     description:
       description: ""
+    baseVehicleItem:
+      cost: 0
+      power: 1
+      mass: 1
   class:
     templates:
       - description
@@ -222,7 +226,11 @@ Item:
   shipWeapon:
     templates:
       - description
+      - baseVehicleItem
     damage: d4
+    hardpoint: 1
+    shipClass: fighter
+    qualities: ""
   modItem:
     templates:
       - description
