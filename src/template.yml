@@ -231,6 +231,16 @@ Item:
     hardpoint: 1
     shipClass: fighter
     qualities: ""
+  shipDefense:
+    templates:
+      - description
+      - baseVehicleItem
+    effect: ""
+  shipFitting:
+    templates:
+      - description
+      - baseVehicleItem
+    effect: ""
   modItem:
     templates:
       - description

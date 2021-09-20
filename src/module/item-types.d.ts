@@ -6,7 +6,7 @@ import { SWNRShipClass } from "./actor-types";
 type MetaItemTypes = "class" | "power" | "focus" | "skill";
 type RealItemTypes = "armor" | "weapon" | "item" ;
 type ShipItemTypes = "shipWeapon" | "shipFitting" | "shipDefense";
-type ItemTypes = RealItemTypes | MetaItemTypes;// | ShipItemTypes;
+type ItemTypes = RealItemTypes | MetaItemTypes | ShipItemTypes;
 
 declare type ItemsWithCustomClasses = SWNRWeapon;
 declare type ItemTypesMissingCustomClasses = Exclude<
@@ -88,6 +88,14 @@ declare interface SWNRShipWeaponData extends SWNRBaseVehicleItemData, SWNRDescDa
   qualities: string;
 }
 
+declare interface SWNRShipDefenseData extends SWNRBaseVehicleItemData, SWNRDescData{
+  effect: string;
+}
+
+declare interface SWNRShipFittingData extends SWNRBaseVehicleItemData, SWNRDescData{
+  effect: string;
+}
+
 declare interface SWNRArmorData extends SWNRBaseItemData {
   ac: number;
   shield: boolean;
@@ -134,7 +142,10 @@ declare global {
       | { type: "item"; data: SWNRItemData }
       | { type: "focus"; data: SWNRFocusData }
       | { type: "skill"; data: SWNRSkillData }
-      | { type: "shipWeapon"; data: SWNRShipWeaponData};
+      | { type: "shipWeapon"; data: SWNRShipWeaponData}
+      | { type: "shipDefense"; data: SWNRShipDefenseData}
+      | { type: "shipFitting"; data: SWNRShipFittingData}
+      ;
   }
 
   interface SourceConfig {
@@ -146,6 +157,9 @@ declare global {
       | { type: "item"; data: SWNRItemData }
       | { type: "focus"; data: SWNRFocusData }
       | { type: "skill"; data: SWNRSkillData }
-      | { type: "shipWeapon"; data: SWNRShipWeaponData };
+      | { type: "shipWeapon"; data: SWNRShipWeaponData }
+      | { type: "shipWeapon"; data: SWNRShipWeaponData}
+      | { type: "shipDefense"; data: SWNRShipDefenseData}
+      | { type: "shipFitting"; data: SWNRShipFittingData};
   }
 }
