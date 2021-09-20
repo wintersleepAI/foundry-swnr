@@ -1,0 +1,19 @@
+data:
+  cost:
+    base: 2000.0
+    capital: 10
+    cruiser: 25
+    frigate: 10
+  effect: <p>General equipment for the crew</p>
+  mass:
+    base: 0.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: frigate
+  name: "Ship\xE2\u20AC\u2122s locker"
+  power:
+    base: 0.0
+    capital: 1
+    cruiser: 1
+    frigate: 1

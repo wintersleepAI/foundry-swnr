@@ -1,0 +1,16 @@
+data:
+  name: Fleet Cruiser
+  type: hull
+  class: cruiser
+  cost: 10000000
+  speed: 1
+  armor: 15
+  hp: 60
+  crew:
+    min: 50
+    max: 200
+  ac: 14
+  power: 50
+  mass: 30
+  hardpoints: 10
+  

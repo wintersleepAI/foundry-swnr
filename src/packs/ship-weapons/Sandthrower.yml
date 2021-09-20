@@ -1,0 +1,22 @@
+data:
+  cost:
+    base: 50000.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  dmg: 2d4
+  hardpoints: 1
+  mass:
+    base: 1.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: fighter
+  name: Sandthrower
+  power:
+    base: 3.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  qualities: <p>Flak</p>
+  tl: 4

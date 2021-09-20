@@ -1,0 +1,22 @@
+data:
+  cost:
+    base: 5000000.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  dmg: 3d20
+  hardpoints: 4
+  mass:
+    base: 10.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: capital
+  name: Vortex Tunnel Inductor
+  power:
+    base: 20.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  qualities: <p>AP 20</p>
+  tl: 4

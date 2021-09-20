@@ -1,0 +1,19 @@
+data:
+  cost:
+    base: 50000.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  effect: <p>Fires one weapon system without a gunner</p>
+  mass:
+    base: 0.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: fighter
+  name: Auto-targeting system
+  power:
+    base: 1.0
+    capital: 1
+    cruiser: 1
+    frigate: 1

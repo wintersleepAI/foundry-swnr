@@ -1,0 +1,22 @@
+data:
+  cost:
+    base: 700000.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  dmg: 3d6
+  hardpoints: 2
+  mass:
+    base: 2.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: frigate
+  name: Plasma Beam
+  power:
+    base: 5.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  qualities: <p>AP 10</p>
+  tl: 4

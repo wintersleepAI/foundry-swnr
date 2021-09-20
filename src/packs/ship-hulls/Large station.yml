@@ -1,0 +1,16 @@
+data:
+  name: Large Station
+  type: hull
+  class: capital
+  cost: 40000000
+  speed: 0
+  armor: 20
+  hp: 120
+  crew:
+    min: 100
+    max: 1000
+  ac: 17
+  power: 125
+  mass: 75
+  hardpoints: 30
+  

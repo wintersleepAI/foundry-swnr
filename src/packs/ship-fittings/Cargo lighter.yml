@@ -1,0 +1,19 @@
+data:
+  cost:
+    base: 25000.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  effect: <p>Orbit-to-surface cargo shuttle</p>
+  mass:
+    base: 2.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: frigate
+  name: Cargo lighter
+  power:
+    base: 0.0
+    capital: 1
+    cruiser: 1
+    frigate: 1

@@ -1,0 +1,22 @@
+data:
+  cost:
+    base: 1.5
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  dmg: 3d10
+  hardpoints: 3
+  mass:
+    base: 5.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: cruiser
+  name: Spinal Beam Cannon
+  power:
+    base: 10.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  qualities: <p>AP 15</p>
+  tl: 4

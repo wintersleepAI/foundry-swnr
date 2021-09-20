@@ -1,0 +1,16 @@
+data:
+  name: Heavy Frigate
+  type: hull
+  class: frigate
+  cost: 7000000
+  speed: 1
+  armor: 10
+  hp: 50
+  crew:
+    min: 30
+    max: 120
+  ac: 15
+  power: 25
+  mass: 20
+  hardpoints: 8
+  

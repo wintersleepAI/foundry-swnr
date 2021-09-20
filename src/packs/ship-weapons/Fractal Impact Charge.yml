@@ -1,0 +1,22 @@
+data:
+  cost:
+    base: 200000.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  dmg: 2d6
+  hardpoints: 1
+  mass:
+    base: 1.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: fighter
+  name: Fractal Impact Charge
+  power:
+    base: 5.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  qualities: <p>AP 15</p>
+  tl: 4

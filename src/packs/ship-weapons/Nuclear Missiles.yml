@@ -1,0 +1,22 @@
+data:
+  cost:
+    base: 50000.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  dmg: Special
+  hardpoints: 2
+  mass:
+    base: 1.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: frigate
+  name: Nuclear Missiles
+  power:
+    base: 5.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  qualities: <p>Ammo 5</p>
+  tl: 4

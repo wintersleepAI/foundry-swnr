@@ -1,0 +1,16 @@
+data:
+  name: Shuttle
+  type: hull
+  class: fighter
+  cost: 200000
+  speed: 3
+  armor: 0
+  hp: 15
+  crew:
+    min: 1
+    max: 10
+  ac: 11
+  power: 3
+  mass: 5
+  hardpoints: 1
+  

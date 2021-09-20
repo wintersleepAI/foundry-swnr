@@ -1,0 +1,19 @@
+data:
+  cost:
+    base: Special
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  effect: "<p>Focal point for allied psychics\xE2\u20AC\u2122 powers</p>"
+  mass:
+    base: 0.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: frigate
+  name: Psionic anchorpoint
+  power:
+    base: 3.0
+    capital: 1
+    cruiser: 1
+    frigate: 1

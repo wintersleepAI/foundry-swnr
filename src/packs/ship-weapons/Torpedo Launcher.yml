@@ -1,0 +1,22 @@
+data:
+  cost:
+    base: 500000.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  dmg: 3d8
+  hardpoints: 1
+  mass:
+    base: 3.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: frigate
+  name: Torpedo Launcher
+  power:
+    base: 10.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  qualities: <p>AP 20</p>
+  tl: 4

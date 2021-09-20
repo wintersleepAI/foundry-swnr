@@ -1,0 +1,19 @@
+data:
+  cost:
+    base: 300000.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  effect: <p>Stealthed landing pod for troops</p>
+  mass:
+    base: 2.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: frigate
+  name: Drop pod
+  power:
+    base: 0.0
+    capital: 1
+    cruiser: 1
+    frigate: 1

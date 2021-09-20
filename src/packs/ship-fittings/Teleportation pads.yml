@@ -1,0 +1,19 @@
+data:
+  cost:
+    base: Special
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  effect: <p>Pretech teleportation to and from ship</p>
+  mass:
+    base: 1.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: frigate
+  name: Teleportation pads
+  power:
+    base: 1.0
+    capital: 1
+    cruiser: 1
+    frigate: 1

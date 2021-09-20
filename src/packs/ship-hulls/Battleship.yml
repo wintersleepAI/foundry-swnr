@@ -1,0 +1,16 @@
+data:
+  name: Battleship
+  type: hull
+  class: capital
+  cost: 50000000
+  speed: 0
+  armor: 20
+  hp: 100
+  crew:
+    min: 200
+    max: 1000
+  ac: 16
+  power: 75
+  mass: 50
+  hardpoints: 15
+  

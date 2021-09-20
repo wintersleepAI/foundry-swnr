@@ -1,0 +1,19 @@
+data:
+  cost:
+    base: 200000.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  effect: <p>Carrier housing for a fighter</p>
+  mass:
+    base: 2.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: cruiser
+  name: Ship bay - fighter
+  power:
+    base: 0.0
+    capital: 1
+    cruiser: 1
+    frigate: 1

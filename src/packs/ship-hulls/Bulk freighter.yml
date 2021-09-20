@@ -1,0 +1,16 @@
+data:
+  name: Bulk Freighter
+  type: hull
+  class: cruiser
+  cost: 5000000
+  speed: 0
+  armor: 0
+  hp: 40
+  crew:
+    min: 10
+    max: 40
+  ac: 11
+  power: 15
+  mass: 25
+  hardpoints: 2
+  

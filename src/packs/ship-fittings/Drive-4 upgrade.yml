@@ -1,0 +1,19 @@
+data:
+  cost:
+    base: 40000.0
+    capital: 10
+    cruiser: 25
+    frigate: 10
+  effect: <p>Upgrade a spike drive to drive-4 rating</p>
+  mass:
+    base: 3.0
+    capital: 4
+    cruiser: 3
+    frigate: 2
+  min_class: frigate
+  name: Drive-4 upgrade
+  power:
+    base: 2.0
+    capital: 4
+    cruiser: 3
+    frigate: 2

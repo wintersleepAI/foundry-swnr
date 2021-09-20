@@ -1,0 +1,22 @@
+data:
+  cost:
+    base: 20000000.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  dmg: 5d20
+  hardpoints: 5
+  mass:
+    base: 10.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: capital
+  name: Singularity Gun
+  power:
+    base: 25.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  qualities: <p>AP 25</p>
+  tl: 5

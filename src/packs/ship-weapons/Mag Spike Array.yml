@@ -1,0 +1,22 @@
+data:
+  cost:
+    base: 1000000.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  dmg: 2d6+2
+  hardpoints: 2
+  mass:
+    base: 2.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: frigate
+  name: Mag Spike Array
+  power:
+    base: 5.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  qualities: <p>Flak</p>
+  tl: 4

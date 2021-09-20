@@ -1,0 +1,16 @@
+data:
+  name: Corvette
+  type: hull
+  class: frigate
+  cost: 4000000
+  speed: 2
+  armor: 10
+  hp: 40
+  crew:
+    min: 10
+    max: 40
+  ac: 13
+  power: 15
+  mass: 15
+  hardpoints: 6
+  

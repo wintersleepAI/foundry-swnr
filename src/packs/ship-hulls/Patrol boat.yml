@@ -1,0 +1,16 @@
+data:
+  name: Patrol Boat
+  type: hull
+  class: frigate
+  cost: 2500000
+  speed: 4
+  armor: 5
+  hp: 25
+  crew:
+    min: 5
+    max: 20
+  ac: 14
+  power: 15
+  mass: 10
+  hardpoints: 4
+  

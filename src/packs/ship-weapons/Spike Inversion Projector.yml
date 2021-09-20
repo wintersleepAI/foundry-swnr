@@ -1,0 +1,22 @@
+data:
+  cost:
+    base: 2.5
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  dmg: 3d8
+  hardpoints: 3
+  mass:
+    base: 3.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: cruiser
+  name: Spike Inversion Projector
+  power:
+    base: 10.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  qualities: <p>AP 15</p>
+  tl: 4

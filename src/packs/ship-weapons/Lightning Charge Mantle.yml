@@ -1,0 +1,22 @@
+data:
+  cost:
+    base: 4000000.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  dmg: 1d20
+  hardpoints: 2
+  mass:
+    base: 5.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: capital
+  name: Lightning Charge Mantle
+  power:
+    base: 15.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  qualities: <p>AP 5</p>
+  tl: 4

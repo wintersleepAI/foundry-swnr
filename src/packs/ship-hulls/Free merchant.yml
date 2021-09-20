@@ -1,0 +1,16 @@
+data:
+  name: Free Merchant
+  type: hull
+  class: frigate
+  cost: 500000
+  speed: 3
+  armor: 2
+  hp: 20
+  crew:
+    min: 1
+    max: 6
+  ac: 14
+  power: 10
+  mass: 15
+  hardpoints: 2
+  

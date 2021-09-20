@@ -1,0 +1,19 @@
+data:
+  cost:
+    base: 25000.0
+    capital: 10
+    cruiser: 25
+    frigate: 10
+  effect: <p>Negate one successful hit</p>
+  mass:
+    base: 1.0
+    capital: 4
+    cruiser: 3
+    frigate: 2
+  min_class: frigate
+  name: Burst ECM Generator
+  power:
+    base: 2.0
+    capital: 1
+    cruiser: 1
+    frigate: 1

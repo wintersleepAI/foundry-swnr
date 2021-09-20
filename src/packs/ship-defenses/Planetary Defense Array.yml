@@ -1,0 +1,19 @@
+data:
+  cost:
+    base: 50000.0
+    capital: 10
+    cruiser: 25
+    frigate: 10
+  effect: <p>Anti-impact and anti-nuke surface defenses</p>
+  mass:
+    base: 2.0
+    capital: 4
+    cruiser: 3
+    frigate: 2
+  min_class: frigate
+  name: Planetary Defense Array
+  power:
+    base: 4.0
+    capital: 1
+    cruiser: 1
+    frigate: 1

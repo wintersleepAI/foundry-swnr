@@ -1,0 +1,19 @@
+data:
+  cost:
+    base: 5000.0
+    capital: 10
+    cruiser: 25
+    frigate: 10
+  effect: <p>Improved planetary sensory array</p>
+  mass:
+    base: 1.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: frigate
+  name: Survey sensor array
+  power:
+    base: 2.0
+    capital: 1
+    cruiser: 1
+    frigate: 1

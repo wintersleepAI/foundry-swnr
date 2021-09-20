@@ -1,0 +1,16 @@
+data:
+  name: Carrier
+  type: hull
+  class: capital
+  cost: 60000000
+  speed: 0
+  armor: 10
+  hp: 75
+  crew:
+    min: 300
+    max: 1500
+  ac: 14
+  power: 50
+  mass: 100
+  hardpoints: 4
+  

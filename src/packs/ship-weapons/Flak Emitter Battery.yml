@@ -1,0 +1,22 @@
+data:
+  cost:
+    base: 500000.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  dmg: 2d6
+  hardpoints: 1
+  mass:
+    base: 3.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  min_class: frigate
+  name: Flak Emitter Battery
+  power:
+    base: 5.0
+    capital: 1
+    cruiser: 1
+    frigate: 1
+  qualities: <p>AP 10</p>
+  tl: 4

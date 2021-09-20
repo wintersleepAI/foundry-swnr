@@ -1,0 +1,19 @@
+data:
+  cost:
+    base: 100000.0
+    capital: 10
+    cruiser: 25
+    frigate: 10
+  effect: <p>Ship can be deconstructed into a colony base</p>
+  mass:
+    base: 2.0
+    capital: 4
+    cruiser: 3
+    frigate: 2
+  min_class: frigate
+  name: Colony core
+  power:
+    base: 4.0
+    capital: 1
+    cruiser: 1
+    frigate: 1

@@ -1,0 +1,16 @@
+data:
+  name: Small Station
+  type: hull
+  class: cruiser
+  cost: 5000000
+  speed: 0
+  armor: 5
+  hp: 120
+  crew:
+    min: 20
+    max: 200
+  ac: 11
+  power: 50
+  mass: 40
+  hardpoints: 10
+  
