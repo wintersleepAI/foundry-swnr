@@ -176,8 +176,8 @@
               min="0" /><span>/</span>
             <input
               class="w-2 text-center pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.crew.value" value="{{actor.data.data.crew.value}}" data-dtype="Number"
-              min="0" /><span>/</span><input
+              type="number" step="1" name="data.crew.current" value="{{actor.data.data.crew.current}}"
+              data-dtype="Number" min="0" /><span>/</span><input
               class="w-3 text-center pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
               type="number" name="data.crew.max" value="{{actor.data.data.crew.max}}" step="1" min="1"
               data-dtype="Number" />
@@ -228,8 +228,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-8 text-center pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.speed" value="{{actor.data.data.speed}}" data-dtype="Number"
-              min="0" />
+              type="number" step="1" name="data.speed" value="{{actor.data.data.speed}}" data-dtype="Number" min="0" />
           </div>
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
@@ -242,8 +241,8 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.hardpoints.value" value="{{actor.data.data.hardpoints.value}}" data-dtype="Number"
-              min="0" /><span>/</span><input
+              type="number" step="1" name="data.hardpoints.value" value="{{actor.data.data.hardpoints.value}}"
+              data-dtype="Number" min="0" /><span>/</span><input
               class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
               type="number" name="data.hardpoints.max" value="{{actor.data.data.hardpoints.max}}" step="1" min="1"
               data-dtype="Number" />
@@ -313,102 +312,10 @@
             <div class="grid grid-cols-2">
               <div class="gap-2">
                 <!-- Left Col -->
-                <div class="stations pr-0.5 ">
-                  <div>
-                    <li class="item-titles flexrow">
-                      <div class="role-name">{{localize 'swnr.sheet.ship.station.role'}}</div>
-        
-                      <div class="role-crew">{{localize 'swnr.sheet.ship.station.crew'}}</div>
-                    </li>
-                    <ol class="item-list">
-                      <li class="item-entry">
-                        <div class="item flexrow" data-item-id="role-captain">
-                          <div>
-                            {{localize 'swnr.sheet.ship.station.captain'}}
-                          </div>
-                          <div>
-                            <select
-                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-        
-                              <option></option>
-                              <option>Ra's al Ghul</option>
-                              <option>Bruce Wayne</option>
-        
-                            </select>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="item-entry">
-                        <div class="item flexrow" data-item-id="role-gunnery">
-                          <div>
-                            {{localize 'swnr.sheet.ship.station.gunnery'}}
-                          </div>
-                          <div>
-        
-                            <select
-                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-                              <option></option>
-                              <option>Bruce Wayne</option>
-                            </select>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="item-entry">
-                        <div class="item flexrow" data-item-id="role-engineering">
-                          <div>
-                            {{localize 'swnr.sheet.ship.station.engineering'}}
-                          </div>
-                          <div>
-        
-                            <select
-                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-                              <option></option>
-                              <option>Ra's al Ghul</option>
-                              <option>Bruce Wayne</option>
-                            </select>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="item-entry">
-                        <div class="item flexrow" data-item-id="role-bridge">
-                          <div>
-                            {{localize 'swnr.sheet.ship.station.bridge'}}
-                          </div>
-                          <div>
-        
-                            <select
-                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-                              <option></option>
-                              <option>Ra's al Ghul</option>
-                              <option>Bruce Wayne</option>
-        
-                            </select>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="item-entry">
-                        <div class="item flexrow" data-item-id="role-comms">
-                          <div>
-                            {{localize 'swnr.sheet.ship.station.comms'}}
-                          </div>
-                          <div>
-        
-                            <select
-                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-                              <option></option>
-                              <option>Ra's al Ghul</option>
-                              <option>Bruce Wayne</option>
-        
-                            </select>
-                          </div>
-                        </div>
-                      </li>
-                    </ol>
-                  </div>
-                </div><!-- end stations-->
-        
-        
-        
+
+
+
+
                 <div class="weapons pr-0.5">
                   <!-- weapons -->
                   <div>
@@ -417,13 +324,12 @@
                       <div class="item-name ">{{localize 'swnr.sheet.ship.weapon'}}</div>
                       <div class="item-dmg">{{localize 'swnr.sheet.ship.dmg'}}</div>
                       <div class="item-qualities">{{localize 'swnr.sheet.ship.qualities'}}</div>
-        
+
                       <div class="item-controls">
                       </div>
                     </li>
                     <ol class="item-list">
                       {{#each itemTypes.shipWeapon as |item id|}}
-                      {{log item}}
                       <li class="item-entry">
                         <div class="item flexrow" data-item-id="{{item.id}}">
                           <div class="item-name item-click item-rollable flexrow">
@@ -438,28 +344,29 @@
                           <div class="item-controls">
                             <a class="item-control item-toggle-broken  {{#unless item.data.data.broken}}item-working{{/unless}}"
                               title='{{localize ' swnr.sheet.break-item'}}'>
-                              <i class="fas fa-heart-broken {{#unless item.data.data.broken}}item-working{{/unless}}"></i>
+                              <i
+                                class="fas fa-heart-broken {{#unless item.data.data.broken}}item-working{{/unless}}"></i>
                             </a>
                             <a class="item-control item-edit" title='{{localize ' swnr.sheet.edit-item'}}'><i
                                 class="fas fa-edit"></i></a>
                             <a class="item-control item-delete" title='{{localize ' swnr.sheet.delete-item'}}'><i
                                 class="fas fa-trash"></i></a>
-        
+
                           </div>
                         </div>
                       </li>
                       {{/each}}
-        
+
                     </ol>
                   </div>
-        
+
                 </div>
               </div>
               <div>
                 <!-- Right Col -->
                 <!-- defense -->
                 <div class="defense pr-0.5">
-        
+
                   <div>
                     <li class="item-titles flexrow">
                       <!--<div class="item-caret"><i class="fas fa-caret-down"></i></div>-->
@@ -470,7 +377,6 @@
                     </li>
                     <ol class="item-list">
                       {{#each itemTypes.shipDefense as |item id|}}
-                      {{log item}}
                       <li class="item-entry">
                         <div class="item flexrow" data-item-id="{{item.id}}">
                           <div class="item-name item-click item-rollable flexrow">
@@ -482,22 +388,23 @@
                           <div class="item-controls">
                             <a class="item-control item-toggle-broken  {{#unless item.data.data.broken}}item-working{{/unless}}"
                               title='{{localize ' swnr.sheet.break-item'}}'>
-                              <i class="fas fa-heart-broken {{#unless item.data.data.broken}}item-working{{/unless}} "></i>
+                              <i
+                                class="fas fa-heart-broken {{#unless item.data.data.broken}}item-working{{/unless}} "></i>
                             </a>
                             <a class="item-control item-edit" title='{{localize ' swnr.sheet.edit-item'}}'><i
                                 class="fas fa-edit"></i></a>
                             <a class="item-control item-delete" title='{{localize ' swnr.sheet.delete-item'}}'><i
                                 class="fas fa-trash"></i></a>
-        
+
                           </div>
                       </li>
                       {{/each}}
                     </ol>
                   </div>
-        
+
                   <!-- fittings  -->
                   <div class=" fittings pr-0.5">
-        
+
                     <div>
                       <li class="item-titles flexrow">
                         <!--<div class="item-caret"><i class="fas fa-caret-down"></i></div>-->
@@ -508,7 +415,6 @@
                       </li>
                       <ol class="item-list">
                         {{#each itemTypes.shipFitting as |item id|}}
-                        {{log item}}
                         <li class="item-entry">
                           <div class="item flexrow" data-item-id="{{item.id}}">
                             <div class="item-name  item-click item-rollable flexrow">
@@ -520,13 +426,14 @@
                             <div class="item-controls">
                               <a class="item-control item-toggle-broken  {{#unless item.data.data.broken}}item-working{{/unless}}"
                                 title='{{localize ' swnr.sheet.break-item'}}'>
-                                <i class="fas fa-heart-broken {{#unless item.data.data.broken}}item-working{{/unless}}"></i>
+                                <i
+                                  class="fas fa-heart-broken {{#unless item.data.data.broken}}item-working{{/unless}}"></i>
                               </a>
                               <a class="item-control item-edit" title='{{localize ' swnr.sheet.edit-item'}}'>
                                 <i class="fas fa-edit"></i></a>
                               <a class="item-control item-delete" title='{{localize ' swnr.sheet.delete-item'}}'><i
                                   class="fas fa-trash"></i></a>
-        
+
                             </div>
                         </li>
                         {{/each}}
@@ -559,12 +466,131 @@
           </div>
           <!-- Crew Tab-->
           <div class="tab crew min-h-full" data-group="primary" data-tab="crew">
-            Crew 
 
-           {{#each data.data.crewMembers as | crewId| }}
-            cid: {{crewId}}
-           {{/each}}
+            <div class="grid grid-cols-2">
+              <div class="gap-2">
 
+
+                <div class="stations pr-0.5 ">
+                  <div>
+                    <li class="item-titles flexrow">
+                      <div class="role-name">{{localize 'swnr.sheet.ship.station.role'}}</div>
+
+                      <div class="role-crew">{{localize 'swnr.sheet.ship.station.crew'}}</div>
+                    </li>
+                    <ol class="item-list">
+                      <li class="item-entry">
+                        <div class="item flexrow" data-item-id="role-captain">
+                          <div>
+                            {{localize 'swnr.sheet.ship.station.captain'}}
+                          </div>
+                          <div>
+                            <select
+                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+
+                              <option></option>
+                              <option>Ra's al Ghul</option>
+                              <option>Bruce Wayne</option>
+
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item-entry">
+                        <div class="item flexrow" data-item-id="role-gunnery">
+                          <div>
+                            {{localize 'swnr.sheet.ship.station.gunnery'}}
+                          </div>
+                          <div>
+
+                            <select
+                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+                              <option></option>
+                              <option>Bruce Wayne</option>
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item-entry">
+                        <div class="item flexrow" data-item-id="role-engineering">
+                          <div>
+                            {{localize 'swnr.sheet.ship.station.engineering'}}
+                          </div>
+                          <div>
+
+                            <select
+                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+                              <option></option>
+                              <option>Ra's al Ghul</option>
+                              <option>Bruce Wayne</option>
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item-entry">
+                        <div class="item flexrow" data-item-id="role-bridge">
+                          <div>
+                            {{localize 'swnr.sheet.ship.station.bridge'}}
+                          </div>
+                          <div>
+
+                            <select
+                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+                              <option></option>
+                              <option>Ra's al Ghul</option>
+                              <option>Bruce Wayne</option>
+
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item-entry">
+                        <div class="item flexrow" data-item-id="role-comms">
+                          <div>
+                            {{localize 'swnr.sheet.ship.station.comms'}}
+                          </div>
+                          <div>
+
+                            <select
+                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+                              <option></option>
+                              <option>Ra's al Ghul</option>
+                              <option>Bruce Wayne</option>
+
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                    </ol>
+                  </div>
+                </div><!-- end stations-->
+              </div>
+
+              <div class="gap-2">
+                <div>
+                  <li class="item-titles flexrow">
+                    <!--<div class="item-caret"><i class="fas fa-caret-down"></i></div>-->
+                    <div class="item-name">{{localize 'swnr.sheet.ship.crew-name'}} </div>
+                    <div class="item-controls">
+                    </div>
+                  </li>
+                  <ol class="item-list">
+                    {{#each crewArray as | crew id| }}
+                    <li class="item-entry">
+                      <div class="item flexrow" data-crew-id="{{crew.id}}" data-crew-name="{{crew.name}}">
+                        <div class="item-name flexrow">
+                          <a>{{crew.name}}</a>
+                        </div>
+                        <div class="item-controls">
+                          <a class="item-control crew-delete" title='{{localize ' swnr.sheet.delete-item'}}'><i
+                              class="fas fa-trash"></i></a>
+                        </div>
+                    </li>
+                    {{/each}}
+                  </ol>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </div>

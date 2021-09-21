@@ -411,6 +411,7 @@ swnr:
       weapons-tab: Weapons/Defense/Fittings
       notes-tab: Notes/ Description
       crew-tab: Crew Members
+      crew-name: Crew Member
       name: Name
       dmg: Dmg
       qualities: Qualities
@@ -561,4 +562,5 @@ swnr:
     balance: Balance
     owed: Owed
   deleteTitle: Delete {name}?
+  deleteCrew: Do you want to remove {name} from the crew?
   deleteContent: Are you sure you want to delete {name} from the actor {actor}?

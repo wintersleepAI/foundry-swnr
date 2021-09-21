@@ -10,15 +10,12 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
 
   prepareBaseData(): void {
     const data = this.data.data;
+
   }
 
   prepareDerivedData(): void {
     const data = this.data.data;
-    let crewArray=  data.crewMembers.map(actorId => game.actors?.get(actorId));
-    if (!data["crewArray"]) {
-      data["crewArray"] = crewArray;
-    }
-    console.log(crewArray);
+
   }
 
   addCrew(actorId: string): void {
@@ -31,13 +28,27 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
         crew += 1;
         crewMembers.push(actorId);
         this.update({"data.crew.current": crew, "data.crewMembers": crewMembers});
-        console.log(this.data.data.crewMembers);
       }
-
     } else {
       ui.notifications?.error("Actor added no longer exists");
     }
   }
+
+  removeCrew(actorId: string): void {
+    let crewMembers = this.data.data.crewMembers;
+    //Only remove if there
+    let idx = crewMembers.indexOf(actorId); 
+    if (idx == -1){
+      ui.notifications?.error("Crew member not found");
+
+    } else {
+      crewMembers.splice(idx, 1);
+      let crew = this.data.data.crew.current;
+      crew -= 1;
+      this.update({"data.crew.current": crew, "data.crewMembers": crewMembers});
+    }
+  }
+
   // _preCreatedata(actorDataConstructorData, options, user):
   //  void {
   //   // super._preCreate(actorDataConstructorData, options, user);
