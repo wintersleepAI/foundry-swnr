@@ -52,7 +52,8 @@ declare interface SWNRVehicleTemplateBase {
     min: number;
     max: number;
     current: number;
-  }
+  };
+  crewMembers: string[];
   tl: number;
 }
 

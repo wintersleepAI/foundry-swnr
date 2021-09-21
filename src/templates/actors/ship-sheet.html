@@ -559,7 +559,12 @@
           </div>
           <!-- Crew Tab-->
           <div class="tab crew min-h-full" data-group="primary" data-tab="crew">
-            Crew
+            Crew 
+
+           {{#each data.data.crewMembers as | crewId| }}
+            cid: {{crewId}}
+           {{/each}}
+
           </div>
         </section>
       </div>

@@ -8,6 +8,7 @@ import { AllItemClasses } from "../item-types";
 
 interface ShipActorSheetData extends ActorSheet.Data {
   shipWeapons?: Item[];
+  crewMembers?: string[]; // ActorIds
   itemTypes: SWNRShipActor["itemTypes"];
 }
 
@@ -125,5 +126,15 @@ export class ShipActorSheet extends ActorSheet<
       });
     }
 }
+
+Hooks.on(
+  "dropActorSheetData",
+  (actor: Actor, actorSheet: ActorSheet, data) => {
+    if (actor.type=="ship" && data.type == "Actor") {
+      const shipActor = actor as unknown as SWNRShipActor;
+      shipActor.addCrew(data["id"]);
+    }
+  }
+);
 export const sheet = ShipActorSheet;
 export const types = ["ship"];
