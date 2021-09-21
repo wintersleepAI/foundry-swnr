@@ -377,6 +377,7 @@ swnr:
       speed: Speed
       hard-points: Hardpoints
       ship-class: Ship Class
+      min-ship-class: Min. Ship Class
       ship-hull-type: Ship Hull Type
       cargo: Cargo
       operating-cost: Operating Cost

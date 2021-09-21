@@ -1,5 +1,5 @@
 
-<div class="grid grid-cols-4 gap-2 text-center">
+<div class="flex flexrow gap-2 text-center">
 
   <div class="flex flex-col items-center">
     {{localize 'swnr.item.cost'}}:
@@ -42,6 +42,28 @@
       value="{{data.data.mass}}"
     />
   </div>
+    
+    
+    <!-- Ship /  class -->
+    <div class="flex flex-col items-center">
+      {{localize 'swnr.sheet.ship.min-ship-class'}}
+
+      <select name="data.minClass"
+        class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        {{#select data.data.minClass}}
+        <option value="fighter">
+          {{localize 'swnr.sheet.ship.shipClass.fighter'}}
+        </option>
+        <option value="frigate">{{localize 'swnr.sheet.ship.shipClass.frigate'}}</option>
+        <option value="cruiser">{{localize 'swnr.sheet.ship.shipClass.cruiser'}}</option>
+        <option value="capital">
+          {{localize 'swnr.sheet.ship.shipClass.capital'}}
+        </option>
+        {{/select}}
+      </select>
+
+
+    </div>
 
   <!-- broken --> 
   <div class="flex flex-row items-center">

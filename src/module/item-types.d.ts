@@ -34,6 +34,7 @@ declare interface SWNRBaseVehicleItemData {
   cost: number;
   power: number;
   mass: number;
+  minClass: SWNRShipClass;
   broken: boolean;
 }
 
@@ -84,7 +85,6 @@ interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
 declare interface SWNRShipWeaponData extends SWNRBaseVehicleItemData, SWNRDescData{
   damage: string;
   hardpoint: number;
-  shipClass: SWNRShipClass;
   tl:  4 | 5 | 6;
   qualities: string;
 }
