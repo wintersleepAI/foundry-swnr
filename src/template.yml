@@ -141,7 +141,12 @@ Actor:
     operatingCost: 0
     maintanenceCost: 0
     lastMaintanence: ""
-
+    roles:
+      captain: ""
+      gunnery: ""
+      engineering: ""
+      comms: ""
+      bridge: ""
 Item:
   types:
     - class

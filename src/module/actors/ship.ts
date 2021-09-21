@@ -47,6 +47,25 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
       crew -= 1;
       this.update({"data.crew.current": crew, "data.crewMembers": crewMembers});
     }
+    if (this.data.data.roles) {
+      let roles = this.data.data.roles;
+      if (roles.captain==actorId){
+        roles.captain = "";
+      }
+      if (roles.comms==actorId){
+        roles.comms = "";
+      }
+      if (roles.engineering==actorId){
+        roles.engineering = "";
+      }
+      if (roles.gunnery==actorId){
+        roles.gunnery = "";
+      }
+      if (roles.bridge==actorId){
+        roles.bridge = "";
+      }
+      this.update({"data.roles": roles});
+    }
   }
 
   // _preCreatedata(actorDataConstructorData, options, user):

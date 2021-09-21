@@ -480,66 +480,37 @@
                     </li>
                     <ol class="item-list">
                       <li class="item-entry">
-                        <div class="item flexrow" data-item-id="role-captain">
-                          <div>
-                            {{localize 'swnr.sheet.ship.station.captain'}}
-                          </div>
-                          <div>
-                            <select
-                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-
-                              <option></option>
-                              <option>Ra's al Ghul</option>
-                              <option>Bruce Wayne</option>
-
-                            </select>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="item-entry">
-                        <div class="item flexrow" data-item-id="role-gunnery">
-                          <div>
-                            {{localize 'swnr.sheet.ship.station.gunnery'}}
-                          </div>
-                          <div>
-
-                            <select
-                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-                              <option></option>
-                              <option>Bruce Wayne</option>
-                            </select>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="item-entry">
-                        <div class="item flexrow" data-item-id="role-engineering">
-                          <div>
-                            {{localize 'swnr.sheet.ship.station.engineering'}}
-                          </div>
-                          <div>
-
-                            <select
-                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-                              <option></option>
-                              <option>Ra's al Ghul</option>
-                              <option>Bruce Wayne</option>
-                            </select>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="item-entry">
                         <div class="item flexrow" data-item-id="role-bridge">
                           <div>
                             {{localize 'swnr.sheet.ship.station.bridge'}}
                           </div>
                           <div>
-
-                            <select
+                            <select name="data.roles.bridge"
                               class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-                              <option></option>
-                              <option>Ra's al Ghul</option>
-                              <option>Bruce Wayne</option>
-
+                              {{#select actor.data.data.roles.bridge}}
+                              <option value=""></option>
+                              {{#each crewArray as | crew id| }}
+                              <option value="{{crew.id}}">{{crew.name}}</option>
+                              {{/each}}
+                              {{/select}}
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item-entry">
+                        <div class="item flexrow" data-item-id="role-captain">
+                          <div>
+                            {{localize 'swnr.sheet.ship.station.captain'}}
+                          </div>
+                          <div>
+                            <select name="data.roles.captain"
+                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+                              {{#select actor.data.data.roles.captain}}
+                              <option value=""></option>
+                              {{#each crewArray as | crew id| }}
+                              <option value="{{crew.id}}">{{crew.name}}</option>
+                              {{/each}}
+                              {{/select}}
                             </select>
                           </div>
                         </div>
@@ -550,13 +521,50 @@
                             {{localize 'swnr.sheet.ship.station.comms'}}
                           </div>
                           <div>
-
-                            <select
+                            <select name="data.roles.comms"
                               class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-                              <option></option>
-                              <option>Ra's al Ghul</option>
-                              <option>Bruce Wayne</option>
-
+                              {{#select actor.data.data.roles.comms}}
+                              <option value=""></option>
+                              {{#each crewArray as | crew id| }}
+                              <option value="{{crew.id}}">{{crew.name}}</option>
+                              {{/each}}
+                              {{/select}}
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item-entry">
+                        <div class="item flexrow" data-item-id="role-engineering">
+                          <div>
+                            {{localize 'swnr.sheet.ship.station.engineering'}}
+                          </div>
+                          <div>
+                            <select name="data.roles.engineering"
+                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+                              {{#select actor.data.data.roles.engineering}}
+                              <option value=""></option>
+                              {{#each crewArray as | crew id| }}
+                              <option value="{{crew.id}}">{{crew.name}}</option>
+                              {{/each}}
+                              {{/select}}
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item-entry">
+                        <div class="item flexrow" data-item-id="role-gunnery">
+                          <div>
+                            {{localize 'swnr.sheet.ship.station.gunnery'}}
+                          </div>
+                          <div>
+                            <select name="data.roles.gunnery"
+                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+                              {{#select actor.data.data.roles.gunnery}}
+                              <option value=""></option>
+                              {{#each crewArray as | crew id| }}
+                              <option value="{{crew.id}}">{{crew.name}}</option>
+                              {{/each}}
+                              {{/select}}
                             </select>
                           </div>
                         </div>
@@ -596,4 +604,4 @@
       </div>
     </div>
   </div>
-</form
+</form>

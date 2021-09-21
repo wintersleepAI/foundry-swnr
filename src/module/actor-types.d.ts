@@ -171,6 +171,14 @@ declare interface SWNRShipData extends SWNRVehicleTemplateBase {
   operatingCost: 0;
   maintanenceCost: number;
   lastMaintanence: string;
+  roles: {
+    captain: string;
+    gunnery: string;
+    bridge: string;
+    engineering: string;
+    comms: string;
+  };
+
 }
 
 declare interface SWNRShipComputed {
