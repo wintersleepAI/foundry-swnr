@@ -68,23 +68,31 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     }
   }
 
-  // _preCreatedata(actorDataConstructorData, options, user):
-  //  void {
-  //   // super._preCreate(actorDataConstructorData, options, user);
-  //   // console.log("testing precreate");
-  //   // const shipImg= "systems/swnr/assets/icons/spaceship.svg"; 
-  //   // actorDataConstructorData.data.img = shipImg;
-  //   // actorDataConstructorData.data.token.img = shipImg;
-  // }
+  async _preCreate(actorDataConstructorData, options, user):
+   Promise<void> {
+     await super._preCreate(actorDataConstructorData, options, user);
+     if (actorDataConstructorData.type && this.data._source.img == "icons/svg/mystery-man.svg"){
+      const shipImg= "systems/swnr/assets/icons/starfighter.png"; 
+      this.data._source.img= shipImg;
+     }
+    // console.log("testing precreate");
+    // const shipImg= "systems/swnr/assets/icons/spaceship.svg"; 
+    // actorDataConstructorData.data.img = shipImg;
+    // actorDataConstructorData.data.token.img = shipImg;
+  }
 }
 
-Hooks.on("createActor", (actorData: Actor) => {
-  if (actorData.type == "ship") {
-      const shipImg= "systems/swnr/assets/icons/spaceship.svg"; 
-      actorData.data.img = shipImg;
-      actorData.data.token.img = shipImg;
-  }
-});
+// Hooks.on("createActor", (actorData: Actor) => {
+//   if (actorData.type == "ship") {
+//       const shipImg= "systems/swnr/assets/icons/spaceship.png"; 
+//       //actorData.data.img = shipImg;
+//       //actorData.data.token.img = shipImg;
+//       if(actorData.img=="icons/svg/mystery-man.svg"){
+//         actorData.update({"img": shipImg, "token.img":shipImg});
+//       }
+//       //actorData.data.
+//   }
+// });
 
 
 export const document = SWNRShipActor;
