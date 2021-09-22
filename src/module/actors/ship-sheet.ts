@@ -94,9 +94,34 @@ export class ShipActorSheet extends ActorSheet<
       html.find(".spike-button").on("click", this._onSpike.bind(this));
       html.find(".refuel-button").on("click", this._onRefuel.bind(this));
       html.find(".crisis-button").on("click", this._onCrisis.bind(this));
-
+      html.find("[name='data.shipHullType']").on("change", this._onHullChange.bind(this));
     }
-  
+    _onHullChange(event: JQuery.ClickEvent): void {
+      let targetHull = event.target?.value;
+
+    if (targetHull) {
+      let d = new Dialog({
+        title: "Apply Default Stats",
+        content: `<p>Do you want to apply the default stats for a ${targetHull}?</p>`,
+        buttons: {
+          one: {
+            icon: '<i class="fas fa-check"></i>',
+            label: "Yes",
+            callback: () => this.actor.applyDefaulStats(targetHull)
+          },
+          two: {
+            icon: '<i class="fas fa-times"></i>',
+            label: "No",
+            callback: () => {console.log("Doing nothing")}
+          }
+        },
+        default: "two",
+      });
+      d.render(true);
+    }
+  }
+
+
     _onTravel(event: JQuery.ClickEvent): void {
       new Dialog({
         title:'Example Dialog',

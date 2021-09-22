@@ -1,4 +1,5 @@
 import { SWNRBaseActor } from "../base-actor";
+import { HULL_DATA } from "./ship-hull-base";
 
 export class SWNRShipActor extends SWNRBaseActor<"ship"> {
   getRollData(): this["data"]["data"] {
@@ -16,6 +17,16 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
   prepareDerivedData(): void {
     const data = this.data.data;
 
+  }
+
+  applyDefaulStats(hullType: string) {
+    console.log("Applying hullType :" +hullType);
+    if (HULL_DATA[hullType]) {
+      this.update(HULL_DATA[hullType]
+      );
+    } else {
+      console.log("hull type not found " + hullType);
+    }
   }
 
   addCrew(actorId: string): void {
@@ -80,6 +91,14 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     // actorDataConstructorData.data.img = shipImg;
     // actorDataConstructorData.data.token.img = shipImg;
   }
+
+
+  public hullData = {
+    "shuttle": {
+
+    }  
+  };
+
 }
 
 // Hooks.on("createActor", (actorData: Actor) => {
