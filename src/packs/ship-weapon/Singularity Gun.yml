@@ -12,7 +12,6 @@ data:
   powerMultiplier: false
   qualities: AP 25
   tl: 5
-flags: '{}'
 img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
 name: Singularity Gun
 type: shipWeapon

@@ -12,7 +12,6 @@ data:
   powerMultiplier: false
   qualities: Cloud
   tl: 4
-flags: '{}'
 img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
 name: Smart Cloud
 type: shipWeapon
