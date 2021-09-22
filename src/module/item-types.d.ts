@@ -34,6 +34,9 @@ declare interface SWNRBaseVehicleItemData {
   cost: number;
   power: number;
   mass: number;
+  costMultiplier: boolean;
+  powerMultiplier: boolean;
+  massMultiplier: boolean;
   minClass: SWNRShipClass;
   broken: boolean;
 }

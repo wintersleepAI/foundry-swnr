@@ -1,11 +1,20 @@
 _id: XXaRGxI6f9zmXliu
 data:  
   description: >-
-    You are keenly aware of your surroundings and virtually impossible to take
-    unaware. You have an instinctive alacrity of response that helps you act
-    before less wary persons can think to move.
-  damage: 1d4
+    This is the description
+  damage: "1d4"
+  cost: 100
+  power: 1
+  mass: 1
+  broken: false
+  costMultiplier: false
+  powerMultiplier: false
+  massMultiplier: false
+  hardpoint: 2
+  minClass: "fighter"
+  qualities: "AP 20"
+  tl: 4
 name: Test Ship Weapon
 type: shipWeapon
 flags: {}
-img: icons/svg/mystery-man.svg
+img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
