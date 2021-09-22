@@ -1,0 +1,18 @@
+data:
+  broken: false
+  cost: 500000
+  costMultiplier: false
+  damage: 3d8
+  description: placeholder
+  hardpoint: 1
+  mass: 3.0
+  massMultiplier: false
+  minClass: frigate
+  power: 10
+  powerMultiplier: false
+  qualities: AP 20
+  tl: 4
+flags: '{}'
+img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+name: Torpedo Launcher
+type: shipWeapon

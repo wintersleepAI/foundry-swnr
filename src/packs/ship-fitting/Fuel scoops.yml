@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 5000
+  costMultiplier: true
+  description: placeholder
+  effect: Ship can scoop fuel from a gas giant or star
+  mass: 1.0
+  massMultiplier: true
+  minClass: frigate
+  power: 2
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Fuel scoops
+type: shipFitting

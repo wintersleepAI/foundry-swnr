@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 300000
+  costMultiplier: false
+  description: placeholder
+  effect: Stealthed landing pod for troops
+  mass: 2.0
+  massMultiplier: false
+  minClass: frigate
+  power: 0
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Drop pod
+type: shipFitting

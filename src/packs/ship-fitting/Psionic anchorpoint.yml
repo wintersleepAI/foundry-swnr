@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: Special
+  costMultiplier: false
+  description: placeholder
+  effect: Focal point for allied psychics' powers
+  mass: 0.0
+  massMultiplier: false
+  minClass: frigate
+  power: 3
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Psionic anchorpoint
+type: shipFitting

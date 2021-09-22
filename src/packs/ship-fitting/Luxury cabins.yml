@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 10000
+  costMultiplier: true
+  description: placeholder
+  effect: 10% of the max crew get luxurious quarters
+  mass: 1.0
+  massMultiplier: true
+  minClass: frigate
+  power: 1
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Luxury cabins
+type: shipFitting

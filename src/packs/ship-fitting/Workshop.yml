@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 500
+  costMultiplier: true
+  description: placeholder
+  effect: Automated tech workshops for maintenance
+  mass: 0.5
+  massMultiplier: true
+  minClass: frigate
+  power: 1
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Workshop
+type: shipFitting
