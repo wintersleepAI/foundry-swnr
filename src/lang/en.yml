@@ -417,6 +417,7 @@ swnr:
       qualities: Qualities
       effect: Effect
       broken: Is Broken?
+      shooter: Shooting
       station:
         captain: Captain
         gunnery: Gunnery
