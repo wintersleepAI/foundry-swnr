@@ -90,9 +90,69 @@ export class ShipActorSheet extends ActorSheet<
 
       html.find(".item-toggle-broken").on("click", this._onItemBreakToggle.bind(this));
       html.find(".item-click").on("click", this._onItemClick.bind(this));
+      html.find(".travel-button").on("click", this._onTravel.bind(this));
+      html.find(".spike-button").on("click", this._onSpike.bind(this));
+      html.find(".refuel-button").on("click", this._onRefuel.bind(this));
+      html.find(".crisis-button").on("click", this._onCrisis.bind(this));
 
     }
   
+    _onTravel(event: JQuery.ClickEvent): void {
+      new Dialog({
+        title:'Example Dialog',
+        content:`
+          <form>
+            <div class="form-group">
+              <label>Days of Travel</label>
+              <input type='text' name='inputField'></input>
+            </div>
+          </form>`,
+        buttons:{
+          yes: {
+            icon: "<i class='fas fa-check'></i>",
+            label: `Travel`
+          }},
+        default:'yes',
+        close: html => {
+          const form = <HTMLFormElement>html[0].querySelector("form");
+          const days = (<HTMLInputElement>form.querySelector('[name="inputField"]'))?.value;
+          if (days && days!=""){
+            let nDays = Number(days);
+            if (nDays){
+                if (this.actor.data.data.crew.current > 0) {
+                  let newLifeDays = this.actor.data.data.lifeSupportDays.value;
+                  newLifeDays-= (this.actor.data.data.crew.current * nDays);
+                  this.actor.update({
+                    "data.lifeSupportDays.value":newLifeDays
+                  });
+                  if (newLifeDays <= 0) {
+                    ui.notifications?.error("Out of life support!!!");
+                  }
+                }
+            }  else {
+              ui.notifications?.error(days + " is not a number");
+            }          
+          }
+        }
+      }).render(true);
+
+    }
+    _onSpike(event: JQuery.ClickEvent): void {
+      ui.notifications?.info("spike drill");
+    }
+    _onRefuel(event: JQuery.ClickEvent): void {
+      const data = this.actor.data.data;
+      this.actor.update(
+        { 
+          "data.lifeSupportDays.value" :data.lifeSupportDays.max,
+          "data.fuel.value" : data.fuel.max,
+      });
+      ui.notifications?.info("Refuelled");
+    }
+    _onCrisis(event: JQuery.ClickEvent): void {
+      ui.notifications?.info("crisis");
+    }
+
     // Clickable title/name or icon. Invoke Item.roll()
     _onItemClick(event: JQuery.ClickEvent): void {
       event.preventDefault();

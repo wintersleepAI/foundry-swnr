@@ -418,6 +418,10 @@ swnr:
       effect: Effect
       broken: Is Broken?
       shooter: Shooting
+      travel: Travel Days
+      spike: Spike Drill 
+      crisis: Crisis
+      refuel: Refuel
       station:
         captain: Captain
         gunnery: Gunnery
