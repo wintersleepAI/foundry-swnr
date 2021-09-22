@@ -8,13 +8,11 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
   popUpDialog?: Dialog;
 
 
-  async rollAttack(shooterName: string| null,
+  async rollAttack(shooterId: string | null, shooterName: string| null,
     skillMod: number, 
     statMod: number, 
     abMod: number, 
-    mod: number, 
-    hitDice: string) {
-    console.log("skill", skillMod, "stat", statMod, "ab", abMod, hitDice, mod);
+    mod: number) {
     const template = "systems/swnr/templates/chat/attack-roll.html";
 
     const rollData = {
@@ -140,8 +138,8 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
 
         const shooterId = (<HTMLInputElement>form.querySelector('[name="shooterId"]'))?.value
         const shooter = shooterId ? game.actors?.get(shooterId) : null;
-        const dice = (<HTMLSelectElement>form.querySelector('[name="dicepool"]'))
-          .value;
+        // const dice = (<HTMLSelectElement>form.querySelector('[name="dicepool"]'))
+        //   .value;
         const skillName =
           (<HTMLSelectElement>form.querySelector('[name="skill"]'))?.value;
         const statName =
@@ -172,7 +170,7 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
           }
           shooterName = shooter.name;
         }
-        this.rollAttack(shooterName, skillMod, statMod, abMod, mod, dice);
+        this.rollAttack(shooterId, shooterName, skillMod, statMod, abMod, mod);
       }
 
       this.popUpDialog?.close();
