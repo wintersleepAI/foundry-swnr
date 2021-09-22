@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 25000
+  costMultiplier: true
+  description: placeholder
+  effect: Can land and can operate under water
+  mass: 1.0
+  massMultiplier: true
+  minClass: fighter
+  power: 1
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Amphibious operation
+type: shipFitting

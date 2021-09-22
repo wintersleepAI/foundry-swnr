@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 50000
+  costMultiplier: false
+  description: placeholder
+  effect: Space mining and refinery fittings
+  mass: 1.0
+  massMultiplier: false
+  minClass: frigate
+  power: 2
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Mobile extractor
+type: shipFitting

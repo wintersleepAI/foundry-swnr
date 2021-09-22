@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 5000
+  costMultiplier: true
+  description: placeholder
+  effect: Allows boarding of a hostile disabled ship
+  mass: 1.0
+  massMultiplier: false
+  minClass: frigate
+  power: 0
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Boarding tubes
+type: shipFitting

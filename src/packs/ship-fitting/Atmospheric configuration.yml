@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 5000
+  costMultiplier: true
+  description: placeholder
+  effect: 'Can land: frigates and fighters only.'
+  mass: 1.0
+  massMultiplier: true
+  minClass: fighter
+  power: 0
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Atmospheric configuration
+type: shipFitting

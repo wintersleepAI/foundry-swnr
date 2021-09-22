@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 50000
+  costMultiplier: true
+  description: placeholder
+  effect: House vast numbers of cold sleep passengers
+  mass: 2.0
+  massMultiplier: true
+  minClass: cruiser
+  power: 1
+  powerMultiplier: true
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Exodus bay
+type: shipFitting

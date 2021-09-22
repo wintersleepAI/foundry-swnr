@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 25000
+  costMultiplier: true
+  description: placeholder
+  effect: Adds +2 to skill checks to avoid detection
+  mass: 1.0
+  massMultiplier: true
+  minClass: fighter
+  power: 1
+  powerMultiplier: true
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Emissions dampers
+type: shipFitting

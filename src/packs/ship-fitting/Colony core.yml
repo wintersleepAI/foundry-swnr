@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 100000
+  costMultiplier: true
+  description: placeholder
+  effect: Ship can be deconstructed into a colony base
+  mass: 2.0
+  massMultiplier: true
+  minClass: frigate
+  power: 4
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Colony core
+type: shipFitting

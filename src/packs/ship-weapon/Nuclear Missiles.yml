@@ -1,0 +1,18 @@
+data:
+  broken: false
+  cost: 50000
+  costMultiplier: false
+  damage: Special
+  description: placeholder
+  hardpoint: 2
+  mass: 1.0
+  massMultiplier: false
+  minClass: frigate
+  power: 5
+  powerMultiplier: false
+  qualities: Ammo 5
+  tl: 4
+flags: '{}'
+img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+name: Nuclear Missiles
+type: shipWeapon

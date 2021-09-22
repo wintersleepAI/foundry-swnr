@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 200000
+  costMultiplier: false
+  description: placeholder
+  effect: Carrier housing for a fighter
+  mass: 2.0
+  massMultiplier: false
+  minClass: cruiser
+  power: 0
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Ship bay (fighter)
+type: shipFitting

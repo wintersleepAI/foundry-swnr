@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 100000
+  costMultiplier: true
+  description: placeholder
+  effect: Allows a precog to assist in navigation
+  mass: 0.0
+  massMultiplier: false
+  minClass: frigate
+  power: 1
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Precognitive nav chamber
+type: shipFitting

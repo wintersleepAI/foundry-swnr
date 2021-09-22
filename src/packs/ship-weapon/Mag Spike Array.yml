@@ -1,0 +1,18 @@
+data:
+  broken: false
+  cost: 1000000
+  costMultiplier: false
+  damage: 2d6+2
+  description: placeholder
+  hardpoint: 2
+  mass: 2.0
+  massMultiplier: false
+  minClass: frigate
+  power: 5
+  powerMultiplier: false
+  qualities: Flak
+  tl: 4
+flags: '{}'
+img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+name: Mag Spike Array
+type: shipWeapon

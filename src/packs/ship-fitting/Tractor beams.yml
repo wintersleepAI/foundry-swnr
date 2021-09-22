@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 10000
+  costMultiplier: true
+  description: placeholder
+  effect: Manipulate objects in space at a distance
+  mass: 1.0
+  massMultiplier: false
+  minClass: frigate
+  power: 2
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Tractor beams
+type: shipFitting

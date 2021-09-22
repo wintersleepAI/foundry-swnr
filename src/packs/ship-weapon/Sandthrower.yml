@@ -1,0 +1,18 @@
+data:
+  broken: false
+  cost: 50000
+  costMultiplier: false
+  damage: 2d4
+  description: placeholder
+  hardpoint: 1
+  mass: 1.0
+  massMultiplier: false
+  minClass: fighter
+  power: 3
+  powerMultiplier: false
+  qualities: Flak
+  tl: 4
+flags: '{}'
+img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+name: Sandthrower
+type: shipWeapon

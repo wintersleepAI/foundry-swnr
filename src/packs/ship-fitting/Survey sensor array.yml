@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 5000
+  costMultiplier: true
+  description: placeholder
+  effect: Improved planetary sensory array
+  mass: 1.0
+  massMultiplier: false
+  minClass: frigate
+  power: 2
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Survey sensor array
+type: shipFitting

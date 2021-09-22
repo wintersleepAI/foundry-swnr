@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 10000
+  costMultiplier: true
+  description: placeholder
+  effect: Weapons and armor for the crew
+  mass: 0.0
+  massMultiplier: false
+  minClass: frigate
+  power: 0
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Armory
+type: shipFitting
