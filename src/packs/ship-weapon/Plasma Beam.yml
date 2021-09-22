@@ -12,7 +12,6 @@ data:
   powerMultiplier: false
   qualities: AP 10
   tl: 4
-flags: '{}'
 img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
 name: Plasma Beam
 type: shipWeapon
