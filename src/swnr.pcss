@@ -124,6 +124,17 @@ $shadowColor: black;
   color: rgba(0, 0, 0, 0.2);
 }
 
+.item-image {
+  flex-basis: 30px;
+  flex-grow: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.item-image:hover {
+  background-image: url("/icons/svg/d20-black.svg") !important;
+}
+
 button {
   @apply border border-gray-700 rounded-md p-1 bg-gray-300;
 }

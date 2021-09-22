@@ -312,16 +312,12 @@
             <div class="grid grid-cols-2">
               <div class="gap-2">
                 <!-- Left Col -->
-
-
-
-
                 <div class="weapons pr-0.5">
                   <!-- weapons -->
                   <div>
                     <li class="item-titles flexrow">
                       <!--<div class="item-caret"><i class="fas fa-caret-down"></i></div>-->
-                      <div class="item-name ">{{localize 'swnr.sheet.ship.weapon'}}</div>
+                      <div class="item-name flex2">{{localize 'swnr.sheet.ship.weapon'}}</div>
                       <div class="item-dmg">{{localize 'swnr.sheet.ship.dmg'}}</div>
                       <div class="item-qualities">{{localize 'swnr.sheet.ship.qualities'}}</div>
 
@@ -332,7 +328,8 @@
                       {{#each itemTypes.shipWeapon as |item id|}}
                       <li class="item-entry">
                         <div class="item flexrow" data-item-id="{{item.id}}">
-                          <div class="item-name item-click item-rollable flexrow">
+                          <div class="item-name item-click item-rollable flexrow flex2">
+                            <div class="item-image" style="background-image: url({{item.img}})"><a></a></div>
                             <a>{{item.name}}</a>
                           </div>
                           <div>
@@ -370,7 +367,7 @@
                   <div>
                     <li class="item-titles flexrow">
                       <!--<div class="item-caret"><i class="fas fa-caret-down"></i></div>-->
-                      <div class="item-name">{{localize 'swnr.sheet.ship.defense'}} </div>
+                      <div class="item-name flex2">{{localize 'swnr.sheet.ship.defense'}} </div>
                       <div class="item-effect">{{localize 'swnr.sheet.ship.effect'}}</div>
                       <div class="item-controls">
                       </div>
@@ -379,7 +376,9 @@
                       {{#each itemTypes.shipDefense as |item id|}}
                       <li class="item-entry">
                         <div class="item flexrow" data-item-id="{{item.id}}">
-                          <div class="item-name item-click item-rollable flexrow">
+                          <div class="item-name item-click item-rollable flexrow flex2">
+                            <div class="item-image" style="background-image: url({{item.img}})"><a></a></div>
+
                             <a>{{item.name}}</a>
                           </div>
                           <div>
@@ -408,7 +407,7 @@
                     <div>
                       <li class="item-titles flexrow">
                         <!--<div class="item-caret"><i class="fas fa-caret-down"></i></div>-->
-                        <div class="item-name">{{localize 'swnr.sheet.ship.fittings'}} </div>
+                        <div class="item-name flex2">{{localize 'swnr.sheet.ship.fittings'}} </div>
                         <div class="item-effect">{{localize 'swnr.sheet.ship.effect'}}</div>
                         <div class="item-controls">
                         </div>
@@ -417,7 +416,9 @@
                         {{#each itemTypes.shipFitting as |item id|}}
                         <li class="item-entry">
                           <div class="item flexrow" data-item-id="{{item.id}}">
-                            <div class="item-name  item-click item-rollable flexrow">
+                            <div class="item-name item-click item-rollable flexrow flex2">
+                              <div class="item-image" style="background-image: url({{item.img}})"><a></a></div>
+
                               <a>{{item.name}}</a>
                             </div>
                             <div>
