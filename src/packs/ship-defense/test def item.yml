@@ -1,0 +1,17 @@
+_id: CCaRGxI6f9zmXliu
+data:  
+  description: >-
+    This is the description
+  cost: 100
+  power: 1
+  mass: 1
+  broken: false
+  costMultiplier: false
+  powerMultiplier: false
+  massMultiplier: false
+  minClass: "cruiser"
+  effect: "Great Defense. Armor 2"
+  tl: 4
+name: Test Ship Defense
+type: shipDefense
+img: systems/swnr/assets/icons/game-icons.net/item-icons/bubble-field.svg
