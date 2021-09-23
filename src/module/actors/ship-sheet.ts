@@ -7,7 +7,7 @@ import { AllItemClasses } from "../item-types";
 import { SWNRBaseActor } from "../base-actor";
 import { SWNRNPCActor } from "./npc";
 import { SWNRCharacterActor } from "./character";
-
+import { SysToFail } from "./ship";
 
 interface ShipActorSheetData extends ActorSheet.Data {
   shipWeapons?: Item[];
@@ -292,9 +292,7 @@ export class ShipActorSheet extends ActorSheet<
     }
 
     async _onSysFailure(event: JQuery.ClickEvent): Promise<void> {
-      this.actor.rollSystemFailure();
-
-      const title = game.i18n.format("swnr.dialog.spikeRoll", {
+      const title = game.i18n.format("swnr.dialog.sysFailure", {
         actorName: this.actor?.name,
       });
       const dialogData = {};
@@ -303,7 +301,35 @@ export class ShipActorSheet extends ActorSheet<
 
       const _rollForm = async (html: HTMLFormElement) => {
         const form = <HTMLFormElement>html[0].querySelector("form");
-        console.log("todo");
+        const incDrive = (<HTMLInputElement>(
+          form.querySelector('[name="inc-drive"]')
+        ))?.checked ? true : false;
+        const incWpn = (<HTMLInputElement>(
+          form.querySelector('[name="inc-wpn"]')
+        ))?.checked ? true : false;
+        const incFit = (<HTMLInputElement>(
+          form.querySelector('[name="inc-fit"]')
+        ))?.checked ? true : false;
+        const incDef = (<HTMLInputElement>(
+          form.querySelector('[name="inc-def"]')
+        ))?.checked ? true : false;
+        const whatToRoll =
+        (<HTMLSelectElement>form.querySelector('[name="what"]'))?.value;
+        
+        let sysToInclude: SysToFail[] = [];
+        if (incDrive) {
+          sysToInclude.push("drive");
+        }
+        if (incWpn) {
+          sysToInclude.push("wpn");
+        }
+        if (incFit) {
+          sysToInclude.push("fit");
+        }
+        if (incDef) {
+          sysToInclude.push("def");
+        }
+        this.actor.rollSystemFailure(sysToInclude, whatToRoll);
       }
 
       this.popUpDialog?.close();

@@ -1,7 +1,12 @@
+import { type } from "os";
 import { SWNRBaseActor } from "../base-actor";
 import { HULL_DATA } from "./ship-hull-base";
 
+export type SysToFail = "drive" | "wpn" | "def" | "fit";
+
 export class SWNRShipActor extends SWNRBaseActor<"ship"> {
+  ENGINE_ID = "SPIKE_DRIVE";
+
   getRollData(): this["data"]["data"] {
     this.data._source.data;
     const data = super.getRollData();
@@ -147,8 +152,80 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     ui.notifications?.info("todo crisis");
   }
 
-  rollSystemFailure(): void {
+  _getRandomInt(max: number) {
+    return Math.floor(Math.random() * max);
+  }
+
+  _breakItem(id: string, forceDestroy: boolean) {
+    if (id == this.ENGINE_ID){
+      
+    } else {
+
+    }
+  }
+
+  rollSystemFailure(sysToInclude: SysToFail[], whatToRoll: string): void {
     ui.notifications?.info("todo sys failure");
+    let candidateIds: string[]  = [];
+    let idx = sysToInclude.indexOf("drive");
+    if (idx >- 1){
+      candidateIds.push(this.ENGINE_ID);
+      sysToInclude.splice(idx,1 );
+      console.log(sysToInclude);
+    }
+    //Get wpns if marked
+    idx = sysToInclude.indexOf("wpn");
+    if (idx >- 1){
+      for (let i of this.itemTypes.shipWeapon){
+        console.log("wpn ", i);
+        if (i.id) {
+          candidateIds.push(i.id);
+        }
+      }
+      sysToInclude.splice(idx,1 );
+      console.log(sysToInclude);
+    }
+    //Get def if marked
+    idx = sysToInclude.indexOf("def");
+    if (idx >- 1){
+      for (let i of this.itemTypes.shipDefense){
+        console.log("def ", i);
+        if (i.id) {
+          candidateIds.push(i.id);
+        }
+      }
+      sysToInclude.splice(idx,1 );
+      console.log(sysToInclude);
+    }
+    //Get fit if marked
+    idx = sysToInclude.indexOf("fit");
+    if (idx >- 1){
+      for (let i of this.itemTypes.shipFitting){
+        console.log("def ", i);
+        if (i.id) {
+          candidateIds.push(i.id);
+        }
+      }
+      sysToInclude.splice(idx,1 );
+      console.log(sysToInclude);
+    }
+    // Should be nothing left
+    if (sysToInclude.length > 0) {
+      ui.notifications?.error("Sys to fail not evaluated: " + sysToInclude);
+    }
+    if (whatToRoll == "dest-all") {
+
+    } else if (whatToRoll == "break-all") {
+
+    } else if (whatToRoll == "all-50") {
+      
+    } else if (whatToRoll == "break-1") {
+      
+    } else {
+      ui.notifications?.error("Sys to fail not evaluated. What to include " + whatToRoll);
+      return;
+    }
+
   }
 
   addCrew(actorId: string): void {

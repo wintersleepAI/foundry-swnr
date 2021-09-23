@@ -1,10 +1,34 @@
 <form class="bg-gray-200 -m-2 p-2 pb-4 flex gap-1 justify-between">
   <div class="flex flex-col">
-    <div class="flex flexrow">Include Drive</div>
-    <div class="flex flexrow">Include Weapons</div>
-    <div class="flex flexrow">Include Fitting</div>
-    <div class="flex flexrow">Include Defense</div>
-    <div class="flex flexrow">Destroy all, break all (destroy if broken/disabled), 50% per system break (destory if broken), break one</div>
+    <div class="flex flexrow">
+        <label for="inc-drive">{{localize 'swnr.dialog.failure.inc-drive'}}:</label>
+        <input type="checkbox" name="inc-drive" id="inc-drive" checked />
+    </div>
+    <div class="flex flexrow">
+        <label for="inc-wpn">{{localize 'swnr.dialog.failure.inc-wpn'}}:</label>
+        <input type="checkbox" name="inc-wpn" id="inc-wpn" checked />
+    </div>
+    <div class="flex flexrow">
+        <label for="inc-fit">{{localize 'swnr.dialog.failure.inc-fit'}}:</label>
+        <input type="checkbox" name="inc-fit" id="inc-fit" checked />
     
+
+    </div>
+    <div class="flex flexrow">
+    <label for="inc-def">{{localize 'swnr.dialog.failure.inc-def'}}:</label>
+        <input type="checkbox" name="inc-def" id="inc-def" />
+    
+
+    </div>
+    <div class="flex flexrow">
+        <label for="what">{{{localize 'swnr.dialog.failure.what'}}}</label>
+        <select name="what"
+                class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+          <option value="dest-all">{{localize 'swnr.dialog.failure.dest-all'}}</option>
+          <option value="break-all">{{localize 'swnr.dialog.failure.break-all'}}</option>
+          <option value="all-50">{{localize 'swnr.dialog.failure.all-50'}}</option>
+          <option value="break-1" selected>{{localize 'swnr.dialog.failure.break-1'}}</option>
+        </select>    
+      </div>
   </div>
 </form>

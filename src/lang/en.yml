@@ -530,7 +530,18 @@
   dialog:
     attackRoll: "{actorName} attacking with {weaponName}?"
     spikeRoll: "{actorName} making spike roll"
-    sysFailure: "Rolling system failurs for {actorName}"
+    sysFailure: "Rolling system failures for {actorName}"
+    failure:
+      inc-drive: Include Drive (Spike Level Drop)
+      inc-wpn: Include Weapons
+      inc-fit: Include Fittings
+      inc-def: Include Defenses
+      what: What to fail? <br>(disabling/breaking an already disabled system will destroy it)
+      dest-all: Destroy All
+      break-all: Break/disable All 
+      all-50: 50% chance to break/disable each system 
+      break-1: Break/disable one system 
+
     add-skills: Add Skills
     add-bulk-skills: Add Bulk Skills to {actor}
     tweak-char: "Tweaking options for {actorName}"
