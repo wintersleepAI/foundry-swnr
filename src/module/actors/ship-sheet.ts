@@ -144,16 +144,7 @@ export class ShipActorSheet extends ActorSheet<
           if (days && days!=""){
             let nDays = Number(days);
             if (nDays){
-                if (this.actor.data.data.crew.current > 0) {
-                  let newLifeDays = this.actor.data.data.lifeSupportDays.value;
-                  newLifeDays-= (this.actor.data.data.crew.current * nDays);
-                  this.actor.update({
-                    "data.lifeSupportDays.value":newLifeDays
-                  });
-                  if (newLifeDays <= 0) {
-                    ui.notifications?.error("Out of life support!!!");
-                  }
-                }
+                this.actor.useDaysOfLifeSupport(nDays);
             }  else {
               ui.notifications?.error(days + " is not a number");
             }          
@@ -162,9 +153,128 @@ export class ShipActorSheet extends ActorSheet<
       }).render(true);
 
     }
-    _onSpike(event: JQuery.ClickEvent): void {
-      ui.notifications?.info("spike drill");
+
+    async _onSpike(event: JQuery.ClickEvent): Promise<void> {
+      if (this.actor.data.data.fuel.value<=0){
+        ui.notifications?.error("Out of fuel.");
+        return;
+      }
+      let defaultPilotId: string | null = this.actor.data.data.roles.bridge;
+      let defaultPilot: SWNRCharacterActor | SWNRNPCActor | null = null;
+      if (defaultPilotId) {
+        let _temp = game.actors?.get(defaultPilotId);
+        if (_temp && (_temp.type == "character" || _temp.type == "npc")) {
+          defaultPilot = _temp;
+        }
+      }
+      let crewArray: Array<SWNRCharacterActor | SWNRNPCActor> = [];
+      if (this.actor.data.data.crewMembers) {
+        for (var i in this.actor.data.data.crewMembers) {
+          let cId = this.actor.data.data.crewMembers[i];
+          let crewMember = game.actors?.get(cId);
+          if (crewMember && (crewMember.type == "character" || crewMember.type == "npc")) {
+            crewArray.push(crewMember);
+          }
+        }
+      }
+  
+      const title = game.i18n.format("swnr.dialog.attackRoll", {
+        actorName: this.actor?.name,
+      });
+  
+      if (defaultPilot == null && crewArray.length > 0) {
+        //There is no pilot. Use first crew as default
+        defaultPilot = crewArray[0];
+        defaultPilotId = crewArray[0].id;
+      }
+      if (defaultPilot?.type == "npc" && crewArray.length > 0) {
+        //See if we have a non NPC to set as pilot to get skills and attr
+        for (let char of crewArray) {
+          if (char.type == "character") {
+            defaultPilot = char;
+            defaultPilotId = char.id;
+            break;
+          }
+        }
+      }
+  
+      const dialogData = {
+        actor: this.actor.data,
+        defaultSkill1: "Pilot",
+        defaultSkill2: "Navigation",
+        defaultStat: "int",
+        pilot: defaultPilot,
+        pilotId: defaultPilotId,
+        crewArray: crewArray,
+        baseDifficulty: 7,
+      };
+  
+      const template = "systems/swnr/templates/dialogs/roll-spike.html";
+      const html = renderTemplate(template, dialogData);
+  
+      const _rollForm = async (html: HTMLFormElement) => {
+        const form = <HTMLFormElement>html[0].querySelector("form");
+        const mod = parseInt(
+          (<HTMLInputElement>form.querySelector('[name="modifier"]'))?.value
+        );
+        const pilotId = (<HTMLInputElement>form.querySelector('[name="pilotId"]'))?.value
+        const pilot = pilotId ? game.actors?.get(pilotId) : null;
+        const dice = (<HTMLSelectElement>form.querySelector('[name="dicepool"]'))
+          .value;
+        const skillName =
+          (<HTMLSelectElement>form.querySelector('[name="skill"]'))?.value;
+        const statName =
+          (<HTMLSelectElement>form.querySelector('[name="stat"]'))?.value;
+        const difficulty = parseInt(
+            (<HTMLInputElement>form.querySelector('[name="difficulty"]'))?.value
+         );
+        const travelDays = parseInt(
+          (<HTMLInputElement>form.querySelector('[name="travelDays"]'))?.value
+        );
+        let skillMod = 0;
+        let statMod = 0;
+        let pilotName: string | null = "";
+        if (pilot) {
+          if (skillName) {
+            // We need to look up by name
+            for (let skill of pilot.itemTypes.skill) {
+              if (skillName == skill.data.name) {
+                skillMod = skill.data.data["rank"] < 0 ? -1 : skill.data.data["rank"];
+              }
+            }
+          }//end skill
+          if (statName) {
+            let sm = pilot.data.data["stats"]?.[statName].mod;
+            if (sm) {
+              console.log("setting stat mod", sm);
+              statMod = sm;
+            }
+          }
+          pilotName = pilot.name;
+        }
+        this.actor.rollSpike(pilotId, pilotName, skillMod, statMod, mod, dice, difficulty, travelDays);
+      }
+  
+      this.popUpDialog?.close();
+      this.popUpDialog = new ValidatedDialog(
+        {
+          title: title,
+          content: await html,
+          default: "roll",
+          buttons: {
+            roll: {
+              label: game.i18n.localize("swnr.chat.roll"),
+              callback: _rollForm,
+            },
+          },
+        },
+        {
+          classes: ["swnr"],
+        }
+      );
+      const s = this.popUpDialog.render(true);  
     }
+
     _onRefuel(event: JQuery.ClickEvent): void {
       const data = this.actor.data.data;
       this.actor.update(

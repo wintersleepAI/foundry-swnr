@@ -1,11 +1,13 @@
 <form class="bg-gray-200 -m-2 p-2 pb-4 flex gap-1 justify-between">
+  <div class="flex flex-col">
+
   <div class="flex flexrow gap-2">
 
     <div class="flex flex-col">
-      <label for="shooterId">{{localize 'swnr.sheet.ship.shooter'}}:</label>
-      <select name="shooterId"
+      <label for="pilotId">{{localize 'swnr.sheet.ship.station.bridge'}}:</label>
+      <select name="pilotId"
         class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-        {{#select gunnerId}}
+        {{#select pilotId}}
         {{#each crewArray }}
         <option value="{{this.id}}">{{this.name}}</option>
         {{/each}}
@@ -20,7 +22,7 @@
       <select name="skill"
         class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
         <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
-        {{#each gunner.itemTypes.skill }}
+        {{#each pilot.itemTypes.skill }}
         <option value="{{this.name}}" 
            {{#if (eq this.name ../defaultSkill1)}} selected {{/if}}
            {{#if (eq this.name ../defaultSkill2)}} selected {{/if}}
@@ -30,7 +32,7 @@
     </div>
 
 
-    {{!-- <div class="flex flex-col">
+    <div class="flex flex-col">
       {{! dice }}
       <label for="">{{localize 'swnr.chat.dicepool'}}: </label>
       <select name="dicepool"
@@ -39,7 +41,7 @@
         <option value="3d6kh2">3D6</option>
         <option value="4d6kh2">4D6</option>
       </select>
-    </div> --}}
+    </div>
 
     <div class="flex flex-col">
       {{! stat}}
@@ -47,7 +49,7 @@
       <select name="stat"
         class="w-32 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
         {{#select defaultStat}}
-        {{#each gunner.data.data.stats as |box name |}}
+        {{#each pilot.data.data.stats as |box name |}}
         <option value="{{name}}">{{localize (concat "swnr.stat.long." name)}}</option>
         {{/each}}
         {{/select}}
@@ -60,5 +62,28 @@
         class="w-10 text-center px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md" />
     </div>
 
+    <div class="flex flex-col">
+      <label for="travelDays">{{localize 'swnr.sheet.ship.travel'}}: </label>
+      <input name="travelDays" type="number" step="1" value="0"
+        class="w-10 text-center px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md" />
+    </div>
+
+    <div class="flex flex-col">
+      <label for="difficulty">{{localize 'swnr.chat.difficulty'}}: </label>
+      <input name="difficulty" type="number" step="1" value="{{baseDifficulty}}"
+        class="w-10 text-center px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md" />
+    </div>
+  </div>
+  <div>
+      <ul>
+         <li>+6 Uncharted</li> 
+         <li>+2 Rutter more than 5 years </li>
+         <li>+1 Rutter is from 1-5 years old</li>
+         <li>-2 Rutter is less than 1 month old</li>
+         <li>+1 per 2 full hexes </li>
+         <li>+2 Trimming the course</li>
+         <li>+2 Rushed drill activation (one round vs 30 min)</li>
+      </ul>
+  </div>
   </div>
 </form>

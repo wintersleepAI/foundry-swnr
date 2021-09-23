@@ -1,4 +1,4 @@
-swnr:
+ swnr:
   title: "Stars Without Number: Revised"
   CharacterActorSheet: Basic Sheet
   stat:
@@ -449,6 +449,32 @@ swnr:
     statApply: Apply stats to {name}
     totalModifier: Total Modifier
     statRoll: Roll stats
+    spike:
+      fail3: >-
+        Catastrophic dimensional energy incursion. 
+        Ship emerges around a star within 1d6 hexes 
+        of the target destination with drive and all systems destroyed.
+      fail4-5: >-
+        Shear surge overwhelms internal systems.
+        Ship emerges around star nearest to drill
+        origin. 50% chance for each system to be
+        disabled until repaired. If the spike drive is
+        disabled, treat as if a 3 were rolled.
+      fail6-8: >-
+        Power spike. One system disabled until
+        repaired, ship stuck in transit for full 
+        base time before being able to make another
+        Pilot check. If the spike drive fails, treat as if
+        a 3 were rolled.
+      fail9-12: >-
+        Ship off course. Spend base time in transit,
+        then make another Pilot check.
+      fail13-15: >-
+        Ship off course, but detected early. Make
+        another Pilot check.
+      fail16-17: >-
+        Drill successful, but takes twice base time
+      fail18: Drill successful and on time, by blind luck.
   ammo:
     ammo: Standard Ammo
     missile: Missiles

@@ -29,6 +29,120 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     }
   }
 
+  async useDaysOfLifeSupport(nDays: number){
+    if (this.data.data.crew.current > 0) {
+      let newLifeDays = this.data.data.lifeSupportDays.value;
+      newLifeDays-= (this.data.data.crew.current * nDays);
+      this.update({
+        "data.lifeSupportDays.value":newLifeDays
+      });
+      if (newLifeDays <= 0) {
+        ui.notifications?.error("Out of life support!!!");
+      }
+    }
+  }
+
+  async rollSpike(pilotId, pilotName, skillMod, statMod, mod, dice, difficulty, travelDays) {
+    const template = "systems/swnr/templates/chat/spike-roll.html";
+    const rollData = {
+      dice,
+      skillMod,
+      statMod,
+      mod
+    };
+    const skillRollStr = `${dice} + @skillMod + @statMod + @mod`;
+    const skillRoll = new Roll(
+      skillRollStr,
+      rollData
+    ).roll();
+    
+    const pass = (skillRoll.total && skillRoll.total > difficulty) ? true : false;
+    let failRoll: string | null = null;
+    let failText: string | null = null;
+    if (!pass) {
+      const failRoll = new Roll("3d6").roll();
+      switch (failRoll.total) {
+        case 3:
+          const fRoll = new Roll("1d6").roll().total;
+          failText = game.i18n.localize("swnr.chat.spike.fail3");
+          failText += `<br> Rolled: {fRoll}`;
+          // Break all systems and drive
+          break;
+        case 4:
+        case 5:
+          failText = game.i18n.localize("swnr.chat.spike.fail4-5");
+          // 50% each breaks. if engine breaks 1d6 hexes away and fail3
+          break;
+        case 6:
+        case 7:
+        case 8:
+          failText = game.i18n.localize("swnr.chat.spike.fail6-8");
+          // one random breaks. if engine breaks 1d6 hexes away and fail3
+          break;
+        case 9:
+        case 10:
+        case 11:
+        case 12:
+          failText = game.i18n.localize("swnr.chat.spike.fail9-12");
+          break;
+        case 13:
+        case 14:
+        case 15:
+          travelDays = 0;
+          failText = game.i18n.localize("swnr.chat.spike.fail13-15");
+          break;
+        case 16:
+        case 17:
+          travelDays*=2;
+          failText = game.i18n.localize("swnr.chat.spike.fail16-17");
+          break;
+        case 18:
+          failText = game.i18n.localize("swnr.chat.spike.fail18");
+          break;
+      }
+    }
+
+
+    const dialogData= {
+      skillRoll: await skillRoll.render(),
+      skillRollStr,
+      travelDays,
+      pass,
+      failRoll,
+      failText,
+      pilotName,
+    };
+    const rollMode = game.settings.get("core", "rollMode");
+    let poolRolls = [skillRoll];
+    if (failRoll){
+      poolRolls.push(failRoll);
+    }
+    const diceData = Roll.fromTerms([
+      PoolTerm.fromRolls(poolRolls),
+    ]);
+    const chatContent = await renderTemplate(template, dialogData);
+    console.log(pilotName);
+    const chatData = {
+      speaker: { "alias": pilotName} ,
+      roll: JSON.stringify(diceData),
+      content: chatContent,
+      type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+    };
+
+    getDocumentClass("ChatMessage").applyRollMode(chatData, rollMode);
+    getDocumentClass("ChatMessage").create(chatData);
+
+    this.useDaysOfLifeSupport(travelDays);
+    if (travelDays>0) { 
+      let fuel = this.data.data.fuel.value;
+      fuel-= 1;
+      this.update({"data.fuel.value":fuel});
+      if (fuel <= 0) {
+        ui.notifications?.info("Out of fuel...");
+      }
+    }
+  }
+
   addCrew(actorId: string): void {
     let actor = game.actors?.get(actorId);
     if (actor){
