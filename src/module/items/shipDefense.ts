@@ -2,6 +2,10 @@ import { SWNRBaseItem } from "../base-item";
 
 export class SWNRShipDefense extends SWNRBaseItem<"shipDefense"> {
   async roll(): Promise<void> {
+    if (this.data.data.broken || this.data.data.destroyed) {
+      ui.notifications?.error("Defense is broken/disabled or destroyed. Cannot use!");
+      return;
+    }
     if (this.actor == null) {
       console.log("Cannot role without an actor");
       return;

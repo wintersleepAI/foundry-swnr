@@ -71,8 +71,8 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
       new Error(message);
       return;
     }
-    if (this.data.data.broken) {
-      ui.notifications?.error("Weapon is broken. Cannot fire!");
+    if (this.data.data.broken || this.data.data.destroyed) {
+      ui.notifications?.error("Weapon is broken/disabled or destroyed. Cannot fire!");
       return;
     }
     if (this.actor.type == "ship") {

@@ -5,6 +5,7 @@ import { SWNRShipDefense } from "../items/shipDefense";
 import { SWNRShipFitting } from "../items/shipFitting";
 import { SWNRShipWeapon } from "../items/shipWeapon";
 import { HULL_DATA } from "./ship-hull-base";
+import { SWNRShipClass } from "../actor-types";
 
 export type SysToFail = "drive" | "wpn" | "def" | "fit";
 
@@ -153,6 +154,7 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
   }
 
   rollCrisis(): void {
+    //TODO localize. Allow for rolls.
     const crisisArray = [
       "<b>Armor Loss:</b><i>(Continuing)</i><br> The hit melted an important patch of ship  armor, cracked an internal support, or exposed a      sensitive system. Until resolved, the ship’s Armor      rating is halved, rounded down.",
       "<b>Cargo Loss:</b><i>(Acute)</i><br> The hit has gored open a cargo bay, threatening to dump the hold or expose delicate contents to ruinous damage. If not resolved by the end of the next round, lose d10*10% of the ship’s cargo.",
@@ -363,14 +365,123 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     // actorDataConstructorData.data.token.img = shipImg;
   }
 
-
-  public hullData = {
-    "shuttle": {
-
-    }  
-  };
-
 }
+
+// Compare ship hull sizes. ugly but works. A map to ints might be better.
+// -1 ship1 is smaller, 0 same, 1 ship1 is larger
+function compareShipClass(ship1: SWNRShipClass, ship2: SWNRShipClass ): -1|0|1 {
+  if (ship1 == ship2) {
+    return 0;
+  } else if (ship1 == "fighter"){
+    return -1;
+  } else if (ship1 == "capital") {
+    return 1;
+  } else if (ship1 == "frigate") {
+    if (ship2 == "fighter") { return 1; }
+    else { return -1;}
+  } else{ //(ship1 == "cruiser") {
+    if (ship2 == "capital") {return -1;}
+    else {return 1;}
+  }
+}
+
+Hooks.on("preDeleteItem",(item: Item, options, id) => {
+  if (item.type == "shipWeapon" || item.type == "shipDefense" || item.type == "shipFitting"){
+    if (item.parent?.type =="ship"){
+      //TODO fix. This is get around Typescript complaints. Know we are valid by above if
+      const shipItem = <SWNRShipDefense| SWNRShipWeapon | SWNRShipFitting>(item as unknown);
+      let data = shipItem.data.data;
+      let shipClass = item.parent.data.data.shipClass;
+      let shipMass = item.parent.data.data.mass.value;
+      let shipPower = item.parent.data.data.power.value;
+      let itemMass = data.mass;
+      let itemPower = data.power;
+      let multiplier = 1;
+      if (shipClass == "frigate"){
+        multiplier = 2;
+      } else if (shipClass == "cruiser"){
+        multiplier = 3;
+      } else if (shipClass == "capital"){
+        multiplier = 4;
+      }
+      if (data.massMultiplier){
+        itemMass*=multiplier;
+      }
+      if (data.powerMultiplier){
+        itemPower*=multiplier;
+      }
+      shipMass+=itemMass;
+      shipPower+=itemPower;
+      item.parent.update({"data.mass.value":shipMass, "data.power.value":shipPower});
+      if (shipMass > item.parent.data.data.mass.max || shipPower > item.parent.data.data.power.max){
+        ui.notifications?.error("Ship went over max power or mass (still added)");
+      }
+      if (shipItem.type=="shipWeapon"){
+        const itemHardpoint = shipItem.data.data.hardpoint;
+        let shipHardpoint = item.parent.data.data.hardpoints.value;
+        shipHardpoint+=itemHardpoint;
+        item.parent.update({"data.hardpoints.value":shipHardpoint });
+        if (shipHardpoint > item.parent.data.data.hardpoints.max){
+          ui.notifications?.error("Ship  went over hardpoint max (still added)");
+        } 
+      }
+    } else {
+      console.log('What are you doing?', item);
+    }
+  }
+  return item;
+});
+
+Hooks.on("preCreateItem", (item: Item, data, options, id) => {
+  if (item.type == "shipWeapon" || item.type == "shipDefense" || item.type == "shipFitting"){
+    if (item.parent?.type =="ship"){
+      //TODO fix. This is get around Typescript complaints. Know we are valid by above if
+      const shipItem = <SWNRShipDefense| SWNRShipWeapon | SWNRShipFitting>(item as unknown);
+      let data = shipItem.data.data;
+      let shipClass = item.parent.data.data.shipClass;
+      if (compareShipClass(shipClass,data.minClass) < 0 ){
+        ui.notifications?.error(`Ship item minClass (${data.minClass}) is too large for this ship (${shipClass}). Not adding. `);
+        return false;
+      }
+      let shipMass = item.parent.data.data.mass.value;
+      let shipPower = item.parent.data.data.power.value;
+      let itemMass = data.mass;
+      let itemPower = data.power;
+      let multiplier = 1;
+      if (shipClass == "frigate"){
+        multiplier = 2;
+      } else if (shipClass == "cruiser"){
+        multiplier = 3;
+      } else if (shipClass == "capital"){
+        multiplier = 4;
+      }
+      if (data.massMultiplier){
+        itemMass*=multiplier;
+      }
+      if (data.powerMultiplier){
+        itemPower*=multiplier;
+      }
+      shipMass-=itemMass;
+      shipPower-=itemPower;
+      item.parent.update({"data.mass.value":shipMass, "data.power.value":shipPower});
+      if (shipMass < 0 || shipPower < 0){
+        ui.notifications?.error("Ship does not have enough power or mass (still added)");
+      }
+      if (shipItem.type=="shipWeapon"){
+        const itemHardpoint = shipItem.data.data.hardpoint;
+        let shipHardpoint = item.parent.data.data.hardpoints.value;
+        shipHardpoint-=itemHardpoint;
+        item.parent.update({"data.hardpoints.value":shipHardpoint });
+        if (shipHardpoint < 0){
+          ui.notifications?.error("Ship does not have enough hard points (still added)");
+        } 
+      }
+    } else {
+      console.log('What are you doing?', item);
+    }
+  }
+  return item;
+});
 
 // Hooks.on("createActor", (actorData: Actor) => {
 //   if (actorData.type == "ship") {
