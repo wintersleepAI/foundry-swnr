@@ -9,6 +9,6 @@ data:
   minClass: fighter
   power: 0
   powerMultiplier: false
-img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+img: systems/swnr/assets/icons/game-icons.net/item-icons/wooden-crate.svg
 name: Cargo space
 type: shipFitting

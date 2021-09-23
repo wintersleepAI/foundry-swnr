@@ -9,6 +9,6 @@ data:
   minClass: frigate
   power: 1
   powerMultiplier: false
-img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cryo-chamber.svg
 name: Cold sleep pods
 type: shipFitting

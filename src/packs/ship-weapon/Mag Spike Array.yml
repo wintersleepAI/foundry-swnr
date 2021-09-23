@@ -12,6 +12,6 @@ data:
   powerMultiplier: false
   qualities: Flak
   tl: 4
-img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+img: systems/swnr/assets/icons/game-icons.net/item-icons/missile-pod.svg
 name: Mag Spike Array
 type: shipWeapon

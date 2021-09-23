@@ -9,6 +9,6 @@ data:
   minClass: fighter
   power: 1
   powerMultiplier: true
-img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+img: systems/swnr/assets/icons/game-icons.net/item-icons/rocket-thruster.svg
 name: Drive-2 upgrade
 type: shipFitting

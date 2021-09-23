@@ -9,6 +9,6 @@ data:
   minClass: frigate
   power: 2
   powerMultiplier: false
-img: systems/swnr/assets/icons/game-icons.net/item-icons/bubble-field.svg
+img: systems/swnr/assets/icons/game-icons.net/item-icons/security-gate.svg
 name: Boarding Countermeasures
 type: shipDefense

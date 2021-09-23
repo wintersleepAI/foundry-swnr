@@ -9,6 +9,6 @@ data:
   minClass: fighter
   power: 0
   powerMultiplier: false
-img: systems/swnr/assets/icons/game-icons.net/item-icons/bubble-field.svg
+img: systems/swnr/assets/icons/game-icons.net/item-icons/metal-scales.svg
 name: Augmented Plating
 type: shipDefense

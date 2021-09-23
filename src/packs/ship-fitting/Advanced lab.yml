@@ -9,6 +9,6 @@ data:
   minClass: frigate
   power: 1
   powerMultiplier: true
-img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+img: systems/swnr/assets/icons/game-icons.net/item-icons/circuitry.svg
 name: Advanced lab
 type: shipFitting
