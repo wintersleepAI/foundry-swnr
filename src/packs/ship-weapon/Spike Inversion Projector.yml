@@ -1,0 +1,17 @@
+data:
+  broken: false
+  cost: 2500000
+  costMultiplier: false
+  damage: 3d8
+  description: placeholder
+  hardpoint: 3
+  mass: 3.0
+  massMultiplier: false
+  minClass: cruiser
+  power: 10
+  powerMultiplier: false
+  qualities: AP 15
+  tl: 4
+img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+name: Spike Inversion Projector
+type: shipWeapon

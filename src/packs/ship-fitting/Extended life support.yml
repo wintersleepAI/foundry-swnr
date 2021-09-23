@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 5000
+  costMultiplier: true
+  description: placeholder
+  effect: Doubles maximum crew size
+  mass: 1.0
+  massMultiplier: true
+  minClass: fighter
+  power: 1
+  powerMultiplier: true
+img: systems/swnr/assets/icons/game-icons.net/item-icons/fuel-tank.svg
+name: Extended life support
+type: shipFitting

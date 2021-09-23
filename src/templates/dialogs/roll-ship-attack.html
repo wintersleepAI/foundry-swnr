@@ -1,0 +1,64 @@
+<form class="bg-gray-200 -m-2 p-2 pb-4 flex gap-1 justify-between">
+  <div class="flex flexrow gap-2">
+
+    <div class="flex flex-col">
+      <label for="shooterId">{{localize 'swnr.sheet.ship.shooter'}}:</label>
+      <select name="shooterId"
+        class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        {{#select gunnerId}}
+        {{#each crewArray }}
+        <option value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+        {{/select}}
+      </select>
+    </div>
+
+
+
+    <div class="flex flex-col">
+      <label for="skill">{{localize 'swnr.sheet.skill'}}: </label>
+      <select name="skill"
+        class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
+        {{#each gunner.itemTypes.skill }}
+        <option value="{{this.name}}" 
+           {{#if (eq this.name ../defaultSkill1)}} selected {{/if}}
+           {{#if (eq this.name ../defaultSkill2)}} selected {{/if}}
+        >{{this.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+
+    {{!-- <div class="flex flex-col">
+      {{! dice }}
+      <label for="">{{localize 'swnr.chat.dicepool'}}: </label>
+      <select name="dicepool"
+        class="w-16 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        <option value="2d6">2D6</option>
+        <option value="3d6kh2">3D6</option>
+        <option value="4d6kh2">4D6</option>
+      </select>
+    </div> --}}
+
+    <div class="flex flex-col">
+      {{! stat}}
+      <label for="stat">{{localize 'swnr.sheet.stats'}}: </label>
+      <select name="stat"
+        class="w-32 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        {{#select defaultStat}}
+        {{#each gunner.data.data.stats as |box name |}}
+        <option value="{{name}}">{{localize (concat "swnr.stat.long." name)}}</option>
+        {{/each}}
+        {{/select}}
+      </select>
+    </div>
+
+    <div class="flex flex-col">
+      <label for="modifier">{{localize 'swnr.chat.modifier'}}: </label>
+      <input name="modifier" type="number" step="1" value="0"
+        class="w-10 text-center px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md" />
+    </div>
+
+  </div>
+</form>

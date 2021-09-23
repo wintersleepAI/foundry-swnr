@@ -1,0 +1,17 @@
+data:
+  broken: false
+  cost: 800000
+  costMultiplier: false
+  damage: 3d6
+  description: placeholder
+  hardpoint: 2
+  mass: 1.0
+  massMultiplier: false
+  minClass: frigate
+  power: 10
+  powerMultiplier: false
+  qualities: AP 15
+  tl: 4
+img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+name: Charged Particle Caster
+type: shipWeapon

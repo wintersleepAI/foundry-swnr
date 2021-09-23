@@ -3,7 +3,23 @@ Actor:
   types:
     - character
     - npc
+    - ship
   templates:
+    vehicle: 
+      cost: 0
+      health:
+        value: 15
+        max: 15
+      ac: 10
+      speed: 1
+      armor: 
+        value: 1
+        max: 1
+      crew:
+        min: 1
+        max: 1
+        current: 0
+      crewMembers: []
     living:
       health:
         value: 10
@@ -97,6 +113,43 @@ Actor:
       right:
         label: Bio/Notes
         contents: ""
+  ship:
+    templates:
+      - vehicle
+    power: 
+      value: 1
+      max: 1
+    mass: 
+      value: 1
+      max: 1
+    hardpoints:
+      value: 1
+      max: 1 
+    lifeSupportDays:
+      value: 1
+      max: 1 
+    fuel:
+      value: 1
+      max: 1 
+    cargo:
+      value: 10
+      max: 10 
+    spikeDrive:
+      value: 1
+      max: 1
+    shipClass: "frigate"
+    shipHullType: "shuttle"
+    description: ""
+    mods: "None"
+    operatingCost: 0
+    maintanenceCost: 0
+    lastMaintanence: ""
+    roles:
+      captain: ""
+      gunnery: ""
+      engineering: ""
+      comms: ""
+      bridge: ""
 Item:
   types:
     - class
@@ -109,6 +162,9 @@ Item:
     # - modItem
     # - modShip
     - skill
+    - shipWeapon
+    - shipDefense
+    - shipFitting
   templates:
     modBase:
       pretech:
@@ -122,6 +178,15 @@ Item:
       location: other
     description:
       description: ""
+    baseVehicleItem:
+      cost: 0
+      power: 1
+      mass: 1
+      broken: false
+      destroyed: false
+      costMultiplier: false
+      powerMultiplier: false
+      massMultiplier: false
   class:
     templates:
       - description
@@ -174,6 +239,24 @@ Item:
       - description
     level1: ""
     level2: ""
+  shipWeapon:
+    templates:
+      - description
+      - baseVehicleItem
+    damage: d4
+    hardpoint: 1
+    shipClass: fighter
+    qualities: ""
+  shipDefense:
+    templates:
+      - description
+      - baseVehicleItem
+    effect: ""
+  shipFitting:
+    templates:
+      - description
+      - baseVehicleItem
+    effect: ""
   modItem:
     templates:
       - description

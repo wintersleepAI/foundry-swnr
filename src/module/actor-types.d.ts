@@ -1,8 +1,11 @@
 import { SWNRArmorTypes, AllItemClasses, ItemTypes } from "./item-types";
 
-type ActorTypes = "character" | "npc";
+type ActorTypes = "character" | "npc" | "ship" ;
 
 declare type SWNRStats = "str" | "dex" | "con" | "int" | "wis" | "cha";
+
+type SWNRShipClass = "fighter" | "frigate" | "cruiser" | "capital";
+type SWNRShipHullType = "strikeFighter" | "shuttle" | "freeMerchant" | "patrolBoat" | "corvette" | "heavyFrigate" | "bulkFreighter" | "fleetCruiser" | "battleship" | "carrier" | "smallStation" | "largeStation";
 
 declare interface SWNRStatBase {
   base: number;
@@ -32,6 +35,28 @@ declare interface SWNRLivingTemplateBase {
     day: number;
   };
 }
+
+declare interface SWNRVehicleTemplateBase {
+  cost: number;
+  health: {
+    value: number;
+    max: number;
+  };
+  ac: {
+    value: number;
+    max: number;
+  };
+  speed: number;
+  armor: number;
+  crew: {
+    min: number;
+    max: number;
+    current: number;
+  };
+  crewMembers: string[];
+  tl: number;
+}
+
 declare interface SWNRLivingTemplateComputed {
   baseAc: number; //computed-active effects needed
   systemStrain: {
@@ -107,6 +132,63 @@ declare interface SWNRCharacterComputedData
   stats: { [key in SWNRStats]: SWNRStatComputed };
 }
 
+declare interface SWNRShipData extends SWNRVehicleTemplateBase {
+
+  itemTypes: {
+    //todo: make a better type
+    [type in Exclude<ItemTypes, "focus" | "skill" | "weapon" | "armor" | "power">]: (AllItemClasses & {
+      type: type;
+    })[];
+  };
+  power: {
+    value: number;
+    max: number;
+  };
+  mass: {
+    value: number;
+    max: number;
+  };
+  hardpoints: {
+    value: number;
+    max: number;
+  };
+  lifeSupportDays: {
+    value: number;
+    max: number;
+  };
+  fuel : {
+    value: number;
+    max: number;
+  };
+  cargo : {
+    value: number;
+    max: number;
+  };
+  spikeDrive : {
+    value: number;
+    max: number;
+  }
+  shipClass: SWNRShipClass;
+  shipHullType: SWNRShipHullType;
+  description: string;
+  mods: string;
+  operatingCost: 0;
+  maintanenceCost: number;
+  lastMaintanence: string;
+  roles: {
+    captain: string;
+    gunnery: string;
+    bridge: string;
+    engineering: string;
+    comms: string;
+  };
+
+}
+
+declare interface SWNRShipComputed {
+
+}
+
 declare interface SWNRNPCData extends SWNRLivingTemplateBase {
   armorType: SWNRArmorTypes;
   skillBonus: number;
@@ -144,11 +226,13 @@ declare global {
   interface DataConfig {
     Actor:
       | PCActorSource
-      | { type: "npc"; data: Merge<SWNRNPCData, SWNRLivingTemplateComputed> };
+      | { type: "npc"; data: Merge<SWNRNPCData, SWNRLivingTemplateComputed> }
+      | { type: "ship"; data: Merge<SWNRShipData, SWNRShipComputed> };
   }
   interface SourceConfig {
     Actor:
       | { type: "character"; data: SWNRCharacterBaseData }
-      | { type: "npc"; data: SWNRNPCData };
+      | { type: "npc"; data: SWNRNPCData }
+      | { type: "ship"; data: SWNRShipData };
   }
 }

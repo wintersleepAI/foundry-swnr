@@ -1,0 +1,17 @@
+data:
+  broken: false
+  cost: 100000
+  costMultiplier: false
+  damage: 3d4
+  description: placeholder
+  hardpoint: 1
+  mass: 1.0
+  massMultiplier: false
+  minClass: fighter
+  power: 4
+  powerMultiplier: false
+  qualities: Clumsy
+  tl: 4
+img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+name: Reaper Battery
+type: shipWeapon

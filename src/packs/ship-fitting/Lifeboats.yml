@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 2500
+  costMultiplier: true
+  description: placeholder
+  effect: Emergency escape craft for a ship's crew
+  mass: 1.0
+  massMultiplier: false
+  minClass: frigate
+  power: 0
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Lifeboats
+type: shipFitting

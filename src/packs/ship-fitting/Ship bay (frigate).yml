@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 1000000
+  costMultiplier: false
+  description: placeholder
+  effect: Carrier housing for a frigate
+  mass: 4.0
+  massMultiplier: false
+  minClass: capital
+  power: 1
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Ship bay (frigate)
+type: shipFitting

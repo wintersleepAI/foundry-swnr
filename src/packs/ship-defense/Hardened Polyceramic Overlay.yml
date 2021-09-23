@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 25000
+  costMultiplier: true
+  description: placeholder
+  effect: AP quality of attacking weapons reduced by 5
+  mass: 1.0
+  massMultiplier: true
+  minClass: fighter
+  power: 0
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/bubble-field.svg
+name: Hardened Polyceramic Overlay
+type: shipDefense

@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 10000
+  costMultiplier: true
+  description: placeholder
+  effect: +2 AC for one round when fired
+  mass: 1.0
+  massMultiplier: true
+  minClass: cruiser
+  power: 2
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/missile-swarm.svg
+name: Foxer Drones
+type: shipDefense

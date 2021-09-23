@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 40000
+  costMultiplier: true
+  description: placeholder
+  effect: Upgrade a spike drive to drive-4 rating
+  mass: 3.0
+  massMultiplier: true
+  minClass: frigate
+  power: 2
+  powerMultiplier: true
+img: systems/swnr/assets/icons/game-icons.net/item-icons/rocket-thruster.svg
+name: Drive-4 upgrade
+type: shipFitting

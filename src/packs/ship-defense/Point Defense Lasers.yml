@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 10000
+  costMultiplier: true
+  description: placeholder
+  effect: +2 AC versus weapons that use ammo
+  mass: 2.0
+  massMultiplier: true
+  minClass: frigate
+  power: 3
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/strafe.svg
+name: Point Defense Lasers
+type: shipDefense

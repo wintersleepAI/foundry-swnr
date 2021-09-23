@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 25000
+  costMultiplier: true
+  description: placeholder
+  effect: Negate one successful hit
+  mass: 1.0
+  massMultiplier: true
+  minClass: frigate
+  power: 2
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/spiky-field.svg
+name: Burst ECM Generator
+type: shipDefense

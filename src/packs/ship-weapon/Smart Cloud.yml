@@ -1,0 +1,17 @@
+data:
+  broken: false
+  cost: 2000000
+  costMultiplier: false
+  damage: 3d10
+  description: placeholder
+  hardpoint: 2
+  mass: 5.0
+  massMultiplier: false
+  minClass: cruiser
+  power: 10
+  powerMultiplier: false
+  qualities: Cloud
+  tl: 4
+img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+name: Smart Cloud
+type: shipWeapon

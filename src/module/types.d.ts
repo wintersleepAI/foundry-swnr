@@ -1,6 +1,7 @@
 import { VersionString } from "../migration";
 import { SWNRCharacterActor } from "./actors/character";
 import { SWNRNPCActor } from "./actors/npc";
+import { SWNRShipActor } from "./actors/ship";
 import { SWNRBaseItem } from "./base-item";
 
 declare global {
@@ -10,7 +11,7 @@ declare global {
     }
   }
   interface DocumentClassConfig {
-    Actor: typeof SWNRCharacterActor | typeof SWNRNPCActor;
+    Actor: typeof SWNRCharacterActor | typeof SWNRNPCActor | typeof SWNRShipActor;
     Item: typeof SWNRBaseItem;
   }
   interface LenientGlobalVariableTypes {

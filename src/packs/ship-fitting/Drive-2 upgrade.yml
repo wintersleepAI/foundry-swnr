@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 10000
+  costMultiplier: true
+  description: placeholder
+  effect: Upgrade a spike drive to drive-2 rating
+  mass: 1.0
+  massMultiplier: true
+  minClass: fighter
+  power: 1
+  powerMultiplier: true
+img: systems/swnr/assets/icons/game-icons.net/item-icons/rocket-thruster.svg
+name: Drive-2 upgrade
+type: shipFitting

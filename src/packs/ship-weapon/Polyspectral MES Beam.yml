@@ -1,0 +1,17 @@
+data:
+  broken: false
+  cost: 2000000
+  costMultiplier: false
+  damage: 2d4
+  description: placeholder
+  hardpoint: 1
+  mass: 1.0
+  massMultiplier: false
+  minClass: fighter
+  power: 5
+  powerMultiplier: false
+  qualities: AP 25
+  tl: 5
+img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+name: Polyspectral MES Beam
+type: shipWeapon

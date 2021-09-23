@@ -1,0 +1,17 @@
+data:
+  broken: false
+  cost: 700000
+  costMultiplier: false
+  damage: 3d6
+  description: placeholder
+  hardpoint: 2
+  mass: 2.0
+  massMultiplier: false
+  minClass: frigate
+  power: 5
+  powerMultiplier: false
+  qualities: AP 10
+  tl: 4
+img: systems/swnr/assets/icons/game-icons.net/item-icons/plasma-bolt.svg
+name: Plasma Beam
+type: shipWeapon

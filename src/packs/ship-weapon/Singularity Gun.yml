@@ -1,0 +1,17 @@
+data:
+  broken: false
+  cost: 20000000
+  costMultiplier: false
+  damage: 5d20
+  description: placeholder
+  hardpoint: 5
+  mass: 10.0
+  massMultiplier: false
+  minClass: capital
+  power: 25
+  powerMultiplier: false
+  qualities: AP 25
+  tl: 5
+img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+name: Singularity Gun
+type: shipWeapon

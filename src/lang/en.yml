@@ -1,4 +1,4 @@
-swnr:
+ swnr:
   title: "Stars Without Number: Revised"
   CharacterActorSheet: Basic Sheet
   stat:
@@ -334,6 +334,7 @@ swnr:
       evasion: Evasion
     name: Name
     armor-class: Armor Class
+    armor: Armor
     hp: HP
     permanent-strain: Permanent strain
     attack-bonus: Attack Bonus
@@ -352,6 +353,8 @@ swnr:
     delete-item: Delete Item
     edit-item: Edit Item
     reload-item: Reload Item
+    break-item: Break/Disable Item
+    destroy-item: Destroy Item
     ask: Ask
     description: "Description:"
     ammoType: Ammo Type
@@ -368,6 +371,70 @@ swnr:
     vs: vs
     rollables: Rollables
     hit-dice: Hit Dice
+    ship:
+      life-support-days: Life Support Days
+      fuel: Fuel
+      power: Power
+      mass: Mass
+      speed: Speed
+      hard-points: Hardpoints
+      ship-class: Ship Class
+      min-ship-class: Min. Ship Class
+      ship-hull-type: Ship Hull Type
+      cargo: Cargo
+      operating-cost: Operating Cost
+      maintanence-cost: Maintanence Cost
+      cost: Cost
+      last-maintanence: Last Maintanence
+      crew: Crew (min/cur/max)
+      shipHullType:
+        strikeFighter: Strike Fighter 
+        shuttle: Shuttle
+        freeMerchant: Free Merchant
+        patrolBoat: Patrol Boat
+        corvette: Corvette
+        heavyFrigate:  Heavy Frigate
+        bulkFreighter:  Bulk Freighter
+        fleetCruiser:  Fleet Cruiser
+        battleship:  Battleship
+        carrier: Carrier 
+        smallStation:  Small Station
+        largeStation: Large Station
+      shipClass: 
+        fighter: Fighter
+        frigate: Frigate
+        cruiser: Cruiser
+        capital: Capital
+      weapons: Weapons
+      weapon: Weapon
+      defense: Defense
+      fittings: Fitting
+      stations: Stations
+      weapons-tab: Weapons/Defense/Fittings
+      notes-tab: Notes/ Description/Maintanence
+      crew-tab: Crew Members
+      crew-name: Crew Member
+      name: Name
+      dmg: Dmg
+      qualities: Qualities
+      effect: Effect
+      broken: Is Broken?
+      destroyed: Is Destroyed?
+      shooter: Shooting
+      travel: Travel Days
+      spike: Spike Drill 
+      spike-drive: Spike Drive
+      crisis: Crisis
+      system-failure: System Failure(s)
+      refuel: Refuel
+      station:
+        captain: Captain
+        gunnery: Gunnery
+        bridge: Bridge
+        engineering: Engineering
+        comms: Comms
+        role: Station
+        crew: Crew
     tweaks: Tweaks
   settings:
     useRollNPCHD: Use NPC HD on token create?
@@ -387,6 +454,32 @@ swnr:
     statApply: Apply stats to {name}
     totalModifier: Total Modifier
     statRoll: Roll stats
+    spike:
+      fail3: >-
+        Catastrophic dimensional energy incursion. 
+        Ship emerges around a star within 1d6 hexes 
+        of the target destination with drive and all systems destroyed.
+      fail4-5: >-
+        Shear surge overwhelms internal systems.
+        Ship emerges around star nearest to drill
+        origin. 50% chance for each system to be
+        disabled until repaired. If the spike drive is
+        disabled, treat as if a 3 were rolled.
+      fail6-8: >-
+        Power spike. One system disabled until
+        repaired, ship stuck in transit for full 
+        base time before being able to make another
+        Pilot check. If the spike drive fails, treat as if
+        a 3 were rolled.
+      fail9-12: >-
+        Ship off course. Spend base time in transit,
+        then make another Pilot check.
+      fail13-15: >-
+        Ship off course, but detected early. Make
+        another Pilot check.
+      fail16-17: >-
+        Drill successful, but takes twice base time
+      fail18: Drill successful and on time, by blind luck.
   ammo:
     ammo: Standard Ammo
     missile: Missiles
@@ -436,6 +529,19 @@ swnr:
     max: Max
   dialog:
     attackRoll: "{actorName} attacking with {weaponName}?"
+    spikeRoll: "{actorName} making spike roll"
+    sysFailure: "Rolling system failures for {actorName}"
+    failure:
+      inc-drive: Include Drive (Spike Level Drop)
+      inc-wpn: Include Weapons
+      inc-fit: Include Fittings
+      inc-def: Include Defenses
+      what: What to fail? <br>(disabling/breaking an already disabled system will destroy it)
+      dest-all: Destroy All
+      break-all: Break/disable All 
+      all-50: 50% chance to break/disable each system 
+      break-1: Break/disable one system 
+
     add-skills: Add Skills
     add-bulk-skills: Add Bulk Skills to {actor}
     tweak-char: "Tweaking options for {actorName}"
@@ -505,4 +611,5 @@ swnr:
     balance: Balance
     owed: Owed
   deleteTitle: Delete {name}?
+  deleteCrew: Do you want to remove {name} from the crew?
   deleteContent: Are you sure you want to delete {name} from the actor {actor}?

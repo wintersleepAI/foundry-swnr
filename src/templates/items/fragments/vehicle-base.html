@@ -1,0 +1,99 @@
+
+<div class="flex flexrow gap-2 text-center">
+  {{!-- <div>
+    <img
+        class="profile-img w-24 h-24 object-contain"
+        src="{{img}}"
+        title="{{name}}"
+        data-edit="img"
+      />
+
+
+  </div> --}}
+
+  <div class="flex flex-col items-center">
+    {{localize 'swnr.item.cost'}}:
+    <input
+      type="number"
+      class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+      step="1"
+      name="data.cost"
+      min="0"
+      data-dtype="Number"
+      value="{{data.data.cost}}"
+    />
+  </div>
+
+  <!-- power -->
+  <div class="flex flex-col items-center">
+    {{localize 'swnr.sheet.ship.power'}}:
+    <input
+      type="number"
+      class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+      step="1"
+      name="data.power"
+      min="0"
+      data-dtype="Number"
+      value="{{data.data.power}}"
+    />
+  </div>
+
+
+  <!-- mass -->
+  <div class="flex flex-col items-center">
+    {{localize 'swnr.sheet.ship.mass'}}:
+    <input
+      type="number"
+      class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+      step="1"
+      name="data.mass"
+      min="0"
+      data-dtype="Number"
+      value="{{data.data.mass}}"
+    />
+  </div>
+    
+    
+    <!-- Ship /  class -->
+    <div class="flex flex-col items-center">
+      {{localize 'swnr.sheet.ship.min-ship-class'}}
+
+      <select name="data.minClass"
+        class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        {{#select data.data.minClass}}
+        <option value="fighter">
+          {{localize 'swnr.sheet.ship.shipClass.fighter'}}
+        </option>
+        <option value="frigate">{{localize 'swnr.sheet.ship.shipClass.frigate'}}</option>
+        <option value="cruiser">{{localize 'swnr.sheet.ship.shipClass.cruiser'}}</option>
+        <option value="capital">
+          {{localize 'swnr.sheet.ship.shipClass.capital'}}
+        </option>
+        {{/select}}
+      </select>
+
+
+    </div>
+
+  <!-- broken --> 
+  <div class="flex flex-row items-center">
+    {{localize 'swnr.sheet.ship.broken'}}:
+        <input
+          type="checkbox"
+          name="data.broken"
+          {{checked data.data.broken}}
+        />
+  </div>
+
+
+  <!-- destroyed --> 
+  <div class="flex flex-row items-center">
+    {{localize 'swnr.sheet.ship.destroyed'}}:
+        <input
+          type="checkbox"
+          name="data.destroyed"
+          {{checked data.data.destroyed}}
+        />
+  </div>
+
+</div>

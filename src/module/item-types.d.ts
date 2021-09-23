@@ -1,10 +1,12 @@
 import { SWNRBaseItem } from "./base-item";
 import { SWNRStats } from "./actor-types";
 import { SWNRWeapon } from "./items/weapon";
+import { SWNRShipClass } from "./actor-types";
 
 type MetaItemTypes = "class" | "power" | "focus" | "skill";
-type RealItemTypes = "armor" | "weapon" | "item";
-type ItemTypes = RealItemTypes | MetaItemTypes;
+type RealItemTypes = "armor" | "weapon" | "item" ;
+type ShipItemTypes = "shipWeapon" | "shipFitting" | "shipDefense";
+type ItemTypes = RealItemTypes | MetaItemTypes | ShipItemTypes;
 
 declare type ItemsWithCustomClasses = SWNRWeapon;
 declare type ItemTypesMissingCustomClasses = Exclude<
@@ -28,6 +30,18 @@ declare interface SWNRBaseItemData {
   quality: "stock" | "masterwork" | "makeshift";
 }
 
+declare interface SWNRBaseVehicleItemData {
+  cost: number;
+  power: number;
+  mass: number;
+  costMultiplier: boolean;
+  powerMultiplier: boolean;
+  massMultiplier: boolean;
+  minClass: SWNRShipClass;
+  broken: boolean;
+  destroyed: boolean;
+}
+
 type SWNRClassItemBaseData = SWNRDescData;
 
 type SWNRArmorTypes = "powered" | "combat" | "street" | "primitive";
@@ -45,6 +59,7 @@ type SWNRWeaponAmmoTypes =
   | "ammo"
   | "missile"
   | "special";
+
 
 interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
   stat: SWNRStats;
@@ -69,6 +84,21 @@ interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
     max: number;
   };
   damage: string;
+}
+
+declare interface SWNRShipWeaponData extends SWNRBaseVehicleItemData, SWNRDescData{
+  damage: string;
+  hardpoint: number;
+  tl:  4 | 5 | 6;
+  qualities: string;
+}
+
+declare interface SWNRShipDefenseData extends SWNRBaseVehicleItemData, SWNRDescData{
+  effect: string;
+}
+
+declare interface SWNRShipFittingData extends SWNRBaseVehicleItemData, SWNRDescData{
+  effect: string;
 }
 
 declare interface SWNRArmorData extends SWNRBaseItemData {
@@ -116,7 +146,11 @@ declare global {
       | { type: "power"; data: SWNRPowerData }
       | { type: "item"; data: SWNRItemData }
       | { type: "focus"; data: SWNRFocusData }
-      | { type: "skill"; data: SWNRSkillData };
+      | { type: "skill"; data: SWNRSkillData }
+      | { type: "shipWeapon"; data: SWNRShipWeaponData}
+      | { type: "shipDefense"; data: SWNRShipDefenseData}
+      | { type: "shipFitting"; data: SWNRShipFittingData}
+      ;
   }
 
   interface SourceConfig {
@@ -127,6 +161,9 @@ declare global {
       | { type: "power"; data: SWNRPowerData }
       | { type: "item"; data: SWNRItemData }
       | { type: "focus"; data: SWNRFocusData }
-      | { type: "skill"; data: SWNRSkillData };
+      | { type: "skill"; data: SWNRSkillData }
+      | { type: "shipWeapon"; data: SWNRShipWeaponData }
+      | { type: "shipDefense"; data: SWNRShipDefenseData}
+      | { type: "shipFitting"; data: SWNRShipFittingData};
   }
 }

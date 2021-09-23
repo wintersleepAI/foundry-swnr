@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 50000
+  costMultiplier: true
+  description: placeholder
+  effect: Anti-impact and anti-nuke surface defenses
+  mass: 2.0
+  massMultiplier: true
+  minClass: frigate
+  power: 4
+  powerMultiplier: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/bubble-field.svg
+name: Planetary Defense Array
+type: shipDefense
