@@ -223,7 +223,6 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     idx = sysToInclude.indexOf("wpn");
     if (idx >- 1){
       for (let i of this.itemTypes.shipWeapon){
-        console.log("wpn ", i);
         if (i.id && !i.data.data["destroyed"]) {
           candidateIds.push(i.id);
         }
@@ -234,7 +233,6 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     idx = sysToInclude.indexOf("def");
     if (idx >- 1){
       for (let i of this.itemTypes.shipDefense){
-        console.log("def ", i);
         if (i.id && !i.data.data["destroyed"]) {
           candidateIds.push(i.id);
         }
@@ -478,6 +476,7 @@ Hooks.on("preCreateItem", (item: Item, data, options, id) => {
       }
     } else {
       console.log('What are you doing?', item);
+      return false;
     }
   }
   return item;
