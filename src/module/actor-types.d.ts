@@ -164,6 +164,10 @@ declare interface SWNRShipData extends SWNRVehicleTemplateBase {
     value: number;
     max: number;
   };
+  spikeDrive : {
+    value: number;
+    max: number;
+  }
   shipClass: SWNRShipClass;
   shipHullType: SWNRShipHullType;
   description: string;

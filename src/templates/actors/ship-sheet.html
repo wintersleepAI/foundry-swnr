@@ -171,14 +171,14 @@
         <div class="crew flex flex-col justify-center items-center">
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
-              class="w-2 text-center pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              class="w-1 text-center pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
               type="number" step="1" name="data.crew.min" value="{{actor.data.data.crew.min}}" data-dtype="Number"
               min="0" /><span>/</span>
             <input
-              class="w-2 text-center pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              class="w-2 pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
               type="number" step="1" name="data.crew.current" value="{{actor.data.data.crew.current}}"
               data-dtype="Number" min="0" /><span>/</span><input
-              class="w-3 text-center pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              class="w-5 text-center pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
               type="number" name="data.crew.max" value="{{actor.data.data.crew.max}}" step="1" min="1"
               data-dtype="Number" />
           </div>
@@ -222,22 +222,8 @@
           </label>
         </div>
 
-
-        <!--speed-->
-        <div class="mass flex flex-col justify-center items-center">
-          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
-            <input
-              class="w-8 text-center pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.speed" value="{{actor.data.data.speed}}" data-dtype="Number" min="0" />
-          </div>
-          <label
-            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
-            {{localize 'swnr.sheet.ship.speed'}}
-          </label>
-        </div>
-
         <!--hardpoints-->
-        <div class="mass flex flex-col justify-center items-center">
+        <div class="hardpoints flex flex-col justify-center items-center">
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
@@ -253,29 +239,37 @@
           </label>
         </div>
 
-        <!--last Main-->
-        <div class="lastMaintanence flex flex-col items-center">
-          <input
-            class="w-16 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-            type="string" min="0" name="data.lastMaintanence" value="{{actor.data.data.lastMaintanence}}" />
-          <label>{{localize 'swnr.sheet.ship.last-maintanence'}}</label>
+
+        <!--spikeDrive-->
+        <div class="spikeDrive flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" step="1" name="data.spikeDrive.value" value="{{actor.data.data.spikeDrive.value}}"
+              data-dtype="Number" min="0" /><span>/</span><input
+              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" name="data.spikeDrive.max" value="{{actor.data.data.spikeDrive.max}}" step="1" min="1"
+              data-dtype="Number" />
+          </div>
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.ship.spike-drive'}}
+          </label>
         </div>
 
-        <!--maintanenceCost-->
-        <div class="maintanenceCost flex flex-col items-center">
-          <input
-            class="w-16 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-            type="number" min="0" name="data.maintanenceCost" value="{{actor.data.data.maintanenceCost}}" />
-          <label>{{localize 'swnr.sheet.ship.maintanence-cost'}}</label>
+        <!--speed-->
+        <div class="mass flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-center pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" step="1" name="data.speed" value="{{actor.data.data.speed}}" data-dtype="Number" min="0" />
+          </div>
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.ship.speed'}}
+          </label>
         </div>
 
-        <!--cost-->
-        <div class="cost flex flex-col items-center">
-          <input
-            class="w-16 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-            type="string" name="data.cost" value="{{actor.data.data.cost}}" />
-          <label>{{localize 'swnr.sheet.ship.cost'}}</label>
-        </div>
 
 
         <!--buttons-->
@@ -299,6 +293,10 @@
           {{localize 'swnr.sheet.ship.crisis'}}
         </div>
 
+        <div class="cost flex flex-col items-center ">
+          <a><i class="fas fa-heart-broken  fa-2x failure-button"></i></a>
+          {{localize 'swnr.sheet.ship.system-failure'}}
+        </div>
         <!-- end Grid div for header -->
       </div>
 
@@ -359,13 +357,18 @@
                           </div>
                           <div class="item-controls">
                             <a class="item-control item-toggle-broken  {{#unless item.data.data.broken}}item-working{{/unless}}"
-                              title='{{localize ' swnr.sheet.break-item'}}'>
+                              title='{{localize 'swnr.sheet.break-item'}}'>
                               <i
                                 class="fas fa-heart-broken {{#unless item.data.data.broken}}item-working{{/unless}}"></i>
                             </a>
-                            <a class="item-control item-edit" title='{{localize ' swnr.sheet.edit-item'}}'><i
+                            <a class="item-control item-toggle-destroy  {{#unless item.data.data.destroyed}}item-working{{/unless}}"
+                              title='{{localize 'swnr.sheet.destroy-item'}}'>
+                              <i
+                                class="fas fa-skull-crossbones {{#unless item.data.data.destroyed}}item-working{{/unless}}"></i>
+                            </a>
+                            <a class="item-control item-edit" title='{{localize 'swnr.sheet.edit-item'}}'><i
                                 class="fas fa-edit"></i></a>
-                            <a class="item-control item-delete" title='{{localize ' swnr.sheet.delete-item'}}'><i
+                            <a class="item-control item-delete" title='{{localize 'swnr.sheet.delete-item'}}'><i
                                 class="fas fa-trash"></i></a>
 
                           </div>
@@ -405,13 +408,18 @@
                           </div>
                           <div class="item-controls">
                             <a class="item-control item-toggle-broken  {{#unless item.data.data.broken}}item-working{{/unless}}"
-                              title='{{localize ' swnr.sheet.break-item'}}'>
+                              title='{{localize 'swnr.sheet.break-item'}}'>
                               <i
                                 class="fas fa-heart-broken {{#unless item.data.data.broken}}item-working{{/unless}} "></i>
                             </a>
-                            <a class="item-control item-edit" title='{{localize ' swnr.sheet.edit-item'}}'><i
+                            <a class="item-control item-toggle-destroy  {{#unless item.data.data.destroyed}}item-working{{/unless}}"
+                              title='{{localize 'swnr.sheet.destroy-item'}}'>
+                              <i
+                                class="fas fa-skull-crossbones {{#unless item.data.data.destroyed}}item-working{{/unless}}"></i>
+                            </a>
+                            <a class="item-control item-edit" title='{{localize 'swnr.sheet.edit-item'}}'><i
                                 class="fas fa-edit"></i></a>
-                            <a class="item-control item-delete" title='{{localize ' swnr.sheet.delete-item'}}'><i
+                            <a class="item-control item-delete" title='{{localize 'swnr.sheet.delete-item'}}'><i
                                 class="fas fa-trash"></i></a>
 
                           </div>
@@ -445,13 +453,18 @@
                             </div>
                             <div class="item-controls">
                               <a class="item-control item-toggle-broken  {{#unless item.data.data.broken}}item-working{{/unless}}"
-                                title='{{localize ' swnr.sheet.break-item'}}'>
+                                title='{{localize 'swnr.sheet.break-item'}}'>
                                 <i
                                   class="fas fa-heart-broken {{#unless item.data.data.broken}}item-working{{/unless}}"></i>
                               </a>
-                              <a class="item-control item-edit" title='{{localize ' swnr.sheet.edit-item'}}'>
+                            <a class="item-control item-toggle-destroy  {{#unless item.data.data.destroyed}}item-working{{/unless}}"
+                              title='{{localize 'swnr.sheet.destroy-item'}}'>
+                              <i
+                                class="fas fa-skull-crossbones {{#unless item.data.data.destroyed}}item-working{{/unless}}"></i>
+                            </a>
+                              <a class="item-control item-edit" title='{{localize 'swnr.sheet.edit-item'}}'>
                                 <i class="fas fa-edit"></i></a>
-                              <a class="item-control item-delete" title='{{localize ' swnr.sheet.delete-item'}}'><i
+                              <a class="item-control item-delete" title='{{localize 'swnr.sheet.delete-item'}}'><i
                                   class="fas fa-trash"></i></a>
 
                             </div>
@@ -465,21 +478,48 @@
             </div>
           </div>
           <div class="tab notes min-h-full" data-group="primary" data-tab="notes">
-            <div class="grid grid-cols-2">
-              <!-- Description -->
-              <div class="pr-0.5 text-lg">
-                Description
-                <div class="bg-gray-300 border border-gray-700 rounded-md p-2 mt-4">
-                  {{editor content=data.data.description target="data.description" button=true
-                  owner=owner editable=editable}}
-                </div>
+            <div class="flex flex-col">
+              <div class="flex flexrow">
+                  <!--last Main-->
+                  <div class="lastMaintanence flex flex-col items-center">
+                    <input
+                      class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                      type="string" min="0" name="data.lastMaintanence" value="{{actor.data.data.lastMaintanence}}" />
+                    <label>{{localize 'swnr.sheet.ship.last-maintanence'}}</label>
+                  </div>
+
+                  <!--maintanenceCost-->
+                  <div class="maintanenceCost flex flex-col items-center">
+                    <input
+                      class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                      type="number" min="0" name="data.maintanenceCost" value="{{actor.data.data.maintanenceCost}}" />
+                    <label>{{localize 'swnr.sheet.ship.maintanence-cost'}}</label>
+                  </div>
+
+                  <!--cost-->
+                  <div class="cost flex flex-col items-center">
+                    <input
+                      class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                      type="string" name="data.cost" value="{{actor.data.data.cost}}" />
+                    <label>{{localize 'swnr.sheet.ship.cost'}}</label>
+                  </div>
               </div>
-              <!-- Mods -->
-              <div class="pr-0.5 text-lg">
-                Mods
-                <div class="bg-gray-300 border border-gray-700 rounded-md p-2 mt-4">
-                  {{editor content=data.data.mods target="data.mods" button=true
-                  owner=owner editable=editable}}
+              <div class="grid grid-cols-2">
+                <!-- Description -->
+                <div class="pr-0.5 text-lg">
+                  Description
+                  <div class="bg-gray-300 border border-gray-700 rounded-md p-2 mt-4">
+                    {{editor content=data.data.description target="data.description" button=true
+                    owner=owner editable=editable}}
+                  </div>
+                </div>
+                <!-- Mods -->
+                <div class="pr-0.5 text-lg">
+                  Mods
+                  <div class="bg-gray-300 border border-gray-700 rounded-md p-2 mt-4">
+                    {{editor content=data.data.mods target="data.mods" button=true
+                    owner=owner editable=editable}}
+                  </div>
                 </div>
               </div>
             </div>
@@ -610,7 +650,7 @@
                           <a>{{crew.name}}</a>
                         </div>
                         <div class="item-controls">
-                          <a class="item-control crew-delete" title='{{localize ' swnr.sheet.delete-item'}}'><i
+                          <a class="item-control crew-delete" title='{{localize 'swnr.sheet.delete-item'}}'><i
                               class="fas fa-trash"></i></a>
                         </div>
                     </li>

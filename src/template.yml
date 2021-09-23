@@ -134,6 +134,9 @@ Actor:
     cargo:
       value: 10
       max: 10 
+    spikeDrive:
+      value: 1
+      max: 1
     shipClass: "frigate"
     shipHullType: "shuttle"
     description: ""
@@ -180,6 +183,7 @@ Item:
       power: 1
       mass: 1
       broken: false
+      destroyed: false
       costMultiplier: false
       powerMultiplier: false
       massMultiplier: false

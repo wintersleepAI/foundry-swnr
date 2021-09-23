@@ -89,11 +89,14 @@ export class ShipActorSheet extends ActorSheet<
       html.find(".crew-delete").on("click", this._onCrewDelete.bind(this));
 
       html.find(".item-toggle-broken").on("click", this._onItemBreakToggle.bind(this));
+      html.find(".item-toggle-destroy").on("click", this._onItemDestroyToggle.bind(this));
+
       html.find(".item-click").on("click", this._onItemClick.bind(this));
       html.find(".travel-button").on("click", this._onTravel.bind(this));
       html.find(".spike-button").on("click", this._onSpike.bind(this));
       html.find(".refuel-button").on("click", this._onRefuel.bind(this));
       html.find(".crisis-button").on("click", this._onCrisis.bind(this));
+      html.find(".failure-button").on("click", this._onSysFailure.bind(this));
       html.find("[name='data.shipHullType']").on("change", this._onHullChange.bind(this));
     }
     _onHullChange(event: JQuery.ClickEvent): void {
@@ -178,7 +181,7 @@ export class ShipActorSheet extends ActorSheet<
         }
       }
   
-      const title = game.i18n.format("swnr.dialog.attackRoll", {
+      const title = game.i18n.format("swnr.dialog.spikeRoll", {
         actorName: this.actor?.name,
       });
   
@@ -285,7 +288,43 @@ export class ShipActorSheet extends ActorSheet<
       ui.notifications?.info("Refuelled");
     }
     _onCrisis(event: JQuery.ClickEvent): void {
-      ui.notifications?.info("crisis");
+      this.actor.rollCrisis();
+    }
+
+    async _onSysFailure(event: JQuery.ClickEvent): Promise<void> {
+      this.actor.rollSystemFailure();
+
+      const title = game.i18n.format("swnr.dialog.spikeRoll", {
+        actorName: this.actor?.name,
+      });
+      const dialogData = {};
+      const template = "systems/swnr/templates/dialogs/roll-ship-failure.html";
+      const html = renderTemplate(template, dialogData);
+
+      const _rollForm = async (html: HTMLFormElement) => {
+        const form = <HTMLFormElement>html[0].querySelector("form");
+        console.log("todo");
+      }
+
+      this.popUpDialog?.close();
+      this.popUpDialog = new ValidatedDialog(
+        {
+          title: title,
+          content: await html,
+          default: "roll",
+          buttons: {
+            roll: {
+              label: game.i18n.localize("swnr.chat.roll"),
+              callback: _rollForm,
+            },
+          },
+        },
+        {
+          classes: ["swnr"],
+        }
+      );
+      const s = this.popUpDialog.render(true);  
+  
     }
 
     // Clickable title/name or icon. Invoke Item.roll()
@@ -309,8 +348,17 @@ export class ShipActorSheet extends ActorSheet<
       const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
       const new_break_status = !item?.data.data.broken;
       if (item instanceof Item) item?.update({"data.broken" : new_break_status});
-
     }
+
+    _onItemDestroyToggle(event: JQuery.ClickEvent): void {
+      event.preventDefault();
+      event.stopPropagation();
+      const wrapper = $(event.currentTarget).parents(".item");
+      const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
+      const new_destroy_status = !item?.data.data.destroyed;
+      if (item instanceof Item) item?.update({"data.destroyed" : new_destroy_status});
+    }
+
     _onItemEdit(event: JQuery.ClickEvent): void {
       event.preventDefault();
       event.stopPropagation();
@@ -324,7 +372,6 @@ export class ShipActorSheet extends ActorSheet<
       event.stopPropagation();
       const li = $(event.currentTarget).parents(".item");
       console.log("id", li.data("crewId"), li.data("crewName"));
-
       const performDelete: boolean = await new Promise((resolve) => {
         Dialog.confirm({
           title: game.i18n.format("swnr.deleteCrew", { name: li.data("crewName") }),

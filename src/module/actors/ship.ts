@@ -143,6 +143,14 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     }
   }
 
+  rollCrisis(): void {
+    ui.notifications?.info("todo crisis");
+  }
+
+  rollSystemFailure(): void {
+    ui.notifications?.info("todo sys failure");
+  }
+
   addCrew(actorId: string): void {
     let actor = game.actors?.get(actorId);
     if (actor){

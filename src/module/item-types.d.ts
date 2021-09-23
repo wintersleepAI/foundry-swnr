@@ -39,6 +39,7 @@ declare interface SWNRBaseVehicleItemData {
   massMultiplier: boolean;
   minClass: SWNRShipClass;
   broken: boolean;
+  destroyed: boolean;
 }
 
 type SWNRClassItemBaseData = SWNRDescData;

@@ -353,6 +353,8 @@
     delete-item: Delete Item
     edit-item: Edit Item
     reload-item: Reload Item
+    break-item: Break/Disable Item
+    destroy-item: Destroy Item
     ask: Ask
     description: "Description:"
     ammoType: Ammo Type
@@ -409,7 +411,7 @@
       fittings: Fitting
       stations: Stations
       weapons-tab: Weapons/Defense/Fittings
-      notes-tab: Notes/ Description
+      notes-tab: Notes/ Description/Maintanence
       crew-tab: Crew Members
       crew-name: Crew Member
       name: Name
@@ -417,10 +419,13 @@
       qualities: Qualities
       effect: Effect
       broken: Is Broken?
+      destroyed: Is Destroyed?
       shooter: Shooting
       travel: Travel Days
       spike: Spike Drill 
+      spike-drive: Spike Drive
       crisis: Crisis
+      system-failure: System Failure(s)
       refuel: Refuel
       station:
         captain: Captain
@@ -524,6 +529,8 @@
     max: Max
   dialog:
     attackRoll: "{actorName} attacking with {weaponName}?"
+    spikeRoll: "{actorName} making spike roll"
+    sysFailure: "Rolling system failurs for {actorName}"
     add-skills: Add Skills
     add-bulk-skills: Add Bulk Skills to {actor}
     tweak-char: "Tweaking options for {actorName}"
