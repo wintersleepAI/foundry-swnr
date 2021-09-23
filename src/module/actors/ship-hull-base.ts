@@ -31,3 +31,7 @@ export const HULL_DATA = {
     "smallStation": {},
     "largeStation": {},
 };
+
+
+export const document = HULL_DATA;
+export const name = "HULL_DATA";

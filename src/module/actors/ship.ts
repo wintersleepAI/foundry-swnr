@@ -1,5 +1,9 @@
 import { type } from "os";
 import { SWNRBaseActor } from "../base-actor";
+import { SWNRBaseVehicleItemData } from "../item-types";
+import { SWNRShipDefense } from "../items/shipDefense";
+import { SWNRShipFitting } from "../items/shipFitting";
+import { SWNRShipWeapon } from "../items/shipWeapon";
 import { HULL_DATA } from "./ship-hull-base";
 
 export type SysToFail = "drive" | "wpn" | "def" | "fit";
@@ -149,60 +153,97 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
   }
 
   rollCrisis(): void {
-    ui.notifications?.info("todo crisis");
+    const crisisArray = [
+      "<b>Armor Loss:</b><i>(Continuing)</i><br> The hit melted an important patch of ship  armor, cracked an internal support, or exposed a      sensitive system. Until resolved, the ship’s Armor      rating is halved, rounded down.",
+      "<b>Cargo Loss:</b><i>(Acute)</i><br> The hit has gored open a cargo bay, threatening to dump the hold or expose delicate contents to ruinous damage. If not resolved by the end of the next round, lose d10*10% of the ship’s cargo.",
+      "<b>Crew Lost:</b><i>(Acute)</i><br> Brave crew risk their lives to keep damaged systems operating. Describe the danger they face. If the Crisis is not resolved by the end of the next round, 10% of the ship’s maximum crew are incapacitated, not counting any Extended Life Support fittings. Half these crewmen are dead or permanently disabled, and the other half return to duty in a week. Extended Medbay fittings halve the number of dead and crippled. If the ship has run out of NPC crew when it takes this Crisis, a random PC must roll a Physical save; on a success, they lose half their hit points, while on a failure, they are mortally wounded. If not stabilized by the end of the ship’s turn through some PC taking a Deal With A Crisis action to heal them, they will die.",
+      "<b>Engine Lock:</b><i>(Continuing)</i><br> The ship’s engine has been jammed or control circuits have gone non-responsive. Until resolved, no bridge actions can be taken, though the pilot can still perform general actions.",
+      "<b>Fuel Bleed:</b><i>(Acute)</i><br> The ship’s fuel tanks have been holed or emergency vents have been force-triggered by battle damage. If not resolved by the end of the next round, the ship will jettison all fuel except the minimal amount needed for in-system operation.",
+      "<b>Haywire Systems:</b><i>(Continuing)</i><br> Critical command links have been damaged or disordered by the hit. Until resolved, the ship starts each round at -2 Command Points. Multiple such Crises can stack this penalty, crippling a ship until the Crises are resolved.",
+      "<b>Hull Breach:</b><i>(Acute)</i><br> The hull has been damaged in a way that is currently non-critical but is about to tear open an important compartment or crumple on vital systems. If not resolved by the end of the next round, the ship will take damage: 1d10 for fighter-class hulls, 2d10 for frigates, 3d10 for cruisers, and 4d10 for capital hulls, all ignoring Armor.",
+      "<b>System Damage:</b><i>(Continuing)</i><br> One of the ship’s systems has been cooked by the hit. The GM randomly picks a weapon, fitting, or engine; that system is disabled as if hit with a targeted shot, with drives suffering a 1 point drive level decrease. Disabled systems hit by this Crisis or drives reduced below drive-0 are destroyed and cannot be repaired during combat.",
+      "<b>Target Decalibration:</b><i>(Continuing)</i><br> The gunnery computers are hopelessly confused and cannot lock the ship’s weaponry on a target until this Crisis is resolved.",
+      "<b>VIP Imperiled:</b><i>(Acute)</i><br> Shipboard damage threatens a random PC or important NPC. That victim must immediately roll a Physical saving throw; on a success, they lose half their hit points, and on a failure they are mortally wounded. NPC crew can make a free attempt to stabilize the downed VIP using their usual NPC skill bonus. If the NPC fails, and no PC takes a Deal With a Crisis action to successfully stabilize them by the end of the ship’s turn, they die.",
+    ];
+    let coin = this._getRandomInt(crisisArray.length);
+    let content = `<h3>Crisis</h3>${crisisArray[coin]}<br><i>10 base difficulty check</i>`;
+    let chatData = {
+      content: content,
+    };
+    ChatMessage.create(chatData);
   }
 
-  _getRandomInt(max: number) {
-    return Math.floor(Math.random() * max);
+  _getRandomInt(exclusiveMax: number) {
+    return Math.floor(Math.random() * exclusiveMax);
   }
 
-  _breakItem(id: string, forceDestroy: boolean) {
+  _breakItem(id: string, forceDestroy: boolean): string {
+    if (!id || id == ""){
+      console.log("Nothing to break");
+      return "";
+    }
     if (id == this.ENGINE_ID){
-      
+      let curSpike = this.data.data.spikeDrive.value;
+      if (forceDestroy) {
+        curSpike = 0;
+      } else {
+        curSpike-=1;
+      }
+      this.update({"data.spikeDrive.value": curSpike});
+      if (curSpike==0){
+        return "Engine Destroyed";
+      } else {
+        return "Engine Damaged";
+      }
     } else {
-
+      let item = <SWNRShipDefense|SWNRShipFitting|SWNRShipWeapon>(this.getEmbeddedDocument("Item", id));
+      if (forceDestroy || item?.data.data.broken) {
+        item.update({"data.destroyed": true});
+        return `${item.name} Destroyed`;
+      } else {
+        item.update({"data.broken": true});
+        return `${item.name} Disabled`;
+      }
     }
   }
 
   rollSystemFailure(sysToInclude: SysToFail[], whatToRoll: string): void {
-    ui.notifications?.info("todo sys failure");
     let candidateIds: string[]  = [];
     let idx = sysToInclude.indexOf("drive");
     if (idx >- 1){
-      candidateIds.push(this.ENGINE_ID);
+      if (this.data.data.spikeDrive.value > 0) {
+        candidateIds.push(this.ENGINE_ID);
+      } else {
+      }
       sysToInclude.splice(idx,1 );
-      console.log(sysToInclude);
     }
     //Get wpns if marked
     idx = sysToInclude.indexOf("wpn");
     if (idx >- 1){
       for (let i of this.itemTypes.shipWeapon){
         console.log("wpn ", i);
-        if (i.id) {
+        if (i.id && !i.data.data["destroyed"]) {
           candidateIds.push(i.id);
         }
       }
       sysToInclude.splice(idx,1 );
-      console.log(sysToInclude);
     }
     //Get def if marked
     idx = sysToInclude.indexOf("def");
     if (idx >- 1){
       for (let i of this.itemTypes.shipDefense){
         console.log("def ", i);
-        if (i.id) {
+        if (i.id && !i.data.data["destroyed"]) {
           candidateIds.push(i.id);
         }
       }
       sysToInclude.splice(idx,1 );
-      console.log(sysToInclude);
     }
     //Get fit if marked
     idx = sysToInclude.indexOf("fit");
     if (idx >- 1){
       for (let i of this.itemTypes.shipFitting){
-        console.log("def ", i);
-        if (i.id) {
+        if (i.id && !i.data.data["destroyed"]) {
           candidateIds.push(i.id);
         }
       }
@@ -213,19 +254,50 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     if (sysToInclude.length > 0) {
       ui.notifications?.error("Sys to fail not evaluated: " + sysToInclude);
     }
+    let msg: string[] = [];
     if (whatToRoll == "dest-all") {
-
+      for (let itemId of candidateIds){
+        msg.push(this._breakItem(itemId, true));
+      }
     } else if (whatToRoll == "break-all") {
-
+      for (let itemId of candidateIds){
+        msg.push(this._breakItem(itemId, false));
+      }
     } else if (whatToRoll == "all-50") {
-      
+      for (let itemId of candidateIds){
+        let coin = this._getRandomInt(2);
+        if (coin == 0) {
+          msg.push(this._breakItem(itemId, false));
+        }
+      }
     } else if (whatToRoll == "break-1") {
-      
+      if (candidateIds.length>0) {
+        let coin = this._getRandomInt(candidateIds.length);
+        msg.push(this._breakItem(candidateIds[coin], false));
+      }
     } else {
       ui.notifications?.error("Sys to fail not evaluated. What to include " + whatToRoll);
       return;
     }
-
+    msg.filter(i => i!="");
+    let content = '<h3> Nothing to fail</h3>';
+    if (msg.length > 0){
+      content = "<h3>Systems Failure:</h3>";
+      let eng = false;
+      for (var i = 0; i < msg.length; i++) {  
+        if(msg[i]){
+          if (msg[i]=="Engine Destroyed" || msg[i] == "Engine Damaged") {
+            //TODO cleanup, brittle.
+            eng=true;
+          }
+          content += `<p>${msg[i]}<\p>`
+        }
+      }
+    }
+    let chatData = {
+      content: content,
+    };
+    ChatMessage.create(chatData);
   }
 
   addCrew(actorId: string): void {
