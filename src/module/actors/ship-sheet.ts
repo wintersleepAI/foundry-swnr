@@ -105,7 +105,7 @@ export class ShipActorSheet extends ActorSheet<
     if (targetHull) {
       let d = new Dialog({
         title: "Apply Default Stats",
-        content: `<p>Do you want to apply the default stats for a ${targetHull}?</p>`,
+        content: `<p>Do you want to apply the default stats for a ${targetHull}?</p><b>This will change your current and max values for HP, cost, armor, AC, mass, power, hardpoints, hull type, speed, and crew.</b>`,
         buttons: {
           one: {
             icon: '<i class="fas fa-check"></i>',
@@ -128,8 +128,9 @@ export class ShipActorSheet extends ActorSheet<
       ui.notifications?.error("Drive disabled.");
       return;
     }
+    //TODO localize
     new Dialog({
-      title: 'Example Dialog',
+      title: 'Travel Days (Use life support)',
       content: `
           <form>
             <div class="form-group">
