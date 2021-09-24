@@ -7,6 +7,14 @@ import { SWNRBaseActor } from "../base-actor";
 export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
   popUpDialog?: Dialog;
 
+  get ammo(): this["data"]["data"]["ammo"] {
+    return this.data.data.ammo;
+  }
+
+  get hasAmmo(): boolean {
+    return this.ammo.type === "none" || this.ammo.value > 0;
+  }
+
 
   async rollAttack(shooterId: string | null, shooterName: string| null,
     skillMod: number, 
@@ -39,6 +47,14 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
       damageExplain: damageRollStr,
     };
 
+
+    if (this.data.data.ammo.type !== "none") {
+      const newAmmoTotal = this.data.data.ammo.value - 1;
+      await this.update({ "data.ammo.value": newAmmoTotal }, { });
+      if (newAmmoTotal === 0)
+        ui.notifications?.warn(`Your ${this.name} is now out of ammo!`);
+    }
+
     const dialogData = {
       weapon: this,
       hitRoll,
@@ -53,6 +69,9 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
     const diceData = Roll.fromTerms([
       PoolTerm.fromRolls([hitRoll, damageRoll]),
     ]);
+
+
+
     const chatContent = await renderTemplate(template, dialogData);
     const chatData = {
       speaker: { "alias": shooterName} ,
@@ -75,6 +94,12 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
       ui.notifications?.error("Weapon is broken/disabled or destroyed. Cannot fire!");
       return;
     }
+    if (!this.hasAmmo) {
+      ui.notifications?.error(`Your ${this.name} is out of ammo!`);
+      return;
+    }
+
+
     if (this.actor.type == "ship") {
       let defaultGunnerId: string | null = this.actor.data.data.roles.gunnery;
       let defaultGunner: SWNRCharacterActor | SWNRNPCActor | null = null;

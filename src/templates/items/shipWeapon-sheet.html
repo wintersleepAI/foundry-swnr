@@ -39,7 +39,54 @@
         type="text"  name="data.qualities" value="{{data.data.qualities}}" />
     </div>
 
-
+    <div class="flex flex-wrap gap-1">
+      <h3 class="text-base w-full">{{localize 'swnr.weapon.ammo'}}:</h3>
+      <div>
+        <div> {{localize 'swnr.sheet.ammoType'}}: </div>
+        <select
+          class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+          name="data.ammo.type"
+        >
+          {{#select data.data.ammo.type}}
+          <option value="none">{{localize 'swnr.ammo.none'}}</option>
+          <option value="ammo">{{localize 'swnr.ammo.ammo'}}</option>
+          <option value="missile">{{localize 'swnr.ammo.missile'}}</option>
+          <option value="special">{{localize 'swnr.ammo.special'}}</option>
+          {{/select}}
+        </select>
+      </div>
+      {{#if (and (ne data.data.ammo.type "none") (ne data.data.ammo.type "infinite"))}}
+      <div class="pl-2">
+        {{localize 'swnr.sheet.magazine'}}:
+        <div class="flex gap-1 items-center">
+          <div
+            class="flex border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md items-center"
+          >
+            <input
+              type="number"
+              class="w-10 text-right bg-transparent"
+              name="data.ammo.value"
+              max="{{data.data.ammo.max}}"
+              value="{{data.data.ammo.value}}"
+              data-dtype="Number"
+              step="1"
+              min="0"
+            />
+            <span>/</span>
+            <input
+              type="number"
+              class="w-10 text-left bg-transparent"
+              name="data.ammo.max"
+              value="{{data.data.ammo.max}}"
+              data-dtype="Number"
+              step="1"
+              min="0"
+            />
+          </div>
+        </div>
+      </div>
+      {{/if}}
+    </div>
 
   </div>
 
