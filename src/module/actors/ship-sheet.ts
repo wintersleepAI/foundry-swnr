@@ -87,6 +87,7 @@ export class ShipActorSheet extends ActorSheet<
     html.find(".item-edit").on("click", this._onItemEdit.bind(this));
     html.find(".item-delete").on("click", this._onItemDelete.bind(this));
     html.find(".crew-delete").on("click", this._onCrewDelete.bind(this));
+    html.find(".item-reload").on("click", this._onItemReload.bind(this));
 
     html.find(".item-toggle-broken").on("click", this._onItemBreakToggle.bind(this));
     html.find(".item-toggle-destroy").on("click", this._onItemDestroyToggle.bind(this));
@@ -373,6 +374,30 @@ export class ShipActorSheet extends ActorSheet<
     //const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
     if (!item) return;
     item.roll();
+  }
+
+  _onItemReload(event: JQuery.ClickEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    const li = $(event.currentTarget).parents(".item");
+    const item = this.actor.getEmbeddedDocument("Item", li.data("itemId"));
+    if (!item) return;
+    let ammo_max = item.data.data.ammo?.max;
+    if (ammo_max != null) {
+      if (item.data.data.ammo.value < ammo_max){
+        console.log("Reloading", item);
+        item.update({"data.ammo.value": ammo_max})
+        let content = `<p> Reloaded ${item.name} </p>`
+        ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            content: content
+        });
+      } else {
+        ui.notifications?.info("Trying to reload a full item");
+      }
+    } else {
+      console.log("Unable to find ammo in item ", item.data.data);
+    }
   }
 
   _onItemBreakToggle(event: JQuery.ClickEvent): void {
