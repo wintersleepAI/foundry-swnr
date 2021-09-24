@@ -151,12 +151,12 @@
 
         <!--life support-->
         <div class="life-support flex flex-col justify-center items-center">
-          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+          <div class="w-24 border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
-              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              class="w-11 text-right pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
               type="number" step="1" name="data.lifeSupportDays.value" value="{{actor.data.data.lifeSupportDays.value}}"
               data-dtype="Number" min="0" /><span>/</span><input
-              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              class="w-11 text-left pr-0.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
               type="number" name="data.lifeSupportDays.max" value="{{actor.data.data.lifeSupportDays.max}}" step="1"
               min="1" data-dtype="Number" />
           </div>
@@ -169,16 +169,16 @@
 
         <!--crew-->
         <div class="crew flex flex-col justify-center items-center">
-          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+          <div class="w-26 text-center border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
-              class="w-1 text-center pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              class="w-4 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
               type="number" step="1" name="data.crew.min" value="{{actor.data.data.crew.min}}" data-dtype="Number"
-              min="0" /><span>/</span>
+              min="0" /><span class="w-2">/</span>
             <input
-              class="w-2 pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              class="w-4 text-center  py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
               type="number" step="1" name="data.crew.current" value="{{actor.data.data.crew.current}}"
-              data-dtype="Number" min="0" /><span>/</span><input
-              class="w-5 text-center pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              data-dtype="Number" min="0" /><span  class="w-2">/</span><input
+              class="w-4 text-center pr-0.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
               type="number" name="data.crew.max" value="{{actor.data.data.crew.max}}" step="1" min="1"
               data-dtype="Number" />
           </div>
