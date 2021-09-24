@@ -488,8 +488,8 @@ Hooks.on("preCreateItem", (item: Item, data, options, id) => {
         ui.notifications?.error(`Ship item minClass (${data.minClass}) is too large for this ship (${shipClass}). Still adding. `);
       }
     } else {
-      console.log('Only ship items can go to a ship?', item);
-      return false;
+      //console.log('Only ship items can go to a ship?', item);
+      //return false;
     }
   }
   return item;
