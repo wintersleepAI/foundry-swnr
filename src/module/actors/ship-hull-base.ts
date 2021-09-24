@@ -27,6 +27,10 @@ export const HULL_DATA = {
         "max": 1,
         "current": 0,
       },
+      "lifeSupportDays": {
+        "value": 60,
+        "max": 60,
+      },
       "speed": 5,
       "cost": 200000,
     }
@@ -56,6 +60,10 @@ export const HULL_DATA = {
         "min": 1,
         "max": 10,
         "current": 0,
+      },
+      "lifeSupportDays": {
+        "value": 600,
+        "max": 600,
       },
       "speed": 3,
       "cost": 200000,
@@ -87,6 +95,10 @@ export const HULL_DATA = {
         "max": 6,
         "current": 0,
       },
+      "lifeSupportDays": {
+        "value": 360,
+        "max": 360,
+      },
       "speed": 3,
       "cost": 500000,
     }
@@ -116,6 +128,10 @@ export const HULL_DATA = {
         "min": 5,
         "max": 20,
         "current": 0,
+      },
+      "lifeSupportDays": {
+        "value": 1200,
+        "max": 1200,
       },
       "speed": 4,
       "cost": 2500000,
@@ -147,6 +163,10 @@ export const HULL_DATA = {
         "max": 40,
         "current": 0,
       },
+      "lifeSupportDays": {
+        "value": 2400,
+        "max": 2400,
+      },
       "speed": 0,
       "cost": 4000000,
     }
@@ -176,6 +196,10 @@ export const HULL_DATA = {
         "min": 30,
         "max": 120,
         "current": 0,
+      },
+      "lifeSupportDays": {
+        "value": 73200,
+        "max": 73200,
       },
       "speed": 1,
       "cost": 7000000,
@@ -207,6 +231,10 @@ export const HULL_DATA = {
         "max": 40,
         "current": 0,
       },
+      "lifeSupportDays": {
+        "value": 2400,
+        "max": 2400,
+      },
       "speed": 0,
       "cost": 5000000,
     }
@@ -236,6 +264,10 @@ export const HULL_DATA = {
         "min": 50,
         "max": 200,
         "current": 0,
+      },
+      "lifeSupportDays": {
+        "value": 12000,
+        "max": 12000,
       },
       "speed": 1,
       "cost": 10000000,
@@ -267,6 +299,10 @@ export const HULL_DATA = {
         "max": 1000,
         "current": 0,
       },
+      "lifeSupportDays": {
+        "value": 60000,
+        "max": 60000,
+      },
       "speed": 0,
       "cost": 50000000,
     }
@@ -296,6 +332,10 @@ export const HULL_DATA = {
         "min": 300,
         "max": 1500,
         "current": 0,
+      },
+      "lifeSupportDays": {
+        "value": 90000,
+        "max": 90000,
       },
       "speed": 0,
       "cost": 60000000,
@@ -327,6 +367,10 @@ export const HULL_DATA = {
         "max": 200,
         "current": 0,
       },
+      "lifeSupportDays": {
+        "value": 12000,
+        "max": 12000,
+      },
       "speed": 0,
       "cost": 5000000,
     }
@@ -357,12 +401,15 @@ export const HULL_DATA = {
         "max": 1000,
         "current": 0,
       },
+      "lifeSupportDays": {
+        "value": 60000,
+        "max": 60000,
+      },
       "speed": 0,
       "cost": 40000000,
     }
   },
 };
-
 
 export const document = HULL_DATA;
 export const name = "HULL_DATA";

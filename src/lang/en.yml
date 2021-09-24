@@ -427,6 +427,9 @@
       crisis: Crisis
       system-failure: System Failure(s)
       refuel: Refuel
+      costMultiplier: Scale cost by ship class (2x,3x, 4x)
+      powerMultiplier: Scale power by ship class (2x,3x, 4x)
+      massMultiplier: Scale mass by ship class (2x,3x, 4x)
       station:
         captain: Captain
         gunnery: Gunnery

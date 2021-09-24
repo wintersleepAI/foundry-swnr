@@ -57,6 +57,7 @@ declare interface SWNRVehicleTemplateBase {
   tl: number;
 }
 
+
 declare interface SWNRLivingTemplateComputed {
   baseAc: number; //computed-active effects needed
   systemStrain: {
@@ -132,6 +133,20 @@ declare interface SWNRCharacterComputedData
   stats: { [key in SWNRStats]: SWNRStatComputed };
 }
 
+
+declare interface SWNRShipComputed {
+  power: {
+    value: number;
+  };
+  mass: {
+    value: number;
+  };
+  hardpoints: {
+    value: number;
+  };
+}
+
+
 declare interface SWNRShipData extends SWNRVehicleTemplateBase {
 
   itemTypes: {
@@ -141,15 +156,12 @@ declare interface SWNRShipData extends SWNRVehicleTemplateBase {
     })[];
   };
   power: {
-    value: number;
     max: number;
   };
   mass: {
-    value: number;
     max: number;
   };
   hardpoints: {
-    value: number;
     max: number;
   };
   lifeSupportDays: {
@@ -182,10 +194,6 @@ declare interface SWNRShipData extends SWNRVehicleTemplateBase {
     engineering: string;
     comms: string;
   };
-
-}
-
-declare interface SWNRShipComputed {
 
 }
 

@@ -105,7 +105,7 @@ export class ShipActorSheet extends ActorSheet<
     if (targetHull) {
       let d = new Dialog({
         title: "Apply Default Stats",
-        content: `<p>Do you want to apply the default stats for a ${targetHull}?</p><b>This will change your current and max values for HP, cost, armor, AC, mass, power, hardpoints, hull type, speed, and crew.</b>`,
+        content: `<p>Do you want to apply the default stats for a ${targetHull}?</p><b>This will change your current and max values for HP, cost, armor, AC, mass, power, hardpoints, hull type, speed, life support (60*max crew), and crew.</b>`,
         buttons: {
           one: {
             icon: '<i class="fas fa-check"></i>',

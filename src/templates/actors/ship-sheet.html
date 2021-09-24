@@ -191,10 +191,9 @@
         <!--power-->
         <div class="power flex flex-col justify-center items-center">
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
-            <input
-              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.power.value" value="{{actor.data.data.power.value}}" data-dtype="Number"
-              min="0" /><span>/</span><input
+            <span
+              class="inline-block text-right text-gray-700 cursor-not-allowed w-8">
+              {{actor.data.data.power.value}}</span>/<input
               class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
               type="number" name="data.power.max" value="{{actor.data.data.power.max}}" step="1" min="1"
               data-dtype="Number" />
@@ -208,10 +207,9 @@
         <!--mass-->
         <div class="mass flex flex-col justify-center items-center">
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
-            <input
-              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.mass.value" value="{{actor.data.data.mass.value}}" data-dtype="Number"
-              min="0" /><span>/</span><input
+            <span
+              class="inline-block text-right text-gray-700 cursor-not-allowed w-8">
+              {{actor.data.data.mass.value}}</span><span>/</span><input
               class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
               type="number" name="data.mass.max" value="{{actor.data.data.mass.max}}" step="1" min="1"
               data-dtype="Number" />
@@ -225,10 +223,10 @@
         <!--hardpoints-->
         <div class="hardpoints flex flex-col justify-center items-center">
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
-            <input
-              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.hardpoints.value" value="{{actor.data.data.hardpoints.value}}"
-              data-dtype="Number" min="0" /><span>/</span><input
+            <span
+              class="inline-block text-right text-gray-700 cursor-not-allowed w-8">
+              {{actor.data.data.hardpoints.value}}</span>
+            <span>/</span><input
               class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
               type="number" name="data.hardpoints.max" value="{{actor.data.data.hardpoints.max}}" step="1" min="1"
               data-dtype="Number" />
