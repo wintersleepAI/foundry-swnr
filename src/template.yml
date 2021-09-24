@@ -246,6 +246,10 @@ Item:
     hardpoint: 1
     shipClass: fighter
     qualities: ""
+    ammo:
+      type: none
+      max: 0
+      value: 0
   shipDefense:
     templates:
       - description

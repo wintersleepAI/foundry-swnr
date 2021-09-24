@@ -91,6 +91,11 @@ declare interface SWNRShipWeaponData extends SWNRBaseVehicleItemData, SWNRDescDa
   hardpoint: number;
   tl:  4 | 5 | 6;
   qualities: string;
+  ammo: {
+    type: SWNRWeaponAmmoTypes;
+    max: number;
+    value: number;
+  };
 }
 
 declare interface SWNRShipDefenseData extends SWNRBaseVehicleItemData, SWNRDescData{
