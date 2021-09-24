@@ -167,26 +167,48 @@
         </div>
 
 
-        <!--crew-->
-        <div class="crew flex flex-col justify-center items-center">
-          <div class="w-26 text-center border border-gray-800 bg-gray-400 mx-auto rounded-md">
-            <input
-              class="w-4 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.crew.min" value="{{actor.data.data.crew.min}}" data-dtype="Number"
-              min="0" /><span class="w-2">/</span>
-            <input
-              class="w-4 text-center  py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.crew.current" value="{{actor.data.data.crew.current}}"
-              data-dtype="Number" min="0" /><span  class="w-2">/</span><input
-              class="w-4 text-center pr-0.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" name="data.crew.max" value="{{actor.data.data.crew.max}}" step="1" min="1"
-              data-dtype="Number" />
-          </div>
-          <label
-            class="hp-label text-center hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
-            {{localize 'swnr.sheet.ship.crew'}}
-          </label>
-        </div>
+        <!--crew & speed-->
+        <div class="crew flex col-span-2 ">
+          <div class="flex flexrow">
+            <div class="flex flex3 w-60  justify-center items-center">
+              <!--crew-->
+              <div class="flex-col justify-center text-center items-center">
+                <div class="w-36 text-center border border-gray-800 bg-gray-400 mx-auto rounded-md items-center">
+                  <input
+                    class="w-8 text-center py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                    type="number" step="1" name="data.crew.min" value="{{actor.data.data.crew.min}}" data-dtype="Number"
+                    min="0" /><span class="w-2">/</span>
+                  <input
+                    class="w-8 text-center  py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                    type="number" step="1" name="data.crew.current" value="{{actor.data.data.crew.current}}"
+                    data-dtype="Number" min="0" /><span  class="w-2">/</span><input
+                    class="w-12 text-center  py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                    type="number" name="data.crew.max" value="{{actor.data.data.crew.max}}" step="1" min="1"
+                    data-dtype="Number" />
+                </div>
+                <label
+                  class="hp-label text-center hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+                  {{localize 'swnr.sheet.ship.crew'}}
+                </label>
+              </div>
+            </div> <!--end flex3 for crew-->
+            <div class="flex">
+              <!--speed-->
+              <div class="mass flex flex-col justify-center items-center">
+                <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+                  <input
+                    class="w-8 text-center pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                    type="number" step="1" name="data.speed" value="{{actor.data.data.speed}}" data-dtype="Number" min="0" />
+                </div>
+                <label
+                  class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+                  {{localize 'swnr.sheet.ship.speed'}}
+                </label>
+              </div>
+            </div><!--end flex for speed-->
+          </div> <!-- end flex row for crew&speed-->
+        </div> <!--end box 2 colspan for crew & speed-->
+
 
         <!--power-->
         <div class="power flex flex-col justify-center items-center">
@@ -255,18 +277,6 @@
           </label>
         </div>
 
-        <!--speed-->
-        <div class="mass flex flex-col justify-center items-center">
-          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
-            <input
-              class="w-8 text-center pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.speed" value="{{actor.data.data.speed}}" data-dtype="Number" min="0" />
-          </div>
-          <label
-            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
-            {{localize 'swnr.sheet.ship.speed'}}
-          </label>
-        </div>
 
 
 
