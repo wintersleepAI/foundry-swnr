@@ -88,7 +88,7 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     if (this.data.data.crew.current > 0) {
       let newLifeDays = this.data.data.lifeSupportDays.value;
       newLifeDays -= (this.data.data.crew.current * nDays);
-      this.update({
+      await this.update({
         "data.lifeSupportDays.value": newLifeDays
       });
       if (newLifeDays <= 0) {
@@ -191,10 +191,47 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     if (travelDays > 0) {
       let fuel = this.data.data.fuel.value;
       fuel -= 1;
-      this.update({ "data.fuel.value": fuel });
+      await this.update({ "data.fuel.value": fuel });
       if (fuel <= 0) {
         ui.notifications?.info("Out of fuel...");
       }
+    }
+  }
+
+  calcCost(maintanence: boolean): void {
+    const hull = this.data.data.shipHullType;
+    const shipClass = this.data.data.shipClass;
+    this.data.data.maintanenceCost
+    const shipData = HULL_DATA[hull];
+    if (shipData) {
+      let baseCost = shipData.data.cost;
+      let multiplier = 1;
+      if (shipClass == "frigate") {
+        multiplier = 10;
+      } else if (shipClass == "cruiser") {
+        multiplier = 25;
+      } else if (shipClass == "capital") {
+        multiplier = 100;
+      }
+
+      const shipInventory = <SWNRBaseItem<"shipDefense" | "shipWeapon" | "shipFitting">[]>(
+        this.items.filter(
+          (i) => i.type === "shipDefense" || i.type === "shipWeapon" || i.type === "shipFitting"
+        )
+      );
+
+      for (let i = 0; i < shipInventory.length; i++) {
+        let item = shipInventory[i];
+        let itemCost = (item.data.data.costMultiplier) ? item.data.data.cost : (item.data.data.cost*multiplier);
+        baseCost+=itemCost;
+      }
+
+      let updateJSON = { "cost": baseCost};
+      if (maintanence) {
+        updateJSON["maintanenceCost"] = (baseCost*0.05);
+      }
+      console.log(updateJSON);
+      this.update({data: updateJSON});
     }
   }
 

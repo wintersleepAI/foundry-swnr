@@ -511,11 +511,17 @@
                   </div>
 
                   <!--cost-->
-                  <div class="cost flex flex-col items-center">
-                    <input
-                      class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                      type="string" name="data.cost" value="{{actor.data.data.cost}}" />
-                    <label>{{localize 'swnr.sheet.ship.cost'}}</label>
+                  <div class="flex flexrow items-center">
+                    <div class="cost flex flex2 flex-col items-center">
+                      <input
+                        class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                        type="string" name="data.cost" value="{{actor.data.data.cost}}" />
+                      <label>{{localize 'swnr.sheet.ship.cost'}}</label> 
+                    </div>
+                    <div class="flex flex1 align-left">
+                      <a class="calc-cost" title='{{localize 'swnr.sheet.ship.calc-cost'}}'><i class="fas fa-2x fa-cash-register"></i></a>
+
+                    </div>
                   </div>
               </div>
               <div class="grid grid-cols-2">

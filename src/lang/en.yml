@@ -427,9 +427,10 @@
       crisis: Crisis
       system-failure: System Failure(s)
       refuel: Refuel
-      costMultiplier: Scale cost by ship class (2x,3x, 4x)
-      powerMultiplier: Scale power by ship class (2x,3x, 4x)
-      massMultiplier: Scale mass by ship class (2x,3x, 4x)
+      calc-cost: Calculate the cost for the ship (using hull and items)
+      costMultiplier: Scale cost by ship class (10x,25x,100x)
+      powerMultiplier: Scale power by ship class (2x,3x,4x)
+      massMultiplier: Scale mass by ship class (2x,3x,4x)
       station:
         captain: Captain
         gunnery: Gunnery
