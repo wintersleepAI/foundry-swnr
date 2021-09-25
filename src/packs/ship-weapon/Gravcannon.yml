@@ -3,7 +3,11 @@ data:
   cost: 2000000
   costMultiplier: false
   damage: 4d6
-  description: placeholder
+  description: >-
+    Using much the same principles as
+    man-portable grav weaponry, the gravcannon
+    causes targets to fall apart in a welter
+    of mutually-antagonistic gravitic fields.
   hardpoint: 3
   mass: 4.0
   massMultiplier: false

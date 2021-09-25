@@ -2,7 +2,11 @@ data:
   broken: false
   cost: 10000
   costMultiplier: true
-  description: placeholder
+  description: >-
+    Too small to damage ships, these point defence lasers
+    can detonate or melt incoming munitions, improving the
+    ships defences against torpedoes, fractal impact charges,
+    and other ammunition-based weapons.
   effect: +2 AC versus weapons that use ammo
   mass: 2.0
   massMultiplier: true

@@ -2,7 +2,11 @@ data:
   broken: false
   cost: 25000
   costMultiplier: true
-  description: placeholder
+  description: >-
+    Stealth systems can mask the ship's energy emissions through
+    careful modulation of the output. All travel times inside
+    a star system are doubled when the system is engaged, but any
+    skill checks to avoid detection gain a +2 bonus.
   effect: Adds +2 to skill checks to avoid detection
   mass: 1.0
   massMultiplier: true

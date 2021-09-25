@@ -3,7 +3,10 @@ data:
   cost: 2000000
   costMultiplier: false
   damage: 2d4
-  description: placeholder
+  description: >-
+    A rare example of pretech weaponry,
+    a fighter equipped with a PMB can
+    scratch even a battleship's hull.
   hardpoint: 1
   mass: 1.0
   massMultiplier: false

@@ -2,7 +2,17 @@ data:
   broken: false
   cost: 10000
   costMultiplier: true
-  description: placeholder
+  description: >-
+    The ship has been carefully fitted to support the use
+    of non-sentient expert syste robots in its operation.
+    At least one human, VI, or True AI crew member is necessary
+    to oversee the bots and monitor spike drills, but otherwise
+    crew may be replaed with cheap, basic robots at a cost of 1000
+    credits per crew member replaced. Bots don't draw any pay,
+    don't take up life support, and their maintenance is assumed
+    to be part of the ship's operating costs. These bots are
+    incapable of any actions unrelated to operating the ship
+    and are treated as level-0 in their skills where relevant.
   effect: Ship can use simple robots as crew
   mass: 1.0
   massMultiplier: false

@@ -2,7 +2,12 @@ data:
   broken: false
   cost: 5000
   costMultiplier: true
-  description: placeholder
+  description: >-
+    The ship can be designed to accomodate a larger number of crew
+    or passengers. Extended life support can be fitted multiple times;
+    each time, the maximum crew rating of the ship increases by 100%
+    of its normal maximum. Thus, a free merchant who installs this
+    twice can have a maximum complement of 18 people.
   effect: Doubles maximum crew size
   mass: 1.0
   massMultiplier: true

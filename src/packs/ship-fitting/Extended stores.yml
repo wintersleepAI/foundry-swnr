@@ -2,7 +2,10 @@ data:
   broken: false
   cost: 2500
   costMultiplier: true
-  description: placeholder
+  description: >-
+    A normal complement of ship's stores can keep the maximum
+    crew size supplied for two months. Each selection of
+    Extended Stores doubles that time, and can be fitted multiple times.
   effect: Maximum life support duration is doubled
   mass: 1.0
   massMultiplier: true

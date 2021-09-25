@@ -2,7 +2,15 @@ data:
   broken: false
   cost: 2500
   costMultiplier: true
-  description: placeholder
+  description: >-
+    Selecting this fitting equips the ship with a number of single-use
+    escape craft capable of reaching the nearest habitable planet or station
+    in a star system. If no such destination exists, the boats can maintain
+    their passengers for a year in drugged semi-stasis. Lifeboats have
+    fully-functional comms systems and are usually equipped with basic
+    survival supplies and distress beacons. A single selection of this
+    fitting provides enough lifeboats for a ship's maximum crew,
+    with up to twenty people per boat.
   effect: Emergency escape craft for a ship's crew
   mass: 1.0
   massMultiplier: false

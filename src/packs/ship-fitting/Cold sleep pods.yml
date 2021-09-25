@@ -2,7 +2,12 @@ data:
   broken: false
   cost: 5000
   costMultiplier: true
-  description: placeholder
+  description: >-
+    These stasis pods can keep a subject alive for centuries
+    prodived that the ship's power doesn't fail. Each installation
+    allows for keeping a number of people equal to the ship's maximum
+    crew in stasis indefinitely. This fitting can be installed
+    multiple times.
   effect: Keeps occupants in stasis
   mass: 1.0
   massMultiplier: false

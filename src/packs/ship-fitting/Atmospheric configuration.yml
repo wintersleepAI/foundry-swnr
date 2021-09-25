@@ -2,7 +2,11 @@ data:
   broken: false
   cost: 5000
   costMultiplier: true
-  description: placeholder
+  description: >-
+    This fitting must be put in place when the ship is built,
+    and cannot be installed on cruiser-class or larger ships.
+    A ship designed for atmospheric flight can land on most
+    solid or aqueous surfaces.
   effect: 'Can land: frigates and fighters only.'
   mass: 1.0
   massMultiplier: true

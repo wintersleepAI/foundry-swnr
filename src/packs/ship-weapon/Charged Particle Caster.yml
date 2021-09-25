@@ -3,7 +3,9 @@ data:
   cost: 800000
   costMultiplier: false
   damage: 3d6
-  description: placeholder
+  description: >-
+    A focalized upgrade to the reaper battery,
+    the CPC has a much better armor penetration profile.
   hardpoint: 2
   mass: 1.0
   massMultiplier: false

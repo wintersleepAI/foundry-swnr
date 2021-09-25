@@ -2,7 +2,11 @@ data:
   broken: false
   cost: 50000
   costMultiplier: true
-  description: placeholder
+  description: >-
+    This system links with a ship's navigational subsystem
+    and randomizes the motion vectors in sympathy with
+    metadimensional gravitic currents. This agility gives
+    any hit on the ship a 1 in 6 chance of being negated completely.
   effect: 1 in 6 chance of any given attack missing.
   mass: 2.0
   massMultiplier: true

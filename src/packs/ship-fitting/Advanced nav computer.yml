@@ -2,7 +2,12 @@ data:
   broken: false
   cost: 10000
   costMultiplier: true
-  description: placeholder
+  description: >-
+    Forging new spike courses is too much an art to rely on
+    computerized assistance, but an advanced nav computer
+    can help on well-mapped routes. When navigating an
+    interstellar drill course with charts less than a year old,
+    the navigator decreases drill difficulty by 2.
   effect: Adds +2 for traveling familiar spike courses
   mass: 0.0
   massMultiplier: false

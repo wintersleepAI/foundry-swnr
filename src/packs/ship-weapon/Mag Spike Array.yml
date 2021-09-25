@@ -3,7 +3,10 @@ data:
   cost: 1000000
   costMultiplier: false
   damage: 2d6+2
-  description: placeholder
+  description: >-
+    A storm of magnetically-accelerated
+    spike charges is almost guaranteed
+    to eradicate any fighter-class craft it hits.
   hardpoint: 2
   mass: 2.0
   massMultiplier: false

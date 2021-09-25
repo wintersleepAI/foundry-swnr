@@ -3,7 +3,9 @@ data:
   cost: 50000
   costMultiplier: false
   damage: 2d4
-  description: placeholder
+  description: >-
+    Projecting a spray of tiny, dense particulate matter,
+    sandthrowers are highly effective against lightly-armored fighters.
   hardpoint: 1
   mass: 1.0
   massMultiplier: false

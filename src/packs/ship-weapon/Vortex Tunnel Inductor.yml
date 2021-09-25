@@ -3,7 +3,10 @@ data:
   cost: 5000000
   costMultiplier: false
   damage: 3d20
-  description: placeholder
+  description: >-
+    A capital-class model of the SIP, a VTI is capable
+    pf incapacitating a cruiser in two hits. Its bulk
+    limits its utility against fighter-class craft, however.
   hardpoint: 4
   mass: 10.0
   massMultiplier: false

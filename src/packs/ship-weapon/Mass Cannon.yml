@@ -3,7 +3,10 @@ data:
   cost: 5000000
   costMultiplier: false
   damage: 2d20
-  description: placeholder
+  description: >-
+    By firing projectiles almost as large as fighter-scale
+    craft, the mass cannon inflicts tremendous damage on a
+    target. Serious ammunition limitations hamper its wider-scale use.
   hardpoint: 4
   mass: 5.0
   massMultiplier: false

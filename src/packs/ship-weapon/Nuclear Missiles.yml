@@ -3,7 +3,10 @@ data:
   cost: 50000
   costMultiplier: false
   damage: 0
-  description: placeholder
+  description: >-
+    Useless in ship-to-ship combat or against any other TL4
+    planet with working nuke snuffers, one of these missiles
+    can still erase an entire lostworlder city without such protection.
   hardpoint: 2
   mass: 1.0
   massMultiplier: false

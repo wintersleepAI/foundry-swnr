@@ -2,7 +2,11 @@ data:
   broken: false
   cost: 25000
   costMultiplier: true
-  description: placeholder
+  description: >-
+    A complex glazing process can harden the surface
+    of a ship's armor to more effectively shed
+    incoming attacks, decreasing armor-piercing quality
+    of any hit by 5.
   effect: AP quality of attacking weapons reduced by 5
   mass: 1.0
   massMultiplier: true

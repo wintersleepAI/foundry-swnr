@@ -2,7 +2,13 @@ data:
   broken: false
   cost: 5000
   costMultiplier: true
-  description: placeholder
+  description: >-
+    All ships are equipped with basic medical facilities for curing
+    lightly injured crew members and keeping the seriously injured ones
+    stable until reaching a planet. An extended medbay improves those
+    facilities, allowing for the medical treatment of up to the ship's
+    entire maximum crew at once, including the treatment of critically
+    wounded passengers.
   effect: Can provide medical care to more patients
   mass: 1.0
   massMultiplier: false

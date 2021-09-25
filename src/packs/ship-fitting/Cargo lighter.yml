@@ -2,7 +2,15 @@ data:
   broken: false
   cost: 25000
   costMultiplier: false
-  description: placeholder
+  description: >-
+    Cruisers and larger craft can't land on planetary bodies,
+    so they require small shuttlecraft for transport. A cargo lighter
+    is only capable of surface-to-orbit flight, which takes roughly
+    twenty minutes either way, but can latch on to a standard pressurized
+    cargo container holding up to 200 tons of cargo and passengers.
+    These containers are usually collapsible and take up no significant
+    space when compressed for storage, assuming they're not simply
+    disposable cargo shells. This fitting can be purchased multiple times.
   effect: Orbit-to-surface cargo shuttle
   mass: 2.0
   massMultiplier: false

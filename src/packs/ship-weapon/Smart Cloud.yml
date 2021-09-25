@@ -3,7 +3,10 @@ data:
   cost: 2000000
   costMultiplier: false
   damage: 3d10
-  description: placeholder
+  description: >-
+    A swarm of self-directed microdrones sweeps over
+    the ship. Their integral beam weaponry is too small
+    to damage larger ships, but they can wipe and attacking fighter wave.
   hardpoint: 2
   mass: 5.0
   massMultiplier: false

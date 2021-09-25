@@ -3,8 +3,11 @@ data:
   cost: 100000
   costMultiplier: false
   damage: 1d4
-  description: placeholder
-  hardpoint: 1
+  description: >-
+    Twinned assay and penetration lasers modulate
+    the frequency of this beam for remarkable armor
+    penetration. These weapons are popular choices for
+    fighters intended for frigate or cruiser engagement.
   mass: 1.0
   massMultiplier: false
   minClass: fighter

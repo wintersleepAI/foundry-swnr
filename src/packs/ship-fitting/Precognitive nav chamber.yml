@@ -2,7 +2,15 @@ data:
   broken: false
   cost: 100000
   costMultiplier: true
-  description: placeholder
+  description: >-
+    An extremely rare example of psitech dating from before the Scream,
+    a precognitive nav chamber allows a character with at least Precognition-2
+    psionic skill to assist in interstellar drills, sensing impending shear
+    alterations before they happen. The navigator automatically succeeds
+    on any spike drill check of difficulty 9 or less. On a failed check,
+    add 2 to the Spike Drive Mishap roll, limiting the potential damage.
+    On drilling in to the destination system, the psychic has expended
+    all Effort in the process.
   effect: Allows a precog to assist in navigation
   mass: 0.0
   massMultiplier: false

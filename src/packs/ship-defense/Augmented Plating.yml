@@ -2,7 +2,12 @@ data:
   broken: false
   cost: 25000
   costMultiplier: true
-  description: placeholder
+  description: >-
+    At the cost of a certain amount of speed and maneuverability,
+    a ship can have its armor plating reinforced against glacing
+    hits, gaining a +2 bonus to its AC. This augmentation can
+    decrease a ship's speed below 0, meaning it will be applied
+    as a penalty on all Pilot tests.
   effect: +2 AC
   mass: 1.0
   massMultiplier: true

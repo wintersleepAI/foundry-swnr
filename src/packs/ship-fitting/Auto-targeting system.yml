@@ -2,7 +2,14 @@ data:
   broken: false
   cost: 50000
   costMultiplier: false
-  description: placeholder
+  description: >-
+    Some ships run with more guns than crewmen. A single NPC
+    or PC can man one gun per round, firing it as often as
+    gunnery chief's Fire One Weapon or Fire All Gunns actions allow,
+    but sometimes that's not enough. Installing an automatic targeting
+    system for a gun allows it to shoot at a +2 hit bonus without
+    human assistance. This system must be installed once for each gun
+    that is to be self-manned.
   effect: Fires one weapon system without a gunner
   mass: 0.0
   massMultiplier: false

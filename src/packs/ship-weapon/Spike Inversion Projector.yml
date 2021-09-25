@@ -3,7 +3,11 @@ data:
   cost: 2500000
   costMultiplier: false
   damage: 3d8
-  description: placeholder
+  description: >-
+    The SIP uses the ship's spike phasing
+    as an offensive weapon, penetrating the
+    target with a brief incursions of MES
+    energies that largely ignore attempts to evade.
   hardpoint: 3
   mass: 3.0
   massMultiplier: false

@@ -3,7 +3,11 @@ data:
   cost: 200000
   costMultiplier: false
   damage: 2d6
-  description: placeholder
+  description: >-
+    A spray of penetrator sabots that
+    use fractla surfacing to increase
+    impact. Favored for bomber-class
+    fighter hulls.
   hardpoint: 1
   mass: 1.0
   massMultiplier: false

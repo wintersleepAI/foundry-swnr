@@ -3,7 +3,12 @@ data:
   cost: 100000
   costMultiplier: false
   damage: 3d4
-  description: placeholder
+  description: >-
+    Stepped tapping of the spike drive power plant
+    allows for the emission of a torrent of charged
+    particles. The particles have very little armor
+    penetration, but can fry a small ship's power grid
+    in a strike or two.
   hardpoint: 1
   mass: 1.0
   massMultiplier: false

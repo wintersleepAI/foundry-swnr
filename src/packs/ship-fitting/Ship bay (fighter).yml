@@ -2,7 +2,15 @@ data:
   broken: false
   cost: 200000
   costMultiplier: false
-  description: placeholder
+  description: >-
+    These sophisticated docling bays provide all the necesasry tools
+    and support for launching a starship from the motehr craft. They are
+    rerely seen outside of dedicated capital-class carriers, but some
+    cruisers make room to mount a fighter-class attack shuttle. Each bay
+    allows room for one ship of the appropriate hull class. While the carried
+    ship can support its own crew if necesary, most carriers fold their space
+    wing into the mothership's crew roster. This fitting can be taken
+    multiple times.
   effect: Carrier housing for a fighter
   mass: 2.0
   massMultiplier: false

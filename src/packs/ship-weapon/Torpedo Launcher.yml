@@ -3,7 +3,10 @@ data:
   cost: 500000
   costMultiplier: false
   damage: 3d8
-  description: placeholder
+  description: >-
+    Capable of damaging even a battleship,
+    torpedoes are cumbersome, expensive and
+    often the core of a line frigate's armament.
   hardpoint: 1
   mass: 3.0
   massMultiplier: false

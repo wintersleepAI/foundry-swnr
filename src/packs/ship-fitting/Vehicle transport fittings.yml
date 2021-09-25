@@ -2,7 +2,13 @@ data:
   broken: false
   cost: 2500
   costMultiplier: true
-  description: placeholder
+  description: >-
+    The ship has been fitted with specialized mounts, bunking, cargo bays,
+    and other facilities to expedite the transport of often unwieldy vehicles,
+    including including mechs and other military craft. Any vehicles carried
+    count as only half their usual cargo tonnage. Assuming trained operators,
+    up to four vehicles can be offloaded or ramped onto the ship per round
+    in cases where speed is critical.
   effect: Halve tonnage space of carried vehicles
   mass: 1.0
   massMultiplier: true

@@ -3,7 +3,12 @@ data:
   cost: 1500000
   costMultiplier: false
   damage: 3d10
-  description: placeholder
+  description: >-
+    One of the first spinal-mount class weapons,
+    the SBC briefly channels the full power of the ship
+    into a charged beam. It lacks the power and penetration
+    of the more advanced gravcannon, but also takes less
+    power to mount.
   hardpoint: 3
   mass: 5.0
   massMultiplier: false

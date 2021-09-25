@@ -2,7 +2,11 @@ data:
   broken: false
   cost: 10000
   costMultiplier: true
-  description: placeholder
+  description: >-
+    Each time this fitting is selected, 10% of the ship's maximum crew
+    gain access to luxury cabins of spaciousness sufficient to please
+    a wealthy star-farer. This fitting comes with the usual zero-gee
+    athletic courts, decorative fountains, fine-dining, and artistic fittings.
   effect: 10% of the max crew get luxurious quarters
   mass: 1.0
   massMultiplier: true

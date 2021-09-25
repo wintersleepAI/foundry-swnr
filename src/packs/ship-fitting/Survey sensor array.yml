@@ -2,7 +2,15 @@ data:
   broken: false
   cost: 5000
   costMultiplier: true
-  description: placeholder
+  description: >-
+    Most ships require only basic analysis of a star system, sufficient
+    to identify population centers, do rough scanning of an object's
+    composition, and char major navigational hazards. Survey sensor arrays
+    greatly enhance the ship's sensor abilities, allowing for finely-detailed
+    mapping of objects and planets, along with broad spectrum communications
+    analysis. They also improve attempts to detect other craft when scanning
+    a region for stealthy vessels. Any rolls with servey sensor arrays
+    add +2 to skill checks.
   effect: Improved planetary sensory array
   mass: 1.0
   massMultiplier: false

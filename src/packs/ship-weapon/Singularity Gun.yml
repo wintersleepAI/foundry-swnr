@@ -3,7 +3,11 @@ data:
   cost: 20000000
   costMultiplier: false
   damage: 5d20
-  description: placeholder
+  description: >-
+    One of the few surviving pretech weapons in anything
+    resembling wide currency, this apital-class weapons
+    system fires something mathematically related to a
+    minituarized black hole at a target.
   hardpoint: 5
   mass: 10.0
   massMultiplier: false

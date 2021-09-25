@@ -3,7 +3,9 @@ data:
   cost: 500000
   costMultiplier: false
   damage: 2d6
-  description: placeholder
+  description: >-
+    A baseline frigate anti-fighter system,
+    this battery fires waves of lasers or charged particles to knock down small craft.
   hardpoint: 1
   mass: 3.0
   massMultiplier: false

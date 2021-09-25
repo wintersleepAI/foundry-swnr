@@ -2,7 +2,12 @@ data:
   broken: false
   cost: 100000
   costMultiplier: true
-  description: placeholder
+  description: >-
+    By sacrificing empty hull space in a complex system
+    of ablative blast baffles, a capital-class ship can
+    have a large amount of its mass shot away without
+    actually impinging on its normal function. This grants
+    it a +1 AC bonus and 20 extra maximum hit points.
   effect: +1 AC and +20 maximum hit points
   mass: 2.0
   massMultiplier: true
