@@ -373,7 +373,7 @@ export class ShipActorSheet extends ActorSheet<
       buttons: {
         yesnomaint: {
           icon: '<i class="fas fa-check"></i>',
-          label: "Yes, but leave maintanence alone",
+          label: "Yes, but leave maintenance alone",
           callback: () => { this.actor.calcCost(false) }
         },
         yes: {

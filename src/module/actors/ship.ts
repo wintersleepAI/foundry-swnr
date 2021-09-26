@@ -198,10 +198,10 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     }
   }
 
-  calcCost(maintanence: boolean): void {
+  calcCost(maintenance: boolean): void {
     const hull = this.data.data.shipHullType;
     const shipClass = this.data.data.shipClass;
-    this.data.data.maintanenceCost
+    this.data.data.maintenanceCost
     const shipData = HULL_DATA[hull];
     if (shipData) {
       let baseCost = shipData.data.cost;
@@ -220,6 +220,11 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
         )
       );
 
+      const shipHasSystemDrive = shipInventory.find(elem => elem.name =="System Drive");
+      if (shipHasSystemDrive){
+        baseCost*=0.9;
+      }
+
       for (let i = 0; i < shipInventory.length; i++) {
         let item = shipInventory[i];
         let itemCost = (item.data.data.costMultiplier) ? item.data.data.cost : (item.data.data.cost*multiplier);
@@ -227,10 +232,9 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
       }
 
       let updateJSON = { "cost": baseCost};
-      if (maintanence) {
-        updateJSON["maintanenceCost"] = (baseCost*0.05);
+      if (maintenance) {
+        updateJSON["maintenanceCost"] = (baseCost*0.05);
       }
-      console.log(updateJSON);
       this.update({data: updateJSON});
     }
   }

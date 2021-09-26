@@ -1,6 +1,6 @@
 data:
   broken: false
-  cost: Special
+  cost: 200000
   costMultiplier: false
   description: >-
     This TL5 tech is completely unavailable in most sectors and was

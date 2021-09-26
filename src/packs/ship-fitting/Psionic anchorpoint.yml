@@ -1,6 +1,6 @@
 data:
   broken: false
-  cost: Special
+  cost: 0
   costMultiplier: false
   description: >-
     This pretech relic is unavailable on the open market in most sectors.
