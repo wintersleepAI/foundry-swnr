@@ -98,6 +98,8 @@ export class ShipActorSheet extends ActorSheet<
     html.find(".refuel-button").on("click", this._onRefuel.bind(this));
     html.find(".crisis-button").on("click", this._onCrisis.bind(this));
     html.find(".failure-button").on("click", this._onSysFailure.bind(this));
+    html.find(".calc-cost").on("click", this._onCalcCost.bind(this));
+
     html.find("[name='data.shipHullType']").on("change", this._onHullChange.bind(this));
   }
   _onHullChange(event: JQuery.ClickEvent): void {
@@ -360,6 +362,35 @@ export class ShipActorSheet extends ActorSheet<
     );
     const s = this.popUpDialog.render(true);
 
+  }
+
+
+  _onCalcCost(event: JQuery.ClickEvent): void {
+    const hullType = this.actor.data.data.shipHullType;
+    let d = new Dialog({
+      title: "Calc Costs",
+      content: `Do you want to calculate the cost based on your fittings and the hull ${hullType}`,
+      buttons: {
+        yesnomaint: {
+          icon: '<i class="fas fa-check"></i>',
+          label: "Yes, but leave maintanence alone",
+          callback: () => { this.actor.calcCost(false) }
+        },
+        yes: {
+          icon: '<i class="fas fa-times"></i>',
+          label: "Yes, and calculate maintence costs as 5%",
+          callback: () => { this.actor.calcCost(true) }
+        },
+        no: {
+          icon: '<i class="fas fa-times"></i>',
+          label: "No",
+          callback: () => { console.log("Doing nothing") }
+        }
+      },
+      default: "no",
+    });
+    d.render(true);
+    
   }
 
   // Clickable title/name or icon. Invoke Item.roll()
