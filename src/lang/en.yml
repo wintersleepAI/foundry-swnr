@@ -383,9 +383,9 @@
       ship-hull-type: Ship Hull Type
       cargo: Cargo
       operating-cost: Operating Cost
-      maintanence-cost: Maintanence Cost
+      maintenance-cost: Maintenance Cost
       cost: Cost
-      last-maintanence: Last Maintanence
+      last-maintenance: Last Maintenance
       crew: Crew (min/cur/max)
       shipHullType:
         strikeFighter: Strike Fighter 
@@ -411,7 +411,7 @@
       fittings: Fitting
       stations: Stations
       weapons-tab: Weapons/Defense/Fittings
-      notes-tab: Notes/ Description/Maintanence
+      notes-tab: Notes/ Description/Maintenance
       crew-tab: Crew Members
       crew-name: Crew Member
       name: Name

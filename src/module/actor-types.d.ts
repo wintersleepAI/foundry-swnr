@@ -185,8 +185,8 @@ declare interface SWNRShipData extends SWNRVehicleTemplateBase {
   description: string;
   mods: string;
   operatingCost: 0;
-  maintanenceCost: number;
-  lastMaintanence: string;
+  maintenanceCost: number;
+  lastMaintenance: string;
   roles: {
     captain: string;
     gunnery: string;

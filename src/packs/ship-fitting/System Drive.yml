@@ -1,0 +1,24 @@
+data:
+  broken: false
+  cost: 0
+  costMultiplier: true
+  description: >-
+    The ship’s standard drive-1 spike drive is
+    removed and replaced with a different propulsion
+    system. The ship is still treated as having a drive-1
+    for maneuvering and system transit purposes, but
+    it cannot make interstellar drills. This modification 
+    lowers the cost of the basic hull by 10% and
+    adds extra power and space based on the size of
+    the hull: 1 power for fighters, 2 for frigates, 3 for
+    cruisers, and 4 for capital ship hulls. Twice this
+    amount of free mass is gained by the process.
+  effect: Replace spike drive with small system drive
+  mass: -2.0
+  massMultiplier: true
+  minClass: fighter
+  power: -1.0
+  powerMultiplier: true
+img: systems/swnr/assets/icons/game-icons.net/item-icons/rocket-thruster.svg
+name: System Drive
+type: shipFitting

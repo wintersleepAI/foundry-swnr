@@ -141,8 +141,8 @@ Actor:
     description: ""
     mods: "None"
     operatingCost: 0
-    maintanenceCost: 0
-    lastMaintanence: ""
+    maintenanceCost: 0
+    lastMaintenance: ""
     roles:
       captain: ""
       gunnery: ""
