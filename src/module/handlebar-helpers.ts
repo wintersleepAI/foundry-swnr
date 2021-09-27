@@ -11,6 +11,10 @@ export default function registerHelpers(): void {
   Handlebars.registerHelper("concat", function (a, b) {
     return a + b;
   });
+  Handlebars.registerHelper("trim", function(obj,n) {
+    if (obj.length <= n) return obj;
+    return obj.substring(0,n)+"...";
+  });
   Handlebars.registerHelper("zeroWidthBreaker", (message: string) => {
     return new Handlebars.SafeString(
       message.replace(
@@ -33,7 +37,7 @@ export default function registerHelpers(): void {
       if (!skillItem || skillItem.data.type !== "skill") {
         skillItem = undefined;
       }
-      console.log({ skillID, skillItem });
+      //console.log({ skillID, skillItem });
       const skillBonus: number =
         forDamage && weapon.data.data.skillBoostsDamage
           ? skillItem?.data.data.rank ?? -1
