@@ -1,0 +1,50 @@
+<form class="{{cssClass}} -m-2 p-2 bg-gray-200">
+  {{> "systems/swnr/templates/items/fragments/desc.html"}}
+  <div class="flex flexrow gap-2 text-center">
+
+    <div class="flex flex-col items-center">
+      {{localize 'swnr.sheet.ship.effect'}}:
+      <input
+        class="w-64 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="text" name="data.effect" value="{{data.data.effect}}" />
+    </div>
+
+
+    <div class="flex flex-col items-center">
+      {{localize 'swnr.item.cost'}}:
+      <input type="number"
+        class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        step="1" name="data.cost" min="0" data-dtype="Number" value="{{data.data.cost}}" />
+    </div>
+
+
+    <div class="flex flex-col items-center">
+      {{localize 'swnr.sheet.system-strain'}}:
+      <input
+        class="w-64 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="text" name="data.strain" value="{{data.data.strain}}" />
+    </div>
+
+    <!-- tl -->
+    <div>
+      <div> {{localize 'swnr.item.techlevel'}}: </div>
+      <select class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md" name="data.tl">
+        {{#select data.data.tl}}
+        <option value="">{{localize 'swnr.ammo.none'}}</option>
+        <option value="4">4</option>
+        <option value="4">5</option>
+        <option value="4">6</option>
+        {{/select}}
+      </select>
+    </div>
+
+    <div class="flex flex-row items-center">
+      {{localize 'swnr.sheet.cyberware.disabled'}}:         
+      <input
+          type="checkbox"
+          name="data.disabled"
+          {{checked data.data.disabled}}>
+    </div>
+
+  </div>
+</form>

@@ -158,6 +158,7 @@ Item:
     - power
     - focus
     - item
+    - cyberware
     # - modItem
     # - modShip
     - skill
@@ -275,3 +276,11 @@ Item:
     defaultStat: ask
     pool: 2D6
     source: ""
+  cyberware:
+    templates: 
+      - description
+    tl: 4
+    strain: 0
+    cost: 0
+    effect: ""
+    disabled: false
