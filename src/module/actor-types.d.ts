@@ -42,12 +42,12 @@ declare interface SWNRVehicleTemplateBase {
     value: number;
     max: number;
   };
-  ac: {
+  armor: {
     value: number;
     max: number;
   };
   speed: number;
-  armor: number;
+  ac: number;
   crew: {
     min: number;
     max: number;
