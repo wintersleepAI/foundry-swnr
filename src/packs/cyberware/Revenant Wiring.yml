@@ -1,0 +1,11 @@
+data:
+  cost: 50000
+  description: >-
+    
+  disabled: false
+  effect: Keeps the user fighting even after they're dead
+  strain: 3
+  tl: 5
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Revenant Wiring
+type: cyberware

@@ -1,0 +1,11 @@
+data:
+  cost: 20000
+  description: >-
+    
+  disabled: false
+  effect: Allows surprise injection of lethal or dazing toxins
+  strain: 2
+  tl: 4
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Toxin Injector
+type: cyberware
