@@ -411,8 +411,9 @@
       fittings: Fitting
       stations: Stations
       weapons-tab: Weapons/Defense/Fittings
-      notes-tab: Notes/ Description/Maintenance
+      notes-tab: Notes/ Description
       crew-tab: Crew Members
+      cost-tab: Ship Costs
       crew-name: Crew Member
       name: Name
       dmg: Dmg

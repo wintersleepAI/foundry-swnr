@@ -330,6 +330,13 @@
           <a class="item" data-tab="crew">
             {{localize 'swnr.sheet.ship.crew-tab'}}
           </a>
+
+          <a class="item" data-tab="cost">
+            {{localize 'swnr.sheet.ship.cost-tab'}}
+          </a>
+
+
+          
         </nav>
 
         <section class="sheet-body">
@@ -491,39 +498,10 @@
               </div>
             </div>
           </div>
+          <!-- notes --> 
           <div class="tab shipnotes min-h-full" data-group="primary" data-tab="notes">
             <div class="flex flex-col">
-              <div class="flex flexrow">
-                  <!--last Main-->
-                  <div class="lastMaintenance flex flex-col items-center">
-                    <input
-                      class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                      type="string" min="0" name="data.lastMaintenance" value="{{actor.data.data.lastMaintenance}}" />
-                    <label>{{localize 'swnr.sheet.ship.last-maintenance'}}</label>
-                  </div>
 
-                  <!--maintenanceCost-->
-                  <div class="maintenanceCost flex flex-col items-center">
-                    <input
-                      class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                      type="number" min="0" name="data.maintenanceCost" value="{{actor.data.data.maintenanceCost}}" />
-                    <label>{{localize 'swnr.sheet.ship.maintenance-cost'}}</label>
-                  </div>
-
-                  <!--cost-->
-                  <div class="flex flexrow items-center">
-                    <div class="cost flex flex2 flex-col items-center">
-                      <input
-                        class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                        type="string" name="data.cost" value="{{actor.data.data.cost}}" />
-                      <label>{{localize 'swnr.sheet.ship.cost'}}</label> 
-                    </div>
-                    <div class="flex flex1 align-left">
-                      <a class="calc-cost" title='{{localize 'swnr.sheet.ship.calc-cost'}}'><i class="fas fa-2x fa-cash-register"></i></a>
-
-                    </div>
-                  </div>
-              </div>
               <div class="grid grid-cols-2">
                 <!-- Description -->
                 <div class="pr-0.5">
@@ -543,7 +521,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> <!-- end notes tab>
           <!-- Crew Tab-->
           <div class="tab crew min-h-full" data-group="primary" data-tab="crew">
 
@@ -680,6 +658,43 @@
               </div>
             </div>
           </div>
+          <!-- cost tab -->
+          <!-- notes --> 
+          <div class="tab shipcost min-h-full" data-group="primary" data-tab="cost">
+            <div class="flex flex-col">
+              <div class="flex flexrow">
+                  <!--last Main-->
+                  <div class="lastMaintenance flex flex-col items-center">
+                    <input
+                      class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                      type="string" min="0" name="data.lastMaintenance" value="{{actor.data.data.lastMaintenance}}" />
+                    <label>{{localize 'swnr.sheet.ship.last-maintenance'}}</label>
+                  </div>
+
+                  <!--maintenanceCost-->
+                  <div class="maintenanceCost flex flex-col items-center">
+                    <input
+                      class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                      type="number" min="0" name="data.maintenanceCost" value="{{actor.data.data.maintenanceCost}}" />
+                    <label>{{localize 'swnr.sheet.ship.maintenance-cost'}}</label>
+                  </div>
+
+                  <!--cost-->
+                  <div class="flex flexrow items-center">
+                    <div class="cost flex flex2 flex-col items-center">
+                      <input
+                        class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                        type="number" name="data.cost" value="{{actor.data.data.cost}}" />
+                      <label>{{localize 'swnr.sheet.ship.cost'}}</label> 
+                    </div>
+                    <div class="flex flex1 align-left">
+                      <a class="calc-cost" title='{{localize 'swnr.sheet.ship.calc-cost'}}'><i class="fas fa-2x fa-cash-register"></i></a>
+
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div> <!-- end notes tab>
         </section>
       </div>
     </div>
