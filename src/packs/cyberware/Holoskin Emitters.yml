@@ -1,0 +1,11 @@
+data:
+  cost: 15000
+  description: >-
+    
+  disabled: false
+  effect: Creates a hologram around the user
+  strain: 1
+  tl: 4
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Holoskin Emitters
+type: cyberware

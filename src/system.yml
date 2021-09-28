@@ -131,6 +131,12 @@ packs:
     system: swnr
     module: swnr
     path: packs/ship-fitting.db
+    entity: Item
+  - name: cyberware
+    label: Cyberware
+    system: swnr
+    module: swnr
+    path: packs/cyberware.db
     entity: Item    
 languages:
   - lang: en

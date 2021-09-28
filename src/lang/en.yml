@@ -347,6 +347,7 @@
       inventory: Inventory
       armor: Armor
       foci: Foci
+      other: Other
       powers: Powers
       combat: Combat
     xp: XP
@@ -371,6 +372,10 @@
     vs: vs
     rollables: Rollables
     hit-dice: Hit Dice
+    cyberware:
+      disabled: Disabled
+      strain: Strain
+      name: Cyberware
     ship:
       life-support-days: Life Support Days
       fuel: Fuel

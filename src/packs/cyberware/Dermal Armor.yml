@@ -1,0 +1,11 @@
+data:
+  cost: 20000
+  description: >-
+    
+  disabled: false
+  effect: AC 16 immune to primitive weapon Shock
+  strain: 2
+  tl: 4
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Dermal Armor
+type: cyberware

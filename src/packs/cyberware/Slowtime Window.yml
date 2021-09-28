@@ -1,0 +1,11 @@
+data:
+  cost: 30000
+  description: >-
+    
+  disabled: false
+  effect: Prevents surprise and speeds up the user's cogitation
+  strain: 2
+  tl: 5
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Slowtime Window
+type: cyberware

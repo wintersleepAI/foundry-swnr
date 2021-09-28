@@ -4,7 +4,7 @@ import { SWNRWeapon } from "./items/weapon";
 import { SWNRShipClass } from "./actor-types";
 
 type MetaItemTypes = "class" | "power" | "focus" | "skill";
-type RealItemTypes = "armor" | "weapon" | "item" ;
+type RealItemTypes = "armor" | "weapon" | "item" | "cyberware" ;
 type ShipItemTypes = "shipWeapon" | "shipFitting" | "shipDefense";
 type ItemTypes = RealItemTypes | MetaItemTypes | ShipItemTypes;
 
@@ -117,6 +117,14 @@ declare interface SWNRPowerData extends SWNRDescData {
   level: number;
 }
 
+declare interface SWNRCyberware extends SWNRDescData {
+  tl: number;
+  strain: number;
+  cost: number;
+  disabled: boolean;
+  effect: string;
+}
+
 declare interface SWNRItemData extends SWNRBaseItemData {
   quantity: number;
   bundle: {
@@ -152,6 +160,7 @@ declare global {
       | { type: "item"; data: SWNRItemData }
       | { type: "focus"; data: SWNRFocusData }
       | { type: "skill"; data: SWNRSkillData }
+      | { type: "cyberware"; data: SWNRCyberware }
       | { type: "shipWeapon"; data: SWNRShipWeaponData}
       | { type: "shipDefense"; data: SWNRShipDefenseData}
       | { type: "shipFitting"; data: SWNRShipFittingData}
@@ -167,6 +176,7 @@ declare global {
       | { type: "item"; data: SWNRItemData }
       | { type: "focus"; data: SWNRFocusData }
       | { type: "skill"; data: SWNRSkillData }
+      | { type: "cyberware"; data: SWNRCyberware }
       | { type: "shipWeapon"; data: SWNRShipWeaponData }
       | { type: "shipDefense"; data: SWNRShipDefenseData}
       | { type: "shipFitting"; data: SWNRShipFittingData};

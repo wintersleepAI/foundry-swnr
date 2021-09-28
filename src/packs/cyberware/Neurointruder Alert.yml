@@ -1,0 +1,11 @@
+data:
+  cost: 50000
+  description: >-
+    
+  disabled: false
+  effect: Grants +3 to save vs. telepathy alerts of intrusion
+  strain: 1
+  tl: 5
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Neurointruder Alert
+type: cyberware
