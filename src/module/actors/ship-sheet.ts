@@ -99,8 +99,44 @@ export class ShipActorSheet extends ActorSheet<
     html.find(".crisis-button").on("click", this._onCrisis.bind(this));
     html.find(".failure-button").on("click", this._onSysFailure.bind(this));
     html.find(".calc-cost").on("click", this._onCalcCost.bind(this));
+    html.find(".make-payment").on("click", this._onPayment.bind(this));
+    html.find(".pay-maintenance").on("click", this._onMaintenance.bind(this));
 
     html.find("[name='data.shipHullType']").on("change", this._onHullChange.bind(this));
+  }
+
+  _onPayment(event: JQuery.ClickEvent) {
+    return this._onPay(event, "payment");
+  }
+
+  _onMaintenance(event: JQuery.ClickEvent) {
+    return this._onPay(event, "maintenance");
+  }
+
+  _onPay(event: JQuery.ClickEvent, paymentType: "payment" | "maintenance"): void {
+    // if a new payment type is added this function needs to be refactored
+    let shipPool = this.actor.data.data.creditPool;
+    let paymentAmount = (paymentType == "payment") ? this.actor.data.data.paymentAmount : this.actor.data.data.maintenanceCost;
+    //Assume its payment and change if maintenance
+
+    let lastPayDate = (paymentType == "payment") ? this.actor.data.data.lastPayment : this.actor.data.data.lastMaintenance;
+    let monthSchedule = (paymentType == "payment") ? this.actor.data.data.paymentMonths : this.actor.data.data.maintenanceMonths;
+
+    if (paymentAmount > shipPool){      
+      ui.notifications?.error(`Not enough money in the pool for paying ${paymentAmount} for ${paymentType}`);
+      return;
+    }
+    shipPool-=paymentAmount;
+    let dateObject = new Date(lastPayDate.year, lastPayDate.month-1, lastPayDate.day);
+    dateObject.setMonth(dateObject.getMonth()+monthSchedule);
+    if (paymentType == "payment") {
+      this.actor.update({"data.creditPool": shipPool, "data.lastPayment.year": dateObject.getFullYear(), "data.lastPayment.month": dateObject.getMonth()+1,
+        "data.lastPayment.day": dateObject.getDate()
+      });
+    } else {
+
+    }
+   
   }
   _onHullChange(event: JQuery.ClickEvent): void {
     let targetHull = event.target?.value;
