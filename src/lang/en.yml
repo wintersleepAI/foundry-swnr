@@ -389,8 +389,14 @@
       cargo: Cargo
       operating-cost: Operating Cost
       maintenance-cost: Maintenance Cost
+      amount-owed: Amount Owed
+      credit-pool: Credit Pool
+      payment-amount: Payment Amount
+      payment-months: Months Between Payments
+      maintenance-months: Months Between Maintenance
+      last-payment: Last Payment Date (YYYY/MM/DD)
       cost: Cost
-      last-maintenance: Last Maintenance
+      last-maintenance: Last Maintenance (YYYY/MM/DD)
       crew: Crew (min/cur/max)
       shipHullType:
         strikeFighter: Strike Fighter 
@@ -416,8 +422,9 @@
       fittings: Fitting
       stations: Stations
       weapons-tab: Weapons/Defense/Fittings
-      notes-tab: Notes/ Description/Maintenance
+      notes-tab: Notes/ Description
       crew-tab: Crew Members
+      cost-tab: Ship Costs
       crew-name: Crew Member
       name: Name
       dmg: Dmg

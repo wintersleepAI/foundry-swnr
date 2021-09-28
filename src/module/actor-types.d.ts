@@ -42,12 +42,12 @@ declare interface SWNRVehicleTemplateBase {
     value: number;
     max: number;
   };
-  ac: {
+  armor: {
     value: number;
     max: number;
   };
   speed: number;
-  armor: number;
+  ac: number;
   crew: {
     min: number;
     max: number;
@@ -184,9 +184,23 @@ declare interface SWNRShipData extends SWNRVehicleTemplateBase {
   shipHullType: SWNRShipHullType;
   description: string;
   mods: string;
-  operatingCost: 0;
+  operatingCost: number;
   maintenanceCost: number;
-  lastMaintenance: string;
+  amountOwed: number;
+  paymentAmount: number;
+  paymentMonths: number;
+  maintenanceMonths: number;
+  creditPool;
+  lastMaintenance: {
+    year: number;
+    month: number; 
+    day: number
+  };
+  lastPayment: {
+    year: number;
+    month: number; 
+    day: number
+  };
   roles: {
     captain: string;
     gunnery: string;

@@ -142,7 +142,19 @@ Actor:
     mods: "None"
     operatingCost: 0
     maintenanceCost: 0
-    lastMaintenance: ""
+    amountOwed: 0
+    paymentAmount: 0
+    paymentMonths: 1
+    maintenanceMonths: 6
+    creditPool: 0
+    lastMaintenance: 
+      year: 3200
+      month: 1
+      day: 1
+    lastPayment: 
+      year: 3200
+      month: 1
+      day: 1
     roles:
       captain: ""
       gunnery: ""

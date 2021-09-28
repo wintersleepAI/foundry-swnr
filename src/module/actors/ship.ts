@@ -201,6 +201,16 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
   calcCost(maintenance: boolean): void {
     const hull = this.data.data.shipHullType;
     const shipClass = this.data.data.shipClass;
+
+    const lastMaintenance = this.data.data.lastMaintenance;
+    //let da = lastMaintenance.split("-");
+
+    //let mainDate = new Date(Number(da[0]),Number(da[1])-1, Number(da[2]));
+    // console.log(mainDate);
+    // mainDate.setMonth(mainDate.getMonth() + 1);
+    // console.log(mainDate);
+    
+
     this.data.data.maintenanceCost
     const shipData = HULL_DATA[hull];
     if (shipData) {
