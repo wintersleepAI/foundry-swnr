@@ -583,26 +583,26 @@
               <div><!-- table-->
                   <li class="item-titles flexrow">
                     <!--<div class="item-caret"><i class="fas fa-caret-down"></i></div>-->
-                    <div class="item-name">{{localize 'swnr.sheet.cyberware.name'}} </div>
-                    <div class="item-name">{{localize 'swnr.sheet.cyberware.strain'}} </div>
+                    <div class="item-name pr-2.0">{{localize 'swnr.sheet.cyberware.name'}} </div>
+                    <div class="item-strain">{{localize 'swnr.sheet.cyberware.strain'}} </div>
                     
-                    <div class="item-effect">{{localize 'swnr.sheet.description'}}</div>
+                    <div class="item-effect pr-2.0">{{localize 'swnr.sheet.description'}}</div>
                     <div class="item-controls">
                     </div>
                   </li>
                   <ol class="item-list">
                     {{#each itemTypes.cyberware as |item id|}}
                     <li class="item-entry">
-                      <div class="item flexrow" data-item-id="{{item.id}}">
-                        <div class="item-name item-click item-rollable flexrow">
+                      <div class="item flexrow py-3.0" data-item-id="{{item.id}}">
+                        <div class="item-name item-click item-rollable flexrow pr-2.0">
                           <div class="item-image" style="background-image: url({{item.img}})"><a></a></div>
 
                           <a>{{item.name}}</a>
                         </div>
-                        <div clas="">
+                        <div class="item">
                           {{item.data.data.strain}}
                         </div>
-                        <div clas="">
+                        <div class="item pr-2.0">
                           {{item.data.data.effect}}
                         </div>
                         <div class="item-controls">
