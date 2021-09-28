@@ -194,6 +194,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       ))?.checked
         ? true
         : false;
+        
       const skillId =
         (<HTMLSelectElement>form.querySelector('[name="skill"]'))?.value ||
         this.data.data.skill;

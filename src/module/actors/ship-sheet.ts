@@ -110,18 +110,18 @@ export class ShipActorSheet extends ActorSheet<
         title: "Apply Default Stats",
         content: `<p>Do you want to apply the default stats for a ${targetHull}?</p><b>This will change your current and max values for HP, cost, armor, AC, mass, power, hardpoints, hull type, speed, life support (60*max crew), and crew.</b>`,
         buttons: {
-          one: {
+          yes: {
             icon: '<i class="fas fa-check"></i>',
             label: "Yes",
             callback: () => this.actor.applyDefaulStats(targetHull)
           },
-          two: {
+          no: {
             icon: '<i class="fas fa-times"></i>',
             label: "No",
             callback: () => { console.log("Doing nothing") }
           }
         },
-        default: "two",
+        default: "no",
       });
       d.render(true);
     }

@@ -75,7 +75,6 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
   }
 
   applyDefaulStats(hullType: string) {
-    console.log("Applying hullType :" + hullType);
     if (HULL_DATA[hullType]) {
       this.update(HULL_DATA[hullType]
       );
