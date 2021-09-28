@@ -659,18 +659,9 @@
             </div>
           </div>
           <!-- cost tab -->
-          <!-- notes --> 
           <div class="tab shipcost min-h-full" data-group="primary" data-tab="cost">
             <div class="flex flex-col">
-              <div class="flex flexrow">
-                  <!--last Main-->
-                  <div class="lastMaintenance flex flex-col items-center">
-                    <input
-                      class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                      type="string" min="0" name="data.lastMaintenance" value="{{actor.data.data.lastMaintenance}}" />
-                    <label>{{localize 'swnr.sheet.ship.last-maintenance'}}</label>
-                  </div>
-
+              <div class="flex flexrow gap-8">
                   <!--maintenanceCost-->
                   <div class="maintenanceCost flex flex-col items-center">
                     <input
@@ -679,8 +670,41 @@
                     <label>{{localize 'swnr.sheet.ship.maintenance-cost'}}</label>
                   </div>
 
+                  <!--last Main-->
+                  <div class="lastMaintenance flex flex-col items-center">     
+                    <div class="flex-col justify-center text-center items-center">
+                      <div class="w-36 text-center border border-gray-800 bg-gray-400 mx-auto rounded-md items-center">
+                        <input
+                          class="w-8 text-center py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                          type="number" step="1" name="data.lastMaintenance.year" value="{{actor.data.data.lastMaintenance.year}}" data-dtype="Number"
+                          min="0" />
+                        <span class="w-2">/</span>
+                        <input
+                          class="w-4 text-center  py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                          type="number" step="1" name="data.lastMaintenance.month" value="{{actor.data.data.lastMaintenance.month}}"
+                          data-dtype="Number" min="0" />
+                        <span  class="w-2">/</span>
+                        <input
+                          class="w-4 text-center  py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                          type="number" name="data.lastMaintenance.day" value="{{actor.data.data.lastMaintenance.day}}" step="1" min="1"
+                          data-dtype="Number" />
+                      </div>                    
+                      <label>{{localize 'swnr.sheet.ship.last-maintenance'}}</label>
+                      </div>
+                  </div>
+
+              
+
+                  <!--maintenanceMonths-->
+                  <div class="maintenanceMonths flex flex-col items-center text-center">
+                    <input
+                      class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                      type="number" min="0" name="data.maintenanceMonths" value="{{actor.data.data.maintenanceMonths}}" />
+                    <label>{{localize 'swnr.sheet.ship.maintenance-months'}}</label>
+                  </div>
+
                   <!--cost-->
-                  <div class="flex flexrow items-center">
+                  <div class="flex flex-col items-center">
                     <div class="cost flex flex2 flex-col items-center">
                       <input
                         class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
@@ -692,6 +716,64 @@
 
                     </div>
                   </div>
+
+                  <!--amountOwed-->
+                  <div class="amountOwed flex flex-col items-center">
+                    <input
+                      class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                      type="number" min="0" name="data.amountOwed" value="{{actor.data.data.amountOwed}}" />
+                    <label>{{localize 'swnr.sheet.ship.amount-owed'}}</label>
+                  </div>
+
+                  <!--paymentAmount-->
+                  <div class="paymentAmount flex flex-col items-center">
+                    <input
+                      class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                      type="number" min="0" name="data.paymentAmount" value="{{actor.data.data.paymentAmount}}" />
+                    <label>{{localize 'swnr.sheet.ship.payment-amount'}}</label>
+                  </div>
+
+                 <!--last Main-->
+                  <div class="lastPayment flex flex-col items-center">
+               
+                    <div class="flex-col justify-center text-center items-center">
+                      <div class="w-36 text-center border border-gray-800 bg-gray-400 mx-auto rounded-md items-center">
+                        <input
+                          class="w-8 text-center py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                          type="number" step="1" name="data.lastPayment.year" value="{{actor.data.data.lastPayment.year}}" data-dtype="Number"
+                          min="0" />
+                        <span class="w-2">/</span>
+                        <input
+                          class="w-4 text-center  py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                          type="number" step="1" name="data.lastPayment.month" value="{{actor.data.data.lastPayment.month}}"
+                          data-dtype="Number" min="0" />
+                        <span  class="w-2">/</span>
+                        <input
+                          class="w-4 text-center  py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                          type="number" name="data.lastPayment.day" value="{{actor.data.data.lastPayment.day}}" step="1" min="1"
+                          data-dtype="Number" />
+                      </div>                    
+                      <label>{{localize 'swnr.sheet.ship.last-payment'}}</label>
+                      </div>
+
+                  </div>
+
+                  <!--paymentMonths-->
+                  <div class="paymentMonths flex flex-col items-center">
+                    <input
+                      class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                      type="number" min="0" name="data.paymentMonths" value="{{actor.data.data.paymentMonths}}" />
+                    <label>{{localize 'swnr.sheet.ship.payment-months'}}</label>
+                  </div>
+
+                  <!--creditPool-->
+                  <div class="creditPool flex flex-col items-center">
+                    <input
+                      class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                      type="number" min="0" name="data.creditPool" value="{{actor.data.data.creditPool}}" />
+                    <label>{{localize 'swnr.sheet.ship.credit-pool'}}</label>
+                  </div>
+
               </div>
             </div>
           </div> <!-- end notes tab>
