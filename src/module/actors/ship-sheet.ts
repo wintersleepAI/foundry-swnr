@@ -130,13 +130,28 @@ export class ShipActorSheet extends ActorSheet<
     let dateObject = new Date(lastPayDate.year, lastPayDate.month-1, lastPayDate.day);
     dateObject.setMonth(dateObject.getMonth()+monthSchedule);
     if (paymentType == "payment") {
-      this.actor.update({"data.creditPool": shipPool, "data.lastPayment.year": dateObject.getFullYear(), "data.lastPayment.month": dateObject.getMonth()+1,
-        "data.lastPayment.day": dateObject.getDate()
+      this.actor.update({
+        data:{
+          "creditPool": shipPool,
+          lastPayment: {
+            "year": dateObject.getFullYear(),
+            "month": dateObject.getMonth()+1,
+            "day": dateObject.getDate()
+          }
+        }
       });
     } else {
-
+      this.actor.update({
+        data:{
+          "creditPool": shipPool,
+          lastMaintenance: {
+            "year": dateObject.getFullYear(),
+            "month": dateObject.getMonth()+1,
+            "day": dateObject.getDate()
+          }
+        }
+      });
     }
-   
   }
   _onHullChange(event: JQuery.ClickEvent): void {
     let targetHull = event.target?.value;
