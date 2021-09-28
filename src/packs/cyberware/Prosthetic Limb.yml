@@ -1,0 +1,11 @@
+data:
+  cost: 2500
+  description: >-
+    
+  disabled: false
+  effect: Replaces a limb lost to misadventure
+  strain: 1
+  tl: 4
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Prosthetic Limb
+type: cyberware
