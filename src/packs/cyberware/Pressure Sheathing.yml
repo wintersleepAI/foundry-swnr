@@ -1,7 +1,12 @@
 data:
   cost: 15000
   description: >-
-    
+    Occasionally purchased by workers in hard vacuum or other hostile environments,
+    pressure sheathing integrates an ultrathin pressure membrane with the user’s dermis and emergency
+    film sealants that trigger at the user’s mental command. The pressure sheathing serves as an
+    emergency vacc suit with an integral oxygen supply and temperature regulators that can sustain
+    them for up to thirty minutes. A pressure sheath needs 48 hours to regain structural integrity and
+    power after triggering. A pressure sheath can be detected only by a close medical examination.
   disabled: false
   effect: Integral emergency vacc suit
   strain: 1

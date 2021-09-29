@@ -1,7 +1,13 @@
 data:
   cost: 30000
   description: >-
-    
+    Neural override fibers are woven into the user’s hands and arms and linked to a perceptual modulator implanted
+    at the base of the user’s brain stem. When presented with a direct exercise of hand-eye coordination,
+    the twitchlock can be engaged to produce superhuman accuracy and precision. Any attack roll or skill check reliant
+    chiefly on manual dexterity or aim can be rerolled, though the power surge inflicts two points of System Strain on the user.
+    A given roll can only be rerolled once with this cyberware. While the twitchlock allows superhuman accuracy when engaged,
+    the overrides fuzz ordinary nerve impulses and reduce the user’s Dexterity modifier by 1 when active.
+    Activating or deactivating the cyberware requires a Main Action.
   disabled: false
   effect: Allows brief moments of hyper-precise accuracy
   strain: 2

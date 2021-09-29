@@ -1,7 +1,12 @@
 data:
   cost: 10000
   description: >-
-    
+    Some personnel need to be armed at all times without giving any indication of such.
+    Improvised weaponry and conventional holdout weapons are useful enough against soft targets,
+    but disabling a target in powered armor requires more. The details of the array vary from user to
+    user, but usually act as advanced medium weapons that can be used with either Punch or Stab skills
+    and at least one integral energy projector equal to a laser rifle, one that must be powered by an
+    insertable type A power cell. Retracted body arsenals can be detected only by a medical examination.
   disabled: false
   effect: Provides retractable body weaponry
   strain: 1
