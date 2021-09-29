@@ -1,7 +1,15 @@
 data:
   cost: 15000
   description: >-
-    
+    While true nanotechnology is beyond the grasp of standard TL4 science,
+    this cyber allows for the implantation of very simple nanofactories in the user,
+    ones that exude a constant imperceptible “smart dust”. Objects the user touches
+    can be tagged by these nanites, which generate more of their kind for up to 48 hours after tagging.
+    The dust then lays down a trail behind the tagged object, one that is visible to the user or to someone using a properly-keyed tracer.
+    Only counter-nanite measures can remove the dust, as ordinary bathing or scrubbing is insufficient.
+    The dust can be pinged by radio to announce its location to anyone within five kilometers, but most users
+    prefer to leave the dust in passive mode, where it is undetectable to most TL4 sensors.
+    Tagging an object adds one System Strain to the user.
   disabled: false
   effect: Lets the user tag others with tracking nanites
   strain: 1
