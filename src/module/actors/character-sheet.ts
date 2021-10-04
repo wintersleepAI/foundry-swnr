@@ -54,16 +54,18 @@ export class CharacterActorSheet extends ActorSheet<
     html
       .find(".hp-label")
       .on("click", limitConcurrency(this._onHpRoll.bind(this)));
-    html.find('[name="data.health.max"]').on("input", this._onHPMaxChange.bind(this));
+    html
+      .find('[name="data.health.max"]')
+      .on("input", this._onHPMaxChange.bind(this));
     html
       .find(".item.weapon .item-name")
       .on("click", this._onWeaponRoll.bind(this));
     html.find(".skill-load-button").on("click", this._onLoadSkills.bind(this));
     // Drag events for macros.
     if (this.actor.isOwner) {
-      let handler = ev => this._onDragStart(ev);
+      const handler = (ev) => this._onDragStart(ev);
       // Find all items on the character sheet.
-      html.find('.item').each((i, li) => {
+      html.find(".item").each((i, li) => {
         // Ignore for the header row.
         if (li.classList.contains("item-header")) return;
         // Add draggable attribute and dragstart listener.
@@ -74,8 +76,11 @@ export class CharacterActorSheet extends ActorSheet<
   }
 
   async _onHPMaxChange(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
     //console.log("Changing HP Max" , this.actor);
-    this.actor.update({"data.health_max_modified": this.actor.data.data.level.value});
+    this.actor.update({
+      "data.health_max_modified": this.actor.data.data.level.value,
+    });
   }
 
   async _onLoadSkills(event: JQuery.ClickEvent): Promise<unknown> {
@@ -114,15 +119,13 @@ export class CharacterActorSheet extends ActorSheet<
     );
     return await this.popUpDialog.render(true);
   }
-  
+
   // Clickable title/name or icon. Invoke Item.roll()
   _onItemClick(event: JQuery.ClickEvent): void {
     event.preventDefault();
     event.stopPropagation();
     const itemId = event.currentTarget.parentElement.dataset.itemId;
-    const item = <SWNRBaseItem>(
-      this.actor.getEmbeddedDocument("Item", itemId)
-    );
+    const item = <SWNRBaseItem>this.actor.getEmbeddedDocument("Item", itemId);
     //const wrapper = $(event.currentTarget).parents(".item");
     //const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
     if (!item) return;
@@ -166,15 +169,15 @@ export class CharacterActorSheet extends ActorSheet<
     const li = $(event.currentTarget).parents(".item");
     const item = this.actor.getEmbeddedDocument("Item", li.data("itemId"));
     if (!item) return;
-    let ammo_max = item.data.data.ammo?.max;
+    const ammo_max = item.data.data.ammo?.max;
     if (ammo_max != null) {
-      if (item.data.data.ammo.value < ammo_max){
+      if (item.data.data.ammo.value < ammo_max) {
         console.log("Reloading", item);
-        item.update({"data.ammo.value": ammo_max})
-        let content = `<p> Reloaded ${item.name} </p>`
+        item.update({ "data.ammo.value": ammo_max });
+        const content = `<p> Reloaded ${item.name} </p>`;
         ChatMessage.create({
-            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-            content: content
+          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+          content: content,
         });
       } else {
         ui.notifications?.info("Trying to reload a full item");
@@ -183,9 +186,7 @@ export class CharacterActorSheet extends ActorSheet<
       console.log("Unable to find ammo in item ", item.data.data);
     }
   }
-  async _onWeaponRoll(
-    event: JQuery.ClickEvent<HTMLElement>
-  ): Promise<void> {
+  async _onWeaponRoll(event: JQuery.ClickEvent<HTMLElement>): Promise<void> {
     event.preventDefault();
     const itemId = event.currentTarget.parentElement.dataset.itemId;
     const weapon = <SWNRBaseItem<"weapon">>(
@@ -219,10 +220,12 @@ export class CharacterActorSheet extends ActorSheet<
         target: target,
       });
       roll.roll();
-      const save_text = game.i18n.format(parseInt(roll.result) >= 1
-        ? game.i18n.localize("swnr.npc.saving.success")
-        : game.i18n.localize("swnr.npc.saving.failure"),
-      { actor: this.actor.name });
+      const save_text = game.i18n.format(
+        parseInt(roll.result) >= 1
+          ? game.i18n.localize("swnr.npc.saving.success")
+          : game.i18n.localize("swnr.npc.saving.failure"),
+        { actor: this.actor.name }
+      );
       title += `<br><b>${save_text}</b>`;
       roll.toMessage(
         {
@@ -344,16 +347,16 @@ export class CharacterActorSheet extends ActorSheet<
     return this.popUpDialog;
   }
   async _onHpRoll(event: JQuery.ClickEvent): Promise<void> {
-
     // 2e warrior/partial : +2
     // 1e psy 1d4, expert 1d6, warrior 1d8
-     
+
     event.preventDefault();
     const currentLevel = this.actor.data.data.level.value;
-    const rollMode = game.settings.get("core", "rollMode");
     const lastModified = this.actor.data.data["health_max_modified"];
-    if (currentLevel  <= lastModified){
-      ui.notifications?.info("Not rolling hp: already rolled this level (or higher)");
+    if (currentLevel <= lastModified) {
+      ui.notifications?.info(
+        "Not rolling hp: already rolled this level (or higher)"
+      );
       return;
     }
     // const lastLevel =
@@ -365,13 +368,13 @@ export class CharacterActorSheet extends ActorSheet<
     const constBonus = this.actor.data.data.stats.con.mod * currentLevel;
     //console.log(currentLevel, this.actor.data.data.stats.con, this.actor.data.data.stats.con.mod)
 
-    const _rollHP = async(hpBaseInput: string) => {
+    const _rollHP = async (hpBaseInput: string) => {
       let baseRoll = "d6";
       if (hpBaseInput == "revisedWarrior") {
         baseRoll = "d6";
         boosts = 2 * currentLevel;
       } else if (hpBaseInput == "classicPsychic") {
-        baseRoll ="d4";
+        baseRoll = "d4";
       } else if (hpBaseInput == "classicWarrior") {
         baseRoll = "d8";
       } else if (hpBaseInput == "codexMage") {
@@ -380,24 +383,24 @@ export class CharacterActorSheet extends ActorSheet<
       } else {
         baseRoll = "d6";
       }
-      let formula = `${currentLevel}${baseRoll} + ${boosts} + ${constBonus}`;
+      const formula = `${currentLevel}${baseRoll} + ${boosts} + ${constBonus}`;
 
-      let msg = `Rolling Level ${currentLevel} HP: ${formula}<br>(Roll for level + con mod)<br>`
+      let msg = `Rolling Level ${currentLevel} HP: ${formula}<br>(Roll for level + con mod)<br>`;
       console.log(formula);
       const roll = new Roll(formula).roll();
-      if (roll.total){
-        let hpRoll = Math.max(roll.total,1);
+      if (roll.total) {
+        let hpRoll = Math.max(roll.total, 1);
         msg += `Got a ${hpRoll}<br>`;
         if (currentLevel == 1) {
           // Rolling the first time
         } else if (currentLevel > 1) {
-          hpRoll = Math.max(hpRoll, currentHp+1 );
+          hpRoll = Math.max(hpRoll, currentHp + 1);
         }
-        msg+= `Setting HP max to ${hpRoll}<br>`;
+        msg += `Setting HP max to ${hpRoll}<br>`;
         this.actor.update({
           "data.health_max_modified": currentLevel,
           "data.health_base_type": hpBaseInput,
-          "data.health.max" : hpRoll
+          "data.health.max": hpRoll,
         });
         getDocumentClass("ChatMessage").create({
           speaker: ChatMessage.getSpeaker({ actor: this.actor }),
@@ -408,9 +411,9 @@ export class CharacterActorSheet extends ActorSheet<
       } else {
         console.log("Something went wrong with roll ", roll);
       }
-    }
+    };
 
-    const _setAndRollHP = async (html: HTMLFormElement) => {  
+    const _setAndRollHP = async (html: HTMLFormElement) => {
       const form: HTMLFormElement | null = html[0].querySelector("form");
       if (!form) {
         console.log("Form missing");
@@ -421,17 +424,15 @@ export class CharacterActorSheet extends ActorSheet<
       );
 
       return _rollHP(hpBaseInput.value);
-    }
+    };
 
-    if (this.actor.data.data["health_base_type"]){
-
+    if (this.actor.data.data["health_base_type"]) {
       await _rollHP(this.actor.data.data["health_base_type"]);
-
     } else {
       const template = "systems/swnr/templates/dialogs/roll_hp.html";
       const html = await renderTemplate(template, {});
       this.popUpDialog?.close();
-  
+
       this.popUpDialog = new Dialog(
         {
           title: game.i18n.format("swnr.dialog.hp.text", {
@@ -451,9 +452,6 @@ export class CharacterActorSheet extends ActorSheet<
       await this.popUpDialog.render(true);
     }
 
-
-
-
     return;
   }
   async _onSkillRoll(event: JQuery.ClickEvent): Promise<void> {
@@ -461,7 +459,6 @@ export class CharacterActorSheet extends ActorSheet<
     console.log(event);
     const target = <HTMLElement>event.currentTarget;
     const dataset = target.dataset;
-    const template = "systems/swnr/templates/dialogs/roll-skill.html";
     const skillID = dataset.itemId as string;
     const skill = <SWNRBaseItem<"skill">>(
       this.actor.getEmbeddedDocument("Item", skillID)
@@ -508,7 +505,7 @@ export class CharacterActorSheet extends ActorSheet<
     }
   }
 
-  async _onConfigureActor(event) {
+  async _onConfigureActor(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     const template = "systems/swnr/templates/dialogs/tweak-char.html";
     const data = {
@@ -526,28 +523,24 @@ export class CharacterActorSheet extends ActorSheet<
         ? true
         : false;
       const quickSkill1 =
-        (<HTMLSelectElement>form.querySelector('[name="quickSkill1"]'))?.value ||
-        null;
-      const skill1 = quickSkill1 ? this.actor.getEmbeddedDocument(
-          "Item",
-          quickSkill1
-        ) as SWNRBaseItem<"skill"> : null;
+        (<HTMLSelectElement>form.querySelector('[name="quickSkill1"]'))
+          ?.value || null;
       const quickSkill2 =
-        (<HTMLSelectElement>form.querySelector('[name="quickSkill2"]'))?.value ||
-        null;
+        (<HTMLSelectElement>form.querySelector('[name="quickSkill2"]'))
+          ?.value || null;
       const quickSkill3 =
-          (<HTMLSelectElement>form.querySelector('[name="quickSkill3"]'))?.value ||
-          null;
-      const update =  {
-        "data.tweak" : {
-          "advInit": advantageInit,
-          "quickSkill1":  quickSkill1,
-          "quickSkill2":  quickSkill2,
-          "quickSkill3":  quickSkill3
-        }
+        (<HTMLSelectElement>form.querySelector('[name="quickSkill3"]'))
+          ?.value || null;
+      const update = {
+        "data.tweak": {
+          advInit: advantageInit,
+          quickSkill1: quickSkill1,
+          quickSkill2: quickSkill2,
+          quickSkill3: quickSkill3,
+        },
       };
       this.actor.update(update);
-    }
+    };
     this.popUpDialog = new Dialog(
       {
         title: game.i18n.format("swnr.dialog.tweak-char", {
@@ -564,28 +557,25 @@ export class CharacterActorSheet extends ActorSheet<
       },
       { classes: ["swnr"] }
     );
-    return await this.popUpDialog.render(true);
+    await this.popUpDialog.render(true);
   }
 
   /**
-    * Extend and override the sheet header buttons
-    * @override
-    */
-  _getHeaderButtons() {
-    let buttons = super._getHeaderButtons();
+   * Extend and override the sheet header buttons
+   * @override
+   */
+  _getHeaderButtons(): Application.HeaderButton[] {
+    const buttons = super._getHeaderButtons();
     // Token Configuration
     const canConfigure = game.user?.isGM || this.actor.isOwner;
     if (this.options.editable && canConfigure) {
       // Insert tweaks into first spot on the array
-      buttons.splice(
-        0,0,
-          {
-            label: game.i18n.localize("swnr.sheet.tweaks"),
-            class: "configure-actor",
-            icon: "fas fa-code",
-            onclick: (ev) => this._onConfigureActor(ev),
-          }
-      );
+      buttons.splice(0, 0, {
+        label: game.i18n.localize("swnr.sheet.tweaks"),
+        class: "configure-actor",
+        icon: "fas fa-code",
+        onclick: (ev) => this._onConfigureActor(ev),
+      });
     }
     return buttons;
   }

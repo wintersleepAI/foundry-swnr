@@ -12,6 +12,7 @@ export default function registerHelpers(): void {
     return a + b;
   });
   Handlebars.registerHelper("trim", function(obj,n) {
+    if (!obj) return "";
     if (obj.length <= n) return obj;
     return obj.substring(0,n)+"...";
   });

@@ -1,13 +1,10 @@
-import { type } from "os";
 import { SWNRBaseActor } from "../base-actor";
-import { SWNRBaseVehicleItemData } from "../item-types";
 import { SWNRShipDefense } from "../items/shipDefense";
 import { SWNRShipFitting } from "../items/shipFitting";
 import { SWNRShipWeapon } from "../items/shipWeapon";
 import { HULL_DATA } from "./ship-hull-base";
 import { SWNRShipClass } from "../actor-types";
 import { SWNRBaseItem } from "../base-item";
-
 
 export type SysToFail = "drive" | "wpn" | "def" | "fit";
 
@@ -21,18 +18,12 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     return data;
   }
 
-  prepareBaseData(): void {
-    const data = this.data.data;
-
-  }
-
   prepareDerivedData(): void {
     const data = this.data.data;
-    let shipClass = data.shipClass;
+    const shipClass = data.shipClass;
     let shipMass = data.mass.max;
     let shipPower = data.power.max;
     let shipHardpoint = data.hardpoints.max;
-
 
     let multiplier = 1;
     if (shipClass == "frigate") {
@@ -43,15 +34,17 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
       multiplier = 4;
     }
 
-    const shipInventory = <SWNRBaseItem<"shipDefense" | "shipWeapon" | "shipFitting">[]>(
-      //const shipInventory = Array<SWNRShipDefense | SWNRShipWeapon | SWNRShipFitting> =
-      this.items.filter(
-        (i) => i.type === "shipDefense" || i.type === "shipWeapon" || i.type === "shipFitting"
-      )
+    const shipInventory = <
+      SWNRBaseItem<"shipDefense" | "shipWeapon" | "shipFitting">[]
+    >this.items.filter(
+      (i) =>
+        i.type === "shipDefense" ||
+        i.type === "shipWeapon" ||
+        i.type === "shipFitting"
     );
 
     for (let i = 0; i < shipInventory.length; i++) {
-      let item = shipInventory[i];
+      const item = shipInventory[i];
       let itemMass = item.data.data.mass;
       let itemPower = item.data.data.power;
       if (item.data.data.massMultiplier) {
@@ -62,9 +55,9 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
       }
       shipMass -= itemMass;
       shipPower -= itemPower;
-      if (item.type=="shipWeapon") {
+      if (item.type == "shipWeapon") {
         const itemHardpoint = item.data.data["hardpoint"];
-        if (itemHardpoint){
+        if (itemHardpoint) {
           shipHardpoint -= itemHardpoint;
         }
       }
@@ -74,21 +67,20 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     data.hardpoints.value = shipHardpoint;
   }
 
-  applyDefaulStats(hullType: string) {
+  applyDefaulStats(hullType: string): void {
     if (HULL_DATA[hullType]) {
-      this.update(HULL_DATA[hullType]
-      );
+      this.update(HULL_DATA[hullType]);
     } else {
       console.log("hull type not found " + hullType);
     }
   }
 
-  async useDaysOfLifeSupport(nDays: number) {
+  async useDaysOfLifeSupport(nDays: number): Promise<void> {
     if (this.data.data.crew.current > 0) {
       let newLifeDays = this.data.data.lifeSupportDays.value;
-      newLifeDays -= (this.data.data.crew.current * nDays);
+      newLifeDays -= this.data.data.crew.current * nDays;
       await this.update({
-        "data.lifeSupportDays.value": newLifeDays
+        "data.lifeSupportDays.value": newLifeDays,
       });
       if (newLifeDays <= 0) {
         ui.notifications?.error("Out of life support!!!");
@@ -96,30 +88,37 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     }
   }
 
-  async rollSpike(pilotId, pilotName, skillMod, statMod, mod, dice, difficulty, travelDays) {
+  async rollSpike(
+    pilotId: string,
+    pilotName: string | null,
+    skillMod: number,
+    statMod: number,
+    mod: number,
+    dice: string,
+    difficulty: number,
+    travelDays: number
+  ): Promise<void> {
     const template = "systems/swnr/templates/chat/spike-roll.html";
     const rollData = {
       dice,
       skillMod,
       statMod,
-      mod
+      mod,
     };
     const skillRollStr = `${dice} + @skillMod + @statMod + @mod`;
-    const skillRoll = new Roll(
-      skillRollStr,
-      rollData
-    ).roll();
+    const skillRoll = new Roll(skillRollStr, rollData).roll();
 
-    const pass = (skillRoll.total && skillRoll.total > difficulty) ? true : false;
-    let failRoll: string | null = null;
+    const pass = skillRoll.total && skillRoll.total > difficulty ? true : false;
+    const failRoll: string | null = null;
     let failText: string | null = null;
     if (!pass) {
       const failRoll = new Roll("3d6").roll();
       switch (failRoll.total) {
         case 3:
+          // eslint-disable-next-line no-case-declarations
           const fRoll = new Roll("1d6").roll().total;
           failText = game.i18n.localize("swnr.chat.spike.fail3");
-          failText += `<br> Rolled: {fRoll}`;
+          failText += `<br> Rolled: ${fRoll}`;
           // Break all systems and drive
           break;
         case 4:
@@ -156,7 +155,6 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
       }
     }
 
-
     const dialogData = {
       skillRoll: await skillRoll.render(),
       skillRollStr,
@@ -167,17 +165,15 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
       pilotName,
     };
     const rollMode = game.settings.get("core", "rollMode");
-    let poolRolls = [skillRoll];
+    const poolRolls = [skillRoll];
     if (failRoll) {
       poolRolls.push(failRoll);
     }
-    const diceData = Roll.fromTerms([
-      PoolTerm.fromRolls(poolRolls),
-    ]);
+    const diceData = Roll.fromTerms([PoolTerm.fromRolls(poolRolls)]);
     const chatContent = await renderTemplate(template, dialogData);
     console.log(pilotName);
     const chatData = {
-      speaker: { "alias": pilotName },
+      speaker: { alias: pilotName },
       roll: JSON.stringify(diceData),
       content: chatContent,
       type: CONST.CHAT_MESSAGE_TYPES.ROLL,
@@ -200,17 +196,7 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
   calcCost(maintenance: boolean): void {
     const hull = this.data.data.shipHullType;
     const shipClass = this.data.data.shipClass;
-
-    const lastMaintenance = this.data.data.lastMaintenance;
-    //let da = lastMaintenance.split("-");
-
-    //let mainDate = new Date(Number(da[0]),Number(da[1])-1, Number(da[2]));
-    // console.log(mainDate);
-    // mainDate.setMonth(mainDate.getMonth() + 1);
-    // console.log(mainDate);
-    
-
-    this.data.data.maintenanceCost
+    this.data.data.maintenanceCost;
     const shipData = HULL_DATA[hull];
     if (shipData) {
       let baseCost = shipData.data.cost;
@@ -223,28 +209,35 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
         multiplier = 100;
       }
 
-      const shipInventory = <SWNRBaseItem<"shipDefense" | "shipWeapon" | "shipFitting">[]>(
-        this.items.filter(
-          (i) => i.type === "shipDefense" || i.type === "shipWeapon" || i.type === "shipFitting"
-        )
+      const shipInventory = <
+        SWNRBaseItem<"shipDefense" | "shipWeapon" | "shipFitting">[]
+      >this.items.filter(
+        (i) =>
+          i.type === "shipDefense" ||
+          i.type === "shipWeapon" ||
+          i.type === "shipFitting"
       );
 
-      const shipHasSystemDrive = shipInventory.find(elem => elem.name =="System Drive");
-      if (shipHasSystemDrive){
-        baseCost*=0.9;
+      const shipHasSystemDrive = shipInventory.find(
+        (elem) => elem.name == "System Drive"
+      );
+      if (shipHasSystemDrive) {
+        baseCost *= 0.9;
       }
 
       for (let i = 0; i < shipInventory.length; i++) {
-        let item = shipInventory[i];
-        let itemCost = (item.data.data.costMultiplier) ? item.data.data.cost : (item.data.data.cost*multiplier);
-        baseCost+=itemCost;
+        const item = shipInventory[i];
+        const itemCost = item.data.data.costMultiplier
+          ? item.data.data.cost
+          : item.data.data.cost * multiplier;
+        baseCost += itemCost;
       }
 
-      let updateJSON = { "cost": baseCost};
+      const updateJSON = { cost: baseCost };
       if (maintenance) {
-        updateJSON["maintenanceCost"] = (baseCost*0.05);
+        updateJSON["maintenanceCost"] = baseCost * 0.05;
       }
-      this.update({data: updateJSON});
+      this.update({ data: updateJSON });
     }
   }
 
@@ -262,15 +255,15 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
       "<b>Target Decalibration:</b><i>(Continuing)</i><br> The gunnery computers are hopelessly confused and cannot lock the ship’s weaponry on a target until this Crisis is resolved.",
       "<b>VIP Imperiled:</b><i>(Acute)</i><br> Shipboard damage threatens a random PC or important NPC. That victim must immediately roll a Physical saving throw; on a success, they lose half their hit points, and on a failure they are mortally wounded. NPC crew can make a free attempt to stabilize the downed VIP using their usual NPC skill bonus. If the NPC fails, and no PC takes a Deal With a Crisis action to successfully stabilize them by the end of the ship’s turn, they die.",
     ];
-    let coin = this._getRandomInt(crisisArray.length);
-    let content = `<h3>Crisis</h3>${crisisArray[coin]}<br><i>10 base difficulty check</i>`;
-    let chatData = {
+    const coin = this._getRandomInt(crisisArray.length);
+    const content = `<h3>Crisis</h3>${crisisArray[coin]}<br><i>10 base difficulty check</i>`;
+    const chatData = {
       content: content,
     };
     ChatMessage.create(chatData);
   }
 
-  _getRandomInt(exclusiveMax: number) {
+  _getRandomInt(exclusiveMax: number): number {
     return Math.floor(Math.random() * exclusiveMax);
   }
 
@@ -294,7 +287,9 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
         return "Engine Damaged";
       }
     } else {
-      let item = <SWNRShipDefense | SWNRShipFitting | SWNRShipWeapon>(this.getEmbeddedDocument("Item", id));
+      const item = <SWNRShipDefense | SWNRShipFitting | SWNRShipWeapon>(
+        this.getEmbeddedDocument("Item", id)
+      );
       console.log(item);
       if (forceDestroy || item?.data.data.broken) {
         item.update({ "data.destroyed": true });
@@ -307,19 +302,18 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
   }
 
   rollSystemFailure(sysToInclude: SysToFail[], whatToRoll: string): void {
-    let candidateIds: string[] = [];
+    const candidateIds: string[] = [];
     let idx = sysToInclude.indexOf("drive");
-    if (idx > - 1) {
+    if (idx > -1) {
       if (this.data.data.spikeDrive.value > 0) {
         candidateIds.push(this.ENGINE_ID);
-      } else {
       }
       sysToInclude.splice(idx, 1);
     }
     //Get wpns if marked
     idx = sysToInclude.indexOf("wpn");
-    if (idx > - 1) {
-      for (let i of this.itemTypes.shipWeapon) {
+    if (idx > -1) {
+      for (const i of this.itemTypes.shipWeapon) {
         if (i.id && !i.data.data["destroyed"]) {
           candidateIds.push(i.id);
         }
@@ -328,8 +322,8 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     }
     //Get def if marked
     idx = sysToInclude.indexOf("def");
-    if (idx > - 1) {
-      for (let i of this.itemTypes.shipDefense) {
+    if (idx > -1) {
+      for (const i of this.itemTypes.shipDefense) {
         if (i.id && !i.data.data["destroyed"]) {
           candidateIds.push(i.id);
         }
@@ -338,8 +332,8 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     }
     //Get fit if marked
     idx = sysToInclude.indexOf("fit");
-    if (idx > - 1) {
-      for (let i of this.itemTypes.shipFitting) {
+    if (idx > -1) {
+      for (const i of this.itemTypes.shipFitting) {
         if (i.id && !i.data.data["destroyed"]) {
           candidateIds.push(i.id);
         }
@@ -350,63 +344,62 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     if (sysToInclude.length > 0) {
       ui.notifications?.error("Sys to fail not evaluated: " + sysToInclude);
     }
-    console.log(candidateIds);
-    let msg: string[] = [];
+    const msg: string[] = [];
     if (whatToRoll == "dest-all") {
-      for (let itemId of candidateIds) {
+      for (const itemId of candidateIds) {
         msg.push(this._breakItem(itemId, true));
       }
     } else if (whatToRoll == "break-all") {
-      for (let itemId of candidateIds) {
+      for (const itemId of candidateIds) {
         msg.push(this._breakItem(itemId, false));
       }
     } else if (whatToRoll == "all-50") {
-      for (let itemId of candidateIds) {
-        let coin = this._getRandomInt(2);
+      for (const itemId of candidateIds) {
+        const coin = this._getRandomInt(2);
         if (coin == 0) {
           msg.push(this._breakItem(itemId, false));
         }
       }
     } else if (whatToRoll == "break-1") {
       if (candidateIds.length > 0) {
-        let coin = this._getRandomInt(candidateIds.length);
+        const coin = this._getRandomInt(candidateIds.length);
         msg.push(this._breakItem(candidateIds[coin], false));
       }
     } else {
-      ui.notifications?.error("Sys to fail not evaluated. What to include " + whatToRoll);
+      ui.notifications?.error(
+        "Sys to fail not evaluated. What to include " + whatToRoll
+      );
       return;
     }
-    msg.filter(i => i != "");
-    let content = '<h3>Nothing to fail</h3>';
+    msg.filter((i) => i != "");
+    let content = "<h3>Nothing to fail</h3>";
     if (msg.length > 0) {
       content = "<h3>Systems Failure:</h3>";
-      let eng = false;
-      for (var i = 0; i < msg.length; i++) {
+      for (let i = 0; i < msg.length; i++) {
         if (msg[i]) {
-          if (msg[i] == "Engine Destroyed" || msg[i] == "Engine Damaged") {
-            //TODO cleanup, brittle.
-            eng = true;
-          }
-          content += `<p>${msg[i]}<\p>`
+          content += `<p>${msg[i]}</p>`;
         }
       }
     }
-    let chatData = {
+    const chatData = {
       content: content,
     };
     ChatMessage.create(chatData);
   }
 
   addCrew(actorId: string): void {
-    let actor = game.actors?.get(actorId);
+    const actor = game.actors?.get(actorId);
     if (actor) {
-      let crewMembers = this.data.data.crewMembers;
+      const crewMembers = this.data.data.crewMembers;
       //Only add crew once
       if (crewMembers.indexOf(actorId) == -1) {
         let crew = this.data.data.crew.current;
         crew += 1;
         crewMembers.push(actorId);
-        this.update({ "data.crew.current": crew, "data.crewMembers": crewMembers });
+        this.update({
+          "data.crew.current": crew,
+          "data.crewMembers": crewMembers,
+        });
       }
     } else {
       ui.notifications?.error("Actor added no longer exists");
@@ -414,20 +407,22 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
   }
 
   removeCrew(actorId: string): void {
-    let crewMembers = this.data.data.crewMembers;
+    const crewMembers = this.data.data.crewMembers;
     //Only remove if there
-    let idx = crewMembers.indexOf(actorId);
+    const idx = crewMembers.indexOf(actorId);
     if (idx == -1) {
       ui.notifications?.error("Crew member not found");
-
     } else {
       crewMembers.splice(idx, 1);
       let crew = this.data.data.crew.current;
       crew -= 1;
-      this.update({ "data.crew.current": crew, "data.crewMembers": crewMembers });
+      this.update({
+        "data.crew.current": crew,
+        "data.crewMembers": crewMembers,
+      });
     }
     if (this.data.data.roles) {
-      let roles = this.data.data.roles;
+      const roles = this.data.data.roles;
       if (roles.captain == actorId) {
         roles.captain = "";
       }
@@ -447,24 +442,25 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     }
   }
 
-  async _preCreate(actorDataConstructorData, options, user):
-    Promise<void> {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  async _preCreate(actorDataConstructorData, options, user): Promise<void> {
     await super._preCreate(actorDataConstructorData, options, user);
-    if (actorDataConstructorData.type && this.data._source.img == "icons/svg/mystery-man.svg") {
+    if (
+      actorDataConstructorData.type &&
+      this.data._source.img == "icons/svg/mystery-man.svg"
+    ) {
       const shipImg = "systems/swnr/assets/icons/starfighter.png";
       this.data._source.img = shipImg;
     }
-    // console.log("testing precreate");
-    // const shipImg= "systems/swnr/assets/icons/spaceship.svg"; 
-    // actorDataConstructorData.data.img = shipImg;
-    // actorDataConstructorData.data.token.img = shipImg;
   }
-
 }
 
 // Compare ship hull sizes. ugly but works. A map to ints might be better.
 // -1 ship1 is smaller, 0 same, 1 ship1 is larger
-function compareShipClass(ship1: SWNRShipClass, ship2: SWNRShipClass): -1 | 0 | 1 {
+function compareShipClass(
+  ship1: SWNRShipClass,
+  ship2: SWNRShipClass
+): -1 | 0 | 1 {
   if (ship1 == ship2) {
     return 0;
   } else if (ship1 == "fighter") {
@@ -472,91 +468,46 @@ function compareShipClass(ship1: SWNRShipClass, ship2: SWNRShipClass): -1 | 0 | 
   } else if (ship1 == "capital") {
     return 1;
   } else if (ship1 == "frigate") {
-    if (ship2 == "fighter") { return 1; }
-    else { return -1; }
-  } else { //(ship1 == "cruiser") {
-    if (ship2 == "capital") { return -1; }
-    else { return 1; }
+    if (ship2 == "fighter") {
+      return 1;
+    } else {
+      return -1;
+    }
+  } else {
+    //(ship1 == "cruiser") {
+    if (ship2 == "capital") {
+      return -1;
+    } else {
+      return 1;
+    }
   }
 }
 
-Hooks.on("XXpreDeleteItem", (item: Item, options, id) => {
-  if (item.type == "shipWeapon" || item.type == "shipDefense" || item.type == "shipFitting") {
-    if (item.parent?.type == "ship") {
-      //TODO fix. This is get around Typescript complaints. Know we are valid by above if
-      const shipItem = <SWNRShipDefense | SWNRShipWeapon | SWNRShipFitting>(item as unknown);
-      let data = shipItem.data.data;
-      let shipClass = item.parent.data.data.shipClass;
-      let shipMass = item.parent.data.data.mass.value;
-      let shipPower = item.parent.data.data.power.value;
-      let itemMass = data.mass;
-      let itemPower = data.power;
-      let multiplier = 1;
-      if (shipClass == "frigate") {
-        multiplier = 2;
-      } else if (shipClass == "cruiser") {
-        multiplier = 3;
-      } else if (shipClass == "capital") {
-        multiplier = 4;
-      }
-      if (data.massMultiplier) {
-        itemMass *= multiplier;
-      }
-      if (data.powerMultiplier) {
-        itemPower *= multiplier;
-      }
-      shipMass += itemMass;
-      shipPower += itemPower;
-      item.parent.update({ "data.mass.value": shipMass, "data.power.value": shipPower });
-      if (shipMass > item.parent.data.data.mass.max || shipPower > item.parent.data.data.power.max) {
-        ui.notifications?.error("Ship went over max power or mass (still added)");
-      }
-      if (shipItem.type == "shipWeapon") {
-        const itemHardpoint = shipItem.data.data.hardpoint;
-        let shipHardpoint = item.parent.data.data.hardpoints.value;
-        shipHardpoint += itemHardpoint;
-        item.parent.update({ "data.hardpoints.value": shipHardpoint });
-        if (shipHardpoint > item.parent.data.data.hardpoints.max) {
-          ui.notifications?.error("Ship  went over hardpoint max (still added)");
-        }
-      }
-    } else {
-      console.log('What are you doing?', item);
-    }
-  }
-  return item;
-});
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 Hooks.on("preCreateItem", (item: Item, data, options, id) => {
-  if (item.type == "shipWeapon" || item.type == "shipDefense" || item.type == "shipFitting") {
+  if (
+    item.type == "shipWeapon" ||
+    item.type == "shipDefense" ||
+    item.type == "shipFitting"
+  ) {
     if (item.parent?.type == "ship") {
       //TODO fix. This is get around Typescript complaints. Know we are valid by above if
-      const shipItem = <SWNRShipDefense | SWNRShipWeapon | SWNRShipFitting>(item as unknown);
-      let data = shipItem.data.data;
-      let shipClass = item.parent.data.data.shipClass;
+      const shipItem = <SWNRShipDefense | SWNRShipWeapon | SWNRShipFitting>(
+        (item as unknown)
+      );
+      const data = shipItem.data.data;
+      const shipClass = item.parent.data.data.shipClass;
       if (compareShipClass(shipClass, data.minClass) < 0) {
-        ui.notifications?.error(`Ship item minClass (${data.minClass}) is too large for this ship (${shipClass}). Still adding. `);
+        ui.notifications?.error(
+          `Ship item minClass (${data.minClass}) is too large for this ship (${shipClass}). Still adding. `
+        );
       }
     } else {
       //console.log('Only ship items can go to a ship?', item);
-      //return false;
     }
   }
   return item;
 });
-
-// Hooks.on("createActor", (actorData: Actor) => {
-//   if (actorData.type == "ship") {
-//       const shipImg= "systems/swnr/assets/icons/spaceship.png"; 
-//       //actorData.data.img = shipImg;
-//       //actorData.data.token.img = shipImg;
-//       if(actorData.img=="icons/svg/mystery-man.svg"){
-//         actorData.update({"img": shipImg, "token.img":shipImg});
-//       }
-//       //actorData.data.
-//   }
-// });
-
 
 export const document = SWNRShipActor;
 export const name = "ship";

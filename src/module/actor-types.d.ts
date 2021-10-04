@@ -1,11 +1,23 @@
 import { SWNRArmorTypes, AllItemClasses, ItemTypes } from "./item-types";
 
-type ActorTypes = "character" | "npc" | "ship" ;
+type ActorTypes = "character" | "npc" | "ship";
 
 declare type SWNRStats = "str" | "dex" | "con" | "int" | "wis" | "cha";
 
 type SWNRShipClass = "fighter" | "frigate" | "cruiser" | "capital";
-type SWNRShipHullType = "strikeFighter" | "shuttle" | "freeMerchant" | "patrolBoat" | "corvette" | "heavyFrigate" | "bulkFreighter" | "fleetCruiser" | "battleship" | "carrier" | "smallStation" | "largeStation";
+type SWNRShipHullType =
+  | "strikeFighter"
+  | "shuttle"
+  | "freeMerchant"
+  | "patrolBoat"
+  | "corvette"
+  | "heavyFrigate"
+  | "bulkFreighter"
+  | "fleetCruiser"
+  | "battleship"
+  | "carrier"
+  | "smallStation"
+  | "largeStation";
 
 declare interface SWNRStatBase {
   base: number;
@@ -57,7 +69,6 @@ declare interface SWNRVehicleTemplateBase {
   tl: number;
 }
 
-
 declare interface SWNRLivingTemplateComputed {
   baseAc: number; //computed-active effects needed
   systemStrain: {
@@ -97,11 +108,11 @@ declare interface SWNRCharacterBaseData
     owed: number;
   };
   tweak: {
-    advInit: boolean,
-    quickSkill1:  string,
-    quickSkill2:  string,
-    quickSkill3:  string
-  }
+    advInit: boolean;
+    quickSkill1: string;
+    quickSkill2: string;
+    quickSkill3: string;
+  };
 }
 
 declare interface SWNRCharacterComputedData
@@ -133,7 +144,6 @@ declare interface SWNRCharacterComputedData
   stats: { [key in SWNRStats]: SWNRStatComputed };
 }
 
-
 declare interface SWNRShipComputed {
   power: {
     value: number;
@@ -146,12 +156,13 @@ declare interface SWNRShipComputed {
   };
 }
 
-
 declare interface SWNRShipData extends SWNRVehicleTemplateBase {
-
   itemTypes: {
     //todo: make a better type
-    [type in Exclude<ItemTypes, "focus" | "skill" | "weapon" | "armor" | "power">]: (AllItemClasses & {
+    [type in Exclude<
+      ItemTypes,
+      "focus" | "skill" | "weapon" | "armor" | "power"
+    >]: (AllItemClasses & {
       type: type;
     })[];
   };
@@ -168,18 +179,18 @@ declare interface SWNRShipData extends SWNRVehicleTemplateBase {
     value: number;
     max: number;
   };
-  fuel : {
+  fuel: {
     value: number;
     max: number;
   };
-  cargo : {
+  cargo: {
     value: number;
     max: number;
   };
-  spikeDrive : {
+  spikeDrive: {
     value: number;
     max: number;
-  }
+  };
   shipClass: SWNRShipClass;
   shipHullType: SWNRShipHullType;
   description: string;
@@ -193,13 +204,13 @@ declare interface SWNRShipData extends SWNRVehicleTemplateBase {
   creditPool;
   lastMaintenance: {
     year: number;
-    month: number; 
-    day: number
+    month: number;
+    day: number;
   };
   lastPayment: {
     year: number;
-    month: number; 
-    day: number
+    month: number;
+    day: number;
   };
   roles: {
     captain: string;
@@ -208,7 +219,6 @@ declare interface SWNRShipData extends SWNRVehicleTemplateBase {
     engineering: string;
     comms: string;
   };
-
 }
 
 declare interface SWNRNPCData extends SWNRLivingTemplateBase {

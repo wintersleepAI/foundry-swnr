@@ -66,14 +66,15 @@ export class NPCActorSheet extends ActorSheet<
     html.find(".hit-dice-roll").on("click", this._onHitDice.bind(this));
     html.find(".item-reload").on("click", this._onItemReload.bind(this));
     html.find(".item-click").on("click", this._onItemClick.bind(this));
-    html.find('[name="data.health.max"]').on("input", this._onHPMaxChange.bind(this));
-
+    html
+      .find('[name="data.health.max"]')
+      .on("input", this._onHPMaxChange.bind(this));
 
     // Drag events for macros.
     if (this.actor.isOwner) {
-      let handler = ev => this._onDragStart(ev);
+      const handler = (ev) => this._onDragStart(ev);
       // Find all items on the character sheet.
-      html.find('.item').each((i, li) => {
+      html.find(".item").each((i, li) => {
         // Ignore for the header row.
         if (li.classList.contains("item-header")) return;
         // Add draggable attribute and dragstart listener.
@@ -91,15 +92,12 @@ export class NPCActorSheet extends ActorSheet<
     if (item instanceof Item) item.sheet?.render(true);
   }
 
-
   // Clickable title/name or icon. Invoke Item.roll()
   _onItemClick(event: JQuery.ClickEvent): void {
     event.preventDefault();
     event.stopPropagation();
     const itemId = event.currentTarget.parentElement.dataset.itemId;
-    const item = <SWNRBaseItem>(
-      this.actor.getEmbeddedDocument("Item", itemId)
-    );
+    const item = <SWNRBaseItem>this.actor.getEmbeddedDocument("Item", itemId);
     //const wrapper = $(event.currentTarget).parents(".item");
     //const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
     if (!item) return;
@@ -151,14 +149,14 @@ export class NPCActorSheet extends ActorSheet<
     const li = $(event.currentTarget).parents(".item");
     const item = this.actor.getEmbeddedDocument("Item", li.data("itemId"));
     if (!item) return;
-    let ammo_max = item.data.data.ammo?.max;
+    const ammo_max = item.data.data.ammo?.max;
     if (ammo_max != null) {
-      if (item.data.data.ammo.value < ammo_max){
-        item.update({"data.ammo.value": ammo_max})
-        let content = `<p> Reloaded ${item.name} </p>`
+      if (item.data.data.ammo.value < ammo_max) {
+        item.update({ "data.ammo.value": ammo_max });
+        const content = `<p> Reloaded ${item.name} </p>`;
         ChatMessage.create({
-            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-            content: content
+          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+          content: content,
         });
       } else {
         ui.notifications?.info("Trying to reload a full item");
@@ -221,8 +219,9 @@ export class NPCActorSheet extends ActorSheet<
   }
 
   async _onHPMaxChange(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
     //console.log("Changing NPC HP Max" ,  this, this.actor);
-    this.actor.update({"data.health_max_modified": 1});
+    this.actor.update({ "data.health_max_modified": 1 });
   }
 
   // Set the max/value health based on D8 hit dice
@@ -231,8 +230,7 @@ export class NPCActorSheet extends ActorSheet<
     event.stopPropagation();
     this.actor.rollHitDice(true);
     // Set the modified to not roll on drag
-    this.actor.update({"data.health_max_modified": 1});
-
+    this.actor.update({ "data.health_max_modified": 1 });
   }
 
   _onMorale(event: JQuery.ClickEvent): void {
