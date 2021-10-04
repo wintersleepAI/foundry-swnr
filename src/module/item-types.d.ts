@@ -4,7 +4,7 @@ import { SWNRWeapon } from "./items/weapon";
 import { SWNRShipClass } from "./actor-types";
 
 type MetaItemTypes = "class" | "power" | "focus" | "skill";
-type RealItemTypes = "armor" | "weapon" | "item" | "cyberware" ;
+type RealItemTypes = "armor" | "weapon" | "item" | "cyberware";
 type ShipItemTypes = "shipWeapon" | "shipFitting" | "shipDefense";
 type ItemTypes = RealItemTypes | MetaItemTypes | ShipItemTypes;
 
@@ -60,7 +60,6 @@ type SWNRWeaponAmmoTypes =
   | "missile"
   | "special";
 
-
 interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
   stat: SWNRStats;
   secondStat: "none" | SWNRStats;
@@ -86,10 +85,12 @@ interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
   damage: string;
 }
 
-declare interface SWNRShipWeaponData extends SWNRBaseVehicleItemData, SWNRDescData{
+declare interface SWNRShipWeaponData
+  extends SWNRBaseVehicleItemData,
+    SWNRDescData {
   damage: string;
   hardpoint: number;
-  tl:  4 | 5 | 6;
+  tl: 4 | 5 | 6;
   qualities: string;
   ammo: {
     type: SWNRWeaponAmmoTypes;
@@ -98,11 +99,15 @@ declare interface SWNRShipWeaponData extends SWNRBaseVehicleItemData, SWNRDescDa
   };
 }
 
-declare interface SWNRShipDefenseData extends SWNRBaseVehicleItemData, SWNRDescData{
+declare interface SWNRShipDefenseData
+  extends SWNRBaseVehicleItemData,
+    SWNRDescData {
   effect: string;
 }
 
-declare interface SWNRShipFittingData extends SWNRBaseVehicleItemData, SWNRDescData{
+declare interface SWNRShipFittingData
+  extends SWNRBaseVehicleItemData,
+    SWNRDescData {
   effect: string;
 }
 
@@ -161,10 +166,9 @@ declare global {
       | { type: "focus"; data: SWNRFocusData }
       | { type: "skill"; data: SWNRSkillData }
       | { type: "cyberware"; data: SWNRCyberware }
-      | { type: "shipWeapon"; data: SWNRShipWeaponData}
-      | { type: "shipDefense"; data: SWNRShipDefenseData}
-      | { type: "shipFitting"; data: SWNRShipFittingData}
-      ;
+      | { type: "shipWeapon"; data: SWNRShipWeaponData }
+      | { type: "shipDefense"; data: SWNRShipDefenseData }
+      | { type: "shipFitting"; data: SWNRShipFittingData };
   }
 
   interface SourceConfig {
@@ -178,7 +182,7 @@ declare global {
       | { type: "skill"; data: SWNRSkillData }
       | { type: "cyberware"; data: SWNRCyberware }
       | { type: "shipWeapon"; data: SWNRShipWeaponData }
-      | { type: "shipDefense"; data: SWNRShipDefenseData}
-      | { type: "shipFitting"; data: SWNRShipFittingData};
+      | { type: "shipDefense"; data: SWNRShipDefenseData }
+      | { type: "shipFitting"; data: SWNRShipFittingData };
   }
 }

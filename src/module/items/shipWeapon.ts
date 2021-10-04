@@ -2,7 +2,6 @@ import { SWNRBaseItem } from "../base-item";
 import { ValidatedDialog } from "../ValidatedDialog";
 import { SWNRCharacterActor } from "../actors/character";
 import { SWNRNPCActor } from "../actors/npc";
-import { SWNRBaseActor } from "../base-actor";
 
 export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
   popUpDialog?: Dialog;
@@ -15,30 +14,26 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
     return this.ammo.type === "none" || this.ammo.value > 0;
   }
 
-
-  async rollAttack(shooterId: string | null, shooterName: string| null,
-    skillMod: number, 
-    statMod: number, 
-    abMod: number, 
-    mod: number) {
+  async rollAttack(
+    shooterId: string | null,
+    shooterName: string | null,
+    skillMod: number,
+    statMod: number,
+    abMod: number,
+    mod: number
+  ): Promise<void> {
     const template = "systems/swnr/templates/chat/attack-roll.html";
 
     const rollData = {
-      skillMod, 
+      skillMod,
       statMod,
       abMod,
-      mod
+      mod,
     };
     const hitRollStr = "1d20 + @skillMod + @statMod + @abMod + @mod";
     const damageRollStr = `${this.data.data.damage} + @statMod`;
-    const hitRoll = new Roll(
-      hitRollStr,
-      rollData
-    ).roll();
-    const damageRoll = new Roll(
-      damageRollStr,
-       rollData
-    ).roll();
+    const hitRoll = new Roll(hitRollStr, rollData).roll();
+    const damageRoll = new Roll(damageRollStr, rollData).roll();
 
     const diceTooltip = {
       hit: await hitRoll.render(),
@@ -47,10 +42,9 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
       damageExplain: damageRollStr,
     };
 
-
     if (this.data.data.ammo.type !== "none") {
       const newAmmoTotal = this.data.data.ammo.value - 1;
-      await this.update({ "data.ammo.value": newAmmoTotal }, { });
+      await this.update({ "data.ammo.value": newAmmoTotal }, {});
       if (newAmmoTotal === 0)
         ui.notifications?.warn(`Your ${this.name} is now out of ammo!`);
     }
@@ -59,7 +53,7 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
       weapon: this,
       hitRoll,
       damageRoll,
-      diceTooltip
+      diceTooltip,
     };
 
     const rollMode = game.settings.get("core", "rollMode");
@@ -70,11 +64,9 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
       PoolTerm.fromRolls([hitRoll, damageRoll]),
     ]);
 
-
-
     const chatContent = await renderTemplate(template, dialogData);
     const chatData = {
-      speaker: { "alias": shooterName} ,
+      speaker: { alias: shooterName },
       roll: JSON.stringify(diceData),
       content: chatContent,
       type: CONST.CHAT_MESSAGE_TYPES.ROLL,
@@ -91,7 +83,9 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
       return;
     }
     if (this.data.data.broken || this.data.data.destroyed) {
-      ui.notifications?.error("Weapon is broken/disabled or destroyed. Cannot fire!");
+      ui.notifications?.error(
+        "Weapon is broken/disabled or destroyed. Cannot fire!"
+      );
       return;
     }
     if (!this.hasAmmo) {
@@ -99,22 +93,24 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
       return;
     }
 
-
     if (this.actor.type == "ship") {
       let defaultGunnerId: string | null = this.actor.data.data.roles.gunnery;
       let defaultGunner: SWNRCharacterActor | SWNRNPCActor | null = null;
       if (defaultGunnerId) {
-        let _temp = game.actors?.get(defaultGunnerId);
+        const _temp = game.actors?.get(defaultGunnerId);
         if (_temp && (_temp.type == "character" || _temp.type == "npc")) {
           defaultGunner = _temp;
         }
       }
-      let crewArray: Array<SWNRCharacterActor | SWNRNPCActor> = [];
+      const crewArray: Array<SWNRCharacterActor | SWNRNPCActor> = [];
       if (this.actor.data.data.crewMembers) {
-        for (var i in this.actor.data.data.crewMembers) {
-          let cId = this.actor.data.data.crewMembers[i];
-          let crewMember = game.actors?.get(cId);
-          if (crewMember && (crewMember.type == "character" || crewMember.type == "npc")) {
+        for (let i = 0; i < this.actor.data.data.crewMembers.length; i++) {
+          const cId = this.actor.data.data.crewMembers[i];
+          const crewMember = game.actors?.get(cId);
+          if (
+            crewMember &&
+            (crewMember.type == "character" || crewMember.type == "npc")
+          ) {
             crewArray.push(crewMember);
           }
         }
@@ -132,7 +128,7 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
       }
       if (defaultGunner?.type == "npc" && crewArray.length > 0) {
         //See if we have a non NPC to set as gunner to get skills and attr
-        for (let char of crewArray) {
+        for (const char of crewArray) {
           if (char.type == "character") {
             defaultGunner = char;
             defaultGunnerId = char.id;
@@ -161,14 +157,18 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
           (<HTMLInputElement>form.querySelector('[name="modifier"]'))?.value
         );
 
-        const shooterId = (<HTMLInputElement>form.querySelector('[name="shooterId"]'))?.value
+        const shooterId = (<HTMLInputElement>(
+          form.querySelector('[name="shooterId"]')
+        ))?.value;
         const shooter = shooterId ? game.actors?.get(shooterId) : null;
         // const dice = (<HTMLSelectElement>form.querySelector('[name="dicepool"]'))
         //   .value;
-        const skillName =
-          (<HTMLSelectElement>form.querySelector('[name="skill"]'))?.value;
-        const statName =
-          (<HTMLSelectElement>form.querySelector('[name="stat"]'))?.value;
+        const skillName = (<HTMLSelectElement>(
+          form.querySelector('[name="skill"]')
+        ))?.value;
+        const statName = (<HTMLSelectElement>(
+          form.querySelector('[name="stat"]')
+        ))?.value;
 
         let skillMod = 0;
         let statMod = 0;
@@ -177,14 +177,15 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
         if (shooter) {
           if (skillName) {
             // We need to look up by name
-            for (let skill of shooter.itemTypes.skill) {
+            for (const skill of shooter.itemTypes.skill) {
               if (skillName == skill.data.name) {
-                skillMod = skill.data.data["rank"] < 0 ? -2 : skill.data.data["rank"];
+                skillMod =
+                  skill.data.data["rank"] < 0 ? -2 : skill.data.data["rank"];
               }
             }
-          }//end skill
+          } //end skill
           if (statName) {
-            let sm = shooter.data.data["stats"]?.[statName].mod;
+            const sm = shooter.data.data["stats"]?.[statName].mod;
             if (sm) {
               console.log("setting stat mod", sm);
               statMod = sm;
@@ -196,7 +197,7 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
           shooterName = shooter.name;
         }
         this.rollAttack(shooterId, shooterName, skillMod, statMod, abMod, mod);
-      }
+      };
 
       this.popUpDialog?.close();
       this.popUpDialog = new ValidatedDialog(
@@ -215,7 +216,7 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
           classes: ["swnr"],
         }
       );
-      const s = this.popUpDialog.render(true);
+      this.popUpDialog.render(true);
     }
   }
 }

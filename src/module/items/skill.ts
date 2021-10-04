@@ -1,7 +1,6 @@
 import { SWNRBaseItem } from "./../base-item";
 import { ValidatedDialog } from "../ValidatedDialog";
 
-
 export class SWNRSkill extends SWNRBaseItem<"skill"> {
   popUpDialog?: Dialog;
 
@@ -34,7 +33,7 @@ export class SWNRSkill extends SWNRBaseItem<"skill"> {
         .value;
       const stat = this.actor?.data.data["stats"][
         (<HTMLSelectElement>form.querySelector('[name="stat"]')).value
-      ] || { mod: 0, };
+      ] || { mod: 0 };
       const modifier = (<HTMLInputElement>(
         form.querySelector('[name="modifier"]')
       )).value;
@@ -49,7 +48,7 @@ export class SWNRSkill extends SWNRBaseItem<"skill"> {
         "swnr.chat.skillCheck"
       )}: ${game.i18n.localize(
         "swnr.stat.short." +
-        (<HTMLSelectElement>form.querySelector('[name="stat"]')).value
+          (<HTMLSelectElement>form.querySelector('[name="stat"]')).value
       )}/${skillName}`;
       roll.toMessage(
         {
@@ -83,9 +82,7 @@ export class SWNRSkill extends SWNRBaseItem<"skill"> {
     const s = this.popUpDialog.render(true);
     if (s instanceof Promise) await s;
   }
-
 }
-
 
 export const document = SWNRSkill;
 export const name = "skill";

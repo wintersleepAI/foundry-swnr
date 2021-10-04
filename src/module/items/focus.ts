@@ -4,26 +4,21 @@ export class SWNRFocus extends SWNRBaseItem<"focus"> {
     if (this.actor == null) {
       console.log("Cannot role without an actor");
       return;
-    } 
-    console.log("Rolling focus ", this)
+    }
     // Basic template rendering data
-    const token = this.actor.token;
     const item = this.data;
-    const actorData = this.actor ? this.actor.data.data : {};
-    const itemData = item.data;
-    let content = `<h3> ${item.name} </h3>`
+    let content = `<h3> ${item.name} </h3>`;
     if ("description" in item.data) {
-      content+= `<span class="flavor-text"> ${item.data.description}</span>`;
-
+      content += `<span class="flavor-text"> ${item.data.description}</span>`;
     } else {
-      content += "<span class='flavor-text'> No Description</span>"
+      content += "<span class='flavor-text'> No Description</span>";
     }
     if ("level1" in item.data) {
-      content+= `<br><b>Level1:</b> ${item.data.level1}`;
+      content += `<br><b>Level1:</b> ${item.data.level1}`;
     }
-  
+
     if ("level2" in item.data) {
-      content+= `<br><b>Level2:</b> ${item.data.level2}`;
+      content += `<br><b>Level2:</b> ${item.data.level2}`;
     }
 
     ChatMessage.create({
@@ -31,7 +26,6 @@ export class SWNRFocus extends SWNRBaseItem<"focus"> {
       content: content, //${item.data.description}
       //type: CONST.CHAT_MESSAGE_TYPES.OTHER,
     });
-  
   }
 }
 
