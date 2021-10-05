@@ -51,6 +51,7 @@ export class CharacterActorSheet extends ActorSheet<
     html.find(".item-delete").on("click", this._onItemDelete.bind(this));
     html.find(".item-reload").on("click", this._onItemReload.bind(this));
     html.find(".item-click").on("click", this._onItemClick.bind(this));
+    html.find(".item-level-up").on("click", this._onItemLevelUp.bind(this));
     html
       .find(".hp-label")
       .on("click", limitConcurrency(this._onHpRoll.bind(this)));
@@ -130,6 +131,71 @@ export class CharacterActorSheet extends ActorSheet<
     //const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
     if (!item) return;
     item.roll();
+  }
+
+  _onItemLevelUp(event: JQuery.ClickEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    const wrapper = $(event.currentTarget).parents(".item");
+    const item = <SWNRBaseItem>(
+      this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"))
+    );
+    if (item.type == "skill") {
+      const skill = <SWNRBaseItem<"skill">>item;
+      const rank = skill.data.data.rank;
+      if (skill.data.data.source == "revised" && rank > 0) {
+        const lvl = this.actor.data.data.level.value;
+        if (rank == 1 && lvl < 3) {
+          ui.notifications?.error(
+            "Must be at least level 3 (edit manually to override)"
+          );
+          return;
+        } else if (rank == 2 && lvl < 6) {
+          ui.notifications?.error(
+            "Must be at least level 6 (edit manually to override)"
+          );
+          return;
+        } else if (rank == 3 && lvl < 9) {
+          ui.notifications?.error(
+            "Must be at least level 9 (edit manually to override)"
+          );
+          return;
+        } else if (rank > 3) {
+          ui.notifications?.error("Cannot auto-level above 4");
+          return;
+        }
+      }
+      const skillCost = rank + 2;
+      const isPsy =
+        skill.data.data.source.toLocaleLowerCase() ===
+        game.i18n.localize("swnr.skills.labels.psionic").toLocaleLowerCase()
+          ? true
+          : false;
+      const skillPointsAvail = isPsy
+        ? this.actor.data.data.unspentPsySkillPoints +
+          this.actor.data.data.unspentSkillPoints
+        : this.actor.data.data.unspentSkillPoints;
+      if (skillCost > skillPointsAvail) {
+        ui.notifications?.error(
+          `Not enough skill points. Have ${skillPointsAvail}, need: ${skillCost}`
+        );
+        return;
+      } else if (isNaN(skillPointsAvail)) {
+        ui.notifications?.error(`Skill points not set`);
+        return;
+      }
+      skill.update({ "data.rank": rank + 1 });
+      if (isPsy) {
+        ui.notifications?.info(
+          `Subtract ${skillCost} from unspent skills, with at least one psychic skill point`
+        );
+      } else {
+        const newSkillPoints =
+          this.actor.data.data.unspentSkillPoints - skillCost;
+        this.actor.update({ "data.unspentSkillPoints": newSkillPoints });
+        ui.notifications?.info(`Removed ${skillCost} skill points`);
+      }
+    }
   }
 
   _onItemEdit(event: JQuery.ClickEvent): void {

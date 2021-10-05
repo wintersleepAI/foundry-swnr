@@ -533,6 +533,30 @@
             "systems/swnr/templates/actors/fragments/skill.html" item=item
             type=actor.data.data.type}} {{/each}}
           </div>
+          <div class="flex flexrow border-t border-b border-trueGray-500 border1 py-1 mb-1">
+            <div class="flex flex-col items-center">
+              <input
+                class="w-20 text-center pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                type="number"
+                name="data.unspentSkillPoints"
+                min="0"
+                value="{{actor.data.data.unspentSkillPoints}}"
+                data-dtype="Number"
+              />
+              <label>{{localize 'swnr.sheet.unspent-skill'}}</label>
+            </div>
+            <div class="flex flex-col items-center">
+              <input
+                class="w-20 text-center pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                type="number"
+                name="data.unspentPsySkillPoints"
+                min="0"
+                value="{{actor.data.data.unspentPsySkillPoints}}"
+                data-dtype="Number"
+              /> 
+              <label>{{localize 'swnr.sheet.unspent-psy-skill'}}</label>
+            </div>
+          </div>
           {{else}}
           <button class="skill-load-button" style="margin-top: 3em"
             type="button">
@@ -540,10 +564,10 @@
           </button>
           {{/if}}
         </div>
-        <div class="tab foci" data-group="primary" data-tab="foci">
+        <div class="tab foci min-w-full" data-group="primary" data-tab="foci">
 
-          <div class="flex flex-wrap gap-2"> <!-- wrapper for sections-->
-            <div class="flex flex-col">  
+          <div class="flex flex-wrap gap-2 min-w-full"> <!-- wrapper for sections-->
+            <div class="flex flex-col  min-w-full">
                   <!-- foci  -->
               <div class=" foci pr-0.5">
                 <div><!-- table-->
@@ -584,7 +608,7 @@
                     <div class="item-strain text-center">{{localize 'swnr.sheet.cyberware.strain'}} </div>
                     
                     <div class="item-effect pr-2.0">{{localize 'swnr.sheet.description'}}</div>
-                    <div class="item-controls text-center">
+                    <div class="item-controls text-center flex-shrink">
                     </div>
                   </li>
                   <ol class="item-list">
@@ -601,7 +625,7 @@
                         <div class="item pr-2.0">
                           {{item.data.data.effect}}
                         </div>
-                        <div class="item-controls text-center">                          
+                        <div class="item-controls text-center flex-shrink">
                           <a class="item-control item-edit" title='{{localize 'swnr.sheet.edit-item'}}'>
                             <i class="fas fa-edit"></i></a>
                           <a class="item-control item-delete" title='{{localize 'swnr.sheet.delete-item'}}'><i

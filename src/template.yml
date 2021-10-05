@@ -88,6 +88,20 @@ Actor:
       debt: 0
       balance: 0
       owed: 0
+    unspentSkillPoints: 0
+    unspentPsySkillPoints: 0
+    frail: false
+    tweak:
+      advInit: false
+      quickSkill1: ""
+      quickSkill2: ""
+      quickSkill3: ""
+      extraEffortName: ""
+      extraEffort:
+        bonus: 0
+        current: 0
+        scene: 0
+        day: 0
   npc:
     templates:
       - living

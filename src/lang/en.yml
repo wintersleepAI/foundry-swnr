@@ -372,6 +372,9 @@
     vs: vs
     rollables: Rollables
     hit-dice: Hit Dice
+    unspent-skill: Unspent Skill Points
+    unspent-psy-skill: Unspent Psychic Skill Points
+    level-up: Level Up
     cyberware:
       disabled: Disabled
       strain: Strain

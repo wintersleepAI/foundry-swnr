@@ -107,11 +107,21 @@ declare interface SWNRCharacterBaseData
     balance: number;
     owed: number;
   };
+  unspentSkillPoints: number;
+  unspentPsySkillPoints: number;
+  frail: boolean;
   tweak: {
     advInit: boolean;
     quickSkill1: string;
     quickSkill2: string;
     quickSkill3: string;
+    extraEffortName: string;
+    extraEffort: {
+      bonus: number;
+      current: number;
+      scene: number;
+      day: number;
+    };
   };
 }
 
