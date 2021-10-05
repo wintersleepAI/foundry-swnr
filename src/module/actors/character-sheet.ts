@@ -55,6 +55,7 @@ export class CharacterActorSheet extends ActorSheet<
     html
       .find(".hp-label")
       .on("click", limitConcurrency(this._onHpRoll.bind(this)));
+    html.find(".rest-button").on("click", this._onRest.bind(this));
     html
       .find('[name="data.health.max"]')
       .on("input", this._onHPMaxChange.bind(this));
@@ -339,7 +340,6 @@ export class CharacterActorSheet extends ActorSheet<
     const html = await renderTemplate(template, dialogData);
 
     const _doRoll = async (html: HTMLFormElement) => {
-      console.log(html);
       const rollMode = game.settings.get("core", "rollMode");
       const elements = <HTMLFormElement>html[0].querySelector("form");
       const dice = (<HTMLSelectElement>(
@@ -348,7 +348,6 @@ export class CharacterActorSheet extends ActorSheet<
       const formula = new Array(6).fill(dice).join("+");
       const roll = new Roll(formula);
       roll.roll();
-      console.log(roll.result);
       const stats: {
         [p in SWNRStats]: SWNRStatBase & SWNRStatComputed & { dice: number[] };
       } = <never>{};
@@ -411,6 +410,47 @@ export class CharacterActorSheet extends ActorSheet<
     const s = this.popUpDialog.render(true);
     if (s instanceof Promise) await s;
     return this.popUpDialog;
+  }
+  async _onRest(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+
+    const rest = async (isFrail: boolean) => {
+      const data = this.actor.data.data;
+      const newStrain = Math.max(data.systemStrain.value - 1, 0);
+      const newHP = isFrail
+        ? data.health.value
+        : Math.min(data.health.value + data.level.value, data.health.max);
+      await this.actor.update({
+        data: {
+          systemStrain: { value: newStrain },
+          health: { value: newHP },
+          effort: { scene: 0, day: 0 },
+        },
+      });
+    };
+
+    const d = new Dialog({
+      title: game.i18n.localize("swnr.sheet.rest-title"),
+      content: game.i18n.localize("swnr.sheet.rest-desc"),
+      buttons: {
+        yes: {
+          icon: '<i class="fas fa-check"></i>',
+          label: "Yes",
+          callback: () => rest(false),
+        },
+        frail: {
+          icon: '<i class="fas fa-check"></i>',
+          label: "Yes, but no HP",
+          callback: () => rest(true),
+        },
+        no: {
+          icon: '<i class="fas fa-times"></i>',
+          label: "No",
+        },
+      },
+      default: "no",
+    });
+    d.render(true);
   }
   async _onHpRoll(event: JQuery.ClickEvent): Promise<void> {
     // 2e warrior/partial : +2

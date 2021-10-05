@@ -375,6 +375,9 @@
     unspent-skill: Unspent Skill Points
     unspent-psy-skill: Unspent Psychic Skill Points
     level-up: Level Up
+    rest: A night's rest
+    rest-desc: Apply a good night's rest (reset effort, drop strain, heal HP)?
+    rest-title: Apply a Good Night's Rest?
     cyberware:
       disabled: Disabled
       strain: Strain
