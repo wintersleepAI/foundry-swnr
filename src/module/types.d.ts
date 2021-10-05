@@ -11,7 +11,10 @@ declare global {
     }
   }
   interface DocumentClassConfig {
-    Actor: typeof SWNRCharacterActor | typeof SWNRNPCActor | typeof SWNRShipActor;
+    Actor:
+      | typeof SWNRCharacterActor
+      | typeof SWNRNPCActor
+      | typeof SWNRShipActor;
     Item: typeof SWNRBaseItem;
   }
   interface LenientGlobalVariableTypes {
