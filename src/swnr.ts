@@ -18,7 +18,7 @@ import { SWNRActor, SWNRItem } from "./module/documents";
 import "./module/containerQueries";
 import registerHelpers from "./module/handlebar-helpers";
 import { createSWNRMacro, rollItemMacro } from "./module/macro-bar";
-import { SWNRCombatant } from "./module/combat"
+import { SWNRCombatant } from "./module/combat";
 
 /* ------------------------------------ */
 /* Initialize system					*/
@@ -37,7 +37,7 @@ Hooks.once("init", async function () {
   await preloadTemplates();
   game.i18n.localize("swnr.title");
   game["swnr"] = {
-    rollItemMacro
+    rollItemMacro,
   };
 
   // Remove stock sheets

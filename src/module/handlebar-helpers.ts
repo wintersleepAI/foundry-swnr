@@ -11,10 +11,10 @@ export default function registerHelpers(): void {
   Handlebars.registerHelper("concat", function (a, b) {
     return a + b;
   });
-  Handlebars.registerHelper("trim", function(obj,n) {
+  Handlebars.registerHelper("trim", function (obj, n) {
     if (!obj) return "";
     if (obj.length <= n) return obj;
-    return obj.substring(0,n)+"...";
+    return obj.substring(0, n) + "...";
   });
   Handlebars.registerHelper("zeroWidthBreaker", (message: string) => {
     return new Handlebars.SafeString(

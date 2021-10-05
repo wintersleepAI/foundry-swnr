@@ -1,4 +1,6 @@
-export async function createSWNRMacro(data, slot): Promise<void> {
+// Avoiding adding an import for data type data
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export async function createSWNRMacro(data, slot: number): Promise<void> {
   if (game == null) return; // Quiet TS
   if (data.type !== "Item") return;
   if (!("data" in data))
