@@ -74,7 +74,9 @@ declare interface SWNRLivingTemplateComputed {
   systemStrain: {
     max: number;
     permanent: number;
+    cyberware: number;
   };
+
   effort: {
     max: number;
     value: number;

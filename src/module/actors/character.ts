@@ -19,10 +19,15 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
     const cyberware = <SWNRBaseItem<"cyberware">[]>(
       this.items.filter((i) => i.type === "cyberware")
     );
-    //Sum up cyberware strain
-    for (let i = 0; i < cyberware.length; i++) {
-      data.systemStrain.max -= cyberware[i].data.data.strain;
-    }
+    let cyberwareStrain = 0;
+    //Sum up cyberware strain. force to number
+    cyberwareStrain = cyberware.reduce(
+      (i, n) => i + Number(n.data.data.strain),
+      0
+    );
+
+    data.systemStrain.max -= cyberwareStrain;
+    data.systemStrain.cyberware = cyberwareStrain;
 
     if (!data.save) data.save = {};
     const save = data.save;

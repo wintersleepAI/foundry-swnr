@@ -200,13 +200,17 @@
           <label>{{localize 'swnr.sheet.system-strain'}}</label>
         </div>
         <div class="perm-sys flex flex-col items-center">
-          <input
-            class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-            type="number"
-            min="0"
-            name="data.systemStrain.permanent"
-            value="{{actor.data.data.systemStrain.permanent}}"
-          />
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              min="0"
+              name="data.systemStrain.permanent"
+              value="{{actor.data.data.systemStrain.permanent}}"
+            /> + <span
+                class="inline-block text-left text-gray-700 cursor-not-allowed w-8"
+                >{{actor.data.data.systemStrain.cyberware}}</span>
+          </div>
           <label>{{localize 'swnr.sheet.permanent-strain'}}</label>
         </div>
         <div class="exp flex flex-col justify-center items-center">
@@ -230,7 +234,6 @@
               value="{{actor.data.data.level.expToLevel}}"
             />
           </div>
-
           <label>{{localize 'swnr.sheet.xp'}}</label>
         </div>
         <div class="ac flex flex-col justify-around items-center">
