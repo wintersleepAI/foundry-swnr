@@ -81,6 +81,12 @@ declare interface SWNRLivingTemplateComputed {
     max: number;
     value: number;
   };
+
+  tweak: {
+    extraEffort: {
+      value: number;
+    };
+  };
 }
 declare interface SWNREncumbranceTemplateBase {
   encumbrance: {
@@ -122,6 +128,7 @@ declare interface SWNRCharacterBaseData
       current: number;
       scene: number;
       day: number;
+      max: number;
     };
   };
 }

@@ -637,12 +637,16 @@ export class CharacterActorSheet extends ActorSheet<
       const quickSkill3 =
         (<HTMLSelectElement>form.querySelector('[name="quickSkill3"]'))
           ?.value || null;
+      const extraEffortName =
+        (<HTMLInputElement>form.querySelector('[name="extraEffortName"]'))
+          ?.value || "";
       const update = {
         "data.tweak": {
           advInit: advantageInit,
           quickSkill1: quickSkill1,
           quickSkill2: quickSkill2,
           quickSkill3: quickSkill3,
+          extraEffortName: extraEffortName,
         },
       };
       this.actor.update(update);

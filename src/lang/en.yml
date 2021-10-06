@@ -565,8 +565,7 @@
       dest-all: Destroy All
       break-all: Break/disable All 
       all-50: 50% chance to break/disable each system 
-      break-1: Break/disable one system 
-
+      break-1: Break/disable one system
     add-skills: Add Skills
     add-bulk-skills: Add Bulk Skills to {actor}
     tweak-char: "Tweaking options for {actorName}"
@@ -576,6 +575,7 @@
       quick-skill-1: Quick Skill 1
       quick-skill-2: Quick Skill 2
       quick-skill-3: Quick Skill 3
+      extra-effort-name: Extra Effort Name (leave blank to not show on sheet)
     hp:
       text: Select the base dice per level you want to roll (with con bonus added).
       revised: Revised Expert/Psychic d6

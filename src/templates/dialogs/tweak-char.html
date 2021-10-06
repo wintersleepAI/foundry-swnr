@@ -41,5 +41,11 @@
       </select>
     </div>
   {{/if}}
+  <div>
+    <label for="extraEffort">{{localize 'swnr.dialog.tweak.extra-effort-name'}}: </label>
+    <input type="input" name="extraEffortName" id="extraEffort"
+      class="w-32 text-center px-1.5 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+      value="{{actor.data.data.tweak.extraEffortName}}">
+  </div>
 
 </form>

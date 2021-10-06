@@ -101,6 +101,7 @@ Actor:
         current: 0
         scene: 0
         day: 0
+        max: 0
   npc:
     templates:
       - living

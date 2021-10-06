@@ -367,6 +367,96 @@
           </div>
         </div>
       </div>
+      {{#if actor.data.data.tweak.extraEffortName}}
+      <div class="flex-col flex gap-1">
+        <h3>{{ actor.data.data.tweak.extraEffortName }} {{localize 'swnr.effort.title'}}</h3>
+        <div class="flex flex-col lg:flex-row gap-1">
+          <div>
+            <label for="data.tweak.extraEffort.max">
+              {{localize 'swnr.effort.max'}}:
+            </label>
+            <input
+              class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              step="1"
+              name="data.tweak.extraEffort.max"
+              value="{{actor.data.data.tweak.extraEffort.max}}"
+              data-dtype="Number"
+            />
+          </div>
+          <div>
+            <label for="data.tweak.extraEffort.bonus">
+              {{localize 'swnr.effort.bonus'}}:
+            </label>
+            <input
+              class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              step="1"
+              name="data.tweak.extraEffort.bonus"
+              value="{{actor.data.data.tweak.extraEffort.bonus}}"
+              data-dtype="Number"
+            />
+          </div>
+          <div>
+            <label for="data.tweak.extraEffort.current">
+              {{localize 'swnr.effort.current'}}:
+            </label>
+            <input
+              class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              min="0"
+              step="1"
+              max="{{concat data.tweak.extraEffort.current data.tweak.extraEffort.value}}"
+              name="data.tweak.extraEffort.current"
+              value="{{actor.data.data.tweak.extraEffort.current}}"
+              data-dtype="Number"
+            />
+          </div>
+          <div>
+            <label for="data.tweak.extraEffort.scene">
+              {{localize 'swnr.effort.scene'}}:
+            </label>
+            <input
+              class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              min="0"
+              step="1"
+              max="{{concat data.tweak.extraEffort.scene data.tweak.extraEffort.value}}"
+              name="data.tweak.extraEffort.scene"
+              value="{{actor.data.data.tweak.extraEffort.scene}}"
+              data-dtype="Number"
+            />
+          </div>
+          <div>
+            <label for="data.tweak.extraEffort.day"
+              >{{localize 'swnr.effort.day'}}:
+            </label>
+            <input
+              class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              min="0"
+              step="1"
+              max="{{concat data.tweak.extraEffort.day data.tweak.extraEffort.value}}"
+              name="data.tweak.extraEffort.day"
+              value="{{actor.data.data.tweak.extraEffort.day}}"
+              data-dtype="Number"
+            />
+          </div>
+        </div>
+        <div class="flex gap-2 items-center">
+          <div>{{actor.data.data.tweak.extraEffort.value}}/{{actor.data.data.tweak.extraEffort.max}}</div>
+          <div
+            class="bg-purple-300 border border-purple-900 w-full rounded-full h-4 overflow-hidden"
+          >
+            <div
+              class="bg-purple-500 h-full rounded-full"
+              style="width: min(calc(100% * {{actor.data.data.tweak.extraEffort.value}}/{{actor.data.data.tweak.extraEffort.max}}));"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      {{/if}}
     </div>
     <div class="w-full">
       <nav

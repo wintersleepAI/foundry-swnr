@@ -80,6 +80,15 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
           Math.max(0, ...psychicSkills.map((i) => i.data.data.rank))
       ) + effort.bonus;
     effort.value = effort.max - effort.current - effort.scene - effort.day;
+
+    // extra effort
+    const extraEffort = data.tweak.extraEffort;
+    extraEffort.value =
+      extraEffort.max -
+      extraEffort.current -
+      extraEffort.scene -
+      extraEffort.day;
+
     //encumbrance
     if (!data.encumbrance)
       data.encumbrance = {
