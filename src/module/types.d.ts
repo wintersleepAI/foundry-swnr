@@ -1,7 +1,10 @@
 import { VersionString } from "../migration";
 import { SWNRCharacterActor } from "./actors/character";
+import { SWNRDroneActor } from "./actors/drone";
+import { SWNRMechActor } from "./actors/mech";
 import { SWNRNPCActor } from "./actors/npc";
 import { SWNRShipActor } from "./actors/ship";
+import { SWNRVehicleActor } from "./actors/vehicle";
 import { SWNRBaseItem } from "./base-item";
 
 declare global {
@@ -14,7 +17,10 @@ declare global {
     Actor:
       | typeof SWNRCharacterActor
       | typeof SWNRNPCActor
-      | typeof SWNRShipActor;
+      | typeof SWNRShipActor
+      | typeof SWNRMechActor
+      | typeof SWNRVehicleActor
+      | typeof SWNRDroneActor;
     Item: typeof SWNRBaseItem;
   }
   interface LenientGlobalVariableTypes {

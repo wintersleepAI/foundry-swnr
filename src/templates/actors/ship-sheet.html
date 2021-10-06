@@ -87,50 +87,10 @@
           </label>
         </div>
 
-        <!--HP-->
-        <div class="hp flex flex-col justify-center items-center">
-          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
-            <input
-              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.health.value" value="{{actor.data.data.health.value}}"
-              data-dtype="Number" min="0" /><span>/</span><input
-              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" name="data.health.max" value="{{actor.data.data.health.max}}" step="1" min="1"
-              data-dtype="Number" />
-          </div>
-          <label
-            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
-            {{localize 'swnr.sheet.hp'}}
-          </label>
-        </div>
-
-        <!--AC-->
-        <div class="ac flex flex-col items-center">
-          <input
-            class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-            type="number" min="0" name="data.ac" value="{{actor.data.data.ac}}" />
-          <label>{{localize 'swnr.sheet.armor-class'}}</label>
-        </div>
-
-        <!--Armor-->
-        <div class="armor flex flex-col justify-center items-center">
-          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
-            <input
-              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.armor.value" value="{{actor.data.data.armor.value}}" data-dtype="Number"
-              min="0" /><span>/</span><input
-              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" name="data.armor.max" value="{{actor.data.data.armor.max}}" step="1" min="1"
-              data-dtype="Number" />
-          </div>
-          <label
-            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
-            {{localize 'swnr.sheet.armor'}}
-          </label>
-        </div>
-
-
-
+       {{>
+         "systems/swnr/templates/actors/fragments/hdr-HAA.html" 
+          type=actor.data.data.type actor=actor
+       }}
 
         <!--fuel-->
         <div class="fuel flex flex-col justify-center items-center">
@@ -209,56 +169,10 @@
           </div> <!-- end flex row for crew&speed-->
         </div> <!--end box 2 colspan for crew & speed-->
 
-
-        <!--power-->
-        <div class="power flex flex-col justify-center items-center">
-          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
-            <span
-              class="inline-block text-right text-gray-700 cursor-not-allowed w-8">
-              {{actor.data.data.power.value}}</span>/<input
-              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" name="data.power.max" value="{{actor.data.data.power.max}}" step="1" min="1"
-              data-dtype="Number" />
-          </div>
-          <label
-            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
-            {{localize 'swnr.sheet.ship.power'}}
-          </label>
-        </div>
-
-        <!--mass-->
-        <div class="mass flex flex-col justify-center items-center">
-          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
-            <span
-              class="inline-block text-right text-gray-700 cursor-not-allowed w-8">
-              {{actor.data.data.mass.value}}</span><span>/</span><input
-              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" name="data.mass.max" value="{{actor.data.data.mass.max}}" step="1" min="1"
-              data-dtype="Number" />
-          </div>
-          <label
-            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
-            {{localize 'swnr.sheet.ship.mass'}}
-          </label>
-        </div>
-
-        <!--hardpoints-->
-        <div class="hardpoints flex flex-col justify-center items-center">
-          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
-            <span
-              class="inline-block text-right text-gray-700 cursor-not-allowed w-8">
-              {{actor.data.data.hardpoints.value}}</span>
-            <span>/</span><input
-              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" name="data.hardpoints.max" value="{{actor.data.data.hardpoints.max}}" step="1" min="1"
-              data-dtype="Number" />
-          </div>
-          <label
-            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
-            {{localize 'swnr.sheet.ship.hard-points'}}
-          </label>
-        </div>
-
+       {{>
+         "systems/swnr/templates/actors/fragments/hdr-PMH.html" 
+          type=actor.data.data.type actor=actor
+       }}
 
         <!--spikeDrive-->
         <div class="spikeDrive flex flex-col justify-center items-center">
@@ -341,185 +255,18 @@
 
         <section class="sheet-body">
           <div class="tab mods min-h-full" data-group="primary" data-tab="mods">
-            <div class="grid grid-cols-2">
-              <div class="gap-2">
-                <!-- Left Col -->
-                <div class="weapons pr-0.5">
-                  <!-- weapons -->
-                  <div>
-                    <li class="item-titles flexrow">
-                      <!--<div class="item-caret"><i class="fas fa-caret-down"></i></div>-->
-                      <div class="item-name flex2">{{localize 'swnr.sheet.ship.weapon'}}</div>
-                      <div class="item-dmg">{{localize 'swnr.sheet.ship.dmg'}}</div>
-                      <div class="item-qualities">{{localize 'swnr.sheet.ship.qualities'}}</div>
-
-                      <div class="item-controls">
-                      </div>
-                    </li>
-                    <ol class="item-list">
-                      {{#each itemTypes.shipWeapon as |item id|}}
-                      <li class="item-entry">
-                        <div class="item flexrow" data-item-id="{{item.id}}">
-                          <div class="item-name item-click item-rollable flexrow flex2">
-                            <div class="item-image" style="background-image: url({{item.img}})"><a></a></div>
-                            <a>{{item.name}}</a>
-                          </div>
-                          <div>
-                            {{item.data.data.damage}}
-                          </div>
-                          <div>
-                            {{item.data.data.qualities}}
-                          </div>
-                          <div class="item-controls">
-                            {{#if (ne item.data.data.ammo.type "none")}}
-                              <a class="item-control item-reload text-gray-600 hover:text-purple-800 transition-colors"
-                                title="{{localize 'swnr.sheet.reload-item'}}">
-                                <i class="fas fa-retweet"></i>
-                              </a>
-                            {{/if}}
-                            <a class="item-control item-toggle-broken  {{#unless item.data.data.broken}}item-working{{/unless}}"
-                              title='{{localize 'swnr.sheet.break-item'}}'>
-                              <i
-                                class="fas fa-heart-broken {{#unless item.data.data.broken}}item-working{{/unless}}"></i>
-                            </a>
-                            <a class="item-control item-toggle-destroy  {{#unless item.data.data.destroyed}}item-working{{/unless}}"
-                              title='{{localize 'swnr.sheet.destroy-item'}}'>
-                              <i
-                                class="fas fa-skull-crossbones {{#unless item.data.data.destroyed}}item-working{{/unless}}"></i>
-                            </a>
-                            <a class="item-control item-edit text-gray-600 hover:text-purple-800 transition-colors" title='{{localize 'swnr.sheet.edit-item'}}'><i
-                                class="fas fa-edit"></i></a>
-                            <a class="item-control item-delete text-gray-600 hover:text-red-600 transition-colors" title='{{localize 'swnr.sheet.delete-item'}}'><i
-                                class="fas fa-trash"></i></a>
-
-                          </div>
-                        </div>
-                      </li>
-                      {{/each}}
-
-                    </ol>
-                  </div>
-
-                </div>
-              </div>
-              <div>
-                <!-- Right Col -->
-                <!-- defense -->
-                <div class="defense pr-0.5">
-
-                  <div>
-                    <li class="item-titles flexrow">
-                      <!--<div class="item-caret"><i class="fas fa-caret-down"></i></div>-->
-                      <div class="item-name flex2">{{localize 'swnr.sheet.ship.defense'}} </div>
-                      <div class="item-effect">{{localize 'swnr.sheet.ship.effect'}}</div>
-                      <div class="item-controls">
-                      </div>
-                    </li>
-                    <ol class="item-list">
-                      {{#each itemTypes.shipDefense as |item id|}}
-                      <li class="item-entry">
-                        <div class="item flexrow" data-item-id="{{item.id}}">
-                          <div class="item-name item-click item-rollable flexrow flex2">
-                            <div class="item-image" style="background-image: url({{item.img}})"><a></a></div>
-
-                            <a>{{item.name}}</a>
-                          </div>
-                          <div>
-                            {{item.data.data.effect}}
-                          </div>
-                          <div class="item-controls">
-                            <a class="item-control item-toggle-broken  {{#unless item.data.data.broken}}item-working{{/unless}}"
-                              title='{{localize 'swnr.sheet.break-item'}}'>
-                              <i
-                                class="fas fa-heart-broken {{#unless item.data.data.broken}}item-working{{/unless}} "></i>
-                            </a>
-                            <a class="item-control item-toggle-destroy  {{#unless item.data.data.destroyed}}item-working{{/unless}}"
-                              title='{{localize 'swnr.sheet.destroy-item'}}'>
-                              <i
-                                class="fas fa-skull-crossbones {{#unless item.data.data.destroyed}}item-working{{/unless}}"></i>
-                            </a>
-                            <a class="item-control item-edit text-gray-600 hover:text-purple-800 transition-colors" title='{{localize 'swnr.sheet.edit-item'}}'><i
-                                class="fas fa-edit"></i></a>
-                            <a class="item-control item-delete text-gray-600 hover:text-red-600 transition-colors" title='{{localize 'swnr.sheet.delete-item'}}'><i
-                                class="fas fa-trash"></i></a>
-
-                          </div>
-                      </li>
-                      {{/each}}
-                    </ol>
-                  </div>
-
-                  <!-- fittings  -->
-                  <div class=" fittings pr-0.5">
-
-                    <div>
-                      <li class="item-titles flexrow">
-                        <!--<div class="item-caret"><i class="fas fa-caret-down"></i></div>-->
-                        <div class="item-name flex2">{{localize 'swnr.sheet.ship.fittings'}} </div>
-                        <div class="item-effect">{{localize 'swnr.sheet.ship.effect'}}</div>
-                        <div class="item-controls">
-                        </div>
-                      </li>
-                      <ol class="item-list">
-                        {{#each itemTypes.shipFitting as |item id|}}
-                        <li class="item-entry">
-                          <div class="item flexrow" data-item-id="{{item.id}}">
-                            <div class="item-name item-click item-rollable flexrow flex2">
-                              <div class="item-image" style="background-image: url({{item.img}})"><a></a></div>
-
-                              <a>{{item.name}}</a>
-                            </div>
-                            <div>
-                              {{item.data.data.effect}}
-                            </div>
-                            <div class="item-controls">
-                              <a class="item-control item-toggle-broken  {{#unless item.data.data.broken}}item-working{{/unless}}"
-                                title='{{localize 'swnr.sheet.break-item'}}'>
-                                <i
-                                  class="fas fa-heart-broken {{#unless item.data.data.broken}}item-working{{/unless}}"></i>
-                              </a>
-                            <a class="item-control item-toggle-destroy  {{#unless item.data.data.destroyed}}item-working{{/unless}}"
-                              title='{{localize 'swnr.sheet.destroy-item'}}'>
-                              <i
-                                class="fas fa-skull-crossbones {{#unless item.data.data.destroyed}}item-working{{/unless}}"></i>
-                            </a>
-                              <a class="item-control item-edit text-gray-600 hover:text-purple-800 transition-colors" title='{{localize 'swnr.sheet.edit-item'}}'>
-                                <i class="fas fa-edit"></i></a>
-                              <a class="item-control item-delete text-gray-600 hover:text-red-600 transition-colors" title='{{localize 'swnr.sheet.delete-item'}}'><i
-                                  class="fas fa-trash"></i></a>
-
-                            </div>
-                        </li>
-                        {{/each}}
-                      </ol>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {{>
+              "systems/swnr/templates/actors/fragments/vehicle-mods.html" 
+                type=actor.data.data.type actor=actor
+            }}
           </div>
           <!-- notes --> 
           <div class="tab shipnotes min-h-full" data-group="primary" data-tab="notes">
             <div class="flex flex-col">
-
-              <div class="grid grid-cols-2">
-                <!-- Description -->
-                <div class="pr-0.5">
-                  Description
-                  <div class="bg-gray-300 border border-gray-700 rounded-md p-2 mt-4">
-                    {{editor content=data.data.description target="data.description" button=true
-                    owner=owner editable=editable}}
-                  </div>
-                </div>
-                <!-- Mods -->
-                <div class="pr-0.5">
-                  Mods
-                  <div class="bg-gray-300 border border-gray-700 rounded-md p-2 mt-4">
-                    {{editor content=data.data.mods target="data.mods" button=true
-                    owner=owner editable=editable}}
-                  </div>
-                </div>
-              </div>
+            {{>
+              "systems/swnr/templates/actors/fragments/vehicle-notes.html" 
+                type=actor.data.data.type actor=actor
+            }}
             </div>
           </div> <!-- end notes tab>
           <!-- Crew Tab-->

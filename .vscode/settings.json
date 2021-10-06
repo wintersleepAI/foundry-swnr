@@ -19,5 +19,6 @@
         "psionic",
         "shapeshifting",
         "swnr"
-    ]
+    ],
+    "editor.tabSize": 2
 }

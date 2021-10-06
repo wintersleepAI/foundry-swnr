@@ -1,0 +1,18 @@
+              <div class="grid grid-cols-2">
+                <!-- Description -->
+                <div class="pr-0.5">
+                  Description
+                  <div class="bg-gray-300 border border-gray-700 rounded-md p-2 mt-4">
+                    {{editor content=data.data.description target="data.description" button=true
+                    owner=owner editable=editable}}
+                  </div>
+                </div>
+                <!-- Mods -->
+                <div class="pr-0.5">
+                  Mods
+                  <div class="bg-gray-300 border border-gray-700 rounded-md p-2 mt-4">
+                    {{editor content=data.data.mods target="data.mods" button=true
+                    owner=owner editable=editable}}
+                  </div>
+                </div>
+              </div>

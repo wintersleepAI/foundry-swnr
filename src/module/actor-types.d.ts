@@ -1,8 +1,10 @@
 import { SWNRArmorTypes, AllItemClasses, ItemTypes } from "./item-types";
 
-type ActorTypes = "character" | "npc" | "ship";
+type ActorTypes = "character" | "npc" | "ship" | "mech" | "drone" | "vehicle";
 
 declare type SWNRStats = "str" | "dex" | "con" | "int" | "wis" | "cha";
+
+type SWNRMechClass = "suit" | "light" | "heavy";
 
 type SWNRShipClass = "fighter" | "frigate" | "cruiser" | "capital";
 type SWNRShipHullType =
@@ -67,6 +69,8 @@ declare interface SWNRVehicleTemplateBase {
   };
   crewMembers: string[];
   tl: number;
+  description: string;
+  mods: string;
 }
 
 declare interface SWNRLivingTemplateComputed {
@@ -174,6 +178,60 @@ declare interface SWNRShipComputed {
   };
 }
 
+declare interface SWNRVehicleData extends SWNRVehicleTemplateBase {
+  itemTypes: {
+    //todo: make a better type
+    [type in Exclude<
+      ItemTypes,
+      "focus" | "skill" | "weapon" | "armor" | "power"
+    >]: (AllItemClasses & {
+      type: type;
+    })[];
+  };
+}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+declare interface SWNRVehicleComputed {}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+declare interface SWNRDroneComputed {}
+
+declare interface SWNRDroneData extends SWNRVehicleTemplateBase {
+  itemTypes: {
+    //todo: make a better type
+    [type in Exclude<
+      ItemTypes,
+      "focus" | "skill" | "weapon" | "armor" | "power"
+    >]: (AllItemClasses & {
+      type: type;
+    })[];
+  };
+}
+
+declare interface SWNRMechData extends SWNRVehicleTemplateBase {
+  itemTypes: {
+    //todo: make a better type
+    [type in Exclude<
+      ItemTypes,
+      "focus" | "skill" | "weapon" | "armor" | "power"
+    >]: (AllItemClasses & {
+      type: type;
+    })[];
+  };
+  power: {
+    max: number;
+  };
+  mass: {
+    max: number;
+  };
+  hardpoints: {
+    max: number;
+  };
+  maintenanceCost: number;
+  mechClass: SWNRMechClass;
+  mechHullType: string;
+}
+
 declare interface SWNRShipData extends SWNRVehicleTemplateBase {
   itemTypes: {
     //todo: make a better type
@@ -211,8 +269,6 @@ declare interface SWNRShipData extends SWNRVehicleTemplateBase {
   };
   shipClass: SWNRShipClass;
   shipHullType: SWNRShipHullType;
-  description: string;
-  mods: string;
   operatingCost: number;
   maintenanceCost: number;
   amountOwed: number;
@@ -277,12 +333,18 @@ declare global {
     Actor:
       | PCActorSource
       | { type: "npc"; data: Merge<SWNRNPCData, SWNRLivingTemplateComputed> }
-      | { type: "ship"; data: Merge<SWNRShipData, SWNRShipComputed> };
+      | { type: "ship"; data: Merge<SWNRShipData, SWNRShipComputed> }
+      | { type: "mech"; data: Merge<SWNRMechData, SWNRShipComputed> }
+      | { type: "drone"; data: Merge<SWNRDroneData, SWNRDroneComputed> }
+      | { type: "vehicle"; data: Merge<SWNRVehicleData, SWNRVehicleComputed> };
   }
   interface SourceConfig {
     Actor:
       | { type: "character"; data: SWNRCharacterBaseData }
       | { type: "npc"; data: SWNRNPCData }
-      | { type: "ship"; data: SWNRShipData };
+      | { type: "ship"; data: SWNRShipData }
+      | { type: "mech"; data: SWNRMechData }
+      | { type: "drone"; data: SWNRDroneData }
+      | { type: "vehicle"; data: SWNRVehicleData };
   }
 }

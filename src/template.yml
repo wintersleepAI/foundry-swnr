@@ -4,8 +4,11 @@ Actor:
     - character
     - npc
     - ship
+    - mech
+    - drone
+    - vehicle
   templates:
-    vehicle: 
+    vehiclebase: 
       cost: 0
       health:
         value: 15
@@ -129,7 +132,7 @@ Actor:
         contents: ""
   ship:
     templates:
-      - vehicle
+      - vehiclebase
     power: 
       max: 1
     mass: 
@@ -175,6 +178,15 @@ Actor:
       engineering: ""
       comms: ""
       bridge: ""
+  mech:
+    templates:
+      - vehiclebase      
+  drone:
+    templates:
+      - vehiclebase
+  vehicle:
+    templates:
+      - vehiclebase
 Item:
   types:
     - class
