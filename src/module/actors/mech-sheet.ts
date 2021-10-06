@@ -16,6 +16,22 @@ export class MechActorSheet extends ActorSheet<
     if (super.actor.type != "mech") throw Error;
     return super.actor;
   }
+
+  static get defaultOptions(): ActorSheet.Options {
+    return mergeObject(super.defaultOptions, {
+      classes: ["swnr", "sheet", "actor", "ship"],
+      template: "systems/swnr/templates/actors/mech-sheet.html",
+      width: 800,
+      height: 600,
+      tabs: [
+        {
+          navSelector: ".pc-sheet-tabs",
+          contentSelector: ".sheet-body",
+          initial: "mods",
+        },
+      ],
+    });
+  }
 }
 
 export const sheet = MechActorSheet;

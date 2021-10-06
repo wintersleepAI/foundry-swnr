@@ -16,6 +16,22 @@ export class DroneActorSheet extends ActorSheet<
     if (super.actor.type != "drone") throw Error;
     return super.actor;
   }
+
+  static get defaultOptions(): ActorSheet.Options {
+    return mergeObject(super.defaultOptions, {
+      classes: ["swnr", "sheet", "actor", "ship"],
+      template: "systems/swnr/templates/actors/drone-sheet.html",
+      width: 800,
+      height: 600,
+      tabs: [
+        {
+          navSelector: ".pc-sheet-tabs",
+          contentSelector: ".sheet-body",
+          initial: "mods",
+        },
+      ],
+    });
+  }
 }
 
 export const sheet = DroneActorSheet;

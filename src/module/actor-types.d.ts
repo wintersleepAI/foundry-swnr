@@ -179,15 +179,7 @@ declare interface SWNRShipComputed {
 }
 
 declare interface SWNRVehicleData extends SWNRVehicleTemplateBase {
-  itemTypes: {
-    //todo: make a better type
-    [type in Exclude<
-      ItemTypes,
-      "focus" | "skill" | "weapon" | "armor" | "power"
-    >]: (AllItemClasses & {
-      type: type;
-    })[];
-  };
+  kmph: number;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -197,15 +189,9 @@ declare interface SWNRVehicleComputed {}
 declare interface SWNRDroneComputed {}
 
 declare interface SWNRDroneData extends SWNRVehicleTemplateBase {
-  itemTypes: {
-    //todo: make a better type
-    [type in Exclude<
-      ItemTypes,
-      "focus" | "skill" | "weapon" | "armor" | "power"
-    >]: (AllItemClasses & {
-      type: type;
-    })[];
-  };
+  fittings: {
+    max: number;
+  }
 }
 
 declare interface SWNRMechData extends SWNRVehicleTemplateBase {
