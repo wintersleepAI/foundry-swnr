@@ -383,6 +383,13 @@
       disabled: Disabled
       strain: Strain
       name: Cyberware
+    mech:
+      mechClass:
+        suit: Suit
+        light: Light
+        heavy: Heavy
+      mech-class: Mech Class
+      mech-hull: Mech Hull Type
     ship:
       life-support-days: Life Support Days
       fuel: Fuel

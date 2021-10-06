@@ -191,7 +191,7 @@ declare interface SWNRDroneComputed {}
 declare interface SWNRDroneData extends SWNRVehicleTemplateBase {
   fittings: {
     max: number;
-  }
+  };
 }
 
 declare interface SWNRMechData extends SWNRVehicleTemplateBase {

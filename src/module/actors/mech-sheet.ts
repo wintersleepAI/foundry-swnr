@@ -17,6 +17,16 @@ export class MechActorSheet extends ActorSheet<
     return super.actor;
   }
 
+  async getData(
+    options?: Application.RenderOptions
+  ): Promise<MechActorSheetData> {
+    let data = super.getData(options);
+    if (data instanceof Promise) data = await data;
+    return mergeObject(data, {
+      itemTypes: this.actor.itemTypes,
+    });
+  }
+
   static get defaultOptions(): ActorSheet.Options {
     return mergeObject(super.defaultOptions, {
       classes: ["swnr", "sheet", "actor", "ship"],
