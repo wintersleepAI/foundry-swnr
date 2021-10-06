@@ -144,7 +144,7 @@ export class CharacterActorSheet extends ActorSheet<
     if (item.type == "skill") {
       const skill = <SWNRBaseItem<"skill">>item;
       const rank = skill.data.data.rank;
-      if (skill.data.data.source == "revised" && rank > 0) {
+      if (rank > 0) {
         const lvl = this.actor.data.data.level.value;
         if (rank == 1 && lvl < 3) {
           ui.notifications?.error(
@@ -187,8 +187,10 @@ export class CharacterActorSheet extends ActorSheet<
       }
       skill.update({ "data.rank": rank + 1 });
       if (isPsy) {
-        const newPsySkillPoints =
-          this.actor.data.data.unspentPsySkillPoints - skillCost;
+        const newPsySkillPoints = Math.max(
+          0,
+          this.actor.data.data.unspentPsySkillPoints - skillCost
+        );
         let newSkillPoints = this.actor.data.data.unspentSkillPoints;
         if (skillCost > this.actor.data.data.unspentPsySkillPoints) {
           //Not enough psySkillPoints, dip into regular
