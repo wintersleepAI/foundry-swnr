@@ -439,6 +439,12 @@ export class CharacterActorSheet extends ActorSheet<
           systemStrain: { value: newStrain },
           health: { value: newHP },
           effort: { scene: 0, day: 0 },
+          tweak: {
+            extraEffort: {
+              scene: 0,
+              day: 0,
+            },
+          },
         },
       });
     };
