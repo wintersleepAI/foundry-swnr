@@ -351,6 +351,7 @@
       powers: Powers
       combat: Combat
     xp: XP
+    power: Power
     delete-item: Delete Item
     edit-item: Edit Item
     reload-item: Reload Item

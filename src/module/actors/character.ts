@@ -115,6 +115,19 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
       .filter((i) => i.data.data.location === "stowed")
       .map(itemInvCost)
       .reduce((i, n) => i + n, 0);
+
+    const powers = <SWNRBaseItem<"power">[]>(
+      this.items.filter((i) => i.type == "power")
+    );
+
+    powers.sort(function (a, b) {
+      if (a.data.data.source == b.data.data.source) {
+        return a.data.data.level - b.data.data.level;
+      } else {
+        return a.data.data.source.localeCompare(b.data.data.source);
+      }
+    });
+    data["powers"] = powers;
   }
 }
 

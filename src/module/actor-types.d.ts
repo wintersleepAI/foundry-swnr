@@ -111,7 +111,6 @@ declare interface SWNRCharacterBaseData
   };
   unspentSkillPoints: number;
   unspentPsySkillPoints: number;
-  frail: boolean;
   tweak: {
     advInit: boolean;
     quickSkill1: string;

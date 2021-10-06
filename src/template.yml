@@ -90,7 +90,6 @@ Actor:
       owed: 0
     unspentSkillPoints: 0
     unspentPsySkillPoints: 0
-    frail: false
     tweak:
       advInit: false
       quickSkill1: ""
