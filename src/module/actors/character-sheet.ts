@@ -178,7 +178,7 @@ export class CharacterActorSheet extends ActorSheet<
         : this.actor.data.data.unspentSkillPoints;
       if (skillCost > skillPointsAvail) {
         ui.notifications?.error(
-          `Not enough skill points. Have ${skillPointsAvail}, need: ${skillCost}`
+          `Not enough skill points. Have: ${skillPointsAvail}, need: ${skillCost}`
         );
         return;
       } else if (isNaN(skillPointsAvail)) {
@@ -187,8 +187,20 @@ export class CharacterActorSheet extends ActorSheet<
       }
       skill.update({ "data.rank": rank + 1 });
       if (isPsy) {
+        const newPsySkillPoints =
+          this.actor.data.data.unspentPsySkillPoints - skillCost;
+        let newSkillPoints = this.actor.data.data.unspentSkillPoints;
+        if (skillCost > this.actor.data.data.unspentPsySkillPoints) {
+          //Not enough psySkillPoints, dip into regular
+          newSkillPoints -=
+            skillCost - this.actor.data.data.unspentPsySkillPoints;
+        }
+        this.actor.update({
+          "data.unspentSkillPoints": newSkillPoints,
+          "data.unspentPsySkillPoints": newPsySkillPoints,
+        });
         ui.notifications?.info(
-          `Subtract ${skillCost} from unspent skills, with at least one psychic skill point`
+          `Removed ${skillCost} from unspent skills, with at least one psychic skill point`
         );
       } else {
         const newSkillPoints =
