@@ -228,8 +228,8 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
       for (let i = 0; i < shipInventory.length; i++) {
         const item = shipInventory[i];
         const itemCost = item.data.data.costMultiplier
-          ? item.data.data.cost
-          : item.data.data.cost * multiplier;
+          ? item.data.data.cost * multiplier
+          : item.data.data.cost;
         baseCost += itemCost;
       }
 
