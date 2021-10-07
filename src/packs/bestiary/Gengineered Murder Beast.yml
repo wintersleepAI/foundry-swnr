@@ -1,0 +1,30 @@
+data:
+  ab: 10
+  baseAc: 18
+  armorType: primitive
+  skillBonus: 0
+  hitDice: 10
+  moralScore: 11
+  saves: 10
+  skillBonus: 3
+  speed: 20
+  attacks:
+    number: 4
+    bonusDamage: 0
+name: Gengineered Murder Beast
+type: npc
+img: systems/swnr/assets/icons/alien-bug.png
+items:
+  - name: Natural Attack
+    type: weapon
+    data:
+      shock:
+        dmg: 0
+        ac: 15
+      damage: d10
+      encumbrance: 0
+      cost: 0
+      tl: 4
+      skillBoostsDamage: false
+      permission:
+        default: 0

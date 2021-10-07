@@ -1,0 +1,30 @@
+data:
+  ab: 1
+  baseAc: 15
+  armorType: primitive
+  skillBonus: 0
+  hitDice: 1
+  moralScore: 12
+  saves: 15
+  skillBonus: 1
+  speed: 10
+  attacks:
+    number: 1
+    bonusDamage: 0
+name: Civilian Security Bot
+type: npc
+img: systems/swnr/assets/icons/android.png
+items:
+  - name: Stun
+    type: weapon
+    data:
+      shock:
+        dmg: 0
+        ac: 15
+      damage: d8
+      encumbrance: 0
+      cost: 0
+      tl: 4
+      skillBoostsDamage: false
+      permission:
+        default: 0
