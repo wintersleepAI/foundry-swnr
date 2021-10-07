@@ -217,6 +217,8 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
         }
       );
       this.popUpDialog.render(true);
+    } else {
+      ui.notifications?.error("todo");
     }
   }
 }
