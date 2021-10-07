@@ -32,14 +32,14 @@
         </div>
 
         {{>
-         "systems/swnr/templates/actors/fragments/hdr-HAA.html" 
-          type=actor.data.data.type actor=actor
+        "systems/swnr/templates/actors/fragments/hdr-HAA.html"
+        type=actor.data.data.type actor=actor
         }}
 
-       {{>
-         "systems/swnr/templates/actors/fragments/hdr-PMH.html" 
-          type=actor.data.data.type actor=actor
-       }}
+        {{>
+        "systems/swnr/templates/actors/fragments/hdr-PMH.html"
+        type=actor.data.data.type actor=actor
+        }}
 
         <!--speed-->
         <div class="mass flex flex-col justify-center items-center">
@@ -73,7 +73,8 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.tonnage" value="{{actor.data.data.tonnage}}" data-dtype="Number" min="0" />
+              type="number" step="1" name="data.tonnage" value="{{actor.data.data.tonnage}}" data-dtype="Number"
+              min="0" />
           </div>
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
@@ -95,7 +96,6 @@
           </label>
         </div>
 
-
         <!--cost-->
         <div class="mass flex flex-col justify-center items-center">
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
@@ -106,6 +106,27 @@
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
             {{localize 'swnr.sheet.ship.cost'}}
+          </label>
+        </div>
+
+        <!--crew-->
+        <div class="flex-col justify-center text-center items-center">
+          <div class="w-36 text-center border border-gray-800 bg-gray-400 mx-auto rounded-md items-center">
+            <input
+              class="w-8 text-center py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" step="1" name="data.crew.min" value="{{actor.data.data.crew.min}}" data-dtype="Number"
+              min="0" /><span class="w-2">/</span>
+            <input
+              class="w-8 text-center  py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" step="1" name="data.crew.current" value="{{actor.data.data.crew.current}}"
+              data-dtype="Number" min="0" /><span class="w-2">/</span><input
+              class="w-12 text-center  py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" name="data.crew.max" value="{{actor.data.data.crew.max}}" step="1" min="1"
+              data-dtype="Number" />
+          </div>
+          <label
+            class="hp-label text-center hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.ship.crew'}}
           </label>
         </div>
       </div> <!-- end grid div for header -->
