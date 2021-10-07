@@ -178,6 +178,18 @@ declare interface SWNRShipComputed {
   };
 }
 
+declare interface SWNRMechComputed {
+  power: {
+    value: number;
+  };
+  mass: {
+    value: number;
+  };
+  hardpoints: {
+    value: number;
+  };
+}
+
 declare interface SWNRVehicleData extends SWNRVehicleTemplateBase {
   kmph: number;
 }
@@ -320,7 +332,7 @@ declare global {
       | PCActorSource
       | { type: "npc"; data: Merge<SWNRNPCData, SWNRLivingTemplateComputed> }
       | { type: "ship"; data: Merge<SWNRShipData, SWNRShipComputed> }
-      | { type: "mech"; data: Merge<SWNRMechData, SWNRShipComputed> }
+      | { type: "mech"; data: Merge<SWNRMechData, SWNRMechComputed> }
       | { type: "drone"; data: Merge<SWNRDroneData, SWNRDroneComputed> }
       | { type: "vehicle"; data: Merge<SWNRVehicleData, SWNRVehicleComputed> };
   }

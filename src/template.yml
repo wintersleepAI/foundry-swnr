@@ -180,7 +180,16 @@ Actor:
       bridge: ""
   mech:
     templates:
-      - vehiclebase      
+      - vehiclebase
+    power:
+      max: 1
+    mass:
+      max: 1
+    hardpoints:
+      max: 1
+    maintenanceCost: 0
+    mechClass: suit
+    mechHullType: Mech Hull Type
   drone:
     templates:
       - vehiclebase

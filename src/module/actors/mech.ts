@@ -20,7 +20,7 @@ export class SWNRMechActor extends SWNRBaseActor<"mech"> {
     if (mechClass == "light") {
       multiplier = 2;
     } else if (mechClass == "heavy") {
-      multiplier = 3;
+      multiplier = 4;
     }
 
     const mechInventory = <
