@@ -23,6 +23,9 @@ Actor:
         max: 1
         current: 0
       crewMembers: []
+      tl: 4
+      description: ""
+      mods: ""
     living:
       health:
         value: 10
@@ -193,9 +196,23 @@ Actor:
   drone:
     templates:
       - vehiclebase
+    fittings:
+      max: 1
+    enc: 2
+    range: 500m
   vehicle:
     templates:
       - vehiclebase
+    power:
+      max: 1
+    mass:
+      max: 1
+    hardpoints:
+      max: 1
+    kmph: 100
+    tonnage: 10
+    size: s
+
 Item:
   types:
     - class

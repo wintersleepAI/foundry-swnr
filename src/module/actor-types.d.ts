@@ -192,18 +192,43 @@ declare interface SWNRMechComputed {
 
 declare interface SWNRVehicleData extends SWNRVehicleTemplateBase {
   kmph: number;
+  power: {
+    max: number;
+  };
+  mass: {
+    max: number;
+  };
+  hardpoints: {
+    max: number;
+  };
+  tonnage: number;
+  size: "s" | "m" | "l";
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-declare interface SWNRVehicleComputed {}
+declare interface SWNRVehicleComputed {
+  power: {
+    value: number;
+  };
+  mass: {
+    value: number;
+  };
+  hardpoints: {
+    value: number;
+  };
+}
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-declare interface SWNRDroneComputed {}
+declare interface SWNRDroneComputed {
+  fittings: {
+    value: number;
+  };
+}
 
 declare interface SWNRDroneData extends SWNRVehicleTemplateBase {
   fittings: {
     max: number;
   };
+  enc: number;
+  range: string;
 }
 
 declare interface SWNRMechData extends SWNRVehicleTemplateBase {

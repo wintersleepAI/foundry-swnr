@@ -10,6 +10,13 @@ export class SWNRVehicleActor extends SWNRBaseActor<"vehicle"> {
 
   prepareDerivedData(): void {
     const data = this.data.data;
+    let mass = data.mass.max;
+    let power = data.power.max;
+    let hardpoints = data.hardpoints.max;
+    //TODO
+    data.power.value = mass;
+    data.mass.value = power;
+    data.hardpoints.value = hardpoints;
   }
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types

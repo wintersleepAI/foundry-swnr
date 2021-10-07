@@ -10,6 +10,8 @@ export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
 
   prepareDerivedData(): void {
     const data = this.data.data;
+    //TODO
+    data.fittings.value = data.fittings.max;
   }
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types

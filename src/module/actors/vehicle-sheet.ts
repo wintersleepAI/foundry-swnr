@@ -23,13 +23,6 @@ export class VehicleActorSheet extends ActorSheet<
       template: "systems/swnr/templates/actors/vehicle-sheet.html",
       width: 800,
       height: 600,
-      tabs: [
-        {
-          navSelector: ".pc-sheet-tabs",
-          contentSelector: ".sheet-body",
-          initial: "mods",
-        },
-      ],
     });
   }
 }

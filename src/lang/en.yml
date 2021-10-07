@@ -384,12 +384,28 @@
       strain: Strain
       name: Cyberware
     mech:
+      name: Mech Name
       mechClass:
         suit: Suit
         light: Light
         heavy: Heavy
       mech-class: Mech Class
       mech-hull: Mech Hull Type
+    drone:
+      enc: Encumbrance
+      range: Range
+      tl: TL
+      name: Drone Name
+    vehicle:
+      tonnage: Tonnage
+      kmph: KM/H
+      tl: TL
+      name: Vehicle Name
+      size: Size
+      vehicle-class:
+        s: S
+        m: M
+        l: L
     ship:
       life-support-days: Life Support Days
       fuel: Fuel
