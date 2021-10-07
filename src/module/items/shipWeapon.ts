@@ -93,8 +93,20 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
       return;
     }
 
-    if (this.actor.type == "ship") {
-      let defaultGunnerId: string | null = this.actor.data.data.roles.gunnery;
+    if (
+      this.actor.type == "ship" ||
+      this.actor.type == "mech" ||
+      this.actor.type == "drone" ||
+      this.actor.type == "vehicle"
+    ) {
+      let defaultGunnerId: string | null = null;
+      // if there is one crew member or there is a gunner
+      if (this.actor.data.data.crewMembers.length == 1) {
+        defaultGunnerId = this.actor.data.data.crewMembers[0];
+      } else if (this.actor.type == "ship") {
+        defaultGunnerId = this.actor.data.data.roles.gunnery;
+      }
+      //get the gunner if exists
       let defaultGunner: SWNRCharacterActor | SWNRNPCActor | null = null;
       if (defaultGunnerId) {
         const _temp = game.actors?.get(defaultGunnerId);

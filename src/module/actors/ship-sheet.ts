@@ -490,7 +490,6 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     event.preventDefault();
     event.stopPropagation();
     const li = $(event.currentTarget).parents(".item");
-    console.log("id", li.data("crewId"), li.data("crewName"));
     const performDelete: boolean = await new Promise((resolve) => {
       Dialog.confirm({
         title: game.i18n.format("swnr.deleteCrew", {
@@ -513,11 +512,5 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
   }
 }
 
-Hooks.on("dropActorSheetData", (actor: Actor, actorSheet: ActorSheet, data) => {
-  if (actor.type == "ship" && data.type == "Actor") {
-    const shipActor = (actor as unknown) as SWNRShipActor;
-    shipActor.addCrew(data["id"]);
-  }
-});
 export const sheet = ShipActorSheet;
 export const types = ["ship"];

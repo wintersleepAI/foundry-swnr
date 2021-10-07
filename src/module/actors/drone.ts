@@ -14,6 +14,52 @@ export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
     data.fittings.value = data.fittings.max;
   }
 
+  addCrew(actorId: string): void {
+    const actor = game.actors?.get(actorId);
+    if (actor) {
+      const crewMembers = this.data.data.crewMembers;
+      //Only add crew once
+      if (crewMembers.indexOf(actorId) == -1) {
+        //only one crew member allowed
+        if (crewMembers.length == 1) {
+          // Swap
+          crewMembers[0] = actorId;
+          this.update({
+            "data.crewMembers": crewMembers,
+          });
+        } else {
+          // No crew member
+          let crew = this.data.data.crew.current;
+          crew += 1;
+          crewMembers.push(actorId);
+          this.update({
+            "data.crew.current": crew,
+            "data.crewMembers": crewMembers,
+          });
+        }
+      }
+    } else {
+      ui.notifications?.error("Actor added no longer exists");
+    }
+  }
+
+  removeCrew(actorId: string): void {
+    const crewMembers = this.data.data.crewMembers;
+    //Only remove if there
+    const idx = crewMembers.indexOf(actorId);
+    if (idx == -1) {
+      ui.notifications?.error("Crew member not found");
+    } else {
+      crewMembers.splice(idx, 1);
+      let crew = this.data.data.crew.current;
+      crew -= 1;
+      this.update({
+        "data.crew.current": crew,
+        "data.crewMembers": crewMembers,
+      });
+    }
+  }
+
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   async _preCreate(actorDataConstructorData, options, user): Promise<void> {
     await super._preCreate(actorDataConstructorData, options, user);

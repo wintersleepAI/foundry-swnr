@@ -1,4 +1,7 @@
 import { SWNRBaseItem } from "./base-item";
+import { SWNRShipActor } from "./actors/ship";
+import { SWNRMechActor } from "./actors/mech";
+import { SWNRDroneActor } from "./actors/drone";
 
 export class VehicleBaseActorSheet<
   T extends ActorSheet.Data
@@ -106,3 +109,18 @@ export class VehicleBaseActorSheet<
     });
   }
 }
+
+Hooks.on("dropActorSheetData", (actor: Actor, actorSheet: ActorSheet, data) => {
+  if (data.type == "Actor") {
+    if (actor.type == "ship") {
+      const shipActor = (actor as unknown) as SWNRShipActor;
+      shipActor.addCrew(data["id"]);
+    } else if (actor.type == "mech") {
+      const mechActor = (actor as unknown) as SWNRMechActor;
+      mechActor.addCrew(data["id"]);
+    } else if (actor.type == "drone") {
+      const droneActor = (actor as unknown) as SWNRDroneActor;
+      droneActor.addCrew(data["id"]);
+    }
+  }
+});

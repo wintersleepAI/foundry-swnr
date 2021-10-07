@@ -391,6 +391,7 @@
         heavy: Heavy
       mech-class: Mech Class
       mech-hull: Mech Hull Type
+      pilot: Pilot
     drone:
       enc: Encumbrance
       range: Range
@@ -660,4 +661,5 @@
     owed: Owed
   deleteTitle: Delete {name}?
   deleteCrew: Do you want to remove {name} from the crew?
+  deletePilot: Do you want to remove {name} as the pilot?
   deleteContent: Are you sure you want to delete {name} from the actor {actor}?
