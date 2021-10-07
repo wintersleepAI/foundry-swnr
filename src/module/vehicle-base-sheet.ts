@@ -2,6 +2,7 @@ import { SWNRBaseItem } from "./base-item";
 import { SWNRShipActor } from "./actors/ship";
 import { SWNRMechActor } from "./actors/mech";
 import { SWNRDroneActor } from "./actors/drone";
+import { SWNRVehicleActor } from "./actors/vehicle";
 
 export class VehicleBaseActorSheet<
   T extends ActorSheet.Data
@@ -121,6 +122,9 @@ Hooks.on("dropActorSheetData", (actor: Actor, actorSheet: ActorSheet, data) => {
     } else if (actor.type == "drone") {
       const droneActor = (actor as unknown) as SWNRDroneActor;
       droneActor.addCrew(data["id"]);
+    } else if (actor.type == "vehicle") {
+      const vActor = (actor as unknown) as SWNRVehicleActor;
+      vActor.addCrew(data["id"]);
     }
   }
 });

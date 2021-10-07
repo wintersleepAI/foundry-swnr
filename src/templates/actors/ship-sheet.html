@@ -373,30 +373,10 @@
                 </div><!-- end stations-->
               </div>
 
-              <div class="gap-2">
-                <div>
-                  <li class="item-titles flexrow">
-                    <!--<div class="item-caret"><i class="fas fa-caret-down"></i></div>-->
-                    <div class="item-name">{{localize 'swnr.sheet.ship.crew-name'}} </div>
-                    <div class="item-controls">
-                    </div>
-                  </li>
-                  <ol class="item-list">
-                    {{#each crewArray as | crew id| }}
-                    <li class="item-entry">
-                      <div class="item flexrow" data-crew-id="{{crew.id}}" data-crew-name="{{crew.name}}">
-                        <div class="item-name flexrow">
-                          <a>{{crew.name}}</a>
-                        </div>
-                        <div class="item-controls">
-                          <a class="item-control crew-delete text-gray-600 hover:text-red-600 transition-colors" title='{{localize 'swnr.sheet.delete-item'}}'><i
-                              class="fas fa-trash"></i></a>
-                        </div>
-                    </li>
-                    {{/each}}
-                  </ol>
-                </div>
-              </div>
+       {{>
+         "systems/swnr/templates/actors/fragments/crew-list.html" 
+          type=actor.data.data.type crewArray=crewArray
+       }}
             </div>
           </div>
           <!-- cost tab -->
