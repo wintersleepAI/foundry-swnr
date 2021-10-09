@@ -12,7 +12,6 @@ export class VehicleBaseActorSheet<
 
   activateListeners(html: JQuery): void {
     super.activateListeners(html);
-    console.log("activating ", this.actor);
     html.find(".item-edit").on("click", this._onItemEdit.bind(this));
     html.find(".item-delete").on("click", this._onItemDelete.bind(this));
     html.find(".item-reload").on("click", this._onItemReload.bind(this));
@@ -23,6 +22,7 @@ export class VehicleBaseActorSheet<
       .find(".item-toggle-destroy")
       .on("click", this._onItemDestroyToggle.bind(this));
     html.find(".item-click").on("click", this._onItemClick.bind(this));
+    html.find(".item-create").on("click", this._onItemCreate.bind(this));
     html.find(".crew-delete").on("click", this._onCrewDelete.bind(this));
     html.find(".crew-roll").on("click", this._onCrewSkillRoll.bind(this));
   }
@@ -37,6 +37,20 @@ export class VehicleBaseActorSheet<
     //const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
     if (!item) return;
     item.roll();
+  }
+
+  _onItemCreate(event: JQuery.ClickEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    const itemType = $(event.currentTarget).data("itemType");
+    if (itemType) {
+      this.actor.createEmbeddedDocuments("Item", [
+        {
+          name: "New Item",
+          type: itemType,
+        },
+      ]);
+    }
   }
 
   _onItemReload(event: JQuery.ClickEvent): void {
