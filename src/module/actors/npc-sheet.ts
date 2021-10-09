@@ -2,6 +2,7 @@ import { SWNRNPCActor } from "./npc";
 import { SWNRWeapon } from "../items/weapon";
 import { SWNRBaseItem } from "../base-item";
 import { AllItemClasses } from "../item-types";
+import { BaseActorSheet } from "../actor-base-sheet";
 
 interface NPCActorSheetData extends ActorSheet.Data {
   itemTypes: SWNRNPCActor["itemTypes"];
@@ -10,10 +11,7 @@ interface NPCActorSheetData extends ActorSheet.Data {
     data: { type: "armor" | "item" | "weapon" };
   };
 }
-export class NPCActorSheet extends ActorSheet<
-  ActorSheet.Options,
-  NPCActorSheetData
-> {
+export class NPCActorSheet extends BaseActorSheet<NPCActorSheetData> {
   popUpDialog?: Dialog;
   get actor(): SWNRNPCActor {
     if (super.actor.type !== "npc") throw Error;
@@ -54,8 +52,6 @@ export class NPCActorSheet extends ActorSheet<
 
   activateListeners(html: JQuery): void {
     super.activateListeners(html);
-    html.find(".item-edit").on("click", this._onItemEdit.bind(this));
-    html.find(".item-delete").on("click", this._onItemDelete.bind(this));
     html
       .find(".weapon.item .item-name")
       .on("click", this._onItemDamage.bind(this));
@@ -64,8 +60,6 @@ export class NPCActorSheet extends ActorSheet<
     html.find(".skill").on("click", this._onSkill.bind(this));
     html.find(".saving-throw").on("click", this._onSavingThrow.bind(this));
     html.find(".hit-dice-roll").on("click", this._onHitDice.bind(this));
-    html.find(".item-reload").on("click", this._onItemReload.bind(this));
-    html.find(".item-click").on("click", this._onItemClick.bind(this));
     html
       .find('[name="data.health.max"]')
       .on("input", this._onHPMaxChange.bind(this));
@@ -84,50 +78,6 @@ export class NPCActorSheet extends ActorSheet<
     }
   }
 
-  _onItemEdit(event: JQuery.ClickEvent): void {
-    event.preventDefault();
-    event.stopPropagation();
-    const wrapper = $(event.currentTarget).parents(".item");
-    const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
-    if (item instanceof Item) item.sheet?.render(true);
-  }
-
-  // Clickable title/name or icon. Invoke Item.roll()
-  _onItemClick(event: JQuery.ClickEvent): void {
-    event.preventDefault();
-    event.stopPropagation();
-    const itemId = event.currentTarget.parentElement.dataset.itemId;
-    const item = <SWNRBaseItem>this.actor.getEmbeddedDocument("Item", itemId);
-    //const wrapper = $(event.currentTarget).parents(".item");
-    //const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
-    if (!item) return;
-    item.roll();
-  }
-
-  async _onItemDelete(event: JQuery.ClickEvent): Promise<void> {
-    event.preventDefault();
-    event.stopPropagation();
-    const li = $(event.currentTarget).parents(".item");
-    const item = this.actor.getEmbeddedDocument("Item", li.data("itemId"));
-    if (!item) return;
-    const performDelete: boolean = await new Promise((resolve) => {
-      Dialog.confirm({
-        title: game.i18n.format("swnr.deleteTitle", { name: item.name }),
-        yes: () => resolve(true),
-        no: () => resolve(false),
-        content: game.i18n.format("swnr.deleteContent", {
-          name: item.name,
-          actor: this.actor.name,
-        }),
-      });
-    });
-    if (!performDelete) return;
-    li.slideUp(200, () => {
-      requestAnimationFrame(() => {
-        this.actor.deleteEmbeddedDocuments("Item", [li.data("itemId")]);
-      });
-    });
-  }
   async _onItemDamage(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
@@ -141,29 +91,6 @@ export class NPCActorSheet extends ActorSheet<
       return;
     }
     return weapon.roll();
-  }
-
-  _onItemReload(event: JQuery.ClickEvent): void {
-    event.preventDefault();
-    event.stopPropagation();
-    const li = $(event.currentTarget).parents(".item");
-    const item = this.actor.getEmbeddedDocument("Item", li.data("itemId"));
-    if (!item) return;
-    const ammo_max = item.data.data.ammo?.max;
-    if (ammo_max != null) {
-      if (item.data.data.ammo.value < ammo_max) {
-        item.update({ "data.ammo.value": ammo_max });
-        const content = `<p> Reloaded ${item.name} </p>`;
-        ChatMessage.create({
-          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-          content: content,
-        });
-      } else {
-        ui.notifications?.info("Trying to reload a full item");
-      }
-    } else {
-      console.log("Unable to find ammo in item ", item.data.data);
-    }
   }
 
   async _onReaction(event: JQuery.ClickEvent): Promise<void> {

@@ -490,7 +490,16 @@ Hooks.on("preCreateItem", (item: Item, data, options, id) => {
     item.type == "shipDefense" ||
     item.type == "shipFitting"
   ) {
-    if (item.parent?.type == "ship" && item.name != "New Item") {
+    if (item.parent?.type == "ship") {
+      if (
+        item.name == "New Item" ||
+        item.name == "New Weapon" ||
+        item.name == "New Defense" ||
+        item.name == "New Fitting"
+      ) {
+        //ugly but works for now. need a better way to check.
+        return;
+      }
       //TODO fix. This is get around Typescript complaints. Know we are valid by above if
       const shipItem = <SWNRShipDefense | SWNRShipWeapon | SWNRShipFitting>(
         (item as unknown)
