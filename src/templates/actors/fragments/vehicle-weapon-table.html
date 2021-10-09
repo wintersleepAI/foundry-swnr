@@ -1,0 +1,50 @@
+<!-- weapons -->
+<div>
+  <li class="item-titles flexrow">
+    <!--<div class="item-caret"><i class="fas fa-caret-down"></i></div>-->
+    <div class="item-name flex2">{{localize 'swnr.sheet.ship.weapon'}}</div>
+    <div class="item-dmg">{{localize 'swnr.sheet.ship.dmg'}}</div>
+    <div class="item-qualities">{{localize 'swnr.sheet.ship.qualities'}}</div>
+    <div class="item-controls">
+    </div>
+  </li>
+  <ol class="item-list">
+    {{#each itemTypes.shipWeapon as |item id|}}
+    <li class="item-entry">
+      <div class="item flexrow" data-item-id="{{item.id}}">
+        <div class="item-name item-click item-rollable flexrow flex2">
+          <div class="item-image" style="background-image: url({{item.img}})"><a></a></div>
+          <a>{{item.name}}</a>
+        </div>
+        <div>
+          {{item.data.data.damage}}
+        </div>
+        <div>
+          {{item.data.data.qualities}}
+        </div>
+        <div class="item-controls  text-right">
+          {{#if (ne item.data.data.ammo.type "none")}}
+          <a class="item-control item-reload text-gray-600 hover:text-purple-800 transition-colors"
+            title="{{localize 'swnr.sheet.reload-item'}}">
+            <i class="fas fa-retweet"></i>
+          </a>
+          {{/if}}
+          <a class="item-control item-toggle-broken  {{#unless item.data.data.broken}}item-working{{/unless}}"
+            title='{{localize ' swnr.sheet.break-item'}}'>
+            <i class="fas fa-heart-broken {{#unless item.data.data.broken}}item-working{{/unless}}"></i>
+          </a>
+          <a class="item-control item-toggle-destroy  {{#unless item.data.data.destroyed}}item-working{{/unless}}"
+            title='{{localize ' swnr.sheet.destroy-item'}}'>
+            <i class="fas fa-skull-crossbones {{#unless item.data.data.destroyed}}item-working{{/unless}}"></i>
+          </a>
+          <a class="item-control item-edit text-gray-600 hover:text-purple-800 transition-colors" title='{{localize '
+            swnr.sheet.edit-item'}}'><i class="fas fa-edit"></i></a>
+          <a class="item-control item-delete text-gray-600 hover:text-red-600 transition-colors" title='{{localize '
+            swnr.sheet.delete-item'}}'><i class="fas fa-trash"></i></a>
+        </div>
+      </div>
+    </li>
+    {{/each}}
+
+  </ol>
+</div>
