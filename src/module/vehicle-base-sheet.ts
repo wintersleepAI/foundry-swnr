@@ -197,7 +197,7 @@ export class VehicleBaseActorSheet<
       roll.roll();
       roll.toMessage(
         {
-          speaker: ChatMessage.getSpeaker() + ":" + crewActor.name,
+          speaker: { alias: crewActor.name },
           flavor: title,
         },
         { rollMode }
@@ -208,7 +208,7 @@ export class VehicleBaseActorSheet<
     this.popUpDialog = new ValidatedDialog(
       {
         title: game.i18n.format("swnr.dialog.skillRoll", {
-          actorName: this.actor?.name,
+          actorName: crewActor?.name,
         }),
         content: html,
         default: "roll",
