@@ -3,8 +3,8 @@ title: "Stars Without Number: Revised (wsAI Alter.)"
 description: >-
   BETA: Stars Without Number: Revised system. Early work with plans for full
   coverage. This is an alternate version
-version: 0.5.2.0.43
-author: Spice_King + wintersleepAI
+version: 0.5.2.0.43.1
+author: Spice_King + wintersleepAI + DrFaulken
 scripts: []
 initiative: 1d8+@stats.dex.mod
 esmodules:
@@ -146,11 +146,11 @@ gridDistance: 2
 gridUnits: "m"
 minimumCoreVersion: 0.8.6
 compatibleCoreVersion: 0.8.9
-url: "https://github.com/wintersleepAI/foundry-swnr"
+url: "https://github.com/luxuryhoofs/foundry-swnr"
 manifest: >-
-  https://github.com/wintersleepAI/foundry-swnr/releases/latest/download/system.json
+  https://github.com/luxuryhoofs/foundry-swnr/releases/latest/download/system.json
 download: ""
-license: "https://github.com/wintersleepAI/foundry-swnr/blob/master/LICENSE.txt"
+license: "https://github.com/luxuryhoofs/foundry-swnr/blob/master/LICENSE.txt"
 readme: ""
-bugs: "https://github.com/wintersleepAI/foundry-swnr/issues"
+bugs: "https://github.com/luxuryhoofs/foundry-swnr/issues"
 changelog: ""
