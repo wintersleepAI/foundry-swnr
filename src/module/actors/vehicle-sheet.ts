@@ -9,7 +9,6 @@ interface VehicleActorSheetData extends ActorSheet.Data {
 }
 
 export class VehicleActorSheet extends VehicleBaseActorSheet<VehicleActorSheetData> {
-  popUpDialog?: Dialog;
   object: SWNRVehicleActor;
 
   get actor(): SWNRVehicleActor {

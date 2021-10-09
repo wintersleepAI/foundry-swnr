@@ -372,6 +372,7 @@
     base-ac: Base AC
     vs: vs
     rollables: Rollables
+    roll-skill: Roll Skill
     hit-dice: Hit Dice
     unspent-skill: Unspent Skill Points
     unspent-psy-skill: Unspent Psychic Skill Points
@@ -580,6 +581,7 @@
     attackRoll: "{actorName} attacking with {weaponName}?"
     spikeRoll: "{actorName} making spike roll"
     sysFailure: "Rolling system failures for {actorName}"
+    skillRoll: "Rolling skill for {actorName}"
     failure:
       inc-drive: Include Drive (Spike Level Drop)
       inc-wpn: Include Weapons

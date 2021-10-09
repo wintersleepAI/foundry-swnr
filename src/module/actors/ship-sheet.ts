@@ -13,7 +13,6 @@ interface ShipActorSheetData extends ActorSheet.Data {
 }
 
 export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
-  popUpDialog?: Dialog;
   object: SWNRShipActor;
 
   get actor(): SWNRShipActor {

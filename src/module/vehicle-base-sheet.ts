@@ -3,10 +3,13 @@ import { SWNRShipActor } from "./actors/ship";
 import { SWNRMechActor } from "./actors/mech";
 import { SWNRDroneActor } from "./actors/drone";
 import { SWNRVehicleActor } from "./actors/vehicle";
+import { ValidatedDialog } from "./ValidatedDialog";
 
 export class VehicleBaseActorSheet<
   T extends ActorSheet.Data
 > extends ActorSheet<ActorSheet.Options, T> {
+  popUpDialog?: Dialog;
+
   activateListeners(html: JQuery): void {
     super.activateListeners(html);
     console.log("activating ", this.actor);
@@ -21,6 +24,7 @@ export class VehicleBaseActorSheet<
       .on("click", this._onItemDestroyToggle.bind(this));
     html.find(".item-click").on("click", this._onItemClick.bind(this));
     html.find(".crew-delete").on("click", this._onCrewDelete.bind(this));
+    html.find(".crew-roll").on("click", this._onCrewSkillRoll.bind(this));
   }
 
   // Clickable title/name or icon. Invoke Item.roll()
@@ -145,34 +149,81 @@ export class VehicleBaseActorSheet<
   async _onCrewSkillRoll(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
-    if (this.actor.type == "character" || this.actor.type == "npc") {
+    const li = $(event.currentTarget).parents(".item");
+    const crewActor = game.actors?.get(li.data("crewId"));
+    if (!crewActor) {
+      ui.notifications?.error(`${li.data("crewName")} no longer exists`);
       return;
     }
-    const actor:
-      | SWNRDroneActor
-      | SWNRMechActor
-      | SWNRShipActor
-      | SWNRVehicleActor = this.actor;
-    const li = $(event.currentTarget).parents(".item");
-    const performDelete: boolean = await new Promise((resolve) => {
-      Dialog.confirm({
-        title: game.i18n.format("swnr.deleteCrew", {
-          name: li.data("crewName"),
-        }),
-        yes: () => resolve(true),
-        no: () => resolve(false),
-        content: game.i18n.format("swnr.deleteCrew", {
-          name: li.data("crewName"),
-          actor: this.actor.name,
-        }),
+    const skills = crewActor.itemTypes.skill;
+    const dialogData = {
+      actor: crewActor,
+      skills: skills,
+    };
+    const template = "systems/swnr/templates/dialogs/roll-skill-crew.html";
+    const html = await renderTemplate(template, dialogData);
+
+    const _rollForm = async (html: HTMLFormElement) => {
+      const rollMode = game.settings.get("core", "rollMode");
+      const form = <HTMLFormElement>html[0].querySelector("form");
+      const dice = (<HTMLSelectElement>form.querySelector('[name="dicepool"]'))
+        .value;
+      const modifier = parseInt(
+        (<HTMLInputElement>form.querySelector('[name="modifier"]'))?.value
+      );
+      const skillId = (<HTMLSelectElement>form.querySelector('[name="skill"]'))
+        ?.value;
+      const skill = crewActor.getEmbeddedDocument(
+        "Item",
+        skillId
+      ) as SWNRBaseItem<"skill">;
+      const statName = (<HTMLSelectElement>form.querySelector('[name="stat"]'))
+        ?.value;
+      const stat = crewActor.data.data["stats"]?.[statName] || {
+        mod: 0,
+      };
+      const formula = `${dice} + @stat + @skill + @modifier`;
+      const roll = new Roll(formula, {
+        skill: skill.data.data.rank,
+        modifier: modifier,
+        stat: stat.mod,
       });
-    });
-    if (!performDelete) return;
-    li.slideUp(200, () => {
-      requestAnimationFrame(() => {
-        actor.removeCrew(li.data("crewId"));
-      });
-    });
+      const title = `${game.i18n.localize(
+        "swnr.chat.skillCheck"
+      )}: ${game.i18n.localize(
+        "swnr.stat.short." +
+          (<HTMLSelectElement>form.querySelector('[name="stat"]')).value
+      )}/${skill.name}`;
+      roll.roll();
+      roll.toMessage(
+        {
+          speaker: ChatMessage.getSpeaker() + ":" + crewActor.name,
+          flavor: title,
+        },
+        { rollMode }
+      );
+    };
+
+    this.popUpDialog?.close();
+    this.popUpDialog = new ValidatedDialog(
+      {
+        title: game.i18n.format("swnr.dialog.skillRoll", {
+          actorName: this.actor?.name,
+        }),
+        content: html,
+        default: "roll",
+        buttons: {
+          roll: {
+            label: game.i18n.localize("swnr.chat.roll"),
+            callback: _rollForm,
+          },
+        },
+      },
+      {
+        classes: ["swnr"],
+      }
+    );
+    this.popUpDialog?.render(true);
   }
 }
 

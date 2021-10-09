@@ -9,7 +9,6 @@ interface DroneActorSheetData extends ActorSheet.Data {
 }
 
 export class DroneActorSheet extends VehicleBaseActorSheet<DroneActorSheetData> {
-  popUpDialog?: Dialog;
   object: SWNRDroneActor;
 
   get actor(): SWNRDroneActor {

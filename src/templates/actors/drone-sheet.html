@@ -116,6 +116,8 @@
               class="w-20 text-center pl-0.5 py-0.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
                value="{{pilot.name}}" readonly />
             {{#if pilot}}
+            <a class="item-control mr-1 crew-roll text-gray-600 hover:text-purple-600 transition-colors" title='{{localize 'swnr.sheet.roll-skill'}}'><i
+              class="fas fa-dice"></i></a>
             <a class="item-control mr-1 crew-delete text-gray-600 hover:text-red-600 transition-colors" title='{{localize 'swnr.sheet.delete-item'}}'><i
               class="fas fa-trash"></i></a>
             {{/if}}

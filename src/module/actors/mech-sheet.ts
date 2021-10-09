@@ -9,7 +9,6 @@ interface MechActorSheetData extends ActorSheet.Data {
 }
 
 export class MechActorSheet extends VehicleBaseActorSheet<MechActorSheetData> {
-  popUpDialog?: Dialog;
   object: SWNRMechActor;
 
   get actor(): SWNRMechActor {
