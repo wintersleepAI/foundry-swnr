@@ -58,33 +58,6 @@ export class MechActorSheet extends VehicleBaseActorSheet<MechActorSheetData> {
 
   activateListeners(html: JQuery): void {
     super.activateListeners(html);
-    html.find(".crew-delete").on("click", this._onCrewDelete.bind(this));
-  }
-
-  async _onCrewDelete(event: JQuery.ClickEvent): Promise<void> {
-    event.preventDefault();
-    event.stopPropagation();
-    const li = $(event.currentTarget).parents(".item");
-    console.log("id", li.data("crewId"), li.data("crewName"));
-    const performDelete: boolean = await new Promise((resolve) => {
-      Dialog.confirm({
-        title: game.i18n.format("swnr.deletePilot", {
-          name: li.data("crewName"),
-        }),
-        yes: () => resolve(true),
-        no: () => resolve(false),
-        content: game.i18n.format("swnr.deletePilot", {
-          name: li.data("crewName"),
-          actor: this.actor.name,
-        }),
-      });
-    });
-    if (!performDelete) return;
-    li.slideUp(200, () => {
-      requestAnimationFrame(() => {
-        this.actor.removeCrew(li.data("crewId"));
-      });
-    });
   }
 }
 

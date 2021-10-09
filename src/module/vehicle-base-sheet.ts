@@ -20,6 +20,7 @@ export class VehicleBaseActorSheet<
       .find(".item-toggle-destroy")
       .on("click", this._onItemDestroyToggle.bind(this));
     html.find(".item-click").on("click", this._onItemClick.bind(this));
+    html.find(".crew-delete").on("click", this._onCrewDelete.bind(this));
   }
 
   // Clickable title/name or icon. Invoke Item.roll()
@@ -106,6 +107,70 @@ export class VehicleBaseActorSheet<
     li.slideUp(200, () => {
       requestAnimationFrame(() => {
         this.actor.deleteEmbeddedDocuments("Item", [li.data("itemId")]);
+      });
+    });
+  }
+
+  async _onCrewDelete(event: JQuery.ClickEvent): Promise<void> {
+    if (this.actor.type == "character" || this.actor.type == "npc") {
+      return;
+    }
+    const actor:
+      | SWNRDroneActor
+      | SWNRMechActor
+      | SWNRShipActor
+      | SWNRVehicleActor = this.actor;
+    const li = $(event.currentTarget).parents(".item");
+    const performDelete: boolean = await new Promise((resolve) => {
+      Dialog.confirm({
+        title: game.i18n.format("swnr.deleteCrew", {
+          name: li.data("crewName"),
+        }),
+        yes: () => resolve(true),
+        no: () => resolve(false),
+        content: game.i18n.format("swnr.deleteCrew", {
+          name: li.data("crewName"),
+          actor: this.actor.name,
+        }),
+      });
+    });
+    if (!performDelete) return;
+    li.slideUp(200, () => {
+      requestAnimationFrame(() => {
+        actor.removeCrew(li.data("crewId"));
+      });
+    });
+  }
+
+  async _onCrewSkillRoll(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    if (this.actor.type == "character" || this.actor.type == "npc") {
+      return;
+    }
+    const actor:
+      | SWNRDroneActor
+      | SWNRMechActor
+      | SWNRShipActor
+      | SWNRVehicleActor = this.actor;
+    const li = $(event.currentTarget).parents(".item");
+    const performDelete: boolean = await new Promise((resolve) => {
+      Dialog.confirm({
+        title: game.i18n.format("swnr.deleteCrew", {
+          name: li.data("crewName"),
+        }),
+        yes: () => resolve(true),
+        no: () => resolve(false),
+        content: game.i18n.format("swnr.deleteCrew", {
+          name: li.data("crewName"),
+          actor: this.actor.name,
+        }),
+      });
+    });
+    if (!performDelete) return;
+    li.slideUp(200, () => {
+      requestAnimationFrame(() => {
+        actor.removeCrew(li.data("crewId"));
       });
     });
   }

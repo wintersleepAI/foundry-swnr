@@ -82,7 +82,6 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
 
   activateListeners(html: JQuery): void {
     super.activateListeners(html);
-    html.find(".crew-delete").on("click", this._onCrewDelete.bind(this));
     html.find(".travel-button").on("click", this._onTravel.bind(this));
     html.find(".spike-button").on("click", this._onSpike.bind(this));
     html.find(".refuel-button").on("click", this._onRefuel.bind(this));
@@ -484,31 +483,6 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       default: "no",
     });
     d.render(true);
-  }
-
-  async _onCrewDelete(event: JQuery.ClickEvent): Promise<void> {
-    event.preventDefault();
-    event.stopPropagation();
-    const li = $(event.currentTarget).parents(".item");
-    const performDelete: boolean = await new Promise((resolve) => {
-      Dialog.confirm({
-        title: game.i18n.format("swnr.deleteCrew", {
-          name: li.data("crewName"),
-        }),
-        yes: () => resolve(true),
-        no: () => resolve(false),
-        content: game.i18n.format("swnr.deleteCrew", {
-          name: li.data("crewName"),
-          actor: this.actor.name,
-        }),
-      });
-    });
-    if (!performDelete) return;
-    li.slideUp(200, () => {
-      requestAnimationFrame(() => {
-        this.actor.removeCrew(li.data("crewId"));
-      });
-    });
   }
 }
 
