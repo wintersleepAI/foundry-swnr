@@ -20,7 +20,7 @@ export function getDefaultImage(itemType: string): string | null {
   if (itemType in imgMap) {
     return `${icon_path}/${imgMap[itemType]}`;
   } else {
-    return null;
+    return "icons/svg/item-bag.svg";
   }
 }
 

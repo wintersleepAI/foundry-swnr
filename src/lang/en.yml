@@ -545,6 +545,7 @@
     bundledCount: Bundle Count
     cost: Cost
     encumbrance: Encumbrance
+    enc: Enc.
     quality:
       stock: Stock
       label: Quality

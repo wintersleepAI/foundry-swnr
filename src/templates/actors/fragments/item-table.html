@@ -1,0 +1,47 @@
+<div>
+  <!-- table-->
+  <li class="item-titles flexrow">
+    <!--<div class="item-caret"><!--<i class="fas fa-caret-down"></i></div>-->
+    <div class="item-name ml-5">{{ name }} </div>
+    <div class="text-center"> {{ localize 'swnr.item.enc' }} </div>
+    <div class=""> {{ localize 'swnr.item.location' }} </div>
+    <div class="item-controls flex-shrink text-right">
+      <a class="item-control item-create text-gray-100 hover:text-green-400 transition-colors"
+        title="{{localize 'swnr.sheet.add-item'}}" data-item-type="{{ itemType }}" data-item-name="{{ name }}">
+        <i class="fas fa-plus"></i>
+      </a>
+    </div>
+  </li>
+  <ol class="item-list">
+    {{#each itemList as |item id|}}
+    <li class="item-entry">
+      <div class="item flexrow py-3.0" data-item-id="{{item.id}}">
+        <div class="item-image" style="background-image: url({{item.img}})"><a></a></div>
+        <div class="item-name item-click item-rollable flexrow pr-2.0">
+          <a>{{item.name}}</a>
+        </div>
+        <div class="text-center">{{ item.data.data.encumbrance }} </div>
+        <div class="item">
+          <select class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+            name="items.{{item.id}}.data.location">
+            {{#select item.data.data.location}}
+            <option value="readied">
+              {{localize 'swnr.item.locationReadied'}}
+            </option>
+            <option value="stowed">{{localize 'swnr.item.locationStowed'}}</option>
+            <option value="other">{{localize 'swnr.item.locationOther'}}</option>
+            {{/select}}
+          </select>
+        </div>
+        <div class="item-controls text-right flex-shrink">
+          <a class="item-control item-edit text-gray-600 hover:text-purple-800 transition-colors" title='{{localize '
+            swnr.sheet.edit-item'}}'>
+            <i class="fas fa-edit"></i></a>
+          <a class="item-control item-delete text-gray-600 hover:text-red-600 transition-colors" title='{{localize '
+            swnr.sheet.delete-item'}}'><i class="fas fa-trash"></i></a>
+        </div>
+    </li>
+    {{/each}}
+  </ol>
+</div>
+<!--end table-->
