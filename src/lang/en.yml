@@ -352,6 +352,7 @@
       combat: Combat
     xp: XP
     power: Power
+    resources: Resources
     delete-item: Delete Item
     edit-item: Edit Item
     reload-item: Reload Item

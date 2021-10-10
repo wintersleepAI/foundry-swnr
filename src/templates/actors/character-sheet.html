@@ -617,7 +617,7 @@
             <div class="resource-list mt-8">
                 <li class="item-titles flexrow">
                 <!--<div class="item-caret"><!--<i class="fas fa-caret-down"></i></div>-->
-                <div class="item-name pr-2.0">{{localize 'swnr.sheet.power'}} </div>
+                <div class="item-name pr-2.0">{{localize 'swnr.sheet.resources'}} </div>
                 <div class="item-level pr-2.0 text-center"></div>
                 <div class="item-controls text-right flex-shrink">
                   <a class="item-control resource-create text-gray-100 hover:text-green-400 transition-colors"
@@ -630,15 +630,13 @@
               {{#each actor.data.data.tweak.resourceList as |item id|}}
               <li class="item-entry">
                 <div class="item flexrow" data-rl-idx="{{id}}">
-                  <div class=" flexrow flex2 ml-2">
                     <input
-                      class="resource-list-val w-8 text-center p-0.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                      class="resource-list-val w-16 mr-1 text-center p-0.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
                       name="resourceList-name-{{id}}"
                       value="{{item.name}}"
                       data-rl-type="name"
                     /> 
-                  </div>
-                  <div>
+
                     <input
                       class="resource-list-val w-4 text-center  bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
                       type="number"
@@ -656,7 +654,7 @@
                       data-dtype="Number"
                       data-rl-type="max"
                     />
-                  </div>
+
                   <div class="item-controls text-right">
                     <a class="item-control resource-delete text-gray-600 hover:text-red-600 transition-colors" title='{{localize '
                       swnr.sheet.delete-item'}}'><i class="fas fa-trash"></i></a>
