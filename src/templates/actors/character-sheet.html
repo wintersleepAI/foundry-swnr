@@ -584,7 +584,11 @@
                 <div class="item-name pr-2.0">{{localize 'swnr.sheet.power'}} </div>
                 <div class="item-source text-center">{{localize 'swnr.sheet.source'}} </div>
                 <div class="item-level pr-2.0 text-center">{{localize 'swnr.sheet.level'}}</div>
-                <div class="item-controls text-center flex-shrink">
+                <div class="item-controls text-right flex-shrink">
+                  <a class="item-control item-create text-gray-100 hover:text-green-400 transition-colors"
+                    title="{{localize 'swnr.sheet.add-item'}}" data-item-type="power"  data-item-name="Power">
+                    <i class="fas fa-plus"></i>
+                  </a> 
                 </div>
               </li>
               <ol class="item-list">

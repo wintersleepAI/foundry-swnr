@@ -1,4 +1,5 @@
 import { SWNRBaseItem } from "./base-item";
+import { getDefaultImage } from "./utils";
 
 export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
   ActorSheet.Options,
@@ -39,11 +40,13 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     const itemType = $(event.currentTarget).data("itemType");
     const givenName = $(event.currentTarget).data("itemName");
     const itemName = givenName ? `New ${givenName}` : "New Item";
+    const imgPath = getDefaultImage(itemType);
     if (itemType) {
       this.actor.createEmbeddedDocuments("Item", [
         {
           name: itemName,
           type: itemType,
+          img: imgPath,
         },
       ]);
     }

@@ -4,6 +4,26 @@ import {
 } from "./actor-types";
 import { SWNRCharacterActor } from "./actors/character";
 
+export function getDefaultImage(itemType: string): string | null {
+  const icon_path = "systems/swnr/assets/icons/game-icons.net/item-icons";
+  const imgMap = {
+    shipWeapon: "sinusoidal-beam.svg",
+    shipDefense: "bubble-field.svg",
+    shipFitting: "power-generator.svg",
+    cyberware: "cyber-eye.svg",
+    focus: "reticule.svg",
+    armor: "armor-white.svg",
+    weapon: "weapon-white.svg",
+    power: "psychic-waves-white.svg",
+    skill: "book-white.svg",
+  };
+  if (itemType in imgMap) {
+    return `${icon_path}/${imgMap[itemType]}`;
+  } else {
+    return null;
+  }
+}
+
 export function calculateStats(
   stats: Merge<SWNRCharacterBaseData, SWNRCharacterComputedData>["stats"]
 ): void {

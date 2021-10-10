@@ -1,3 +1,4 @@
+import { getDefaultImage } from "./utils";
 // Avoiding adding an import for data type data
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export async function createSWNRMacro(data, slot: number): Promise<void> {
@@ -17,15 +18,8 @@ export async function createSWNRMacro(data, slot: number): Promise<void> {
     (m) => m.id === id && m.data.command === command
   );
   if (!macro) {
-    let image = item.img;
-    const icon_path = "systems/swnr/assets/icons/game-icons.net/item-icons";
-    if (item.type == "skill") image = `${icon_path}/book-white.svg`;
-    else if (item.type == "armor") image = `${icon_path}/armor-white.svg`;
-    else if (item.type == "weapon") image = `${icon_path}/weapon-white.svg`;
-    else if (item.type == "power")
-      image = `${icon_path}/psychic-waves-white.svg`;
-    else console.log("Unknow item type, no icon ", item.type);
-
+    const default_img = getDefaultImage(item.type);
+    const image = default_img ? default_img : item.img;
     macro = await Macro.create({
       name: item.name,
       type: "script",
