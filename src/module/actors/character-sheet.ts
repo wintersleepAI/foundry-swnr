@@ -41,10 +41,17 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
   }
   activateListeners(html: JQuery): void {
     super.activateListeners(html);
+    html
+      .find(".resource-list-val")
+      .on("change", this._onResourceName.bind(this));
+    html.find(".resource-delete").on("click", this._onResourceDelete.bind(this));
     html.find(".statRoll").on("click", this._onStatsRoll.bind(this));
     html.find(".skill").on("click", this._onSkillRoll.bind(this));
     html.find(".save").on("click", this._onSaveThrow.bind(this));
     html.find(".item-level-up").on("click", this._onItemLevelUp.bind(this));
+    html
+      .find(".resource-create")
+      .on("click", this._onResourceCreate.bind(this));
     html
       .find(".hp-label")
       .on("click", limitConcurrency(this._onHpRoll.bind(this)));
@@ -69,12 +76,42 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       });
     }
   }
+  async _onResourceName(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    const value = event.target?.value;
+    const resourceType = $(event.currentTarget).data("rlType");
+    const idx = $(event.currentTarget).parents(".item").data("rlIdx");
+
+    console.log(value, resourceType, idx);
+  }
+
+  async _onResourceDelete(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    const idx = $(event.currentTarget).parents(".item").data("rlIdx");
+
+    console.log("delete", idx);
+  }
 
   async _onHPMaxChange(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     //console.log("Changing HP Max" , this.actor);
     this.actor.update({
       "data.health_max_modified": this.actor.data.data.level.value,
+    });
+  }
+
+  async _onResourceCreate(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    //console.log("Changing HP Max" , this.actor);
+    let resourceList = this.actor.data.data.tweak.resourceList;
+    if (!resourceList) {
+      resourceList = [];
+    }
+    resourceList.push({ name: "x", value: 1, max: 1 });
+    this.actor.update({
+      "data.tweak.resourceList": resourceList,
     });
   }
 
@@ -587,6 +624,11 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       const extraEffortName =
         (<HTMLInputElement>form.querySelector('[name="extraEffortName"]'))
           ?.value || "";
+      const showResourceList = (<HTMLInputElement>(
+        form.querySelector('[name="showResourceList"]')
+      ))?.checked
+        ? true
+        : false;
       const update = {
         "data.tweak": {
           advInit: advantageInit,
@@ -594,6 +636,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
           quickSkill2: quickSkill2,
           quickSkill3: quickSkill3,
           extraEffortName: extraEffortName,
+          showResourceList: showResourceList,
         },
       };
       this.actor.update(update);

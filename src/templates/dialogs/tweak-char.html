@@ -47,5 +47,8 @@
       class="w-32 text-center px-1.5 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
       value="{{actor.data.data.tweak.extraEffortName}}">
   </div>
-
+  <div >
+    <label for="showResourceList">{{localize 'swnr.dialog.tweak.showResourceList'}}: </label>
+    <input type="checkbox" name="showResourceList" id="showResourceList" {{checked actor.data.data.tweak.showResourceList}}>
+  </div>
 </form>

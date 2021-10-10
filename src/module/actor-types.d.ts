@@ -102,6 +102,12 @@ declare interface SWNREncumbranceTemplateComputed {
     [key in "stowed" | "ready"]: { max: number };
   };
 }
+
+declare interface SWNRResource {
+  name: string;
+  value: number;
+  max: number;
+}
 declare interface SWNRCharacterBaseData
   extends SWNRLivingTemplateBase,
     SWNREncumbranceTemplateBase {
@@ -134,6 +140,8 @@ declare interface SWNRCharacterBaseData
       day: number;
       max: number;
     };
+    showResourceList: boolean;
+    resourceList: SWNRResource[];
   };
 }
 

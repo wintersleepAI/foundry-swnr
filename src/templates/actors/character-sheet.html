@@ -568,7 +568,7 @@
               </div>
             </div>
           </div>
-          <div class="flex-grow">
+          <div class="flex-grow flexrow">
             {{!-- Old Powers. Leaving to maybe gate on flag.
             <h4 class="text-lg underline">
               {{localize 'swnr.sheet.tabs.powers'}}
@@ -578,7 +578,7 @@
               "systems/swnr/templates/actors/fragments/power.html" item=item
               type=actor.data.data.type}} {{/each}}
             </div> --}}
-            <div class="powers-list pr-0.5 mt-8">
+            <div class="flex2 powers-list pr-0.5 mt-8">
               <li class="item-titles flexrow">
                 <!--<div class="item-caret"><!--<i class="fas fa-caret-down"></i></div>-->
                 <div class="item-name pr-2.0">{{localize 'swnr.sheet.power'}} </div>
@@ -613,6 +613,59 @@
                   </li>
               {{/each}}
             </div>
+            {{#if actor.data.data.tweak.showResourceList}}
+            <div class="resource-list mt-8">
+                <li class="item-titles flexrow">
+                <!--<div class="item-caret"><!--<i class="fas fa-caret-down"></i></div>-->
+                <div class="item-name pr-2.0">{{localize 'swnr.sheet.power'}} </div>
+                <div class="item-level pr-2.0 text-center"></div>
+                <div class="item-controls text-right flex-shrink">
+                  <a class="item-control resource-create text-gray-100 hover:text-green-400 transition-colors"
+                    title="{{localize 'swnr.sheet.add-item'}}">
+                    <i class="fas fa-plus"></i>
+                  </a> 
+                </div>
+              </li>
+              <ol class="item-list">
+              {{#each actor.data.data.tweak.resourceList as |item id|}}
+              <li class="item-entry">
+                <div class="item flexrow" data-rl-idx="{{id}}">
+                  <div class=" flexrow flex2 ml-2">
+                    <input
+                      class="resource-list-val w-8 text-center p-0.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                      name="resourceList-name-{{id}}"
+                      value="{{item.name}}"
+                      data-rl-type="name"
+                    /> 
+                  </div>
+                  <div>
+                    <input
+                      class="resource-list-val w-4 text-center  bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                      type="number"
+                      name="resourceList-value-{{id}}"
+                      value="{{item.value}}"
+                      data-dtype="Number"
+                      data-rl-type="value"
+                    />
+                   / 
+                    <input
+                      class="resource-list-val w-4 text-center  bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                      type="number"
+                      name="resourceList-max-{{id}}"
+                      value="{{item.max}}"
+                      data-dtype="Number"
+                      data-rl-type="max"
+                    />
+                  </div>
+                  <div class="item-controls text-right">
+                    <a class="item-control resource-delete text-gray-600 hover:text-red-600 transition-colors" title='{{localize '
+                      swnr.sheet.delete-item'}}'><i class="fas fa-trash"></i></a>
+                  </div>
+              </li>
+              {{/each}}
+            </ol>
+            </div>
+            {{/if}}
           </div>
         </div>
         <div class="tab inventory" data-group="primary" data-tab="inventory">
