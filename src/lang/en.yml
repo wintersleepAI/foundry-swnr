@@ -604,7 +604,13 @@
       quick-skill-2: Quick Skill 2
       quick-skill-3: Quick Skill 3
       extra-effort-name: Extra Effort Name (leave blank to not show on sheet)
-    hp:
+      show-resource-list: >- 
+        On the combat tab, show optional resource tracking. 
+        This allows you to add an arbitrary resource that
+        tracks a value and max (just 2 numbers really) with 
+        a customized name. You can delete these attributes 
+        from the list.
+    hp: 
       text: Select the base dice per level you want to roll (with con bonus added).
       revised: Revised Expert/Psychic d6
       revised-war: Revised Warrior/Partial Warrior d6+2

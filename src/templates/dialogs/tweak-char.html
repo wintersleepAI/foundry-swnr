@@ -1,5 +1,5 @@
 <form class="bg-gray-200 -m-2 p-2 pb-4 flex flexcol gap-1 justify-between">
-  <div >
+  <div class="mb-4">
     <label for="advantageInit">{{localize 'swnr.dialog.tweak.adv-init'}}: </label>
     <input type="checkbox" name="advantageInit" id="advantageInit" {{checked actor.data.data.tweak.advInit}}>
   </div>
@@ -39,16 +39,16 @@
         {{/each}}
         {{/select}}
       </select>
-    </div>
+    </div class="mb-4">
   {{/if}}
-  <div>
+  <div  class="mb-4">
     <label for="extraEffort">{{localize 'swnr.dialog.tweak.extra-effort-name'}}: </label>
     <input type="input" name="extraEffortName" id="extraEffort"
       class="w-32 text-center px-1.5 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
       value="{{actor.data.data.tweak.extraEffortName}}">
   </div>
-  <div >
-    <label for="showResourceList">{{localize 'swnr.dialog.tweak.showResourceList'}}: </label>
+  <div  class="mb-4">
+    <label for="showResourceList">{{localize 'swnr.dialog.tweak.show-resource-list'}}: </label>
     <input type="checkbox" name="showResourceList" id="showResourceList" {{checked actor.data.data.tweak.showResourceList}}>
   </div>
 </form>

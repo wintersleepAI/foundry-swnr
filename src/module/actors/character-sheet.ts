@@ -113,7 +113,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     if (!resourceList) {
       resourceList = [];
     }
-    resourceList.push({ name: "x", value: 1, max: 1 });
+    resourceList.push({ name: "Resource X", value: 0, max: 1 });
     this.actor.update({
       "data.tweak.resourceList": resourceList,
     });
