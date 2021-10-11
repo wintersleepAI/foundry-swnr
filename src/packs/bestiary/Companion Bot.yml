@@ -1,0 +1,30 @@
+data:
+  ab: 0
+  armorType: street
+  attacks:
+    bonusDamage: 0
+    number: 1
+  baseAc: 12
+  description: placeholder
+  hitDice: 1
+  moralScore: 6
+  saves: 15
+  skillBonus: 1
+  speed: 10
+img: systems/swnr/assets/icons/android.png
+name: Companion Bot
+type: npc
+items:
+  - name: Unarmed Attack
+    type: weapon
+    data:
+      shock:
+        dmg: 0
+        ac: 15
+      damage: d2
+      encumbrance: 0
+      cost: 0
+      tl: 4
+      skillBoostsDamage: false
+      permission:
+        default: 0
