@@ -1,0 +1,16 @@
+data:
+  ab: 8
+  armorType: street
+  attacks:
+    bonusDamage: 3
+    number: 1
+  baseAC: 12
+  hitDice: 6
+  moraleScore: 12
+  saves: 12
+  skillBonus: 3
+  speed: 10
+img: systems/swnr/assets/icons/blankface.png
+items: {}
+name: Serial Killer
+type: npc

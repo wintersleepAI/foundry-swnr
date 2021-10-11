@@ -1,0 +1,16 @@
+data:
+  ab: 10
+  armorType: primitive
+  attacks:
+    damage: 1d10
+    number: 4
+  baseAC: 18
+  hitDice: 10
+  moraleScore: 11
+  saves: 10
+  skillBonus: 3
+  speed: 20
+img: systems/swnr/assets/icons/alien-bug.png
+items: {}
+name: Gengineered Murder Beast
+type: npc

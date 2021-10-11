@@ -1,0 +1,17 @@
+data:
+  ab: 0
+  armorType: street
+  attacks:
+    bonusDamage: 0
+    number: 1
+  baseAC: 15
+  description: placeholder
+  hitDice: 2
+  moraleScore: 8
+  saves: 14
+  skillBonus: 1
+  speed: 5
+img: systems/swnr/assets/icons/android.png
+items: {}
+name: Industrial Work Bot
+type: npc

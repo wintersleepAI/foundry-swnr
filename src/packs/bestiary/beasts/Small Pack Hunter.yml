@@ -1,0 +1,16 @@
+data:
+  ab: 1
+  armorType: primitive
+  attacks:
+    damage: 1d4
+    number: 1
+  baseAC: 13
+  hitDice: 1
+  moraleScore: 8
+  saves: 15
+  skillBonus: 1
+  speed: 15
+img: systems/swnr/assets/icons/alien-bug.png
+items: {}
+name: Small Pack Hunter
+type: npc

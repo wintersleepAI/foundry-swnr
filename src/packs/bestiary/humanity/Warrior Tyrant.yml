@@ -1,0 +1,16 @@
+data:
+  ab: 10
+  armorType: powered
+  attacks:
+    bonusDamage: 3
+    number: 1
+  baseAC: 20
+  hitDice: 8
+  moraleScore: 11
+  saves: 11
+  skillBonus: 3
+  speed: 10
+img: systems/swnr/assets/icons/blankface.png
+items: {}
+name: Warrior Tyrant
+type: npc

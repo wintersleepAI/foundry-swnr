@@ -1,0 +1,16 @@
+data:
+  ab: 8
+  armorType: primitive
+  attacks:
+    bonusDamage: 3
+    number: 1
+  baseAC: 16
+  hitDice: 6
+  moraleScore: 11
+  saves: 12
+  skillBonus: 3
+  speed: 10
+img: systems/swnr/assets/icons/blankface.png
+items: {}
+name: Barbarian Hero
+type: npc
