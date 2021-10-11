@@ -13,6 +13,15 @@ export class VehicleBaseActorSheet<
     super.activateListeners(html);
     html.find(".crew-delete").on("click", this._onCrewDelete.bind(this));
     html.find(".crew-roll").on("click", this._onCrewSkillRoll.bind(this));
+    html.find(".crew-show").on("click", this._onCrewShow.bind(this));
+  }
+
+  async _onCrewShow(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    const li = $(event.currentTarget).parents(".item");
+    const crewActor = game.actors?.get(li.data("crewId"));
+    crewActor?.sheet?.render(true);
   }
 
   async _onCrewDelete(event: JQuery.ClickEvent): Promise<void> {

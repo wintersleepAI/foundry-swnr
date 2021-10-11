@@ -86,7 +86,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     const idx = $(event.currentTarget).parents(".item").data("rlIdx");
     const resourceList = duplicate(this.actor.data.data.tweak.resourceList);
     resourceList[idx][resourceType] = value;
-    this.actor.update({ "data.tweak.resourceList": resourceList });
+    await this.actor.update({ "data.tweak.resourceList": resourceList });
   }
 
   async _onResourceDelete(event: JQuery.ClickEvent): Promise<void> {
@@ -95,13 +95,13 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     const idx = $(event.currentTarget).parents(".item").data("rlIdx");
     const resourceList = duplicate(this.actor.data.data.tweak.resourceList);
     resourceList.splice(idx, 1);
-    this.actor.update({ "data.tweak.resourceList": resourceList });
+    await this.actor.update({ "data.tweak.resourceList": resourceList });
   }
 
   async _onHPMaxChange(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     //console.log("Changing HP Max" , this.actor);
-    this.actor.update({
+    await this.actor.update({
       "data.health_max_modified": this.actor.data.data.level.value,
     });
   }
@@ -114,7 +114,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       resourceList = [];
     }
     resourceList.push({ name: "Resource X", value: 0, max: 1 });
-    this.actor.update({
+    await this.actor.update({
       "data.tweak.resourceList": resourceList,
     });
   }
