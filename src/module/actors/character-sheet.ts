@@ -417,27 +417,32 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       });
     };
 
-    const d = new Dialog({
-      title: game.i18n.localize("swnr.sheet.rest-title"),
-      content: game.i18n.localize("swnr.sheet.rest-desc"),
-      buttons: {
-        yes: {
-          icon: '<i class="fas fa-check"></i>',
-          label: "Yes",
-          callback: () => rest(false),
+    const d = new Dialog(
+      {
+        title: game.i18n.localize("swnr.sheet.rest-title"),
+        content: game.i18n.localize("swnr.sheet.rest-desc"),
+        buttons: {
+          yes: {
+            icon: '<i class="fas fa-check"></i>',
+            label: "Yes",
+            callback: () => rest(false),
+          },
+          frail: {
+            icon: '<i class="fas fa-check"></i>',
+            label: "Yes, but no HP",
+            callback: () => rest(true),
+          },
+          no: {
+            icon: '<i class="fas fa-times"></i>',
+            label: "No",
+          },
         },
-        frail: {
-          icon: '<i class="fas fa-check"></i>',
-          label: "Yes, but no HP",
-          callback: () => rest(true),
-        },
-        no: {
-          icon: '<i class="fas fa-times"></i>',
-          label: "No",
-        },
+        default: "no",
       },
-      default: "no",
-    });
+      {
+        classes: ["swnr"],
+      }
+    );
     d.render(true);
   }
   async _onHpRoll(event: JQuery.ClickEvent): Promise<void> {
