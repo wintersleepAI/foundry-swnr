@@ -144,6 +144,12 @@ packs:
     module: swnr
     path: packs/bestiary.db
     entity: Actor
+  - name: all-items
+    label: All Items
+    system: swnr
+    module: swnr
+    path: packs/all-items.db
+    entity: Item
 languages:
   - lang: en
     name: English

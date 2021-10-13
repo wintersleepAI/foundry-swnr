@@ -5,6 +5,10 @@ import { SWNRDroneActor } from "./actors/drone";
 import { SWNRVehicleActor } from "./actors/vehicle";
 import { ValidatedDialog } from "./ValidatedDialog";
 import { BaseActorSheet } from "./actor-base-sheet";
+import { SWNRShipDefense } from "./items/shipDefense";
+import { SWNRShipFitting } from "./items/shipFitting";
+import { SWNRShipWeapon } from "./items/shipWeapon";
+import { SWNRAllVehicleClasses } from "./actor-types";
 
 export class VehicleBaseActorSheet<
   T extends ActorSheet.Data
@@ -165,4 +169,123 @@ Hooks.on("dropActorSheetData", (actor: Actor, actorSheet: ActorSheet, data) => {
       vActor.addCrew(data["id"]);
     }
   }
+});
+
+// Compare ship hull sizes.
+// -1 ship1 is smaller, 0 same, 1 ship1 is larger
+function compareShipClass(
+  ship1: SWNRAllVehicleClasses,
+  ship2: SWNRAllVehicleClasses
+): number {
+  const sizeMap = {
+    fighter: 0,
+    frigate: 1,
+    cruiser: 2,
+    capital: 3,
+  };
+  const size1 = sizeMap[ship1] ? sizeMap[ship1] : 0;
+  const size2 = sizeMap[ship2] ? sizeMap[ship2] : 0;
+  return size1 - size2;
+}
+
+// Compare mech hull sizes.
+// <0 ship1 is smaller, 0 same, >0 ship1 is larger
+function compareMechClass(
+  ship1: SWNRAllVehicleClasses,
+  ship2: SWNRAllVehicleClasses
+): number {
+  const sizeMap = {
+    suit: 0,
+    light: 1,
+    heavy: 2,
+  };
+  const size1 = sizeMap[ship1] ? sizeMap[ship1] : 0;
+  const size2 = sizeMap[ship2] ? sizeMap[ship2] : 0;
+  return size1 - size2;
+}
+
+// Compare vehicle hull sizes.
+// <0 ship1 is smaller, 0 same, >0 ship1 is larger
+function compareVehicleClass(
+  ship1: SWNRAllVehicleClasses,
+  ship2: SWNRAllVehicleClasses
+): number {
+  const sizeMap = {
+    s: 0,
+    m: 1,
+    l: 2,
+  };
+  const size1 = sizeMap[ship1] ? sizeMap[ship1] : 0;
+  const size2 = sizeMap[ship2] ? sizeMap[ship2] : 0;
+  return size1 - size2;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+Hooks.on("preCreateItem", (item: Item, data, options, id) => {
+  if (
+    item.type == "shipWeapon" ||
+    item.type == "shipDefense" ||
+    item.type == "shipFitting"
+  ) {
+    if (
+      item.parent?.type == "ship" ||
+      item.parent?.type == "mech" ||
+      item.parent?.type == "vehicle"
+    ) {
+      if (
+        item.name == "New Item" ||
+        item.name == "New Weapon" ||
+        item.name == "New Defense" ||
+        item.name == "New Fitting"
+      ) {
+        //ugly but works for now. need a better way to check.
+        return;
+      }
+      //TODO fix. This is get around Typescript complaints. Know we are valid by above if
+      const shipItem = <SWNRShipDefense | SWNRShipWeapon | SWNRShipFitting>(
+        (item as unknown)
+      );
+      const data = shipItem.data.data;
+      if (item.parent.type == "ship" && shipItem.data.data.type == "ship") {
+        const shipClass = item.parent.data.data.shipClass;
+        if (
+          data.minClass != "" &&
+          compareShipClass(shipClass, data.minClass) < 0
+        ) {
+          ui.notifications?.error(
+            `Item minClass (${data.minClass}) is too large for (${shipClass}). Still adding. `
+          );
+        }
+      } else if (
+        item.parent.type == "mech" &&
+        shipItem.data.data.type == "mech"
+      ) {
+        const mechClass = item.parent.data.data.mechClass;
+        if (
+          data.minClass != "" &&
+          compareMechClass(mechClass, data.minClass) < 0
+        ) {
+          ui.notifications?.error(
+            `Item minClass (${data.minClass}) is too large for (${mechClass}). Still adding. `
+          );
+        }
+      } else if (
+        item.parent.type == "vehicle" &&
+        shipItem.data.data.type == "vehicle"
+      ) {
+        const vehicleClass = item.parent.data.data.size;
+        if (
+          data.minClass != "" &&
+          compareVehicleClass(vehicleClass, data.minClass) < 0
+        ) {
+          ui.notifications?.error(
+            `Item minClass (${data.minClass}) is too large for (${vehicleClass}). Still adding. `
+          );
+        }
+      }
+    } else {
+      //console.log('Only ship items can go to a ship?', item);
+    }
+  }
+  return item;
 });

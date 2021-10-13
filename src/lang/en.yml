@@ -385,6 +385,12 @@
       disabled: Disabled
       strain: Strain
       name: Cyberware
+    type:
+      mech: Mech
+      ship: Ship
+      vehicle: Vehicle
+      drone: Drone
+      desc: Ship/Mech/Vehicle/Drone
     mech:
       name: Mech Name
       mechClass:

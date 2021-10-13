@@ -9,6 +9,8 @@
         type="text" name="data.damage" value="{{data.data.damage}}" />
     </div>
 
+    {{#if (ne item.data.data.type "drone")}}
+
     <!-- hardpoint -->
     <div class="flex flex-col items-center">
       {{localize 'swnr.sheet.ship.hard-points'}}:
@@ -16,7 +18,7 @@
         class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
         step="1" name="data.hardpoint" min="0" data-dtype="Number" value="{{data.data.hardpoint}}" />
     </div>
-
+    {{/if}}
 
     <!-- tl -->
     <div>

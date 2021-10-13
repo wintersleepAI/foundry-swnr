@@ -255,6 +255,8 @@ Item:
       costMultiplier: false
       powerMultiplier: false
       massMultiplier: false
+      type: "ship"
+      minClass: "fighter"
   class:
     templates:
       - description
@@ -313,7 +315,6 @@ Item:
       - baseVehicleItem
     damage: d4
     hardpoint: 1
-    shipClass: fighter
     qualities: ""
     ammo:
       type: none

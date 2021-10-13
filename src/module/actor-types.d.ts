@@ -5,8 +5,15 @@ type ActorTypes = "character" | "npc" | "ship" | "mech" | "drone" | "vehicle";
 declare type SWNRStats = "str" | "dex" | "con" | "int" | "wis" | "cha";
 
 type SWNRMechClass = "suit" | "light" | "heavy";
-
 type SWNRShipClass = "fighter" | "frigate" | "cruiser" | "capital";
+type SWNRVehicleClass = "s" | "m" | "l";
+
+type SWNRAllVehicleClasses =
+  | ""
+  | SWNRMechClass
+  | SWNRShipClass
+  | SWNRVehicleClass;
+
 type SWNRShipHullType =
   | "strikeFighter"
   | "shuttle"

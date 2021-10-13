@@ -1,7 +1,7 @@
 import { SWNRBaseItem } from "./base-item";
 import { SWNRStats } from "./actor-types";
 import { SWNRWeapon } from "./items/weapon";
-import { SWNRShipClass } from "./actor-types";
+import { SWNRAllVehicleClasses } from "./actor-types";
 
 type MetaItemTypes = "class" | "power" | "focus" | "skill";
 type RealItemTypes = "armor" | "weapon" | "item" | "cyberware";
@@ -37,9 +37,10 @@ declare interface SWNRBaseVehicleItemData {
   costMultiplier: boolean;
   powerMultiplier: boolean;
   massMultiplier: boolean;
-  minClass: SWNRShipClass;
+  minClass: SWNRAllVehicleClasses;
   broken: boolean;
   destroyed: boolean;
+  type: "ship" | "drone" | "mech" | "vehicle";
 }
 
 type SWNRClassItemBaseData = SWNRDescData;

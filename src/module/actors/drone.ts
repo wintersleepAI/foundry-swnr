@@ -50,6 +50,7 @@ export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
             power: 0,
             ammo: i.data.ammo,
             damage: i.data.damage,
+            type: "drone",
           },
         };
       }
