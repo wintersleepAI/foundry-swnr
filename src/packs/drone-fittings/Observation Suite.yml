@@ -1,0 +1,15 @@
+data:
+  broken: false
+  cost: 250
+  costMultiplier: true
+  description: >-
+    All drones are wired for basic camera and sound, but this suite contains a full-spectrum UV/IR visual package, remote sound sensors, and radiation/chemical detectors. The drone can focus on conversations or facial expressions from up to 2 kilometers away and can operate even in the complete absence of visible light.
+  mass: 1
+  massMultiplier: false
+  power: 0
+  powerMultiplier: false
+  tl: 4
+  type: drone
+img: systems/swnr/assets/icons/game-icons.net/item-icons/gps.svg
+name: Observation Suite
+type: shipFitting

@@ -1,0 +1,15 @@
+data:
+  broken: false
+  cost: 3000
+  costMultiplier: true
+  description: >-
+    The drone can drop a filmy hologram over itself, one convincing at a distance. The difficulty of visually spotting the drone becomes 10 at weapons range or 12 at observational range. Weapons fire always draws attention.
+  mass: 1
+  massMultiplier: false
+  power: 0
+  powerMultiplier: false
+  tl: 4
+  type: drone
+img: systems/swnr/assets/icons/game-icons.net/item-icons/gps.svg
+name: Holoskin
+type: shipFitting

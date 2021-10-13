@@ -1,0 +1,15 @@
+data:
+  broken: false
+  cost: 500
+  costMultiplier: true
+  description: >-
+    The drone is fitted to drop up to two grenade-sized explosives, one or both in lieu of a different weapon attack. Dropping a grenade from more than 30 meters up automatically causes the grenade to scatter from its intended target point.
+  mass: 1
+  massMultiplier: false
+  power: 0
+  powerMultiplier: false
+  tl: 3
+  type: drone
+img: systems/swnr/assets/icons/game-icons.net/item-icons/gps.svg
+name: Bomber
+type: shipFitting
