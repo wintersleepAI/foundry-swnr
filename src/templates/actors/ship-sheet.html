@@ -81,10 +81,10 @@
           </label>
         </div>
 
-       {{>
-         "systems/swnr/templates/actors/fragments/hdr-HAA.html" 
-          type=actor.data.data.type actor=actor
-       }}
+        {{>
+        "systems/swnr/templates/actors/fragments/hdr-HAA.html"
+        type=actor.data.data.type actor=actor
+        }}
 
         <!--fuel-->
         <div class="fuel flex flex-col justify-center items-center">
@@ -135,7 +135,7 @@
                   <input
                     class="w-8 text-center  py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
                     type="number" step="1" name="data.crew.current" value="{{actor.data.data.crew.current}}"
-                    data-dtype="Number" min="0" /><span  class="w-2">/</span><input
+                    data-dtype="Number" min="0" /><span class="w-2">/</span><input
                     class="w-12 text-center  py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
                     type="number" name="data.crew.max" value="{{actor.data.data.crew.max}}" step="1" min="1"
                     data-dtype="Number" />
@@ -145,28 +145,32 @@
                   {{localize 'swnr.sheet.ship.crew'}}
                 </label>
               </div>
-            </div> <!--end flex3 for crew-->
+            </div>
+            <!--end flex3 for crew-->
             <div class="flex">
               <!--speed-->
               <div class="speed flex flex-col justify-center items-center">
                 <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
                   <input
                     class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                    type="number" step="1" name="data.speed" value="{{actor.data.data.speed}}" data-dtype="Number" min="0" />
+                    type="number" step="1" name="data.speed" value="{{actor.data.data.speed}}" data-dtype="Number"
+                    min="0" />
                 </div>
                 <label
                   class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
                   {{localize 'swnr.sheet.ship.speed'}}
                 </label>
               </div>
-            </div><!--end flex for speed-->
+            </div>
+            <!--end flex for speed-->
           </div> <!-- end flex row for crew&speed-->
-        </div> <!--end box 2 colspan for crew & speed-->
+        </div>
+        <!--end box 2 colspan for crew & speed-->
 
-       {{>
-         "systems/swnr/templates/actors/fragments/hdr-PMH.html" 
-          type=actor.data.data.type actor=actor
-       }}
+        {{>
+        "systems/swnr/templates/actors/fragments/hdr-PMH.html"
+        type=actor.data.data.type actor=actor
+        }}
 
         <!--spikeDrive-->
         <div class="spikeDrive flex flex-col justify-center items-center">
@@ -243,26 +247,29 @@
             {{localize 'swnr.sheet.ship.cost-tab'}}
           </a>
 
+          <a class="item" data-tab="cargo">
+            {{localize 'swnr.sheet.ship.cargo-tab'}}
+          </a>
 
-          
         </nav>
 
         <section class="sheet-body">
           <div class="tab mods min-h-full" data-group="primary" data-tab="mods">
             {{>
-              "systems/swnr/templates/actors/fragments/vehicle-mods.html" 
-                type=actor.data.data.type actor=actor
+            "systems/swnr/templates/actors/fragments/vehicle-mods.html"
+            type=actor.data.data.type actor=actor
             }}
           </div>
-          <!-- notes --> 
+          <!-- notes -->
           <div class="tab shipnotes min-h-full" data-group="primary" data-tab="notes">
             <div class="flex flex-col">
-            {{>
-              "systems/swnr/templates/actors/fragments/vehicle-notes.html" 
-                type=actor.data.data.type actor=actor
-            }}
+              {{>
+              "systems/swnr/templates/actors/fragments/vehicle-notes.html"
+              type=actor.data.data.type actor=actor
+              }}
             </div>
-          </div> <!-- end notes tab>
+          </div>
+          <!-- end notes tab>
           <!-- Crew Tab-->
           <div class="tab crew min-h-full" data-group="primary" data-tab="crew">
 
@@ -373,10 +380,10 @@
                 </div><!-- end stations-->
               </div>
 
-       {{>
-         "systems/swnr/templates/actors/fragments/crew-list.html" 
-          type=actor.data.data.type crewArray=crewArray
-       }}
+              {{>
+              "systems/swnr/templates/actors/fragments/crew-list.html"
+              type=actor.data.data.type crewArray=crewArray
+              }}
             </div>
           </div>
           <!-- cost tab -->
@@ -393,7 +400,7 @@
                     <label>{{localize 'swnr.sheet.ship.cost'}}</label>
                   </div>
                 </div>
-          
+
                 <!--amountOwed-->
                 <div class="amountOwed flex flex-col items-center">
                   <input
@@ -401,8 +408,8 @@
                     type="number" min="0" name="data.amountOwed" value="{{actor.data.data.amountOwed}}" />
                   <label>{{localize 'swnr.sheet.ship.amount-owed'}}</label>
                 </div>
-          
-          
+
+
                 <!--creditPool-->
                 <div class="creditPool flex flex-col items-center">
                   <input
@@ -410,13 +417,13 @@
                     type="number" min="0" name="data.creditPool" value="{{actor.data.data.creditPool}}" />
                   <label>{{localize 'swnr.sheet.ship.credit-pool'}}</label>
                 </div>
-          
+
                 <!-- calc cost -->
-                 <div class="flex flex-col items-center">
-                    <a class="calc-cost" title='{{localize 'swnr.sheet.ship.calc-cost'}}'><i
-                        class="fas fa-2x fa-cash-register"></i></a>
-                    <label>{{localize 'swnr.sheet.ship.calc-cost'}}</label>
-                  </div>
+                <div class="flex flex-col items-center">
+                  <a class="calc-cost" title='{{localize ' swnr.sheet.ship.calc-cost'}}'><i
+                      class="fas fa-2x fa-cash-register"></i></a>
+                  <label>{{localize 'swnr.sheet.ship.calc-cost'}}</label>
+                </div>
               </div>
               <div class="flex flexrow gap-8">
                 <!-- row2 -->
@@ -427,30 +434,30 @@
                     type="number" min="0" name="data.maintenanceCost" value="{{actor.data.data.maintenanceCost}}" />
                   <label>{{localize 'swnr.sheet.ship.maintenance-cost'}}</label>
                 </div>
-          
+
                 <!--last Main-->
                 <div class="lastMaintenance flex flex-col items-center">
                   <div class="flex-col justify-center text-center items-center">
                     <div class="w-36 text-center border border-gray-800 bg-gray-400 mx-auto rounded-md items-center">
                       <input
                         class="w-8 text-center py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                        type="number" step="1" name="data.lastMaintenance.year" value="{{actor.data.data.lastMaintenance.year}}"
-                        data-dtype="Number" min="0" />
+                        type="number" step="1" name="data.lastMaintenance.year"
+                        value="{{actor.data.data.lastMaintenance.year}}" data-dtype="Number" min="0" />
                       <span class="w-2">/</span>
                       <input
                         class="w-4 text-center  py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                        type="number" step="1" name="data.lastMaintenance.month" value="{{actor.data.data.lastMaintenance.month}}"
-                        data-dtype="Number" min="0" />
+                        type="number" step="1" name="data.lastMaintenance.month"
+                        value="{{actor.data.data.lastMaintenance.month}}" data-dtype="Number" min="0" />
                       <span class="w-2">/</span>
                       <input
                         class="w-4 text-center  py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                        type="number" name="data.lastMaintenance.day" value="{{actor.data.data.lastMaintenance.day}}" step="1"
-                        min="1" data-dtype="Number" />
+                        type="number" name="data.lastMaintenance.day" value="{{actor.data.data.lastMaintenance.day}}"
+                        step="1" min="1" data-dtype="Number" />
                     </div>
                     <label>{{localize 'swnr.sheet.ship.last-maintenance'}}</label>
                   </div>
                 </div>
-          
+
                 <!--maintenanceMonths-->
                 <div class="maintenanceMonths flex flex-col items-center text-center">
                   <input
@@ -461,9 +468,9 @@
 
                 <!-- pay maintenance -->
                 <div class="flex flex-col items-center text-center">
-                    <a class="pay-maintenance" title='{{localize 'swnr.sheet.ship.pay-maintenance'}}'><i
-                        class="fas fa-2x fa-tools"></i></a>
-                    <label>{{localize 'swnr.sheet.ship.pay-maintenance'}}</label>
+                  <a class="pay-maintenance" title='{{localize ' swnr.sheet.ship.pay-maintenance'}}'><i
+                      class="fas fa-2x fa-tools"></i></a>
+                  <label>{{localize 'swnr.sheet.ship.pay-maintenance'}}</label>
                 </div>
               </div>
 
@@ -476,11 +483,11 @@
                     type="number" min="0" name="data.paymentAmount" value="{{actor.data.data.paymentAmount}}" />
                   <label>{{localize 'swnr.sheet.ship.payment-amount'}}</label>
                 </div>
-          
-          
+
+
                 <!--last payment-->
                 <div class="lastPayment flex flex-col items-center">
-          
+
                   <div class="flex-col justify-center text-center items-center">
                     <div class="w-36 text-center border border-gray-800 bg-gray-400 mx-auto rounded-md items-center">
                       <input
@@ -490,19 +497,19 @@
                       <span class="w-2">/</span>
                       <input
                         class="w-4 text-center  py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                        type="number" step="1" name="data.lastPayment.month" value="{{actor.data.data.lastPayment.month}}"
-                        data-dtype="Number" min="0" />
+                        type="number" step="1" name="data.lastPayment.month"
+                        value="{{actor.data.data.lastPayment.month}}" data-dtype="Number" min="0" />
                       <span class="w-2">/</span>
                       <input
                         class="w-4 text-center  py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                        type="number" name="data.lastPayment.day" value="{{actor.data.data.lastPayment.day}}" step="1" min="1"
-                        data-dtype="Number" />
+                        type="number" name="data.lastPayment.day" value="{{actor.data.data.lastPayment.day}}" step="1"
+                        min="1" data-dtype="Number" />
                     </div>
                     <label>{{localize 'swnr.sheet.ship.last-payment'}}</label>
                   </div>
-          
+
                 </div>
-          
+
                 <!--paymentMonths-->
                 <div class="paymentMonths flex flex-col items-center">
                   <input
@@ -513,14 +520,54 @@
 
                 <!-- make payment -->
                 <div class="flex flex-col items-center text-center">
-                    <a class="make-payment" title='{{localize 'swnr.sheet.ship.make-payment'}}'><i
-                        class="fas fa-2x fa-money-bill-wave"></i></a>
-                    <label>{{localize 'swnr.sheet.ship.make-payment'}}</label>
+                  <a class="make-payment" title='{{localize ' swnr.sheet.ship.make-payment'}}'><i
+                      class="fas fa-2x fa-money-bill-wave"></i></a>
+                  <label>{{localize 'swnr.sheet.ship.make-payment'}}</label>
                 </div>
               </div>
             </div>
-          </div>
-          </div> <!-- end cost tab-->
+          </div> <!-- end cost-->
+          <!-- Cargo tab -->
+          <div class="tab shipcost min-h-full" data-group="primary" data-tab="cargo">
+            <div class="resource-list mt-2">
+              <li class="item-titles flexrow mb-2">
+                <!--<div class="item-caret"><!--<i class="fas fa-caret-down"></i></div>-->
+                <div class="item-name pr-2.0">{{localize 'swnr.sheet.ship.cargo-name'}} </div>
+                <div class="item-level pr-2.0 text-center"></div>
+                <div class="item-controls text-right flex-shrink">
+                  <a class="item-control resource-create text-gray-100 hover:text-green-400 transition-colors"
+                    title="{{localize 'swnr.sheet.add-item'}}">
+                    <i class="fas fa-plus"></i>
+                  </a>
+                </div>
+              </li>
+              <ol class="item-list">
+                {{#each actor.data.data.cargoCarried as |item id|}}
+                <li class="item-entry">
+                  <div class="item flexrow text-center" data-rl-idx="{{id}}">
+                    <input
+                      class="resource-list-val w-20 mr-1 text-center p-0.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                      name="resourceList-name-{{id}}" value="{{item.name}}" data-rl-type="name" />
+
+                    <input
+                      class="resource-list-val w-4 pr-3 text-center  bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                      type="number" name="resourceList-value-{{id}}" value="{{item.value}}" data-dtype="Number"
+                      data-rl-type="value" />
+                    
+                    <input
+                      class="resource-list-val w-4 text-center  bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                      type="number" name="resourceList-max-{{id}}" value="{{item.max}}" data-dtype="Number"
+                      data-rl-type="max" />
+
+                    <div class="item-controls text-right">
+                      <a class="item-control resource-delete text-gray-600 hover:text-red-600 transition-colors"
+                        title='{{localize ' swnr.sheet.delete-item'}}'><i class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+                {{/each}}
+              </ol>
+            </div>
+          </div> <!-- end Cargo tab-->
         </section>
       </div>
     </div>

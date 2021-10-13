@@ -13,6 +13,15 @@ export class VehicleBaseActorSheet<
     super.activateListeners(html);
     html.find(".crew-delete").on("click", this._onCrewDelete.bind(this));
     html.find(".crew-roll").on("click", this._onCrewSkillRoll.bind(this));
+    html.find(".crew-show").on("click", this._onCrewShow.bind(this));
+  }
+
+  async _onCrewShow(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    const li = $(event.currentTarget).parents(".item");
+    const crewActor = game.actors?.get(li.data("crewId"));
+    crewActor?.sheet?.render(true);
   }
 
   async _onCrewDelete(event: JQuery.ClickEvent): Promise<void> {
@@ -56,9 +65,11 @@ export class VehicleBaseActorSheet<
       return;
     }
     const skills = crewActor.itemTypes.skill;
+    const isChar = crewActor.type == "character" ? true : false;
     const dialogData = {
       actor: crewActor,
       skills: skills,
+      isChar,
     };
     const template = "systems/swnr/templates/dialogs/roll-skill-crew.html";
     const html = await renderTemplate(template, dialogData);
@@ -77,23 +88,34 @@ export class VehicleBaseActorSheet<
         "Item",
         skillId
       ) as SWNRBaseItem<"skill">;
+      const useNPCSkillBonus = (<HTMLInputElement>(
+        form.querySelector('[name="useNPCSkillBonus"]')
+      ))?.checked
+        ? true
+        : false;
+      const npcSkillBonus =
+        useNPCSkillBonus && crewActor.type == "npc"
+          ? crewActor.data.data.skillBonus
+          : 0;
+      const skillBonus = skill ? skill.data.data.rank : npcSkillBonus;
       const statName = (<HTMLSelectElement>form.querySelector('[name="stat"]'))
         ?.value;
       const stat = crewActor.data.data["stats"]?.[statName] || {
         mod: 0,
       };
-      const formula = `${dice} + @stat + @skill + @modifier`;
+      const formula = `${dice} + @stat + @skillBonus + @modifier`;
       const roll = new Roll(formula, {
-        skill: skill.data.data.rank,
-        modifier: modifier,
+        skillBonus,
+        modifier,
         stat: stat.mod,
       });
+      const skillName = skill ? skill.name : "No Skill";
+      const statNameDisply = statName
+        ? game.i18n.localize("swnr.stat.short." + statName)
+        : "No Stat";
       const title = `${game.i18n.localize(
         "swnr.chat.skillCheck"
-      )}: ${game.i18n.localize(
-        "swnr.stat.short." +
-          (<HTMLSelectElement>form.querySelector('[name="stat"]')).value
-      )}/${skill.name}`;
+      )}: ${statNameDisply}/${skillName}`;
       roll.roll();
       roll.toMessage(
         {

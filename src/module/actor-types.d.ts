@@ -325,6 +325,7 @@ declare interface SWNRShipData extends SWNRVehicleTemplateBase {
     engineering: string;
     comms: string;
   };
+  cargoCarried: SWNRResource[];
 }
 
 declare interface SWNRNPCData extends SWNRLivingTemplateBase {

@@ -183,6 +183,7 @@ Actor:
       engineering: ""
       comms: ""
       bridge: ""
+    cargoCarried: []
   mech:
     templates:
       - vehiclebase

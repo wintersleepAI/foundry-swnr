@@ -42,13 +42,17 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     const itemName = givenName ? `New ${givenName}` : "New Item";
     const imgPath = getDefaultImage(itemType);
     if (itemType) {
-      this.actor.createEmbeddedDocuments("Item", [
-        {
-          name: itemName,
-          type: itemType,
-          img: imgPath,
-        },
-      ]);
+      this.actor.createEmbeddedDocuments(
+        "Item",
+        [
+          {
+            name: itemName,
+            type: itemType,
+            img: imgPath,
+          },
+        ],
+        {}
+      );
     }
   }
 

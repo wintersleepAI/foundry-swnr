@@ -92,6 +92,48 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     html
       .find("[name='data.shipHullType']")
       .on("change", this._onHullChange.bind(this));
+    html
+      .find(".resource-list-val")
+      .on("change", this._onResourceName.bind(this));
+    html
+      .find(".resource-delete")
+      .on("click", this._onResourceDelete.bind(this));
+    html
+      .find(".resource-create")
+      .on("click", this._onResourceCreate.bind(this));
+  }
+
+  async _onResourceName(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    const value = event.target?.value;
+    const resourceType = $(event.currentTarget).data("rlType");
+    const idx = $(event.currentTarget).parents(".item").data("rlIdx");
+    const resourceList = duplicate(this.actor.data.data.cargoCarried);
+    resourceList[idx][resourceType] = value;
+    await this.actor.update({ "data.cargoCarried": resourceList });
+  }
+
+  async _onResourceDelete(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    const idx = $(event.currentTarget).parents(".item").data("rlIdx");
+    const resourceList = duplicate(this.actor.data.data.cargoCarried);
+    resourceList.splice(idx, 1);
+    await this.actor.update({ "data.cargoCarried": resourceList });
+  }
+
+  async _onResourceCreate(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    //console.log("Changing HP Max" , this.actor);
+    let resourceList = this.actor.data.data.cargoCarried;
+    if (!resourceList) {
+      resourceList = [];
+    }
+    resourceList.push({ name: "Cargo X", value: 0, max: 1 });
+    await this.actor.update({
+      "data.cargoCarried": resourceList,
+    });
   }
 
   _onPayment(event: JQuery.ClickEvent): void {
