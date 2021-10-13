@@ -417,7 +417,7 @@
       speed: Speed
       hard-points: Hardpoints
       ship-class: Ship Class
-      min-ship-class: Min. Ship Class
+      min-ship-class: Min. Class
       ship-hull-type: Ship Hull Type
       cargo: Cargo
       operating-cost: Operating Cost
@@ -461,6 +461,7 @@
       notes-tab: Notes/ Description
       crew-tab: Crew Members
       cost-tab: Ship Costs
+      cargo-tab: Cargo
       crew-name: Crew Member
       name: Name
       dmg: Dmg
@@ -486,6 +487,7 @@
         comms: Comms
         role: Station
         crew: Crew
+      cargo-name: Cargo Name / Description
     tweaks: Tweaks
   settings:
     useRollNPCHD: Use NPC HD on token create?
