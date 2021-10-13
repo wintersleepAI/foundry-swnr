@@ -81,7 +81,7 @@ export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
             "data.crewMembers": crewMembers,
           });
         }
-        const itemName  = this.name + " " + this.data.data.model;
+        const itemName = this.name + " " + this.data.data.model;
         actor.createEmbeddedDocuments(
           "Item",
           [
