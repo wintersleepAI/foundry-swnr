@@ -4,8 +4,6 @@ data:
   costMultiplier: true
   description: >-
     Environmental Power: The drone draws operating power from sunlight or thermal variances. It can operate indefinitely so long as it can draw power from its environment.
-
-
   mass: 1
   massMultiplier: false
   power: 0

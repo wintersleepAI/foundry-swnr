@@ -3,7 +3,7 @@ data:
   cost: 5000
   costMultiplier: true
   description: >-
-    Description
+     The drone is loaded with sophisticated self-piloting software. It can be given a flight plan by its operator, have targets designated for its weapon, and respond to simple environmental cues. Each new command takes up a Main Action and commands with any conditional states may require an Int/Program skill check to get the drone to understand. The drone can fire only one weapon per round and uses a total attack bonus of +2 if attacking autonomously. Quantum ECM will scramble this lightweight system.
   mass: 1
   massMultiplier: false
   power: 0
