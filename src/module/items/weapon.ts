@@ -78,6 +78,8 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       hitExplain: hitExplainTip,
       damageExplain: damageExplainTip,
     };
+
+    const rollArray = [hitRoll, damageRoll];
     // Placeholder for shock damage
     let shock_content: string | null = null;
     let shock_roll: string | null = null;
@@ -91,6 +93,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
           rollData
         ).roll();
         shock_roll = await _shockRoll.render();
+        rollArray.push(_shockRoll);
       }
     }
 
@@ -116,9 +119,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     // const dice = hitRoll.dice.concat(damageRoll.dice)
     // const formula = dice.map(d => (<any>d).formula).join(' + ');
     // const results = dice.reduce((a, b) => a.concat(b.results), [])
-    const diceData = Roll.fromTerms([
-      PoolTerm.fromRolls([hitRoll, damageRoll]),
-    ]);
+    const diceData = Roll.fromTerms([PoolTerm.fromRolls(rollArray)]);
     if (this.data.data.ammo.type !== "none") {
       const newAmmoTotal = this.data.data.ammo.value - 1 - burstFire;
       await this.update({ "data.ammo.value": newAmmoTotal }, {});

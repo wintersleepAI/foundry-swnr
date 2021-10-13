@@ -237,6 +237,7 @@ declare interface SWNRDroneData extends SWNRVehicleTemplateBase {
   };
   enc: number;
   range: string;
+  model: string;
 }
 
 declare interface SWNRMechData extends SWNRVehicleTemplateBase {

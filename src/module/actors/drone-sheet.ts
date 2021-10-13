@@ -50,6 +50,36 @@ export class DroneActorSheet extends VehicleBaseActorSheet<DroneActorSheetData> 
 
   activateListeners(html: JQuery): void {
     super.activateListeners(html);
+    html
+      .find("[name='data.model']")
+      .on("change", this._onHullChange.bind(this));
+  }
+
+  _onHullChange(event: JQuery.ClickEvent): void {
+    const targetHull = event.target?.value;
+
+    if (targetHull) {
+      const d = new Dialog({
+        title: "Apply Default Stats",
+        content: `<p>Do you want to apply the default stats for a ${targetHull}?</p><b>This will change your current and max values for HP, cost, AC, fittings, range, and TL.</b>`,
+        buttons: {
+          yes: {
+            icon: '<i class="fas fa-check"></i>',
+            label: "Yes",
+            callback: () => this.actor.applyDefaulStats(targetHull),
+          },
+          no: {
+            icon: '<i class="fas fa-times"></i>',
+            label: "No",
+            callback: () => {
+              console.log("Doing Nothing ");
+            },
+          },
+        },
+        default: "no",
+      });
+      d.render(true);
+  }
   }
 }
 

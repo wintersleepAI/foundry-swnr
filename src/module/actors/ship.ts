@@ -2,7 +2,7 @@ import { SWNRBaseActor } from "../base-actor";
 import { SWNRShipDefense } from "../items/shipDefense";
 import { SWNRShipFitting } from "../items/shipFitting";
 import { SWNRShipWeapon } from "../items/shipWeapon";
-import { HULL_DATA } from "./ship-hull-base";
+import { HULL_DATA } from "./vehicle-hull-base";
 import { SWNRShipClass } from "../actor-types";
 import { SWNRBaseItem } from "../base-item";
 

@@ -1,3 +1,134 @@
+export const DRONE_MODEL_DATA = {
+  primitiveDrone: {
+    data: {
+      cost: 250,
+      fittings: {
+        max: 1,
+      },
+      ac: 12,
+      enc: 2,
+      health: {
+        value: 1,
+        max: 1,
+      },
+      range: "500m",
+      tl: 3,
+    },
+  },
+  voidHawk: {
+    data: {
+      cost: 5000,
+      fittings: {
+        max: 4,
+      },
+      ac: 14,
+      enc: 6,
+      health: {
+        value: 15,
+        max: 15,
+      },
+      range: "100km",
+      tl: 4,
+    },
+  },
+  stalker: {
+    data: {
+      cost: 1000,
+      fittings: {
+        max: 3,
+      },
+      ac: 13,
+      enc: 2,
+      health: {
+        value: 5,
+        max: 5,
+      },
+      range: "2km",
+      tl: 4,
+    },
+  },
+  cuttlefish: {
+    data: {
+      cost: 2000,
+      fittings: {
+        max: 5,
+      },
+      ac: 13,
+      enc: 2,
+      health: {
+        value: 10,
+        max: 10,
+      },
+      range: "1km",
+      tl: 4,
+    },
+  },
+  ghostwalker: {
+    data: {
+      cost: 3000,
+      fittings: {
+        max: 2,
+      },
+      ac: 15,
+      enc: 3,
+      health: {
+        value: 1,
+        max: 1,
+      },
+      range: "5km",
+      tl: 4,
+    },
+  },
+  sleeper: {
+    data: {
+      cost: 2500,
+      fittings: {
+        max: 4,
+      },
+      ac: 12,
+      enc: 2,
+      health: {
+        value: 8,
+        max: 8,
+      },
+      range: "100km",
+      tl: 4,
+    },
+  },
+  pax: {
+    data: {
+      cost: 10000,
+      fittings: {
+        max: 4,
+      },
+      ac: 16,
+      enc: 4,
+      health: {
+        value: 20,
+        max: 20,
+      },
+      range: "100km",
+      tl: 5,
+    },
+  },
+  alecto: {
+    data: {
+      cost: 50000,
+      fittings: {
+        max: 4,
+      },
+      ac: 18,
+      enc: 4,
+      health: {
+        value: 30,
+        max: 30,
+      },
+      range: "5000km",
+      tl: 5,
+    },
+  },
+};
+
 export const HULL_DATA = {
   strikeFighter: {
     data: {

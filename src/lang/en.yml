@@ -399,6 +399,18 @@
       range: Range
       tl: TL
       name: Drone Name
+      fittings: Fittings (mass)
+      model: Model
+      models:
+        custom: Custom
+        primitive-drone: Primitive Drone
+        void-hawk: Void Hawk
+        stalker: Stalker
+        cuttlefish: Cuttlefish
+        ghostwalker: Ghostwalker
+        sleeper: Sleeper
+        pax: Pax
+        alecto: Alecto
     vehicle:
       tonnage: Tonnage
       kmph: KM/H
