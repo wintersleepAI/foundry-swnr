@@ -1,0 +1,20 @@
+_id: dJ0Ud5wzZ5JsNadf
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 100
+  description: >-
+    Power cells: One of the few standardized artifacts inherited from before the
+    Silence, power cells are small cylindrical objects designed to take and hold
+    electrical charges. These larger type B cells for vehicles and heavy gear.
+    The engineering for the cells is substantially different, and they cannot be
+    exchanged or recharge each other without a trained tech’s modifications or a
+    converter unit. Power cells can be recharged off a ship’s power plant or
+    other grid. Recharging requires 24 hours for a type B cell.
+  encumbrance: 1
+  location: other
+  quality: stock
+  tl: 4
+name: 'Power cell, type B'
+type: item

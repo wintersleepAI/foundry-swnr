@@ -1,0 +1,13 @@
+_id: B4SKoWMLy7X7nPv0
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 20
+  description: 'Binoculars (TL 3): Standard 7x50 binoculars.'
+  encumbrance: 1
+  location: other
+  quality: stock
+  tl: 3
+name: Binoculars (TL 3)
+type: item

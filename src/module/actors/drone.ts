@@ -81,6 +81,20 @@ export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
             "data.crewMembers": crewMembers,
           });
         }
+        actor.createEmbeddedDocuments(
+          "Item",
+          [
+            {
+              name: this.name + " " + this.data.data.model,
+              type: "item",
+              img: "systems/swnr/assets/icons/drone.png",
+              data: {
+                encumbrance: this.data.data.enc,
+              },
+            },
+          ],
+          {}
+        );
       }
     } else {
       ui.notifications?.error("Actor added no longer exists");

@@ -1,0 +1,21 @@
+_id: ohlXZ5K9bzjIDu6z
+data:
+  bundle:
+    amount: 3
+    bundled: false
+  cost: 50
+  description: >-
+    Trade goods: Glowbugs, ceramic fire lighters, antibiotics, ceraplast tools,
+    and the other fruits of a TL4 civilization that might be valuable on more
+    primitive worlds. A kilo of trade goods can usually be traded for at least a
+    hundred credits worth of local products on more primitive worlds that are
+    not well-served by interstellar merchants. The profit margin shrinks rapidly
+    as interstellar trade becomes more common, and there is always the
+    difficulty of finding local products that are actually worth a merchant’s
+    journey.
+  encumbrance: 1
+  location: other
+  quality: stock
+  tl: 4
+name: Trade goods
+type: item

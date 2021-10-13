@@ -1,0 +1,17 @@
+_id: r35dAPchIS8DyZSr
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 50
+  description: >-
+    Ammunition, missile: Some characters might have reason to pack along a
+    man-portable rocket launcher, or have one mounted on their favorite gravcar.
+    Heavy weapons and their ammunition are usually outlawed for civilians on
+    most worlds, but this price is for locales where missiles can be bought.
+  encumbrance: 1
+  location: other
+  quality: stock
+  tl: 3
+name: 'Ammo, missile'
+type: item

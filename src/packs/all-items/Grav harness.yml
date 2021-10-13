@@ -1,0 +1,17 @@
+_id: SJYCDdvbSZEeCA6d
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 5000
+  description: >-
+    Grav harness: This advanced gravitic harness allows clumsy flight at a rate
+    of 20 meters per round as a Main Action. It requires a Type B power cell to
+    fuel it, and the miniaturized electronics are rapacious, consuming the cell
+    in five minutes of operation. It can lift up to 200 kilos.
+  encumbrance: 3
+  location: other
+  quality: stock
+  tl: 5
+name: Grav harness
+type: item

@@ -1,0 +1,19 @@
+_id: Lxe4lmGS4Q1I6sPb
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 100
+  description: >-
+    Pressure tent: This tent maintains a breathable atmosphere, tolerable
+    temperature and serviceable sleeping quarters for up to five very friendly
+    occupants. Advanced filtration and cracking tech allows a single standard
+    vacc suit oxygen tank to provide breathable air for the occupants for up to
+    24 hours. The tent requires a type A power cell for each day in which this
+    filter is employed.
+  encumbrance: 4
+  location: other
+  quality: stock
+  tl: 3
+name: Pressure tent
+type: item

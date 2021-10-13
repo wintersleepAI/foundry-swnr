@@ -1,0 +1,17 @@
+_id: EYhoPSqeD89L0opy
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 200
+  description: >-
+    Low-light goggles: These goggles provide a monochrome but serviceable view
+    out to the wearer’s normal visual distance, provided that there is any
+    illumination available at all. A type A power cell will operate these
+    goggles for a week.
+  encumbrance: 1
+  location: other
+  quality: stock
+  tl: 3
+name: Low-light goggles
+type: item

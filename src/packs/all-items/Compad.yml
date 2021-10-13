@@ -1,0 +1,17 @@
+_id: ZhbEBH1fI5xgNXYo
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 100
+  description: >-
+    Compad: One of a host of different hand-held portable communications
+    devices. Most TL4 worlds have global comm coverage, but primitive worlds
+    render these devices useless without a nearby comm server to provide
+    connectivity.
+  encumbrance: 0
+  location: other
+  quality: stock
+  tl: 4
+name: Compad
+type: item

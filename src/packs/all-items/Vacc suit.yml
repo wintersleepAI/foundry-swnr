@@ -1,0 +1,21 @@
+_id: wXAqbLF2a15jE84P
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 100
+  description: >-
+    Vacc skin: A more advanced TL5 version of the vacc suit, this skin-tight
+    suit can be worn as a readied item in conjunction with armor, though it
+    grants no Armor Class bonus itself. It requires no oxygen tank,
+    automatically cracking and recycling the wearer’s respiration, and can even
+    recycle the wearer’s bodily waste into drinkable water if necessary. Vacc
+    skins apply no penalty to hit rolls or skill checks for wearers. It suffers
+    tears in the same way as a normal vacc suit, and requires a type A power
+    cell for each 24 hours of operation.
+  encumbrance: 2
+  location: other
+  quality: stock
+  tl: 4
+name: Vacc suit
+type: item

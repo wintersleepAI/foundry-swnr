@@ -1,0 +1,27 @@
+_id: PH3dbRxzJKs6oeFX
+data:
+  bundle:
+    amount: 3
+    bundled: false
+  cost: 30
+  description: >-
+    Lazarus patch: A vital tool for adventurers, the lazarus patch is a heavy
+    compress laced with antibiotics, coagulants, system stabilizers, plasma, and
+    a oneshot diagnostic suite. If the patch is applied to a character that has
+    fallen to 0 hit points, the user can make an Int/Heal or Dex/Heal skill
+    check against difficulty 6 to stabilize the subject. The more time between
+    injury and application, the less chance the patch has to work. Each round
+    after the first, an additional -1 penalty is applied to the skill check. The
+    patch is no use after six rounds. If the medic fails the first skill check,
+    they can keep trying the check once per round until the victim is revived or
+    time runs out. Lazarus patches are no use on victims that have died of
+    disease, poison, or have been mangled beyond surgical repair by Heavy
+    weapons or similar trauma. Only one patch can be applied to a victim.
+    Revived victims are critically wounded until sufficient medical help has
+    been tendered; see the Systems chapter for details.
+  encumbrance: 1
+  location: other
+  quality: stock
+  tl: 4
+name: Lazarus patch
+type: item

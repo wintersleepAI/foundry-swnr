@@ -1,0 +1,21 @@
+_id: YTP3HNLC347yARt4
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 50
+  description: >-
+    Tsunami (Heal-1): An emergency combat stim used to juice certain expendable
+    soldiers before an assault, Tsunami fills them with a reckless disregard for
+    pain and an intense aggressiveness. The short effect duration and difficult
+    application limits its wider use, however. Subjects gain a Morale score of
+    12, 10 extra hit points for ten minutes and a +2 bonus on all hit rolls. At
+    the end of the duration, they immediately lose those 10 hit points, which
+    may leave them mortally wounded. Each application adds 2 System Strain to
+    the target.
+  encumbrance: 0
+  location: other
+  quality: stock
+  tl: 4
+name: Tsunami
+type: item

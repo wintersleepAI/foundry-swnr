@@ -1,0 +1,17 @@
+_id: jLlrsjMxVLiXIaLq
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 1000
+  description: >-
+    Grav chute (TL 5): When this cylinder is strapped to a person or object and
+    activated, it smoothly modulates falling speeds from from orbital heights.
+    The chute can safely slow up to 300 kilos of weight. It burn out after one
+    use.
+  encumbrance: 1
+  location: other
+  quality: stock
+  tl: 5
+name: Grav chute (TL 5)
+type: item

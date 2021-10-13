@@ -1,0 +1,16 @@
+_id: hRutEWamAP2qPP7L
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 40
+  description: >-
+    Rope: Light and sturdy. A metatool can be used to cut and join the
+    synthetics used in TL4 rope, which counts as one encumbrance item per 40
+    meters and costs 40 credits.
+  encumbrance: 1
+  location: other
+  quality: stock
+  tl: 4
+name: 'Rope, 20 meters (TL 4)'
+type: item

@@ -1,0 +1,20 @@
+_id: nEieWYi0PGJd6kc9
+data:
+  bundle:
+    amount: 3
+    bundled: false
+  cost: 10
+  description: >-
+    Trade metals: The fruit of common TL4 asteroid mining, trade metals include
+    gold, platinum, artificial gemstones, and other substances precious on many
+    lost worlds and trivially valuable on spacefaring ones. A kilo worth of
+    trade metals can be exchanged for as much as a thousand credits worth of
+    local products on metal-poor worlds isolated from interstellar trade.
+    Markets flood rapidly, however, and it usually doesn’t take more than a few
+    merchant trips to persuade the locals to demand trade goods or credits.
+  encumbrance: 1
+  location: other
+  quality: stock
+  tl: 4
+name: Trade metals
+type: item

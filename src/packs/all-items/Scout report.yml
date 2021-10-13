@@ -1,0 +1,17 @@
+_id: v9GhqhYxzZP9lnqF
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 200
+  description: >-
+    Scout report: A collation of survey scans and merchant reports on a
+    particular lost world or isolated colony. Scouting reports are available for
+    all but the most unknown worlds and provide maps, basic information, and
+    note any critical cultural taboos.
+  encumbrance: 0
+  location: other
+  quality: stock
+  tl: 4
+name: Scout report
+type: item

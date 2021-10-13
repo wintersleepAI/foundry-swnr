@@ -1,0 +1,16 @@
+_id: kqHy6h1BoEv8JJl2
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 10
+  description: >-
+    Telescoping pole: Retracting to a 30-centimeter baton, this pole extends and
+    locks into a 3.048-meter extension that can bear as much as a thousand
+    kilograms of weight or serve as a makeshift club.
+  encumbrance: 0
+  location: other
+  quality: stock
+  tl: 4
+name: Telescoping pole
+type: item
