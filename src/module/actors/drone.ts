@@ -81,11 +81,12 @@ export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
             "data.crewMembers": crewMembers,
           });
         }
+        const itemName  = this.name + " " + this.data.data.model;
         actor.createEmbeddedDocuments(
           "Item",
           [
             {
-              name: this.name + " " + this.data.data.model,
+              name: itemName,
               type: "item",
               img: "systems/swnr/assets/icons/drone.png",
               data: {
@@ -94,6 +95,9 @@ export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
             },
           ],
           {}
+        );
+        ui.notifications?.info(
+          `Created an item "${itemName}" on ${actor.name}'s sheet`
         );
       }
     } else {
