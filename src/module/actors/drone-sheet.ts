@@ -79,7 +79,7 @@ export class DroneActorSheet extends VehicleBaseActorSheet<DroneActorSheetData> 
         default: "no",
       });
       d.render(true);
-  }
+    }
   }
 }
 

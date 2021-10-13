@@ -1,12 +1,7 @@
 import { DocumentModificationOptions } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/abstract/document.mjs";
-import { Options } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/foundry.js/roll";
 import { SWNRBaseActor } from "../base-actor";
 import { DRONE_MODEL_DATA } from "./vehicle-hull-base";
-import { SWNRShipDefense } from "../items/shipDefense";
-import { SWNRShipFitting } from "../items/shipFitting";
-import { SWNRShipWeapon } from "../items/shipWeapon";
 import { SWNRBaseItem } from "../base-item";
-
 
 export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
   getRollData(): this["data"]["data"] {

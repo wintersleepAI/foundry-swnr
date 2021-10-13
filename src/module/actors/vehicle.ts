@@ -1,4 +1,5 @@
 import { SWNRBaseActor } from "../base-actor";
+import { SWNRBaseItem } from "../base-item";
 
 export class SWNRVehicleActor extends SWNRBaseActor<"vehicle"> {
   getRollData(): this["data"]["data"] {
@@ -13,10 +14,27 @@ export class SWNRVehicleActor extends SWNRBaseActor<"vehicle"> {
     const mass = data.mass.max;
     const power = data.power.max;
     const hardpoints = data.hardpoints.max;
-    //TODO
-    data.power.value = mass;
-    data.mass.value = power;
-    data.hardpoints.value = hardpoints;
+    const shipInventory = <
+      SWNRBaseItem<"shipDefense" | "shipWeapon" | "shipFitting">[]
+    >this.items.filter(
+      (i) =>
+        i.type === "shipDefense" ||
+        i.type === "shipWeapon" ||
+        i.type === "shipFitting"
+    );
+    const totalMass = shipInventory
+      .map((i) => i.data.data.mass)
+      .reduce((i, n) => i + n, 0);
+    const totalPower = shipInventory
+      .map((i) => i.data.data.power)
+      .reduce((i, n) => i + n, 0);
+    const totalHardpoint = shipInventory
+      .filter((i) => i.type === "shipWeapon")
+      .map((i) => i.data.data["hardpoint"])
+      .reduce((i, n) => i + n, 0);
+    data.power.value = mass - totalMass;
+    data.mass.value = power - totalPower;
+    data.hardpoints.value = hardpoints - totalHardpoint;
   }
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
