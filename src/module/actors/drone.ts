@@ -1,3 +1,5 @@
+import { DocumentModificationOptions } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/abstract/document.mjs";
+import { Options } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/foundry.js/roll";
 import { SWNRBaseActor } from "../base-actor";
 
 export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
@@ -12,6 +14,34 @@ export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
     const data = this.data.data;
     //TODO
     data.fittings.value = data.fittings.max;
+  }
+
+  // Convert weapons to shipWeapons to use same weapon rolling interface
+  async createEmbeddedDocuments(
+    itemType: string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    itemArray: Array<Record<any, any>>,
+    options: DocumentModificationOptions
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ): Promise<Array<foundry.abstract.Document<any, any>>> {
+    itemArray = itemArray.map((i) => {
+      if (i.type !== "weapon") {
+        return i;
+      } else {
+        return {
+          name: i.name,
+          type: "shipWeapon",
+          data: {
+            mass: 1,
+            cost: i.data.cost,
+            power: 0,
+            ammo: i.data.ammo,
+            damage: i.data.damage,
+          },
+        };
+      }
+    });
+    return super.createEmbeddedDocuments(itemType, itemArray, options);
   }
 
   addCrew(actorId: string): void {
