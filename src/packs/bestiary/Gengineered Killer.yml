@@ -1,0 +1,29 @@
+data:
+  ab: 5
+  armorType: street
+  attacks:
+    bonusDamage: 1
+    number: 1
+  baseAc: 16
+  hitDice: 4
+  moralScore: 10
+  saves: 13
+  skillBonus: 2
+  speed: 15
+img: systems/swnr/assets/icons/blankface.png
+items:
+  data:
+    cost: 0
+    damage: PLACEHOLDER
+    encumbrance: 0
+    permission:
+      default: 0
+    shock:
+      ac: 15
+      dmg: PLACEHOLDER
+    skillBoostsDamage: false
+    tl: 4
+  name: PLACEHOLDER
+  type: weapon
+name: Gengineered Killer
+type: npc

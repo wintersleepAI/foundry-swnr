@@ -5,7 +5,7 @@ data:
     bonusDamage: 0
     number: 1
   baseAc: 12
-  description: placeholder
+  description: PLACEHOLDER
   hitDice: 1
   moralScore: 6
   saves: 15
