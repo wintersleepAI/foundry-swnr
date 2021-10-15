@@ -13,18 +13,18 @@ data:
   speed: 5
 img: systems/swnr/assets/icons/android.png
 items:
-  data:
-    cost: 0
-    damage: PLACEHOLDER
-    encumbrance: 0
-    permission:
-      default: 0
-    shock:
-      ac: 15
-      dmg: PLACEHOLDER
-    skillBoostsDamage: false
-    tl: 4
-  name: PLACEHOLDER
-  type: weapon
+  - name: Crush
+    type: weapon
+    data:
+      shock:
+        dmg: 0
+        ac: 15
+      damage: d10
+      encumbrance: 0
+      cost: 0
+      tl: 4
+      skillBoostsDamage: false
+      permission:
+        default: 0
 name: Industrial Work Bot
 type: npc
