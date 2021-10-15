@@ -1,0 +1,29 @@
+data:
+  ab: 8
+  armorType: primitive
+  attacks:
+    damage: 1d10
+    number: 1
+  baseAc: 16
+  hitDice: 8
+  moralScore: 9
+  saves: 11
+  skillBonus: 2
+  speed: 20
+img: systems/swnr/assets/icons/alien-bug.png
+items:
+  data:
+    cost: 0
+    damage: PLACEHOLDER
+    encumbrance: 0
+    permission:
+      default: 0
+    shock:
+      ac: 15
+      dmg: PLACEHOLDER
+    skillBoostsDamage: false
+    tl: 4
+  name: PLACEHOLDER
+  type: weapon
+name: Terrifying Apex Predator
+type: npc
