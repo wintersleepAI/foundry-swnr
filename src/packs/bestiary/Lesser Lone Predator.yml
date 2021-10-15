@@ -1,0 +1,29 @@
+data:
+  ab: 4
+  armorType: primitive
+  attacks:
+    damage: 1d8
+    number: 1
+  baseAc: 14
+  hitDice: 3
+  moralScore: 8
+  saves: 14
+  skillBonus: 2
+  speed: 15
+img: systems/swnr/assets/icons/alien-bug.png
+items:
+  data:
+    cost: 0
+    damage: PLACEHOLDER
+    encumbrance: 0
+    permission:
+      default: 0
+    shock:
+      ac: 15
+      dmg: PLACEHOLDER
+    skillBoostsDamage: false
+    tl: 4
+  name: PLACEHOLDER
+  type: weapon
+name: Lesser Lone Predator
+type: npc
