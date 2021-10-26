@@ -4,6 +4,9 @@
     <!--<div class="item-caret"><!--<i class="fas fa-caret-down"></i></div>-->
     <div class="item-name ml-5">{{ name }} </div>
     <div class="text-center"> {{ localize 'swnr.item.enc' }} </div>
+    {{#if (eq itemType "item")}}
+      <div class="text-center"> {{ localize 'swnr.item.qty' }} </div>
+    {{/if}}
     <div class=""> {{ localize 'swnr.item.location' }} </div>
     <div class="item-controls flex-shrink text-right">
       <a class="item-control item-create text-gray-100 hover:text-green-400 transition-colors"
@@ -21,6 +24,9 @@
           <a>{{item.name}}</a>
         </div>
         <div class="text-center">{{ item.data.data.encumbrance }} </div>
+        {{#if (eq ../itemType "item")}}
+          <div class="text-center"> {{ item.data.data.quantity }} </div>
+        {{/if}}
         <div class="item">
           <select class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
             name="items.{{item.id}}.data.location">

@@ -567,6 +567,7 @@
     cost: Cost
     encumbrance: Encumbrance
     enc: Enc.
+    qty: Qty
     quality:
       stock: Stock
       label: Quality

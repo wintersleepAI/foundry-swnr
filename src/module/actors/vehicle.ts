@@ -32,8 +32,8 @@ export class SWNRVehicleActor extends SWNRBaseActor<"vehicle"> {
       .filter((i) => i.type === "shipWeapon")
       .map((i) => i.data.data["hardpoint"])
       .reduce((i, n) => i + n, 0);
-    data.power.value = mass - totalMass;
-    data.mass.value = power - totalPower;
+    data.mass.value = mass - totalMass;
+    data.power.value = power - totalPower;
     data.hardpoints.value = hardpoints - totalHardpoint;
   }
 
