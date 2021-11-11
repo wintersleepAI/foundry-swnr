@@ -59,7 +59,8 @@ type SWNRWeaponAmmoTypes =
   | "typeBPower"
   | "ammo"
   | "missile"
-  | "special";
+  | "special"
+  | "infinite";
 
 interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
   stat: SWNRStats;

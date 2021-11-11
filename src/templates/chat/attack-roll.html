@@ -9,12 +9,14 @@
    {{{ shock_roll }}}
   {{/if}}
   {{#if (ne weapon.data.data.ammo.type 'none')}}
-  <div class="ammo-{{ ammoRatio }}">
-    {{localize 'swnr.weapon.ammo'}}: {{ weapon.data.data.ammo.value }}/{{
-    weapon.data.data.ammo.max }}
-  </div>
+    {{#if (ne weapon.data.data.ammo.type 'infinite')}}
+      <div class="ammo-{{ ammoRatio }}">
+        {{localize 'swnr.weapon.ammo'}}: {{ weapon.data.data.ammo.value }}/{{
+        weapon.data.data.ammo.max }}
+      </div>
+    {{/if}}
   {{/if}}
   {{#if weapon.data.data.qualities}}
-     <div>{{localize 'swnr.sheet.ship.qualities'}}: {{ weapon.data.data.qualities }}</div>
+  <div>{{localize 'swnr.sheet.ship.qualities'}}: {{ weapon.data.data.qualities }}</div>
   {{/if}}
 </div>

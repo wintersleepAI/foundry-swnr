@@ -9,11 +9,19 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
   }
 
   get canBurstFire(): boolean {
-    return this.ammo.type !== "none" && this.ammo.burst && this.ammo.value >= 3;
+    return (
+      this.ammo.burst &&
+      (this.ammo.type === "infinite" ||
+        (this.ammo.type !== "none" && this.ammo.value >= 3))
+    );
   }
 
   get hasAmmo(): boolean {
-    return this.ammo.type === "none" || this.ammo.value > 0;
+    return (
+      this.ammo.type === "none" ||
+      this.ammo.type === "infinite" ||
+      this.ammo.value > 0
+    );
   }
 
   async rollAttack(
@@ -33,7 +41,12 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       return;
     }
 
-    if (useBurst && this.ammo.value < 3) {
+    if (
+      useBurst &&
+      this.ammo.type !== "infinite" &&
+      this.ammo.type !== "none" &&
+      this.ammo.value < 3
+    ) {
       ui.notifications?.error(
         `Your ${this.name} is does not have enough ammo to burst!`
       );
@@ -120,7 +133,10 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     // const formula = dice.map(d => (<any>d).formula).join(' + ');
     // const results = dice.reduce((a, b) => a.concat(b.results), [])
     const diceData = Roll.fromTerms([PoolTerm.fromRolls(rollArray)]);
-    if (this.data.data.ammo.type !== "none") {
+    if (
+      this.data.data.ammo.type !== "none" &&
+      this.data.data.ammo.type !== "infinite"
+    ) {
       const newAmmoTotal = this.data.data.ammo.value - 1 - burstFire;
       await this.update({ "data.ammo.value": newAmmoTotal }, {});
       if (newAmmoTotal === 0)
