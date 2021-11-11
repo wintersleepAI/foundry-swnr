@@ -1,16 +1,17 @@
-  <input
-    class="text-lg col-span-3 px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-    name="name"
-    type="text"
-    value="{{item.name}}"
-    placeholder="{{localize 'swnr.sheet.name'}}"
-  />
-<div>
-  <div class="border border-gray-600 rounded-md my-2 bg-gray-300">
-    <h2 class="text-base p-1">{{localize 'swnr.sheet.description'}}</h2>
-    <div class="p-1 border-t border-black">
-      {{!-- TODO: fix is for wrapping around text, because this is a little fixed --}}
-      {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable }}
-    </div>
+<div class="flex gap-2 full-w">
+  <div class="w-16">
+    <img class="profile-img w-16 h-16 object-contain" src="{{item.img}}" title="{{item.name}}" data-edit="img" />
+  </div>
+  <div class="pt-4 flex-grow">
+    <input
+      class="text-lg col-span-3 px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+      name="name" type="text" value="{{item.name}}" placeholder="{{localize 'swnr.sheet.name'}}" />
+  </div>
+</div>
+<div class="border border-gray-600 rounded-md my-2 bg-gray-300">
+  <h2 class="text-base p-1">{{localize 'swnr.sheet.description'}}</h2>
+  <div class="p-1 border-t border-black">
+    {{!-- TODO: fix is for wrapping around text, because this is a little fixed --}}
+    {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable }}
   </div>
 </div>

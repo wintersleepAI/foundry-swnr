@@ -2,8 +2,7 @@ import { SWNRBaseActor } from "../base-actor";
 import { SWNRShipDefense } from "../items/shipDefense";
 import { SWNRShipFitting } from "../items/shipFitting";
 import { SWNRShipWeapon } from "../items/shipWeapon";
-import { HULL_DATA } from "./ship-hull-base";
-import { SWNRShipClass } from "../actor-types";
+import { HULL_DATA } from "./vehicle-hull-base";
 import { SWNRBaseItem } from "../base-item";
 
 export type SysToFail = "drive" | "wpn" | "def" | "fit";
@@ -454,69 +453,6 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     }
   }
 }
-
-// Compare ship hull sizes. ugly but works. A map to ints might be better.
-// -1 ship1 is smaller, 0 same, 1 ship1 is larger
-function compareShipClass(
-  ship1: SWNRShipClass,
-  ship2: SWNRShipClass
-): -1 | 0 | 1 {
-  if (ship1 == ship2) {
-    return 0;
-  } else if (ship1 == "fighter") {
-    return -1;
-  } else if (ship1 == "capital") {
-    return 1;
-  } else if (ship1 == "frigate") {
-    if (ship2 == "fighter") {
-      return 1;
-    } else {
-      return -1;
-    }
-  } else {
-    //(ship1 == "cruiser") {
-    if (ship2 == "capital") {
-      return -1;
-    } else {
-      return 1;
-    }
-  }
-}
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-Hooks.on("preCreateItem", (item: Item, data, options, id) => {
-  if (
-    item.type == "shipWeapon" ||
-    item.type == "shipDefense" ||
-    item.type == "shipFitting"
-  ) {
-    if (item.parent?.type == "ship") {
-      if (
-        item.name == "New Item" ||
-        item.name == "New Weapon" ||
-        item.name == "New Defense" ||
-        item.name == "New Fitting"
-      ) {
-        //ugly but works for now. need a better way to check.
-        return;
-      }
-      //TODO fix. This is get around Typescript complaints. Know we are valid by above if
-      const shipItem = <SWNRShipDefense | SWNRShipWeapon | SWNRShipFitting>(
-        (item as unknown)
-      );
-      const data = shipItem.data.data;
-      const shipClass = item.parent.data.data.shipClass;
-      if (compareShipClass(shipClass, data.minClass) < 0) {
-        ui.notifications?.error(
-          `Ship item minClass (${data.minClass}) is too large for this ship (${shipClass}). Still adding. `
-        );
-      }
-    } else {
-      //console.log('Only ship items can go to a ship?', item);
-    }
-  }
-  return item;
-});
 
 export const document = SWNRShipActor;
 export const name = "ship";

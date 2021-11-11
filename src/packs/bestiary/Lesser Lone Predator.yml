@@ -1,0 +1,29 @@
+data:
+  ab: 4
+  armorType: primitive
+  attacks:
+    bonusDamage: 0
+    number: 2
+  baseAc: 14
+  hitDice: 3
+  moralScore: 8
+  saves: 14
+  skillBonus: 2
+  speed: 15
+img: systems/swnr/assets/icons/alien-bug.png
+items:
+  - name: Natural Attack
+    type: weapon
+    data:
+      shock:
+        dmg: 0
+        ac: 15
+      damage: d8
+      encumbrance: 0
+      cost: 0
+      tl: 4
+      skillBoostsDamage: false
+      permission:
+        default: 0
+name: Lesser Lone Predator
+type: npc

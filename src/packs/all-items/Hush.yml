@@ -1,0 +1,21 @@
+_id: fBM4dM4qlnaaBcKh
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 200
+  description: >-
+    Hush (Heal-0): An extremely heavy neurotranquilizer, Hush leaves the subject
+    awake and responsive to simple, untaxing commands. They cannot fight or
+    communicate while affected by Hush, but will walk, eat, sit, and perform
+    simple actions as directed by the last person to speak to them. A Hush dose
+    lasts for an hour plus three per Heal level of the person applying the stim,
+    and the subject retains no memories while under the effect. A subject must
+    be immobilized or willing to be affected by Hush; violent physical movement
+    immediately after application disrupts the neurological effects.
+  encumbrance: 0
+  location: other
+  quality: stock
+  tl: 4
+name: Hush
+type: item

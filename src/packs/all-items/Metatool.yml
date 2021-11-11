@@ -1,0 +1,18 @@
+_id: RpSC643Fysx6UOP9
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 200
+  description: >-
+    Metatool: This wrist-mounted housing contains a myriad of small, useful
+    tools designed to handle the widest possible range of technical needs. While
+    a metatool is too limited to handle major jobs, it is usually sufficient to
+    manage jury-rigged repairs and temporary fixes until the tech has time to
+    apply a larger wrench to the problem.
+  encumbrance: 1
+  location: other
+  quality: stock
+  tl: 4
+name: Metatool
+type: item

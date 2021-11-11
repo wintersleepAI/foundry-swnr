@@ -1,0 +1,15 @@
+data:
+  broken: false
+  cost: 1000
+  costMultiplier: true
+  description: >-
+    The drone does not need to be constantly controlled; when the operator does not spend a Main Action to pilot it, it simply remains stationary. If equipped with an Observation Suite, it can ping the operator if any anomalous reading is obtained.
+  mass: 1
+  massMultiplier: false
+  power: 0
+  powerMultiplier: false
+  tl: 4
+  type: drone
+img: systems/swnr/assets/icons/game-icons.net/item-icons/gps.svg
+name: Stationkeeping
+type: shipFitting

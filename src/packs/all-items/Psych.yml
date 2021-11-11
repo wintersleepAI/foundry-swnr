@@ -1,0 +1,17 @@
+_id: ULqeQaYyPrCm8Ezs
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 25
+  description: >-
+    Pretech Cosmetic (None): Before the Silence stims existed for a host of
+    cosmetic, hygiene, and health purposes. While these effects are trivial, the
+    basic pretech stim substrate also works to heal 1d6 lost hit points in the
+    user at a cost of 1 System Strain.
+  encumbrance: 0
+  location: other
+  quality: stock
+  tl: 4
+name: Psych
+type: item

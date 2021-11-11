@@ -1,0 +1,81 @@
+data:
+  ab: 1
+  armorType: street
+  attacks:
+    bonusDamage: 0
+    number: 1
+  baseAc: 10
+  hitDice: 1
+  moralScore: 8
+  saves: 15
+  skillBonus: 1
+  speed: 10
+img: systems/swnr/assets/icons/blankface.png
+items:
+  - name: D4 Weapon
+    type: weapon
+    data:
+      shock:
+        dmg: 0
+        ac: 15
+      damage: d4
+      encumbrance: 0
+      cost: 0
+      tl: 4
+      skillBoostsDamage: false
+      permission:
+        default: 0
+  - name: D6 Weapon
+    type: weapon
+    data:
+      shock:
+        dmg: 0
+        ac: 15
+      damage: d6
+      encumbrance: 0
+      cost: 0
+      tl: 4
+      skillBoostsDamage: false
+      permission:
+        default: 0
+  - name: D8 Weapon
+    type: weapon
+    data:
+      shock:
+        dmg: 0
+        ac: 15
+      damage: d8
+      encumbrance: 0
+      cost: 0
+      tl: 4
+      skillBoostsDamage: false
+      permission:
+        default: 0
+  - name: D10 Weapon
+    type: weapon
+    data:
+      shock:
+        dmg: 0
+        ac: 15
+      damage: d10
+      encumbrance: 0
+      cost: 0
+      tl: 4
+      skillBoostsDamage: false
+      permission:
+        default: 0
+  - name: D12 Weapon
+    type: weapon
+    data:
+      shock:
+        dmg: 0
+        ac: 15
+      damage: d12
+      encumbrance: 0
+      cost: 0
+      tl: 4
+      skillBoostsDamage: false
+      permission:
+        default: 0
+name: Martial Human
+type: npc

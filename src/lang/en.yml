@@ -385,6 +385,12 @@
       disabled: Disabled
       strain: Strain
       name: Cyberware
+    type:
+      mech: Mech
+      ship: Ship
+      vehicle: Vehicle
+      drone: Drone
+      desc: Ship/Mech/Vehicle/Drone
     mech:
       name: Mech Name
       mechClass:
@@ -399,6 +405,18 @@
       range: Range
       tl: TL
       name: Drone Name
+      fittings: Fittings (mass)
+      model: Model
+      models:
+        custom: Custom
+        primitive-drone: Primitive Drone
+        void-hawk: Void Hawk
+        stalker: Stalker
+        cuttlefish: Cuttlefish
+        ghostwalker: Ghostwalker
+        sleeper: Sleeper
+        pax: Pax
+        alecto: Alecto
     vehicle:
       tonnage: Tonnage
       kmph: KM/H
@@ -417,7 +435,7 @@
       speed: Speed
       hard-points: Hardpoints
       ship-class: Ship Class
-      min-ship-class: Min. Ship Class
+      min-ship-class: Min. Class
       ship-hull-type: Ship Hull Type
       cargo: Cargo
       operating-cost: Operating Cost
@@ -461,6 +479,7 @@
       notes-tab: Notes/ Description
       crew-tab: Crew Members
       cost-tab: Ship Costs
+      cargo-tab: Cargo
       crew-name: Crew Member
       name: Name
       dmg: Dmg
@@ -475,9 +494,9 @@
       crisis: Crisis
       system-failure: System Failure(s)
       refuel: Refuel
-      costMultiplier: Scale cost by ship class (10x,25x,100x)
-      powerMultiplier: Scale power by ship class (2x,3x,4x)
-      massMultiplier: Scale mass by ship class (2x,3x,4x)
+      costMultiplier: Scale cost by class
+      powerMultiplier: Scale power by class
+      massMultiplier: Scale mass by class
       station:
         captain: Captain
         gunnery: Gunnery
@@ -486,6 +505,7 @@
         comms: Comms
         role: Station
         crew: Crew
+      cargo-name: Cargo Name / Description
     tweaks: Tweaks
   settings:
     useRollNPCHD: Use NPC HD on token create?
@@ -547,6 +567,7 @@
     cost: Cost
     encumbrance: Encumbrance
     enc: Enc.
+    qty: Qty
     quality:
       stock: Stock
       label: Quality

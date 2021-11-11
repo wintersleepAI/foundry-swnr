@@ -1,0 +1,15 @@
+data:
+  broken: false
+  cost: 2000
+  costMultiplier: true
+  description: >-
+    The drone is made exceptionally quiet in operation. It is now inaudible by ordinary hearing from more than five meters away.
+  mass: 1
+  massMultiplier: false
+  power: 0
+  powerMultiplier: false
+  tl: 4
+  type: drone
+img: systems/swnr/assets/icons/game-icons.net/item-icons/gps.svg
+name: Grav Muffles
+type: shipFitting

@@ -1,0 +1,14 @@
+data:
+  broken: false
+  cost: 250
+  costMultiplier: true
+  description: >-
+    The drone carries one power cell or magazine worth of ammunition for each of its onboard weapons, whether single or multiple. The operator can reload an ammo unit as a Main Action.
+  mass: 1
+  massMultiplier: false
+  power: 0
+  powerMultiplier: false
+  type: drone
+img: systems/swnr/assets/icons/game-icons.net/item-icons/gps.svg
+name: Ammo Unit
+type: shipFitting

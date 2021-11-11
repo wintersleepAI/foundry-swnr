@@ -1,4 +1,7 @@
+import { DocumentModificationOptions } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/abstract/document.mjs";
 import { SWNRBaseActor } from "../base-actor";
+import { DRONE_MODEL_DATA } from "./vehicle-hull-base";
+import { SWNRBaseItem } from "../base-item";
 
 export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
   getRollData(): this["data"]["data"] {
@@ -12,6 +15,47 @@ export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
     const data = this.data.data;
     //TODO
     data.fittings.value = data.fittings.max;
+    const shipInventory = <
+      SWNRBaseItem<"shipDefense" | "shipWeapon" | "shipFitting">[]
+    >this.items.filter(
+      (i) =>
+        i.type === "shipDefense" ||
+        i.type === "shipWeapon" ||
+        i.type === "shipFitting"
+    );
+    const totalMass = shipInventory
+      .map((i) => i.data.data.mass)
+      .reduce((i, n) => i + n, 0);
+    data.fittings.value -= totalMass;
+  }
+
+  // Convert weapons to shipWeapons to use same weapon rolling interface
+  async createEmbeddedDocuments(
+    itemType: string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    itemArray: Array<Record<any, any>>,
+    options: DocumentModificationOptions
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ): Promise<Array<foundry.abstract.Document<any, any>>> {
+    itemArray = itemArray.map((i) => {
+      if (i.type !== "weapon") {
+        return i;
+      } else {
+        return {
+          name: i.name,
+          type: "shipWeapon",
+          data: {
+            mass: 1,
+            cost: i.data.cost,
+            power: 0,
+            ammo: i.data.ammo,
+            damage: i.data.damage,
+            type: "drone",
+          },
+        };
+      }
+    });
+    return super.createEmbeddedDocuments(itemType, itemArray, options);
   }
 
   addCrew(actorId: string): void {
@@ -37,6 +81,24 @@ export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
             "data.crewMembers": crewMembers,
           });
         }
+        const itemName = this.name + " " + this.data.data.model;
+        actor.createEmbeddedDocuments(
+          "Item",
+          [
+            {
+              name: itemName,
+              type: "item",
+              img: "systems/swnr/assets/icons/drone.png",
+              data: {
+                encumbrance: this.data.data.enc,
+              },
+            },
+          ],
+          {}
+        );
+        ui.notifications?.info(
+          `Created an item "${itemName}" on ${actor.name}'s sheet`
+        );
       }
     } else {
       ui.notifications?.error("Actor added no longer exists");
@@ -57,6 +119,14 @@ export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
         "data.crew.current": crew,
         "data.crewMembers": crewMembers,
       });
+    }
+  }
+
+  applyDefaulStats(modelType: string): void {
+    if (DRONE_MODEL_DATA[modelType]) {
+      this.update(DRONE_MODEL_DATA[modelType]);
+    } else {
+      console.log("drone model type not found " + modelType);
     }
   }
 

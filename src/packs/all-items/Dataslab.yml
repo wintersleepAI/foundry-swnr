@@ -1,0 +1,17 @@
+_id: vA4ua6gwXnHIUDPe
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 300
+  description: >-
+    Dataslab: A palm-sized computing device that can unfold into a thin slab
+    roughly one-third of a meter on a side. It can perform all the functions of
+    a compad or handheld computer and can communicate wirelessly with nearby
+    devices.
+  encumbrance: 1
+  location: other
+  quality: stock
+  tl: 4
+name: Dataslab
+type: item

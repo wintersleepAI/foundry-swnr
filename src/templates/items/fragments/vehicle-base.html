@@ -1,3 +1,19 @@
+<div class="flex flexrow gap-2 text-center">
+  {{localize 'swnr.sheet.type.desc'}}:
+  <select name="data.type"
+        class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        {{#select data.data.type}}
+        <option value="ship">
+          {{localize 'swnr.sheet.type.ship'}}
+        </option>
+        <option value="mech">{{localize 'swnr.sheet.type.mech'}}</option>
+        <option value="drone">{{localize 'swnr.sheet.type.drone'}}</option>
+        <option value="vehicle">
+          {{localize 'swnr.sheet.type.vehicle'}}
+        </option>
+        {{/select}}
+      </select>
+</div>
 
 <div class="flex flexrow gap-2 text-center">
   {{!-- <div>
@@ -10,6 +26,10 @@
 
 
   </div> --}}
+
+
+  {{#if (ne item.data.data.type "drone")}}
+
 
   <div class="flex flex-col items-center">
     {{localize 'swnr.item.cost'}}:
@@ -37,11 +57,15 @@
       value="{{data.data.power}}"
     />
   </div>
-
+  {{/if}} 
 
   <!-- mass -->
   <div class="flex flex-col items-center">
-    {{localize 'swnr.sheet.ship.mass'}}:
+    {{#if (ne item.data.data.type "drone")}}
+      {{localize 'swnr.sheet.ship.mass'}}:
+    {{else}}
+      {{localize 'swnr.sheet.drone.fittings'}}:
+    {{/if}}
     <input
       type="number"
       class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
@@ -52,15 +76,37 @@
       value="{{data.data.mass}}"
     />
   </div>
+
     
-    
+    {{#if (ne item.data.data.type "drone")}}
+
     <!-- Ship /  class -->
     <div class="flex flex-col items-center">
       {{localize 'swnr.sheet.ship.min-ship-class'}}
-
       <select name="data.minClass"
         class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
         {{#select data.data.minClass}}
+        {{#if (eq item.data.data.type "mech")}}
+        <option value="suit">
+          {{localize 'swnr.sheet.mech.mechClass.suit'}}
+        </option>
+        <option value="light">
+          {{localize 'swnr.sheet.mech.mechClass.light'}}
+        </option>
+        <option value="heavy">
+          {{localize 'swnr.sheet.mech.mechClass.heavy'}}
+        </option>
+        {{else if (eq item.data.data.type "vehicle")}}
+          <option value="s">
+            {{localize 'swnr.sheet.vehicle.vehicle-class.s'}}
+          </option>
+          <option value="m">
+            {{localize 'swnr.sheet.vehicle.vehicle-class.m'}}
+          </option>
+          <option value="l">
+            {{localize 'swnr.sheet.vehicle.vehicle-class.l'}}
+          </option>
+        {{else}}
         <option value="fighter">
           {{localize 'swnr.sheet.ship.shipClass.fighter'}}
         </option>
@@ -69,11 +115,14 @@
         <option value="capital">
           {{localize 'swnr.sheet.ship.shipClass.capital'}}
         </option>
+        {{/if}}
+
         {{/select}}
       </select>
 
 
     </div>
+    {{/if}}
 
   <!-- broken --> 
   <div class="flex flex-row items-center">
@@ -95,6 +144,8 @@
           {{checked data.data.destroyed}}
         />
   </div>
+
+    {{#if (and (ne item.data.data.type "drone") (ne item.data.data.type "vehicle"))}}
 
   <!-- costMultiplier --> 
   <div class="flex flex-row items-center">
@@ -125,4 +176,5 @@
           {{checked data.data.massMultiplier}}
         />
   </div>
+  {{/if}}
 </div>

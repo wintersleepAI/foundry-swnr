@@ -24,7 +24,7 @@ items:
       shock:
         dmg: 0
         ac: 15
-      damage: d10
+      damage: d2
       encumbrance: 0
       cost: 0
       tl: 4

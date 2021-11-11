@@ -1,0 +1,19 @@
+_id: pEZY231GB4jWPa0x
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 1000
+  description: >-
+    Brainwave (Heal-2): This psitech drug requires advanced TL5 facilities to
+    compound, and the few remaining doses from pre-Silence periods are rarely
+    available on the open market. Application of Brainwave gives a psychic 2
+    extra maximum Effort for one hour. At the end of that hour, they suffer 4
+    points of System Strain. If their Strain is maximized by this, they go
+    unconscious for one hour. Only one dose can be active at a time.
+  encumbrance: 0
+  location: other
+  quality: stock
+  tl: 5
+name: Brainwave
+type: item

@@ -1,0 +1,17 @@
+_id: ncn6S5o3BdO48lG9
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 5
+  description: >-
+    Glowbug: A palm-sized disc that can adhere to any non-porous surface. When
+    turned on, it emits a white light, illuminating everything within ten meters
+    for twenty-four hours. A hundred glowbugs can be recharged off a single type
+    A cell.
+  encumbrance: 0
+  location: other
+  quality: stock
+  tl: 3
+name: Glowbug
+type: item

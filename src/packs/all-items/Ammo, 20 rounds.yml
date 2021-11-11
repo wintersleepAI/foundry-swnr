@@ -1,0 +1,17 @@
+_id: ewuZmVOY8mklei1E
+data:
+  bundle:
+    amount: 3
+    bundled: false
+  cost: 10
+  description: >-
+    Ammunition: A few worlds are too primitive or too resource-poor to
+    manufacture ammunition, but the vast majority of worlds provide cartridges
+    in almost every conceivable caliber and make. Most local gunsmiths can load
+    ammunition to any specification required by a buyer.
+  encumbrance: 1
+  location: other
+  quality: stock
+  tl: 2
+name: 'Ammo, 20 rounds'
+type: item

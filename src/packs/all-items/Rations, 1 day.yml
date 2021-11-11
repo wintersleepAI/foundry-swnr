@@ -1,0 +1,16 @@
+_id: 011RTaVvWhkb5FmD
+data:
+  bundle:
+    amount: 3
+    bundled: false
+  cost: 5
+  description: >-
+    Rations: Dried or otherwise preserved foodstuffs sufficient for one day. If
+    water is not otherwise available, add another item’s worth of encumbrance
+    for the water necessary for a person’s daily needs.
+  encumbrance: 1
+  location: other
+  quality: stock
+  tl: 1
+name: 'Rations, 1 day'
+type: item

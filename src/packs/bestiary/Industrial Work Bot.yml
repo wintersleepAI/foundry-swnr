@@ -1,0 +1,30 @@
+data:
+  ab: 0
+  armorType: street
+  attacks:
+    bonusDamage: 0
+    number: 1
+  baseAc: 15
+  description: PLACEHOLDER
+  hitDice: 2
+  moralScore: 8
+  saves: 14
+  skillBonus: 1
+  speed: 5
+img: systems/swnr/assets/icons/android.png
+items:
+  - name: Crush
+    type: weapon
+    data:
+      shock:
+        dmg: 0
+        ac: 15
+      damage: d10
+      encumbrance: 0
+      cost: 0
+      tl: 4
+      skillBoostsDamage: false
+      permission:
+        default: 0
+name: Industrial Work Bot
+type: npc

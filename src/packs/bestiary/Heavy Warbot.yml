@@ -1,0 +1,30 @@
+data:
+  ab: 8
+  armorType: street
+  attacks:
+    bonusDamage: 0
+    number: 2
+  baseAc: 18
+  description: PLACEHOLDER
+  hitDice: 6
+  moralScore: 10
+  saves: 12
+  skillBonus: 2
+  speed: 15
+img: systems/swnr/assets/icons/android.png
+items:
+  - name: Plasma
+    type: weapon
+    data:
+      shock:
+        dmg: 0
+        ac: 15
+      damage: 2d8
+      encumbrance: 0
+      cost: 0
+      tl: 4
+      skillBoostsDamage: false
+      permission:
+        default: 0
+name: Heavy Warbot
+type: npc

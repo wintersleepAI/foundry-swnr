@@ -5,8 +5,15 @@ type ActorTypes = "character" | "npc" | "ship" | "mech" | "drone" | "vehicle";
 declare type SWNRStats = "str" | "dex" | "con" | "int" | "wis" | "cha";
 
 type SWNRMechClass = "suit" | "light" | "heavy";
-
 type SWNRShipClass = "fighter" | "frigate" | "cruiser" | "capital";
+type SWNRVehicleClass = "s" | "m" | "l";
+
+type SWNRAllVehicleClasses =
+  | ""
+  | SWNRMechClass
+  | SWNRShipClass
+  | SWNRVehicleClass;
+
 type SWNRShipHullType =
   | "strikeFighter"
   | "shuttle"
@@ -237,6 +244,7 @@ declare interface SWNRDroneData extends SWNRVehicleTemplateBase {
   };
   enc: number;
   range: string;
+  model: string;
 }
 
 declare interface SWNRMechData extends SWNRVehicleTemplateBase {
@@ -324,6 +332,7 @@ declare interface SWNRShipData extends SWNRVehicleTemplateBase {
     engineering: string;
     comms: string;
   };
+  cargoCarried: SWNRResource[];
 }
 
 declare interface SWNRNPCData extends SWNRLivingTemplateBase {

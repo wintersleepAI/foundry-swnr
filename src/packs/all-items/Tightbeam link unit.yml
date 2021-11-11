@@ -1,0 +1,20 @@
+_id: Mj94FAUsk9PeLSgI
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 1000
+  description: >-
+    Tightbeam link unit: Much like a remote link unit, a tightbeam unit uses a
+    laser to connect via lineof-sight transmission. Unlike a remote link unit,
+    there’s almost no chance for a conventional security system to detect this
+    link, but it requires that the infiltrators get a clear line of sight
+    between the unit and the receiving end. Commercial satellite reception units
+    can be employed for skyward aiming at 500 credits/hour if a second land unit
+    is unavailable, but indoor use is impossible.
+  encumbrance: 1
+  location: other
+  quality: stock
+  tl: 4
+name: Tightbeam link unit
+type: item

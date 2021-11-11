@@ -1,0 +1,29 @@
+data:
+  ab: 8
+  armorType: primitive
+  attacks:
+    bonusDamage: 0
+    number: 2
+  baseAc: 16
+  hitDice: 8
+  moralScore: 9
+  saves: 11
+  skillBonus: 2
+  speed: 20
+img: systems/swnr/assets/icons/alien-bug.png
+items:
+  - name: Natural Attack
+    type: weapon
+    data:
+      shock:
+        dmg: 0
+        ac: 15
+      damage: d10
+      encumbrance: 0
+      cost: 0
+      tl: 4
+      skillBoostsDamage: false
+      permission:
+        default: 0
+name: Terrifying Apex Predator
+type: npc

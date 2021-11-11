@@ -1,0 +1,32 @@
+_id: wXAqbLF2a15jE84P
+data:
+  ac: 13
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 100
+  description: >-
+    Vacc suit: The standard TL4 vacc suit is designed to allow the wearer to
+    survive in both hard vacuum and on most inhospitable planetary surfaces. The
+    suit protects against ordinary levels of cosmic radiation and provides a
+    temperature-controlled atmosphere. Vacc suits are equipped with radios that
+    have a ten-kilometer range. A vacc suit oxygen tank weighs 1 encumbrance,
+    included with the weight of the suit, and functions for six hours. Vacc
+    suits are cumbersome, and apply a -2 penalty to all hit rolls and skill
+    checks that require movement. Those with at least a month of zero-gee
+    experience can ignore this penalty. No armor can be worn with a vacc suit,
+    though the suit itself grants AC 13 to its wearers. A vacc suit requires one
+    type A power cell for each twelve hours of operation. Vacc suits have a
+    self-healing exterior that can seal the puncture wounds caused by bullets,
+    arrows, or energy beams, but a strike from an edged weapon can overwhelm the
+    repair system. If a character with 10 or fewer hit points is struck by an
+    edged weapon, there is a 50% chance the suit is torn. Suits are equipped
+    with emergency repair patches, but it requires a Main Action to apply one.
+    Exposure to vacuum is described on page 58.
+  encumbrance: 2
+  location: other
+  quality: stock
+  tl: 4
+  type: street
+name: Vacc suit
+type: item

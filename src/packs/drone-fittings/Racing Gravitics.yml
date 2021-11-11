@@ -1,0 +1,15 @@
+data:
+  broken: false
+  cost: 1000
+  costMultiplier: true
+  description: >-
+    The drone is tuned for extra speed. Its flight endurance is halved, but it can now move up to 60 meters per combat round and fly at up to 200 kph out of combat.
+  mass: 1
+  massMultiplier: false
+  power: 0
+  powerMultiplier: false
+  tl: 4
+  type: drone
+img: systems/swnr/assets/icons/game-icons.net/item-icons/gps.svg
+name: Racing Gravitics
+type: shipFitting

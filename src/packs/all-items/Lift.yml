@@ -1,0 +1,22 @@
+_id: pr6LhdNBtOh0ok0A
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 50
+  description: >-
+    Lift (Heal-0): A Lift stim augments and amplifies the body’s natural
+    response to physical injury and exhaustion. This boost speeds natural
+    recovery drastically and heals 1d8 plus the user’s Heal skill in hit points
+    after five minutes of rest. Lift stims do not work on PCs who are mortally
+    wounded; they need to be stabilized before the Lift can help them, though
+    application to a stabilized target will get them back on their feet and
+    active again. Each application adds 1 System Strain to the target. Each
+    additional application of Lift to a target the same day increases the
+    minimum Heal skill needed by 1.
+  encumbrance: 0
+  location: other
+  quality: stock
+  tl: 4
+name: Lift
+type: item

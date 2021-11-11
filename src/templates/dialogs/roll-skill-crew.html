@@ -1,6 +1,7 @@
 <form class="bg-gray-300 -m-2 p-2 pb-4 flex gap-1 justify-between">
   <div class="flex flexrow gap-2">
 
+    {{#if isChar}}
     <div class="flex flex-col">
       <label for="skill">{{localize 'swnr.sheet.skill'}}: </label>
       <select name="skill"
@@ -26,7 +27,14 @@
         {{/select}}
       </select>
     </div>
+    {{else}}
+    <div class="flex flex-col">
+      <label for="useNPCSkillBonus">{{localize 'swnr.npc.trained-skill'}}: </label>
+      <input type="checkbox" name="useNPCSkillBonus" id="useNPCSkillBonus">
+    </div>
+    {{/if}}
   </div>
+  
   <div class="flex flexrow gap-2">
       <div class="flex flex-col">
       <label for="">{{localize 'swnr.chat.dicepool'}}: </label>

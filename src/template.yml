@@ -183,6 +183,7 @@ Actor:
       engineering: ""
       comms: ""
       bridge: ""
+    cargoCarried: []
   mech:
     templates:
       - vehiclebase
@@ -202,6 +203,7 @@ Actor:
       max: 1
     enc: 2
     range: 500m
+    model: ""
   vehicle:
     templates:
       - vehiclebase
@@ -253,6 +255,8 @@ Item:
       costMultiplier: false
       powerMultiplier: false
       massMultiplier: false
+      type: "ship"
+      minClass: "fighter"
   class:
     templates:
       - description
@@ -311,7 +315,6 @@ Item:
       - baseVehicleItem
     damage: d4
     hardpoint: 1
-    shipClass: fighter
     qualities: ""
     ammo:
       type: none

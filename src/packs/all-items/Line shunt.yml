@@ -1,0 +1,21 @@
+_id: 8d3TIOYtaXrIzvl3
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 100
+  description: >-
+    Line shunt: These palm-sized discs are roughly one centimeter in thickness,
+    with an adhesive side that will stick to virtually anything and a
+    polychromatic phased compound on its shell which will shift color to blend
+    with its surroundings. One or more line shunts must be applied at specific
+    locations within a site to access the more well-defended varieties of
+    computerized systems. Shunts employ phased energy manipulation tech, and so
+    do not need to be directly in contact with a data line but only within a few
+    centimeters. Line shunts are single-use, and keep functioning until removed.
+  encumbrance: 0
+  location: other
+  quality: stock
+  tl: 4
+name: Line shunt
+type: item

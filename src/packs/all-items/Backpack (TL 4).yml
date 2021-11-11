@@ -1,0 +1,18 @@
+_id: m1IfUwgAtIlS2iuF
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 50
+  description: >-
+    Backpack (TL 4): TL4 versions of this item are effectively without
+    encumbrance, albeit they cost 50 credits. A worn backpack counts as a
+    readied item, though objects stowed inside it still require the usual round
+    to dig free. Characters without backpacks or similar carrying devices might
+    have difficulty justifying the hauling of large amounts of gear.
+  encumbrance: 0
+  location: other
+  quality: stock
+  tl: 4
+name: Backpack (TL 4)
+type: item

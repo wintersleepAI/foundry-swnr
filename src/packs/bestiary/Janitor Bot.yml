@@ -1,0 +1,30 @@
+data:
+  ab: 0
+  armorType: street
+  attacks:
+    bonusDamage: 0
+    number: 1
+  baseAc: 14
+  description: PLACEHOLDER
+  hitDice: 1
+  moralScore: 8
+  saves: 15
+  skillBonus: 1
+  speed: 5
+img: systems/swnr/assets/icons/android.png
+items:
+  data:
+    cost: 0
+    damage: PLACEHOLDER
+    encumbrance: 0
+    permission:
+      default: 0
+    shock:
+      ac: 15
+      dmg: PLACEHOLDER
+    skillBoostsDamage: false
+    tl: 4
+  name: PLACEHOLDER
+  type: weapon
+name: Janitor Bot
+type: npc

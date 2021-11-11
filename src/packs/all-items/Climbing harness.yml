@@ -1,0 +1,17 @@
+_id: MbpKvXdorQ36N25e
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 50
+  description: >-
+    Climbing harness: A collection of straps, ropes, pitons, and other climbing
+    aids that grant a +1 bonus on any Exert climbing skill test. Using a
+    climbing harness is noisy, and any Sneak skill checks while climbing with
+    one suffer a -2 penalty.
+  encumbrance: 1
+  location: other
+  quality: stock
+  tl: 3
+name: Climbing harness
+type: item

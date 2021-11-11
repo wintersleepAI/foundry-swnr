@@ -1,0 +1,18 @@
+_id: s9s1bQMRt03cD0sI
+data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 5000
+  description: >-
+    Data phase tap: This handheld device is normally illegal outside the
+    possession of licensed data line repair technicians. The tap can detect data
+    lines within five meters through up to ten centimeters of ordinary walls,
+    and can generate an energy manipulation field that allows tapping that data
+    line for hacking purposes without physically damaging the wall.
+  encumbrance: 1
+  location: other
+  quality: stock
+  tl: 4
+name: Data phase tap
+type: item
