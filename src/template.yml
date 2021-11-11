@@ -252,6 +252,7 @@ Item:
       mass: 1
       broken: false
       destroyed: false
+      juryRigged: false
       costMultiplier: false
       powerMultiplier: false
       massMultiplier: false

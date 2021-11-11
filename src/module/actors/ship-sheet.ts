@@ -86,6 +86,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     html.find(".refuel-button").on("click", this._onRefuel.bind(this));
     html.find(".crisis-button").on("click", this._onCrisis.bind(this));
     html.find(".failure-button").on("click", this._onSysFailure.bind(this));
+    html.find(".repair-button").on("click", this._onRepair.bind(this));
     html.find(".calc-cost").on("click", this._onCalcCost.bind(this));
     html.find(".make-payment").on("click", this._onPayment.bind(this));
     html.find(".pay-maintenance").on("click", this._onMaintenance.bind(this));
@@ -228,6 +229,59 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       d.render(true);
     }
   }
+
+  _onRepair(event: JQuery.ClickEvent): void {
+    event.preventDefault();
+    const data = this.actor.data.data;
+    const hpToFix = data.health.max - data.health.value;
+    const hpCosts = hpToFix * 1000;
+    const shipInventory = <
+      SWNRBaseItem<"shipDefense" | "shipWeapon" | "shipFitting">[]
+    >this.actor.items.filter(
+      (i) =>
+        i.type === "shipDefense" ||
+        i.type === "shipWeapon" ||
+        i.type === "shipFitting"
+    );
+
+    const disabledParts = shipInventory.filter(
+      (i) => i.data.data.broken == true && i.data.data.destroyed == false
+    );
+    const shipClass = this.actor.data.data.shipClass;
+
+    let multiplier = 1;
+    if (shipClass == "frigate") {
+      multiplier = 10;
+    } else if (shipClass == "cruiser") {
+      multiplier = 25;
+    } else if (shipClass == "capital") {
+      multiplier = 100;
+    }
+
+    let disabledCosts = 0;
+    const itemsToFix: string[] = [];
+    for (let i = 0; i < disabledParts.length; i++) {
+      const item = disabledParts[i];
+      const itemCost = item.data.data.costMultiplier
+        ? item.data.data.cost * multiplier
+        : item.data.data.cost;
+      disabledCosts += itemCost;
+      itemsToFix.push(`${item.name} (${itemCost * 0.25})`);
+      item.update({ "data.broken": false });
+    }
+    const fullRepairCost = disabledCosts * 0.25;
+    const totalCost = hpCosts + fullRepairCost;
+    this.actor.update({ "data.health.value": data.health.max });
+    if (totalCost > 0) {
+      const itemList = itemsToFix.join("<br>");
+      const content = `<h3>Ship Repaired</h3><b>Estimated Total Cost ${totalCost}</b><br>HP points ${hpToFix} cost: ${hpCosts}<br> Full Repair Costs: ${fullRepairCost} (25%/item cost). <br> Items Repaired (item full cost):<br> ${itemList} `;
+      const chatData = {
+        content: content,
+      };
+      ChatMessage.create(chatData);
+    }
+  }
+
   _onTravel(event: JQuery.ClickEvent): void {
     event.preventDefault();
     if (this.actor.data.data.spikeDrive.value <= 0) {
@@ -412,11 +466,22 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
   _onRefuel(event: JQuery.ClickEvent): void {
     event.preventDefault();
     const data = this.actor.data.data;
+    const daysToRefill = data.lifeSupportDays.max - data.lifeSupportDays.value;
+    const fuelToRefill = data.fuel.max - data.fuel.value;
+    const lifeCost = daysToRefill * 20;
+    const fuelCost = fuelToRefill * 500;
+    const totalCost = lifeCost + fuelCost;
     this.actor.update({
       "data.lifeSupportDays.value": data.lifeSupportDays.max,
       "data.fuel.value": data.fuel.max,
     });
-    ui.notifications?.info("Refuelled");
+    //ui.notifications?.info("Refuelled");
+    const chatData = {
+      content: `Refueled. Estimated refuel costs: <b>${totalCost}</b>. <br>${daysToRefill} of life support costs ${lifeCost} (20/day). <br> ${fuelToRefill} jumps cost ${fuelCost} (500/load).`,
+    };
+    if (totalCost > 0) {
+      ChatMessage.create(chatData);
+    }
   }
 
   _onCrisis(event: JQuery.ClickEvent): void {

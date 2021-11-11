@@ -493,6 +493,7 @@
       spike-drive: Spike Drive
       crisis: Crisis
       system-failure: System Failure(s)
+      repair-all: Repair All
       refuel: Refuel
       costMultiplier: Scale cost by class
       powerMultiplier: Scale power by class

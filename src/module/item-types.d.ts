@@ -40,6 +40,7 @@ declare interface SWNRBaseVehicleItemData {
   minClass: SWNRAllVehicleClasses;
   broken: boolean;
   destroyed: boolean;
+  juryRigged: boolean;
   type: "ship" | "drone" | "mech" | "vehicle";
 }
 
