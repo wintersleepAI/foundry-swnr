@@ -2,7 +2,7 @@ name: swnr
 title: "Stars Without Number: Revised (wsAI Alter.)"
 description: >-
   BETA: Stars Without Number: Revised system. This is an alternate version
-version: 0.5.2.0.51
+version: 0.5.2.0.52
 author: Spice_King + wintersleepAI
 scripts: []
 initiative: 1d8+@stats.dex.mod
