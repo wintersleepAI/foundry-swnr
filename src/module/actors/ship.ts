@@ -267,9 +267,9 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
   }
 
   _breakItem(id: string, forceDestroy: boolean): string {
-    console.log("breaking ", id);
+    //console.log("breaking ", id);
     if (!id || id == "") {
-      console.log("Nothing to break");
+      //console.log("Nothing to break");
       return "";
     }
     if (id == this.ENGINE_ID) {
@@ -289,12 +289,27 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
       const item = <SWNRShipDefense | SWNRShipFitting | SWNRShipWeapon>(
         this.getEmbeddedDocument("Item", id)
       );
-      console.log(item);
-      if (forceDestroy || item?.data.data.broken) {
-        item.update({ "data.destroyed": true });
-        return `${item.name} Destroyed`;
+      //console.log(item);
+      if (
+        forceDestroy ||
+        item?.data.data.broken ||
+        item?.data.data.juryRigged
+      ) {
+        let msg = `${item.name} Destroyed`;
+        if (item?.data.data.juryRigged) {
+          msg += " (item was jury-rigged)";
+        }
+        item.update({
+          "data.destroyed": true,
+          "data.broken": false,
+          "data.juryRigged": false,
+        });
+        return msg;
       } else {
-        item.update({ "data.broken": true });
+        item.update({
+          "data.broken": true,
+          "data.juryRigged": false,
+        });
         return `${item.name} Disabled`;
       }
     }

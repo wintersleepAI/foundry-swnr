@@ -357,6 +357,7 @@
     edit-item: Edit Item
     reload-item: Reload Item
     break-item: Break/Disable Item
+    jury-rig: Jury-Rig Item
     destroy-item: Destroy Item
     ask: Ask
     description: "Description:"

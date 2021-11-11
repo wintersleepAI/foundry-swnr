@@ -67,7 +67,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     return mergeObject(super.defaultOptions, {
       classes: ["swnr", "sheet", "actor", "ship"],
       template: "systems/swnr/templates/actors/ship-sheet.html",
-      width: 800,
+      width: 950,
       height: 600,
       tabs: [
         {
@@ -274,7 +274,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     this.actor.update({ "data.health.value": data.health.max });
     if (totalCost > 0) {
       const itemList = itemsToFix.join("<br>");
-      const content = `<h3>Ship Repaired</h3><b>Estimated Total Cost ${totalCost}</b><br>HP points ${hpToFix} cost: ${hpCosts}<br> Full Repair Costs: ${fullRepairCost} (25%/item cost). <br> Items Repaired (item full cost):<br> ${itemList} `;
+      const content = `<h3>Ship Repaired</h3><b>Estimated Total Cost: ${totalCost}</b><br>HP points: ${hpToFix} cost: ${hpCosts}<br>Full Repair Costs: ${fullRepairCost} (25%/item cost). <br><br> Items Repaired (item full cost):<br> ${itemList} `;
       const chatData = {
         content: content,
       };

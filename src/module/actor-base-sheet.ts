@@ -18,6 +18,9 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     html
       .find(".item-toggle-destroy")
       .on("click", this._onItemDestroyToggle.bind(this));
+    html
+      .find(".item-toggle-jury")
+      .on("click", this._onItemJuryToggle.bind(this));
     html.find(".item-click").on("click", this._onItemClick.bind(this));
     html.find(".item-create").on("click", this._onItemCreate.bind(this));
   }
@@ -86,7 +89,12 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     const wrapper = $(event.currentTarget).parents(".item");
     const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
     const new_break_status = !item?.data.data.broken;
-    if (item instanceof Item) item?.update({ "data.broken": new_break_status });
+    if (item instanceof Item)
+      item?.update({
+        "data.broken": new_break_status,
+        "data.destroyed": false,
+        "data.juryRigged": false,
+      });
   }
 
   _onItemDestroyToggle(event: JQuery.ClickEvent): void {
@@ -96,7 +104,25 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
     const new_destroy_status = !item?.data.data.destroyed;
     if (item instanceof Item)
-      item?.update({ "data.destroyed": new_destroy_status });
+      item?.update({
+        "data.destroyed": new_destroy_status,
+        "data.broken": false,
+        "data.juryRigged": false,
+      });
+  }
+
+  _onItemJuryToggle(event: JQuery.ClickEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    const wrapper = $(event.currentTarget).parents(".item");
+    const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
+    const new_jury_status = !item?.data.data.juryRigged;
+    if (item instanceof Item)
+      item?.update({
+        "data.destroyed": false,
+        "data.broken": false,
+        "data.juryRigged": new_jury_status,
+      });
   }
 
   _onItemEdit(event: JQuery.ClickEvent): void {
