@@ -310,6 +310,7 @@ Item:
       - description
     level1: ""
     level2: ""
+    level: 1
   shipWeapon:
     templates:
       - description

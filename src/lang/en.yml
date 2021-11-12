@@ -564,6 +564,7 @@
   foci:
     level2: "Level 2:"
     level1: "Level 1:"
+    level: Current Level
   item:
     bundledCount: Bundle Count
     cost: Cost

@@ -144,6 +144,7 @@ declare interface SWNRItemData extends SWNRBaseItemData {
 declare interface SWNRFocusData extends SWNRDescData {
   level1: string;
   level2: string;
+  level: number;
 }
 
 declare interface SWNRSkillData extends SWNRDescData {

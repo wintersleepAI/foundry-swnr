@@ -266,7 +266,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
         ? item.data.data.cost * multiplier
         : item.data.data.cost;
       disabledCosts += itemCost;
-      itemsToFix.push(`${item.name} (${itemCost * 0.25})`);
+      itemsToFix.push(`${item.name} (${itemCost})`);
       item.update({ "data.broken": false });
     }
     const fullRepairCost = disabledCosts * 0.25;
