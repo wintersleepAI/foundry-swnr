@@ -143,6 +143,12 @@ packs:
     module: swnr
     path: packs/bestiary.db
     entity: Actor
+  - name: sample-ships
+    label: Sample Ships
+    system: swnr
+    module: swnr
+    path: packs/sample-ships.db
+    entity: Actor
   - name: all-items
     label: All Items
     system: swnr
