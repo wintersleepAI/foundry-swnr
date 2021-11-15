@@ -376,6 +376,7 @@
     rollables: Rollables
     roll-skill: Roll Skill
     hit-dice: Hit Dice
+    command-points: Command Points
     unspent-skill: Unspent Skill Points
     unspent-psy-skill: Unspent Psychic Skill Points
     level-up: Level Up
@@ -482,6 +483,7 @@
       cost-tab: Ship Costs
       cargo-tab: Cargo
       crew-name: Crew Member
+      crew-skill-bonus: NPC Ship Crew Bonus
       name: Name
       dmg: Dmg
       qualities: Qualities

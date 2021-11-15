@@ -333,6 +333,8 @@ declare interface SWNRShipData extends SWNRVehicleTemplateBase {
     comms: string;
   };
   cargoCarried: SWNRResource[];
+  commandPoints: number;
+  crewSkillBonus: number;
 }
 
 declare interface SWNRNPCData extends SWNRLivingTemplateBase {

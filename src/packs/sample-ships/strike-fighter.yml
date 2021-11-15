@@ -1,5 +1,5 @@
 data:
-  healt:
+  health:
     max: 8
     value: 8
   ac: 16
@@ -9,10 +9,19 @@ data:
   speed: 5
   power:
     max: 5
+  mass:
+    max: 2
   crew:
     min: 1
     max: 1
     current: 1
+  cargo:
+    value: 0
+    max: 0
+  commandPoints: 4
+  crewSkillBonus: 2
+  shipClass: fighter
+  shipHullType: strikeFighter
 img: systems/swnr/assets/icons/spaceship.png
 items:
   - name: Reaper Battery

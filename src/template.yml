@@ -184,6 +184,8 @@ Actor:
       comms: ""
       bridge: ""
     cargoCarried: []
+    commandPoints: 0
+    crewSkillBonus: 0
   mech:
     templates:
       - vehiclebase
