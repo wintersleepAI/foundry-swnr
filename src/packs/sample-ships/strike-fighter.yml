@@ -45,6 +45,7 @@ img: systems/swnr/assets/icons/spaceship.png
 items:
   - name: Reaper Battery
     type: shipWeapon
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
     data:
       broken: false
       cost: 100000
