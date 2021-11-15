@@ -18,10 +18,29 @@ data:
   cargo:
     value: 0
     max: 0
+  spikeDrive: 
+    value: 1
+    max: 1
   commandPoints: 4
   crewSkillBonus: 2
   shipClass: fighter
   shipHullType: strikeFighter
+  amountOwed: 305000
+  maintenanceCost: 15250
+  operatingCost: 43800
+  maintenanceMonths: 6
+  description: >-
+    This craft is a conventional civilian shuttle, albeit one
+    with a spike drive sufficient to get it to a neighboring
+    system and enough passenger space to make it a minimally-acceptable transport for brave VIPs and light
+    cargo. If used as an inter-system transport, however, at
+    least three crew will be needed to safely navigate a drill.
+    While cheap and flexible, the shuttle is entirely
+    unarmed and acutely vulnerable to piracy or hostile
+    warships. In such cases the pilot’s only recourse is to
+    surrender or hope the small craft’s nimble maneuver
+    drives can keep it away from the attacker long enough
+    to get to safety.
 img: systems/swnr/assets/icons/spaceship.png
 items:
   - name: Reaper Battery
