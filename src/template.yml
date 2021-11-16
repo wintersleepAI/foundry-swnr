@@ -185,6 +185,7 @@ Actor:
       bridge: ""
     cargoCarried: []
     commandPoints: 0
+    npcCommandPoints: 0
     crewSkillBonus: 0
   mech:
     templates:

@@ -22,25 +22,28 @@ data:
     value: 1
     max: 1
   commandPoints: 4
+  npcCommandPoints: 4
   crewSkillBonus: 2
   shipClass: fighter
   shipHullType: strikeFighter
-  amountOwed: 305000
+  cost: 305000
   maintenanceCost: 15250
   operatingCost: 43800
   maintenanceMonths: 6
   description: >-
-    This craft is a conventional civilian shuttle, albeit one
-    with a spike drive sufficient to get it to a neighboring
-    system and enough passenger space to make it a minimally-acceptable transport for brave VIPs and light
-    cargo. If used as an inter-system transport, however, at
-    least three crew will be needed to safely navigate a drill.
-    While cheap and flexible, the shuttle is entirely
-    unarmed and acutely vulnerable to piracy or hostile
-    warships. In such cases the pilot’s only recourse is to
-    surrender or hope the small craft’s nimble maneuver
-    drives can keep it away from the attacker long enough
-    to get to safety.
+    The standard drill-capable fighter craft of most TL4
+    polities, this model retains a spike drive instead of replacing
+    it with a cheaper systems drive. While the lone
+    pilot would have to be desperate and heavily drugged
+    to make an entire spike drill solo, it remains an option
+    when no larger craft is available.
+
+    This particular model is equipped with a reaper
+    battery for dealing with small, lightly-armored civilian
+    ships. “Bomber”-type fighters usually replace this
+    with a fractal impact charge to threaten larger warships,
+    while fighters built to dogfight their peers favor fitting
+    a multifocal laser.
 img: systems/swnr/assets/icons/spaceship.png
 items:
   - name: Reaper Battery
@@ -75,10 +78,7 @@ items:
       cost: 5000
       costMultiplier: true
       description: >-
-        This fitting must be put in place when the ship is built,
-        and cannot be installed on cruiser-class or larger ships.
-        A ship designed for atmospheric flight can land on most
-        solid or aqueous surfaces.
+        This fitting must be put in place when the ship is built, and cannot be installed on cruiser-class or larger ships. A ship designed for atmospheric flight can land on most solid or aqueous surfaces.
       effect: 'Can land: frigates and fighters only.'
       mass: 1.0
       massMultiplier: true
