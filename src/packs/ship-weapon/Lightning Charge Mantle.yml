@@ -14,7 +14,7 @@ data:
   minClass: capital
   power: 15
   powerMultiplier: false
-  qualities: AP 5
+  qualities: AP 5, Cloud
   tl: 4
 img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
 name: Lightning Charge Mantle

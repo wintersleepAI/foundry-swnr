@@ -13,7 +13,7 @@ data:
   minClass: capital
   power: 20
   powerMultiplier: false
-  qualities: AP 20
+  qualities: AP 20, Clumsy
   tl: 4
 img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
 name: Vortex Tunnel Inductor

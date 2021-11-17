@@ -319,6 +319,7 @@ Item:
       - description
       - baseVehicleItem
     damage: d4
+    ab: 0
     hardpoint: 1
     qualities: ""
     ammo:

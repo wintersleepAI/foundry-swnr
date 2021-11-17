@@ -13,8 +13,12 @@ data:
   minClass: frigate
   power: 5
   powerMultiplier: false
-  qualities: Ammo 5
+  qualities: 
   tl: 4
-img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+  ammo:
+    max: 5
+    type: missile
+    value: 5
+img: systems/swnr/assets/icons/game-icons.net/item-icons/missile-pod.svg
 name: Nuclear Missiles
 type: shipWeapon

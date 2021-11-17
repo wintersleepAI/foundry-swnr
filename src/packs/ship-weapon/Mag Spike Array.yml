@@ -13,8 +13,12 @@ data:
   minClass: frigate
   power: 5
   powerMultiplier: false
-  qualities: Flak
+  qualities: Flak, AP 10
   tl: 4
+  ammo:
+    max: 5
+    type: special
+    value: 5
 img: systems/swnr/assets/icons/game-icons.net/item-icons/missile-pod.svg
 name: Mag Spike Array
 type: shipWeapon

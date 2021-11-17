@@ -92,6 +92,7 @@ declare interface SWNRShipWeaponData
   extends SWNRBaseVehicleItemData,
     SWNRDescData {
   damage: string;
+  ab: number;
   hardpoint: number;
   tl: 4 | 5 | 6;
   qualities: string;
