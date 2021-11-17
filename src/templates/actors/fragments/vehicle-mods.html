@@ -9,7 +9,15 @@
         type="number" min="0" name="data.commandPoints" value="{{actor.data.data.commandPoints}}" />
     </div>
   </div>
-  <div></div>
+  <div>
+      <select name="shipActions"
+          class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        <option value=""></option>
+        <option value="escape">Bridge -- Escape Combat (4 CP)</option>
+        <option value="duty">General -- Do Your Duty (0 CP)</option>
+                              
+      </select>
+  </div>
   <div></div>
 </div>
 <div class="grid grid-cols-2">
