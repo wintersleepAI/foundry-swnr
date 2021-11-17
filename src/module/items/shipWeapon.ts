@@ -20,7 +20,9 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
     skillMod: number,
     statMod: number,
     abMod: number,
-    mod: number
+    mod: number,
+    weaponAb: number,
+    npcSkill: number
   ): Promise<void> {
     const template = "systems/swnr/templates/chat/attack-roll.html";
 
@@ -29,8 +31,11 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
       statMod,
       abMod,
       mod,
+      weaponAb,
+      npcSkill,
     };
-    const hitRollStr = "1d20 + @skillMod + @statMod + @abMod + @mod";
+    const hitRollStr =
+      "1d20 + @skillMod + @statMod + @abMod + @mod +@weaponAb +@npcSkill";
     const damageRollStr = `${this.data.data.damage} + @statMod`;
     const hitRoll = new Roll(hitRollStr, rollData).roll();
     const damageRoll = new Roll(damageRollStr, rollData).roll();
@@ -185,6 +190,14 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
         let skillMod = 0;
         let statMod = 0;
         let abMod = 0;
+        const weaponAbStr =
+          (<HTMLInputElement>form.querySelector('[name="weaponAb"]'))?.value ||
+          "0";
+        const npcSkillStr =
+          (<HTMLInputElement>form.querySelector('[name="npcSkill"]'))?.value ||
+          "0";
+        const weaponAb = parseInt(weaponAbStr);
+        const npcSkill = parseInt(npcSkillStr);
         let shooterName: string | null = "";
         if (shooter) {
           if (skillName) {
@@ -208,7 +221,16 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
           }
           shooterName = shooter.name;
         }
-        this.rollAttack(shooterId, shooterName, skillMod, statMod, abMod, mod);
+        this.rollAttack(
+          shooterId,
+          shooterName,
+          skillMod,
+          statMod,
+          abMod,
+          mod,
+          weaponAb,
+          npcSkill
+        );
       };
 
       this.popUpDialog?.close();
