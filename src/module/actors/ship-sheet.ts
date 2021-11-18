@@ -5,6 +5,7 @@ import { SWNRNPCActor } from "./npc";
 import { SWNRCharacterActor } from "./character";
 import { SysToFail } from "./ship";
 import { VehicleBaseActorSheet } from "../vehicle-base-sheet";
+import { ACTIONS } from "../ship-combat-actions";
 
 interface ShipActorSheetData extends ActorSheet.Data {
   shipWeapons?: Item[];
@@ -61,6 +62,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
           ["armor", "item", "weapon"].indexOf(i.data.type) !== -1
       ),
       crewArray: crewArray,
+      actions: ACTIONS,
     });
   }
   static get defaultOptions(): ActorSheet.Options {
@@ -90,6 +92,9 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     html.find(".calc-cost").on("click", this._onCalcCost.bind(this));
     html.find(".make-payment").on("click", this._onPayment.bind(this));
     html.find(".pay-maintenance").on("click", this._onMaintenance.bind(this));
+    html
+      .find("[name='shipActions']")
+      .on("change", this._onShipAction.bind(this));
     html
       .find("[name='data.shipHullType']")
       .on("change", this._onHullChange.bind(this));
@@ -202,6 +207,15 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
         },
       });
     }
+  }
+  _onShipAction(event: JQuery.ClickEvent): void {
+    const actionName = event.target?.value;
+    const action = ACTIONS[actionName];
+    if (!action) {
+      ui.notifications?.error("There was an error in looking up your action");
+      return;
+    }
+    ui.notifications?.info(action.dept + " " + action.skill + " " + action.dc);
   }
   _onHullChange(event: JQuery.ClickEvent): void {
     const targetHull = event.target?.value;

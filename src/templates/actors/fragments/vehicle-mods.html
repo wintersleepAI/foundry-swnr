@@ -13,9 +13,10 @@
       <select name="shipActions"
           class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
         <option value=""></option>
-        <option value="escape">Bridge -- Escape Combat (4 CP)</option>
-        <option value="duty">General -- Do Your Duty (0 CP)</option>
-                              
+        {{#each actions as | action id| }}
+
+        <option value="{{@key}}">{{action.title}} ({{action.cp}}) {{action.dept}}</option>
+        {{/each}}                      
       </select>
   </div>
   <div></div>
