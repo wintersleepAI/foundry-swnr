@@ -3,9 +3,9 @@ data:
   cost: 5000
   costMultiplier: true
   description: >-
-    Fuel sccops allow for the harvesting and extraction of hydrogen
+    Fuel scoops allow for the harvesting and extraction of hydrogen
     from gas giants or the penumbra of solar bodies. The extraction
-    process reuires four days of processing and refinement, but completely
+    process requires four days of processing and refinement, but completely
     refuels the ship. Such fittings are common on explorer craft that
     cannot expect to find refueling stations.
   effect: Ship can scoop fuel from a gas giant or star

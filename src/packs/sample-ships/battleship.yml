@@ -1,0 +1,308 @@
+data:
+  health:
+    max: 120
+    value: 120
+  ac: 17
+  armor:
+    max: 20
+    value: 20
+  speed: 0
+  power:
+    max: 75
+  mass:
+    max: 50
+  crew:
+    min: 200
+    max: 1000
+    current: 200
+  lifeSupportDays:
+    value: 60000
+    max: 60000
+  cargo:
+    value: 200
+    max: 200
+  spikeDrive: 
+    value: 3
+    max: 3
+  hardpoints:
+    value: 15
+    max: 15
+  commandPoints: 6
+  npcCommandPoints: 6
+  crewSkillBonus: 3
+  shipClass: capital
+  shipHullType: battleship
+  cost: 79060000
+  maintenanceCost: 4000000
+  operatingCost: 35000000
+  maintenanceMonths: 6
+  description: >-
+        Built off the biggest hull class that TL4 polities can create, only the richest modern worlds can afford to fabricate these massive engines of war. Even those worlds with adequate resources to do so often balk at expending such a tremendous amount of money on a single ship.
+        Those that do build battleships do so for a reason. The tremendous weight of fire these ships put out can pop a cruiser in a single firing pass, and its reinforced hull plating shrugs off all but the heaviest armor-piercing blows. Where cruisers often require hunter-killer frigates to take them out, battleships commonly require hunter-killer cruisers to disable them. 
+        The main weakness of a battleship is the fact that it is only a single ship… a single, extremely expensive ship. It can only attack or defend a single location at a time, and an enemy that has the time and resources to build specialized anti-capital ships with AP weaponry and expendable crews can bring the battleship down for far less money than it cost to build it.
+img: systems/swnr/assets/icons/spaceship.png
+items:
+  - name: Vortex Tunnel Inductor
+    type: shipWeapon
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+    data:
+      broken: false
+      cost: 5000000
+      costMultiplier: false
+      damage: 3d20
+      description: >-
+        A capital-class model of the SIP, a VTI is capable pf incapacitating a cruiser in two hits. Its bulk limits its utility against fighter-class craft, however.
+      hardpoint: 4
+      mass: 10.0
+      massMultiplier: false
+      minClass: capital
+      power: 20
+      powerMultiplier: false
+      qualities: AP 20
+      tl: 4
+      permission:
+        default: 0
+  - name: Lightning Charge Mantle
+    type: shipWeapon
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+    data:
+      broken: false
+      cost: 4000000
+      costMultiplier: false
+      damage: 1d20
+      description: >-
+        Modulation of the ship's power core emits a cloak of MES lightning. While larger spike drive craft can shunt the energies away harmlessly, fighter-class ships are almost invariably destroyed if hit.
+      hardpoint: 2
+      mass: 5.0
+      massMultiplier: false
+      minClass: capital
+      power: 15
+      powerMultiplier: false
+      qualities: AP 5
+      tl: 4
+      permission:
+        default: 0      
+  - name: Multifocal Laser
+    type: shipWeapon
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+    data:
+      broken: false
+      cost: 100000
+      costMultiplier: false
+      damage: 1d4
+      description: >-
+        Twinned assay and penetration lasers modulate the frequency of this beam for remarkable armor penetration. These weapons are popular choices for fighters intended for frigate or cruiser engagement.
+      hardpoint: 0
+      mass: 1.0
+      massMultiplier: false
+      minClass: fighter
+      power: 5
+      powerMultiplier: false
+      qualities: AP 20
+      tl: 4
+      permission:
+        default: 0   
+  - name: Multifocal Laser
+    type: shipWeapon
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+    data:
+      broken: false
+      cost: 100000
+      costMultiplier: false
+      damage: 1d4
+      description: >-
+        Twinned assay and penetration lasers modulate the frequency of this beam for remarkable armor penetration. These weapons are popular choices for fighters intended for frigate or cruiser engagement.
+      hardpoint: 0
+      mass: 1.0
+      massMultiplier: false
+      minClass: fighter
+      power: 5
+      powerMultiplier: false
+      qualities: AP 20
+      tl: 4
+      permission:
+        default: 0 
+  - name: Gravcannon
+    type: shipWeapon
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+    data:
+      broken: false
+      cost: 2000000
+      costMultiplier: false
+      damage: 4d6
+      description: >-
+        Using much the same principles as man-portable grav weaponry, the gravcannon causes targets to fall apart in a welter of mutually-antagonistic gravitic fields.
+      hardpoint: 3
+      mass: 4.0
+      massMultiplier: false
+      minClass: cruiser
+      power: 15
+      powerMultiplier: false
+      qualities: AP 20
+      tl: 4
+      ab: 6
+      permission:
+        default: 0       
+  - name: Hardened Polyceramic Overlay
+    type: shipDefense
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/bubble-field.svg
+    data:
+      broken: false
+      cost: 25000
+      costMultiplier: false
+      description: >-
+        A complex glazing process can harden the surface of a ship’s armor to more effectively shed incoming attacks, decreasing the armor-piercing quality of any hit by 5.
+      mass: 2.0
+      massMultiplier: false
+      minClass: fighter
+      power: 0
+      powerMultiplier: false
+      qualities: AP quality of attacking weapons reduced by 5
+      permission:
+        default: 0
+  - name: Ablative Hull Compartments
+    type: shipDefense
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/metal-scales.svg
+    data:
+      broken: false
+      cost: 100000
+      costMultiplier: true
+      description: >-
+        By sacrificing empty hull space in a complex system of ablative blast baffles, a capital-class ship can have a large amount of its mass shot away without actually impinging on its normal function. This grants it a +1 AC bonus and 20 extra maximum hit points.
+      mass: 2.0
+      massMultiplier: true
+      minClass: capital
+      power: 5
+      powerMultiplier: true
+      qualities: +1 AC and +20 maximum hit points
+      permission:
+        default: 0                           
+  - name: Spike Drive-3 upgrade
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/rocket-thruster.svg
+    data:
+      broken: false
+      cost: 20000
+      costMultiplier: true
+      description: >-
+        A ship can improve its standard-issue drive-1 spike drive with additional phase filters and power throughput refinements. A captain needs buy only the final grade of drive desired. He does not have to buy upgrades sequentially. Drives of rating 4 and higher are generally TL5 artifacts that cannot be built most modern worlds.
+      effect: 'Upgrade a spike drive to drive-2 rating'
+      mass: 2.0
+      massMultiplier: true
+      minClass: fighter
+      power: 2
+      powerMultiplier: false  
+  - name: Drop Pod
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 300000
+      costMultiplier: true
+      description: >-
+        Armored and stealthed versions of cargo lighters, these craft are twice as fast, apply a -3 penalty to tracking and targeting skill checks, and can carry up to one hundred troops or passengers. Many are equipped with assorted Heavy weapons to clear the landing zone, and can be treated as flight-capable gravtanks for purposes of combat. This fitting can be purchased multiple times.
+      effect: 'Upgrade a spike drive to drive-2 rating'
+      mass: 2.0
+      massMultiplier: true
+      minClass: frigate
+      power: 0
+      powerMultiplier: false      
+  - name: Armory
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 10000
+      costMultiplier: true
+      description: >-
+        Rather than maintaining lengthy lists of ship equipment, a captain can simply buy an armory. Ships so equipped have whatever amounts of TL4 military-grade weaponry and armor that a crew might require, and integral maintenance facilities for its upkeep. There is enough gear available to outfit the entire crew for normal use, but giving it away or losing it in use may deplete it.
+      effect: 'Weapons and armor for the crew'
+      mass: 0.0
+      massMultiplier: true
+      minClass: frigate
+      power: 0
+      powerMultiplier: false  
+  - name: Ship's Locker
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 2000
+      costMultiplier: true
+      description: >-
+        Much like an armory, this option allows a captain to lay in a general supply of equipment likely to be useful to explorers and spacemen. Any TL4 equipment on the gear list can be found in the ship’s locker in amounts commensurate with the ship’s size. A few guns and some basic armor might be included as well, but for serious armament an armory is required. There is enough gear available to outfit the entire crew for normal use, but giving it away or losing it in use may deplete the locker until it is restocked.
+      effect: 'General equipment for the crew'
+      mass: 0.0
+      massMultiplier: true
+      minClass: frigate
+      power: 0
+      powerMultiplier: false        
+  - name: Boarding Tubes
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 5000
+      costMultiplier: true
+      description: >-
+        Armored tubes equipped with laser cutter apertures can be used to forcibly invade a hostile ship, provided the target’s engines have been disabled. Ships without boarding tubes have to send invaders across empty space to either make an assault on a doubtless heavily-guarded airlock or cut their way in through the hull with laser cutters and half an hour of work.
+      effect: 'Allows boarding of a hostile disabled ship'
+      mass: 1.0
+      massMultiplier: true
+      minClass: frigate
+      power: 0
+      powerMultiplier: false
+  - name: Fuel Scoops
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/energise.svg
+    data:
+      broken: false
+      cost: 5000
+      costMultiplier: true
+      description: >-
+        Fuel scoops allow for the harvesting and extraction of hydrogen from gas giants or the penumbra of solar bodies. The extraction process requires four days of processing and refinement, but completely refuels the ship. Such fittings are common on explorer craft that cannot expect to find refueling stations.
+      effect: 'Ship can scoop fuel from a gas giant or star'
+      mass: 2.0
+      massMultiplier: true
+      minClass: frigate
+      power: 2
+      powerMultiplier: false    
+  - name: Advanced Nav Computer
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/gps.svg
+    data:
+      broken: false
+      cost: 10000
+      costMultiplier: true
+      description: >-
+        Forging new spike courses is too much an art to rely on computerized assistance, but an advanced nav computer can help on well-mapped routes. When navigating an interstellar drill course with charts less than a year old, the navigator decreases drill difficulty by 2.
+      effect: 'Adds +2 for traveling familiar spike courses'
+      mass: 0.0
+      massMultiplier: true
+      minClass: frigate
+      power: 1
+      powerMultiplier: false 
+  - name: Ship bay (fighter and shuttle)
+    type: shipFitting 
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg                                    
+    data: 
+      broken: false
+      cost: 200000
+      costMultiplier: false
+      description: >-
+        These sophisticated docking bays provide all the necessary tools
+        and support for launching a starship from the mother craft. They are
+        rarely seen outside of dedicated capital-class carriers, but some
+        cruisers make room to mount a fighter-class attack shuttle. Each bay
+        allows room for one ship of the appropriate hull class. While the carried
+        ship can support its own crew if necessary, most carriers fold their space
+        wing into the mothership's crew roster. This fitting can be taken
+        multiple times.
+      effect: 'Carrier housing for fighter and shuttle'
+      mass: 2.0
+      massMultiplier: false
+      minClass: cruiser
+      power: 0
+      powerMultiplier: false
+name: Battleship
+type: ship

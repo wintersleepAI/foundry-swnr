@@ -1,20 +1,20 @@
 data:
   health:
-    max: 40
-    value: 40
-  ac: 13
+    max: 50
+    value: 50
+  ac: 15
   armor:
     max: 10
     value: 10
-  speed: 2
+  speed: 1
   power:
-    max: 15
+    max: 25
   mass:
-    max: 15
+    max: 20
   crew:
-    min: 10
-    max: 40
-    current: 10
+    min: 30
+    max: 120
+    current: 30
   lifeSupportDays:
     value: 1
     max: 1  
@@ -25,21 +25,20 @@ data:
     value: 2
     max: 2
   hardpoints:
-    value: 6
-    max: 6
+    value: 8
+    max: 8
   commandPoints: 5
   npcCommandPoints: 5
   crewSkillBonus: 2
   shipClass: frigate
-  shipHullType: corvette
-  cost: 5973000
-  maintenanceCost: 298000
-  operatingCost: 1314000
+  shipHullType: heavyFrigate
+  amountOwed: 9783000
+  maintenanceCost: 498000
+  operatingCost: 3942000
   maintenanceMonths: 6
   description: >-
-        The usual ship of the line of most modestly-funded frontier navies, a corvette is a true warship, albeit of a minimal size. While it is unable to land on worlds with standard gravity, its cargo lighter allows crew and cargo transit from the surface of a world, and its ex- tended stores allow for more than four months of field operation under normal crew parameters.
-        Most pirates flying reworked free merchants or stolen patrol boats will turn tail as soon as a cor- vette shows up in the region. Good armor, multiple ship-killing guns, and trained boarding marines make a corvette a death sentence to most stellar ruffians, and even when a pirate wolf pack can bring one down, it usually comes at the cost of crippling damage.
-        The model depicted here is standard for anti-pi- racy and basic system defense missions. Against cruis- er-class warships, however, this corvette’s weapons have insufficient armor penetration to seriously threat- en such a major warship.
+        Sometimes confusingly called a “light cruiser”, a heavyfrigate pushes the engineering parameters of a frigate hull to the maximum available to most TL4 worlds. Equipped with a torpedo launcher capable of threatening even cruiser-class enemies, the heavy frigate can intimidate any ship of its weight class. Its heavy crew complement and military drop pod fitting allow it to quickly dispatch well-armed marines to hot spots throughout a solar system. 
+        However, despite the large weapon loadout, the heavy frigate remains a frigate. Its armor is significantly inferior to that of a true cruiser-class warship, and most frigates built for same-class engagements can be a meaningful threat to it. It comes into its own as a bludgeon against the other small warships likely to be fielded by a peer star-faring polity.
 img: systems/swnr/assets/icons/spaceship.png
 items:
   - name: Plasma Beam
@@ -49,7 +48,6 @@ items:
       broken: false
       cost: 700000
       costMultiplier: false
-      ab: 4
       damage: 3d6
       description: >-
         With superior targeting and a smaller energy drain than a CPC, a plasma beam sacrifices some armor penetration.
@@ -70,7 +68,6 @@ items:
       broken: false
       cost: 700000
       costMultiplier: false
-      ab: 4
       damage: 3d6
       description: >-
         With superior targeting and a smaller energy drain than a CPC, a plasma beam sacrifices some armor penetration.
@@ -115,38 +112,23 @@ items:
       massMultiplier: true
       minClass: fighter
       power: 1
-      powerMultiplier: false      
-  - name: Cargo Lighter
+      powerMultiplier: false    
+  - name: Drop Pod
     type: shipFitting
     img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
     data:
       broken: false
-      cost: 25000
+      cost: 300000
       costMultiplier: true
       description: >-
-        Cruisers and larger craft can’t land on planetary bodies, so they require small shuttlecraft for transport. A cargo lighter is only capable of surface-to-orbit flight, which takes roughly twenty minutes either way, but can latch on to a standard pressurized cargo container holding up to 200 tons of cargo and passengers. These containers are usually collapsible and take up no significant space when compressed for storage, assuming they’re not simply disposable cargo shells. This fitting can be purchased multiple times.
-      effect: 'Orbit-to-surface cargo shuttle'
+        Armored and stealthed versions of cargo lighters, these craft are twice as fast, apply a -3 penalty to tracking and targeting skill checks, and can carry up to one hundred troops or passengers. Many are equipped with assorted Heavy weapons to clear the landing zone, and can be treated as flight-capable gravtanks for purposes of combat. This fitting can be purchased multiple times.
+      effect: 'Upgrade a spike drive to drive-2 rating'
       mass: 2.0
       massMultiplier: true
       minClass: frigate
       power: 0
-      powerMultiplier: false
-  - name: Extended Stores
-    type: shipFitting
-    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
-    data:
-      broken: false
-      cost: 2500
-      costMultiplier: true
-      description: >-
-        A normal complement of ship’s stores can keep the maximum crew size supplied for two months. Each selection of Extended Stores doubles that time, and can be fitted multiple times.
-      effect: 'Maximum life support duration is doubled'
-      mass: 1.0
-      massMultiplier: true
-      minClass: Fighter
-      power: 0
-      powerMultiplier: false
-  - name: Boarding Tubes
+      powerMultiplier: false            
+  - name: Fuel Scoops
     type: shipFitting
     img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
     data:
@@ -154,11 +136,26 @@ items:
       cost: 5000
       costMultiplier: true
       description: >-
-        Armored tubes equipped with laser cutter apertures can be used to forcibly invade a hostile ship, provided the target’s engines have been disabled. Ships without boarding tubes have to send invaders across empty space to either make an assault on a doubtless heavily-guarded airlock or cut their way in through the hull with laser cutters and half an hour of work.
-      effect: 'Allows boarding of a hostile disabled ship'
-      mass: 1.0
+        Fuel scoops allow for the harvesting and extraction of hydrogen from gas giants or the penumbra of solar bodies. The extraction process requires four days of processing and refinement, but completely refuels the ship. Such fittings are common on explorer craft that cannot expect to find refueling stations.
+      effect: 'Ship can scoop fuel from a gas giant or star'
+      mass: 2.0
       massMultiplier: true
       minClass: Frigate
+      power: 2
+      powerMultiplier: false      
+  - name: Fuel Bunker
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 2500
+      costMultiplier: true
+      description: >-
+        Most ships require refueling after each drill jump, no matter the distance. Installing fuel bunkers allows the ship to carry one additional load of fuel. This fitting can be installed multiple times for ships that wish to minimize fueling.
+      effect: 'Adds fuel for one more drill between fuelings'
+      mass: 1.0
+      massMultiplier: true
+      minClass: Fighter
       power: 0
       powerMultiplier: false
   - name: Armory
@@ -190,21 +187,21 @@ items:
       massMultiplier: true
       minClass: Frigate
       power: 0
-      powerMultiplier: false
-  -  name: Fuel Bunker
-     type: shipFitting
-     img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
-     data:
-       broken: false
-       cost: 2500
-       costMultiplier: true
-       description: >-
-         Most ships require refueling after each drill jump, no matter the distance. Installing fuel bunkers allows the ship to carry one additional load of fuel. This fitting can be installed multiple times for ships that wish to minimize fueling.
-       effect: 'Adds fuel for one more drill between fuelings'
-       mass: 1.0
-       massMultiplier: true
-       minClass: Fighter
-       power: 0
-       powerMultiplier: false       
-name: Corvette
+      powerMultiplier: false   
+  - name: Boarding Tubes
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 5000
+      costMultiplier: true
+      description: >-
+        Armored tubes equipped with laser cutter apertures can be used to forcibly invade a hostile ship, provided the target’s engines have been disabled. Ships without boarding tubes have to send invaders across empty space to either make an assault on a doubtless heavily-guarded airlock or cut their way in through the hull with laser cutters and half an hour of work.
+      effect: 'Allows boarding of a hostile disabled ship'
+      mass: 1.0
+      massMultiplier: true
+      minClass: Frigate
+      power: 0
+      powerMultiplier: false    
+name: Heavy Frigate
 type: ship

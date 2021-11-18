@@ -28,7 +28,7 @@ data:
   crewSkillBonus: 1
   shipClass: frigate
   shipHullType: freeMerchant
-  amountOwed: 775000
+  cost: 775000
   maintenanceCost: 38750
   operatingCost: 131400
   maintenanceMonths: 6
