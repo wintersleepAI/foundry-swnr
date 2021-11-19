@@ -40,7 +40,7 @@ img: systems/swnr/assets/icons/spaceship.png
 items:
   - name: Plasma Beam
     type: shipWeapon
-    img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/plasma-bolt.svg
     data:
       broken: false
       cost: 700000
@@ -60,7 +60,7 @@ items:
         default: 0
   - name: Spike Drive-2 upgrade
     type: shipFitting
-    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/rocket-thruster.svg
     data:
       broken: false
       cost: 10000
@@ -150,7 +150,7 @@ items:
       powerMultiplier: false
   - name: Survey Sensors
     type: shipFitting
-    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/sattelite.svg
     data:
       broken: false
       cost: 5000

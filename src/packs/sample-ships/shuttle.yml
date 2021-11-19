@@ -54,7 +54,7 @@ items:
       powerMultiplier: false
   - name: Extended life support
     type: shipFitting
-    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/fuel-tank.svg
     data:
       broken: false
       cost: 5000

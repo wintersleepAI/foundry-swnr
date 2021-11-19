@@ -44,7 +44,7 @@ img: systems/swnr/assets/icons/spaceship.png
 items:
   - name: Plasma Beam
     type: shipWeapon
-    img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/plasma-bolt.svg
     data:
       broken: false
       cost: 700000
@@ -65,7 +65,7 @@ items:
         default: 0
   - name: Plasma Beam
     type: shipWeapon
-    img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/plasma-bolt.svg
     data:
       broken: false
       cost: 700000
@@ -86,7 +86,7 @@ items:
         default: 0
   - name: Hardened Polyceramic Overlay
     type: shipDefense
-    img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/bubble-field.svg
     data:
       broken: false
       cost: 25000
@@ -103,7 +103,7 @@ items:
         default: 0
   - name: Spike Drive-2 upgrade
     type: shipFitting
-    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/rocket-thruster.svg
     data:
       broken: false
       cost: 10000
@@ -193,7 +193,7 @@ items:
       powerMultiplier: false
   -  name: Fuel Bunker
      type: shipFitting
-     img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+     img: systems/swnr/assets/icons/game-icons.net/item-icons/fuel-tank.svg
      data:
        broken: false
        cost: 2500

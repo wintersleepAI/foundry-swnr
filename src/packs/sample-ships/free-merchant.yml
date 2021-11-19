@@ -60,7 +60,7 @@ items:
         default: 0
   - name: Sandthrower
     type: shipWeapon
-    img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/fog.svg
     data:
       broken: false
       cost: 50000
@@ -95,7 +95,7 @@ items:
       powerMultiplier: false
   - name: Fuel Scoops
     type: shipFitting
-    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/energise.svg
     data:
       broken: false
       cost: 5000
@@ -110,7 +110,7 @@ items:
       powerMultiplier: false
   - name: Fuel Bunker
     type: shipFitting
-    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/fuel-tank.svg
     data:
       broken: false
       cost: 2500
