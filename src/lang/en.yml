@@ -377,6 +377,7 @@
     roll-skill: Roll Skill
     hit-dice: Hit Dice
     command-points: Command Points
+    npc-command-points: NPC Ship CP
     unspent-skill: Unspent Skill Points
     unspent-psy-skill: Unspent Psychic Skill Points
     level-up: Level Up

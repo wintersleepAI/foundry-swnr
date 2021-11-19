@@ -208,14 +208,158 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       });
     }
   }
+
   _onShipAction(event: JQuery.ClickEvent): void {
+    event.preventDefault();
     const actionName = event.target?.value;
+    if (actionName === "") {
+      return;
+    }
     const action = ACTIONS[actionName];
     if (!action) {
       ui.notifications?.error("There was an error in looking up your action");
       return;
     }
-    ui.notifications?.info(action.dept + " " + action.skill + " " + action.dc);
+    const actionTitle = action.title ? action.title : actionName;
+    let cp = this.actor.data.data.commandPoints;
+    const actionsTaken = this.actor.data.data.actionsTaken
+      ? this.actor.data.data.actionsTaken
+      : [];
+    if (action.limit === "round" && actionsTaken.indexOf(actionName) >= 0) {
+      ui.notifications?.info(
+        "Already taken the action this round. Did you forget to end the last round?"
+      );
+      return;
+    }
+    if (actionName == "endRound") {
+      const newCp = this.actor.data.data.npcCommandPoints
+        ? this.actor.data.data.npcCommandPoints
+        : 0;
+      let actionsText = actionsTaken.length > 0 ? `Actions: <ul>` : "No actions.";
+      if (actionsTaken.length > 0) {
+        for (const act of actionsTaken) {
+          const actTitle =
+            ACTIONS[act] && ACTIONS[act].title ? ACTIONS[act].title : act;
+          actionsText += `<li>${actTitle}</li>`;
+        }
+        actionsText += "</ul>";
+      }
+      const chatData = {
+        content: `Round ended for ${this.actor.name}. Setting CP to ${newCp}<br>${actionsText}`,
+      };
+      actionsTaken.length = 0;
+      this.actor.update({
+        data: { commandPoints: newCp, actionsTaken: actionsTaken },
+      });
+      event.target.value = "";
+      ChatMessage.create(chatData);
+      return;
+    }
+    if (action.cp && action.cp < 0 && cp + action.cp < 0) {
+      ui.notifications?.error("Not enough command points");
+      return;
+    }
+    const noteText = action.note ? action.note : "";
+    const diffText = action.dc ? `<br>Difficulty:${action.dc}` : "";
+
+    if (action.skill) {
+      let skillLevel = -1;
+      let attrMod = 0;
+      let attrName = "";
+      let dicePool = "2d6";
+
+      if (action.dept) {
+        let foundActor = false;
+        if (this.actor.data.data.roles[action.dept] != "") {
+          const defaultActor = game.actors?.get(
+            this.actor.data.data.roles[action.dept]
+          );
+          if (defaultActor) {
+            foundActor = true;
+            if (defaultActor.type == "character") {
+              for (const skill of defaultActor.itemTypes.skill) {
+                if (action.skill == skill.data.name) {
+                  skillLevel = skill.data.data["rank"];
+                  dicePool =
+                    skill.data.data["pool"] && skill.data.data["pool"] != "ask"
+                      ? skill.data.data["pool"]
+                      : "2d6";
+                }
+              }
+              let tempMod = -2;
+              if (action.attr) {
+                //Find the attribute with the highest mod
+                for (const attr of action.attr) {
+                  if (
+                    defaultActor.data.data.stats[attr] &&
+                    defaultActor.data.data.stats[attr].mod > tempMod
+                  ) {
+                    tempMod = defaultActor.data.data.stats[attr].mod;
+                    const key = `swnr.stat.short.${attr}`;
+                    attrName = `${game.i18n.localize(key)}\\`;
+                  }
+                }
+                attrMod = tempMod;
+              }
+            }
+            if (defaultActor.type == "npc") {
+              skillLevel = defaultActor.data.data.skillBonus;
+            }
+            // Roll skill, show name, skill, attr if != ""
+            const rollMode = game.settings.get("core", "rollMode");
+            const formula = `${dicePool} + @skillLevel + @attrMod`;
+            const roll = new Roll(formula, {
+              skillLevel,
+              attrMod,
+            });
+            roll.roll();
+            const title = `Rolling ${actionTitle} ${attrName}${action.skill} for ${defaultActor.name}<br>${noteText}${diffText}`;
+            roll.toMessage(
+              {
+                speaker: ChatMessage.getSpeaker(),
+                flavor: title,
+              },
+              { rollMode }
+            );
+          }
+        }
+        if (!foundActor) {
+          // We are here means there is a skill but we don't know who it is for
+          skillLevel = this.actor.data.data.crewSkillBonus
+            ? this.actor.data.data.crewSkillBonus
+            : 0;
+          const rollMode = game.settings.get("core", "rollMode");
+          const formula = `${dicePool} + @skillLevel`;
+          const roll = new Roll(formula, {
+            skillLevel,
+            attrMod,
+          });
+          roll.roll();
+          const title = `Rolling ${actionTitle} ${attrName}${action.skill}. No PC/NPC set to role/dept.<br>${noteText}${diffText}`;
+          roll.toMessage(
+            {
+              speaker: ChatMessage.getSpeaker(),
+              flavor: title,
+            },
+            { rollMode }
+          );
+        }
+      }
+    } else {
+      // there is no skill
+      const chatData = {
+        content: `${this.actor.name} ${actionTitle}<br>${noteText}${diffText}`,
+      };
+      ChatMessage.create(chatData);
+    }
+    // Consume CP
+    cp += action.cp;
+    actionsTaken.push(actionName);
+    this.actor.update({
+      data: { commandPoints: cp, actionsTaken: actionsTaken },
+    });
+    event.target.value = "";
+    return;
   }
   _onHullChange(event: JQuery.ClickEvent): void {
     const targetHull = event.target?.value;

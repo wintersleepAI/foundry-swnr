@@ -187,6 +187,7 @@ Actor:
     commandPoints: 0
     npcCommandPoints: 0
     crewSkillBonus: 0
+    actionsTaken: []
   mech:
     templates:
       - vehiclebase
