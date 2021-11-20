@@ -188,6 +188,7 @@ Actor:
     npcCommandPoints: 0
     crewSkillBonus: 0
     actionsTaken: []
+    supportingDept: ""
   mech:
     templates:
       - vehiclebase

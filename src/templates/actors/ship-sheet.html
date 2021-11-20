@@ -83,7 +83,7 @@
 
         {{>
         "systems/swnr/templates/actors/fragments/hdr-HAA.html"
-        type=actor.data.data.type actor=actor
+        type=actor.type actor=actor
         }}
 
         <!--fuel-->
@@ -169,7 +169,7 @@
 
         {{>
         "systems/swnr/templates/actors/fragments/hdr-PMH.html"
-        type=actor.data.data.type actor=actor
+        type=actor.type actor=actor
         }}
 
         <!--spikeDrive-->
@@ -261,8 +261,12 @@
         <section class="sheet-body">
           <div class="tab mods min-h-full" data-group="primary" data-tab="mods">
             {{>
+            "systems/swnr/templates/actors/fragments/ship-actions.html"
+            type=actor.type actor=actor
+            }}
+            {{>
             "systems/swnr/templates/actors/fragments/vehicle-mods.html"
-            type=actor.data.data.type actor=actor
+            type=actor.type actor=actor
             }}
           </div>
           <!-- notes -->
@@ -270,14 +274,13 @@
             <div class="flex flex-col">
               {{>
               "systems/swnr/templates/actors/fragments/vehicle-notes.html"
-              type=actor.data.data.type actor=actor
+              type=actor.type actor=actor
               }}
             </div>
           </div>
           <!-- end notes tab>
           <!-- Crew Tab-->
           <div class="tab crew min-h-full" data-group="primary" data-tab="crew">
-
             <div class="grid grid-cols-2">
               <div class="gap-2">
 
@@ -387,7 +390,7 @@
 
               {{>
               "systems/swnr/templates/actors/fragments/crew-list.html"
-              type=actor.data.data.type crewArray=crewArray
+              type=actor.type crewArray=crewArray
               }}
 
             </div>

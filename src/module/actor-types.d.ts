@@ -337,6 +337,7 @@ declare interface SWNRShipData extends SWNRVehicleTemplateBase {
   npcCommandPoints: number;
   crewSkillBonus: number;
   actionsTaken: string[];
+  supportingDept: string;
 }
 
 declare interface SWNRNPCData extends SWNRLivingTemplateBase {

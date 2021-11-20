@@ -1,50 +1,17 @@
-<div class="grid grid-cols-3">
-  <div class="flex flexrow">
-    <div class="justify-center py-0.5" style="text-align:right;">
-      {{localize 'swnr.sheet.command-points'}}: 
-    </div>
-    <div>
-      <input
-        class="w-10 text-center ml-1 px-1.5 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-        type="number" min="0" name="data.commandPoints" value="{{actor.data.data.commandPoints}}" />
-    </div>
-  </div>
-  <div>
-      <select name="shipActions"
-          class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-        <option value=""></option>
-        {{#each actions as | action id| }}
-        <option value="{{@key}}">{{action.title}} ({{action.cp}}) {{action.dept}}</option>
-        {{/each}}                      
-      </select>
-  </div>
-  <div class="flex flexrow">
-    <div class="justify-center py-0.5" style="text-align:right;">
-      {{localize 'swnr.sheet.npc-command-points'}}: 
-    </div>
-    <div>
-      <input
-        class="w-10 text-center ml-1 px-1.5 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-        type="number" min="0" name="data.npcCommandPoints" value="{{actor.data.data.npcCommandPoints}}" />
-    </div>
-
-
-  </div>
-</div>
 <div class="grid grid-cols-2">
   <div class="gap-2">
     <!-- Left Col -->
     <div class="weapons pr-0.5">
       {{>
       "systems/swnr/templates/actors/fragments/vehicle-weapon-table.html"
-      type=actor.data.data.type actor=actor
+      type=actor.type actor=actor
       }}
     </div>
     <div class="defense pr-0.5">
       <!-- defense -->
       {{>
       "systems/swnr/templates/actors/fragments/vehicle-defense-table.html"
-      type=actor.data.data.type actor=actor
+      type=actor.type actor=actor
       }}
     </div>
   </div>
@@ -54,7 +21,7 @@
     <div class=" fittings pr-0.5">
       {{>
       "systems/swnr/templates/actors/fragments/vehicle-fitting-table.html"
-      type=actor.data.data.type actor=actor
+      type=actor.type actor=actor
       }}
     </div>
   </div>

@@ -78,7 +78,8 @@ export const ACTIONS = {
     title: "Support Department",
     cp: 0,
     desc: "",
-    note: "Choose Department. Actions for Dept take 2 fewer CP",
+    note:
+      "Choose Department. Actions for Dept take 2 fewer CP. Once per round.",
     dept: "captain",
     limit: "round",
   },

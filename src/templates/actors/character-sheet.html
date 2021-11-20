@@ -517,19 +517,19 @@
               {{>
               "systems/swnr/templates/actors/fragments/quick-skill.html" quickskill=actor.data.data.tweak.quickSkill1
               skills=itemTypes.skill
-              type=actor.data.data.type actor=actor}}
+              type=actor.type actor=actor}}
             </div>
             <div>
               {{>
               "systems/swnr/templates/actors/fragments/quick-skill.html" quickskill=actor.data.data.tweak.quickSkill2
               skills=itemTypes.skill
-              type=actor.data.data.type actor=actor}}
+              type=actor.type actor=actor}}
             </div>
             <div>
               {{>
               "systems/swnr/templates/actors/fragments/quick-skill.html" quickskill=actor.data.data.tweak.quickSkill3
               skills=itemTypes.skill
-              type=actor.data.data.type actor=actor}}
+              type=actor.type actor=actor}}
             </div>
           </div>
           <div class="flex gap-3">
@@ -542,7 +542,7 @@
                 "systems/swnr/templates/actors/fragments/weapon.html" item=item
                 damageBonus=(getPCStatModForWeapon actor item true)
                 hitBonus=(concat actor.data.data.ab (getPCStatModForWeapon actor item false))
-                type=actor.data.data.type actor=actor}} {{/each}}
+                type=actor.type actor=actor}} {{/each}}
               </div>
             </div>
             <div class="flex-grow">
@@ -564,7 +564,7 @@
                 </li>
                 {{#each itemTypes.armor as |item id|}} {{>
                 "systems/swnr/templates/actors/fragments/armor.html" item=item
-                type=actor.data.data.type}} {{/each}}
+                type=actor.type}} {{/each}}
               </div>
             </div>
           </div>
@@ -576,7 +576,7 @@
             <div class="flex gap-1 flex-col">
               {{#each itemTypes.power as |item id|}} {{>
               "systems/swnr/templates/actors/fragments/power.html" item=item
-              type=actor.data.data.type}} {{/each}}
+              type=actor.type}} {{/each}}
             </div> --}}
             <div class="flex2 powers-list pr-0.5 mt-8">
               <li class="item-titles flexrow">
@@ -727,7 +727,7 @@
           <div class="flex gap-2 pt-1 flex-wrap">
             {{#each itemTypes.skill as |item id|}} {{>
             "systems/swnr/templates/actors/fragments/skill.html" item=item
-            type=actor.data.data.type}} {{/each}}
+            type=actor.type}} {{/each}}
           </div>
           <div class="flex flexrow border-t border-b border-trueGray-500 border1 py-1 mb-1">
             <div class="flex flex-col items-center">

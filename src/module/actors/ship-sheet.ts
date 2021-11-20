@@ -91,6 +91,8 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     html.find(".repair-button").on("click", this._onRepair.bind(this));
     html.find(".calc-cost").on("click", this._onCalcCost.bind(this));
     html.find(".make-payment").on("click", this._onPayment.bind(this));
+    html.find(".npc-crew-roll").on("click", this._onCrewNPCRoll.bind(this));
+
     html.find(".pay-maintenance").on("click", this._onMaintenance.bind(this));
     html
       .find("[name='shipActions']")
@@ -209,6 +211,43 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     }
   }
 
+  _onCrewNPCRoll(event: JQuery.ClickEvent): void {
+    event.preventDefault();
+    // Roll skill, show name, skill, attr if != ""
+    const rollMode = game.settings.get("core", "rollMode");
+    const formula = `2d6 + @npcCrewSkill`;
+    const npcCrewSkill = this.actor.data.data.crewSkillBonus
+      ? this.actor.data.data.crewSkillBonus
+      : 0;
+    const roll = new Roll(formula, {
+      npcCrewSkill,
+    });
+    roll.roll();
+    const title = `Rolling generic skill with bonus ${npcCrewSkill}`;
+    roll.toMessage(
+      {
+        speaker: ChatMessage.getSpeaker(),
+        flavor: title,
+      },
+      { rollMode }
+    );
+  }
+
+  _setCaptSupport(dept: string): void {
+    const deptSupport = this.actor.data.data.supportingDept
+      ? this.actor.data.data.supportingDept
+      : "";
+    if (dept == deptSupport) {
+      return;
+    }
+    if (deptSupport != "") {
+      ui.notifications?.error("Department is already supported. Error.");
+    }
+    this.actor.update({
+      data: { supportingDept: dept },
+    });
+  }
+
   _onShipAction(event: JQuery.ClickEvent): void {
     event.preventDefault();
     const actionName = event.target?.value;
@@ -252,14 +291,22 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       };
       actionsTaken.length = 0;
       this.actor.update({
-        data: { commandPoints: newCp, actionsTaken: actionsTaken },
+        data: {
+          commandPoints: newCp,
+          actionsTaken: actionsTaken,
+          supportingDept: "",
+        },
       });
       event.target.value = "";
       ChatMessage.create(chatData);
       return;
     }
+    let actionCp = action.cp ? action.cp : 0;
+    if (action.dept && action.dept == this.actor.data.data.supportingDept) {
+      actionCp -= 2;
+    }
     //Verify enough CP
-    if (action.cp && action.cp < 0 && cp + action.cp < 0) {
+    if (actionCp < 0 && cp + actionCp < 0) {
       ui.notifications?.error("Not enough command points");
       return;
     }
@@ -351,6 +398,37 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
         }
       }
     } else {
+      if (actionName == "supportDept") {
+        const d = new Dialog({
+          title: "Support Department",
+          content:
+            "<p>You must choose a department to support (actions are 2 CP cheaper)</p>",
+          buttons: {
+            bridge: {
+              icon: '<i class="fas fa-check"></i>',
+              label: "Bridge",
+              callback: () => this._setCaptSupport("bridge"),
+            },
+            comms: {
+              icon: '<i class="fas fa-check"></i>',
+              label: "Comms",
+              callback: () => this._setCaptSupport("comms"),
+            },
+            engineering: {
+              icon: '<i class="fas fa-check"></i>',
+              label: "Eng.",
+              callback: () => this._setCaptSupport("engineering"),
+            },
+            gunnery: {
+              icon: '<i class="fas fa-check"></i>',
+              label: "Gunnery",
+              callback: () => this._setCaptSupport("gunnery"),
+            },
+          },
+          default: "bridge",
+        });
+        d.render(true);
+      }
       // there is no skill
       const chatData = {
         content: `<span title="${descText}">${this.actor.name} ${actionTitle}<br><span class="flavor-text message-header" style="font-size:12px;">${noteText}${diffText}</span></span>`,
@@ -358,7 +436,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       ChatMessage.create(chatData);
     }
     // Consume CP
-    cp += action.cp;
+    cp += actionCp;
     actionsTaken.push(actionName);
     this.actor.update({
       data: { commandPoints: cp, actionsTaken: actionsTaken },
