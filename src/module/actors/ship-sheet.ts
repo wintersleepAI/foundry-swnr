@@ -244,7 +244,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       ui.notifications?.error("Department is already supported. Error.");
     }
     this.actor.update({
-      data: { supportingDept: dept },
+      "data.supportingDept": dept,
     });
   }
 
@@ -302,8 +302,12 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       return;
     }
     let actionCp = action.cp ? action.cp : 0;
-    if (action.dept && action.dept == this.actor.data.data.supportingDept) {
-      actionCp -= 2;
+    let supported = false;
+    let supportingDept = this.actor.data.data.supportingDept;
+    if (action.dept && action.dept == supportingDept) {
+      // If captaint is supporting the department.
+      actionCp += 2;
+      supported = true;
     }
     //Verify enough CP
     if (actionCp < 0 && cp + actionCp < 0) {
@@ -438,8 +442,14 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     // Consume CP
     cp += actionCp;
     actionsTaken.push(actionName);
+    if (supported) {
+      // one time action
+      supportingDept = "";
+    }
     this.actor.update({
-      data: { commandPoints: cp, actionsTaken: actionsTaken },
+      "data.commandPoints": cp,
+      "data.actionsTaken": actionsTaken,
+      "data.supportingDept": supportingDept,
     });
     event.target.value = "";
     return;
