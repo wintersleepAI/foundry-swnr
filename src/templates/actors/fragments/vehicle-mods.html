@@ -5,7 +5,7 @@
     </div>
     <div>
       <input
-        class="w-10 text-center px-1.5 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        class="w-10 text-center ml-1 px-1.5 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
         type="number" min="0" name="data.commandPoints" value="{{actor.data.data.commandPoints}}" />
     </div>
   </div>
@@ -14,7 +14,6 @@
           class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
         <option value=""></option>
         {{#each actions as | action id| }}
-
         <option value="{{@key}}">{{action.title}} ({{action.cp}}) {{action.dept}}</option>
         {{/each}}                      
       </select>
@@ -25,7 +24,7 @@
     </div>
     <div>
       <input
-        class="w-10 text-center px-1.5 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        class="w-10 text-center ml-1 px-1.5 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
         type="number" min="0" name="data.npcCommandPoints" value="{{actor.data.data.npcCommandPoints}}" />
     </div>
 

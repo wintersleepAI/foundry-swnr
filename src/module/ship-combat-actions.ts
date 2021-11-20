@@ -40,7 +40,8 @@ export const ACTIONS = {
   evasive: {
     title: "Evasive Manuevers",
     cp: -2,
-    desc: "",
+    desc:
+      "Roll Int or Dex/Pilot against  difficulty 9 to add your Pilot skill to the ship’s AC  until its next turn.  Usable once per round at most.",
     dept: "bridge",
     skill: "Pilot",
     attr: ["int", "dex"],
@@ -59,7 +60,8 @@ export const ACTIONS = {
   intoFire: {
     title: "Into the Fire",
     cp: 0,
-    desc: "",
+    desc:
+      "Accept a Crew Lost Crisis and gain your Lead skill plus one in Command Points. You may do this at most once per round.",
     note: "Accept Crew Lost Crisis and add lead skill to CP manually",
     dept: "captain",
     limit: "round",

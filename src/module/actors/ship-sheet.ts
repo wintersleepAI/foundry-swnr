@@ -231,11 +231,14 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       );
       return;
     }
+    //endRound action is special. clear and reset.
     if (actionName == "endRound") {
       const newCp = this.actor.data.data.npcCommandPoints
         ? this.actor.data.data.npcCommandPoints
         : 0;
-      let actionsText = actionsTaken.length > 0 ? `Actions: <ul>` : "No actions.";
+      let actionsText =
+        actionsTaken.length > 0 ? `Actions: <ul>` : "No actions.";
+
       if (actionsTaken.length > 0) {
         for (const act of actionsTaken) {
           const actTitle =
@@ -255,21 +258,23 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       ChatMessage.create(chatData);
       return;
     }
+    //Verify enough CP
     if (action.cp && action.cp < 0 && cp + action.cp < 0) {
       ui.notifications?.error("Not enough command points");
       return;
     }
     const noteText = action.note ? action.note : "";
     const diffText = action.dc ? `<br>Difficulty:${action.dc}` : "";
-
+    const descText = action.desc ? action.desc : "";
     if (action.skill) {
+      // this action needs a skill roll
       let skillLevel = -1;
       let attrMod = 0;
       let attrName = "";
       let dicePool = "2d6";
 
       if (action.dept) {
-        let foundActor = false;
+        let foundActor = false; //might not be anyone in this dept/role
         if (this.actor.data.data.roles[action.dept] != "") {
           const defaultActor = game.actors?.get(
             this.actor.data.data.roles[action.dept]
@@ -313,7 +318,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
               attrMod,
             });
             roll.roll();
-            const title = `Rolling ${actionTitle} ${attrName}${action.skill} for ${defaultActor.name}<br>${noteText}${diffText}`;
+            const title = `<span title="${descText}">Rolling ${actionTitle} ${attrName}${action.skill} for ${defaultActor.name}<br>${noteText}${diffText}</span>`;
             roll.toMessage(
               {
                 speaker: ChatMessage.getSpeaker(),
@@ -335,7 +340,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
             attrMod,
           });
           roll.roll();
-          const title = `Rolling ${actionTitle} ${attrName}${action.skill}. No PC/NPC set to role/dept.<br>${noteText}${diffText}`;
+          const title = `<span title="${descText}">Rolling ${actionTitle} ${attrName}${action.skill}. No PC/NPC set to role/dept.<br>${noteText}${diffText}</span>`;
           roll.toMessage(
             {
               speaker: ChatMessage.getSpeaker(),
@@ -348,7 +353,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     } else {
       // there is no skill
       const chatData = {
-        content: `${this.actor.name} ${actionTitle}<br>${noteText}${diffText}`,
+        content: `<span title="${descText}">${this.actor.name} ${actionTitle}<br><span class="flavor-text message-header" style="font-size:12px;">${noteText}${diffText}</span></span>`,
       };
       ChatMessage.create(chatData);
     }
