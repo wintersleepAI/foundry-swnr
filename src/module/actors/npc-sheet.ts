@@ -148,16 +148,16 @@ export class NPCActorSheet extends BaseActorSheet<NPCActorSheetData> {
   async _onHPMaxChange(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     //console.log("Changing NPC HP Max" ,  this, this.actor);
-    this.actor.update({ "data.health_max_modified": 1 });
+    await this.actor.update({ "data.health_max_modified": 1 });
   }
 
   // Set the max/value health based on D8 hit dice
-  _onHitDice(event: JQuery.ClickEvent): void {
+  async _onHitDice(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
     this.actor.rollHitDice(true);
     // Set the modified to not roll on drag
-    this.actor.update({ "data.health_max_modified": 1 });
+    await this.actor.update({ "data.health_max_modified": 1 });
   }
 
   _onMorale(event: JQuery.ClickEvent): void {

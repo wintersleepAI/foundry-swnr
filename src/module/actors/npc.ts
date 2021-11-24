@@ -7,7 +7,7 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
   }
 
   // Set the max/value health based on D8 hit dice
-  rollHitDice(forceDieRoll: boolean): void {
+  async rollHitDice(forceDieRoll: boolean): Promise<void> {
     if (!forceDieRoll && this.data.data["health_max_modified"]) {
       //For debug: console.log("You have modified the NPCs max health. Not rolling");
       return;
@@ -18,8 +18,10 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
       const roll = new Roll(`${this.data.data.hitDice}d8`).roll();
       if (roll != undefined && roll.total != undefined) {
         const newHealth = roll.total;
-        this.update({ "data.health.max": newHealth });
-        this.update({ "data.health.value": newHealth });
+        await this.update({
+          "data.health.max": newHealth,
+          "data.health.value": newHealth,
+        });
       }
     } else {
       //For debug: console.log("NPC has no hit dice, not rolling health");
@@ -33,11 +35,6 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
   ): void {
     super._onCreate(data, options, userId);
     if (this.data["items"]["length"] || game.userId !== userId) return;
-    console.log("creating npc");
-    console.log(this.data);
-    this.data.data["hitDice"] = 1;
-    // Can't figure out how to get this to work: this.actor.update({"data.hitDic": 1});
-
     this.createEmbeddedDocuments("Item", [
       {
         name: game.i18n.localize("swnr.npc.unarmed"),

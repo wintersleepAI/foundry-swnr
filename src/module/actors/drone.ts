@@ -58,7 +58,7 @@ export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
     return super.createEmbeddedDocuments(itemType, itemArray, options);
   }
 
-  addCrew(actorId: string): void {
+  async addCrew(actorId: string): Promise<void> {
     const actor = game.actors?.get(actorId);
     if (actor) {
       const crewMembers = this.data.data.crewMembers;
@@ -68,7 +68,7 @@ export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
         if (crewMembers.length == 1) {
           // Swap
           crewMembers[0] = actorId;
-          this.update({
+          await this.update({
             "data.crewMembers": crewMembers,
           });
         } else {
@@ -76,7 +76,7 @@ export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
           let crew = this.data.data.crew.current;
           crew += 1;
           crewMembers.push(actorId);
-          this.update({
+          await this.update({
             "data.crew.current": crew,
             "data.crewMembers": crewMembers,
           });
@@ -105,7 +105,7 @@ export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
     }
   }
 
-  removeCrew(actorId: string): void {
+  async removeCrew(actorId: string): Promise<void> {
     const crewMembers = this.data.data.crewMembers;
     //Only remove if there
     const idx = crewMembers.indexOf(actorId);
@@ -115,16 +115,16 @@ export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
       crewMembers.splice(idx, 1);
       let crew = this.data.data.crew.current;
       crew -= 1;
-      this.update({
+      await this.update({
         "data.crew.current": crew,
         "data.crewMembers": crewMembers,
       });
     }
   }
 
-  applyDefaulStats(modelType: string): void {
+  async applyDefaulStats(modelType: string): Promise<void> {
     if (DRONE_MODEL_DATA[modelType]) {
-      this.update(DRONE_MODEL_DATA[modelType]);
+      await this.update(DRONE_MODEL_DATA[modelType]);
     } else {
       console.log("drone model type not found " + modelType);
     }
