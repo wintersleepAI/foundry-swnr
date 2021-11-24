@@ -337,7 +337,7 @@
     armor: Armor
     hp: HP
     permanent-strain: Perm. Strain
-    attack-bonus: Attack Bonus
+    f: Attack Bonus
     system-strain: System Strain
     tabs:
       biography: Biography
@@ -491,6 +491,7 @@
       effect: Effect
       broken: Is Broken?
       destroyed: Is Destroyed?
+      jury-rigged: Is Jury-Rigged?
       shooter: Shooting
       travel: Travel Days
       spike: Spike Drill 

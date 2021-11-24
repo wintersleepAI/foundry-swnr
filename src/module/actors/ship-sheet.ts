@@ -144,18 +144,18 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     });
   }
 
-  _onPayment(event: JQuery.ClickEvent): void {
+  _onPayment(event: JQuery.ClickEvent): Promise<void> {
     return this._onPay(event, "payment");
   }
 
-  _onMaintenance(event: JQuery.ClickEvent): void {
+  _onMaintenance(event: JQuery.ClickEvent): Promise<void> {
     return this._onPay(event, "maintenance");
   }
 
-  _onPay(
+  async _onPay(
     event: JQuery.ClickEvent,
     paymentType: "payment" | "maintenance"
-  ): void {
+  ): Promise<void> {
     // if a new payment type is added this function needs to be refactored
     let shipPool = this.actor.data.data.creditPool;
     const paymentAmount =
@@ -187,7 +187,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     );
     dateObject.setMonth(dateObject.getMonth() + monthSchedule);
     if (paymentType == "payment") {
-      this.actor.update({
+      await this.actor.update({
         data: {
           creditPool: shipPool,
           lastPayment: {
@@ -198,7 +198,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
         },
       });
     } else {
-      this.actor.update({
+      await this.actor.update({
         data: {
           creditPool: shipPool,
           lastMaintenance: {
@@ -233,7 +233,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     );
   }
 
-  _setCaptSupport(dept: string): void {
+  async _setCaptSupport(dept: string): Promise<void> {
     const deptSupport = this.actor.data.data.supportingDept
       ? this.actor.data.data.supportingDept
       : "";
@@ -243,12 +243,12 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     if (deptSupport != "") {
       ui.notifications?.error("Department is already supported. Error.");
     }
-    this.actor.update({
+    await this.actor.update({
       "data.supportingDept": dept,
     });
   }
 
-  _onShipAction(event: JQuery.ClickEvent): void {
+  async _onShipAction(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     const actionName = event.target?.value;
     if (actionName === "") {
@@ -290,7 +290,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
         content: `Round ended for ${this.actor.name}. Setting CP to ${newCp}<br>${actionsText}`,
       };
       actionsTaken.length = 0;
-      this.actor.update({
+      await this.actor.update({
         data: {
           commandPoints: newCp,
           actionsTaken: actionsTaken,
@@ -446,7 +446,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       // one time action
       supportingDept = "";
     }
-    this.actor.update({
+    await this.actor.update({
       "data.commandPoints": cp,
       "data.actionsTaken": actionsTaken,
       "data.supportingDept": supportingDept,
@@ -454,6 +454,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     event.target.value = "";
     return;
   }
+
   _onHullChange(event: JQuery.ClickEvent): void {
     const targetHull = event.target?.value;
 
@@ -481,7 +482,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     }
   }
 
-  _onRepair(event: JQuery.ClickEvent): void {
+  async _onRepair(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     const data = this.actor.data.data;
     const hpToFix = data.health.max - data.health.value;
@@ -518,11 +519,11 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
         : item.data.data.cost;
       disabledCosts += itemCost;
       itemsToFix.push(`${item.name} (${itemCost})`);
-      item.update({ "data.broken": false });
+      await item.update({ "data.broken": false });
     }
     const fullRepairCost = disabledCosts * 0.25;
     const totalCost = hpCosts + fullRepairCost;
-    this.actor.update({ "data.health.value": data.health.max });
+    await this.actor.update({ "data.health.value": data.health.max });
     if (totalCost > 0) {
       const itemList = itemsToFix.join("<br>");
       const content = `<h3>Ship Repaired</h3><b>Estimated Total Cost: ${totalCost}</b><br>HP points: ${hpToFix} cost: ${hpCosts}<br>Full Repair Costs: ${fullRepairCost} (25%/item cost). <br><br> Items Repaired (item full cost):<br> ${itemList} `;
@@ -714,7 +715,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     this.popUpDialog.render(true);
   }
 
-  _onRefuel(event: JQuery.ClickEvent): void {
+  async _onRefuel(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     const data = this.actor.data.data;
     const daysToRefill = data.lifeSupportDays.max - data.lifeSupportDays.value;
@@ -722,7 +723,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     const lifeCost = daysToRefill * 20;
     const fuelCost = fuelToRefill * 500;
     const totalCost = lifeCost + fuelCost;
-    this.actor.update({
+    await this.actor.update({
       "data.lifeSupportDays.value": data.lifeSupportDays.max,
       "data.fuel.value": data.fuel.max,
     });
