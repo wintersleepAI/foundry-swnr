@@ -1,5 +1,6 @@
 import { SWNRCharacterActor } from "../actors/character";
 import { SWNRDroneActor } from "../actors/drone";
+import { SWNRFactionActor } from "../actors/faction";
 import { SWNRMechActor } from "../actors/mech";
 import { SWNRNPCActor } from "../actors/npc";
 import { SWNRShipActor } from "../actors/ship";
@@ -13,6 +14,7 @@ interface BaseSheetData extends ItemSheet.Data {
     | SWNRDroneActor
     | SWNRVehicleActor
     | SWNRMechActor
+    | SWNRFactionActor
     | null;
 }
 export class BaseSheet extends ItemSheet<DocumentSheet.Options, BaseSheetData> {

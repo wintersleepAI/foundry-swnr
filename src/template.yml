@@ -135,6 +135,8 @@ Actor:
       right:
         label: Bio/Notes
         contents: ""
+  faction:
+    name: ""
   ship:
     templates:
       - vehiclebase

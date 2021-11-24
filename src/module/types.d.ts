@@ -4,6 +4,7 @@ import { SWNRDroneActor } from "./actors/drone";
 import { SWNRMechActor } from "./actors/mech";
 import { SWNRNPCActor } from "./actors/npc";
 import { SWNRShipActor } from "./actors/ship";
+import { SWNRFactionActor } from "./actors/faction";
 import { SWNRVehicleActor } from "./actors/vehicle";
 import { SWNRBaseItem } from "./base-item";
 
@@ -20,7 +21,9 @@ declare global {
       | typeof SWNRShipActor
       | typeof SWNRMechActor
       | typeof SWNRVehicleActor
-      | typeof SWNRDroneActor;
+      | typeof SWNRDroneActor
+      | typeof SWNRFactionActor;
+
     Item: typeof SWNRBaseItem;
   }
   interface LenientGlobalVariableTypes {

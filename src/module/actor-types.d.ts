@@ -1,6 +1,13 @@
 import { SWNRArmorTypes, AllItemClasses, ItemTypes } from "./item-types";
 
-type ActorTypes = "character" | "npc" | "ship" | "mech" | "drone" | "vehicle";
+type ActorTypes =
+  | "character"
+  | "npc"
+  | "ship"
+  | "mech"
+  | "drone"
+  | "vehicle"
+  | "faction";
 
 declare type SWNRStats = "str" | "dex" | "con" | "int" | "wis" | "cha";
 
@@ -180,6 +187,13 @@ declare interface SWNRCharacterComputedData
   };
   stats: { [key in SWNRStats]: SWNRStatComputed };
 }
+
+declare interface SWNRFactionData {
+  name: string;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+declare interface SWNRFactionComputed {}
 
 declare interface SWNRShipComputed {
   power: {
@@ -381,7 +395,8 @@ declare global {
       | { type: "ship"; data: Merge<SWNRShipData, SWNRShipComputed> }
       | { type: "mech"; data: Merge<SWNRMechData, SWNRMechComputed> }
       | { type: "drone"; data: Merge<SWNRDroneData, SWNRDroneComputed> }
-      | { type: "vehicle"; data: Merge<SWNRVehicleData, SWNRVehicleComputed> };
+      | { type: "vehicle"; data: Merge<SWNRVehicleData, SWNRVehicleComputed> }
+      | { type: "faction"; data: Merge<SWNRFactionData, SWNRFactionComputed> };
   }
   interface SourceConfig {
     Actor:
@@ -390,6 +405,7 @@ declare global {
       | { type: "ship"; data: SWNRShipData }
       | { type: "mech"; data: SWNRMechData }
       | { type: "drone"; data: SWNRDroneData }
-      | { type: "vehicle"; data: SWNRVehicleData };
+      | { type: "vehicle"; data: SWNRVehicleData }
+      | { type: "faction"; data: SWNRFactionData };
   }
 }

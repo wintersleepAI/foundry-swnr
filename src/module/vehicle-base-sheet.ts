@@ -29,7 +29,11 @@ export class VehicleBaseActorSheet<
   }
 
   async _onCrewDelete(event: JQuery.ClickEvent): Promise<void> {
-    if (this.actor.type == "character" || this.actor.type == "npc") {
+    if (
+      this.actor.type == "character" ||
+      this.actor.type == "npc" ||
+      this.actor.type == "faction"
+    ) {
       return;
     }
     const actor:
