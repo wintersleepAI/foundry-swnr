@@ -156,7 +156,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     return await this.popUpDialog.render(true);
   }
 
-  _onItemLevelUp(event: JQuery.ClickEvent): void {
+  async _onItemLevelUp(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
     const wrapper = $(event.currentTarget).parents(".item");
@@ -207,7 +207,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
         ui.notifications?.error(`Skill points not set`);
         return;
       }
-      skill.update({ "data.rank": rank + 1 });
+      await skill.update({ "data.rank": rank + 1 });
       if (isPsy) {
         const newPsySkillPoints = Math.max(
           0,
@@ -219,7 +219,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
           newSkillPoints -=
             skillCost - this.actor.data.data.unspentPsySkillPoints;
         }
-        this.actor.update({
+        await this.actor.update({
           "data.unspentSkillPoints": newSkillPoints,
           "data.unspentPsySkillPoints": newPsySkillPoints,
         });
@@ -229,7 +229,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       } else {
         const newSkillPoints =
           this.actor.data.data.unspentSkillPoints - skillCost;
-        this.actor.update({ "data.unspentSkillPoints": newSkillPoints });
+        await this.actor.update({ "data.unspentSkillPoints": newSkillPoints });
         ui.notifications?.info(`Removed ${skillCost} skill points`);
       }
     }
@@ -485,7 +485,6 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       const formula = `${currentLevel}${baseRoll} + ${boosts} + ${constBonus}`;
 
       let msg = `Rolling Level ${currentLevel} HP: ${formula}<br>(Roll for level + con mod)<br>`;
-      console.log(formula);
       const roll = new Roll(formula).roll();
       if (roll.total) {
         let hpRoll = Math.max(roll.total, 1);
@@ -496,7 +495,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
           hpRoll = Math.max(hpRoll, currentHp + 1);
         }
         msg += `Setting HP max to ${hpRoll}<br>`;
-        this.actor.update({
+        await this.actor.update({
           "data.health_max_modified": currentLevel,
           "data.health_base_type": hpBaseInput,
           "data.health.max": hpRoll,
@@ -614,7 +613,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     const html = await renderTemplate(template, data);
     this.popUpDialog?.close();
 
-    const _saveTweakChar = (html: HTMLFormElement) => {
+    const _saveTweakChar = async (html: HTMLFormElement) => {
       const form = <HTMLFormElement>html[0].querySelector("form");
       const advantageInit = (<HTMLInputElement>(
         form.querySelector('[name="advantageInit"]')
@@ -648,7 +647,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
           showResourceList: showResourceList,
         },
       };
-      this.actor.update(update);
+      await this.actor.update(update);
     };
     this.popUpDialog = new Dialog(
       {
