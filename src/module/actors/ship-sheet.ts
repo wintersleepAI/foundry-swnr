@@ -512,6 +512,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
 
     let disabledCosts = 0;
     const itemsToFix: string[] = [];
+    const eitems: Record<string, unknown>[] = [];
     for (let i = 0; i < disabledParts.length; i++) {
       const item = disabledParts[i];
       const itemCost = item.data.data.costMultiplier
@@ -519,7 +520,10 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
         : item.data.data.cost;
       disabledCosts += itemCost;
       itemsToFix.push(`${item.name} (${itemCost})`);
-      await item.update({ "data.broken": false });
+      eitems.push({ _id: item.id, data: { broken: false } });
+    }
+    if (eitems.length > 0) {
+      await this.actor.updateEmbeddedDocuments("Item", eitems);
     }
     const fullRepairCost = disabledCosts * 0.25;
     const totalCost = hpCosts + fullRepairCost;
