@@ -1,12 +1,13 @@
 import { SWNRBaseItem } from "./base-item";
 import { SWNRStats } from "./actor-types";
 import { SWNRWeapon } from "./items/weapon";
-import { SWNRAllVehicleClasses } from "./actor-types";
+import { SWNRAllVehicleClasses, FactionRating } from "./actor-types";
+import { SWNRAsset } from "./items/asset";
 
 type MetaItemTypes = "class" | "power" | "focus" | "skill";
 type RealItemTypes = "armor" | "weapon" | "item" | "cyberware";
 type ShipItemTypes = "shipWeapon" | "shipFitting" | "shipDefense";
-type ItemTypes = RealItemTypes | MetaItemTypes | ShipItemTypes;
+type ItemTypes = RealItemTypes | MetaItemTypes | ShipItemTypes | "asset";
 
 declare type ItemsWithCustomClasses = SWNRWeapon;
 declare type ItemTypesMissingCustomClasses = Exclude<
@@ -115,6 +116,25 @@ declare interface SWNRShipFittingData
   effect: string;
 }
 
+type AssetType = "cunning" | "wealth" | "force";
+declare interface SWNRFactionAsset extends SWNRDescData {
+  health: {
+    value: number;
+    max: number;
+  };
+  cost: number;
+  baseOfInfluence: boolean;
+  tl: 0 | 1 | 2 | 3 | 4 | 5;
+  rating: FactionRating;
+  type: string;
+  attackTarget: AssetType | "";
+  attackDamage: string;
+  attackSpecial: string;
+  counter: string;
+  note: string;
+  turnRoll: string;
+}
+
 declare interface SWNRArmorData extends SWNRBaseItemData {
   ac: number;
   shield: boolean;
@@ -173,7 +193,8 @@ declare global {
       | { type: "cyberware"; data: SWNRCyberware }
       | { type: "shipWeapon"; data: SWNRShipWeaponData }
       | { type: "shipDefense"; data: SWNRShipDefenseData }
-      | { type: "shipFitting"; data: SWNRShipFittingData };
+      | { type: "shipFitting"; data: SWNRShipFittingData }
+      | { type: "asset"; data: SWNRAsset };
   }
 
   interface SourceConfig {
@@ -188,6 +209,7 @@ declare global {
       | { type: "cyberware"; data: SWNRCyberware }
       | { type: "shipWeapon"; data: SWNRShipWeaponData }
       | { type: "shipDefense"; data: SWNRShipDefenseData }
-      | { type: "shipFitting"; data: SWNRShipFittingData };
+      | { type: "shipFitting"; data: SWNRShipFittingData }
+      | { type: "asset"; data: SWNRAsset };
   }
 }

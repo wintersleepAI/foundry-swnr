@@ -1,0 +1,15 @@
+<form class="{{cssClass}} bg-gray-200 -m-2 p-2 space-y-2">
+  <div>
+    <div class="flex gap-2">
+      <div class="flex-shrink-0 h-40 hidden md:block lg:h-16 md:w-16">
+        <img class="shadow-md bg-gray-100 h-full w-full object-contain profile-img" src="{{actor.img}}"
+          title="{{actor.name}}" data-edit="img" />
+      </div>
+      <div class="flex-grow grid grid-cols-1 lg:grid-cols-6 items-center gap-2">
+        <input
+          class="text-2xl col-span-3 px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'swnr.sheet.name'}}" />
+      </div>
+    </div>
+  </div>
+</form>

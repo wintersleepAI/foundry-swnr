@@ -35,6 +35,8 @@ type SWNRShipHullType =
   | "smallStation"
   | "largeStation";
 
+type FactionRating = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+
 declare interface SWNRStatBase {
   base: number;
   bonus: number;
@@ -189,7 +191,19 @@ declare interface SWNRCharacterComputedData
 }
 
 declare interface SWNRFactionData {
-  name: string;
+  description: string;
+  health: {
+    value: number;
+    max: number;
+  };
+  forceRating: FactionRating;
+  cunningRating: FactionRating;
+  wealthRating: FactionRating;
+  facCreds: number;
+  xp: number;
+  homeworld: string;
+  tags: string[];
+  factionGoald: string;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
