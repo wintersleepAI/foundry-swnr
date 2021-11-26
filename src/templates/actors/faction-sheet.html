@@ -1,6 +1,6 @@
 <form class="{{cssClass}} bg-gray-200 -m-2 p-2 space-y-2">
-  <div>
-    <div class="flex gap-2">
+  <div class="flex gap-2 flex-col">
+    <div class="flex">
       <div class="flex-shrink-0 h-40 hidden md:block lg:h-16 md:w-16">
         <img class="shadow-md bg-gray-100 h-full w-full object-contain profile-img" src="{{actor.img}}"
           title="{{actor.name}}" data-edit="img" />
@@ -11,5 +11,124 @@
           name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'swnr.sheet.name'}}" />
       </div>
     </div>
-  </div>
+    <div class="border border-gray-600 rounded-md my-2 bg-gray-300">
+      <h2 class="text-base p-1">{{localize 'swnr.sheet.description'}}</h2>
+      <div class="p-1 border-t border-black">
+        {{!-- TODO: fix is for wrapping around text, because this is a little fixed --}}
+        {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable }}
+      </div>
+    </div>
+    <div class="flex-grow flexrow">
+      <!--HP-->
+      <div class="hp flex flex-col justify-center items-center">
+        <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+          <input
+            class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            type="number" step="1" name="data.health.value" value="{{actor.data.data.health.value}}" data-dtype="Number"
+            min="0" /><span>/</span><input
+            class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            type="number" name="data.health.max" value="{{actor.data.data.health.max}}" step="1" min="1"
+            data-dtype="Number" />
+        </div>
+        <label class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+          {{localize 'swnr.sheet.hp'}}
+        </label>
+      </div>
+
+      <!-- force -->
+      <div class="flex-col text-center items-center p-2">
+        <select class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+          name="data.forceRating">
+          {{#select data.data.forceRating}}
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          {{/select}}
+        </select>
+        <div>{{localize 'swnr.sheet.faction.forceRating'}}</div>
+      </div>
+      <!-- cunning -->
+      <div class="flex-col text-center items-center p-2">
+        <select class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+          name="data.cunningRating">
+          {{#select data.data.cunningRating}}
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          {{/select}}
+        </select>
+        <div>{{localize 'swnr.sheet.faction.cunningRating'}}</div>
+      </div>
+      <!-- wealth -->
+      <div class="flex-col text-center items-center p-2">
+        <select class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+          name="data.wealthRating">
+          {{#select data.data.wealthRating}}
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          {{/select}}
+        </select>
+        <div>{{localize 'swnr.sheet.faction.wealthRating'}}</div>
+      </div>
+    </div>
+    <div class="flexrow flex-grow">
+      <!-- facCreds -->
+      <div class="flex flex-col items-center p-2">
+        <input
+          class="w-32 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          type="number" step="1" data-dtype="Number" name="data.facCreds" value="{{data.data.facCreds}}" />
+        <div>{{localize 'swnr.sheet.faction.facCreds'}}</div>
+      </div>
+
+      <!-- xp -->
+      <div class="flex flex-col items-center p-2">
+        <input
+          class="w-32 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          type="number" step="1" data-dtype="Number" name="data.xp" value="{{data.data.xp}}" />
+        <div>{{localize 'swnr.sheet.faction.xp'}}</div>
+      </div>
+
+      <!-- homeworld -->
+      <div class="flex flex-col items-center p-2">
+        <input
+          class="w-32 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          name="data.homeworld" value="{{data.data.homeworld}}" />
+        <div>{{localize 'swnr.sheet.faction.homeworld'}}</div>
+      </div>
+    </div>
+    <div class="flexrow flex-grow">
+
+      <!-- table-->
+      <li class="item-titles flexrow">
+        <!--<div class="item-caret"><!--<i class="fas fa-caret-down"></i></div>-->
+        <div class="item-name ml-5">Cunning Assets </div>
+        <div class="text-center"> {{ localize 'swnr.item.enc' }} </div>
+        {{#if (eq itemType "item")}}
+        <div class="text-center"> {{ localize 'swnr.item.qty' }} </div>
+        {{/if}}
+        <div class=""> {{ localize 'swnr.item.location' }} </div>
+        <div class="item-controls flex-shrink text-right">
+          <a class="item-control item-create text-gray-100 hover:text-green-400 transition-colors"
+            title="{{localize 'swnr.sheet.add-item'}}" data-item-type="{{ itemType }}" data-item-name="{{ name }}">
+            <i class="fas fa-plus"></i>
+          </a>
+        </div>
+      </li>
+    </div>
 </form>

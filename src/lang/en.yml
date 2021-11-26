@@ -337,7 +337,7 @@
     armor: Armor
     hp: HP
     permanent-strain: Perm. Strain
-    f: Attack Bonus
+    attack-bonus: Attack Bonus
     system-strain: System Strain
     tabs:
       biography: Biography
@@ -369,7 +369,7 @@
     skill: Skill
     employer: Employer
     source: Source
-    faction: Faction
+    factionname: Faction
     movement: Movement
     base-ac: Base AC
     vs: vs
@@ -430,6 +430,15 @@
         s: S
         m: M
         l: L
+    faction:
+      forceRating: Force Rating
+      cunningRating: Cunning Rating
+      wealthRating: Wealth Rating
+      facCreds: FacCreds
+      xp: XP
+      homeworld: Homeworld
+      tags: Tags
+      assets: Assets
     ship:
       life-support-days: Life Support Days
       fuel: Fuel
