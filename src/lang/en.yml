@@ -439,6 +439,15 @@
       homeworld: Homeworld
       tags: Tags
       assets: Assets
+      assetType: Asset Type
+      baseOfInfluence: Base of Influence
+      attackTarget: Target
+      attackDamage: Damage
+      counter: Counter
+      note: Note
+      turnRoll: On Turn Roll
+      tl: TL
+      rating: Rating
     ship:
       life-support-days: Life Support Days
       fuel: Fuel

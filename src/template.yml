@@ -367,6 +367,7 @@ Item:
       value: 1
       max: 1
     cost: 1
+    rating: 1
     baseOfInfluence: false
     tl: 0
     attackTarget: ""
@@ -374,6 +375,7 @@ Item:
     counter: ""
     note: ""
     turnRoll: ""
+    assetType: cunning
   skill:
     templates:
       - description

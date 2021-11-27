@@ -2,9 +2,11 @@ import { AllItemClasses } from "../item-types";
 import { BaseActorSheet } from "../actor-base-sheet";
 import { SWNRBaseItem } from "../base-item";
 import { SWNRFactionActor } from "./faction";
+import { SWNRAsset } from "../items/asset";
 
 interface FactionActorSheetData extends ActorSheet.Data {
   itemTypes: SWNRFactionActor["itemTypes"];
+  assets: AllItemClasses & { data: { type: "asset" } };
 }
 export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
   popUpDialog?: Dialog;

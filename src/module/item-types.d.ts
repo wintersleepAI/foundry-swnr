@@ -133,6 +133,7 @@ declare interface SWNRFactionAsset extends SWNRDescData {
   counter: string;
   note: string;
   turnRoll: string;
+  assetType: AssetType;
 }
 
 declare interface SWNRArmorData extends SWNRBaseItemData {

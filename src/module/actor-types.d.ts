@@ -1,4 +1,5 @@
 import { SWNRArmorTypes, AllItemClasses, ItemTypes } from "./item-types";
+import { SWNRAsset } from "./items/asset";
 
 type ActorTypes =
   | "character"
@@ -207,7 +208,11 @@ declare interface SWNRFactionData {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-declare interface SWNRFactionComputed {}
+declare interface SWNRFactionComputed {
+  cunningAssets: SWNRAsset[];
+  wealthAssets: SWNRAsset[];
+  forceAssets: SWNRAsset[];
+}
 
 declare interface SWNRShipComputed {
   power: {
