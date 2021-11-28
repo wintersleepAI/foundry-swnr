@@ -39,6 +39,13 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
       template: "systems/swnr/templates/actors/faction-sheet.html",
       width: 750,
       height: 600,
+      tabs: [
+        {
+          navSelector: ".pc-sheet-tabs",
+          contentSelector: ".sheet-body",
+          initial: "assets",
+        },
+      ],
     });
   }
 

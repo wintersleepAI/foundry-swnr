@@ -448,6 +448,9 @@
       turnRoll: On Turn Roll
       tl: TL
       rating: Rating
+      hp: HP
+      assets-tab: Assets
+      desc-tab: Description
     ship:
       life-support-days: Life Support Days
       fuel: Fuel

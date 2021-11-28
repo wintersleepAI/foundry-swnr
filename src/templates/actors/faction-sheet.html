@@ -11,14 +11,7 @@
           name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'swnr.sheet.name'}}" />
       </div>
     </div>
-    <div class="border border-gray-600 rounded-md my-2 bg-gray-300">
-      <h2 class="text-base p-1">{{localize 'swnr.sheet.description'}}</h2>
-      <div class="p-1 border-t border-black">
-        {{!-- TODO: fix is for wrapping around text, because this is a little fixed --}}
-        {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable }}
-      </div>
-    </div>
-    <div class="flex-grow flexrow">
+    <div class="flex-grow flexrow flex-wrap">
       <!--HP-->
       <div class="flex flex-col items-center p-2">
         <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
@@ -111,52 +104,52 @@
         <div>{{localize 'swnr.sheet.faction.homeworld'}}</div>
       </div>
     </div>
-    <div class="flexrow flex-grow">
-      <div>
-        <!-- table-->
-        <li class="item-titles flexrow">
-          <!--<div class="item-caret"><!--<i class="fas fa-caret-down"></i></div>-->
-          <div class="item-name ml-5">Cunning Assets </div>
-          <div class="text-center"> {{ localize 'swnr.sheet.faction.rating' }} </div>
-          <div class=""> {{ localize 'swnr.sheet.faction.assetType' }} </div>
-          <div class=""> {{ localize 'swnr.sheet.faction.attackTarget' }} /  {{ localize 'swnr.sheet.faction.attackDamage' }} </div>
-          <div class="item-controls flex-shrink text-right">
-            <a class="item-control item-create text-gray-100 hover:text-green-400 transition-colors"
-              title="{{localize 'swnr.sheet.add-item'}}" data-item-type="{{ itemType }}" data-item-name="{{ name }}">
-              <i class="fas fa-plus"></i>
-            </a>
-          </div>
-        </li>
-        <ol class="item-list">
-          {{#each data.data.cunningAssets as |item id|}}
-          <li class="item-entry">
-            <div class="item flexrow py-3.0" data-item-id="{{item.id}}">
-              <div class="item-image" style="background-image: url({{item.img}})"><a></a></div>
-              <div class="item-name item-click item-rollable flexrow pr-2.0">
-                <a>{{item.name}}</a>
-              </div>
-              <div>
-                {{ item.data.data.rating }}
-              </div>
-              <div>
-                {{ item.data.data.assetType }}
-              </div>
-              <div>
-                {{ item.data.data.attackTarget }} /
-                {{ item.data.data.attackDamage }}
-              </div>
-              <div class="item-controls text-right flex-shrink">
-                <a class="item-control item-edit text-gray-600 hover:text-purple-800 transition-colors"
-                  title='{{localize ' swnr.sheet.edit-item'}}'>
-                  <i class="fas fa-edit"></i></a>
-                <a class="item-control item-delete text-gray-600 hover:text-red-600 transition-colors"
-                  title='{{localize ' swnr.sheet.delete-item'}}'>
-                  <i class="fas fa-trash"></i></a>
-              </div>
-            </div>
-          </li>
-          {{/each}}
-        </ol>
+    {{!-- Sheet Body --}}
+
+    <div class="w-full">
+      <nav class="pc-sheet-tabs tabs py-1 flex flex-wrap gap-2 border-t border-b border-trueGray-500 border1 mb-1"
+        data-group="primary">
+        <a class="item" data-tab="assets">
+          {{localize 'swnr.sheet.faction.assets-tab'}}
+        </a>
+        <a class="item" data-tab="desc">
+          {{localize 'swnr.sheet.faction.desc-tab'}}
+        </a>
+
+      </nav>
+      <section class="sheet-body">
+      <!-- Asset tab -->
+      <div class="tab assets min-h-full" data-group="primary" data-tab="assets">
+        <div class="flexrow flex-grow">
+          {{>
+          "systems/swnr/templates/actors/fragments/faction-assets.html"
+          type="asset" itemType="cunningAsset" name="Cunning" assets=data.data.cunningAssets
+          }}
+        </div>
+        
+        <div class="flexrow flex-grow">
+          {{>
+          "systems/swnr/templates/actors/fragments/faction-assets.html"
+          type="asset" itemType="wealthAsset" name="Wealth" assets=data.data.wealthAssets
+          }}
+        </div>
+
+        <div class="flexrow flex-grow">
+          {{>
+          "systems/swnr/templates/actors/fragments/faction-assets.html"
+          type="asset" itemType="forceAsset" name="Force" assets=data.data.forceAssets
+          }}
+        </div>
       </div>
-    </div>
+      <div class="tab desc min-h-full" data-group="primary" data-tab="desc">
+        <div class="border border-gray-600 rounded-md my-2 bg-gray-300">
+          <h2 class="text-base p-1">{{localize 'swnr.sheet.description'}}</h2>
+          <div class="p-1 border-t border-black">
+            {{!-- TODO: fix is for wrapping around text, because this is a little fixed --}}
+            {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable }}
+          </div>
+        </div>
+      </div>
+      </section>
+
 </form>
