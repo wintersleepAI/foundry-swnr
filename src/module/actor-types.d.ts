@@ -1,5 +1,5 @@
 import { SWNRArmorTypes, AllItemClasses, ItemTypes } from "./item-types";
-import { SWNRAsset } from "./items/asset";
+import { SWNRFactionAsset } from "./items/asset";
 
 type ActorTypes =
   | "character"
@@ -197,6 +197,7 @@ declare interface SWNRFactionData {
     value: number;
     max: number;
   };
+  active: boolean;
   forceRating: FactionRating;
   cunningRating: FactionRating;
   wealthRating: FactionRating;
@@ -209,9 +210,9 @@ declare interface SWNRFactionData {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 declare interface SWNRFactionComputed {
-  cunningAssets: SWNRAsset[];
-  wealthAssets: SWNRAsset[];
-  forceAssets: SWNRAsset[];
+  cunningAssets: SWNRFactionAsset[];
+  wealthAssets: SWNRFactionAsset[];
+  forceAssets: SWNRFactionAsset[];
 }
 
 declare interface SWNRShipComputed {

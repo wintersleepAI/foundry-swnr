@@ -1,6 +1,6 @@
 import { SWNRBaseActor } from "../base-actor";
 import { SWNRBaseItem } from "../base-item";
-import { SWNRAsset } from "../items/asset";
+import { SWNRFactionAsset } from "../items/asset";
 
 export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
   getRollData(): this["data"]["data"] {
@@ -27,13 +27,13 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
     const assets = <SWNRBaseItem<"asset">[]>(
       this.items.filter((i) => i.type == "asset")
     );
-    const cunningAssets: Array<SWNRAsset> = assets.filter(
+    const cunningAssets: Array<SWNRFactionAsset> = assets.filter(
       (i: SWNRBaseItem<"asset">) => i.data.data["assetType"] === "cunning"
     );
-    const forceAssets: Array<SWNRAsset> = assets.filter(
+    const forceAssets: Array<SWNRFactionAsset> = assets.filter(
       (i: SWNRBaseItem<"asset">) => i.data.data["assetType"] === "force"
     );
-    const wealthAssets: Array<SWNRAsset> = assets.filter(
+    const wealthAssets: Array<SWNRFactionAsset> = assets.filter(
       (i: SWNRBaseItem<"asset">) => i.data.data["assetType"] === "wealth"
     );
 

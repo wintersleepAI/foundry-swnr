@@ -441,6 +441,7 @@
       assets: Assets
       assetType: Asset Type
       baseOfInfluence: Base of Influence
+      attackSource: Source
       attackTarget: Target
       attackDamage: Damage
       counter: Counter
@@ -451,6 +452,7 @@
       hp: HP
       assets-tab: Assets
       desc-tab: Description
+      active: Active Faction
     ship:
       life-support-days: Life Support Days
       fuel: Fuel

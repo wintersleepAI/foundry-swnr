@@ -5,11 +5,20 @@
         <img class="shadow-md bg-gray-100 h-full w-full object-contain profile-img" src="{{actor.img}}"
           title="{{actor.name}}" data-edit="img" />
       </div>
-      <div class="flex-grow grid grid-cols-1 lg:grid-cols-6 items-center gap-2">
+      <div class="flex-grow flexrow px-3  items-center gap-2">
         <input
           class="text-2xl col-span-3 px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'swnr.sheet.name'}}" />
       </div>
+          <!-- active -->
+      <div class="flexrow items-center">
+        <span>
+        {{localize 'swnr.sheet.faction.active'}}:
+        <input type="checkbox" name="data.active" {{checked data.data.active}}>
+
+        </span>
+      </div>
+
     </div>
     <div class="flex-grow flexrow flex-wrap">
       <!--HP-->
@@ -103,6 +112,9 @@
           name="data.homeworld" value="{{data.data.homeworld}}" />
         <div>{{localize 'swnr.sheet.faction.homeworld'}}</div>
       </div>
+
+  
+
     </div>
     {{!-- Sheet Body --}}
 

@@ -30,7 +30,7 @@
     </div>
 
     <!-- Base of influence -->
-    <div class="flex flex-row items-center">
+    <div class="flex flexrow items-center">
       {{localize 'swnr.sheet.faction.baseOfInfluence'}}:
       <input type="checkbox" name="data.baseOfInfluence" {{checked data.data.baseOfInfluence}}>
     </div>
@@ -77,6 +77,19 @@
       </select>
     </div>
 
+    <!-- Attack Source-->
+    <div class="flex-col text-center items-center p-2">
+      {{localize 'swnr.sheet.faction.attackSource'}}:
+      <select class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+        name="data.attackSource">
+        {{#select data.data.attackSource}}
+        <option value=""></option>
+        <option value="cunning">Cunning</option>
+        <option value="force">Force</option>
+        <option value="wealth">Wealth</option>
+        {{/select}}
+      </select>
+    </div>
 
     <!-- Attack Target-->
     <div class="flex-col text-center items-center p-2">

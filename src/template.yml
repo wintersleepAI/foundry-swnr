@@ -147,6 +147,7 @@ Actor:
     facCreds: 1
     xp: 0
     homeworld: ""
+    active: true
     tags: []
   ship:
     templates:
@@ -371,6 +372,7 @@ Item:
     baseOfInfluence: false
     tl: 0
     attackTarget: ""
+    attackSource: ""
     attackDamage: ""
     counter: ""
     note: ""

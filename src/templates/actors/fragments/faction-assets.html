@@ -1,15 +1,15 @@
       <div class="table-container" role="table">
         <!-- table-->
         <div class="item-titles flex-table header flexrow" role="rowgroup">
-          {{!-- <div class="item-caret flex-row first" role="columnheader"><i class="fas fa-caret-down"></i></div> --}}
-          <div class="item-name  flex-row" role="columnheader">{{ name }} Assets </div>
-          <div class=" flex-row small-cell text-center" role="columnheader"> {{ localize 'swnr.sheet.faction.rating' }} </div>
-          <div class=" flex-row small-cell text-center" role="columnheader"> {{ localize 'swnr.sheet.faction.hp' }} </div>
-          <div class=" flex-row text-center" role="columnheader"> {{ localize 'swnr.sheet.faction.assetType' }} </div>
-          <div class=" flex-row text-center" role="columnheader"> {{ localize 'swnr.sheet.faction.attackTarget' }} / {{ localize
+          {{!-- <div class="item-caret flexrow first" role="columnheader"><i class="fas fa-caret-down"></i></div> --}}
+          <div class="item-name  flexrow" role="columnheader">{{ name }} Assets </div>
+          <div class=" flexrow small-cell text-center" role="columnheader"> {{ localize 'swnr.sheet.faction.rating' }} </div>
+          <div class=" flexrow small-cell text-center" role="columnheader"> {{ localize 'swnr.sheet.faction.hp' }} </div>
+          <div class=" flexrow text-center" role="columnheader"> {{ localize 'swnr.sheet.faction.assetType' }} </div>
+          <div class=" flexrow text-center" role="columnheader"> {{ localize 'swnr.sheet.faction.attackTarget' }} / {{ localize
             'swnr.sheet.faction.attackDamage' }} </div>
-          <div class=" flex-row text-center" role="columnheader"> {{ localize 'swnr.sheet.faction.counter' }} </div>
-          <div class="item-controls small-cell flex-row flex-shrink text-right" role="columnheader">
+          <div class=" flexrow text-center" role="columnheader"> {{ localize 'swnr.sheet.faction.counter' }} </div>
+          <div class="item-controls small-cell flexrow flex-shrink text-right" role="columnheader">
             <a class="item-control item-create text-gray-100 hover:text-green-400 transition-colors"
               title="{{localize 'swnr.sheet.add-item'}}" data-item-type="{{ itemType }}" data-item-name="{{ name }}">
               <i class="fas fa-plus"></i>
@@ -18,30 +18,30 @@
         </div>
         {{#each assets as |item id|}}
         <div class="item item-entry flex-table row flexrow pl-2" role="rowgroup" data-item-id="{{item.id}}">
-          <div class="flex-row first" role="cell">
+          <div class="flexrow first item-name item-click item-rollable" role="cell">
             <div class="item-image" style="background-image: url({{item.img}})"><a></a>
             </div>
-            <div class="item-name item-click item-rollable  flex-row pr-2.0" role="cell">
+            <div class="  flexrow pr-2.0" role="cell">
               <a>{{item.name}}</a>
             </div>
           </div>
-          <div class="flex-row small-cell text-center" role="cell">
+          <div class="flexrow small-cell text-center" role="cell">
             {{ item.data.data.rating }}
           </div>
-          <div class="flex-row small-cell text-center" role="cell">
+          <div class="flexrow small-cell text-center" role="cell">
             {{ item.data.data.health.value }}
           </div>
-          <div class="flex-row text-center" role="cell">
+          <div class="flexrow text-center" role="cell">
             {{ item.data.data.assetType }}
           </div>
-          <div class="flex-row text-center" role="cell">
+          <div class="flexrow text-center" role="cell">
             {{ item.data.data.attackTarget }} /
             {{ item.data.data.attackDamage }}
           </div>
-          <div class="flex-row text-center" role="cell">
+          <div class="flexrow text-center" role="cell">
             {{ item.data.data.counter }}
           </div>
-          <div class="item-controls  small-cell pr-2 text-right flex-shrink flex-row" role="cell">
+          <div class="item-controls  small-cell pr-2 text-right flex-shrink flexrow" role="cell">
             <a class="item-control item-edit text-gray-600 hover:text-purple-800 transition-colors" title='{{localize 'swnr.sheet.edit-item'}}'>
               <i class="fas fa-edit"></i></a>
             <a class="item-control item-delete text-gray-600 hover:text-red-600 transition-colors" title='{{localize 'swnr.sheet.delete-item'}}'>

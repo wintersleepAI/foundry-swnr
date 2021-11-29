@@ -2,7 +2,6 @@ import { SWNRBaseItem } from "./base-item";
 import { SWNRStats } from "./actor-types";
 import { SWNRWeapon } from "./items/weapon";
 import { SWNRAllVehicleClasses, FactionRating } from "./actor-types";
-import { SWNRAsset } from "./items/asset";
 
 type MetaItemTypes = "class" | "power" | "focus" | "skill";
 type RealItemTypes = "armor" | "weapon" | "item" | "cyberware";
@@ -127,6 +126,7 @@ declare interface SWNRFactionAsset extends SWNRDescData {
   tl: 0 | 1 | 2 | 3 | 4 | 5;
   rating: FactionRating;
   type: string;
+  attackSource: AssetType | "";
   attackTarget: AssetType | "";
   attackDamage: string;
   attackSpecial: string;
@@ -195,7 +195,7 @@ declare global {
       | { type: "shipWeapon"; data: SWNRShipWeaponData }
       | { type: "shipDefense"; data: SWNRShipDefenseData }
       | { type: "shipFitting"; data: SWNRShipFittingData }
-      | { type: "asset"; data: SWNRAsset };
+      | { type: "asset"; data: SWNRFactionAsset };
   }
 
   interface SourceConfig {
@@ -211,6 +211,6 @@ declare global {
       | { type: "shipWeapon"; data: SWNRShipWeaponData }
       | { type: "shipDefense"; data: SWNRShipDefenseData }
       | { type: "shipFitting"; data: SWNRShipFittingData }
-      | { type: "asset"; data: SWNRAsset };
+      | { type: "asset"; data: SWNRFactionAsset };
   }
 }
