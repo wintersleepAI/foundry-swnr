@@ -453,6 +453,9 @@
       assets-tab: Assets
       desc-tab: Description
       active: Active Faction
+      attack-roll: Attack Hit Roll
+      counter-roll: Counter Hit Roll
+      damage: Damage
     ship:
       life-support-days: Life Support Days
       fuel: Fuel

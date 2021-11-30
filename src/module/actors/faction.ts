@@ -27,13 +27,13 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
     const assets = <SWNRBaseItem<"asset">[]>(
       this.items.filter((i) => i.type == "asset")
     );
-    const cunningAssets: Array<SWNRFactionAsset> = assets.filter(
+    const cunningAssets: Array<SWNRBaseItem<"asset">> = assets.filter(
       (i: SWNRBaseItem<"asset">) => i.data.data["assetType"] === "cunning"
     );
-    const forceAssets: Array<SWNRFactionAsset> = assets.filter(
+    const forceAssets: Array<SWNRBaseItem<"asset">> = assets.filter(
       (i: SWNRBaseItem<"asset">) => i.data.data["assetType"] === "force"
     );
-    const wealthAssets: Array<SWNRFactionAsset> = assets.filter(
+    const wealthAssets: Array<SWNRBaseItem<"asset">> = assets.filter(
       (i: SWNRBaseItem<"asset">) => i.data.data["assetType"] === "wealth"
     );
 
