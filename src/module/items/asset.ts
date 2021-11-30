@@ -1,5 +1,6 @@
 import { SWNRFactionActor } from "../actors/faction";
-import { SWNRBaseActor } from "../base-actor";
+import { ValidatedDialog } from "../ValidatedDialog";
+import { AssetType } from "../item-types";
 import { SWNRBaseItem } from "./../base-item";
 
 export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
@@ -63,7 +64,14 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
     getDocumentClass("ChatMessage").create(chatData);
   }
 
-  async _search(): Promise<void> {
+  // Search other factions for attack targets with targetType
+  async _search(targetType: AssetType | ""): Promise<void> {
+    if (!targetType) {
+      ui.notifications?.info(
+        "Attacking asset has no target type (cunning/wealth/force)"
+      );
+      return;
+    }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const otherActiveFactions: any[] | undefined = game.actors?.filter(
       (i) =>
@@ -71,7 +79,73 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
         i.data.data.active == true &&
         this.actor?.id != i.id
     );
-    console.log(otherActiveFactions);
+    if (!otherActiveFactions || otherActiveFactions.length == 0) {
+      ui.notifications?.info("No other active factions found");
+      return;
+    }
+    // id - > [faction, array of targets]
+    const targetFactions: Record<
+      string,
+      [SWNRFactionActor, SWNRBaseItem<"asset">[]]
+    > = {};
+    // id -> name
+    const factionIdNames: Record<string, string | null> = {};
+    for (const f of otherActiveFactions) {
+      const fA = <SWNRFactionActor>f;
+      if (targetType === "cunning") {
+        if (fA.id && fA.data.data.cunningAssets.length > 0) {
+          targetFactions[fA.id] = [fA, fA.data.data.cunningAssets];
+          factionIdNames[fA.id] = fA.name;
+        }
+      } else if (targetType === "force") {
+        if (fA.id && fA.data.data.forceAssets.length > 0) {
+          targetFactions[fA.id] = [fA, fA.data.data.forceAssets];
+          factionIdNames[fA.id] = fA.name;
+        }
+      } else if (targetType === "wealth") {
+        if (fA.id && fA.data.data.wealthAssets.length > 0) {
+          targetFactions[fA.id] = [fA, fA.data.data.wealthAssets];
+          factionIdNames[fA.id] = fA.name;
+        }
+      }
+    }
+    if (Object.keys(targetFactions).length == 0) {
+      ui.notifications?.info(
+        `${otherActiveFactions.length} other active factions found, but no ${targetType} assets were found`
+      );
+      return;
+    }
+    const dialogData = {
+      faction: this.actor,
+      attackingAsset: this,
+      targetFactionsIdNames: factionIdNames,
+      targets: targetFactions,
+    };
+    const template = "systems/swnr/templates/dialogs/select-asset-target.html";
+    const html = renderTemplate(template, dialogData);
+
+    const _rollForm = async (html: HTMLFormElement) => {
+      ui.notifications?.info("here");
+    };
+
+    this.popUpDialog?.close();
+    this.popUpDialog = new ValidatedDialog(
+      {
+        title: `Select asset to attack for ${this.name}`,
+        content: await html,
+        default: "roll",
+        buttons: {
+          roll: {
+            label: game.i18n.localize("swnr.sheet.faction.attack"),
+            callback: _rollForm,
+          },
+        },
+      },
+      {
+        classes: ["swnr"],
+      }
+    );
+    this.popUpDialog.render(true);
   }
 
   async roll(): Promise<void> {
@@ -95,7 +169,7 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
           search: {
             icon: '<i class="fas fa-check"></i>',
             label: "Search active factions for an asset to attack",
-            callback: () => this._search(),
+            callback: () => this._search(data.attackTarget),
           },
         },
         default: "attack",
