@@ -3,25 +3,27 @@ import { ValidatedDialog } from "../ValidatedDialog";
 import { AssetType } from "../item-types";
 import { SWNRBaseItem } from "./../base-item";
 
+type AttackRolls = [Roll, Roll] | null;
+
 export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
   popUpDialog?: Dialog;
 
-  async _attack(isOffense: boolean): Promise<void> {
+  getAttackRolls(isOffense: boolean): AttackRolls {
     const data = this.data.data;
     let hitBonus = 0;
     const damage = isOffense ? data.attackDamage : data.counter;
     if (!damage) {
       ui.notifications?.info("No damage to roll for asset");
-      return;
+      return null;
     }
     const attackType = isOffense ? data.attackSource : data.assetType;
     if (!this.actor) {
       ui.notifications?.error("Asset must be associated with a faction");
-      return;
+      return null;
     }
     if (this.actor.type != "faction") {
       ui.notifications?.error("Asset must be associated with a faction");
-      return;
+      return null;
     }
     const actor: SWNRFactionActor = this.actor;
     if (attackType) {
@@ -36,21 +38,30 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
     const rollData = {
       hitBonus,
     };
-    const attackKey = isOffense
-      ? "swnr.sheet.faction.attack-roll"
-      : "swnr.sheet.faction.counter-roll";
     const hitRollStr = "1d10 + @hitBonus";
     const hitRoll = new Roll(hitRollStr, rollData).roll();
     const damageDice = isOffense ? data.attackDamage : data.counter;
     const damageRoll = new Roll(damageDice, rollData).roll();
+    return [hitRoll, damageRoll];
+  }
+
+  async _attack(isOffense: boolean): Promise<void> {
+    const attackRolls: AttackRolls = this.getAttackRolls(isOffense);
+    if (!attackRolls) {
+      return;
+    }
     const diceData = Roll.fromTerms([
-      PoolTerm.fromRolls([hitRoll, damageRoll]),
+      PoolTerm.fromRolls([attackRolls[0], attackRolls[1]]),
     ]);
+    const attackKey = isOffense
+      ? "swnr.sheet.faction.attack-roll"
+      : "swnr.sheet.faction.counter-roll";
+
     const dialogData = {
       desc: this.data.data.description,
-      name: `${this.actor.name} - ${this.name}`,
-      hitRoll: await hitRoll.render(),
-      damageRoll: await damageRoll.render(),
+      name: `${this.actor?.name} - ${this.name}`,
+      hitRoll: await attackRolls[0].render(),
+      damageRoll: await attackRolls[1].render(),
       attackKey: game.i18n.localize(attackKey),
     };
     const template = "systems/swnr/templates/chat/asset-attack.html";
@@ -125,7 +136,29 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
     const html = renderTemplate(template, dialogData);
 
     const _rollForm = async (html: HTMLFormElement) => {
-      ui.notifications?.info("here");
+      const form = <HTMLFormElement>html[0].querySelector("form");
+
+      const attackedFactionId = (<HTMLInputElement>(
+        form.querySelector('[name="targetFaction"]')
+      ))?.value;
+      const attackedFaction = game.actors?.get(attackedFactionId);
+      if (!attackedFaction) {
+        ui.notifications?.info("Attack faction not selected or not found");
+        return;
+      }
+      const assetFormName = `[name="asset-${attackedFactionId}"]`;
+      const attackedAssetId = (<HTMLInputElement>(
+        form.querySelector(assetFormName)
+      ))?.value;
+      const attackedAsset = attackedFaction?.getEmbeddedDocument(
+        "Item",
+        attackedAssetId
+      );
+      if (!attackedAsset) {
+        ui.notifications?.info("Attacked asset not selected or not found");
+        return;
+      }
+      ui.notifications?.info(` ${attackedAsset.name}`);
     };
 
     this.popUpDialog?.close();

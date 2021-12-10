@@ -1,18 +1,42 @@
+<script>
+$(document).ready(function(){
+    $("#targetFaction").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+                $(".sel").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".sel").hide();
+            }
+        });
+    }).change();
+});
+</script>
 <form class="bg-gray-300 -m-2 p-2 pb-4 flex gap-1 justify-between">
-  <div class="flex flexrow gap-2">
-    <select>
-      {{#each targetFactionsIdNames}}
-          <option value="{{@key}}">{{this}}</option>
-      {{/each}}
-    </select>
-  </div>
-  t:{{#each targets}}
-  <div>
-    e:
-    {{#each this as |faitems|}}
-      {{log fa}}
-      {{fa.1.name}}
+  <div class="flex flex-col gap-2">
+    <div>
+      Faction Target:
+      <select id="targetFaction" name="targetFaction"
+        class="w-32 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        <option value=""></option>
+        {{#each targetFactionsIdNames}}
+        <option value="{{@key}}">{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+    {{#each targets}}
+    <div class="sel {{@key}}">
+      Faction {{ this.[0].name }} targets:
+      <select name="asset-{{@key}}"
+        class="w-32 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        <option value=""></option>
+        {{#each this.[1] as |faitems|}}
+        <option value="{{faitems.id}}">{{faitems.name}} HP(
+          {{faitems.data.data.health.value}}/{{faitems.data.data.health.max}})</option>
+        {{/each}}
+      </select>
+    </div>
     {{/each}}
   </div>
-  {{/each}}
 </form>
