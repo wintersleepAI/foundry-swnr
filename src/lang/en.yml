@@ -456,6 +456,7 @@
       attack-roll: Attack Hit Roll
       counter-roll: Counter Hit Roll
       damage: Damage
+      attack: Attack
     ship:
       life-support-days: Life Support Days
       fuel: Fuel

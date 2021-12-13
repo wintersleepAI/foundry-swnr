@@ -12,7 +12,7 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
     const data = this.data.data;
     let hitBonus = 0;
     const damage = isOffense ? data.attackDamage : data.counter;
-    if (!damage) {
+    if (!damage && isOffense) {
       ui.notifications?.info("No damage to roll for asset");
       return null;
     }
@@ -40,7 +40,10 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
     };
     const hitRollStr = "1d10 + @hitBonus";
     const hitRoll = new Roll(hitRollStr, rollData).roll();
-    const damageDice = isOffense ? data.attackDamage : data.counter;
+    let damageDice = isOffense ? data.attackDamage : data.counter;
+    if (!damageDice) {
+      damageDice = "0";
+    }
     const damageRoll = new Roll(damageDice, rollData).roll();
     return [hitRoll, damageRoll];
   }
@@ -153,12 +156,62 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
       const attackedAsset = attackedFaction?.getEmbeddedDocument(
         "Item",
         attackedAssetId
-      );
+      ) as SWNRFactionAsset;
       if (!attackedAsset) {
         ui.notifications?.info("Attacked asset not selected or not found");
         return;
       }
-      ui.notifications?.info(` ${attackedAsset.name}`);
+      const attackRolls: AttackRolls = this.getAttackRolls(true);
+      const defenseRolls: AttackRolls = attackedAsset.getAttackRolls(false);
+      if (!attackRolls || !defenseRolls) {
+        ui.notifications?.error("Unable to roll for asset");
+        return;
+      }
+      const hitRoll: Roll = attackRolls[0];
+      const defRoll: Roll = defenseRolls[0];
+      if (
+        !hitRoll ||
+        hitRoll == undefined ||
+        !hitRoll.total ||
+        !defRoll.total
+      ) {
+        return;
+      }
+      let attackDamage: Roll | undefined | null = null;
+      let defDamage: Roll | undefined | null = null;
+      let attackDesc = "";
+      if (hitRoll.total > defRoll.total) {
+        //attacker hits
+        attackDamage = attackRolls[1];
+        attackDesc = "Attacker Hits";
+      } else if (hitRoll.total < defRoll.total) {
+        //defender hits
+        defDamage = defenseRolls[1];
+        attackDesc = "Defender Hits";
+      } else {
+        //both hit
+        attackDamage = attackRolls[1];
+        defDamage = defenseRolls[1];
+        attackDesc = "Tie! Both do damage";
+      }
+      const dialogData = {
+        desc: this.data.data.description,
+        name: `${this.actor?.name} - ${this.name} attacking ${attackedAsset.name}`,
+        hitRoll: await hitRoll.render(),
+        defRoll: await defRoll.render(),
+        attackDamage: attackDamage,
+        defDamage: defDamage,
+        attackDesc: attackDesc,
+        attackKey: game.i18n.localize("attackKey"),
+      };
+      const template = "systems/swnr/templates/chat/asset-attack-def.html";
+      const chatContent = await renderTemplate(template, dialogData);
+      const chatData = {
+        content: chatContent,
+        type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+      };
+      getDocumentClass("ChatMessage").applyRollMode(chatData, "gmroll");
+      getDocumentClass("ChatMessage").create(chatData);
     };
 
     this.popUpDialog?.close();
