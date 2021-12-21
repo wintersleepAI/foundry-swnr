@@ -1,20 +1,21 @@
 <div>
   <h3 title="{{ desc }}">{{ name }}</h3>
-  <span>Attacker Roll:</span>
-  <span title="">{{{ attackRoll }}}</span>
+  <h4>{{ attackDesc }} </h4>
+  <span>{{localize 'swnr.sheet.faction.att-roll'}}:</span>
+  <span title="">{{{ hitRoll }}}</span>
 
-  <span>Defender Roll:</span>
+  <span>{{localize 'swnr.sheet.faction.def-roll'}}:</span>
   <span title="">{{{ defRoll }}}</span>
 
   <span>{{ attackDesc }} </span>
 
   {{#if attackDamage}}
-  <span>{{localize 'swnr.sheet.faction.damage'}}:</span>
+  <span>{{localize 'swnr.sheet.faction.att-damage'}}:</span>
   <span title="">{{{ attackDamage }}}</span>
   {{/if}}
 
   {{#if defDamage}}
-  <span>{{localize 'swnr.sheet.faction.damage'}}:</span>
+  <span>{{localize 'swnr.sheet.faction.def-damage'}}:</span>
   <span title="">{{{ defDamage }}}</span>
   {{/if}}
 

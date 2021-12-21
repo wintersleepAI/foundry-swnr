@@ -177,21 +177,21 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
       ) {
         return;
       }
-      let attackDamage: Roll | undefined | null = null;
-      let defDamage: Roll | undefined | null = null;
+      let attackDamage: string | undefined | null = null;
+      let defDamage: string | undefined | null = null;
       let attackDesc = "";
       if (hitRoll.total > defRoll.total) {
         //attacker hits
-        attackDamage = attackRolls[1];
+        attackDamage = await attackRolls[1].render();
         attackDesc = "Attacker Hits";
       } else if (hitRoll.total < defRoll.total) {
         //defender hits
-        defDamage = defenseRolls[1];
-        attackDesc = "Defender Hits";
+        defDamage = await defenseRolls[1].render();
+        attackDesc = "Defender Hits Counter ";
       } else {
         //both hit
-        attackDamage = attackRolls[1];
-        defDamage = defenseRolls[1];
+        attackDamage = await attackRolls[1].render();
+        defDamage = await defenseRolls[1].render();
         attackDesc = "Tie! Both do damage";
       }
       const dialogData = {
@@ -208,7 +208,7 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
       const chatContent = await renderTemplate(template, dialogData);
       const chatData = {
         content: chatContent,
-        type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+        type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
       };
       getDocumentClass("ChatMessage").applyRollMode(chatData, "gmroll");
       getDocumentClass("ChatMessage").create(chatData);
