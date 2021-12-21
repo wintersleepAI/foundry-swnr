@@ -328,7 +328,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       )).value;
       const formula = new Array(6).fill(dice).join("+");
       const roll = new Roll(formula);
-      roll.roll();
+      await roll.roll({ async: true });
       const stats: {
         [p in SWNRStats]: SWNRStatBase & SWNRStatComputed & { dice: number[] };
       } = <never>{};
@@ -484,7 +484,8 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       const formula = `${currentLevel}${baseRoll} + ${boosts} + ${constBonus}`;
 
       let msg = `Rolling Level ${currentLevel} HP: ${formula}<br>(Roll for level + con mod)<br>`;
-      const roll = new Roll(formula).roll();
+      const roll = new Roll(formula);
+      await roll.roll({ async: true });
       if (roll.total) {
         let hpRoll = Math.max(roll.total, 1);
         msg += `Got a ${hpRoll}<br>`;

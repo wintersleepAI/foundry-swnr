@@ -2,7 +2,7 @@ name: swnr
 title: "Stars Without Number: Revised (wsAI Alter.)"
 description: >-
   BETA: Stars Without Number: Revised system. This is an alternate version
-version: 0.5.2.0.52
+version: 0.5.5
 author: Spice_King + wintersleepAI
 scripts: []
 initiative: 1d8+@stats.dex.mod
@@ -16,151 +16,151 @@ packs:
     system: swnr
     module: swnr
     path: packs/ammo-and-power.db
-    entity: Item
+    type: Item
   - name: armor
     label: Armor
     system: swnr
     module: swnr
     path: packs/armor.db
-    entity: Item
+    type: Item
   - name: psi-biopsionics
     label: Biopsionics
     system: swnr
     module: swnr
     path: packs/psi-biopsionics.db
-    entity: Item
+    type: Item
   - name: communications
     label: Communications
     system: swnr
     module: swnr
     path: packs/communications.db
-    entity: Item
+    type: Item
   - name: computing-gear
     label: Computing Gear
     system: swnr
     module: swnr
     path: packs/computing-gear.db
-    entity: Item
+    type: Item
   - name: field-equipment
     label: Field Equipment
     system: swnr
     module: swnr
     path: packs/field-equipment.db
-    entity: Item
+    type: Item
   - name: foci
     label: Foci
     system: swnr
     module: swnr
     path: packs/foci.db
-    entity: Item
+    type: Item
   - name: heavy
     label: Heavy Weapons
     system: swnr
     module: swnr
     path: packs/heavy.db
-    entity: Item
+    type: Item
   - name: melee
     label: Melee Weapons
     system: swnr
     module: swnr
     path: packs/melee.db
-    entity: Item
+    type: Item
   - name: psi-metapsionics
     label: Metapsionics
     system: swnr
     module: swnr
     path: packs/psi-metapsionics.db
-    entity: Item
+    type: Item
   - name: pharmaceuticals
     label: Pharmaceuticals
     system: swnr
     module: swnr
     path: packs/pharmaceuticals.db
-    entity: Item
+    type: Item
   - name: psi-precognition
     label: Precognition
     system: swnr
     module: swnr
     path: packs/psi-precognition.db
-    entity: Item
+    type: Item
   - name: ranged
     label: Ranged Weapons
     system: swnr
     module: swnr
     path: packs/ranged.db
-    entity: Item
+    type: Item
   - name: psi-telekinesis
     label: Telekinesis
     system: swnr
     module: swnr
     path: packs/psi-telekinesis.db
-    entity: Item
+    type: Item
   - name: psi-telepathy
     label: Telepathy
     system: swnr
     module: swnr
     path: packs/psi-telepathy.db
-    entity: Item
+    type: Item
   - name: psi-teleportation
     label: Teleportation
     system: swnr
     module: swnr
     path: packs/psi-teleportation.db
-    entity: Item
+    type: Item
   - name: tools-and-medical
     label: Tools And Medical
     system: swnr
     module: swnr
     path: packs/tools-and-medical.db
-    entity: Item
+    type: Item
   - name: ship-weapon
     label: Ship Weapons
     system: swnr
     module: swnr
     path: packs/ship-weapon.db
-    entity: Item
+    type: Item
   - name: ship-defense
     label: Ship Defense
     system: swnr
     module: swnr
     path: packs/ship-defense.db
-    entity: Item
+    type: Item
   - name: ship-fitting
     label: Ship Fitting
     system: swnr
     module: swnr
     path: packs/ship-fitting.db
-    entity: Item
+    type: Item
   - name: cyberware
     label: Cyberware
     system: swnr
     module: swnr
     path: packs/cyberware.db
-    entity: Item
+    type: Item
   - name: bestiary
     label: Bestiary
     system: swnr
     module: swnr
     path: packs/bestiary.db
-    entity: Actor
+    type: Actor
   - name: sample-ships
     label: Sample Ships
     system: swnr
     module: swnr
     path: packs/sample-ships.db
-    entity: Actor
+    type: Actor
   - name: all-items
     label: All Items
     system: swnr
     module: swnr
     path: packs/all-items.db
-    entity: Item
+    type: Item
   - name: drone-fittings
     label: Drone Fittings
     system: swnr
     module: swnr
     path: packs/drone-fittings.db
-    entity: Item
+    type: Item
 languages:
   - lang: en
     name: English
@@ -168,7 +168,7 @@ languages:
 gridDistance: 2
 gridUnits: "m"
 minimumCoreVersion: 0.8.6
-compatibleCoreVersion: 0.8.9
+compatibleCoreVersion: 9.238
 url: "https://github.com/wintersleepAI/foundry-swnr"
 manifest: >-
   https://github.com/wintersleepAI/foundry-swnr/releases/latest/download/system.json

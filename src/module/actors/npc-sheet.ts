@@ -160,12 +160,12 @@ export class NPCActorSheet extends BaseActorSheet<NPCActorSheetData> {
     await this.actor.update({ "data.health_max_modified": 1 });
   }
 
-  _onMorale(event: JQuery.ClickEvent): void {
+  async _onMorale(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
 
-    const roll = new Roll("2d6").roll();
-    console.log(roll);
+    const roll = new Roll("2d6");
+    await roll.roll({ async: true });
     const flavor =
       +(roll.terms[0]?.total ?? 0) > this.actor.data.data.moralScore
         ? game.i18n.localize("swnr.npc.morale.failure")
@@ -173,11 +173,12 @@ export class NPCActorSheet extends BaseActorSheet<NPCActorSheetData> {
     roll.toMessage({ flavor, speaker: { actor: this.actor.id } });
   }
 
-  _onSavingThrow(event: JQuery.ClickEvent): void {
+  async _onSavingThrow(event: JQuery.ClickEvent): Promise<void> {
     event.stopPropagation();
     event.preventDefault();
 
-    const roll = new Roll("1d20").roll();
+    const roll = new Roll("1d20");
+    await roll.roll({ async: true });
     const flavor = game.i18n.format(
       parseInt(roll.result) >= this.actor.data.data.saves
         ? game.i18n.localize("swnr.npc.saving.success")
@@ -188,20 +189,21 @@ export class NPCActorSheet extends BaseActorSheet<NPCActorSheetData> {
     roll.toMessage({ flavor, speaker: { actor: this.actor._id } });
   }
 
-  _onSkill(event: JQuery.ClickEvent): void {
+  async _onSkill(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
     const trained = event.currentTarget.dataset.skillType === "trained";
     const skill = trained ? this.actor.data.data.skillBonus : 0;
 
-    const roll = new Roll("2d6 + @skill", { skill }).roll();
+    const roll = new Roll("2d6 + @skill", { skill });
+    await roll.roll({ async: true });
     const flavor = game.i18n.format(
       trained
         ? game.i18n.localize("swnr.npc.skill.trained")
         : game.i18n.localize("swnr.npc.skill.untrained"),
       { actor: this.actor.name }
     );
-    roll.toMessage({ flavor, speaker: { actor: this.actor._id } });
+    roll.toMessage({ flavor, speaker: { actor: this.actor.id } });
   }
 
   /** @override */

@@ -77,13 +77,15 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     const hitRoll = new Roll(
       "1d20 + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat + @effectiveSkillRank",
       rollData
-    ).roll();
+    );
+    await hitRoll.roll({ async: true });
     const hitExplainTip = "1d20 +burst +mod +CharAB +WpnAB +Stat +Skill";
     rollData.hitRoll = +(hitRoll.dice[0].total?.toString() ?? 0);
     const damageRoll = new Roll(
       this.data.data.damage + " + @burstFire + @stat + @damageBonus",
       rollData
-    ).roll();
+    );
+    await damageRoll.roll({ async: true });
     const damageExplainTip = "roll +burst +statBonus +dmgBonus";
     const diceTooltip = {
       hit: await hitRoll.render(),
@@ -104,7 +106,8 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
           " @shockDmg + @stat " +
             (this.data.data.skillBoostsDamage ? ` + ${damageBonus}` : ""),
           rollData
-        ).roll();
+        );
+        await _shockRoll.roll({ async: true });
         shock_roll = await _shockRoll.render();
         rollArray.push(_shockRoll);
       }

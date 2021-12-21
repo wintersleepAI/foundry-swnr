@@ -25,7 +25,7 @@ export class SWNRSkill extends SWNRBaseItem<"skill"> {
       data: this.actor.data,
     };
     const html = await renderTemplate(template, dialogData);
-    const _doRoll = (html: HTMLFormElement) => {
+    const _doRoll = async (html: HTMLFormElement) => {
       console.log(html);
       const rollMode = game.settings.get("core", "rollMode");
       const form = <HTMLFormElement>html[0].querySelector("form");
@@ -43,7 +43,7 @@ export class SWNRSkill extends SWNRBaseItem<"skill"> {
         modifier: modifier,
         stat: stat.mod,
       });
-      roll.roll();
+      await roll.roll({ async: true });
       const title = `${game.i18n.localize(
         "swnr.chat.skillCheck"
       )}: ${game.i18n.localize(

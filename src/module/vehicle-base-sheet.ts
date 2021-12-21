@@ -120,7 +120,7 @@ export class VehicleBaseActorSheet<
       const title = `${game.i18n.localize(
         "swnr.chat.skillCheck"
       )}: ${statNameDisply}/${skillName}`;
-      roll.roll();
+      await roll.roll({ async: true });
       roll.toMessage(
         {
           speaker: { alias: crewActor.name },
