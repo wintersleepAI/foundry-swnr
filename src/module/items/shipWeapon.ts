@@ -37,8 +37,10 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
     const hitRollStr =
       "1d20 + @skillMod + @statMod + @abMod + @mod +@weaponAb +@npcSkill";
     const damageRollStr = `${this.data.data.damage} + @statMod`;
-    const hitRoll = new Roll(hitRollStr, rollData).roll();
-    const damageRoll = new Roll(damageRollStr, rollData).roll();
+    const hitRoll = new Roll(hitRollStr, rollData);
+    await hitRoll.roll({ async: true });
+    const damageRoll = new Roll(damageRollStr, rollData);
+    await damageRoll.roll({ async: true });
 
     const diceTooltip = {
       hit: await hitRoll.render(),

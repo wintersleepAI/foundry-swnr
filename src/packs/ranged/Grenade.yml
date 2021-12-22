@@ -4,10 +4,10 @@ data:
   ammo:
     burst: false
     longReload: false
-    max: 0
+    max: 1
     suppress: false
     type: special
-    value: 0
+    value: 1
   cost: 25
   damage: 2d6
   description: >-

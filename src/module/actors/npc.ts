@@ -15,7 +15,8 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
     //For debug: console.log("rolling NPC hit dice", this);
     if (this.data.data.hitDice != null && this.data.data.hitDice > 0) {
       //For debug: console.log(`Updating health using ${this.data.data.hitDice} hit die `);
-      const roll = new Roll(`${this.data.data.hitDice}d8`).roll();
+      const roll = new Roll(`${this.data.data.hitDice}d8`);
+      await roll.roll({ async: true });
       if (roll != undefined && roll.total != undefined) {
         const newHealth = roll.total;
         await this.update({

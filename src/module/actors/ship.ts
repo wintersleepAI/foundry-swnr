@@ -105,19 +105,22 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
       mod,
     };
     const skillRollStr = `${dice} + @skillMod + @statMod + @mod`;
-    const skillRoll = new Roll(skillRollStr, rollData).roll();
+    const skillRoll = new Roll(skillRollStr, rollData);
+    await skillRoll.roll({ async: true });
 
     const pass = skillRoll.total && skillRoll.total > difficulty ? true : false;
     const failRoll: string | null = null;
     let failText: string | null = null;
     if (!pass) {
-      const failRoll = new Roll("3d6").roll();
+      const failRoll = new Roll("3d6");
+      await failRoll.roll({ async: true });
       switch (failRoll.total) {
         case 3:
           // eslint-disable-next-line no-case-declarations
-          const fRoll = new Roll("1d6").roll().total;
+          const fRoll = new Roll("1d6");
+          await fRoll.roll({ async: true });
           failText = game.i18n.localize("swnr.chat.spike.fail3");
-          failText += `<br> Rolled: ${fRoll}`;
+          failText += `<br> Rolled: ${fRoll.total}`;
           // Break all systems and drive
           break;
         case 4:

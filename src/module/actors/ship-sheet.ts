@@ -211,7 +211,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     }
   }
 
-  _onCrewNPCRoll(event: JQuery.ClickEvent): void {
+  async _onCrewNPCRoll(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     // Roll skill, show name, skill, attr if != ""
     const rollMode = game.settings.get("core", "rollMode");
@@ -222,7 +222,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     const roll = new Roll(formula, {
       npcCrewSkill,
     });
-    roll.roll();
+    await roll.roll({ async: true });
     const title = `Rolling generic skill with bonus ${npcCrewSkill}`;
     roll.toMessage(
       {
@@ -315,7 +315,11 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       return;
     }
     const noteText = action.note ? action.note : "";
-    const diffText = action.dc ? `<br>Difficulty:${action.dc}` : "";
+    let diffText = action.dc ? `<br>Difficulty:${action.dc}` : "";
+    if (action.dc === "opposed") {
+      const res = await new Roll("2d6").roll();
+      diffText += ` (2d6: ${res.total})`;
+    }
     const descText = action.desc ? action.desc : "";
     if (action.skill) {
       // this action needs a skill roll
@@ -368,7 +372,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
               skillLevel,
               attrMod,
             });
-            roll.roll();
+            await roll.roll({ async: true });
             const title = `<span title="${descText}">Rolling ${actionTitle} ${attrName}${action.skill} for ${defaultActor.name}<br>${noteText}${diffText}</span>`;
             roll.toMessage(
               {
@@ -390,7 +394,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
             skillLevel,
             attrMod,
           });
-          roll.roll();
+          await roll.roll({ async: true });
           const title = `<span title="${descText}">Rolling ${actionTitle} ${attrName}${action.skill}. No PC/NPC set to role/dept.<br>${noteText}${diffText}</span>`;
           roll.toMessage(
             {

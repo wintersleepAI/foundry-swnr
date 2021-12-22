@@ -247,7 +247,6 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     event: JQuery.ClickEvent
   ): Promise<Application | undefined> {
     event.preventDefault();
-    console.log(event);
     const e = <HTMLDivElement>event.currentTarget;
     const save = e.dataset.saveType;
     if (!save) return;
@@ -258,7 +257,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     });
     const dialogData = {};
     const html = await renderTemplate(template, dialogData);
-    const _doRoll = (html: HTMLFormElement) => {
+    const _doRoll = async (html: HTMLFormElement) => {
       const rollMode = game.settings.get("core", "rollMode");
       const form = <HTMLFormElement>html[0].querySelector("form");
       const formula = `1d20cs>=(@target - @modifier)`;
@@ -268,7 +267,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
         ),
         target: target,
       });
-      roll.roll();
+      await roll.roll({ async: true });
       const save_text = game.i18n.format(
         parseInt(roll.result) >= 1
           ? game.i18n.localize("swnr.npc.saving.success")
@@ -329,7 +328,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       )).value;
       const formula = new Array(6).fill(dice).join("+");
       const roll = new Roll(formula);
-      roll.roll();
+      await roll.roll({ async: true });
       const stats: {
         [p in SWNRStats]: SWNRStatBase & SWNRStatComputed & { dice: number[] };
       } = <never>{};
@@ -485,7 +484,8 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       const formula = `${currentLevel}${baseRoll} + ${boosts} + ${constBonus}`;
 
       let msg = `Rolling Level ${currentLevel} HP: ${formula}<br>(Roll for level + con mod)<br>`;
-      const roll = new Roll(formula).roll();
+      const roll = new Roll(formula);
+      await roll.roll({ async: true });
       if (roll.total) {
         let hpRoll = Math.max(roll.total, 1);
         msg += `Got a ${hpRoll}<br>`;
