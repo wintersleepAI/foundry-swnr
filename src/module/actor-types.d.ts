@@ -196,7 +196,6 @@ declare interface SWNRFactionData {
   description: string;
   health: {
     value: number;
-    max: number;
   };
   active: boolean;
   forceRating: FactionRating;
@@ -215,6 +214,9 @@ declare interface SWNRFactionComputed {
   cunningAssets: SWNRBaseItem<"asset">[];
   wealthAssets: SWNRBaseItem<"asset">[];
   forceAssets: SWNRBaseItem<"asset">[];
+  health: {
+    max: number;
+  };
 }
 
 declare interface SWNRShipComputed {

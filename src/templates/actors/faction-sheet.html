@@ -27,10 +27,10 @@
           <input
             class="w-8 text-right pl-1.5  bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
             type="number" step="1" name="data.health.value" value="{{actor.data.data.health.value}}" data-dtype="Number"
-            min="0" /><span>/</span><input
-            class="w-8 text-left pr-1.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-            type="number" name="data.health.max" value="{{actor.data.data.health.max}}" step="1" min="1"
-            data-dtype="Number" />
+            min="0" /><span>/</span>
+            <span
+              class="inline-block text-left text-gray-700 cursor-not-allowed w-8"
+              >{{actor.data.data.health.max}}</span>
         </div>
         <div>{{localize 'swnr.sheet.hp'}}</div>
       </div>
@@ -50,7 +50,12 @@
           <option value="8">8</option>
           {{/select}}
         </select>
-        <div>{{localize 'swnr.sheet.faction.forceRating'}}</div>
+        <div>{{localize 'swnr.sheet.faction.forceRating'}}
+          <a class="force-up text-gray-600 hover:text-red-600 transition-colors"
+          title="{{localize 'swnr.sheet.level-up'}}">
+          <i class="fas fa-level-up-alt"></i>
+          </a>
+        </div>
       </div>
       <!-- cunning -->
       <div class="flex-col text-center items-center p-2">
@@ -67,7 +72,13 @@
           <option value="8">8</option>
           {{/select}}
         </select>
-        <div>{{localize 'swnr.sheet.faction.cunningRating'}}</div>
+        <div>{{localize 'swnr.sheet.faction.cunningRating'}}
+          <a
+          class="cunning-up text-gray-600 hover:text-red-600 transition-colors"
+          title="{{localize 'swnr.sheet.level-up'}}">
+          <i class="fas fa-level-up-alt"></i>
+          </a>
+        </div>
       </div>
       <!-- wealth -->
       <div class="flex-col text-center items-center p-2">
@@ -84,7 +95,13 @@
           <option value="8">8</option>
           {{/select}}
         </select>
-        <div>{{localize 'swnr.sheet.faction.wealthRating'}}</div>
+        <div>{{localize 'swnr.sheet.faction.wealthRating'}} 
+        <a
+        class="wealth-up text-gray-600 hover:text-red-600 transition-colors"
+        title="{{localize 'swnr.sheet.level-up'}}">
+        <i class="fas fa-level-up-alt"></i>
+        </a>
+        </div>
       </div>
       {{!--
     </div>
@@ -124,7 +141,13 @@
         <input
           class="w-32 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="data.factionGoal" value="{{data.data.factionGoal}}" />
-        <div>{{localize 'swnr.sheet.faction.factionGoal'}}</div>
+        <div>
+          {{localize 'swnr.sheet.faction.factionGoal'}}
+          <a class="set-goal text-gray-600 hover:text-red-600 transition-colors"
+            title="{{localize 'swnr.sheet.faction.setGoal'}}">
+            <i class="fas fa-exchange-alt"></i>
+          </a>
+        </div>
       </div>
 
       <!-- goal -->

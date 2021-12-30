@@ -139,12 +139,11 @@ Actor:
   faction:
     description: ""
     health:
-      value: 1
-      max: 1
+      value: 7
     forceRating: 1
     cunningRating: 1
     wealthRating: 1
-    facCreds: 1
+    facCreds: 0
     xp: 0
     homeworld: ""
     active: true
@@ -380,6 +379,10 @@ Item:
     note: ""
     turnRoll: ""
     assetType: cunning
+    location: ""
+    maintenance: 0
+    income: 0
+    unusable: false
   skill:
     templates:
       - description

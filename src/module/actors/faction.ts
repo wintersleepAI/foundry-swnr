@@ -1,6 +1,16 @@
 import { SWNRBaseActor } from "../base-actor";
 import { SWNRBaseItem } from "../base-item";
 import { SWNRFactionAsset } from "../items/asset";
+const HEALTH__XP_TABLE = {
+  1: 1,
+  2: 2,
+  3: 4,
+  4: 6,
+  5: 9,
+  6: 12,
+  7: 16,
+  8: 20,
+};
 
 export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
   getRollData(): this["data"]["data"] {
@@ -22,6 +32,14 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
     }
   }
 
+  getHealth(level): number {
+    if (level in HEALTH__XP_TABLE) {
+      return HEALTH__XP_TABLE[level];
+    } else {
+      return 0;
+    }
+  }
+
   prepareDerivedData(): void {
     const data = this.data.data;
     const assets = <SWNRBaseItem<"asset">[]>(
@@ -40,6 +58,12 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
     data.cunningAssets = cunningAssets;
     data.forceAssets = forceAssets;
     data.wealthAssets = wealthAssets;
+
+    data.health.max =
+      4 +
+      this.getHealth(data.wealthRating) +
+      this.getHealth(data.forceRating) +
+      this.getHealth(data.cunningRating);
   }
 }
 

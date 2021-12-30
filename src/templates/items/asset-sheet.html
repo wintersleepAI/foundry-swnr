@@ -116,12 +116,35 @@
         type="text" name="data.counter" value="{{data.data.counter}}" />
     </div>
 
+    <!--income -->
+    <div class="flex-col text-center items-center p-2">
+      {{localize 'swnr.sheet.faction.income'}}:
+      <input type="number"
+        class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        step="1" name="data.income" min="0" data-dtype="Number" value="{{data.data.income}}" />
+    </div>
+
+    <!--maintenance -->
+    <div class="flex-col text-center items-center p-2">
+      {{localize 'swnr.sheet.faction.maintenance'}}:
+      <input type="number"
+        class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        step="1" name="data.maintenance" min="0" data-dtype="Number" value="{{data.data.maintenance}}" />
+    </div>
+
     <!-- Base of influence -->
     <div class="flex flexrow items-center">
       <div>{{localize 'swnr.sheet.faction.baseOfInfluence'}}:
       <input type="checkbox" name="data.baseOfInfluence" {{checked data.data.baseOfInfluence}}></div>
     </div>
-    
+
+    <!-- location -->
+    <div class="flex-col text-center items-center p-2">
+      {{localize 'swnr.sheet.faction.location'}}:
+      <input
+        class="w-32 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="text" name="data.location" value="{{data.data.location}}" />
+    </div>  
 
     <!-- note -->
     <div class="flex-col text-center items-center p-2">
@@ -132,12 +155,12 @@
     </div>
 
     <!-- turnRoll -->
-    <div class="flex-col text-center items-center p-2">
+    {{!-- <div class="flex-col text-center items-center p-2">
       {{localize 'swnr.sheet.faction.turnRoll'}}:
       <input
         class="w-32 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
         type="text" name="data.turnRoll" value="{{data.data.turnRoll}}" />
-    </div>
+    </div> --}}
 
 
     

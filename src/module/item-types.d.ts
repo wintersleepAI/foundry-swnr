@@ -134,6 +134,10 @@ declare interface SWNRFactionAsset extends SWNRDescData {
   note: string;
   turnRoll: string;
   assetType: AssetType;
+  location: string;
+  maintenance: number;
+  income: number;
+  unusable: boolean;
 }
 
 declare interface SWNRArmorData extends SWNRBaseItemData {

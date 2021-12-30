@@ -359,6 +359,7 @@
     add-item: Add Item
     break-item: Break/Disable Item
     jury-rig: Jury-Rig Item
+    fix-item: Fix Item
     destroy-item: Destroy Item
     ask: Ask
     description: "Description:"
@@ -381,6 +382,7 @@
     npc-command-points: NPC Ship CP
     unspent-skill: Unspent Skill Points
     unspent-psy-skill: Unspent Psychic Skill Points
+    add-skill: Add New Skill
     level-up: Level Up
     rest: A night's rest
     rest-desc: Apply a good night's rest (reset effort, drop strain, heal HP)?
@@ -464,6 +466,11 @@
       def-roll: Defender Roll
       factionGoal: Faction Goal
       factionGoalDesc: Goal Description
+      setGoal: Set Goal
+      location: Location
+      maintenance: Maintenance
+      income: Income
+      unusable: Unusable
     ship:
       life-support-days: Life Support Days
       fuel: Fuel
