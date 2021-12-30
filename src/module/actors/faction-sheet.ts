@@ -24,18 +24,21 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
   async _onAssetCreate(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
-    const itemType = $(event.currentTarget).data("itemType");
-    const givenName = $(event.currentTarget).data("itemName");
-    const itemName = givenName ? `New ${givenName}` : "New Item";
-    const imgPath = getDefaultImage(itemType);
-    if (itemType) {
-      this.actor.createEmbeddedDocuments(
+    const assetType = $(event.currentTarget).data("assetType");
+    const givenName = $(event.currentTarget).data("assetName");
+    const itemName = givenName ? `New ${givenName}` : "New Asset";
+    const imgPath = this.getAssetImage(assetType);
+    if (assetType) {
+      await this.actor.createEmbeddedDocuments(
         "Item",
         [
           {
             name: itemName,
-            type: itemType,
+            type: "asset",
             img: imgPath,
+            data: {
+              assetType: assetType,
+            },
           },
         ],
         {}
@@ -43,18 +46,12 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
     }
   }
 
-  getDefaultImage(itemType: string): string | null {
-    const icon_path = "systems/swnr/assets/icons/game-icons.net/item-icons";
+  getAssetImage(itemType: string): string | null {
+    const icon_path = "systems/swnr/assets/icons/hawkin";
     const imgMap = {
-      shipWeapon: "sinusoidal-beam.svg",
-      shipDefense: "bubble-field.svg",
-      shipFitting: "power-generator.svg",
-      cyberware: "cyber-eye.svg",
-      focus: "reticule.svg",
-      armor: "armor-white.svg",
-      weapon: "weapon-white.svg",
-      power: "psychic-waves-white.svg",
-      skill: "book-white.svg",
+      cunning: "cunning.png",
+      force: "force.png",
+      wealth: "wealth.png",
     };
     if (itemType in imgMap) {
       return `${icon_path}/${imgMap[itemType]}`;
@@ -62,7 +59,6 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
       return "icons/svg/item-bag.svg";
     }
   }
-
 
   async getData(
     options?: Application.RenderOptions
@@ -92,6 +88,7 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
 
   activateListeners(html: JQuery): void {
     super.activateListeners(html);
+    html.find(".asset-create").on("click", this._onAssetCreate.bind(this));
   }
 }
 

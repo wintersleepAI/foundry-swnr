@@ -8,7 +8,7 @@ type AttackRolls = [Roll, Roll] | null;
 export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
   popUpDialog?: Dialog;
 
-  getAttackRolls(isOffense: boolean): AttackRolls {
+  async getAttackRolls(isOffense: boolean): Promise<AttackRolls> {
     const data = this.data.data;
     let hitBonus = 0;
     const damage = isOffense ? data.attackDamage : data.counter;
@@ -39,17 +39,19 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
       hitBonus,
     };
     const hitRollStr = "1d10 + @hitBonus";
-    const hitRoll = new Roll(hitRollStr, rollData).roll();
+    const hitRoll = await new Roll(hitRollStr, rollData).roll({ async: true });
     let damageDice = isOffense ? data.attackDamage : data.counter;
     if (!damageDice) {
       damageDice = "0";
     }
-    const damageRoll = new Roll(damageDice, rollData).roll();
+    const damageRoll = await new Roll(damageDice, rollData).roll({
+      async: true,
+    });
     return [hitRoll, damageRoll];
   }
 
   async _attack(isOffense: boolean): Promise<void> {
-    const attackRolls: AttackRolls = this.getAttackRolls(isOffense);
+    const attackRolls: AttackRolls = await this.getAttackRolls(isOffense);
     if (!attackRolls) {
       return;
     }
@@ -161,8 +163,10 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
         ui.notifications?.info("Attacked asset not selected or not found");
         return;
       }
-      const attackRolls: AttackRolls = this.getAttackRolls(true);
-      const defenseRolls: AttackRolls = attackedAsset.getAttackRolls(false);
+      const attackRolls: AttackRolls = await this.getAttackRolls(true);
+      const defenseRolls: AttackRolls = await attackedAsset.getAttackRolls(
+        false
+      );
       if (!attackRolls || !defenseRolls) {
         ui.notifications?.error("Unable to roll for asset");
         return;

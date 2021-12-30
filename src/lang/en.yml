@@ -356,6 +356,7 @@
     delete-item: Delete Item
     edit-item: Edit Item
     reload-item: Reload Item
+    add-item: Add Item
     break-item: Break/Disable Item
     jury-rig: Jury-Rig Item
     destroy-item: Destroy Item
