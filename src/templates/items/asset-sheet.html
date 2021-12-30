@@ -1,9 +1,11 @@
 <form class="{{cssClass}} -m-2 p-2 bg-gray-200">
   {{> "systems/swnr/templates/items/fragments/desc.html"}}
-  <div class="flex flexrow gap-2 text-center">
+  <div class="flex flexrow gap-1 text-center">
     <!--HP-->
     <div class="flex flex-col items-center p-2 w-24">
-      <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+      <div>{{localize 'swnr.sheet.hp'}}</div>
+
+      <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md w-24">
         <input
           class="w-8 text-right pl-1.5  bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           type="number" step="1" name="data.health.value" value="{{data.data.health.value}}" data-dtype="Number"
@@ -12,7 +14,6 @@
           type="number" name="data.health.max" value="{{data.data.health.max}}" step="1" min="1"
           data-dtype="Number" />
       </div>
-      <div>{{localize 'swnr.sheet.hp'}}</div>
     </div>
 
 
@@ -27,12 +28,6 @@
         <option value="wealth">Wealth</option>
         {{/select}}
       </select>
-    </div>
-
-    <!-- Base of influence -->
-    <div class="flex flexrow items-center">
-      {{localize 'swnr.sheet.faction.baseOfInfluence'}}:
-      <input type="checkbox" name="data.baseOfInfluence" {{checked data.data.baseOfInfluence}}>
     </div>
 
     <!-- rating -->
@@ -107,7 +102,7 @@
 
     <!-- Attack Damage-->
     <div class="flex-col text-center items-center p-2">
-      {{localize 'swnr.sheet.faction.attackDamage'}}:
+      <div>{{localize 'swnr.sheet.faction.attackDamage'}}:</div>
       <input
         class="w-12 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
         type="text" name="data.attackDamage" value="{{data.data.attackDamage}}" />
@@ -115,12 +110,18 @@
 
     <!-- counter Damage-->
     <div class="flex-col text-center items-center p-2">
-      {{localize 'swnr.sheet.faction.counter'}}:
+      <div>{{localize 'swnr.sheet.faction.counter'}}:</div>
       <input
         class="w-12 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
         type="text" name="data.counter" value="{{data.data.counter}}" />
     </div>
 
+    <!-- Base of influence -->
+    <div class="flex flexrow items-center">
+      <div>{{localize 'swnr.sheet.faction.baseOfInfluence'}}:
+      <input type="checkbox" name="data.baseOfInfluence" {{checked data.data.baseOfInfluence}}></div>
+    </div>
+    
 
     <!-- note -->
     <div class="flex-col text-center items-center p-2">
@@ -139,5 +140,6 @@
     </div>
 
 
+    
   </div>
 </form>
