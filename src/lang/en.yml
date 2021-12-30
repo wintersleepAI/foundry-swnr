@@ -462,6 +462,8 @@
       def-damage: Counter Damage
       att-roll: Attacker Roll
       def-roll: Defender Roll
+      factionGoal: Faction Goal
+      factionGoalDesc: Goal Description
     ship:
       life-support-days: Life Support Days
       fuel: Fuel

@@ -148,6 +148,8 @@ Actor:
     xp: 0
     homeworld: ""
     active: true
+    factionGoal: ""
+    factionGoalDesc: ""
     tags: []
   ship:
     templates:

@@ -206,7 +206,8 @@ declare interface SWNRFactionData {
   xp: number;
   homeworld: string;
   tags: string[];
-  factionGoald: string;
+  factionGoal: string;
+  factionGoalDesc: string;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

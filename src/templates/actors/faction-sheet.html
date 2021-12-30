@@ -10,11 +10,11 @@
           class="text-2xl col-span-3 px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'swnr.sheet.name'}}" />
       </div>
-          <!-- active -->
+      <!-- active -->
       <div class="flexrow items-center">
         <span>
-        {{localize 'swnr.sheet.faction.active'}}:
-        <input type="checkbox" name="data.active" {{checked data.data.active}}>
+          {{localize 'swnr.sheet.faction.active'}}:
+          <input type="checkbox" name="data.active" {{checked data.data.active}}>
 
         </span>
       </div>
@@ -113,7 +113,27 @@
         <div>{{localize 'swnr.sheet.faction.homeworld'}}</div>
       </div>
 
-  
+
+    </div>
+    <div class="flex-grow flexrow flex-wrap">
+
+
+
+      <!-- goal -->
+      <div class="flex flex-col items-center p-2">
+        <input
+          class="w-32 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          name="data.factionGoal" value="{{data.data.factionGoal}}" />
+        <div>{{localize 'swnr.sheet.faction.factionGoal'}}</div>
+      </div>
+
+      <!-- goal -->
+      <div class="flex flex3 flex-col items-center p-2">
+        <input
+          class="min-w-full text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          name="data.factionGoalDesc" value="{{data.data.factionGoalDesc}}" />
+        <div>{{localize 'swnr.sheet.faction.factionGoalDesc'}}</div>
+      </div>
 
     </div>
     {{!-- Sheet Body --}}
@@ -130,38 +150,39 @@
 
       </nav>
       <section class="sheet-body">
-      <!-- Asset tab -->
-      <div class="tab assets min-h-full" data-group="primary" data-tab="assets">
-        <div class="flexrow flex-grow">
-          {{>
-          "systems/swnr/templates/actors/fragments/faction-assets.html"
-          type="asset" assetType="cunning" name="Cunning" assets=data.data.cunningAssets
-          }}
-        </div>
-        
-        <div class="flexrow flex-grow">
-          {{>
-          "systems/swnr/templates/actors/fragments/faction-assets.html"
-          type="asset" assetType="wealth" name="Wealth" assets=data.data.wealthAssets
-          }}
-        </div>
+        <!-- Asset tab -->
+        <div class="tab assets min-h-full" data-group="primary" data-tab="assets">
+          <div class="flexrow flex-grow">
+            {{>
+            "systems/swnr/templates/actors/fragments/faction-assets.html"
+            type="asset" assetType="cunning" name="Cunning" assets=data.data.cunningAssets
+            }}
+          </div>
 
-        <div class="flexrow flex-grow">
-          {{>
-          "systems/swnr/templates/actors/fragments/faction-assets.html"
-          type="asset" assetType="force" name="Force" assets=data.data.forceAssets
-          }}
-        </div>
-      </div>
-      <div class="tab desc min-h-full" data-group="primary" data-tab="desc">
-        <div class="border border-gray-600 rounded-md my-2 bg-gray-300">
-          <h2 class="text-base p-1">{{localize 'swnr.sheet.description'}}</h2>
-          <div class="p-1 border-t border-black">
-            {{!-- TODO: fix is for wrapping around text, because this is a little fixed --}}
-            {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable }}
+          <div class="flexrow flex-grow">
+            {{>
+            "systems/swnr/templates/actors/fragments/faction-assets.html"
+            type="asset" assetType="wealth" name="Wealth" assets=data.data.wealthAssets
+            }}
+          </div>
+
+          <div class="flexrow flex-grow">
+            {{>
+            "systems/swnr/templates/actors/fragments/faction-assets.html"
+            type="asset" assetType="force" name="Force" assets=data.data.forceAssets
+            }}
           </div>
         </div>
-      </div>
+        <div class="tab desc min-h-full" data-group="primary" data-tab="desc">
+          <div class="border border-gray-600 rounded-md my-2 bg-gray-300">
+            <h2 class="text-base p-1">{{localize 'swnr.sheet.description'}}</h2>
+            <div class="p-1 border-t border-black">
+              {{!-- TODO: fix is for wrapping around text, because this is a little fixed --}}
+              {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable
+              }}
+            </div>
+          </div>
+        </div>
       </section>
 
 </form>
