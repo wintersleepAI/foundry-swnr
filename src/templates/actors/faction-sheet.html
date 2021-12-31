@@ -158,6 +158,11 @@
         <div>{{localize 'swnr.sheet.faction.factionGoalDesc'}}</div>
       </div>
 
+        <!--buttons-->
+        <div class="cost flex flex-col items-center ">
+          <a><i class="fas fa-hourglass-start  fa-2x faction-turn"></i></a>
+          {{localize 'swnr.sheet.faction.turn'}}
+        </div>
     </div>
     {{!-- Sheet Body --}}
 
@@ -170,7 +175,9 @@
         <a class="item" data-tab="desc">
           {{localize 'swnr.sheet.faction.desc-tab'}}
         </a>
-
+        <a class="item" data-tab="tags">
+          {{localize 'swnr.sheet.faction.tags-tab'}}
+        </a>
       </nav>
       <section class="sheet-body">
         <!-- Asset tab -->
@@ -206,6 +213,10 @@
             </div>
           </div>
         </div>
+        <div class="tab assets min-h-full" data-group="primary" data-tab="tags">
+
+        </div>
+
       </section>
 
 </form>

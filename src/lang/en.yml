@@ -455,6 +455,7 @@
       hp: HP
       assets-tab: Assets
       desc-tab: Description
+      tags-tab: Tags
       active: Active Faction
       attack-roll: Attack Hit Roll
       counter-roll: Counter Hit Roll
@@ -471,6 +472,7 @@
       maintenance: Maintenance
       income: Income
       unusable: Unusable
+      turn: Start Turn
     ship:
       life-support-days: Life Support Days
       fuel: Fuel

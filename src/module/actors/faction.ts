@@ -32,7 +32,7 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
     }
   }
 
-  getHealth(level): number {
+  getHealth(level: number): number {
     if (level in HEALTH__XP_TABLE) {
       return HEALTH__XP_TABLE[level];
     } else {
