@@ -86,11 +86,93 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
     });
   }
 
+  async _onStartTurn(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    ui.notifications?.info("on start turn");
+  }
+
+  async _onSetGoal(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    ui.notifications?.info("on set goal");
+  }
+
+  async _onAssetRepair(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    const wrapper = $(event.currentTarget).parents(".item");
+    const asset = this.actor.getEmbeddedDocument(
+      "Item",
+      wrapper.data("itemId")
+    );
+    if (!asset) {
+      ui.notifications?.error("Cannot find asset.");
+      return;
+    }
+    ui.notifications?.info("on set _onAssetRepair " + asset.name);
+  }
+
+  async _onBaseAdd(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    ui.notifications?.info("on set _onBaseAdd");
+  }
+
+  async _onAssetUnusable(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    const wrapper = $(event.currentTarget).parents(".item");
+    const asset = this.actor.getEmbeddedDocument(
+      "Item",
+      wrapper.data("itemId")
+    );
+    if (!asset) {
+      ui.notifications?.error("Cannot find asset.");
+      return;
+    }
+    ui.notifications?.info("on set _onAssetUnusable");
+  }
+
+  async _onRatingUp(type: string): Promise<void> {
+    ui.notifications?.info("on start turn " + type);
+  }
+
   activateListeners(html: JQuery): void {
     super.activateListeners(html);
     html.find(".asset-create").on("click", this._onAssetCreate.bind(this));
+    html.find(".faction-turn").on("click", this._onStartTurn.bind(this));
+    html.find(".force-up").on("click", this._onRatingUp.bind(this, "force"));
+    html
+      .find(".cunning-up")
+      .on("click", this._onRatingUp.bind(this, "cunning"));
+    html.find(".wealth-up").on("click", this._onRatingUp.bind(this, "wealth"));
+    html.find(".set-goal").on("click", this._onSetGoal.bind(this));
+    html.find(".item-fix").on("click", this._onAssetRepair.bind(this));
+    html
+      .find(".asset-toggle-unusable")
+      .on("click", this._onAssetUnusable.bind(this));
+    html.find(".add-base").on("click", this._onBaseAdd.bind(this));
+    // html.find(".").on("click", this._on.bind(this));
   }
 }
+
+Hooks.on("dropActorSheetData", (actor: Actor, actorSheet: ActorSheet, data) => {
+  if (data.type == "JournalEntry") {
+    if (actor.type == "faction") {
+      if (!data["id"] || typeof data["id"] !== "string") {
+        ui.notifications?.error("Error with getting journal id");
+        return;
+      }
+      const journal = game.journal?.get(data["id"]);
+      if (!journal) {
+        ui.notifications?.error("Cannot find journal");
+        return;
+      }
+      ui.notifications?.info("" + journal.name);
+    }
+  }
+});
 
 export const sheet = FactionActorSheet;
 export const types = ["faction"];
