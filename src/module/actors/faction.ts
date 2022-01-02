@@ -40,6 +40,67 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
     }
   }
 
+  async startTurn(): Promise<void> {
+    /*
+
+At the beginning of each turn, a faction gains Fac-
+Creds equal to half their Wealth rating rounded up plus
+one-quarter of their total Force and Cunning ratings,
+rounded down. Any maintenance costs must be paid
+at the beginning of each turn. Assets that cannot be
+maintained are unusable; an asset that goes without
+maintenance for two consecutive rounds is lost. A fac-
+tion cannot voluntarily choose not to pay maintenance.
+If a faction has no goal at the start of a turn, they
+may pick a new one. If they wish to abandon a prior
+goal, they may do so, but the demoralization and con-
+fusion costs them that turn’s FacCred income and they
+may perform no other action that turn.
+*/
+    const goal = this.data.data.factionGoal;
+    if (!goal) {
+      await this.setGoal();
+    } else {
+      const abondonGoal: boolean = await new Promise((resolve) => {
+        Dialog.confirm({
+          title: game.i18n.format("swnr.sheet.faction.abandonGoal", {
+            name: goal,
+          }),
+          yes: () => resolve(true),
+          no: () => resolve(false),
+          content: game.i18n.format("swnr.sheet.faction.abandonGoal", {
+            name: goal,
+          }),
+        });
+      });
+      if (abondonGoal) {
+        await this.setGoal();
+        return;
+      }
+    }
+    const assets = <SWNRBaseItem<"asset">[]>(
+      this.items.filter((i) => i.type === "asset")
+    );
+    const wealthIncome = Math.ceil(this.data.data.wealthRating / 2);
+    const cunningIncome = Math.floor(this.data.data.cunningRating / 4);
+    const forceIncome = Math.floor(this.data.data.forceRating / 4);
+    const assetIncome = assets
+      .map((i) => i.data.data.income)
+      .reduce((i, n) => i + n, 0);
+    const assetMaint = assets
+      .map((i) => i.data.data.maintenance)
+      .reduce((i, n) => i + n, 0);
+    const income =
+      wealthIncome + cunningIncome + forceIncome + assetIncome - assetMaint;
+    if (income > 0) {
+
+    }
+  }
+
+  async setGoal(): Promise<void> {
+    ui.notifications?.info("set goal");
+  }
+
   async ratingUp(type: string): Promise<void> {
     const ratingName = `${type}Rating`;
     let ratingLevel = this.data.data[ratingName];

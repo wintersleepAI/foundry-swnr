@@ -89,7 +89,7 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
   async _onStartTurn(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
-    ui.notifications?.info("on start turn");
+    this.actor.startTurn();
   }
 
   async _onSetGoal(event: JQuery.ClickEvent): Promise<void> {

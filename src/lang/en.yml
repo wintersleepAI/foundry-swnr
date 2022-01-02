@@ -474,6 +474,7 @@
       unusable: Unusable
       turn: Start Turn
       setHomeworld: Set the faction homeworld to {name}?
+      abandonGoal: Abadon current goal {name}? Will lose income and no actions this turn/
     ship:
       life-support-days: Life Support Days
       fuel: Fuel
