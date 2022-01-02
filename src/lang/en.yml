@@ -473,6 +473,7 @@
       income: Income
       unusable: Unusable
       turn: Start Turn
+      setHomeworld: Set the faction homeworld to {name}?
     ship:
       life-support-days: Life Support Days
       fuel: Fuel

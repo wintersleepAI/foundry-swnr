@@ -1,6 +1,6 @@
 import { SWNRBaseActor } from "../base-actor";
 import { SWNRBaseItem } from "../base-item";
-import { SWNRFactionAsset } from "../items/asset";
+
 const HEALTH__XP_TABLE = {
   1: 1,
   2: 2,
@@ -38,6 +38,73 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
     } else {
       return 0;
     }
+  }
+
+  async ratingUp(type: string): Promise<void> {
+    const ratingName = `${type}Rating`;
+    let ratingLevel = this.data.data[ratingName];
+    if (ratingLevel == 8) {
+      ui.notifications?.info("Rating is already at max");
+      return;
+    }
+    if (!ratingLevel) {
+      ratingLevel = 0;
+    }
+    const targetLevel = parseInt(ratingLevel) + 1;
+    let xp = this.data.data.xp;
+    if (targetLevel in HEALTH__XP_TABLE) {
+      const req_xp = HEALTH__XP_TABLE[targetLevel];
+      if (req_xp > xp) {
+        ui.notifications?.error(
+          `Not enough XP to raise rating. Have ${xp} Need ${req_xp}`
+        );
+        return;
+      }
+      xp -= req_xp;
+      if (type == "cunning") {
+        await this.update({
+          "data.xp": xp,
+          "data.cunningRating": targetLevel,
+        });
+      } else if (type == "force") {
+        await this.update({
+          "data.xp": xp,
+          "data.forceRating": targetLevel,
+        });
+      } else if (type == "wealth") {
+        await this.update({
+          "data.xp": xp,
+          "data.wealthRating": targetLevel,
+        });
+      }
+      ui.notifications?.info(
+        `Raised ${type} rating to ${targetLevel} using ${xp} xp`
+      );
+    }
+  }
+
+  async setHomeWorld(journalId: string): Promise<void> {
+    const journal = game.journal?.get(journalId);
+    if (!journal || !journal.name) {
+      ui.notifications?.error("Cannot find journal");
+      return;
+    }
+    const performHome: boolean = await new Promise((resolve) => {
+      Dialog.confirm({
+        title: game.i18n.format("swnr.sheet.faction.setHomeworld", {
+          name: journal.name,
+        }),
+        yes: () => resolve(true),
+        no: () => resolve(false),
+        content: game.i18n.format("swnr.sheet.faction.setHomeworld", {
+          name: journal.name,
+        }),
+      });
+    });
+    if (!performHome) {
+      return;
+    }
+    await this.update({ data: { homeworld: journal.name } });
   }
 
   prepareDerivedData(): void {

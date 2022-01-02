@@ -135,7 +135,7 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
   }
 
   async _onRatingUp(type: string): Promise<void> {
-    ui.notifications?.info("on start turn " + type);
+    return this.actor.ratingUp(type);
   }
 
   activateListeners(html: JQuery): void {
@@ -164,12 +164,8 @@ Hooks.on("dropActorSheetData", (actor: Actor, actorSheet: ActorSheet, data) => {
         ui.notifications?.error("Error with getting journal id");
         return;
       }
-      const journal = game.journal?.get(data["id"]);
-      if (!journal) {
-        ui.notifications?.error("Cannot find journal");
-        return;
-      }
-      ui.notifications?.info("" + journal.name);
+      const faction = (actor as unknown) as SWNRFactionActor;
+      faction.setHomeWorld(data["id"]);
     }
   }
 });
