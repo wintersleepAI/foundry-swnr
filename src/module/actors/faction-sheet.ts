@@ -131,7 +131,13 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
       ui.notifications?.error("Cannot find asset.");
       return;
     }
-    ui.notifications?.info("on set _onAssetUnusable");
+    const new_status = !asset?.data.data.unusable;
+    if (asset instanceof Item)
+      await asset?.update({
+        data: {
+          unusable: new_status,
+        },
+      });
   }
 
   async _onRatingUp(type: string): Promise<void> {

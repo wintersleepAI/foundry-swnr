@@ -240,6 +240,10 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
 
   async roll(): Promise<void> {
     const data = this.data.data;
+    if (data.unusable) {
+      ui.notifications?.error("Asset is unusable");
+      return;
+    }
     if (data.attackDamage && data.attackDamage !== "") {
       const d = new Dialog({
         title: "Attack with Asset",

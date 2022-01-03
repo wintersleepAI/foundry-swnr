@@ -87,14 +87,69 @@ may perform no other action that turn.
     const assetIncome = assets
       .map((i) => i.data.data.income)
       .reduce((i, n) => i + n, 0);
-    const assetMaint = assets
+    const assetWithMaint = assets.filter((i) => i.data.data.maintenance);
+    const assetMaintTotal = assetWithMaint
       .map((i) => i.data.data.maintenance)
       .reduce((i, n) => i + n, 0);
-    const income =
-      wealthIncome + cunningIncome + forceIncome + assetIncome - assetMaint;
-    if (income > 0) {
 
+    const cunningAssetsOverLimit = Math.min(
+      this.data.data.cunningRating - this.data.data.cunningAssets.length,
+      0
+    );
+    const forceAssetsOverLimit = Math.min(
+      this.data.data.forceRating - this.data.data.forceAssets.length,
+      0
+    );
+    const wealthAssetsOverLimit = Math.min(
+      this.data.data.wealthRating - this.data.data.wealthAssets.length,
+      0
+    );
+    const costFromAssetsOver =
+      cunningAssetsOverLimit + forceAssetsOverLimit + wealthAssetsOverLimit;
+    const income =
+      wealthIncome +
+      cunningIncome +
+      forceIncome +
+      assetIncome -
+      assetMaintTotal -
+      costFromAssetsOver;
+    let new_creds = this.data.data.facCreds + income;
+    let msg = `Income this round: ${income}.<br>From assets: ${assetIncome}.<br>Maintenance -${assetMaintTotal}.<br>Cost from assets over rating -${costFromAssetsOver}.<br>`;
+    if (income < 0) {
+      msg += ` <b>Loosing FacCreds this turn.</b><br>`;
     }
+    const aitems: Record<string, unknown>[] = [];
+
+    if (new_creds < 0) {
+      if (assetMaintTotal + new_creds < 0) {
+        //Marking all assets unusable would still not bring money above, can mark all w/maint as unusable.
+        for (let i = 0; i < assetWithMaint.length; i++) {
+          const asset = assetWithMaint[i];
+          const assetCost = asset.data.data.maintenance;
+          new_creds += assetCost; // return the money
+          aitems.push({ _id: asset.id, data: { unusable: true } });
+        }
+        if (aitems.length > 0) {
+          await this.updateEmbeddedDocuments("Item", aitems);
+        }
+        msg += ` <b>Out of money and unable to pay for all assets</b>, marking all assets with maintenance as unusable`;
+      } else {
+        msg += ` <b>Out of money and unable to pay for all assets</b>, need to make assets unusable. Mark unusable for assets to cover facCreds: ${income}`;
+      }
+    }
+    await this.update({ data: { facCreds: new_creds } });
+
+    const gm_ids: string[] = ChatMessage.getWhisperRecipients("GM")
+      .filter((i) => i)
+      .map((i) => i.id)
+      .filter((i): i is string => i !== null);
+
+    ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: msg,
+      whisper: gm_ids,
+      type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
+    });
   }
 
   async setGoal(): Promise<void> {
@@ -165,6 +220,7 @@ may perform no other action that turn.
     if (!performHome) {
       return;
     }
+    ui.notifications?.error("TODO create asset base with max health.");
     await this.update({ data: { homeworld: journal.name } });
   }
 
