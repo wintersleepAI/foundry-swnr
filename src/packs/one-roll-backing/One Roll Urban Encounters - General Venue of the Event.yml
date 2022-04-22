@@ -1,0 +1,69 @@
+_id: KgcoUIUhU1OUP0BM
+displayRoll: true
+flags:
+  core:
+    sourceId: RollTable.EO8Vg8sgXu49tiCh
+folder: null
+formula: 1d6
+img: icons/svg/d20-grey.svg
+name: One Roll Urban Encounters - General Venue of the Event
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: ONgsKmZ8X1iVqqAY
+    drawn: false
+    flags: {}
+    range:
+      - 1
+      - 1
+    text: "General Venue of the Event: In the middle of the street"
+    type: 0
+    weight: 1
+  - _id: e55OvP3KzCKHvnCZ
+    drawn: false
+    flags: {}
+    range:
+      - 2
+      - 2
+    text: "General Venue of the Event: In a public plaza"
+    type: 0
+    weight: 1
+  - _id: RraBFHQfRo9a4LG0
+    drawn: false
+    flags: {}
+    range:
+      - 3
+      - 3
+    text: "General Venue of the Event: Down a side alley"
+    type: 0
+    weight: 1
+  - _id: jeKictLCD0BHPuAh
+    drawn: false
+    flags: {}
+    range:
+      - 4
+      - 4
+    text: "General Venue of the Event: Inside a local business"
+    type: 0
+    weight: 1
+  - _id: TQCkMXgPkzHv3tvp
+    drawn: false
+    flags: {}
+    range:
+      - 5
+      - 5
+    text: "General Venue of the Event: Next to or in a public park"
+    type: 0
+    weight: 1
+  - _id: ZZawZPbawmQGbqsb
+    drawn: false
+    flags: {}
+    range:
+      - 6
+      - 6
+    text: "General Venue of the Event: At a mass-transit station"
+    type: 0
+    weight: 1
+sort: 0

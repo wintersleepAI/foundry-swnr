@@ -1,0 +1,105 @@
+_id: AlNUzSQ6FzErbE5N
+displayRoll: true
+flags:
+  core:
+    sourceId: RollTable.f0GRADtwJR2PU5f5
+folder: null
+formula: 1d10
+img: icons/svg/d20-grey.svg
+name: One Roll Urban Encounters - What’s the Nature of the Event?
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: TmyQhfWuuUaknwDO
+    drawn: false
+    flags: {}
+    range:
+      - 1
+      - 1
+    text: "What’s the Nature of the Event?: A parade or festival is being disrupted"
+    type: 0
+    weight: 1
+  - _id: pMvVu1jF0K9gXSow
+    drawn: false
+    flags: {}
+    range:
+      - 2
+      - 2
+    text: "What’s the Nature of the Event?: Innocents are being assaulted"
+    type: 0
+    weight: 1
+  - _id: mtdTR34w4ZHaKu73
+    drawn: false
+    flags: {}
+    range:
+      - 3
+      - 3
+    text: "What’s the Nature of the Event?: An establishment is being robbed"
+    type: 0
+    weight: 1
+  - _id: eUEnOgRVBxxAWaRU
+    drawn: false
+    flags: {}
+    range:
+      - 4
+      - 4
+    text: "What’s the Nature of the Event?: A disturbance over local politics happens"
+    type: 0
+    weight: 1
+  - _id: QiwQHwgYrqrUilLP
+    drawn: false
+    flags: {}
+    range:
+      - 5
+      - 5
+    text: "What’s the Nature of the Event?: Someone is being blamed for something"
+    type: 0
+    weight: 1
+  - _id: E4NdW142pWVf6X4a
+    drawn: false
+    flags: {}
+    range:
+      - 6
+      - 6
+    text: "What’s the Nature of the Event?: Fires or building collapses are happening"
+    type: 0
+    weight: 1
+  - _id: QKqih8txtMWejQlW
+    drawn: false
+    flags: {}
+    range:
+      - 7
+      - 7
+    text: "What’s the Nature of the Event?: A medical emergency is happening"
+    type: 0
+    weight: 1
+  - _id: WZAqgnLw6Q0pq2L4
+    drawn: false
+    flags: {}
+    range:
+      - 8
+      - 8
+    text: "What’s the Nature of the Event?: Someone’s trying to cheat the PCs"
+    type: 0
+    weight: 1
+  - _id: 6rkXaM5qHC3l0AFb
+    drawn: false
+    flags: {}
+    range:
+      - 9
+      - 9
+    text: "What’s the Nature of the Event?: A vehicle accident is happening"
+    type: 0
+    weight: 1
+  - _id: axkJ2TwLTTELgzaU
+    drawn: false
+    flags: {}
+    range:
+      - 10
+      - 10
+    text: "What’s the Nature of the Event?: A religious ceremony is being disrupted"
+    type: 0
+    weight: 1
+sort: 0

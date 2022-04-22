@@ -1,0 +1,133 @@
+_id: AbwkDHmMs8vRJK4Q
+displayRoll: true
+flags: {}
+folder: null
+formula: 1d10
+img: icons/svg/d20-grey.svg
+name: One Roll Patrons - Main Countervailing Force
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: 1SBbyRAAWo1l44Sf
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    text: "Main Countervailing Force: A treacherous employer or subordinate"
+    type: 0
+    weight: 1
+  - _id: ZzPI4f1MGISyuFsx
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 2
+      - 2
+    rangeH: 2
+    rangeL: 2
+    text: "Main Countervailing Force: An open and known enemy of the patron"
+    type: 0
+    weight: 1
+  - _id: Qm1FO6BjjVGa7xIG
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 3
+      - 3
+    rangeH: 3
+    rangeL: 3
+    text: "Main Countervailing Force: Official governmental meddling"
+    type: 0
+    weight: 1
+  - _id: dE8nXy2UMyKJYmZq
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 4
+      - 4
+    rangeH: 4
+    rangeL: 4
+    text: "Main Countervailing Force: An unknown rival of the patron"
+    type: 0
+    weight: 1
+  - _id: VVcNhNNkVb7T1Um4
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 5
+      - 5
+    rangeH: 5
+    rangeL: 5
+    text: "Main Countervailing Force: The macguffin itself opposes them"
+    type: 0
+    weight: 1
+  - _id: vyl6IbbutGDutgbO
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 6
+      - 6
+    rangeH: 6
+    rangeL: 6
+    text: "Main Countervailing Force: Very short time frame allowed"
+    type: 0
+    weight: 1
+  - _id: rp2azWfkcCBlOPcw
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 7
+      - 7
+    rangeH: 7
+    rangeL: 7
+    text: "Main Countervailing Force: The job is spectacularly illegal"
+    type: 0
+    weight: 1
+  - _id: X6UeMwpHAhiB8SQi
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 8
+      - 8
+    rangeH: 8
+    rangeL: 8
+    text: "Main Countervailing Force: A participant would profit by their failure"
+    type: 0
+    weight: 1
+  - _id: Fq43uIcJ22y61GVa
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 9
+      - 9
+    rangeH: 9
+    rangeL: 9
+    text: "Main Countervailing Force: The patron is badly wrong about a thing"
+    type: 0
+    weight: 1
+  - _id: nLqUes1eEvkct0lN
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 10
+      - 10
+    rangeH: 10
+    rangeL: 10
+    text: "Main Countervailing Force: The locals are against the patron"
+    type: 0
+    weight: 1
+sort: 0

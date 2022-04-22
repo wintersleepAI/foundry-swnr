@@ -1,0 +1,85 @@
+_id: 9x8xoivdKBJ4lvyW
+displayRoll: true
+flags: {}
+folder: null
+formula: 1d6
+img: icons/svg/d20-grey.svg
+name: One Roll Patrons - Trustworthiness
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: VgNAXzwhazrs4LeE
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    text: "Trustworthiness: They intend to totally screw the PCs"
+    type: 0
+    weight: 1
+  - _id: UQsaDKN3qVexl8Ie
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 2
+      - 2
+    rangeH: 2
+    rangeL: 2
+    text: "Trustworthiness: They won’t pay unless forced to do so"
+    type: 0
+    weight: 1
+  - _id: WlzFhoVI26SXoRM7
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 3
+      - 3
+    rangeH: 3
+    rangeL: 3
+    text: "Trustworthiness: They’ll pay slowly or reluctantly"
+    type: 0
+    weight: 1
+  - _id: D8zWX3Qf5qbWOSEA
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 4
+      - 4
+    rangeH: 4
+    rangeL: 4
+    text: "Trustworthiness: They’ll pay, but discount for mistakes"
+    type: 0
+    weight: 1
+  - _id: SbZBVPyN2Ab11ARc
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 5
+      - 5
+    rangeH: 5
+    rangeL: 5
+    text: "Trustworthiness: They’ll pay without quibbling"
+    type: 0
+    weight: 1
+  - _id: cs55gFOlr3mjdgRz
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 6
+      - 6
+    rangeH: 6
+    rangeL: 6
+    text: "Trustworthiness: They’ll pay more than they promised"
+    type: 0
+    weight: 1
+sort: 0

@@ -186,6 +186,18 @@ packs:
     path: packs/drone-fittings.db
     type: Item
     entity: Item
+  - entity: RollTable
+    label: One Roll Tables
+    module: swnr
+    name: one-roll-tables
+    path: packs/one-roll-tables.db
+    system: swnr
+  - entity: RollTable
+    label: One Roll Tables - backing
+    module: swnr
+    name: one-roll-backing
+    path: packs/one-roll-backing.db
+    system: swnr    
 languages:
   - lang: en
     name: English

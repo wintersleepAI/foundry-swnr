@@ -1,0 +1,105 @@
+_id: s3KZrzV3qYchuGBg
+displayRoll: true
+flags:
+  core:
+    sourceId: RollTable.1TpE8f829QmleyEA
+folder: null
+formula: 1d10
+img: icons/svg/d20-grey.svg
+name: One Roll Wilderness Encounters - Types of Friendly Creatures
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: Udt1O6FhO653SQUs
+    drawn: false
+    flags: {}
+    range:
+      - 1
+      - 1
+    text: "Types of Friendly Creatures: Affable but reclusive hermit"
+    type: 0
+    weight: 1
+  - _id: i6cLvLsZi5nKJeEZ
+    drawn: false
+    flags: {}
+    range:
+      - 2
+      - 2
+    text: "Types of Friendly Creatures: Local herd animal let loose to graze"
+    type: 0
+    weight: 1
+  - _id: JyzeJl1XiRxOcfwD
+    drawn: false
+    flags: {}
+    range:
+      - 3
+      - 3
+    text: "Types of Friendly Creatures: Government ranger or circuit judge"
+    type: 0
+    weight: 1
+  - _id: NPv3IOcUfMLkrtXo
+    drawn: false
+    flags: {}
+    range:
+      - 4
+      - 4
+    text: "Types of Friendly Creatures: Curious local animal"
+    type: 0
+    weight: 1
+  - _id: U0FFJ6XjTmHKSjCD
+    drawn: false
+    flags: {}
+    range:
+      - 5
+      - 5
+    text: "Types of Friendly Creatures: Remote homesteader and family"
+    type: 0
+    weight: 1
+  - _id: CjQ051hqx828s8MK
+    drawn: false
+    flags: {}
+    range:
+      - 6
+      - 6
+    text: "Types of Friendly Creatures: Working trapper or hunter"
+    type: 0
+    weight: 1
+  - _id: iucMRvL0vLg4tj3v
+    drawn: false
+    flags: {}
+    range:
+      - 7
+      - 7
+    text: "Types of Friendly Creatures: Back-country villager or native"
+    type: 0
+    weight: 1
+  - _id: nipR26KgpX5fXYzy
+    drawn: false
+    flags: {}
+    range:
+      - 8
+      - 8
+    text: "Types of Friendly Creatures: Hiker or wilderness tourist"
+    type: 0
+    weight: 1
+  - _id: oMVJ8UVMRCHjWwPT
+    drawn: false
+    flags: {}
+    range:
+      - 9
+      - 9
+    text: "Types of Friendly Creatures: Religious recluse or holy person"
+    type: 0
+    weight: 1
+  - _id: RwkMRgywWGzBmHqH
+    drawn: false
+    flags: {}
+    range:
+      - 10
+      - 10
+    text: "Types of Friendly Creatures: Impoverished social exile"
+    type: 0
+    weight: 1
+sort: 0

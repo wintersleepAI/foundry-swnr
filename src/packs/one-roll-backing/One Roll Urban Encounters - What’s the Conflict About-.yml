@@ -1,0 +1,51 @@
+_id: qNA0nQa49YFsa9Cl
+displayRoll: true
+flags:
+  core:
+    sourceId: RollTable.6RVIa7spNNMbCdkU
+folder: null
+formula: 1d4
+img: icons/svg/d20-grey.svg
+name: One Roll Urban Encounters - What’s the Conflict About?
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: CvLCoaiFhiymuS7b
+    drawn: false
+    flags: {}
+    range:
+      - 1
+      - 1
+    text: "What’s the Conflict About?: Money, extortion, payment due, debts"
+    type: 0
+    weight: 1
+  - _id: ay80xdOFOR5QyIpB
+    drawn: false
+    flags: {}
+    range:
+      - 2
+      - 2
+    text: "What’s the Conflict About?: Respect, submission to social authority"
+    type: 0
+    weight: 1
+  - _id: aFCBxaSqLv1bPeAB
+    drawn: false
+    flags: {}
+    range:
+      - 3
+      - 3
+    text: "What’s the Conflict About?: Grudges, ethnic resentment, gang payback"
+    type: 0
+    weight: 1
+  - _id: PgLdYCgfXua9umKO
+    drawn: false
+    flags: {}
+    range:
+      - 4
+      - 4
+    text: "What’s the Conflict About?: Politics, religion, or other ideology"
+    type: 0
+    weight: 1
+sort: 0

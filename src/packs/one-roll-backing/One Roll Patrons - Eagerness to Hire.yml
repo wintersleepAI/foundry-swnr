@@ -1,0 +1,61 @@
+_id: p2WhakZgxW9o9y5w
+displayRoll: true
+flags: {}
+folder: null
+formula: 1d4
+img: icons/svg/d20-grey.svg
+name: One Roll Patrons - Eagerness to Hire
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: ntGZpDvZBrnu1Uep
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    text: "Eagerness to Hire: Cautious, but can be convinced to hire"
+    type: 0
+    weight: 1
+  - _id: fUXMB2HeSuYuYCl9
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 2
+      - 2
+    rangeH: 2
+    rangeL: 2
+    text: "Eagerness to Hire: Willing to promise standard rates"
+    type: 0
+    weight: 1
+  - _id: VExWuJBtOL6EoCrL
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 3
+      - 3
+    rangeH: 3
+    rangeL: 3
+    text: "Eagerness to Hire: Eager, willing to offer a bonus"
+    type: 0
+    weight: 1
+  - _id: MzNZ1NFIjgUlzINW
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 4
+      - 4
+    rangeH: 4
+    rangeL: 4
+    text: "Eagerness to Hire: Desperate, might offer what they can’t pay"
+    type: 0
+    weight: 1
+sort: 0
