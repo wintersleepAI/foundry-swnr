@@ -40,6 +40,20 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
     }
   }
 
+  async logMessage(content: string, _roll: Roll | null): Promise<void> {
+    const gm_ids: string[] = ChatMessage.getWhisperRecipients("GM")
+      .filter((i) => i)
+      .map((i) => i.id)
+      .filter((i): i is string => i !== null);
+    const chatData = {
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content,
+      type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
+      whisper: gm_ids,
+    };
+    ChatMessage.create(chatData);
+  }
+
   async startTurn(): Promise<void> {
     /*
 
@@ -54,7 +68,7 @@ tion cannot voluntarily choose not to pay maintenance.
 If a faction has no goal at the start of a turn, they
 may pick a new one. If they wish to abandon a prior
 goal, they may do so, but the demoralization and con-
-fusion costs them that turn’s FacCred income and they
+fusion costs them that turn`s FacCred income and they
 may perform no other action that turn.
 */
     const goal = this.data.data.factionGoal;
@@ -138,14 +152,10 @@ may perform no other action that turn.
       }
     }
     await this.update({ data: { facCreds: new_creds } });
+    await this.logMessage(msg, null);
 
-    const gm_ids: string[] = ChatMessage.getWhisperRecipients("GM")
-      .filter((i) => i)
-      .map((i) => i.id)
-      .filter((i): i is string => i !== null);
 
     ChatMessage.create({
-      speaker: ChatMessage.getSpeaker({ actor: this }),
       content: msg,
       whisper: gm_ids,
       type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
@@ -253,3 +263,59 @@ may perform no other action that turn.
 
 export const document = SWNRFactionActor;
 export const name = "faction";
+export const FACTION_GOALS = [
+  {
+    name: "Military Conquest",
+    desc:
+      "Destroy a number of Force assets of rival factions equal to your faction`s Force rating. Difficulty is 1/2 number of assets destroyed.",
+  },
+  {
+    name: "Commercial Expansion",
+    desc:
+      "Destroy a number of Wealth assets of rival factions equal to your faction`s Wealth rating. Difficulty is 1/2 number of assets destroyed.",
+  },
+  {
+    name: "Intelligence Coup",
+    desc:
+      "Destroy a number of Cunning assets of rival factions equal to your faction`s Cunning rating. Difficulty is 1/2 number of assets destroyed.",
+  },
+  {
+    name: "Planetary Seizure",
+    desc:
+      "Take control of a planet, becoming the legitimate planetary government. Difficulty equal to half the average of the current ruling faction`s Force, Cunning, and Wealth ratings. If the planet somehow lacks any opposing faction to resist the seizure, it counts as Difficulty 1.",
+  },
+  {
+    name: "Expand Influence",
+    desc:
+      "Plant a Base of Influence on a new planet. Difficulty 1, +1 if the attempt is contested by a rival faction.",
+  },
+  {
+    name: "Blood the Enemy",
+    desc:
+      "Inflict a number of hit points of damage on enemy faction assets or bases equal to your faction`s total Force, Cunning, and Wealth ratings. Difficulty 2.",
+  },
+  {
+    name: "Peaceable Kingdom",
+    desc: "Don`t take an Attack action for four turns. Difficulty 1.",
+  },
+  {
+    name: "Destroy the Foe",
+    desc:
+      "Destroy a rival faction. Difficulty equal to 1 plus the average of the faction`s Force, Cunning, and Wealth ratings.",
+  },
+  {
+    name: "Inside Enemy Territory",
+    desc:
+      "Have a number of stealthed assets on worlds with other planetary governments equal to your Cunning score. Units that are already stealthed on worlds when this goal is adopted don`t count. Difficulty 2.",
+  },
+  {
+    name: "Invincible Valor",
+    desc:
+      "Destroy a Force asset with a minimum purchase rating higher than your faction`s Force rating. Thus, if your Force is 3, you need to destroy a unit that requires Force 4 or higher to purchase. Difficulty 2.",
+  },
+  {
+    name: "Wealth of Worlds",
+    desc:
+      "Spend FacCreds equal to four times your faction`s Wealth rating on bribes and influence. This money is effectively lost, but the goal is then considered accomplished. The faction`s Wealth rating must increase before this goal can be selected again. Difficulty 2.",
+  },
+];

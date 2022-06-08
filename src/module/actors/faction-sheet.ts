@@ -1,6 +1,8 @@
 import { AllItemClasses } from "../item-types";
 import { BaseActorSheet } from "../actor-base-sheet";
 import { SWNRFactionActor } from "./faction";
+import { FACTION_GOALS } from "./faction";
+import { ValidatedDialog } from "../ValidatedDialog";
 
 interface FactionActorSheetData extends ActorSheet.Data {
   itemTypes: SWNRFactionActor["itemTypes"];
@@ -95,7 +97,65 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
   async _onSetGoal(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
-    ui.notifications?.info("on set goal");
+    const goalArray = FACTION_GOALS;
+    const dialogData = {
+      goalArray,
+    };
+    const template = "systems/swnr/templates/dialogs/faction-goal.html";
+    const html = renderTemplate(template, dialogData);
+
+    const _goalForm = async (html: HTMLFormElement) => {
+      const form = <HTMLFormElement>html[0].querySelector("form");
+      const goal = (<HTMLSelectElement>form.querySelector('[name="goal"]'))
+        .value;
+      const goalType = (<HTMLSelectElement>(
+        form.querySelector('[name="goalType"]')
+      )).value;
+
+      if (goal && goal.length == 0 && goalType != "abandon") {
+        ui.notifications?.info("No goal selected. Ignoring");
+      } else {
+        for (const g of FACTION_GOALS) {
+          if (g.name == goal) {
+            await this.actor.update({
+              data: {
+                factionGoal: g.name,
+                factionGoalDesc: g.desc,
+              },
+            });
+            let goalTypeMessage =
+              "<b>Goal completed</b>.<br> Reminder: A faction that successfully accomplishes a goal gains experience points equal to the goal`s difficulty. This experience may be saved, or spent at the beginning of any turn to increase the Force, Cunning, or Wealth ratings of a faction. Optionally, the GM might allow a faction to buy a new tag if their deeds justify it.";
+
+            if (goalType == "abandon") {
+              goalTypeMessage =
+                "<b>Goal abandoned.</b><br> Reminder: If a faction chooses to abandon a goal, the demoralizing effect of it and the waste of preparations costs them that turn’s FacCred income, and they cannot perform any other action that turn.";
+            }
+            const content = `Faction ${this.actor.name} changed their goal to ${g.name}. <br> ${goalTypeMessage}`;
+            await this.actor.logMessage(content, null);
+            return;
+          }
+        }
+      }
+    };
+
+    this.popUpDialog?.close();
+    this.popUpDialog = new ValidatedDialog(
+      {
+        title: "Set Goal",
+        content: await html,
+        default: "roll",
+        buttons: {
+          setgoal: {
+            label: "Set Goal",
+            callback: _goalForm,
+          },
+        },
+      },
+      {
+        classes: ["swnr"],
+      }
+    );
+    this.popUpDialog.render(true);
   }
 
   async _onAssetRepair(event: JQuery.ClickEvent): Promise<void> {
