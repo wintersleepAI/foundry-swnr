@@ -40,7 +40,11 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
     }
   }
 
-  async logMessage(content: string, _roll: Roll | null): Promise<void> {
+  async logMessage(
+    content: string,
+    _longContent: string | null = null,
+    _roll: Roll | null = null
+  ): Promise<void> {
     const gm_ids: string[] = ChatMessage.getWhisperRecipients("GM")
       .filter((i) => i)
       .map((i) => i.id)
@@ -56,42 +60,21 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
 
   async startTurn(): Promise<void> {
     /*
+    At the beginning of each turn, a faction gains Fac-
+    Creds equal to half their Wealth rating rounded up plus
+    one-quarter of their total Force and Cunning ratings,
+    rounded down. Any maintenance costs must be paid
+    at the beginning of each turn. Assets that cannot be
+    maintained are unusable; an asset that goes without
+    maintenance for two consecutive rounds is lost. A fac-
+    tion cannot voluntarily choose not to pay maintenance.
+    If a faction has no goal at the start of a turn, they
+    may pick a new one. If they wish to abandon a prior
+    goal, they may do so, but the demoralization and con-
+    fusion costs them that turn`s FacCred income and they
+    may perform no other action that turn.
+    */
 
-At the beginning of each turn, a faction gains Fac-
-Creds equal to half their Wealth rating rounded up plus
-one-quarter of their total Force and Cunning ratings,
-rounded down. Any maintenance costs must be paid
-at the beginning of each turn. Assets that cannot be
-maintained are unusable; an asset that goes without
-maintenance for two consecutive rounds is lost. A fac-
-tion cannot voluntarily choose not to pay maintenance.
-If a faction has no goal at the start of a turn, they
-may pick a new one. If they wish to abandon a prior
-goal, they may do so, but the demoralization and con-
-fusion costs them that turn`s FacCred income and they
-may perform no other action that turn.
-*/
-    const goal = this.data.data.factionGoal;
-    if (!goal) {
-      await this.setGoal();
-    } else {
-      const abondonGoal: boolean = await new Promise((resolve) => {
-        Dialog.confirm({
-          title: game.i18n.format("swnr.sheet.faction.abandonGoal", {
-            name: goal,
-          }),
-          yes: () => resolve(true),
-          no: () => resolve(false),
-          content: game.i18n.format("swnr.sheet.faction.abandonGoal", {
-            name: goal,
-          }),
-        });
-      });
-      if (abondonGoal) {
-        await this.setGoal();
-        return;
-      }
-    }
     const assets = <SWNRBaseItem<"asset">[]>(
       this.items.filter((i) => i.type === "asset")
     );
@@ -152,14 +135,7 @@ may perform no other action that turn.
       }
     }
     await this.update({ data: { facCreds: new_creds } });
-    await this.logMessage(msg, null);
-
-
-    ChatMessage.create({
-      content: msg,
-      whisper: gm_ids,
-      type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
-    });
+    await this.logMessage(msg);
   }
 
   async setGoal(): Promise<void> {
@@ -317,5 +293,56 @@ export const FACTION_GOALS = [
     name: "Wealth of Worlds",
     desc:
       "Spend FacCreds equal to four times your faction`s Wealth rating on bribes and influence. This money is effectively lost, but the goal is then considered accomplished. The faction`s Wealth rating must increase before this goal can be selected again. Difficulty 2.",
+  },
+];
+
+export const FACTION_ACTIONS = [
+  {
+    name: "Attack",
+    desc:
+      "Attacking is the chief way by which a faction assaults a rival`s assets and organizational structure. A successful attack can damage or destroy an enemy asset, or even damage the leadership and cohesion of an enemy faction. It`s up to the GM or players to describe an attack and its methods.",
+    longDesc:
+      "Attacks can only be launched against known assets. If a rival has stealthed assets on a world, they cannot be targeted for an attack until they`ve been discovered by a faction`s intelligence agents. Attacks can only be launched against assets on the same world as the attacker. To launch an attack, the attacker selects one or more of their own assets and targets a rival faction with assets on the same world. One at a time, each attacking asset is matched against a defending asset chosen by the defender. Each attacking asset can attack only once per turn, though a defending asset can defend as many times as the defender wishes, assuming it can survive multiple conflicts. Once matched, the attacker rolls 1d10 and adds the relevant attribute for the asset. For example, a military unit`s Attack might add the faction`s Force rating to the attack roll, while a cyberninja unit might add the faction`s Cunning to the attack roll. The defender then rolls 1d10 and adds the attribute that the attack targets. In the instance of the military unit, this might be an attack against Force, causing the defender to add their Force rating to the roll, while defending against the cyberninjas might require adding the defender`s Cunning rating. The Attack line of the attacking asset indicates which attribute to add to the attack roll and which to add to the defense roll. If the attacker`s roll exceeds the defender`s roll, the attack is a success. The defending asset suffers damage as given on the Attack line of the attacking asset. If the defender has a Base of Influence on the world, the defender may opt to let the damage bypass the asset and hit the Base of Influence instead, causing damage to it and the faction hit points. If the asset or Base of Influence is reduced to zero hit points, it is lost. If the attacker`s roll is less than the defender`s roll, the attack fails. The defending asset can apply whatever damage their Counterattack line indicates to the attacking asset. If the defending asset has no Counterattack line, the attacker suffers no consequences for the failed attack. A tie on the roll results in both Attack and Counterattack succeeding. Both attacker and defender take damage as indicated.",
+  },
+  {
+    name: "Buy Asset",
+    desc:
+      "The faction buys one asset on their homeworld or another planet on which they have a Base of Influence. These assets take time to assemble, and can neither attack, defend, nor grant their special benefits until the beginning of the faction`s next turn. The faction must have a sufficient rating to buy an asset, and the planet must have a tech level sufficient to support the asset`s creation. Only one asset can be purchased by a faction per turn.",
+  },
+  {
+    name: "Change Homeworld",
+    desc:
+      "A faction can move to a different homeworld, if they have a Base of Influence on the destination planet. This action takes one turn, plus one more for each hex of distance between the old homeworld and the new. During this time the faction can initiate no actions.",
+  },
+  {
+    name: "Expand Influence",
+    desc:
+      "The faction buys a Base of Influence asset on a planet on which they have at least one other asset. The faction then rolls 1d10+Cunning rating against similar rolls by every other faction on the planet. Any of the others that equal or beat the faction`s roll may make a free immediate Attack action against the Base of Influence if they wish. Other assets present on the planet may defend against the attack as normal. The Base of Influence cannot be used until the beginning of the faction`s next turn.",
+    longDesc:
+      "To buy a Base of Influence, the purchaser pays one FacCred for every hit point the base has, up to a maximum equal to the faction`s maximum hit points. Bases with few hit points are relatively peripheral outposts, easy to dislodge but cheap to erect. Bases with many hit points are significant strongholds that would hurt the faction badly to lose but are much harder to eliminate. Factions may use this action to buy additional hit points for a Base of Influence, paying one additional FacCred up to the maximum HP allowed. It is possible to decrease a base`s hit points with the action as well, albeit without refunds. The base on a faction`s homeworld cannot be shrunk this way.",
+  },
+  {
+    name: "Refit Asset",
+    desc:
+      "Change one asset to any other asset of the same type. If the new asset is of a more expensive type, pay the difference. The asset must be on a planet that allows the purchase of the new asset. Turning a militia squad into elite skirmishers requires a tech level 4 world and governmental permission, for example. A refitted asset is unable to attack or defend until the beginning of the faction`s next turn.",
+  },
+  {
+    name: "Repair Asset/Faction",
+    desc:
+      "Heal damage to an asset or faction. For one FacCred, an asset heals points of damage equal to the faction`s score in its ruling attribute. More damage can be healed in this single action, but the cost of repair increases by one FacCred for each further amount repaired- two FacCreds for the second amount healed, three FacCreds for the third amount healed, et cetera. If used to heal a faction, the faction regains hit points equal to the rounded average of its highest and lowest attribute ratings. This healing cannot be hurried by additional spending. Use of this action allows the faction to heal as many different assets as it wishes.",
+  },
+  {
+    name: "Sell Asset",
+    desc: "Gain half the FacCred cost of the asset, rounded down.",
+  },
+  {
+    name: "Seize Planet",
+    desc:
+      "The faction seeks to become the ruling body of a world. The faction must destroy all unstealthed assets on the planet belonging to factions who oppose their attempt before they can successfully take control. If all the assets cannot be destroyed in one turn, the faction must continue the attempt next turn until either successful or all of their own assets on that planet have been destroyed or have left the planet. No other actions can be taken in the meanwhile. Once all resistance has been crushed, the attacker must maintain at least one unstealthed asset on the world for three turns. If successful, they gain the Planetary Government tag for the world.",
+  },
+  {
+    name: "Use Asset Ability",
+    desc:
+      "Use the special abilities of one or more assets, such as the transport ability of logistics assets, or the intelligence-gathering abilities of spy assets.",
   },
 ];

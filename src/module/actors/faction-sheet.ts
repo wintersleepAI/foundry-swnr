@@ -1,7 +1,7 @@
 import { AllItemClasses } from "../item-types";
 import { BaseActorSheet } from "../actor-base-sheet";
 import { SWNRFactionActor } from "./faction";
-import { FACTION_GOALS } from "./faction";
+import { FACTION_GOALS, FACTION_ACTIONS } from "./faction";
 import { ValidatedDialog } from "../ValidatedDialog";
 
 interface FactionActorSheetData extends ActorSheet.Data {
@@ -92,6 +92,43 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
     event.preventDefault();
     event.stopPropagation();
     this.actor.startTurn();
+    // Now ask about action
+    const dialogData = {
+      actions: FACTION_ACTIONS,
+    };
+    const template = "systems/swnr/templates/dialogs/faction-action.html";
+    const html = renderTemplate(template, dialogData);
+    const _form = async (html: HTMLFormElement) => {
+      const form = <HTMLFormElement>html[0].querySelector("form");
+      const action = (<HTMLSelectElement>form.querySelector('[name="action"]'))
+        .value;
+      for (const a of FACTION_ACTIONS) {
+        if (action == a.name) {
+          const msg = `Faction ${this.actor.name} is taking action ${action}.<br> <span style="font-size:8pt">${a.desc}</span>`;
+          const longDesc = a.longDesc != undefined ? a.longDesc : null;
+          this.actor.logMessage(msg, longDesc);
+        }
+      }
+    };
+
+    this.popUpDialog?.close();
+    this.popUpDialog = new ValidatedDialog(
+      {
+        title: "Take Action",
+        content: await html,
+        default: "setgoal",
+        buttons: {
+          setgoal: {
+            label: "Take Action",
+            callback: _form,
+          },
+        },
+      },
+      {
+        classes: ["swnr"],
+      }
+    );
+    this.popUpDialog.render(true);
   }
 
   async _onSetGoal(event: JQuery.ClickEvent): Promise<void> {
@@ -143,7 +180,7 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
       {
         title: "Set Goal",
         content: await html,
-        default: "roll",
+        default: "setgoal",
         buttons: {
           setgoal: {
             label: "Set Goal",
