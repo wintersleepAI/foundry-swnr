@@ -261,15 +261,18 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       // shock: damage + stat
       // const skill = this.actor.items.filter(w => w.)
       // Burst is +2 To hit and to damage
-      let dmgBonus: number = this.data.data.skillBoostsDamage
-        ? skill.data.data.rank
-        : 0;
-      if (
-        this.actor?.type == "npc" &&
-        this.actor.data.data.attacks.bonusDamage
-      ) {
-        dmgBonus = this.actor.data.data.attacks.bonusDamage;
+      let dmgBonus = 0;
+      if (this.actor?.type == "character") {
+        dmgBonus = this.data.data.skillBoostsDamage ? skill.data.data.rank : 0;
+      } else if (this.actor?.type == "npc") {
+        dmgBonus = this.data.data.skillBoostsDamage
+          ? this.actor.data.data.skillBonus
+          : 0;
+        if (this.actor.data.data.attacks.bonusDamage) {
+          dmgBonus += this.actor.data.data.attacks.bonusDamage;
+        }
       }
+
       return this.rollAttack(dmgBonus, stat.mod, skillMod, modifier, burstFire);
       // END roll form
     };
