@@ -1,4 +1,3 @@
-import { constants } from "buffer";
 import { SWNRBaseActor } from "../base-actor";
 import { SWNRBaseItem } from "../base-item";
 
@@ -57,9 +56,11 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
       content,
       longContent,
       logRoll,
-      tempId: Date.now(), // Not ideal, but need easy ID for hide/show longDesc
     };
-
+    if (logRoll) {
+      await logRoll.roll({ async: true });
+      cardData["roll"] = await logRoll.render();
+    }
     const template = "systems/swnr/templates/chat/faction-log.html";
 
     const chatData = {
@@ -68,11 +69,6 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
       type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
       whisper: gm_ids,
     };
-    if (logRoll) {
-      await logRoll.roll({ async: true });
-      chatData["roll"] = await logRoll.render();
-    }
-
     ChatMessage.create(chatData);
   }
 
@@ -339,6 +335,7 @@ export const FACTION_ACTIONS = [
       "The faction buys a Base of Influence asset on a planet on which they have at least one other asset. The faction then rolls 1d10+Cunning rating against similar rolls by every other faction on the planet. Any of the others that equal or beat the faction`s roll may make a free immediate Attack action against the Base of Influence if they wish. Other assets present on the planet may defend against the attack as normal. The Base of Influence cannot be used until the beginning of the faction`s next turn.",
     longDesc:
       "To buy a Base of Influence, the purchaser pays one FacCred for every hit point the base has, up to a maximum equal to the faction`s maximum hit points. Bases with few hit points are relatively peripheral outposts, easy to dislodge but cheap to erect. Bases with many hit points are significant strongholds that would hurt the faction badly to lose but are much harder to eliminate. Factions may use this action to buy additional hit points for a Base of Influence, paying one additional FacCred up to the maximum HP allowed. It is possible to decrease a base`s hit points with the action as well, albeit without refunds. The base on a faction`s homeworld cannot be shrunk this way.",
+    roll: "1d10 + @cunningRating",
   },
   {
     name: "Refit Asset",
