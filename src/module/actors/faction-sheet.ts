@@ -104,9 +104,10 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
         .value;
       for (const a of FACTION_ACTIONS) {
         if (action == a.name) {
-          const msg = `Faction ${this.actor.name} is taking action ${action}.<br> <span style="font-size:8pt">${a.desc}</span>`;
+          const title = `Faction ${this.actor.name} action: ${action}`;
+          const msg = `${a.desc}`;
           const longDesc = a.longDesc != undefined ? a.longDesc : null;
-          this.actor.logMessage(msg, longDesc);
+          this.actor.logMessage(title, msg, longDesc);
         }
       }
     };
@@ -167,8 +168,9 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
               goalTypeMessage =
                 "<b>Goal abandoned.</b><br> Reminder: If a faction chooses to abandon a goal, the demoralizing effect of it and the waste of preparations costs them that turn’s FacCred income, and they cannot perform any other action that turn.";
             }
-            const content = `Faction ${this.actor.name} changed their goal to ${g.name}. <br> ${goalTypeMessage}`;
-            await this.actor.logMessage(content, null);
+            const title = `Faction ${this.actor.name} changed their goal to ${g.name}.`;
+            const content = `${goalTypeMessage}`;
+            await this.actor.logMessage(title, content);
             return;
           }
         }
@@ -272,6 +274,24 @@ Hooks.on("dropActorSheetData", (actor: Actor, actorSheet: ActorSheet, data) => {
     }
   }
 });
+
+// A button to show long descriptions
+Hooks.on(
+  "renderChatMessage",
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  (message: ChatMessage, html: JQuery, _user: User) => {
+    const longDesc = <JQuery<HTMLButtonElement>>html.find(".longShowDesc");
+    if (longDesc) {
+      const bind = function (event: JQuery.ClickEvent) {
+        event.preventDefault();
+        const hiddenDesc = <JQuery<HTMLDivElement>>html.find(".hiddenLong");
+        hiddenDesc.show();
+        longDesc.hide();
+      };
+      longDesc.one("click", bind);
+    }
+  }
+);
 
 export const sheet = FactionActorSheet;
 export const types = ["faction"];

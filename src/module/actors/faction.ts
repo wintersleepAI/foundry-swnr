@@ -1,3 +1,4 @@
+import { constants } from "buffer";
 import { SWNRBaseActor } from "../base-actor";
 import { SWNRBaseItem } from "../base-item";
 
@@ -41,20 +42,37 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
   }
 
   async logMessage(
+    title: string,
     content: string,
-    _longContent: string | null = null,
-    _roll: Roll | null = null
+    longContent: string | null = null,
+    logRoll: Roll | null = null
   ): Promise<void> {
     const gm_ids: string[] = ChatMessage.getWhisperRecipients("GM")
       .filter((i) => i)
       .map((i) => i.id)
       .filter((i): i is string => i !== null);
+
+    const cardData = {
+      title,
+      content,
+      longContent,
+      logRoll,
+      tempId: Date.now(), // Not ideal, but need easy ID for hide/show longDesc
+    };
+
+    const template = "systems/swnr/templates/chat/faction-log.html";
+
     const chatData = {
       speaker: ChatMessage.getSpeaker({ actor: this }),
-      content,
+      content: await renderTemplate(template, cardData),
       type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
       whisper: gm_ids,
     };
+    if (logRoll) {
+      await logRoll.roll({ async: true });
+      chatData["roll"] = await logRoll.render();
+    }
+
     ChatMessage.create(chatData);
   }
 
@@ -135,7 +153,8 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
       }
     }
     await this.update({ data: { facCreds: new_creds } });
-    await this.logMessage(msg);
+    const title = `New Turn for ${this.name}`;
+    await this.logMessage(title, msg);
   }
 
   async setGoal(): Promise<void> {
