@@ -219,7 +219,44 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
   async _onBaseAdd(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
-    ui.notifications?.info("on set _onBaseAdd");
+    new Dialog({
+      title: "Add New Base",
+      content: `
+          Adding a new base from Expand Influence Action.<br>
+          Select HP (up to Faction max HP). One FacCred per HP.
+          <form>
+            <div class="form-group">
+              <label>Base HP</label>
+              <input type='text' name='inputField'></input>
+            </div>
+          </form>`,
+      buttons: {
+        yes: {
+          icon: "<i class='fas fa-check'></i>",
+          label: `Exapnd Influence - New Base`,
+        },
+      },
+      default: "yes",
+      close: (html) => {
+        const form = <HTMLFormElement>html[0].querySelector("form");
+        const hp = (<HTMLInputElement>form.querySelector('[name="inputField"]'))
+          ?.value;
+        if (hp && hp != "") {
+          const nHp = Number(hp);
+          if (nHp) {
+            const assetType = $(event.currentTarget).data("assetType");
+            const givenName = $(event.currentTarget).data("assetName");
+            const itemName = givenName
+              ? `Base of Inf. ${givenName}`
+              : "New Base of Inf";
+            const imgPath = this.getAssetImage(assetType);
+            this.actor.addBase(nHp, assetType, itemName, imgPath);
+          } else {
+            ui.notifications?.error(hp + " is not a number");
+          }
+        }
+      },
+    }).render(true);
   }
 
   async _onAssetUnusable(event: JQuery.ClickEvent): Promise<void> {

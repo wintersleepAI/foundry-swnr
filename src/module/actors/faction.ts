@@ -72,6 +72,47 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
     ChatMessage.create(chatData);
   }
 
+  async addBase(
+    hp: number,
+    assetType: string,
+    name: string,
+    imgPath: string | null
+  ): Promise<void> {
+    if (hp > this.data.data.health.max) {
+      ui.notifications?.error(
+        `Error HP of new base (${hp}) cannot be greater than faction max HP (${this.data.data.health.max})`
+      );
+      return;
+    }
+    if (hp > this.data.data.facCreds) {
+      ui.notifications?.error(
+        `Error HP of new base (${hp}) cannot be greater than facCred  (${this.data.data.facCreds})`
+      );
+      return;
+    }
+    const newFacCreds = this.data.data.facCreds - hp;
+    await this.update({ data: { facCreds: newFacCreds } });
+    await this.createEmbeddedDocuments(
+      "Item",
+      [
+        {
+          name: name,
+          type: "asset",
+          img: imgPath,
+          data: {
+            assetType: assetType,
+            health: {
+              value: hp,
+              max: hp,
+            },
+            baseOfInfluence: true,
+          },
+        },
+      ],
+      {}
+    );
+  }
+
   async startTurn(): Promise<void> {
     /*
     At the beginning of each turn, a faction gains Fac-

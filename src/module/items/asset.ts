@@ -245,29 +245,34 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
       return;
     }
     if (data.attackDamage && data.attackDamage !== "") {
-      const d = new Dialog({
-        title: "Attack with Asset",
-        content:
-          "<p>Do you want to roll an attack(default), counter, or search for an asset to attack?</p>",
-        buttons: {
-          attack: {
-            icon: '<i class="fas fa-check"></i>',
-            label: "Attack",
-            callback: () => this._attack(true),
+      const d = new Dialog(
+        {
+          title: "Attack with Asset",
+          content:
+            "<p>Do you want to roll an attack(default), counter, or search for an asset to attack?</p>",
+          buttons: {
+            attack: {
+              icon: '<i class="fas fa-check"></i>',
+              label: "Attack",
+              callback: () => this._attack(true),
+            },
+            counter: {
+              icon: '<i class="fas fa-check"></i>',
+              label: "Counter",
+              callback: () => this._attack(false),
+            },
+            search: {
+              icon: '<i class="fas fa-check"></i>',
+              label: "Search active factions for an asset to attack",
+              callback: () => this._search(data.attackTarget),
+            },
           },
-          counter: {
-            icon: '<i class="fas fa-check"></i>',
-            label: "Counter",
-            callback: () => this._attack(false),
-          },
-          search: {
-            icon: '<i class="fas fa-check"></i>',
-            label: "Search active factions for an asset to attack",
-            callback: () => this._search(data.attackTarget),
-          },
+          default: "attack",
         },
-        default: "attack",
-      });
+        {
+          classes: ["swnr"],
+        }
+      );
       d.render(true);
     } else {
       // Basic template rendering data
@@ -278,10 +283,16 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
         content += "<span class='flavor-text'> No Description</span>";
       }
 
+      const gm_ids: string[] = ChatMessage.getWhisperRecipients("GM")
+        .filter((i) => i)
+        .map((i) => i.id)
+        .filter((i): i is string => i !== null);
+
       ChatMessage.create({
-        //speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+        speaker: ChatMessage.getSpeaker(),
         content: content, //${item.data.description}
-        //type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+        type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
+        whisper: gm_ids,
       });
     }
   }
