@@ -1,0 +1,27 @@
+name: checks
+
+on:
+  - push
+  - pull_request
+
+env:
+  node_version: 14
+
+jobs:
+  lint:
+    name: line code
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+      - name: install node
+        uses: actions/setup-node@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          node-version: ${{ env.node_version }}
+          cache: 'npm'
+      - name: npm install, build, and test
+        run: npx npm@7 install
+      - name: run eslint
+        run: npm run lint:ci
