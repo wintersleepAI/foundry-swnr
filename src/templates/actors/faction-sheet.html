@@ -137,7 +137,7 @@
 
 
       <!-- goal -->
-      <div class="flex flex-col items-center p-2">
+      <div class="flex flex-col items-center p-2 mt-12">
         <input
           class="w-32 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="data.factionGoal" value="{{data.data.factionGoal}}" />
@@ -152,14 +152,18 @@
 
       <!-- goal -->
       <div class="flex flex3 flex-col items-center p-2">
-        <input
+        {{!-- <input
           class="min-w-full text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-          name="data.factionGoalDesc" value="{{data.data.factionGoalDesc}}" />
+          name="data.factionGoalDesc" value="{{data.data.factionGoalDesc}}" /> --}}
+        <div class="bg-gray-300 border border-gray-700 rounded-md p-2 w-96">
+              {{editor content=data.data.factionGoalDesc target="data.factionGoalDesc" button=true owner=owner editable=editable
+              }}
+          </div>         
         <div>{{localize 'swnr.sheet.faction.factionGoalDesc'}}</div>
       </div>
 
         <!--buttons-->
-        <div class="cost flex flex-col items-center ">
+        <div class="cost flex flex-col items-center mt-12 ">
           <a><i class="fas fa-hourglass-start  fa-2x faction-turn"></i></a>
           {{localize 'swnr.sheet.faction.turn'}}
         </div>
