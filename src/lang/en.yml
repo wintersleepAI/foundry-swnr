@@ -456,6 +456,8 @@
       assets-tab: Assets
       desc-tab: Description
       tags-tab: Tags
+      add-tag: Add Tag
+      remove-tag: Remove Tag
       active: Active Faction
       attack-roll: Attack Hit Roll
       counter-roll: Counter Hit Roll

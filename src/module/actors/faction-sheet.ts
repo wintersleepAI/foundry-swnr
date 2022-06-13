@@ -87,21 +87,61 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
       ],
     });
   }
+
+  async _onDelTag(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    const div = $(event.currentTarget).parents(".tagdiv");
+    const p = $(event.currentTarget).parents();
+    const idx = div.data("idx");
+    const tags = this.actor.data.data.tags;
+    const tag = tags[idx];
+    // if (!tag) {
+    //   ui.notifications?.info("Issue deleting tag");
+    //   return;
+    // }
+    const performDelete: boolean = await new Promise((resolve) => {
+      Dialog.confirm({
+        title: "Delete Tag",
+        yes: () => resolve(true),
+        no: () => resolve(false),
+        content: `Remove tag ${tag.name}?`,
+      });
+    });
+    if (!performDelete) return;
+    div.slideUp(200, () => {
+      requestAnimationFrame(async () => {
+        //actor.removeCrew(li.data("crewId"));
+        tags.splice(idx, idx);
+        await this.actor.update({
+          data: {
+            tags: tags,
+          },
+        });
+      });
+    });
+  }
+
   async _onAddTag(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
     let tagOptions = "";
+    let tagDesc = "";
     for (const tag of FACTION_TAGS) {
       tagOptions += `<option value='${tag.name}'>${tag.name}</option>`;
+      tagDesc += `<div> <b>${tag.name}</b></div><div>${tag.desc}</div><div><i>Effect:</i> ${tag.effect}</div>`;
     }
     const dialogTemplate = `
     <div class="flex flex-col">
-      <h1> Roll To Trade </h1>
+      <h1> Add Tag </h1>
       <div class="flex flexrow">
         Tag: <select id="tag"          
         class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
         ${tagOptions}
         </select>
+      </div>
+      ${tagDesc}
+    </div>
     `;
     new Dialog({
       title: "Add Tag",
@@ -323,6 +363,7 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
     html.find(".asset-create").on("click", this._onAssetCreate.bind(this));
     html.find(".faction-turn").on("click", this._onStartTurn.bind(this));
     html.find(".faction-tag-add").on("click", this._onAddTag.bind(this));
+    html.find(".faction-tag-delete").on("click", this._onDelTag.bind(this));
     html.find(".force-up").on("click", this._onRatingUp.bind(this, "force"));
     html
       .find(".cunning-up")

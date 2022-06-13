@@ -28,9 +28,8 @@
             class="w-8 text-right pl-1.5  bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
             type="number" step="1" name="data.health.value" value="{{actor.data.data.health.value}}" data-dtype="Number"
             min="0" /><span>/</span>
-            <span
-              class="inline-block text-left text-gray-700 cursor-not-allowed w-8"
-              >{{actor.data.data.health.max}}</span>
+          <span
+            class="inline-block text-left text-gray-700 cursor-not-allowed w-8">{{actor.data.data.health.max}}</span>
         </div>
         <div>{{localize 'swnr.sheet.hp'}}</div>
       </div>
@@ -52,8 +51,8 @@
         </select>
         <div>{{localize 'swnr.sheet.faction.forceRating'}}
           <a class="force-up text-gray-600 hover:text-red-600 transition-colors"
-          title="{{localize 'swnr.sheet.level-up'}}">
-          <i class="fas fa-level-up-alt"></i>
+            title="{{localize 'swnr.sheet.level-up'}}">
+            <i class="fas fa-level-up-alt"></i>
           </a>
         </div>
       </div>
@@ -73,10 +72,9 @@
           {{/select}}
         </select>
         <div>{{localize 'swnr.sheet.faction.cunningRating'}}
-          <a
-          class="cunning-up text-gray-600 hover:text-red-600 transition-colors"
-          title="{{localize 'swnr.sheet.level-up'}}">
-          <i class="fas fa-level-up-alt"></i>
+          <a class="cunning-up text-gray-600 hover:text-red-600 transition-colors"
+            title="{{localize 'swnr.sheet.level-up'}}">
+            <i class="fas fa-level-up-alt"></i>
           </a>
         </div>
       </div>
@@ -95,12 +93,11 @@
           <option value="8">8</option>
           {{/select}}
         </select>
-        <div>{{localize 'swnr.sheet.faction.wealthRating'}} 
-        <a
-        class="wealth-up text-gray-600 hover:text-red-600 transition-colors"
-        title="{{localize 'swnr.sheet.level-up'}}">
-        <i class="fas fa-level-up-alt"></i>
-        </a>
+        <div>{{localize 'swnr.sheet.faction.wealthRating'}}
+          <a class="wealth-up text-gray-600 hover:text-red-600 transition-colors"
+            title="{{localize 'swnr.sheet.level-up'}}">
+            <i class="fas fa-level-up-alt"></i>
+          </a>
         </div>
       </div>
       {{!--
@@ -156,17 +153,18 @@
           class="min-w-full text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="data.factionGoalDesc" value="{{data.data.factionGoalDesc}}" /> --}}
         <div class="bg-gray-300 border border-gray-700 rounded-md p-2 w-96">
-              {{editor content=data.data.factionGoalDesc target="data.factionGoalDesc" button=true owner=owner editable=editable
-              }}
-          </div>         
+          {{editor content=data.data.factionGoalDesc target="data.factionGoalDesc" button=true owner=owner
+          editable=editable
+          }}
+        </div>
         <div>{{localize 'swnr.sheet.faction.factionGoalDesc'}}</div>
       </div>
 
-        <!--buttons-->
-        <div class="cost flex flex-col items-center mt-12 ">
-          <a><i class="fas fa-hourglass-start  fa-2x faction-turn"></i></a>
-          {{localize 'swnr.sheet.faction.turn'}}
-        </div>
+      <!--buttons-->
+      <div class="cost flex flex-col items-center mt-12 ">
+        <a><i class="fas fa-hourglass-start  fa-2x faction-turn"></i></a>
+        {{localize 'swnr.sheet.faction.turn'}}
+      </div>
     </div>
     {{!-- Sheet Body --}}
 
@@ -218,11 +216,19 @@
           </div>
         </div>
         <div class="tab assets min-h-full" data-group="primary" data-tab="tags">
+          <div class="p-2">
             {{#each actor.data.data.tags as |tag id|}}
-            {{id}} {{ tag.name}}<br> {{tag.desc}} <br> {{tag.effect}}<br>
+            <div class="p-1 border-b border-black tagdiv" data-idx="{{id}}">
+              <a class="item-control faction-tag-delete text-gray-600 hover:text-red-600 transition-colors"
+                title='{{localize 'swnr.sheet.faction.remove-tag'}}'><i class="fas fa-trash"></i></a>
+              <b>{{ tag.name}}</b> <br>{{tag.desc}}<br> Effect: {{tag.effect}}<br>
+              <hr>
+            </div>
             {{/each}}
-              <a><i class="fas fa-tags  fa-2x faction-tag-add"></i></a>
-              {{localize 'swnr.sheet.faction.add-tag'}}
+
+          </div>
+          <a><i class="fas fa-tags  fa-2x faction-tag-add"></i>
+            {{localize 'swnr.sheet.faction.add-tag'}}</a>
         </div>
 
       </section>
