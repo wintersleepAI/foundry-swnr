@@ -218,7 +218,11 @@
           </div>
         </div>
         <div class="tab assets min-h-full" data-group="primary" data-tab="tags">
-
+            {{#each actor.data.data.tags as |tag id|}}
+            {{id}} {{ tag.name}}<br> {{tag.desc}} <br> {{tag.effect}}<br>
+            {{/each}}
+              <a><i class="fas fa-tags  fa-2x faction-tag-add"></i></a>
+              {{localize 'swnr.sheet.faction.add-tag'}}
         </div>
 
       </section>

@@ -192,6 +192,12 @@ declare interface SWNRCharacterComputedData
   stats: { [key in SWNRStats]: SWNRStatComputed };
 }
 
+declare interface SWNRTag {
+  name: string;
+  desc: string;
+  effect: string;
+}
+
 declare interface SWNRFactionData {
   description: string;
   health: {
@@ -204,7 +210,7 @@ declare interface SWNRFactionData {
   facCreds: number;
   xp: number;
   homeworld: string;
-  tags: string[];
+  tags: SWNRTag[];
   factionGoal: string;
   factionGoalDesc: string;
 }

@@ -1,6 +1,6 @@
 import { AllItemClasses } from "../item-types";
 import { BaseActorSheet } from "../actor-base-sheet";
-import { SWNRFactionActor } from "./faction";
+import { FACTION_TAGS, SWNRFactionActor } from "./faction";
 import { FACTION_GOALS, FACTION_ACTIONS } from "./faction";
 import { ValidatedDialog } from "../ValidatedDialog";
 
@@ -86,6 +86,40 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
         },
       ],
     });
+  }
+  async _onAddTag(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    let tagOptions = "";
+    for (const tag of FACTION_TAGS) {
+      tagOptions += `<option value='${tag.name}'>${tag.name}</option>`;
+    }
+    const dialogTemplate = `
+    <div class="flex flex-col">
+      <h1> Roll To Trade </h1>
+      <div class="flex flexrow">
+        Tag: <select id="tag"          
+        class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        ${tagOptions}
+        </select>
+    `;
+    new Dialog({
+      title: "Add Tag",
+      content: dialogTemplate,
+      buttons: {
+        trade: {
+          label: "Add Tag",
+          callback: async (html: JQuery<HTMLElement>) => {
+            const tag = (<HTMLSelectElement>html.find("#tag")[0]).value;
+            this.actor.addTag(tag);
+          },
+        },
+        close: {
+          label: "Close",
+        },
+      },
+      default: "trade",
+    }).render(true);
   }
 
   async _onStartTurn(event: JQuery.ClickEvent): Promise<void> {
@@ -288,6 +322,7 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
     super.activateListeners(html);
     html.find(".asset-create").on("click", this._onAssetCreate.bind(this));
     html.find(".faction-turn").on("click", this._onStartTurn.bind(this));
+    html.find(".faction-tag-add").on("click", this._onAddTag.bind(this));
     html.find(".force-up").on("click", this._onRatingUp.bind(this, "force"));
     html
       .find(".cunning-up")
