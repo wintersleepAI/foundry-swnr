@@ -112,7 +112,7 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
     div.slideUp(200, () => {
       requestAnimationFrame(async () => {
         //actor.removeCrew(li.data("crewId"));
-        tags.splice(idx, idx);
+        tags.splice(idx, 1);
         await this.actor.update({
           data: {
             tags: tags,
