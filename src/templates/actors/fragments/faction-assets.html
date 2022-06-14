@@ -9,6 +9,8 @@
           <div class=" flexrow text-center" role="columnheader"> {{ localize 'swnr.sheet.faction.attackTarget' }} / {{ localize
             'swnr.sheet.faction.attackDamage' }} </div>
           <div class=" flexrow text-center pl-2" role="columnheader"> {{ localize 'swnr.sheet.faction.counter' }} </div>
+          <div class=" flexrow text-center pl-2 small-cell " role="columnheader"> {{ localize 'swnr.sheet.faction.note' }} </div>
+
           <div class="item-controls med-cell flexrow flex-shrink text-right" role="columnheader">
             <a class="item-control add-base text-gray-100 hover:text-green-400 transition-colors"
               title="{{localize 'swnr.sheet.add-item'}}" data-asset-type="{{ assetType }}" data-asset-name="{{ name }}">
@@ -47,6 +49,9 @@
           </div>
           <div class="flexrow text-center pl-2" role="cell">
             {{ item.data.data.counter }}
+          </div>
+          <div class="flexrow  small-cell  text-center pl-2" role="cell">
+            {{ item.data.data.note }}
           </div>
           <div class="item-controls  med-cell pr-1 text-right flex-shrink flexrow" role="cell">
             {{!-- <a class="item-control item-fix text-gray-600 hover:text-purple-800 transition-colors" title='{{localize 'swnr.sheet.fix-item'}}'>
