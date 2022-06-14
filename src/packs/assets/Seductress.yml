@@ -8,7 +8,11 @@ data:
   cost: 4
   counter: ''
   description: >-
-    Description placeholder
+    They and their male equivalents subvert the leadership of enemy assets. As an
+    action, a Seductress can travel to any world within one hex. As an attack, a Seductress
+    does no damage, but an asset that has been successfully attacked immediately reveals
+    any other Stealthed assets of that faction on the planet. Only Special Forces
+    units can attack a Seductress.
   health:
     max: 4
     value: 4
