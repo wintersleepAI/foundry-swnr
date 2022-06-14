@@ -1,11 +1,18 @@
 <div>
   <h3 title="{{ desc }}">{{ name }}</h3>
   <h4>{{ attackDesc }} </h4>
+
   <span>{{localize 'swnr.sheet.faction.att-roll'}}:</span>
   <span title="">{{{ hitRoll }}}</span>
+  {{#if attackSpecial}}
+   {{attackSpecial}} <br>
+  {{/if}}
 
   <span>{{localize 'swnr.sheet.faction.def-roll'}}:</span>
   <span title="">{{{ defRoll }}}</span>
+  {{#if defenseSpecial}}
+   {{defenseSpecial}} <br>
+  {{/if}}
 
   <span>{{ attackDesc }} </span>
 

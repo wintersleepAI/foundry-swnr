@@ -68,6 +68,7 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
       hitRoll: await attackRolls[0].render(),
       damageRoll: await attackRolls[1].render(),
       attackKey: game.i18n.localize(attackKey),
+      attackSpecial: this.data.data.attackSpecial,
     };
     const template = "systems/swnr/templates/chat/asset-attack.html";
     const chatContent = await renderTemplate(template, dialogData);
@@ -207,6 +208,8 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
         defDamage: defDamage,
         attackDesc: attackDesc,
         attackKey: game.i18n.localize("attackKey"),
+        defenseSpecial: attackedAsset.data.data.attackSpecial,
+        attackSpecial: this.data.data.attackSpecial,
       };
       const template = "systems/swnr/templates/chat/asset-attack-def.html";
       const chatContent = await renderTemplate(template, dialogData);

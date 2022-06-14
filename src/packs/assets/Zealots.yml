@@ -1,9 +1,9 @@
 data:
   assetType: force
   attackDamage: 2d6
-  attackSource: null
-  attackSpecial: ''
-  attackTarget: null
+  attackSource: force
+  attackSpecial: 'Zealot takes [[1d4]] damage'
+  attackTarget: force
   baseOfInfluence: false
   cost: 6
   counter: 2d6
