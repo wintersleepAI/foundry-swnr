@@ -1,0 +1,27 @@
+data:
+  assetType: force
+  attackDamage: 2d6
+  attackSource: force
+  attackSpecial: ''
+  attackTarget: force
+  baseOfInfluence: false
+  cost: 12
+  counter: 1d8
+  description: >-
+    Forces composed of frigate or cruiser-class vessels equipped with space-to-ground
+    weaponry and sophisticated defenses against light planetary weaponry. As an action,
+    they can move to any world within one hex of their current location.
+  health:
+    max: 8
+    value: 8
+  income: 0
+  maintenance: 0
+  note: A
+  rating: 4
+  tl: 4
+  turnRoll: ''
+  type: Starship
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/force.png
+name: Strike Fleet
+type: asset

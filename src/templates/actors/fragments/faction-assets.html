@@ -22,11 +22,11 @@
         </div>
         {{#each assets as |item id|}}
         <div class="item item-entry flex-table row flexrow pl-2" role="rowgroup" data-item-id="{{item.id}}">
-          <div class="flexrow first item-name item-click item-rollable" role="cell">
+          <div class="flexrow first item-name item-click item-rollable" role="cell" title="{{item.data.data.description}}">
             <div class="item-image" style="background-image: url({{item.img}})"><a></a>
             </div>
             <div class="  flexrow pr-2.0" role="cell">
-              <a>{{item.name}}</a>
+              <a><span title="{{item.data.data.description}}">{{item.name}}</span></a>
             </div>
           </div>
           <div class="flexrow small-cell text-center" role="cell">

@@ -1,0 +1,26 @@
+data:
+  assetType: force
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: ''
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 4
+  counter: 1d4+1
+  description: >-
+    These are the employees and support staff of the faction that have been trained
+    in defensive fighting and equipped with supply caches and hardened fallback positions.
+  health:
+    max: 4
+    value: 4
+  income: 0
+  maintenance: 0
+  note: ''
+  rating: 2
+  tl: 3
+  turnRoll: ''
+  type: Special Forces
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/force.png
+name: Hardened Personnel
+type: asset

@@ -1,0 +1,27 @@
+data:
+  assetType: cunning
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: ''
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 1
+  counter: ''
+  description: >-
+    This asset allows a faction to preserve more valuable resources. If another asset
+    on the planet suffers enough damage to destroy it, the faction can sacrifice the
+    false front instead to nullify the killing blow.
+  health:
+    max: 2
+    value: 2
+  income: 0
+  maintenance: 0
+  note: S
+  rating: 1
+  tl: 0
+  turnRoll: ''
+  type: Logistics Facility
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/cunning.png
+name: False Front
+type: asset

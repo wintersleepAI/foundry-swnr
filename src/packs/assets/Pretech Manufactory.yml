@@ -1,0 +1,25 @@
+data:
+  assetType: wealth
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: ''
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 25
+  counter: ''
+  description: >-
+    Description placeholder
+  health:
+    max: 16
+    value: 16
+  income: 0
+  maintenance: 0
+  note: S
+  rating: 7
+  tl: 5
+  turnRoll: ''
+  type: Facility
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/wealth.png
+name: Pretech Manufactory
+type: asset

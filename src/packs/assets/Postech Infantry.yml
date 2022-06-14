@@ -1,0 +1,27 @@
+data:
+  assetType: force
+  attackDamage: 1d8
+  attackSource: force
+  attackSpecial: ''
+  attackTarget: force
+  baseOfInfluence: false
+  cost: 8
+  counter: 1d8
+  description: >-
+    The backbone of most planetary armies, these well-trained soldiers are usually
+    equipped with mag weaponry and combat field uniforms, and have heavy support units
+    attached.
+  health:
+    max: 12
+    value: 12
+  income: 0
+  maintenance: 0
+  note: P
+  rating: 4
+  tl: 4
+  turnRoll: ''
+  type: Military Unit
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/force.png
+name: Postech Infantry
+type: asset

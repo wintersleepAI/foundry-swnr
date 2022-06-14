@@ -186,6 +186,13 @@ packs:
     path: packs/drone-fittings.db
     type: Item
     entity: Item
+  - name: assets
+    label: Faction Assets
+    system: swnr
+    module: swnr
+    path: packs/assets.db
+    type: Item
+    entity: Item
   - entity: RollTable
     label: One Roll Tables
     module: swnr

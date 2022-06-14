@@ -1,0 +1,25 @@
+data:
+  assetType: wealth
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: ''
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 12
+  counter: ''
+  description: >-
+    Description placeholder
+  health:
+    max: 8
+    value: 8
+  income: 0
+  maintenance: 0
+  note: S
+  rating: 4
+  tl: 3
+  turnRoll: ''
+  type: Facility
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/wealth.png
+name: Bank
+type: asset

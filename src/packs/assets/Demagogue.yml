@@ -1,0 +1,26 @@
+data:
+  assetType: cunning
+  attackDamage: 2d8
+  attackSource: cunning
+  attackSpecial: ''
+  attackTarget: cunning
+  baseOfInfluence: false
+  cost: 20
+  counter: 1d8
+  description: >-
+    Popular leaders of a particular faith or ideology that can be relied upon to point
+    their followers in the direction of maximum utility.
+  health:
+    max: 10
+    value: 10
+  income: 0
+  maintenance: 0
+  note: ''
+  rating: 6
+  tl: 0
+  turnRoll: ''
+  type: Special Forces
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/cunning.png
+name: Demagogue
+type: asset

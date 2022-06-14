@@ -1,0 +1,25 @@
+data:
+  assetType: cunning
+  attackDamage: special
+  attackSource: cunning
+  attackSpecial: ''
+  attackTarget: cunning
+  baseOfInfluence: false
+  cost: 4
+  counter: ''
+  description: >-
+    Description placeholder
+  health:
+    max: 4
+    value: 4
+  income: 0
+  maintenance: 0
+  note: A,S
+  rating: 2
+  tl: 0
+  turnRoll: ''
+  type: Special Forces
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/cunning.png
+name: Seductress
+type: asset

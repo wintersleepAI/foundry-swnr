@@ -1,0 +1,27 @@
+data:
+  assetType: force
+  attackDamage: 2d8
+  attackSource: force
+  attackSpecial: ''
+  attackTarget: force
+  baseOfInfluence: false
+  cost: 20
+  counter: 2d8+2
+  description: >-
+    The cream of the stellar ground forces, elite troops kitted out in the best pretech
+    weaponry and armor available, with sophisticated heavy support weaponry integral
+    to the unit.
+  health:
+    max: 16
+    value: 16
+  income: 0
+  maintenance: 0
+  note: P
+  rating: 6
+  tl: 5
+  turnRoll: ''
+  type: Military Unit
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/force.png
+name: Pretech Infantry
+type: asset

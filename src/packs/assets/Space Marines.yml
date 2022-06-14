@@ -1,0 +1,27 @@
+data:
+  assetType: force
+  attackDamage: 2d8+2
+  attackSource: force
+  attackSpecial: ''
+  attackTarget: force
+  baseOfInfluence: false
+  cost: 30
+  counter: 2d8
+  description: >-
+    Heavily-armored specialist troops trained for ship boarding actions and opposed
+    landings. As an action, they can move to any world within one hex of their current
+    location, whether or not the planetary government permits it.
+  health:
+    max: 16
+    value: 16
+  income: 0
+  maintenance: 0
+  note: A
+  rating: 7
+  tl: 4
+  turnRoll: ''
+  type: Military Unit
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/force.png
+name: Space Marines
+type: asset

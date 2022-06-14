@@ -1,0 +1,27 @@
+data:
+  assetType: wealth
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: ''
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 10
+  counter: 1d6
+  description: >-
+    Transport large amounts of equipment and personnel between worlds. As an action,
+    the combine may move any number of non-Force assets, including itself, to any
+    world within two hexes at a cost of one FacCred per asset.
+  health:
+    max: 10
+    value: 10
+  income: 0
+  maintenance: 0
+  note: A
+  rating: 4
+  tl: 4
+  turnRoll: ''
+  type: Facility
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/wealth.png
+name: Shipping Combine
+type: asset

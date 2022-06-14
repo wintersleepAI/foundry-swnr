@@ -1,0 +1,26 @@
+data:
+  assetType: wealth
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: ''
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 6
+  counter: ''
+  description: >-
+    The lab allows a world to make hesitant progress in tech. The presence of a Laboratory
+    allows assets to be purchased on that world as if it had Tech Level 4.
+  health:
+    max: 4
+    value: 4
+  income: 0
+  maintenance: 0
+  note: S
+  rating: 3
+  tl: 0
+  turnRoll: ''
+  type: Facility
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/wealth.png
+name: Laboratory
+type: asset

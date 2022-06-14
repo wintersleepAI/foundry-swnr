@@ -1,0 +1,27 @@
+data:
+  assetType: force
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: ''
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 10
+  counter: ''
+  description: >-
+    These facilities allow for transporting assets long distances. As an action, any
+    one non-Starship asset, including itself, can be moved between any two worlds
+    within two hexes of the extended theater, at a cost of 1 FacCred.
+  health:
+    max: 10
+    value: 10
+  income: 0
+  maintenance: 0
+  note: A
+  rating: 4
+  tl: 4
+  turnRoll: ''
+  type: Facility
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/force.png
+name: Extended Theater
+type: asset

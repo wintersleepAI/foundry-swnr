@@ -1,0 +1,26 @@
+data:
+  assetType: force
+  attackDamage: 1d3+1
+  attackSource: force
+  attackSpecial: ''
+  attackTarget: force
+  baseOfInfluence: false
+  cost: 2
+  counter: 1d4
+  description: >-
+    Standard civilian guards or policemen, usually equipped with nonlethal weaponry
+    or personal sidearms.
+  health:
+    max: 3
+    value: 3
+  income: 0
+  maintenance: 0
+  note: ''
+  rating: 1
+  tl: 0
+  turnRoll: ''
+  type: Military Unit
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/force.png
+name: Security Personnel
+type: asset
