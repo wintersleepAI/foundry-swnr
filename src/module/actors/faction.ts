@@ -178,12 +178,17 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
       cunningIncome +
       forceIncome +
       assetIncome -
-      assetMaintTotal -
+      assetMaintTotal +
       costFromAssetsOver;
     let new_creds = this.data.data.facCreds + income;
 
     const assetsWithTurn = assets.filter((i) => i.data.data.turnRoll);
-    let msg = `Income this round: ${income}.<br>From assets: ${assetIncome}.<br>Maintenance -${assetMaintTotal}.<br>Cost from assets over rating -${costFromAssetsOver}.<br>`;
+    let msg = `<b>Income this round: ${income}</b>.<br> From ratings: ${
+      wealthIncome + cunningIncome + forceIncome
+    } (W:${wealthIncome} C:${cunningIncome} F:${forceIncome})<br>From assets: ${assetIncome}.<br>Maintenance -${assetMaintTotal}.<br>`;
+    if (costFromAssetsOver < 0) {
+      msg += `Cost from # of assets over rating: ${costFromAssetsOver}.<br>`;
+    }
     if (income < 0) {
       msg += ` <b>Loosing FacCreds this turn.</b><br>`;
     }
@@ -208,11 +213,12 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
         if (aitems.length > 0) {
           await this.updateEmbeddedDocuments("Item", aitems);
         }
-        msg += ` <b>Out of money and unable to pay for all assets</b>, marking all assets with maintenance as unusable`;
+        msg += ` <b>Out of money and unable to pay for all assets</b>, marking all assets with maintenance as unusable<br>`;
       } else {
-        msg += ` <b>Out of money and unable to pay for all assets</b>, need to make assets unusable. Mark unusable for assets to cover facCreds: ${income}`;
+        msg += ` <b>Out of money and unable to pay for all assets</b>, need to make assets unusable. Mark unusable for assets to cover facCreds: ${income}<br>`;
       }
     }
+    msg += `<b> Old FacCreds: ${this.data.data.facCreds}. New FacCreds: ${new_creds}</b><br>`;
     await this.update({ data: { facCreds: new_creds } });
     const title = `New Turn for ${this.name}`;
     await this.logMessage(title, msg, longMsg);

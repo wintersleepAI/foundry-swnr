@@ -72,13 +72,19 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
     };
     const template = "systems/swnr/templates/chat/asset-attack.html";
     const chatContent = await renderTemplate(template, dialogData);
-    const chatData = {
-      roll: JSON.stringify(diceData),
-      content: chatContent,
-      type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-    };
-    getDocumentClass("ChatMessage").applyRollMode(chatData, "gmroll");
-    getDocumentClass("ChatMessage").create(chatData);
+
+    if (this.actor?.type == "faction") {
+      const actor: SWNRFactionActor = this.actor;
+      actor.logMessage("Attack Roll", chatContent, null, diceData);
+    } else {
+      const chatData = {
+        roll: JSON.stringify(diceData),
+        content: chatContent,
+        type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+      };
+      getDocumentClass("ChatMessage").applyRollMode(chatData, "gmroll");
+      getDocumentClass("ChatMessage").create(chatData);
+    }
   }
 
   // Search other factions for attack targets with targetType
@@ -201,7 +207,7 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
       }
       const dialogData = {
         desc: this.data.data.description,
-        name: `${this.actor?.name} - ${this.name} attacking ${attackedAsset.name}`,
+        name: `${this.actor?.name} - ${this.name} attacking ${attackedAsset.name} (${attackedFaction.name})`,
         hitRoll: await hitRoll.render(),
         defRoll: await defRoll.render(),
         attackDamage: attackDamage,
@@ -241,6 +247,32 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
     this.popUpDialog.render(true);
   }
 
+  async _logAction(): Promise<void> {
+    // Basic template rendering data
+    let content = `<h3> ${this.name} </h3>`;
+    if ("description" in this.data.data) {
+      content += `<span class="flavor-text"> ${this.data.data.description}</span>`;
+    } else {
+      content += "<span class='flavor-text'> No Description</span>";
+    }
+    if (this.actor?.type == "faction") {
+      const actor: SWNRFactionActor = this.actor;
+      actor.logMessage("Attack Roll", content);
+    } else {
+      const gm_ids: string[] = ChatMessage.getWhisperRecipients("GM")
+        .filter((i) => i)
+        .map((i) => i.id)
+        .filter((i): i is string => i !== null);
+
+      ChatMessage.create({
+        speaker: ChatMessage.getSpeaker(),
+        content: content, //${item.data.description}
+        type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
+        whisper: gm_ids,
+      });
+    }
+  }
+
   async roll(): Promise<void> {
     const data = this.data.data;
     if (data.unusable) {
@@ -252,7 +284,7 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
         {
           title: "Attack with Asset",
           content:
-            "<p>Do you want to roll an attack(default), counter, or search for an asset to attack?</p>",
+            "<p>Do you want to roll an attack(default), counter, search for an asset to attack, or use asset/chat description?</p>",
           buttons: {
             attack: {
               icon: '<i class="fas fa-check"></i>',
@@ -269,6 +301,11 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
               label: "Search active factions for an asset to attack",
               callback: () => this._search(data.attackTarget),
             },
+            action: {
+              icon: '<i class="fas fa-check"></i>',
+              label: "Use Action",
+              callback: () => this._logAction(),
+            },
           },
           default: "attack",
         },
@@ -278,25 +315,7 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
       );
       d.render(true);
     } else {
-      // Basic template rendering data
-      let content = `<h3> ${this.name} </h3>`;
-      if ("description" in data) {
-        content += `<span class="flavor-text"> ${data.description}</span>`;
-      } else {
-        content += "<span class='flavor-text'> No Description</span>";
-      }
-
-      const gm_ids: string[] = ChatMessage.getWhisperRecipients("GM")
-        .filter((i) => i)
-        .map((i) => i.id)
-        .filter((i): i is string => i !== null);
-
-      ChatMessage.create({
-        speaker: ChatMessage.getSpeaker(),
-        content: content, //${item.data.description}
-        type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
-        whisper: gm_ids,
-      });
+      this._logAction();
     }
   }
 }
