@@ -16,7 +16,7 @@ data:
     max: 20
     value: 20
   income: 0
-  maintenance: 0
+  maintenance: 2
   note: ''
   rating: 8
   tl: 5

@@ -1,8 +1,13 @@
 data:
   assetType: cunning
-  attackDamage: special
+  attackDamage: 0
   attackSource: cunning
-  attackSpecial: ''
+  attackSpecial: >-
+    They and their male equivalents subvert the leadership of enemy assets. As an
+    action, a Seductress can travel to any world within one hex. As an attack, a Seductress
+    does no damage, but an asset that has been successfully attacked immediately reveals
+    any other Stealthed assets of that faction on the planet. Only Special Forces
+    units can attack a Seductress.
   attackTarget: cunning
   baseOfInfluence: false
   cost: 4

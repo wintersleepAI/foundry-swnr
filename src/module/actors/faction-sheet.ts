@@ -354,6 +354,27 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
       });
   }
 
+  async _onAssetStealthed(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    const wrapper = $(event.currentTarget).parents(".item");
+    const asset = this.actor.getEmbeddedDocument(
+      "Item",
+      wrapper.data("itemId")
+    );
+    if (!asset) {
+      ui.notifications?.error("Cannot find asset.");
+      return;
+    }
+    const new_status = !asset?.data.data.stealthed;
+    if (asset instanceof Item)
+      await asset?.update({
+        data: {
+          stealthed: new_status,
+        },
+      });
+  }
+
   async _onRatingUp(type: string): Promise<void> {
     return this.actor.ratingUp(type);
   }
@@ -374,6 +395,9 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
     html
       .find(".asset-toggle-unusable")
       .on("click", this._onAssetUnusable.bind(this));
+    html
+      .find(".asset-toggle-stealthed")
+      .on("click", this._onAssetStealthed.bind(this));
     html.find(".add-base").on("click", this._onBaseAdd.bind(this));
     // html.find(".").on("click", this._on.bind(this));
   }

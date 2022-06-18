@@ -138,6 +138,7 @@ declare interface SWNRFactionAsset extends SWNRDescData {
   maintenance: number;
   income: number;
   unusable: boolean;
+  stealthed: boolean;
 }
 
 declare interface SWNRArmorData extends SWNRBaseItemData {

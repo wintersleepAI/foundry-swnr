@@ -16,7 +16,7 @@ data:
     max: 6
     value: 6
   income: 0
-  maintenance: 0
+  maintenance: 1
   note: A,S,P
   rating: 3
   tl: 4

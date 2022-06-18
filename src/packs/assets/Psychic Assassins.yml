@@ -21,6 +21,7 @@ data:
   turnRoll: ''
   type: Special Forces
   unusable: false
+  stealthed: true
 img: systems/swnr/assets/icons/hawkin/force.png
 name: Psychic Assassins
 type: asset

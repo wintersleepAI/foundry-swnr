@@ -1,8 +1,12 @@
 data:
   assetType: cunning
-  attackDamage: Special
+  attackDamage: 0
   attackSource: cunning
-  attackSpecial: ''
+  attackSpecial: >-
+    Traitors can attack an enemy asset. On a successful attack, the Treachery asset
+    is lost, 5 FacCreds are gained, and the targeted asset switches sides to join
+    the traitor's faction, even if the faction does not otherwise have the attributes
+    necessary.
   attackTarget: cunning
   baseOfInfluence: false
   cost: 10

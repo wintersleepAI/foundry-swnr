@@ -2,7 +2,10 @@ data:
   assetType: wealth
   attackDamage: 1d4
   attackSource: wealth
-  attackSpecial: ''
+  attackSpecial: >-
+    When a Franchise successfully attacks a enemy asset, the enemy
+    faction loses one FacCred (if available), which is gained by the Franchise's owner.
+    This loss can happen only once a turn, no matter how many Franchises attack.
   attackTarget: wealth
   baseOfInfluence: false
   cost: 2

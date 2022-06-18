@@ -2,7 +2,7 @@ data:
   assetType: force
   attackDamage: ''
   attackSource: null
-  attackSpecial: ''
+  attackSpecial: 'Planetary defenses can only defend against attacks by Starship-type assets.'
   attackTarget: null
   baseOfInfluence: false
   cost: 18

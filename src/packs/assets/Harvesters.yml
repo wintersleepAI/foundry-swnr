@@ -10,7 +10,7 @@ data:
   description: >-
     These gather the natural resources of a world, whether ore, biologicals, or other
     unprocessed goods. As an action, the Harvesters' owning faction may roll 1d6.
-    On 3+, gain one FacCred.
+    On 3+, gain one FacCred. Roll: [[1d6]]
   health:
     max: 4
     value: 4

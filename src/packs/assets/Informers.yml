@@ -1,8 +1,13 @@
 data:
   assetType: cunning
-  attackDamage: special
+  attackDamage: '0'
   attackSource: cunning
-  attackSpecial: ''
+  attackSpecial: >-
+    They can choose
+    to Attack a faction without specifying a target asset. On a successful Cunning
+    vs. Cunning attack, all Stealthed assets on the planet belonging to that faction
+    are revealed. Informers can target a faction even if none of their assets are
+    visible on a world; at worst, they simply learn that there are no stealthed assets.
   attackTarget: cunning
   baseOfInfluence: false
   cost: 2

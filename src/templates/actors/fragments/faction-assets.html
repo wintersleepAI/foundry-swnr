@@ -60,6 +60,11 @@
               title='{{localize 'swnr.sheet.break-item'}}'>
               <i class="fas fa-heart-broken {{#unless item.data.data.unusable}}item-working{{/unless}}"></i>
             </a>
+            <a class="item-control asset-toggle-stealthed  {{#unless item.data.data.stealthed}}item-working{{/unless}}"
+              title='{{localize 'swnr.sheet.faction.stealthed'}}'>
+              <i class="fas fa-user-ninja {{#unless item.data.data.stealthed}}item-working{{/unless}}"></i>
+            </a>
+
             <a class="item-control item-edit text-gray-600 hover:text-purple-800 transition-colors" title='{{localize 'swnr.sheet.edit-item'}}'>
               <i class="fas fa-edit"></i></a>
             <a class="item-control item-delete text-gray-600 hover:text-red-600 transition-colors" title='{{localize 'swnr.sheet.delete-item'}}'>

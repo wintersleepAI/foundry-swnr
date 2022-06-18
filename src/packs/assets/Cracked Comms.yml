@@ -2,7 +2,10 @@ data:
   assetType: cunning
   attackDamage: ''
   attackSource: null
-  attackSpecial: ''
+  attackSpecial: >-
+    If the Cracked Comms
+    succeeds in defending against an attack, it can immediately cause the attacking
+    asset to make an attack against itself for normal damage or counterattack results.
   attackTarget: null
   baseOfInfluence: false
   cost: 14

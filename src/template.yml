@@ -383,6 +383,7 @@ Item:
     maintenance: 0
     income: 0
     unusable: false
+    stealthed: false
   skill:
     templates:
       - description

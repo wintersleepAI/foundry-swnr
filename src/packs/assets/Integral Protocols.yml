@@ -2,7 +2,7 @@ data:
   assetType: force
   attackDamage: ''
   attackSource: null
-  attackSpecial: ''
+  attackSpecial: They can defend only against attacks versus Cunning, but they add an additional die to the defender's roll.
   attackTarget: null
   baseOfInfluence: false
   cost: 20

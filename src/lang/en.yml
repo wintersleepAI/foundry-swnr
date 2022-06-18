@@ -450,7 +450,8 @@
       attackSpecial: Special Attack Note
       counter: Counter
       note: Note
-      turnRoll: On Turn Roll
+      turnRoll: On Turn Log/Roll
+      stealthed: Is Stealthed?
       tl: TL
       rating: Rating
       hp: HP

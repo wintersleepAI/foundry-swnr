@@ -2,7 +2,10 @@ data:
   assetType: wealth
   attackDamage: 2d10
   attackSource: wealth
-  attackSpecial: ''
+  attackSpecial: >-
+    If a Hostile
+    Takeover does enough damage to destroy an asset, the target is instead reduced
+    to 1 hit point and acquired by the Hostile Takeover's owning faction.
   attackTarget: wealth
   baseOfInfluence: false
   cost: 20

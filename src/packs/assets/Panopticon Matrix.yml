@@ -21,7 +21,11 @@ data:
   note: S
   rating: 8
   tl: 5
-  turnRoll: ''
+  turnRoll: >-
+    Every rival
+    Stealthed asset on the planet must succeed in a Cunning vs. Cunning test at the
+    beginning of every turn or lose their Stealth. The owner also gains an additional
+    die on all Cunning attacks and defenses on that planet.
   type: Logistics Facility
   unusable: false
 img: systems/swnr/assets/icons/hawkin/cunning.png

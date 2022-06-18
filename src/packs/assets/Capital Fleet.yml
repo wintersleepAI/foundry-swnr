@@ -17,7 +17,7 @@ data:
     max: 30
     value: 30
   income: 0
-  maintenance: 0
+  maintenance: 2
   note: A,S
   rating: 8
   tl: 4

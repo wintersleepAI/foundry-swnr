@@ -2,7 +2,10 @@ data:
   assetType: force
   attackDamage: 1d6
   attackSource: force
-  attackSpecial: ''
+  attackSpecial: >-
+    When they successfully Attack an enemy faction asset, they steal [[1d4]] FacCreds from
+    the target faction as well. This theft can occur to a faction only once per turn,
+    no matter how many blockade fleets attack.'
   attackTarget: wealth
   baseOfInfluence: false
   cost: 10

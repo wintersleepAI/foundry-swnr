@@ -181,9 +181,18 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
       assetMaintTotal -
       costFromAssetsOver;
     let new_creds = this.data.data.facCreds + income;
+
+    const assetsWithTurn = assets.filter((i) => i.data.data.turnRoll);
     let msg = `Income this round: ${income}.<br>From assets: ${assetIncome}.<br>Maintenance -${assetMaintTotal}.<br>Cost from assets over rating -${costFromAssetsOver}.<br>`;
     if (income < 0) {
       msg += ` <b>Loosing FacCreds this turn.</b><br>`;
+    }
+    let longMsg = "";
+    if (assetsWithTurn.length > 0) {
+      longMsg += "Assets with turn notes/rolls:<br>";
+    }
+    for (const a of assetsWithTurn) {
+      longMsg += `<i>${a.name}</i>: ${a.data.data.turnRoll} <br>`;
     }
     const aitems: Record<string, unknown>[] = [];
 
@@ -206,7 +215,7 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
     }
     await this.update({ data: { facCreds: new_creds } });
     const title = `New Turn for ${this.name}`;
-    await this.logMessage(title, msg);
+    await this.logMessage(title, msg, longMsg);
   }
 
   async setGoal(): Promise<void> {

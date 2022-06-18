@@ -19,7 +19,7 @@ data:
   note: S
   rating: 4
   tl: 3
-  turnRoll: ''
+  turnRoll: 'Once per turn, the faction can ignore one cost or FacCred loss imposed by another faction. This does not require an action. Multiple bank assets allow multiple losses to be ignored.'
   type: Facility
   unusable: false
 img: systems/swnr/assets/icons/hawkin/wealth.png

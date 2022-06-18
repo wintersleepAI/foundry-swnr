@@ -11,7 +11,7 @@ data:
     Rare, precious examples of functioning pretech industrial facilities, retrofitted
     to work without the benefit of specialized psychic disciplines. As an action,
     the owning faction can roll 1d8 for a Pretech Manufactory, and gain half that
-    many FacCreds, rounded up.
+    many FacCreds, rounded up. Roll: [[1d8]]
   health:
     max: 16
     value: 16

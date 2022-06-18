@@ -2,7 +2,7 @@ data:
   assetType: wealth
   attackDamage: 2d4
   attackSource: cunning
-  attackSpecial: ''
+  attackSpecial: 'Lawyers cannot attack or counterattack Force assets.'
   attackTarget: wealth
   baseOfInfluence: false
   cost: 6
