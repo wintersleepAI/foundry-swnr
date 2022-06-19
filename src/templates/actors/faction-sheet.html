@@ -180,6 +180,9 @@
         <a class="item" data-tab="tags">
           {{localize 'swnr.sheet.faction.tags-tab'}}
         </a>
+        <a class="item" data-tab="log">
+          {{localize 'swnr.sheet.faction.log-tab'}}
+        </a>
       </nav>
       <section class="sheet-body">
         <!-- Asset tab -->
@@ -227,9 +230,30 @@
             {{/each}}
 
           </div>
-          <a><i class="fas fa-tags  fa-2x faction-tag-add"></i>
+          <a class="faction-tag-add"><i class="fas fa-tags  fa-2x faction-tag-add"></i>
             {{localize 'swnr.sheet.faction.add-tag'}}</a>
         </div>
+        <div class="tab assets min-h-full" data-group="primary" data-tab="log">
+          <div class="p-2">
+          <a class="faction-log-delete-all"><i class="fas fa-trash  fa-2x faction-log-delete-all"></i>
+            {{localize 'swnr.sheet.faction.remove-log-all'}}</a>
+            <hr>
+          </div>
+          <div class="p-2">
+            
+            {{#each actor.data.data.log as |logentry id|}}
+            <div class="p-1 border-b border-black logdiv" data-idx="{{id}}">
+              <a class="item-control faction-log-delete text-gray-600 hover:text-red-600 transition-colors"
+                title='{{localize 'swnr.sheet.faction.remove-log'}}'><i class="fas fa-trash"></i></a>
+              {{{logentry}}}<br>
+              <hr>
+            </div>
+            {{/each}}
+
+          </div>
+    
+        </div>
+
 
       </section>
 

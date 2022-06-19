@@ -70,6 +70,13 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
       whisper: gm_ids,
     };
     ChatMessage.create(chatData);
+    const log = this.data.data.log;
+    log.push(content);
+    await this.update({
+      data: {
+        log: log,
+      },
+    });
   }
 
   async addTag(name: string): Promise<void> {

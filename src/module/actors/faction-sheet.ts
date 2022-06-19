@@ -88,6 +88,66 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
     });
   }
 
+  async _onDelLog(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    const div = $(event.currentTarget).parents(".logdiv");
+    const p = $(event.currentTarget).parents();
+    const idx = div.data("idx");
+    const logs = this.actor.data.data.log;
+    const log = logs[idx];
+    // if (!tag) {
+    //   ui.notifications?.info("Issue deleting tag");
+    //   return;
+    // }
+    const performDelete: boolean = await new Promise((resolve) => {
+      Dialog.confirm({
+        title: "Delete Log",
+        yes: () => resolve(true),
+        no: () => resolve(false),
+        content: `Remove log: ${log}?`,
+      });
+    });
+    if (!performDelete) return;
+    div.slideUp(200, () => {
+      requestAnimationFrame(async () => {
+        //actor.removeCrew(li.data("crewId"));
+        logs.splice(idx, 1);
+        await this.actor.update({
+          data: {
+            log: logs,
+          },
+        });
+      });
+    });
+  }
+
+  async _onDelLogAll(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    const logs = this.actor.data.data.log;
+    // if (!tag) {
+    //   ui.notifications?.info("Issue deleting tag");
+    //   return;
+    // }
+    const performDelete: boolean = await new Promise((resolve) => {
+      Dialog.confirm({
+        title: "Delete Log",
+        yes: () => resolve(true),
+        no: () => resolve(false),
+        content: `Remove all logs for this faction (cannot be undone)?`,
+      });
+    });
+    if (!performDelete) return;
+
+    logs.length = 0;
+    await this.actor.update({
+      data: {
+        log: logs,
+      },
+    });
+  }
+
   async _onDelTag(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
@@ -385,6 +445,10 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
     html.find(".faction-turn").on("click", this._onStartTurn.bind(this));
     html.find(".faction-tag-add").on("click", this._onAddTag.bind(this));
     html.find(".faction-tag-delete").on("click", this._onDelTag.bind(this));
+    html.find(".faction-log-delete").on("click", this._onDelLog.bind(this));
+    html
+      .find(".faction-log-delete-all")
+      .on("click", this._onDelLogAll.bind(this));
     html.find(".force-up").on("click", this._onRatingUp.bind(this, "force"));
     html
       .find(".cunning-up")

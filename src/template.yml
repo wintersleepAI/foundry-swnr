@@ -150,6 +150,7 @@ Actor:
     factionGoal: ""
     factionGoalDesc: ""
     tags: []
+    log: []
   ship:
     templates:
       - vehiclebase
