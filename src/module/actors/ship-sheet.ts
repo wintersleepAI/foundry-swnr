@@ -209,6 +209,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
         },
       });
     }
+    this.actor.setScheduledDate(dateObject, paymentType);
   }
 
   async _onCrewNPCRoll(event: JQuery.ClickEvent): Promise<void> {
@@ -574,6 +575,9 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
           const nDays = Number(days);
           if (nDays) {
             this.actor.useDaysOfLifeSupport(nDays);
+            if (game.modules?.get("foundryvtt-simple-calendar")?.active) {
+              this.actor.moveDates(nDays);
+            }
           } else {
             ui.notifications?.error(days + " is not a number");
           }

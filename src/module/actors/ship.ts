@@ -17,6 +17,63 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     return data;
   }
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //@ts-ignore
+  moveDates(n: number): void {
+    if (game.modules?.get("foundryvtt-simple-calendar")?.active) {
+      for (let x = 0; x < n; x++) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        SimpleCalendar.api.changeDate({ day: 1 });
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        const c = SimpleCalendar.api.getCurrentCalendar();
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line prettier/prettier
+        const entries = SimpleCalendar.api.getNotesForDay(c.currentDate.year, c.currentDate.month, c.currentDate.day);
+        if (entries && entries.length > 0) {
+          for (const e of entries) {
+            if (e.data.content.indexOf("due") >= 0) {
+              ui.notifications?.info(`Reminder: ${e.data.content}`);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  async setScheduledDate(
+    d: Date,
+    type: "payment" | "maintenance"
+  ): Promise<void> {
+    if (game.modules?.get("foundryvtt-simple-calendar")?.active) {
+      const title = `${type} due`;
+      const content = `${type} due for ${this.name}`;
+      const simpleDate = {
+        year: d.getFullYear(),
+        month: d.getMonth(),
+        day: d.getDate() - 1,
+        hour: 0,
+        minute: 0,
+        seconds: 0,
+      };
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      await SimpleCalendar.api.addNote(
+        title,
+        content,
+        simpleDate,
+        simpleDate,
+        true,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        SimpleCalendar.api.NoteRepeat.Never,
+        ["ship"]
+      );
+    }
+  }
+
   prepareDerivedData(): void {
     const data = this.data.data;
     const shipClass = data.shipClass;
@@ -192,6 +249,7 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
       if (fuel <= 0) {
         ui.notifications?.info("Out of fuel...");
       }
+      this.moveDates(travelDays);
     }
   }
 
