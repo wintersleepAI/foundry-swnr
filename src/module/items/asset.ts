@@ -75,7 +75,7 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
 
     if (this.actor?.type == "faction") {
       const actor: SWNRFactionActor = this.actor;
-      actor.logMessage("Attack Roll", chatContent, null, diceData);
+      actor.logMessage("Attack Roll", chatContent, null, null);
     } else {
       const chatData = {
         roll: JSON.stringify(diceData),
@@ -203,11 +203,12 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
         //both hit
         attackDamage = await attackRolls[1].render();
         defDamage = await defenseRolls[1].render();
-        attackDesc = "Tie! Both do damage";
+        attackDesc = "Tie! Both do damage.<br>";
       }
+      const name = `${this.actor?.name} - ${this.name} attacking ${attackedAsset.name} (${attackedFaction.name})`;
       const dialogData = {
         desc: this.data.data.description,
-        name: `${this.actor?.name} - ${this.name} attacking ${attackedAsset.name} (${attackedFaction.name})`,
+        name,
         hitRoll: await hitRoll.render(),
         defRoll: await defRoll.render(),
         attackDamage: attackDamage,
@@ -219,12 +220,16 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
       };
       const template = "systems/swnr/templates/chat/asset-attack-def.html";
       const chatContent = await renderTemplate(template, dialogData);
-      const chatData = {
-        content: chatContent,
-        type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
-      };
-      getDocumentClass("ChatMessage").applyRollMode(chatData, "gmroll");
-      getDocumentClass("ChatMessage").create(chatData);
+      if (this.actor?.type == "faction") {
+        this.actor.logMessage(name, chatContent);
+      } else {
+        const chatData = {
+          content: chatContent,
+          type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
+        };
+        getDocumentClass("ChatMessage").applyRollMode(chatData, "gmroll");
+        getDocumentClass("ChatMessage").create(chatData);
+      }
     };
 
     this.popUpDialog?.close();
@@ -279,7 +284,7 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
       ui.notifications?.error("Asset is unusable");
       return;
     }
-    if (data.attackDamage && data.attackDamage !== "") {
+    if ((data.attackDamage && data.attackDamage !== "") || data.counter) {
       const d = new Dialog(
         {
           title: "Attack with Asset",

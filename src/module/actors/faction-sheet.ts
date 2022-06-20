@@ -241,11 +241,12 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
           const title = `Faction ${this.actor.name} action: ${action}`;
           const msg = `${a.desc}`;
           const longDesc = a.longDesc != undefined ? a.longDesc : null;
-          let roll: Roll | null = null;
+          let rollString: string | null = null;
           if (a.roll) {
-            roll = new Roll(a.roll, this.actor.data.data);
+            const roll = new Roll(a.roll, this.actor.data.data);
+            rollString = await roll.render();
           }
-          this.actor.logMessage(title, msg, longDesc, roll);
+          this.actor.logMessage(title, msg, longDesc, rollString);
         }
       }
     };

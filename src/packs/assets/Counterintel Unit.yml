@@ -1,9 +1,9 @@
 data:
   assetType: force
   attackDamage: 1d4+1
-  attackSource: null
+  attackSource: cunning
   attackSpecial: ''
-  attackTarget: null
+  attackTarget: cunning
   baseOfInfluence: false
   cost: 6
   counter: 1d6

@@ -44,7 +44,7 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
     title: string,
     content: string,
     longContent: string | null = null,
-    logRoll: Roll | null = null
+    logRollString: string | null = null
   ): Promise<void> {
     const gm_ids: string[] = ChatMessage.getWhisperRecipients("GM")
       .filter((i) => i)
@@ -55,12 +55,8 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
       title,
       content,
       longContent,
-      logRoll,
+      logRollString,
     };
-    if (logRoll) {
-      await logRoll.roll({ async: true });
-      cardData["roll"] = await logRoll.render();
-    }
     const template = "systems/swnr/templates/chat/faction-log.html";
 
     const chatData = {
