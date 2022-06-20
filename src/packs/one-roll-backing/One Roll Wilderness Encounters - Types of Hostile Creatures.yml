@@ -1,0 +1,123 @@
+_id: dcRklF6JMDVNxlfz
+displayRoll: true
+flags:
+  core:
+    sourceId: RollTable.bi76zz4aD0gT7Gj9
+folder: null
+formula: 1d12
+img: icons/svg/d20-grey.svg
+name: One Roll Wilderness Encounters - Types of Hostile Creatures
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: oTcCmZ2K0XGC844u
+    drawn: false
+    flags: {}
+    range:
+      - 1
+      - 1
+    text: "Types of Hostile Creatures: Bandits in their wilderness hideout"
+    type: 0
+    weight: 1
+  - _id: OSzUTclyimkuc2ff
+    drawn: false
+    flags: {}
+    range:
+      - 2
+      - 2
+    text: "Types of Hostile Creatures: Dangerous locals looking for easy marks"
+    type: 0
+    weight: 1
+  - _id: zdnqs6aNMQhw3lPe
+    drawn: false
+    flags: {}
+    range:
+      - 3
+      - 3
+    text: "Types of Hostile Creatures: Rabid or diseased large predator"
+    type: 0
+    weight: 1
+  - _id: wEqeTDBz5ElKfm4h
+    drawn: false
+    flags: {}
+    range:
+      - 4
+      - 4
+    text: "Types of Hostile Creatures: Pack of hungry hunting beasts"
+    type: 0
+    weight: 1
+  - _id: dZPsuEiIbBNP05uO
+    drawn: false
+    flags: {}
+    range:
+      - 5
+      - 5
+    text: "Types of Hostile Creatures: Herd of potentially dangerous prey animals"
+    type: 0
+    weight: 1
+  - _id: W4XK2k3nFwuweLKq
+    drawn: false
+    flags: {}
+    range:
+      - 6
+      - 6
+    text: "Types of Hostile Creatures: Swarm of dangerous vermin"
+    type: 0
+    weight: 1
+  - _id: PjA3GHp6iX3khRBN
+    drawn: false
+    flags: {}
+    range:
+      - 7
+      - 7
+    text: "Types of Hostile Creatures: Criminal seeking to evade the law"
+    type: 0
+    weight: 1
+  - _id: FR0boV4V0Q8eKlso
+    drawn: false
+    flags: {}
+    range:
+      - 8
+      - 8
+    text: "Types of Hostile Creatures: Brutal local landowner and their men"
+    type: 0
+    weight: 1
+  - _id: P7vHVFLpvIc1Vmry
+    drawn: false
+    flags: {}
+    range:
+      - 9
+      - 9
+    text: "Types of Hostile Creatures: Crazed hermit seeking enforced solitude"
+    type: 0
+    weight: 1
+  - _id: FOjtEQXQlRbjUMno
+    drawn: false
+    flags: {}
+    range:
+      - 10
+      - 10
+    text: "Types of Hostile Creatures: Friendly-seeming guide into lethal danger"
+    type: 0
+    weight: 1
+  - _id: o6hIDLK4JuSwXrQK
+    drawn: false
+    flags: {}
+    range:
+      - 11
+      - 11
+    text: "Types of Hostile Creatures: Harmless-looking but dangerous beast"
+    type: 0
+    weight: 1
+  - _id: fa0Py0FV0yS7eWIB
+    drawn: false
+    flags: {}
+    range:
+      - 12
+      - 12
+    text: "Types of Hostile Creatures: Confidence man seeking to gull the PCs"
+    type: 0
+    weight: 1
+sort: 0

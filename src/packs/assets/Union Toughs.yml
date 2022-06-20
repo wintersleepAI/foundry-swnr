@@ -1,0 +1,27 @@
+data:
+  assetType: wealth
+  attackDamage: 1d4+1
+  attackSource: wealth
+  attackSpecial: ''
+  attackTarget: force
+  baseOfInfluence: false
+  cost: 4
+  counter: 1d4
+  description: >-
+    These bruisers don't much like scabs and management, and they're willing to take
+    the faction's word on which people are which. They're lightly armed and poorly
+    trained, but they can infiltrate to perform sabotage.
+  health:
+    max: 6
+    value: 6
+  income: 0
+  maintenance: 0
+  note: ''
+  rating: 2
+  tl: 0
+  turnRoll: ''
+  type: Military Unit
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/wealth.png
+name: Union Toughs
+type: asset

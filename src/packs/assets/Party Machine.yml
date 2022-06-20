@@ -1,0 +1,27 @@
+data:
+  assetType: cunning
+  attackDamage: 2d6
+  attackSource: cunning
+  attackSpecial: ''
+  attackTarget: cunning
+  baseOfInfluence: false
+  cost: 8
+  counter: 1d6
+  description: >- 
+    Political blocks control particular cities or regions blocks
+    that are firmly in control of the faction. Each turn, a Party Machine provides
+    1 FacCred to its owning faction.
+  health:
+    max: 10
+    value: 10
+  income: 1
+  maintenance: 0
+  note: S
+  rating: 4
+  tl: 0
+  turnRoll: ''
+  type: Logistics Facility
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/cunning.png
+name: Party Machine
+type: asset

@@ -1,0 +1,27 @@
+data:
+  assetType: force
+  attackDamage: 2d6+2
+  attackSource: cunning
+  attackSpecial: ''
+  attackTarget: cunning
+  baseOfInfluence: false
+  cost: 12
+  counter: ''
+  description: >-
+    Combat-trained psychics equipped with advanced pretech stealth gear and psitech
+    weaponry. Psychic assassins automatically start Stealthed when purchased.
+  health:
+    max: 4
+    value: 4
+  income: 0
+  maintenance: 0
+  note: S
+  rating: 5
+  tl: 4
+  turnRoll: ''
+  type: Special Forces
+  unusable: false
+  stealthed: true
+img: systems/swnr/assets/icons/hawkin/force.png
+name: Psychic Assassins
+type: asset

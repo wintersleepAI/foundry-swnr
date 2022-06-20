@@ -517,19 +517,19 @@
               {{>
               "systems/swnr/templates/actors/fragments/quick-skill.html" quickskill=actor.data.data.tweak.quickSkill1
               skills=itemTypes.skill
-              type=actor.data.data.type actor=actor}}
+              type=actor.type actor=actor}}
             </div>
             <div>
               {{>
               "systems/swnr/templates/actors/fragments/quick-skill.html" quickskill=actor.data.data.tweak.quickSkill2
               skills=itemTypes.skill
-              type=actor.data.data.type actor=actor}}
+              type=actor.type actor=actor}}
             </div>
             <div>
               {{>
               "systems/swnr/templates/actors/fragments/quick-skill.html" quickskill=actor.data.data.tweak.quickSkill3
               skills=itemTypes.skill
-              type=actor.data.data.type actor=actor}}
+              type=actor.type actor=actor}}
             </div>
           </div>
           <div class="flex gap-3">
@@ -542,7 +542,7 @@
                 "systems/swnr/templates/actors/fragments/weapon.html" item=item
                 damageBonus=(getPCStatModForWeapon actor item true)
                 hitBonus=(concat actor.data.data.ab (getPCStatModForWeapon actor item false))
-                type=actor.data.data.type actor=actor}} {{/each}}
+                type=actor.type actor=actor}} {{/each}}
               </div>
             </div>
             <div class="flex-grow">
@@ -564,7 +564,7 @@
                 </li>
                 {{#each itemTypes.armor as |item id|}} {{>
                 "systems/swnr/templates/actors/fragments/armor.html" item=item
-                type=actor.data.data.type}} {{/each}}
+                type=actor.type}} {{/each}}
               </div>
             </div>
           </div>
@@ -576,7 +576,7 @@
             <div class="flex gap-1 flex-col">
               {{#each itemTypes.power as |item id|}} {{>
               "systems/swnr/templates/actors/fragments/power.html" item=item
-              type=actor.data.data.type}} {{/each}}
+              type=actor.type}} {{/each}}
             </div> --}}
             <div class="flex2 powers-list pr-0.5 mt-8">
               <li class="item-titles flexrow">
@@ -727,7 +727,7 @@
           <div class="flex gap-2 pt-1 flex-wrap">
             {{#each itemTypes.skill as |item id|}} {{>
             "systems/swnr/templates/actors/fragments/skill.html" item=item
-            type=actor.data.data.type}} {{/each}}
+            type=actor.type}} {{/each}}
           </div>
           <div class="flex flexrow border-t border-b border-trueGray-500 border1 py-1 mb-1">
             <div class="flex flex-col items-center">
@@ -752,6 +752,14 @@
               /> 
               <label>{{localize 'swnr.sheet.unspent-psy-skill'}}</label>
             </div>
+            <div class="flex flex-col items-center">
+              <a class="item-control item-create text-gray-700 hover:text-green-400 transition-colors"
+                title="{{localize 'swnr.sheet.add-item'}}" data-item-type="skill" data-item-name="Skill">
+                <i class="fas fa-plus"></i>
+              </a>
+              <label>{{localize 'swnr.sheet.add-skill'}}</label>
+            </div>
+
           </div>
           {{else}}
           <button class="skill-load-button" style="margin-top: 3em"
@@ -769,22 +777,28 @@
                 <div><!-- table-->
                   <li class="item-titles flexrow">
                     <!--<div class="item-caret"><i class="fas fa-caret-down"></i></div>-->
-                    <div class="item-name">{{localize 'swnr.sheet.tabs.foci'}} </div>
-                    <div class="item-effect">{{localize 'swnr.sheet.description'}}</div>
+                    <div class="item-name flex2 pr-2">{{localize 'swnr.sheet.tabs.foci'}} </div>
+                    <div class="item-effect flex2">{{localize 'swnr.sheet.description'}}</div>
+                    <div class="item-effect w-8 flex-shrink">{{localize 'swnr.sheet.level'}}</div>
                     <div class="item-controls w-20 text-right">
+                      <a class="item-control item-create text-gray-100 hover:text-green-400 transition-colors"
+                        title="{{localize 'swnr.sheet.add-item'}}" data-item-type="focus" data-item-name="Focus">
+                        <i class="fas fa-plus"></i>
+                      </a> 
                     </div>
                   </li>
                   <ol class="item-list">
                     {{#each itemTypes.focus as |item id|}}
                     <li class="item-entry">
                       <div class="item flexrow" data-item-id="{{item.id}}">
-                        <div class="item-name item-click item-rollable flexrow">
+                        <div class="item-name item-click item-rollable flexrow flex2 pr-2">
                           <div class="item-image" style="background-image: url({{item.img}})"><a></a></div>
                           <a>{{item.name}}</a>
                         </div>
-                        <div clas="">
-                          {{trim item.data.data.description 60}}
+                        <div class="flex2">
+                          {{trim item.data.data.description 30}}
                         </div>
+                        <div class="flex-shrink w-8">{{item.data.data.level}}</div>
                         <div class="item-controls w-20  text-right">
                           <a class="item-control item-edit text-gray-600 hover:text-purple-800 transition-colors" title='{{localize 'swnr.sheet.edit-item'}}'>
                             <i class="fas fa-edit"></i></a>

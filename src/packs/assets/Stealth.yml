@@ -1,0 +1,29 @@
+data:
+  assetType: cunning
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: ''
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 2
+  counter: ''
+  description: >-
+    Not an asset, per se, but a special quality that can be purchased for another
+    Special Forces asset on the planet. An asset that has been Stealthed cannot be
+    detected or attacked by other factions. If the unit normally requires the permission
+    of a planetary government to be moved onto a planet, that permission may be foregone.
+    An asset loses its Stealth if it is used to attack or defend.
+  health:
+    max: 0
+    value: 0
+  income: 0
+  maintenance: 0
+  note: S
+  rating: 3
+  tl: 0
+  turnRoll: ''
+  type: Tactic
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/cunning.png
+name: Stealth
+type: asset

@@ -23,4 +23,15 @@
                     {{/each}}
                   </ol>
                 </div>
+                {{type}}
+                {{#if (eq type "ship")}}
+                <div class="pt-2 border-t border-trueGray-500 border1">
+                  {{localize 'swnr.sheet.ship.crew-skill-bonus'}}:
+                  <input
+                    class="w-10 text-center px-1.5 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                    type="number" min="0" name="data.crewSkillBonus" value="{{actor.data.data.crewSkillBonus}}" />
+                    <a class="item-control mr-1 npc-crew-roll text-gray-600 hover:text-purple-600 transition-colors" title='{{localize 'swnr.sheet.roll-skill'}}'><i
+                              class="fas fa-dice"></i></a>
+                </div>
+                {{/if}}
               </div>

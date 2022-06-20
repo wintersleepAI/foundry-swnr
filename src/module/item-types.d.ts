@@ -1,12 +1,12 @@
 import { SWNRBaseItem } from "./base-item";
 import { SWNRStats } from "./actor-types";
 import { SWNRWeapon } from "./items/weapon";
-import { SWNRAllVehicleClasses } from "./actor-types";
+import { SWNRAllVehicleClasses, FactionRating } from "./actor-types";
 
 type MetaItemTypes = "class" | "power" | "focus" | "skill";
 type RealItemTypes = "armor" | "weapon" | "item" | "cyberware";
 type ShipItemTypes = "shipWeapon" | "shipFitting" | "shipDefense";
-type ItemTypes = RealItemTypes | MetaItemTypes | ShipItemTypes;
+type ItemTypes = RealItemTypes | MetaItemTypes | ShipItemTypes | "asset";
 
 declare type ItemsWithCustomClasses = SWNRWeapon;
 declare type ItemTypesMissingCustomClasses = Exclude<
@@ -40,6 +40,7 @@ declare interface SWNRBaseVehicleItemData {
   minClass: SWNRAllVehicleClasses;
   broken: boolean;
   destroyed: boolean;
+  juryRigged: boolean;
   type: "ship" | "drone" | "mech" | "vehicle";
 }
 
@@ -59,7 +60,8 @@ type SWNRWeaponAmmoTypes =
   | "typeBPower"
   | "ammo"
   | "missile"
-  | "special";
+  | "special"
+  | "infinite";
 
 interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
   stat: SWNRStats;
@@ -90,6 +92,7 @@ declare interface SWNRShipWeaponData
   extends SWNRBaseVehicleItemData,
     SWNRDescData {
   damage: string;
+  ab: number;
   hardpoint: number;
   tl: 4 | 5 | 6;
   qualities: string;
@@ -110,6 +113,32 @@ declare interface SWNRShipFittingData
   extends SWNRBaseVehicleItemData,
     SWNRDescData {
   effect: string;
+}
+
+type AssetType = "cunning" | "wealth" | "force";
+declare interface SWNRFactionAsset extends SWNRDescData {
+  health: {
+    value: number;
+    max: number;
+  };
+  cost: number;
+  baseOfInfluence: boolean;
+  tl: 0 | 1 | 2 | 3 | 4 | 5;
+  rating: FactionRating;
+  type: string;
+  attackSource: AssetType | "";
+  attackTarget: AssetType | "";
+  attackDamage: string;
+  attackSpecial: string;
+  counter: string;
+  note: string;
+  turnRoll: string;
+  assetType: AssetType;
+  location: string;
+  maintenance: number;
+  income: number;
+  unusable: boolean;
+  stealthed: boolean;
 }
 
 declare interface SWNRArmorData extends SWNRBaseItemData {
@@ -142,6 +171,7 @@ declare interface SWNRItemData extends SWNRBaseItemData {
 declare interface SWNRFocusData extends SWNRDescData {
   level1: string;
   level2: string;
+  level: number;
 }
 
 declare interface SWNRSkillData extends SWNRDescData {
@@ -169,7 +199,8 @@ declare global {
       | { type: "cyberware"; data: SWNRCyberware }
       | { type: "shipWeapon"; data: SWNRShipWeaponData }
       | { type: "shipDefense"; data: SWNRShipDefenseData }
-      | { type: "shipFitting"; data: SWNRShipFittingData };
+      | { type: "shipFitting"; data: SWNRShipFittingData }
+      | { type: "asset"; data: SWNRFactionAsset };
   }
 
   interface SourceConfig {
@@ -184,6 +215,7 @@ declare global {
       | { type: "cyberware"; data: SWNRCyberware }
       | { type: "shipWeapon"; data: SWNRShipWeaponData }
       | { type: "shipDefense"; data: SWNRShipDefenseData }
-      | { type: "shipFitting"; data: SWNRShipFittingData };
+      | { type: "shipFitting"; data: SWNRShipFittingData }
+      | { type: "asset"; data: SWNRFactionAsset };
   }
 }

@@ -1,0 +1,113 @@
+_id: ZHyXqoXdnmSpvUKe
+description: >-
+  PCs often need patrons to aim them at adventures or offer suitable recompense
+  for semi-legal favors. In conjunction with the adjacent one-roll NPC tables,
+  you can use the tools below to quickly generate a patron and what it is they
+  want from the party.
+
+
+  One particularly convenient technique is to have a few short filler adventures
+  drawn up as described on page 177, and then when the players suddenly need a
+  job or need a favor that only a cooperative patron could provide, use the
+  patron to hook them up with the filler adventure. If you lack a convenient
+  premade adventure, it’s usually most practical to have the patron request some
+  simple, direct, one-scene job that you feel comfortable in running on the fly.
+  You can consult page 178 to find appropriate pay rates for different patrons.
+displayRoll: true
+flags:
+  core:
+    sourceId: RollTable.9Q1n3NOe3AVlquiW
+folder: null
+formula: 1d1
+img: icons/svg/d20-grey.svg
+name: One Roll Patrons
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: B4XjZiGvd5xtWamp
+    collection: swnr.one-roll-backing
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-grey.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: 9x8xoivdKBJ4lvyW
+    text: One Roll Patrons - Trustworthiness
+    type: 2
+    weight: 1
+  - _id: 6DEKfjXR136RKIVo
+    collection: swnr.one-roll-backing
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-grey.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: 87UAC08zH0ZEwkbk
+    text: One Roll Patrons - Basic Challenge of the Job
+    type: 2
+    weight: 1
+  - _id: OTWzk1vTzPjCpszk
+    collection: swnr.one-roll-backing
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-grey.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: AbwkDHmMs8vRJK4Q
+    text: One Roll Patrons - Main Countervailing Force
+    type: 2
+    weight: 1
+  - _id: tC8JxaTChnysBIX8
+    collection: swnr.one-roll-backing
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-grey.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: p2WhakZgxW9o9y5w
+    text: One Roll Patrons - Eagerness to Hire
+    type: 2
+    weight: 1
+  - _id: RNjRrV9KO2h6Zx4R
+    collection: swnr.one-roll-backing
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-grey.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: Aby6eSItRpxbz3te
+    text: One Roll Patrons - Potential Non-Cash Rewards
+    type: 2
+    weight: 1
+  - _id: vYR6s9wy4lBV9nBW
+    collection: swnr.one-roll-backing
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-grey.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: 3zQc8EovhkMSlNUE
+    text: One Roll Patrons - Complication to the Job
+    type: 2
+    weight: 1
+sort: 0

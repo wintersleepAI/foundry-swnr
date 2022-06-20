@@ -1,0 +1,28 @@
+data:
+  assetType: cunning
+  attackDamage: special
+  attackSource: cunning
+  attackSpecial: ''
+  attackTarget: cunning
+  baseOfInfluence: false
+  cost: 20
+  counter: ''
+  description: >-
+    These techniques involve selective pressure on local routing and shipping companies.
+    On a successful Cunning vs. Cunning attack against a rival faction, the rival
+    faction cannot transport assets onto that planet without spending 1d4 FacCreds
+    and waiting one turn. Roll: [[1d4]]
+  health:
+    max: 10
+    value: 10
+  income: 0
+  maintenance: 0
+  note: S
+  rating: 6
+  tl: 4
+  turnRoll: ''
+  type: Tactic
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/cunning.png
+name: Transport Lockdown
+type: asset

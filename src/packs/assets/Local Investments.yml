@@ -1,0 +1,32 @@
+data:
+  assetType: wealth
+  attackDamage: 1d4-1
+  attackSource: wealth
+  attackSpecial: ''
+  attackTarget: wealth
+  baseOfInfluence: false
+  cost: 1
+  counter: ''
+  description: >-
+    These give the faction substantial influence over the commerce on a world. Any
+    other faction that tries to buy an asset on that planet must pay one extra FacCred.
+    This money is not given to the investments' owner, but is lost. This penalty is
+    only applied once.
+  health:
+    max: 2
+    value: 2
+  income: 0
+  maintenance: 0
+  note: S
+  rating: 1
+  tl: 2
+  turnRoll: >-
+    These give the faction substantial influence over the commerce on a world. Any
+    other faction that tries to buy an asset on that planet must pay one extra FacCred.
+    This money is not given to the investments' owner, but is lost. This penalty is
+    only applied once.
+  type: Facility
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/wealth.png
+name: Local Investments
+type: asset

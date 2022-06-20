@@ -1,0 +1,87 @@
+_id: DqCC7bBmaVvHfHbE
+displayRoll: true
+flags:
+  core:
+    sourceId: RollTable.go2LCs7JnHue7flE
+folder: null
+formula: 1d8
+img: icons/svg/d20-grey.svg
+name: One Roll Urban Encounters - Why are the PCs Involved?
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: FgSogmPJEcHUzgZq
+    drawn: false
+    flags: {}
+    range:
+      - 1
+      - 1
+    text: "Why are the PCs Involved?: A sympathetic participant appeals to them"
+    type: 0
+    weight: 1
+  - _id: LGI2rcLuI8umt3vu
+    drawn: false
+    flags: {}
+    range:
+      - 2
+      - 2
+    text: "Why are the PCs Involved?: Ways around it are all dangerous/blocked"
+    type: 0
+    weight: 1
+  - _id: 8fy0eTwYamjl606L
+    drawn: false
+    flags: {}
+    range:
+      - 3
+      - 3
+    text: "Why are the PCs Involved?: It happens immediately around them"
+    type: 0
+    weight: 1
+  - _id: fi5U4jFByVliKIDu
+    drawn: false
+    flags: {}
+    range:
+      - 4
+      - 4
+    text: "Why are the PCs Involved?: A valuable thing looks snatchable amid it"
+    type: 0
+    weight: 1
+  - _id: JUuPV1Rb1ym6XHMi
+    drawn: false
+    flags: {}
+    range:
+      - 5
+      - 5
+    text: "Why are the PCs Involved?: A participant offers a reward for help"
+    type: 0
+    weight: 1
+  - _id: 5NIYQufdnk27UijU
+    drawn: false
+    flags: {}
+    range:
+      - 6
+      - 6
+    text: "Why are the PCs Involved?: Someone mistakenly involves the PCs in it"
+    type: 0
+    weight: 1
+  - _id: x9ZN5f4hziIQC6O9
+    drawn: false
+    flags: {}
+    range:
+      - 7
+      - 7
+    text: "Why are the PCs Involved?: The seeming way out just leads deeper in"
+    type: 0
+    weight: 1
+  - _id: nzMS57O1R4ARlWc3
+    drawn: false
+    flags: {}
+    range:
+      - 8
+      - 8
+    text: "Why are the PCs Involved?: Responsibility is somehow pinned on them"
+    type: 0
+    weight: 1
+sort: 0

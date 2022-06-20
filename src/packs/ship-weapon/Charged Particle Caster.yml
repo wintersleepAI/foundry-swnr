@@ -12,7 +12,7 @@ data:
   minClass: frigate
   power: 10
   powerMultiplier: false
-  qualities: AP 15
+  qualities: AP 15, Clumsy
   tl: 4
 img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
 name: Charged Particle Caster

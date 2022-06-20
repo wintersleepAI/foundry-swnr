@@ -1,0 +1,126 @@
+data:
+  health:
+    max: 40
+    value: 40
+  ac: 11
+  armor:
+    max: 0
+    value: 0
+  speed: 0
+  power:
+    max: 10
+  mass:
+    max: 25
+  crew:
+    min: 10
+    max: 40
+    current: 10
+  lifeSupportDays:
+    value: 2400
+    max: 2400
+  cargo:
+    value: 3400
+    max: 3400
+  spikeDrive: 
+    value: 2
+    max: 2
+  hardpoints:
+    value: 2
+    max: 2
+  commandPoints: 4
+  npcCommandPoints: 4
+  crewSkillBonus: 1
+  shipClass: cruiser
+  shipHullType: bulkFreighter
+  cost: 6088000
+  maintenanceCost: 304000
+  operatingCost: 657000
+  maintenanceMonths: 6
+  description: >-
+        Found only in rich, peaceful regions of space, the bulk freighter is capable of hauling thousands of tons of goods between star systems. While it’s equipped with enough of a sting to discourage small-ship piracy, it’s woefully inadequate to handle a warship, or even an up-gunned free merchant. 
+
+        Some adventurers do find use for a bulk freighter hull, however, trading off some of its massive cargo space for more fittings and using customized modifications to allow the ship to support heavier power demands. While the end result is no match for a true cruiser, the sheer mass of the freighter can make it a dangerous opponent in the right hands.
+img: systems/swnr/assets/icons/spaceship.png
+items:
+  - name: Plasma Beam
+    type: shipWeapon
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+    data:
+      broken: false
+      cost: 700000
+      costMultiplier: false
+      damage: 3d6
+      description: >-
+        With superior targeting and a smaller energy drain than a CPC, a plasma beam sacrifices some armor penetration.
+      hardpoint: 2
+      mass: 2.0
+      massMultiplier: false
+      minClass: frigate
+      power: 5
+      powerMultiplier: false
+      qualities: AP 10
+      tl: 4
+      permission:
+        default: 0
+  - name: Spike Drive-2 upgrade
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 10000
+      costMultiplier: true
+      description: >-
+        A ship can improve its standard-issue drive-1 spike drive with additional phase filters and power throughput refinements. A captain needs buy only the final grade of drive desired. He does not have to buy upgrades sequentially. Drives of rating 4 and higher are generally TL5 artifacts that cannot be built most modern worlds.
+      effect: 'Upgrade a spike drive to drive-2 rating'
+      mass: 1.0
+      massMultiplier: true
+      minClass: fighter
+      power: 1
+      powerMultiplier: false  
+  - name: Cargo Lighter
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 25000
+      costMultiplier: true
+      description: >-
+        Cruisers and larger craft can’t land on planetary bodies, so they require small shuttlecraft for transport. A cargo lighter is only capable of surface-to-orbit flight, which takes roughly twenty minutes either way, but can latch on to a standard pressurized cargo container holding up to 200 tons of cargo and passengers. These containers are usually collapsible and take up no significant space when compressed for storage, assuming they’re not simply disposable cargo shells. This fitting can be purchased multiple times.
+      effect: 'Orbit-to-surface cargo shuttle'
+      mass: 2.0
+      massMultiplier: true
+      minClass: frigate
+      power: 0
+      powerMultiplier: false
+  - name: Fuel Bunker
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 2500
+      costMultiplier: true
+      description: >-
+        Most ships require refueling after each drill jump, no matter the distance. Installing fuel bunkers allows the ship to carry one additional load of fuel. This fitting can be installed multiple times for ships that wish to minimize fueling.
+      effect: 'Adds fuel for one more drill between fuelings'
+      mass: 1.0
+      massMultiplier: true
+      minClass: fighter
+      power: 0
+      powerMultiplier: false               
+  - name: Ship's Locker
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 2000
+      costMultiplier: true
+      description: >-
+        Much like an armory, this option allows a captain to lay in a general supply of equipment likely to be useful to explorers and spacemen. Any TL4 equipment on the gear list can be found in the ship’s locker in amounts commensurate with the ship’s size. A few guns and some basic armor might be included as well, but for serious armament an armory is required. There is enough gear available to outfit the entire crew for normal use, but giving it away or losing it in use may deplete the locker until it is restocked.
+      effect: 'General equipment for the crew'
+      mass: 0.0
+      massMultiplier: true
+      minClass: frigate
+      power: 0
+      powerMultiplier: false    
+name: Bulk Freighter
+type: ship

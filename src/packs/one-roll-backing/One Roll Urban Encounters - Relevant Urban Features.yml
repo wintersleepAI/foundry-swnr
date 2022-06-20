@@ -1,0 +1,195 @@
+_id: K5sf38gmdvFM2xR9
+displayRoll: true
+flags:
+  core:
+    sourceId: RollTable.sC84scFkAQwBmYuu
+folder: null
+formula: 1d20
+img: icons/svg/d20-grey.svg
+name: One Roll Urban Encounters - Relevant Urban Features
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: FLLY0yntMxAfoEp3
+    drawn: false
+    flags: {}
+    range:
+      - 1
+      - 1
+    text: "Relevant Urban Features: Heavy traffic running through the place"
+    type: 0
+    weight: 1
+  - _id: 6fXcisHcooI7mBTc
+    drawn: false
+    flags: {}
+    range:
+      - 2
+      - 2
+    text: "Relevant Urban Features: Music blaring at deafening volumes"
+    type: 0
+    weight: 1
+  - _id: TXeuwR8eOUlxKDfe
+    drawn: false
+    flags: {}
+    range:
+      - 3
+      - 3
+    text: "Relevant Urban Features: Two groups present that detest each other"
+    type: 0
+    weight: 1
+  - _id: MrKvzSH9tkf03pdO
+    drawn: false
+    flags: {}
+    range:
+      - 4
+      - 4
+    text: "Relevant Urban Features: Large delivery taking place right there"
+    type: 0
+    weight: 1
+  - _id: sonfvIVdM0JMUpjH
+    drawn: false
+    flags: {}
+    range:
+      - 5
+      - 5
+    text: "Relevant Urban Features: Swarm of schoolkids or feral youth"
+    type: 0
+    weight: 1
+  - _id: dPW8bGk8lBtDqfdL
+    drawn: false
+    flags: {}
+    range:
+      - 6
+      - 6
+    text: "Relevant Urban Features: Insistent soapbox preacher here"
+    type: 0
+    weight: 1
+  - _id: PAWswVNfRPvucrJI
+    drawn: false
+    flags: {}
+    range:
+      - 7
+      - 7
+    text: "Relevant Urban Features: Several pickpockets working the crowd"
+    type: 0
+    weight: 1
+  - _id: SAxnskntKHrL3b4S
+    drawn: false
+    flags: {}
+    range:
+      - 8
+      - 8
+    text: "Relevant Urban Features: A kiosk is tipping over and spilling things"
+    type: 0
+    weight: 1
+  - _id: TRVBePxU0TF48KcV
+    drawn: false
+    flags: {}
+    range:
+      - 9
+      - 9
+    text: "Relevant Urban Features: Streetlights are out or visibility is low"
+    type: 0
+    weight: 1
+  - _id: 51jejN4aaX5TDccu
+    drawn: false
+    flags: {}
+    range:
+      - 10
+      - 10
+    text: "Relevant Urban Features: A cop patrol is here and reluctant to act"
+    type: 0
+    weight: 1
+  - _id: HvMZUyYRQDncy6hV
+    drawn: false
+    flags: {}
+    range:
+      - 11
+      - 11
+    text: "Relevant Urban Features: PC-hostile reporters are recording here"
+    type: 0
+    weight: 1
+  - _id: XjYH2ZJijuJBonKy
+    drawn: false
+    flags: {}
+    range:
+      - 12
+      - 12
+    text: "Relevant Urban Features: Someone’s trying to sell something to PCs"
+    type: 0
+    weight: 1
+  - _id: lkJSe2g0rfUpjwjF
+    drawn: false
+    flags: {}
+    range:
+      - 13
+      - 13
+    text: "Relevant Urban Features: Feral dogs or other animals crowd here"
+    type: 0
+    weight: 1
+  - _id: NOlpdBwNSv901D1J
+    drawn: false
+    flags: {}
+    range:
+      - 14
+      - 14
+    text: "Relevant Urban Features: Unrelated activists are protesting here"
+    type: 0
+    weight: 1
+  - _id: HAawGDvyL6Gq6WYW
+    drawn: false
+    flags: {}
+    range:
+      - 15
+      - 15
+    text: "Relevant Urban Features: Street kids are trying to steal from the PCs"
+    type: 0
+    weight: 1
+  - _id: 8DB8YUfQZrxY6gVU
+    drawn: false
+    flags: {}
+    range:
+      - 16
+      - 16
+    text: "Relevant Urban Features: GPS maps are dangerously wrong here"
+    type: 0
+    weight: 1
+  - _id: jYRhIWlsq4rrVcmx
+    drawn: false
+    flags: {}
+    range:
+      - 17
+      - 17
+    text: "Relevant Urban Features: Downed power lines are a danger here"
+    type: 0
+    weight: 1
+  - _id: fCMd3ssKkgr8ISrr
+    drawn: false
+    flags: {}
+    range:
+      - 18
+      - 18
+    text: "Relevant Urban Features: Numerous open manholes and utility holes"
+    type: 0
+    weight: 1
+  - _id: brNpwnil2WljkaTm
+    drawn: false
+    flags: {}
+    range:
+      - 19
+      - 19
+    text: "Relevant Urban Features: The street’s blockaded by something"
+    type: 0
+    weight: 1
+  - _id: MXJwfIId4iPIvHp4
+    drawn: false
+    flags: {}
+    range:
+      - 20
+      - 20
+    text: "Relevant Urban Features: Crowds so thick one can barely move"
+    type: 0
+    weight: 1
+sort: 0

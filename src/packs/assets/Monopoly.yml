@@ -1,0 +1,28 @@
+data:
+  assetType: wealth
+  attackDamage: 1d6
+  attackSource: wealth
+  attackSpecial: ''
+  attackTarget: wealth
+  baseOfInfluence: false
+  cost: 8
+  counter: 1d6
+  description: >-
+    An open or tacit stranglehold on certain vital businesses or resources on a world.
+    As an action, owners of a monopoly may force one other faction with unstealthed
+    assets on that world to pay them one FacCred. If the target faction can't pay,
+    they lose one asset of their choice on the world.
+  health:
+    max: 12
+    value: 12
+  income: 0
+  maintenance: 0
+  note: S
+  rating: 4
+  tl: 3
+  turnRoll: ''
+  type: Facility
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/wealth.png
+name: Monopoly
+type: asset

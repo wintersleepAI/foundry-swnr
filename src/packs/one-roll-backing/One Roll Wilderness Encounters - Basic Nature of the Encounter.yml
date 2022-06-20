@@ -1,0 +1,87 @@
+_id: VR1bkv4Psm3Huhos
+displayRoll: true
+flags:
+  core:
+    sourceId: RollTable.rZ4p5iPj0RXsAQK5
+folder: null
+formula: 1d8
+img: icons/svg/d20-grey.svg
+name: One Roll Wilderness Encounters - Basic Nature of the Encounter
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: ETwUAbZvDtgMhyTG
+    drawn: false
+    flags: {}
+    range:
+      - 1
+      - 1
+    text: "Basic Nature of the Encounter: Attack by pack of hostiles"
+    type: 0
+    weight: 1
+  - _id: 4g8TGbVBMpkLF86F
+    drawn: false
+    flags: {}
+    range:
+      - 2
+      - 2
+    text: "Basic Nature of the Encounter: Ambush by single lone hostile"
+    type: 0
+    weight: 1
+  - _id: R1vO7QvqHfu2uaoa
+    drawn: false
+    flags: {}
+    range:
+      - 3
+      - 3
+    text: "Basic Nature of the Encounter: Meet people who don’t want to be met"
+    type: 0
+    weight: 1
+  - _id: AvcRtoYSROeIMv4r
+    drawn: false
+    flags: {}
+    range:
+      - 4
+      - 4
+    text: "Basic Nature of the Encounter: Encounter people in need of aid"
+    type: 0
+    weight: 1
+  - _id: b45oFghlHcmrvDzo
+    drawn: false
+    flags: {}
+    range:
+      - 5
+      - 5
+    text: "Basic Nature of the Encounter: Encounter hostile creatures"
+    type: 0
+    weight: 1
+  - _id: YBYIHAA3iyvM1TME
+    drawn: false
+    flags: {}
+    range:
+      - 6
+      - 6
+    text: "Basic Nature of the Encounter: Nearby feature is somehow dangerous"
+    type: 0
+    weight: 1
+  - _id: tEZnxxSMLBR0cprC
+    drawn: false
+    flags: {}
+    range:
+      - 7
+      - 7
+    text: "Basic Nature of the Encounter: Nearby feature promises useful loot"
+    type: 0
+    weight: 1
+  - _id: MVfPjY3WRfjkHDHU
+    drawn: false
+    flags: {}
+    range:
+      - 8
+      - 8
+    text: "Basic Nature of the Encounter: Meet hostiles that aren’t immediately so"
+    type: 0
+    weight: 1
+sort: 0

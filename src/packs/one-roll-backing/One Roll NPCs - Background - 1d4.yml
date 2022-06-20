@@ -1,0 +1,77 @@
+_id: x6etGYYrrVZCt1hP
+description: ""
+displayRoll: true
+flags:
+  core:
+    sourceId: RollTable.ZvXbgyCbBiD2NptU
+  exportSource:
+    coreVersion: 0.8.8
+    system: swnr
+    systemVersion: 0.5.0
+    world: a
+folder: null
+formula: 1d4
+img: icons/svg/d20-grey.svg
+name: One Roll NPCs - Background - 1d4
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: o7k1MlGQX9Qrn5JH
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: null
+    text: "Background: The local underclass or poorest natives"
+    type: 0
+    weight: 1
+  - _id: CoaqpDTqLHENvWFn
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 2
+      - 2
+    rangeH: 2
+    rangeL: 2
+    resultId: null
+    text: "Background: Common laborers or cube workers"
+    type: 0
+    weight: 1
+  - _id: I3Q2alrTTTkW9ltT
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 3
+      - 3
+    rangeH: 3
+    rangeL: 3
+    resultId: null
+    text: "Background: Aspiring bourgeoise or upper class"
+    type: 0
+    weight: 1
+  - _id: mAzFKzVS4WJIPbXv
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 4
+      - 4
+    rangeH: 4
+    rangeL: 4
+    resultId: null
+    text: "Background: The elite of this society"
+    type: 0
+    weight: 1
+sort: 0

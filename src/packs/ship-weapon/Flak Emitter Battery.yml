@@ -12,7 +12,7 @@ data:
   minClass: frigate
   power: 5
   powerMultiplier: false
-  qualities: AP 10
+  qualities: AP 10, Flak
   tl: 4
 img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
 name: Flak Emitter Battery

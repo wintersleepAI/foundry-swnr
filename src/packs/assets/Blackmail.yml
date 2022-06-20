@@ -1,0 +1,26 @@
+data:
+  assetType: cunning
+  attackDamage: 1d4+1
+  attackSource: cunning
+  attackSpecial: 'Any attempt to attack or defend against Blackmail loses any bonus dice earned by tags'
+  attackTarget: cunning
+  baseOfInfluence: false
+  cost: 4
+  counter: ''
+  description: >-
+    Selectively degrade the effectiveness of an asset. Any attempt to attack or defend
+    against Blackmail loses any bonus dice earned by tags.
+  health:
+    max: 4
+    value: 4
+  income: 0
+  maintenance: 0
+  note: S
+  rating: 2
+  tl: 0
+  turnRoll: ''
+  type: Tactic
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/cunning.png
+name: Blackmail
+type: asset

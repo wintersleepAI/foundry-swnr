@@ -12,7 +12,7 @@ data:
     raw materials can be used to feed a mobile factory, and a ship may have
     more than one mobile extractor fitted to it to multiple the return
     if sufficient raw feedstock is available. Operating an extractor
-    reuires at least five crew members.
+    requires at least five crew members.
   effect: Space mining and refinery fittings
   mass: 1.0
   massMultiplier: false

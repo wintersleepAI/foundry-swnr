@@ -1,6 +1,15 @@
 import { SWNRArmorTypes, AllItemClasses, ItemTypes } from "./item-types";
+import { SWNRFactionAsset } from "./items/asset";
+import { SWNRBaseItem } from "./base-item";
 
-type ActorTypes = "character" | "npc" | "ship" | "mech" | "drone" | "vehicle";
+type ActorTypes =
+  | "character"
+  | "npc"
+  | "ship"
+  | "mech"
+  | "drone"
+  | "vehicle"
+  | "faction";
 
 declare type SWNRStats = "str" | "dex" | "con" | "int" | "wis" | "cha";
 
@@ -27,6 +36,8 @@ type SWNRShipHullType =
   | "carrier"
   | "smallStation"
   | "largeStation";
+
+type FactionRating = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
 declare interface SWNRStatBase {
   base: number;
@@ -181,6 +192,40 @@ declare interface SWNRCharacterComputedData
   stats: { [key in SWNRStats]: SWNRStatComputed };
 }
 
+declare interface SWNRTag {
+  name: string;
+  desc: string;
+  effect: string;
+}
+
+declare interface SWNRFactionData {
+  description: string;
+  health: {
+    value: number;
+  };
+  active: boolean;
+  forceRating: FactionRating;
+  cunningRating: FactionRating;
+  wealthRating: FactionRating;
+  facCreds: number;
+  xp: number;
+  homeworld: string;
+  tags: SWNRTag[];
+  factionGoal: string;
+  factionGoalDesc: string;
+  log: string[];
+}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+declare interface SWNRFactionComputed {
+  cunningAssets: SWNRBaseItem<"asset">[];
+  wealthAssets: SWNRBaseItem<"asset">[];
+  forceAssets: SWNRBaseItem<"asset">[];
+  health: {
+    max: number;
+  };
+}
+
 declare interface SWNRShipComputed {
   power: {
     value: number;
@@ -333,6 +378,11 @@ declare interface SWNRShipData extends SWNRVehicleTemplateBase {
     comms: string;
   };
   cargoCarried: SWNRResource[];
+  commandPoints: number;
+  npcCommandPoints: number;
+  crewSkillBonus: number;
+  actionsTaken: string[];
+  supportingDept: string;
 }
 
 declare interface SWNRNPCData extends SWNRLivingTemplateBase {
@@ -376,7 +426,8 @@ declare global {
       | { type: "ship"; data: Merge<SWNRShipData, SWNRShipComputed> }
       | { type: "mech"; data: Merge<SWNRMechData, SWNRMechComputed> }
       | { type: "drone"; data: Merge<SWNRDroneData, SWNRDroneComputed> }
-      | { type: "vehicle"; data: Merge<SWNRVehicleData, SWNRVehicleComputed> };
+      | { type: "vehicle"; data: Merge<SWNRVehicleData, SWNRVehicleComputed> }
+      | { type: "faction"; data: Merge<SWNRFactionData, SWNRFactionComputed> };
   }
   interface SourceConfig {
     Actor:
@@ -385,6 +436,7 @@ declare global {
       | { type: "ship"; data: SWNRShipData }
       | { type: "mech"; data: SWNRMechData }
       | { type: "drone"; data: SWNRDroneData }
-      | { type: "vehicle"; data: SWNRVehicleData };
+      | { type: "vehicle"; data: SWNRVehicleData }
+      | { type: "faction"; data: SWNRFactionData };
   }
 }

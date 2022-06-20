@@ -16,6 +16,10 @@ data:
   powerMultiplier: false
   qualities: AP 15
   tl: 4
+  ammo:
+    max: 4
+    type: special
+    value: 4
 img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
 name: Fractal Impact Charge
 type: shipWeapon

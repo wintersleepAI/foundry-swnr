@@ -1,0 +1,70 @@
+_id: esm8N14kEFl5Y6QB
+description: ""
+displayRoll: true
+flags: {}
+folder: null
+formula: 1d4
+img: icons/svg/d20-grey.svg
+name: One Roll NPCs - Age
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: PEf7mDWwmIbMMTED
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: null
+    text: "Age: Unusually young or old for their role"
+    type: 0
+    weight: 1
+  - _id: B1O5UhgDZFJa3vjp
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 2
+      - 2
+    rangeH: 2
+    rangeL: 2
+    resultId: null
+    text: "Age: Young adult"
+    type: 0
+    weight: 1
+  - _id: XuUaN3b57uYdmO3c
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 3
+      - 3
+    rangeH: 3
+    rangeL: 3
+    resultId: null
+    text: "Age: Mature prime"
+    type: 0
+    weight: 1
+  - _id: jx1XhOfUaCIOgJJA
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 4
+      - 4
+    rangeH: 4
+    rangeL: 4
+    resultId: null
+    text: "Age: Middle-aged or elderly"
+    type: 0
+    weight: 1
+sort: 0

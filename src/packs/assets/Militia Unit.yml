@@ -1,0 +1,26 @@
+data:
+  assetType: force
+  attackDamage: 1d6
+  attackSource: force
+  attackSpecial: ''
+  attackTarget: force
+  baseOfInfluence: false
+  cost: 4
+  counter: 1d4+1
+  description: >-
+    Groups of lightly-equipped irregular troops with rudimentary military training
+    but no heavy support.
+  health:
+    max: 4
+    value: 4
+  income: 0
+  maintenance: 0
+  note: P
+  rating: 1
+  tl: 3
+  turnRoll: ''
+  type: Military Unit
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/force.png
+name: Militia Unit
+type: asset

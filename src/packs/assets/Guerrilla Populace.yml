@@ -1,0 +1,26 @@
+data:
+  assetType: force
+  attackDamage: 1d4+1
+  attackSource: force
+  attackSpecial: ''
+  attackTarget: cunning
+  baseOfInfluence: false
+  cost: 4
+  counter: ''
+  description: >-
+    Such assets reflect popular support among the locals and a cadre of men and women
+    willing to fight as partisans.
+  health:
+    max: 6
+    value: 6
+  income: 0
+  maintenance: 0
+  note: ''
+  rating: 2
+  tl: 0
+  turnRoll: ''
+  type: Military Unit
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/force.png
+name: Guerrilla Populace
+type: asset

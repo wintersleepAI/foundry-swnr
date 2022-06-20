@@ -1,0 +1,29 @@
+data:
+  assetType: wealth
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: ''
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 12
+  counter: 2d4
+  description: >-
+    These starship captains excel at transporting goods through unfriendly lines.
+    As an action, a blockade runner can transfer itself or any one Military Unit or
+    Special Forces to a world within three hexes for a cost of two FacCreds. They
+    can even move units that would otherwise require planetary government permission
+    to enter.
+  health:
+    max: 6
+    value: 6
+  income: 0
+  maintenance: 0
+  note: A
+  rating: 5
+  tl: 4
+  turnRoll: ''
+  type: Starship
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/wealth.png
+name: Blockade Runners
+type: asset

@@ -1,0 +1,27 @@
+data:
+  assetType: wealth
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: ''
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 18
+  counter: ''
+  description: >-
+    These allow the smooth extension of wealth-creation and industrial principles
+    to the farthest reaches of the faction's operations. A faction with an R&D department
+    may treat all planets as having tech level 4 for purposes of buying Wealth assets.
+  health:
+    max: 15
+    value: 15
+  income: 0
+  maintenance: 0
+  note: S
+  rating: 6
+  tl: 4
+  turnRoll: ''
+  type: Facility
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/wealth.png
+name: R&D Department
+type: asset

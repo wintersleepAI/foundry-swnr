@@ -1,0 +1,205 @@
+_id: F02ylWSwz48YjPAy
+displayRoll: true
+flags:
+  core:
+    sourceId: RollTable.V0JOC9N1PYhWcaIV
+folder: null
+formula: 1d20
+img: icons/svg/d20-grey.svg
+name: One Roll Wilderness Encounters - Specific Nearby Feature of Relevance
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: BIjfbOZo0VlxPaGL
+    drawn: false
+    flags: {}
+    range:
+      - 1
+      - 1
+    text: "Specific Nearby Feature of Relevance: Overgrown homestead"
+    type: 0
+    weight: 1
+  - _id: MvOqv3g7UIl4RBfd
+    drawn: false
+    flags: {}
+    range:
+      - 2
+      - 2
+    text: "Specific Nearby Feature of Relevance: Stream prone to flash-flooding"
+    type: 0
+    weight: 1
+  - _id: E7NxSMbL1nv6Cvv8
+    drawn: false
+    flags: {}
+    range:
+      - 3
+      - 3
+    text: >-
+      Specific Nearby Feature of Relevance: Narrow bridge or beam over deep
+      cleft
+    type: 0
+    weight: 1
+  - _id: xZvZ8pDCxIxcpn5U
+    drawn: false
+    flags: {}
+    range:
+      - 4
+      - 4
+    text: "Specific Nearby Feature of Relevance: Box canyon with steep sides"
+    type: 0
+    weight: 1
+  - _id: SBctmcdD1JInBKts
+    drawn: false
+    flags: {}
+    range:
+      - 5
+      - 5
+    text: >-
+      Specific Nearby Feature of Relevance: Unstable hillside that slides if
+      disturbed
+    type: 0
+    weight: 1
+  - _id: azmnf0Qo910uLNY5
+    drawn: false
+    flags: {}
+    range:
+      - 6
+      - 6
+    text: "Specific Nearby Feature of Relevance: Long-lost crash site of a gravflyer"
+    type: 0
+    weight: 1
+  - _id: 2Oy9Epm9kC634AEZ
+    drawn: false
+    flags: {}
+    range:
+      - 7
+      - 7
+    text: "Specific Nearby Feature of Relevance: Once-inhabited cave or tunnel"
+    type: 0
+    weight: 1
+  - _id: asiWIRnujpFmANqL
+    drawn: false
+    flags: {}
+    range:
+      - 8
+      - 8
+    text: "Specific Nearby Feature of Relevance: Steep and dangerous cliff"
+    type: 0
+    weight: 1
+  - _id: z0VbQ9D62dph4iLR
+    drawn: false
+    flags: {}
+    range:
+      - 9
+      - 9
+    text: "Specific Nearby Feature of Relevance: Quicksand-laden swamp or dust pit"
+    type: 0
+    weight: 1
+  - _id: ZGSpFZ1iFKCgkeuZ
+    drawn: false
+    flags: {}
+    range:
+      - 10
+      - 10
+    text: "Specific Nearby Feature of Relevance: Ruins of a ghost town or lost hamlet"
+    type: 0
+    weight: 1
+  - _id: NiXc7cy4bPPLTURr
+    drawn: false
+    flags: {}
+    range:
+      - 11
+      - 11
+    text: "Specific Nearby Feature of Relevance: Hunting cabin with necessities"
+    type: 0
+    weight: 1
+  - _id: sQbwXOhgTTazuQpm
+    drawn: false
+    flags: {}
+    range:
+      - 12
+      - 12
+    text: >-
+      Specific Nearby Feature of Relevance: Ill-tended graveyard of a lost
+      family stead
+    type: 0
+    weight: 1
+  - _id: GCbcekBVuHthwwca
+    drawn: false
+    flags: {}
+    range:
+      - 13
+      - 13
+    text: "Specific Nearby Feature of Relevance: Narrow pass that’s easily blocked"
+    type: 0
+    weight: 1
+  - _id: ZDcTEnT5qXCoXEjL
+    drawn: false
+    flags: {}
+    range:
+      - 14
+      - 14
+    text: "Specific Nearby Feature of Relevance: Dilapidated resort building"
+    type: 0
+    weight: 1
+  - _id: 91xuEY0LzxzjUSwO
+    drawn: false
+    flags: {}
+    range:
+      - 15
+      - 15
+    text: "Specific Nearby Feature of Relevance: Remote government monitoring outpost"
+    type: 0
+    weight: 1
+  - _id: SzpQMlncyILEnkjz
+    drawn: false
+    flags: {}
+    range:
+      - 16
+      - 16
+    text: >-
+      Specific Nearby Feature of Relevance: Illicit substance farm or processing
+      center
+    type: 0
+    weight: 1
+  - _id: 3WHxUxVIvqtOWPO4
+    drawn: false
+    flags: {}
+    range:
+      - 17
+      - 17
+    text: "Specific Nearby Feature of Relevance: Old and forgotten battleground"
+    type: 0
+    weight: 1
+  - _id: yuFWgg0LZo7KTwa5
+    drawn: false
+    flags: {}
+    range:
+      - 18
+      - 18
+    text: "Specific Nearby Feature of Relevance: Zone overrun by dangerous plants"
+    type: 0
+    weight: 1
+  - _id: RVlamk53Uz9frlFl
+    drawn: false
+    flags: {}
+    range:
+      - 19
+      - 19
+    text: >-
+      Specific Nearby Feature of Relevance: Thick growth that lights up at a
+      spark
+    type: 0
+    weight: 1
+  - _id: owE2S0RlEdB3S9m8
+    drawn: false
+    flags: {}
+    range:
+      - 20
+      - 20
+    text: "Specific Nearby Feature of Relevance: Abandoned vehicle"
+    type: 0
+    weight: 1
+sort: 0

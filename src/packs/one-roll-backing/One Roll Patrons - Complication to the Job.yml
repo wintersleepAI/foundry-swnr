@@ -1,0 +1,296 @@
+_id: 3zQc8EovhkMSlNUE
+description: ""
+displayRoll: true
+flags:
+  core:
+    sourceId: RollTable.nh6t1zwYLYt7DCli
+folder: null
+formula: 1d20
+img: icons/svg/d20-grey.svg
+name: One Roll Patrons - Complication to the Job
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: VCSUjVR0FthPmshP
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: null
+    text: "Complication to the Job: An ambush is laid somewhere"
+    type: 0
+    weight: 1
+  - _id: rf1XLd744E2eelHr
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 2
+      - 2
+    rangeH: 2
+    rangeL: 2
+    resultId: null
+    text: "Complication to the Job: PC involvement is leaked to the enemy"
+    type: 0
+    weight: 1
+  - _id: Yvh1XlqwsFOpvTnZ
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 3
+      - 3
+    rangeH: 3
+    rangeL: 3
+    resultId: null
+    text: "Complication to the Job: The patron gives faulty aid somehow"
+    type: 0
+    weight: 1
+  - _id: bgkvjwIHjwXT1foD
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 4
+      - 4
+    rangeH: 4
+    rangeL: 4
+    resultId: null
+    text: "Complication to the Job: Failing would be extremely unhealthy"
+    type: 0
+    weight: 1
+  - _id: ULLNegGLjAWnlMas
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 5
+      - 5
+    rangeH: 5
+    rangeL: 5
+    resultId: null
+    text: "Complication to the Job: The job IDs them as allies of a local faction"
+    type: 0
+    weight: 1
+  - _id: FFsRuS8TRRnOUBOl
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 6
+      - 6
+    rangeH: 6
+    rangeL: 6
+    resultId: null
+    text: "Complication to the Job: The macguffin is physically dangerous"
+    type: 0
+    weight: 1
+  - _id: 0sU3DyjQHqClaK2h
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 7
+      - 7
+    rangeH: 7
+    rangeL: 7
+    resultId: null
+    text: "Complication to the Job: An important location is hard to get into"
+    type: 0
+    weight: 1
+  - _id: 456wob4f7GyS28U5
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 8
+      - 8
+    rangeH: 8
+    rangeL: 8
+    resultId: null
+    text: "Complication to the Job: Succeeding would be morally distasteful"
+    type: 0
+    weight: 1
+  - _id: MXbO0CVkjPPsTa3d
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 9
+      - 9
+    rangeH: 9
+    rangeL: 9
+    resultId: null
+    text: "Complication to the Job: A supposed ally is very unhelpful or stupid"
+    type: 0
+    weight: 1
+  - _id: jDPCiwElMX6yRqLJ
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 10
+      - 10
+    rangeH: 10
+    rangeL: 10
+    resultId: null
+    text: "Complication to the Job: The patron badly misunderstood the PCs"
+    type: 0
+    weight: 1
+  - _id: NL6OPlFEQNwFol52
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 11
+      - 11
+    rangeH: 11
+    rangeL: 11
+    resultId: null
+    text: "Complication to the Job: The job changes suddenly partway through"
+    type: 0
+    weight: 1
+  - _id: HQuIgBjfs8YPo36p
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 12
+      - 12
+    rangeH: 12
+    rangeL: 12
+    resultId: null
+    text: "Complication to the Job: An unexpected troublemaker is involved"
+    type: 0
+    weight: 1
+  - _id: 5N02bbMu0NTO9wjI
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 13
+      - 13
+    rangeH: 13
+    rangeL: 13
+    resultId: null
+    text: "Complication to the Job: Critical gear will fail partway through"
+    type: 0
+    weight: 1
+  - _id: NGj1vgc3SpFm55Le
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 14
+      - 14
+    rangeH: 14
+    rangeL: 14
+    resultId: null
+    text: "Complication to the Job: An unrelated accident complicates things"
+    type: 0
+    weight: 1
+  - _id: gHelNljKgSIRerKm
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 15
+      - 15
+    rangeH: 15
+    rangeL: 15
+    resultId: null
+    text: "Complication to the Job: Payment comes in a hard-to-handle form"
+    type: 0
+    weight: 1
+  - _id: bKtKBvB7mwmIAz9s
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 16
+      - 16
+    rangeH: 16
+    rangeL: 16
+    resultId: null
+    text: "Complication to the Job: Someone is turning traitor on the patron"
+    type: 0
+    weight: 1
+  - _id: hXb9Bhm38j3LGnTz
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 17
+      - 17
+    rangeH: 17
+    rangeL: 17
+    resultId: null
+    text: "Complication to the Job: A critical element has suddenly moved"
+    type: 0
+    weight: 1
+  - _id: 9daDPjHYH57F0hGL
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 18
+      - 18
+    rangeH: 18
+    rangeL: 18
+    resultId: null
+    text: "Complication to the Job: Payment is in avidly-pursued hot goods"
+    type: 0
+    weight: 1
+  - _id: jTPdqSZZ2epflcwd
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 19
+      - 19
+    rangeH: 19
+    rangeL: 19
+    resultId: null
+    text: "Complication to the Job: The true goal is a subsidiary part of the job"
+    type: 0
+    weight: 1
+  - _id: 35JbZy5JXCBPWk8e
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 20
+      - 20
+    rangeH: 20
+    rangeL: 20
+    resultId: null
+    text: "Complication to the Job: No complications; it’s just as it seems to be"
+    type: 0
+    weight: 1
+sort: 0

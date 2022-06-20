@@ -18,6 +18,9 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     html
       .find(".item-toggle-destroy")
       .on("click", this._onItemDestroyToggle.bind(this));
+    html
+      .find(".item-toggle-jury")
+      .on("click", this._onItemJuryToggle.bind(this));
     html.find(".item-click").on("click", this._onItemClick.bind(this));
     html.find(".item-create").on("click", this._onItemCreate.bind(this));
   }
@@ -56,7 +59,7 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     }
   }
 
-  _onItemReload(event: JQuery.ClickEvent): void {
+  async _onItemReload(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
     const li = $(event.currentTarget).parents(".item");
@@ -65,8 +68,7 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     const ammo_max = item.data.data.ammo?.max;
     if (ammo_max != null) {
       if (item.data.data.ammo.value < ammo_max) {
-        console.log("Reloading", item);
-        item.update({ "data.ammo.value": ammo_max });
+        await item.update({ "data.ammo.value": ammo_max });
         const content = `<p> Reloaded ${item.name} </p>`;
         ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor: this.actor }),
@@ -80,23 +82,46 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     }
   }
 
-  _onItemBreakToggle(event: JQuery.ClickEvent): void {
+  async _onItemBreakToggle(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
     const wrapper = $(event.currentTarget).parents(".item");
     const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
     const new_break_status = !item?.data.data.broken;
-    if (item instanceof Item) item?.update({ "data.broken": new_break_status });
+    if (item instanceof Item)
+      await item?.update({
+        "data.broken": new_break_status,
+        "data.destroyed": false,
+        "data.juryRigged": false,
+      });
   }
 
-  _onItemDestroyToggle(event: JQuery.ClickEvent): void {
+  async _onItemDestroyToggle(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
     const wrapper = $(event.currentTarget).parents(".item");
     const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
     const new_destroy_status = !item?.data.data.destroyed;
     if (item instanceof Item)
-      item?.update({ "data.destroyed": new_destroy_status });
+      await item?.update({
+        "data.destroyed": new_destroy_status,
+        "data.broken": false,
+        "data.juryRigged": false,
+      });
+  }
+
+  async _onItemJuryToggle(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    const wrapper = $(event.currentTarget).parents(".item");
+    const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
+    const new_jury_status = !item?.data.data.juryRigged;
+    if (item instanceof Item)
+      await item?.update({
+        "data.destroyed": false,
+        "data.broken": false,
+        "data.juryRigged": new_jury_status,
+      });
   }
 
   _onItemEdit(event: JQuery.ClickEvent): void {

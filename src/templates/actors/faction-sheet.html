@@ -1,0 +1,260 @@
+<form class="{{cssClass}} bg-gray-200 -m-2 p-2 space-y-2">
+  <div class="flex gap-2 flex-col">
+    <div class="flex">
+      <div class="flex-shrink-0 h-40 hidden md:block lg:h-16 md:w-16">
+        <img class="h-full w-full object-contain profile-img" src="{{actor.img}}"
+          title="{{actor.name}}" data-edit="img" />
+      </div>
+      <div class="flex-grow flexrow px-3  items-center gap-2">
+        <input
+          class="text-2xl col-span-3 px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'swnr.sheet.name'}}" />
+      </div>
+      <!-- active -->
+      <div class="flexrow items-center">
+        <span>
+          {{localize 'swnr.sheet.faction.active'}}:
+          <input type="checkbox" name="data.active" {{checked data.data.active}}>
+
+        </span>
+      </div>
+
+    </div>
+    <div class="flex-grow flexrow flex-wrap">
+      <!--HP-->
+      <div class="flex flex-col items-center p-2">
+        <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+          <input
+            class="w-8 text-right pl-1.5  bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            type="number" step="1" name="data.health.value" value="{{actor.data.data.health.value}}" data-dtype="Number"
+            min="0" /><span>/</span>
+          <span
+            class="inline-block text-left text-gray-700 cursor-not-allowed w-8">{{actor.data.data.health.max}}</span>
+        </div>
+        <div>{{localize 'swnr.sheet.hp'}}</div>
+      </div>
+
+      <!-- force -->
+      <div class="flex-col text-center items-center p-2">
+        <select class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+          name="data.forceRating">
+          {{#select data.data.forceRating}}
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          {{/select}}
+        </select>
+        <div>{{localize 'swnr.sheet.faction.forceRating'}}
+          <a class="force-up text-gray-600 hover:text-red-600 transition-colors"
+            title="{{localize 'swnr.sheet.level-up'}}">
+            <i class="fas fa-level-up-alt"></i>
+          </a>
+        </div>
+      </div>
+      <!-- cunning -->
+      <div class="flex-col text-center items-center p-2">
+        <select class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+          name="data.cunningRating">
+          {{#select data.data.cunningRating}}
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          {{/select}}
+        </select>
+        <div>{{localize 'swnr.sheet.faction.cunningRating'}}
+          <a class="cunning-up text-gray-600 hover:text-red-600 transition-colors"
+            title="{{localize 'swnr.sheet.level-up'}}">
+            <i class="fas fa-level-up-alt"></i>
+          </a>
+        </div>
+      </div>
+      <!-- wealth -->
+      <div class="flex-col text-center items-center p-2">
+        <select class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+          name="data.wealthRating">
+          {{#select data.data.wealthRating}}
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          {{/select}}
+        </select>
+        <div>{{localize 'swnr.sheet.faction.wealthRating'}}
+          <a class="wealth-up text-gray-600 hover:text-red-600 transition-colors"
+            title="{{localize 'swnr.sheet.level-up'}}">
+            <i class="fas fa-level-up-alt"></i>
+          </a>
+        </div>
+      </div>
+      {{!--
+    </div>
+    <div class="flexrow flex-grow"> --}}
+      <!-- facCreds -->
+      <div class="flex flex-col items-center p-2">
+        <input
+          class="w-8 text-center px-1.5  border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          type="number" step="1" data-dtype="Number" name="data.facCreds" value="{{data.data.facCreds}}" />
+        <div>{{localize 'swnr.sheet.faction.facCreds'}}</div>
+      </div>
+
+      <!-- xp -->
+      <div class="flex flex-col items-center p-2">
+        <input
+          class="w-8 text-center px-1.5  border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          type="number" step="1" data-dtype="Number" name="data.xp" value="{{data.data.xp}}" />
+        <div>{{localize 'swnr.sheet.faction.xp'}}</div>
+      </div>
+
+      <!-- homeworld -->
+      <div class="flex flex-col items-center p-2">
+        <input
+          class="w-32 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          name="data.homeworld" value="{{data.data.homeworld}}" />
+        <div>{{localize 'swnr.sheet.faction.homeworld'}}</div>
+      </div>
+
+
+    </div>
+    <div class="flex-grow flexrow flex-wrap">
+
+
+
+      <!-- goal -->
+      <div class="flex flex-col items-center p-2 mt-12">
+        <input
+          class="w-32 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          name="data.factionGoal" value="{{data.data.factionGoal}}" />
+        <div>
+          {{localize 'swnr.sheet.faction.factionGoal'}}
+          <a class="set-goal text-gray-600 hover:text-red-600 transition-colors"
+            title="{{localize 'swnr.sheet.faction.setGoal'}}">
+            <i class="fas fa-exchange-alt"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- goal -->
+      <div class="flex flex3 flex-col items-center p-2">
+        {{!-- <input
+          class="min-w-full text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          name="data.factionGoalDesc" value="{{data.data.factionGoalDesc}}" /> --}}
+        <div class="bg-gray-300 border border-gray-700 rounded-md p-2 w-96">
+          {{editor content=data.data.factionGoalDesc target="data.factionGoalDesc" button=true owner=owner
+          editable=editable
+          }}
+        </div>
+        <div>{{localize 'swnr.sheet.faction.factionGoalDesc'}}</div>
+      </div>
+
+      <!--buttons-->
+      <div class="cost flex flex-col items-center mt-12 ">
+        <a><i class="fas fa-hourglass-start  fa-2x faction-turn"></i></a>
+        {{localize 'swnr.sheet.faction.turn'}}
+      </div>
+    </div>
+    {{!-- Sheet Body --}}
+
+    <div class="w-full">
+      <nav class="pc-sheet-tabs tabs py-1 flex flex-wrap gap-2 border-t border-b border-trueGray-500 border1 mb-1"
+        data-group="primary">
+        <a class="item" data-tab="assets">
+          {{localize 'swnr.sheet.faction.assets-tab'}}
+        </a>
+        <a class="item" data-tab="desc">
+          {{localize 'swnr.sheet.faction.desc-tab'}}
+        </a>
+        <a class="item" data-tab="tags">
+          {{localize 'swnr.sheet.faction.tags-tab'}}
+        </a>
+        <a class="item" data-tab="log">
+          {{localize 'swnr.sheet.faction.log-tab'}}
+        </a>
+      </nav>
+      <section class="sheet-body">
+        <!-- Asset tab -->
+        <div class="tab assets min-h-full" data-group="primary" data-tab="assets">
+          <div class="flexrow flex-grow">
+            {{>
+            "systems/swnr/templates/actors/fragments/faction-assets.html"
+            type="asset" assetType="cunning" name="Cunning" assets=data.data.cunningAssets
+            }}
+          </div>
+
+          <div class="flexrow flex-grow">
+            {{>
+            "systems/swnr/templates/actors/fragments/faction-assets.html"
+            type="asset" assetType="wealth" name="Wealth" assets=data.data.wealthAssets
+            }}
+          </div>
+
+          <div class="flexrow flex-grow">
+            {{>
+            "systems/swnr/templates/actors/fragments/faction-assets.html"
+            type="asset" assetType="force" name="Force" assets=data.data.forceAssets
+            }}
+          </div>
+        </div>
+        <div class="tab desc min-h-full" data-group="primary" data-tab="desc">
+          <div class="border border-gray-600 rounded-md my-2 bg-gray-300">
+            <h2 class="text-base p-1">{{localize 'swnr.sheet.description'}}</h2>
+            <div class="p-1 border-t border-black">
+              {{!-- TODO: fix is for wrapping around text, because this is a little fixed --}}
+              {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable
+              }}
+            </div>
+          </div>
+        </div>
+        <div class="tab assets min-h-full" data-group="primary" data-tab="tags">
+          <div class="p-2">
+            {{#each actor.data.data.tags as |tag id|}}
+            <div class="p-1 border-b border-black tagdiv" data-idx="{{id}}">
+              <a class="item-control faction-tag-delete text-gray-600 hover:text-red-600 transition-colors"
+                title='{{localize 'swnr.sheet.faction.remove-tag'}}'><i class="fas fa-trash"></i></a>
+              <b>{{ tag.name}}</b> <br>{{tag.desc}}<br> Effect: {{tag.effect}}<br>
+              <hr>
+            </div>
+            {{/each}}
+
+          </div>
+          <a class="faction-tag-add"><i class="fas fa-tags  fa-2x faction-tag-add"></i>
+            {{localize 'swnr.sheet.faction.add-tag'}}</a>
+        </div>
+        <div class="tab assets min-h-full" data-group="primary" data-tab="log">
+          <div class="p-2">
+          <a class="faction-log-delete-all"><i class="fas fa-trash  fa-2x faction-log-delete-all"></i>
+            {{localize 'swnr.sheet.faction.remove-log-all'}}</a>
+            <hr>
+          </div>
+          <div class="p-2">
+            
+            {{#each actor.data.data.log as |logentry id|}}
+            <div class="p-1 border-b border-black logdiv" data-idx="{{id}}">
+              <a class="item-control faction-log-delete text-gray-600 hover:text-red-600 transition-colors"
+                title='{{localize 'swnr.sheet.faction.remove-log'}}'><i class="fas fa-trash"></i></a>
+              {{{logentry}}}<br>
+              <hr>
+            </div>
+            {{/each}}
+
+          </div>
+    
+        </div>
+
+
+      </section>
+
+</form>

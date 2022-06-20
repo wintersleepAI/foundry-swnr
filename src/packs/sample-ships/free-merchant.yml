@@ -1,0 +1,127 @@
+data:
+  health:
+    max: 20
+    value: 20
+  ac: 14
+  armor:
+    max: 2
+    value: 2
+  speed: 3
+  power:
+    max: 10
+  mass:
+    max: 15
+  hardpoints:
+    max: 2
+  crew:
+    min: 1
+    max: 6
+    current: 0
+  cargo:
+    value: 160
+    max: 160
+  spikeDrive: 
+    value: 1
+    max: 1
+  commandPoints: 4
+  npcCommandPoints: 4
+  crewSkillBonus: 1
+  shipClass: frigate
+  shipHullType: freeMerchant
+  cost: 775000
+  maintenanceCost: 38750
+  operatingCost: 131400
+  maintenanceMonths: 6
+  description: >-
+   A mainstay of freebooting merchant-adventurers throughout human space, the standard free merchant is an extremely versatile craft, capable of hauling sig- nificant amounts of cargo to neighboring systems while requiring very few hands to operate it. Only one crew member is needed for in-system flight, though spike drills require three for normal margins of safety.
+
+   The standard free merchant is not a warship, but its sandthrower is enough to discourage pirate shuttles and the other small or fragile craft that wreckers or primitive worlds tend to favor. The multifocal laser is ideal for a highly-skilled gunner who can snipe out important systems on an attacking vessel, but the ship lacks the armor and durability to stand up to a true war- ship. Of course, with a sufficiently expert crew, even a corvette might be threatened by the well-aimed guns of a small craft like this.
+img: systems/swnr/assets/icons/spaceship.png
+items:
+  - name: Multifocal Laser
+    type: shipWeapon
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+    data:
+      broken: false
+      cost: 100000
+      costMultiplier: false
+      damage: 1d4
+      description: >-
+        Twinned assay and penetration lasers modulate the frequency of this beam for remarkable armor penetration. These weapons are popular choices for fighters intended for frigate or cruiser engagement.
+      hardpoint: 1
+      mass: 1.0
+      massMultiplier: false
+      minClass: fighter
+      power: 4
+      powerMultiplier: false
+      qualities: AP 20
+      tl: 4
+      permission:
+        default: 0
+  - name: Sandthrower
+    type: shipWeapon
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/fog.svg
+    data:
+      broken: false
+      cost: 50000
+      costMultiplier: false
+      damage: 2d4
+      description: >-
+        Projecting a spray of tiny, dense particulate matter, sandthrowers are highly effective against lightly-armored fighters.
+      hardpoint: 1
+      mass: 1.0
+      massMultiplier: false
+      minClass: fighter
+      power: 3
+      powerMultiplier: false
+      qualities: Flak
+      tl: 4
+      permission:
+        default: 0
+  - name: Atmospheric Configuration
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 5000
+      costMultiplier: true
+      description: >-
+        This fitting must be put in place when the ship is built, and cannot be installed on cruiser-class or larger ships. A ship designed for atmospheric flight can land on most solid or aqueous surfaces.
+      effect: 'Can land: frigates and fighters only.'
+      mass: 1.0
+      massMultiplier: true
+      minClass: fighter
+      power: 0
+      powerMultiplier: false
+  - name: Fuel Scoops
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/energise.svg
+    data:
+      broken: false
+      cost: 5000
+      costMultiplier: true
+      description: >-
+        Fuel scoops allow for the harvesting and extraction of hydrogen from gas giants or the penumbra of solar bodies. The extraction process requires four days of processing and refinement, but completely refuels the ship. Such fittings are common on explorer craft that cannot expect to find refueling stations.
+      effect: 'Ship can scoop fuel from a gas giant or star'
+      mass: 2.0
+      massMultiplier: true
+      minClass: Frigate
+      power: 2
+      powerMultiplier: false
+  - name: Fuel Bunker
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/fuel-tank.svg
+    data:
+      broken: false
+      cost: 2500
+      costMultiplier: true
+      description: >-
+        Most ships require refueling after each drill jump, no matter the distance. Installing fuel bunkers allows the ship to carry one additional load of fuel. This fitting can be installed multiple times for ships that wish to minimize fueling.
+      effect: 'Adds fuel for one more drill between fuelings'
+      mass: 1.0
+      massMultiplier: true
+      minClass: Fighter
+      power: 0
+      powerMultiplier: false
+name: Free Merchant
+type: ship

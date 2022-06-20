@@ -1,0 +1,27 @@
+data:
+  assetType: force
+  attackDamage: 1d4+1
+  attackSource: cunning
+  attackSpecial: ''
+  attackTarget: cunning
+  baseOfInfluence: false
+  cost: 6
+  counter: 1d6
+  description: >-
+    These security units specialize in code breaking, internal security, and monitoring
+    duties. They can crack open enemy plots long before they have time to come to
+    fruition.
+  health:
+    max: 4
+    value: 4
+  income: 0
+  maintenance: 0
+  note: ''
+  rating: 3
+  tl: 4
+  turnRoll: ''
+  type: Special Forces
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/force.png
+name: Counterintel Unit
+type: asset

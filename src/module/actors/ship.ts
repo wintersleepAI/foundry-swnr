@@ -66,9 +66,9 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     data.hardpoints.value = shipHardpoint;
   }
 
-  applyDefaulStats(hullType: string): void {
+  async applyDefaulStats(hullType: string): Promise<void> {
     if (HULL_DATA[hullType]) {
-      this.update(HULL_DATA[hullType]);
+      await this.update(HULL_DATA[hullType]);
     } else {
       console.log("hull type not found " + hullType);
     }
@@ -105,19 +105,22 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
       mod,
     };
     const skillRollStr = `${dice} + @skillMod + @statMod + @mod`;
-    const skillRoll = new Roll(skillRollStr, rollData).roll();
+    const skillRoll = new Roll(skillRollStr, rollData);
+    await skillRoll.roll({ async: true });
 
     const pass = skillRoll.total && skillRoll.total > difficulty ? true : false;
     const failRoll: string | null = null;
     let failText: string | null = null;
     if (!pass) {
-      const failRoll = new Roll("3d6").roll();
+      const failRoll = new Roll("3d6");
+      await failRoll.roll({ async: true });
       switch (failRoll.total) {
         case 3:
           // eslint-disable-next-line no-case-declarations
-          const fRoll = new Roll("1d6").roll().total;
+          const fRoll = new Roll("1d6");
+          await fRoll.roll({ async: true });
           failText = game.i18n.localize("swnr.chat.spike.fail3");
-          failText += `<br> Rolled: ${fRoll}`;
+          failText += `<br> Rolled: ${fRoll.total}`;
           // Break all systems and drive
           break;
         case 4:
@@ -192,7 +195,7 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     }
   }
 
-  calcCost(maintenance: boolean): void {
+  async calcCost(maintenance: boolean): Promise<void> {
     const hull = this.data.data.shipHullType;
     const shipClass = this.data.data.shipClass;
     this.data.data.maintenanceCost;
@@ -236,7 +239,7 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
       if (maintenance) {
         updateJSON["maintenanceCost"] = baseCost * 0.05;
       }
-      this.update({ data: updateJSON });
+      await this.update({ data: updateJSON });
     }
   }
 
@@ -266,11 +269,14 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     return Math.floor(Math.random() * exclusiveMax);
   }
 
-  _breakItem(id: string, forceDestroy: boolean): string {
-    console.log("breaking ", id);
+  async _breakItem(
+    id: string,
+    forceDestroy: boolean
+  ): Promise<[Record<string, unknown> | null, string]> {
+    //console.log("breaking ", id);
     if (!id || id == "") {
-      console.log("Nothing to break");
-      return "";
+      //console.log("Nothing to break");
+      throw new TypeError();
     }
     if (id == this.ENGINE_ID) {
       let curSpike = this.data.data.spikeDrive.value;
@@ -279,28 +285,46 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
       } else {
         curSpike -= 1;
       }
-      this.update({ "data.spikeDrive.value": curSpike });
+      await this.update({ "data.spikeDrive.value": curSpike });
       if (curSpike == 0) {
-        return "Engine Destroyed";
+        return [null, "Engine Destroyed"];
       } else {
-        return "Engine Damaged";
+        return [null, "Engine Damaged"];
       }
     } else {
       const item = <SWNRShipDefense | SWNRShipFitting | SWNRShipWeapon>(
         this.getEmbeddedDocument("Item", id)
       );
-      console.log(item);
-      if (forceDestroy || item?.data.data.broken) {
-        item.update({ "data.destroyed": true });
-        return `${item.name} Destroyed`;
+      //console.log(item);
+      if (
+        forceDestroy ||
+        item?.data.data.broken ||
+        item?.data.data.juryRigged
+      ) {
+        let msg = `${item.name} Destroyed`;
+        if (item?.data.data.juryRigged) {
+          msg += " (item was jury-rigged)";
+        }
+        const eitem = {
+          _id: id,
+          data: { destroyed: true, broken: false, juryRigged: false },
+        };
+        return [eitem, msg];
       } else {
-        item.update({ "data.broken": true });
-        return `${item.name} Disabled`;
+        const msg = `${item.name} Disabled`;
+        const eitem = {
+          _id: id,
+          data: { destroyed: false, broken: true, juryRigged: false },
+        };
+        return [eitem, msg];
       }
     }
   }
 
-  rollSystemFailure(sysToInclude: SysToFail[], whatToRoll: string): void {
+  async rollSystemFailure(
+    sysToInclude: SysToFail[],
+    whatToRoll: string
+  ): Promise<void> {
     const candidateIds: string[] = [];
     let idx = sysToInclude.indexOf("drive");
     if (idx > -1) {
@@ -344,25 +368,42 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
       ui.notifications?.error("Sys to fail not evaluated: " + sysToInclude);
     }
     const msg: string[] = [];
+    const eitems: Record<string, unknown>[] = [];
     if (whatToRoll == "dest-all") {
       for (const itemId of candidateIds) {
-        msg.push(this._breakItem(itemId, true));
+        const [eitem, m] = await this._breakItem(itemId, true);
+        msg.push(m);
+        if (eitem) {
+          eitems.push(eitem);
+        }
       }
     } else if (whatToRoll == "break-all") {
       for (const itemId of candidateIds) {
-        msg.push(this._breakItem(itemId, false));
+        const [eitem, m] = await this._breakItem(itemId, false);
+        msg.push(m);
+        if (eitem) {
+          eitems.push(eitem);
+        }
       }
     } else if (whatToRoll == "all-50") {
       for (const itemId of candidateIds) {
         const coin = this._getRandomInt(2);
         if (coin == 0) {
-          msg.push(this._breakItem(itemId, false));
+          const [eitem, m] = await this._breakItem(itemId, false);
+          msg.push(m);
+          if (eitem) {
+            eitems.push(eitem);
+          }
         }
       }
     } else if (whatToRoll == "break-1") {
       if (candidateIds.length > 0) {
         const coin = this._getRandomInt(candidateIds.length);
-        msg.push(this._breakItem(candidateIds[coin], false));
+        const [eitem, m] = await this._breakItem(candidateIds[coin], false);
+        msg.push(m);
+        if (eitem) {
+          eitems.push(eitem);
+        }
       }
     } else {
       ui.notifications?.error(
@@ -373,6 +414,9 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     msg.filter((i) => i != "");
     let content = "<h3>Nothing to fail</h3>";
     if (msg.length > 0) {
+      if (eitems.length > 0) {
+        await this.updateEmbeddedDocuments("Item", eitems);
+      }
       content = "<h3>Systems Failure:</h3>";
       for (let i = 0; i < msg.length; i++) {
         if (msg[i]) {
@@ -386,7 +430,7 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     ChatMessage.create(chatData);
   }
 
-  addCrew(actorId: string): void {
+  async addCrew(actorId: string): Promise<void> {
     const actor = game.actors?.get(actorId);
     if (actor) {
       const crewMembers = this.data.data.crewMembers;
@@ -395,7 +439,7 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
         let crew = this.data.data.crew.current;
         crew += 1;
         crewMembers.push(actorId);
-        this.update({
+        await this.update({
           "data.crew.current": crew,
           "data.crewMembers": crewMembers,
         });
@@ -405,7 +449,7 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     }
   }
 
-  removeCrew(actorId: string): void {
+  async removeCrew(actorId: string): Promise<void> {
     const crewMembers = this.data.data.crewMembers;
     //Only remove if there
     const idx = crewMembers.indexOf(actorId);
@@ -415,29 +459,34 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
       crewMembers.splice(idx, 1);
       let crew = this.data.data.crew.current;
       crew -= 1;
-      this.update({
-        "data.crew.current": crew,
-        "data.crewMembers": crewMembers,
-      });
-    }
-    if (this.data.data.roles) {
-      const roles = this.data.data.roles;
-      if (roles.captain == actorId) {
-        roles.captain = "";
+      if (this.data.data.roles) {
+        const roles = this.data.data.roles;
+        if (roles.captain == actorId) {
+          roles.captain = "";
+        }
+        if (roles.comms == actorId) {
+          roles.comms = "";
+        }
+        if (roles.engineering == actorId) {
+          roles.engineering = "";
+        }
+        if (roles.gunnery == actorId) {
+          roles.gunnery = "";
+        }
+        if (roles.bridge == actorId) {
+          roles.bridge = "";
+        }
+        await this.update({
+          "data.crew.current": crew,
+          "data.crewMembers": crewMembers,
+          "data.roles": roles,
+        });
+      } else {
+        await this.update({
+          "data.crew.current": crew,
+          "data.crewMembers": crewMembers,
+        });
       }
-      if (roles.comms == actorId) {
-        roles.comms = "";
-      }
-      if (roles.engineering == actorId) {
-        roles.engineering = "";
-      }
-      if (roles.gunnery == actorId) {
-        roles.gunnery = "";
-      }
-      if (roles.bridge == actorId) {
-        roles.bridge = "";
-      }
-      this.update({ "data.roles": roles });
     }
   }
 

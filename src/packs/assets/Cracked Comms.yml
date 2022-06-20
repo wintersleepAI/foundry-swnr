@@ -1,0 +1,31 @@
+data:
+  assetType: cunning
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: >-
+    If the Cracked Comms
+    succeeds in defending against an attack, it can immediately cause the attacking
+    asset to make an attack against itself for normal damage or counterattack results.
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 14
+  counter: Special
+  description: >-
+    A cryptographic asset for the interception and deciphering of enemy communications.
+    Friendly fire can be induced with the right interference. If the Cracked Comms
+    succeeds in defending against an attack, it can immediately cause the attacking
+    asset to make an attack against itself for normal damage or counterattack results.
+  health:
+    max: 6
+    value: 6
+  income: 0
+  maintenance: 0
+  note: S
+  rating: 5
+  tl: 0
+  turnRoll: ''
+  type: Tactic
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/cunning.png
+name: Cracked Comms
+type: asset

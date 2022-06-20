@@ -33,12 +33,12 @@
 
         {{>
         "systems/swnr/templates/actors/fragments/hdr-HAA.html"
-        type=actor.data.data.type actor=actor
+        type=actor.type actor=actor
         }}
 
         {{>
         "systems/swnr/templates/actors/fragments/hdr-PMH.html"
-        type=actor.data.data.type actor=actor
+        type=actor.type actor=actor
         }}
 
         <!--speed-->
@@ -137,19 +137,19 @@
             <div class=" fittings pr-0.5">
               {{>
                 "systems/swnr/templates/actors/fragments/crew-list.html" 
-                  type=actor.data.data.type crewArray=crewArray
+                  type=actor.type crewArray=crewArray
               }}
               {{>
                 "systems/swnr/templates/actors/fragments/vehicle-weapon-table.html" 
-                  type=actor.data.data.type actor=actor
+                  type=actor.type actor=actor
               }}
               {{>
                 "systems/swnr/templates/actors/fragments/vehicle-fitting-table.html"
-                type=actor.data.data.type actor=actor
+                type=actor.type actor=actor
               }}
               {{>
                 "systems/swnr/templates/actors/fragments/vehicle-defense-table.html"
-                type=actor.data.data.type actor=actor
+                type=actor.type actor=actor
               }}
             </div> <!-- end fitting left col -->
             <div class="flex flex-col">

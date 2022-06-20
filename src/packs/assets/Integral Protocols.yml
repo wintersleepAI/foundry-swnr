@@ -1,0 +1,27 @@
+data:
+  assetType: force
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: They can defend only against attacks versus Cunning, but they add an additional die to the defender's roll.
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 20
+  counter: 2d8+2
+  description: >-
+    A complex web of braked-AI supported sensors and redundant security checks used
+    to defeat attempts to infiltrate an area. They can defend only against attacks
+    versus Cunning, but they add an additional die to the defender's roll.
+  health:
+    max: 10
+    value: 10
+  income: 0
+  maintenance: 0
+  note: S
+  rating: 7
+  tl: 5
+  turnRoll: ''
+  type: Facility
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/force.png
+name: Integral Protocols
+type: asset

@@ -83,7 +83,7 @@
 
         {{>
         "systems/swnr/templates/actors/fragments/hdr-HAA.html"
-        type=actor.data.data.type actor=actor
+        type=actor.type actor=actor
         }}
 
         <!--fuel-->
@@ -169,7 +169,7 @@
 
         {{>
         "systems/swnr/templates/actors/fragments/hdr-PMH.html"
-        type=actor.data.data.type actor=actor
+        type=actor.type actor=actor
         }}
 
         <!--spikeDrive-->
@@ -217,6 +217,11 @@
           <a><i class="fas fa-heart-broken  fa-2x failure-button"></i></a>
           {{localize 'swnr.sheet.ship.system-failure'}}
         </div>
+
+        <div class="cost flex flex-col items-center ">
+          <a><i class="fas fa-tools  fa-2x repair-button"></i></a>
+          {{localize 'swnr.sheet.ship.repair-all'}}
+        </div>
         <!-- end Grid div for header -->
       </div>
 
@@ -256,8 +261,12 @@
         <section class="sheet-body">
           <div class="tab mods min-h-full" data-group="primary" data-tab="mods">
             {{>
+            "systems/swnr/templates/actors/fragments/ship-actions.html"
+            type=actor.type actor=actor
+            }}
+            {{>
             "systems/swnr/templates/actors/fragments/vehicle-mods.html"
-            type=actor.data.data.type actor=actor
+            type=actor.type actor=actor
             }}
           </div>
           <!-- notes -->
@@ -265,14 +274,13 @@
             <div class="flex flex-col">
               {{>
               "systems/swnr/templates/actors/fragments/vehicle-notes.html"
-              type=actor.data.data.type actor=actor
+              type=actor.type actor=actor
               }}
             </div>
           </div>
           <!-- end notes tab>
           <!-- Crew Tab-->
           <div class="tab crew min-h-full" data-group="primary" data-tab="crew">
-
             <div class="grid grid-cols-2">
               <div class="gap-2">
 
@@ -382,8 +390,9 @@
 
               {{>
               "systems/swnr/templates/actors/fragments/crew-list.html"
-              type=actor.data.data.type crewArray=crewArray
+              type=actor.type crewArray=crewArray
               }}
+
             </div>
           </div>
           <!-- cost tab -->
@@ -525,6 +534,27 @@
                   <label>{{localize 'swnr.sheet.ship.make-payment'}}</label>
                 </div>
               </div>
+
+              <div class="flex flexrow gap-8">
+                <!--operatingCosts-->
+                <div class="operatingCost flex flex-col items-center text-center">
+                  <input
+                    class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                    type="number" min="0" name="data.operatingCost" value="{{actor.data.data.operatingCost}}" />
+                  <label>{{localize 'swnr.sheet.ship.operating-cost'}}</label>
+                </div>
+
+                <!-- Empty-->
+                <div class="flex flex-col items-center text-center"></div>
+
+                <!-- Empty-->
+                <div class="flex flex-col items-center text-center"></div>
+
+                <!-- Empty-->
+                <div class="flex flex-col items-center text-center"></div>
+
+              </div>
+
             </div>
           </div> <!-- end cost-->
           <!-- Cargo tab -->

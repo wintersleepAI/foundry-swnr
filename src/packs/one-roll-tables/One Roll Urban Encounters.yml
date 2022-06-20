@@ -1,0 +1,114 @@
+_id: vAr81DZH1QO8htTC
+description: >-
+  There are inevitably times when a GM needs something to distract the PCs
+  quickly. A quick encounter, whether in the urban jungles or the alien wastes,
+  can buy a GM the time they need to puzzle out some larger problem. The tables
+  here can be used to create a simple urban event to occupy the PCs for a little
+  while.
+
+
+  The exact details of the event will have to be supplied by the GM in such a
+  way as to fit the planet’s culture and situation, but the goal of the tables
+  is to provide a fast conflict that the PCs can interact with meaningfully. If
+  the PCs resist the hook, it’s a relatively simple matter to make the avoidance
+  of it enough of a challenge that it buys you the time you needed in the first
+  place. Don’t force the PCs to engage with it, but let them work a little to
+  get free.
+displayRoll: true
+flags:
+  core:
+    sourceId: RollTable.RYiLqhTibV7PQRu1
+folder: null
+formula: 1d1
+img: icons/svg/d20-grey.svg
+name: One Roll Urban Encounters
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: v6RzBDzpXwiMBZG9
+    collection: swnr.one-roll-backing
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-grey.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: KgcoUIUhU1OUP0BM
+    text: One Roll Urban Encounters - General Venue of the Event
+    type: 2
+    weight: 1
+  - _id: 2CUxg5jLK85VJE0F
+    collection: swnr.one-roll-backing
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-grey.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: DqCC7bBmaVvHfHbE
+    text: One Roll Urban Encounters - Why are the PCs Involved?
+    type: 2
+    weight: 1
+  - _id: TIBoFtyCDXgV2leX
+    collection: swnr.one-roll-backing
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-grey.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: AlNUzSQ6FzErbE5N
+    text: One Roll Urban Encounters - What’s the Nature of the Event?
+    type: 2
+    weight: 1
+  - _id: wcjQjjgKp9YfY0pW
+    collection: swnr.one-roll-backing
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-grey.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: qNA0nQa49YFsa9Cl
+    text: One Roll Urban Encounters - What’s the Conflict About?
+    type: 2
+    weight: 1
+  - _id: tB16wIEfeq6wPvVK
+    collection: swnr.one-roll-backing
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-grey.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: PzZ8CYHn7hjcNjEQ
+    text: One Roll Urban Encounters - What Antagonists are Involved?
+    type: 2
+    weight: 1
+  - _id: YdkLvPQR5XSU1Qx4
+    collection: swnr.one-roll-backing
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-grey.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: K5sf38gmdvFM2xR9
+    text: One Roll Urban Encounters - Relevant Urban Features
+    type: 2
+    weight: 1
+sort: 0

@@ -41,12 +41,12 @@
 
         {{>
          "systems/swnr/templates/actors/fragments/hdr-HAA.html" 
-          type=actor.data.data.type actor=actor
+          type=actor.type actor=actor
         }}
 
        {{>
          "systems/swnr/templates/actors/fragments/hdr-PMH.html" 
-          type=actor.data.data.type actor=actor
+          type=actor.type actor=actor
        }}
 
         <!--speed-->
@@ -124,7 +124,7 @@
           <div class="tab mods min-h-full" data-group="primary" data-tab="mods">
             {{>
               "systems/swnr/templates/actors/fragments/vehicle-mods.html" 
-                type=actor.data.data.type actor=actor
+                type=actor.type actor=actor
             }}
           </div>
           <!-- notes --> 
@@ -132,7 +132,7 @@
             <div class="flex flex-col">
             {{>
               "systems/swnr/templates/actors/fragments/vehicle-notes.html" 
-                type=actor.data.data.type actor=actor
+                type=actor.type actor=actor
             }}
             </div>
           </div> <!-- end notes tab-->

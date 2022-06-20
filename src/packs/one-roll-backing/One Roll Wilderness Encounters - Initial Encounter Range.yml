@@ -1,0 +1,72 @@
+_id: zIw21r3Wn6gpFCsP
+description: ""
+displayRoll: true
+flags:
+  core:
+    sourceId: RollTable.S7QgE7MObAgn7CX1
+folder: null
+formula: 1d4
+img: icons/svg/d20-grey.svg
+name: One Roll Wilderness Encounters - Initial Encounter Range
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: IOO173IoVne3m8Hj
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: null
+    text: "Initial Encounter Range: Visible from a long distance away"
+    type: 0
+    weight: 1
+  - _id: 6h4HwsiUUxDX4Rjt
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 2
+      - 2
+    rangeH: 2
+    rangeL: 2
+    resultId: null
+    text: "Initial Encounter Range: Noticed [[1d4 * 100]] meters away"
+    type: 0
+    weight: 1
+  - _id: wrq6OGU7uLwxrBCs
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 3
+      - 3
+    rangeH: 3
+    rangeL: 3
+    resultId: null
+    text: "Initial Encounter Range: Noticed only within [[1d6 * 10]] meters"
+    type: 0
+    weight: 1
+  - _id: kR9LFxBTuifyWCAU
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 4
+      - 4
+    rangeH: 4
+    rangeL: 4
+    resultId: null
+    text: "Initial Encounter Range: Noticed only when adjacent to the event"
+    type: 0
+    weight: 1
+sort: 0

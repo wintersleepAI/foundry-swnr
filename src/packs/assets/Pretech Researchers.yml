@@ -1,0 +1,29 @@
+data:
+  assetType: wealth
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: ''
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 14
+  counter: ''
+  description: >- 
+    A highly versatile team of research and design specialists capable
+    of supporting limited pretech as long as they're adequately funded. Any
+    world with Pretech Researchers on it is treated as tech level 5 for the purpose
+    of buying Cunning and Wealth assets. Pretech researchers have a maintenance
+    cost of 1 FacCred per turn.
+  health:
+    max: 6
+    value: 6
+  income: 0
+  maintenance: 1
+  note: S
+  rating: 5
+  tl: 4
+  turnRoll: ''
+  type: Special Forces
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/wealth.png
+name: Pretech Researchers
+type: asset

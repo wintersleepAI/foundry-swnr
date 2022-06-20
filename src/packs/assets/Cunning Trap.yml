@@ -1,0 +1,26 @@
+data:
+  assetType: force
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: ''
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 5
+  counter: 1d6+3
+  description: >-
+    This asset covers all the myriad stratagems of war, from induced landslides to
+    spreading local diseases.
+  health:
+    max: 2
+    value: 2
+  income: 0
+  maintenance: 0
+  note: ''
+  rating: 3
+  tl: 0
+  turnRoll: ''
+  type: Tactic
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/force.png
+name: Cunning Trap
+type: asset

@@ -1,0 +1,109 @@
+_id: e0HKruZ6WAPtCgHn
+description: >-
+  There will be times when a GM needs an NPC on short notice. The preceding name
+  generators can be used in conjunction with these tables to quickly produce a
+  minor fill-in character for your adventure. Simply roll the table, smooth over
+  any rough joins, and have your instant NPC.
+
+
+  When combat statistics are needed, just apply the most pertinent stat line
+  from page 195 and assume they have whatever weaponry, armor, or other personal
+  possessions might be appropriate for someone in their social circumstance.
+displayRoll: true
+flags:
+  core:
+    sourceId: RollTable.C9hemRvTGLVYsl0R
+folder: null
+formula: 1d1
+img: icons/svg/d20-grey.svg
+name: One Roll NPCs
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: PHA8Vyy8EH92aEX8
+    collection: swnr.one-roll-backing
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-grey.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: esm8N14kEFl5Y6QB
+    text: One Roll NPCs - Age
+    type: 2
+    weight: 1
+  - _id: tpje92eOfKMfxTSY
+    collection: swnr.one-roll-backing
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-grey.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: WYrAlfwA9t3pPl1n
+    text: One Roll NPCs - Background
+    type: 2
+    weight: 1
+  - _id: Adp9qlU3Eys5MDGR
+    collection: swnr.one-roll-backing
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-grey.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: nSdCqa06jqPekm8M
+    text: One Roll NPCs - Desire
+    type: 2
+    weight: 1
+  - _id: TAo6hNCHqhTWbjhw
+    collection: swnr.one-roll-backing
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-grey.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: kgqwCmui0vFPDTHu
+    text: One Roll NPCs - Problem
+    type: 2
+    weight: 1
+  - _id: 3x6v8nfEh43YWaB3
+    collection: swnr.one-roll-backing
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-grey.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: Dj1g6s5hDb6pvZ4S
+    text: One Roll NPCs - Role
+    type: 2
+    weight: 1
+  - _id: zfNMPrlsUl6ki7QD
+    collection: swnr.one-roll-backing
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-grey.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: Mci0jWP2mXFfjvoQ
+    text: One Roll NPCs - Trait
+    type: 2
+    weight: 1
+sort: 0

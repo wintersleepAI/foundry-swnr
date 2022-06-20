@@ -1,0 +1,27 @@
+data:
+  assetType: cunning
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: ''
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 18
+  counter: ''
+  description: >-
+    Facilities web an area of space with a network of smugglers and gray-market freighter
+    captains. As an action, any Special Forces assets can be moved between any worlds
+    within three hexes of the Covert Transit Net.
+  health:
+    max: 15
+    value: 15
+  income: 0
+  maintenance: 0
+  note: A
+  rating: 6
+  tl: 4
+  turnRoll: ''
+  type: Logistics Facility
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/cunning.png
+name: Covert Transit Net
+type: asset

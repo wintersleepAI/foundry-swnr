@@ -1,0 +1,32 @@
+data:
+  assetType: force
+  attackDamage: 1d6
+  attackSource: force
+  attackSpecial: >-
+    When they successfully Attack an enemy faction asset, they steal [[1d4]] FacCreds from
+    the target faction as well. This theft can occur to a faction only once per turn,
+    no matter how many blockade fleets attack.'
+  attackTarget: wealth
+  baseOfInfluence: false
+  cost: 10
+  counter: ''
+  description: >-
+    A ragtag lot of corsairs, pirates, privateers, and other deniable assets. When
+    they successfully Attack an enemy faction asset, they steal 1d4 FacCreds from
+    the target faction as well. This theft can occur to a faction only once per turn,
+    no matter how many blockade fleets attack. As an action, this asset may also move
+    itself to a world within one hex.
+  health:
+    max: 8
+    value: 8
+  income: 0
+  maintenance: 0
+  note: S
+  rating: 5
+  tl: 4
+  turnRoll: ''
+  type: Starship
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/force.png
+name: Blockade Fleet
+type: asset

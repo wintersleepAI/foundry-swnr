@@ -5,7 +5,7 @@ data:
   description: >-
     Some ships run with more guns than crewmen. A single NPC
     or PC can man one gun per round, firing it as often as
-    gunnery chief's Fire One Weapon or Fire All Gunns actions allow,
+    gunnery chief's Fire One Weapon or Fire All Guns actions allow,
     but sometimes that's not enough. Installing an automatic targeting
     system for a gun allows it to shoot at a +2 hit bonus without
     human assistance. This system must be installed once for each gun

@@ -1,0 +1,21 @@
+<form class="bg-gray-200 -m-2 p-2 pb-4 flex gap-1 justify-between">
+  <div class="flex flex-col">
+    <div class="flex flexrow gap-2">
+      The following list of actions includes the most common activities a faction might choose to perform. The GM should
+      feel free to add new action types, or allow alternate choices if a faction wishes to do something that doesn’t
+      quite fit the list below. As a rule, a faction should only be able to do one thing per turn, but should be able to
+      do that same thing with any or all assets.<br><br>
+    </div>
+    <div class="flex flexrow gap-2">
+      <div class="flex flex-col">
+        <label for="action">Action:</label>
+        <select name="action"
+          class="w-96 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+          {{#each actions }}
+          <option value="{{this.name}}">{{this.name}}: {{this.desc}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+  </div>
+</form>

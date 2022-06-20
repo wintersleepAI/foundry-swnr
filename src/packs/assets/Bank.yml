@@ -1,0 +1,27 @@
+data:
+  assetType: wealth
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: ''
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 12
+  counter: ''
+  description: >-
+    Once per turn, the faction can ignore one cost or FacCred loss imposed by another
+    faction. This does not require an action. Multiple bank assets allow multiple
+    losses to be ignored.
+  health:
+    max: 8
+    value: 8
+  income: 0
+  maintenance: 0
+  note: S
+  rating: 4
+  tl: 3
+  turnRoll: 'Once per turn, the faction can ignore one cost or FacCred loss imposed by another faction. This does not require an action. Multiple bank assets allow multiple losses to be ignored.'
+  type: Facility
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/wealth.png
+name: Bank
+type: asset

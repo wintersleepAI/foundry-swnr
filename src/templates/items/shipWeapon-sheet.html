@@ -27,8 +27,8 @@
         {{#select data.data.tl}}
         <option value="">{{localize 'swnr.ammo.none'}}</option>
         <option value="4">4</option>
-        <option value="4">5</option>
-        <option value="4">6</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
         {{/select}}
       </select>
     </div>
@@ -39,6 +39,14 @@
       <input
         class="w-32 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
         type="text"  name="data.qualities" value="{{data.data.qualities}}" />
+    </div>
+
+    <!-- ab -->
+    <div class="flex flex-col items-center">
+      {{localize 'swnr.sheet.attack-bonus'}}:
+      <input
+        class="w-32 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="number" step="1" data-dtype="Number" name="data.ab" value="{{data.data.ab}}" />
     </div>
 
     <div class="flex flex-wrap gap-1">

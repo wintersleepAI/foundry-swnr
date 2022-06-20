@@ -1,0 +1,196 @@
+<form class="{{cssClass}} -m-2 p-2 bg-gray-200">
+  {{> "systems/swnr/templates/items/fragments/desc.html"}}
+  <div class="flex flexrow gap-1 text-center">
+    <!--HP-->
+    <div class="flex flex-col items-center p-2 w-24">
+      <div>{{localize 'swnr.sheet.hp'}}</div>
+
+      <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md w-24">
+        <input
+          class="w-8 text-right pl-1.5  bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          type="number" step="1" name="data.health.value" value="{{data.data.health.value}}" data-dtype="Number"
+          min="0" /><span>/</span><input
+          class="w-8 text-left pr-1.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          type="number" name="data.health.max" value="{{data.data.health.max}}" step="1" min="1"
+          data-dtype="Number" />
+      </div>
+    </div>
+
+
+    <!-- assetType -->
+    <div class="flex-col text-center items-center p-2">
+      {{localize 'swnr.sheet.faction.assetType'}}:
+      <select class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+        name="data.assetType">
+        {{#select data.data.assetType}}
+        <option value="cunning">Cunning</option>
+        <option value="force">Force</option>
+        <option value="wealth">Wealth</option>
+        {{/select}}
+      </select>
+    </div>
+
+    <!-- rating -->
+    <div class="flex-col text-center items-center p-2">
+      <div>{{localize 'swnr.sheet.faction.rating'}}</div>
+
+      <select class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md" name="data.rating">
+        {{#select data.data.rating}}
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        {{/select}}
+      </select>
+    </div>
+
+    <!--cost -->
+    <div class="flex-col text-center items-center p-2">
+      {{localize 'swnr.item.cost'}}:
+      <input type="number"
+        class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        step="1" name="data.cost" min="0" data-dtype="Number" value="{{data.data.cost}}" />
+    </div>
+
+    <!-- tl -->
+    <div class="flex-col text-center items-center p-2">
+
+      <div>{{localize 'swnr.sheet.faction.tl'}} </div>
+      <select class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md" name="data.tl">
+        {{#select data.data.tl}}
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        {{/select}}
+      </select>
+    </div>
+
+    <!-- Attack Source-->
+    <div class="flex-col text-center items-center p-2">
+      {{localize 'swnr.sheet.faction.attackSource'}}:
+      <select class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+        name="data.attackSource">
+        {{#select data.data.attackSource}}
+        <option value=""></option>
+        <option value="cunning">Cunning</option>
+        <option value="force">Force</option>
+        <option value="wealth">Wealth</option>
+        {{/select}}
+      </select>
+    </div>
+
+    <!-- Attack Target-->
+    <div class="flex-col text-center items-center p-2">
+      {{localize 'swnr.sheet.faction.attackTarget'}}:
+      <select class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+        name="data.attackTarget">
+        {{#select data.data.attackTarget}}
+        <option value=""></option>
+        <option value="cunning">Cunning</option>
+        <option value="force">Force</option>
+        <option value="wealth">Wealth</option>
+        {{/select}}
+      </select>
+    </div>
+
+    <!-- Attack Damage-->
+    <div class="flex-col text-center items-center p-2">
+      <div>{{localize 'swnr.sheet.faction.attackDamage'}}:</div>
+      <input
+        class="w-12 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="text" name="data.attackDamage" value="{{data.data.attackDamage}}" />
+    </div>
+
+    <!-- counter Damage-->
+    <div class="flex-col text-center items-center p-2">
+      <div>{{localize 'swnr.sheet.faction.counter'}}:</div>
+      <input
+        class="w-12 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="text" name="data.counter" value="{{data.data.counter}}" />
+    </div>
+
+    <!--income -->
+    <div class="flex-col text-center items-center p-2">
+      {{localize 'swnr.sheet.faction.income'}}:
+      <input type="number"
+        class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        step="1" name="data.income" min="0" data-dtype="Number" value="{{data.data.income}}" />
+    </div>
+
+    <!--maintenance -->
+    <div class="flex-col text-center items-center p-2">
+      {{localize 'swnr.sheet.faction.maintenance'}}:
+      <input type="number"
+        class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        step="1" name="data.maintenance" min="0" data-dtype="Number" value="{{data.data.maintenance}}" />
+    </div>
+
+    <!-- Base of influence -->
+    <div class="flex flexrow items-center">
+      <div>{{localize 'swnr.sheet.faction.baseOfInfluence'}}:
+      <input type="checkbox" name="data.baseOfInfluence" {{checked data.data.baseOfInfluence}}></div>
+    </div>
+
+    <!-- location -->
+    <div class="flex-col text-center items-center p-2">
+      {{localize 'swnr.sheet.faction.location'}}:
+      <input
+        class="w-32 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="text" name="data.location" value="{{data.data.location}}" />
+    </div>  
+
+    <!-- note -->
+    <div class="flex-col text-center items-center p-2">
+      {{localize 'swnr.sheet.faction.note'}}:
+      <input
+        class="w-32 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="text" name="data.note" value="{{data.data.note}}" />
+    </div>
+
+    <!-- attackSpecial -->
+    <div class="flex-col text-center items-center p-2">
+      {{localize 'swnr.sheet.faction.attackSpecial'}}:
+      <input
+        class="w-32 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="text" name="data.attackSpecial" value="{{data.data.attackSpecial}}" />
+    </div>
+
+    <!-- turnRoll -->
+    <div class="flex-col text-center items-center p-2">
+      {{localize 'swnr.sheet.faction.turnRoll'}}:
+      <input
+        class="w-32 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="text" name="data.turnRoll" value="{{data.data.turnRoll}}" />
+    </div>
+
+    <!-- unusable -->
+    <div class="flex flexrow items-center">
+      <div>{{localize 'swnr.sheet.faction.unusable'}}:
+      <input type="checkbox" name="data.unusable" {{checked data.data.unusable}}></div>
+    </div>
+
+    <!-- stealthed -->
+    <div class="flex flexrow items-center">
+      <div>{{localize 'swnr.sheet.faction.stealthed'}}:
+      <input type="checkbox" name="data.stealthed" {{checked data.data.stealthed}}></div>
+    </div>
+
+    <!-- turnRoll -->
+    {{!-- <div class="flex-col text-center items-center p-2">
+      {{localize 'swnr.sheet.faction.turnRoll'}}:
+      <input
+        class="w-32 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="text" name="data.turnRoll" value="{{data.data.turnRoll}}" />
+    </div> --}}
+
+
+    
+  </div>
+</form>

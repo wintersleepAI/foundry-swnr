@@ -124,6 +124,16 @@
     </div>
     {{/if}}
 
+  <!-- jury-rigged -->
+  <div class="flex flex-row items-center">
+    {{localize 'swnr.sheet.ship.jury-rigged'}}:
+        <input
+          type="checkbox"
+          name="data.juryRigged"
+          {{checked data.data.juryRigged}}
+        />
+  </div>
+
   <!-- broken --> 
   <div class="flex flex-row items-center">
     {{localize 'swnr.sheet.ship.broken'}}:

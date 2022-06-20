@@ -4,7 +4,7 @@ data:
   costMultiplier: false
   description: >-
     This TL5 tech is completely unavailable in most sectors and was
-    uncommong even on Mandate-era ships. The pads allow up to a dozen
+    uncommon even on Mandate-era ships. The pads allow up to a dozen
     people or 1200 kilograms of matter to be teleported to and from
     the surface of a planet or the interior of another ship, provided
     it is no more than a few tens of thousands of kilometers distant.
@@ -14,7 +14,7 @@ data:
     onto the target point. Planetary teleportations are possible
     only in the absence of physical barriers between the ship and the
     target point below. The teleporters may be used once every five minutes.
-    In those rare sectores where this tech is widely available, it costs 200k.
+    In those rare sectors where this tech is widely available, it costs 200k.
   effect: Pretech teleportation to and from ship
   mass: 1.0
   massMultiplier: false

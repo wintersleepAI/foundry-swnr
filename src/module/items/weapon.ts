@@ -9,11 +9,19 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
   }
 
   get canBurstFire(): boolean {
-    return this.ammo.type !== "none" && this.ammo.burst && this.ammo.value >= 3;
+    return (
+      this.ammo.burst &&
+      (this.ammo.type === "infinite" ||
+        (this.ammo.type !== "none" && this.ammo.value >= 3))
+    );
   }
 
   get hasAmmo(): boolean {
-    return this.ammo.type === "none" || this.ammo.value > 0;
+    return (
+      this.ammo.type === "none" ||
+      this.ammo.type === "infinite" ||
+      this.ammo.value > 0
+    );
   }
 
   async rollAttack(
@@ -33,7 +41,12 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       return;
     }
 
-    if (useBurst && this.ammo.value < 3) {
+    if (
+      useBurst &&
+      this.ammo.type !== "infinite" &&
+      this.ammo.type !== "none" &&
+      this.ammo.value < 3
+    ) {
       ui.notifications?.error(
         `Your ${this.name} is does not have enough ammo to burst!`
       );
@@ -64,13 +77,15 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     const hitRoll = new Roll(
       "1d20 + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat + @effectiveSkillRank",
       rollData
-    ).roll();
+    );
+    await hitRoll.roll({ async: true });
     const hitExplainTip = "1d20 +burst +mod +CharAB +WpnAB +Stat +Skill";
     rollData.hitRoll = +(hitRoll.dice[0].total?.toString() ?? 0);
     const damageRoll = new Roll(
       this.data.data.damage + " + @burstFire + @stat + @damageBonus",
       rollData
-    ).roll();
+    );
+    await damageRoll.roll({ async: true });
     const damageExplainTip = "roll +burst +statBonus +dmgBonus";
     const diceTooltip = {
       hit: await hitRoll.render(),
@@ -91,7 +106,8 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
           " @shockDmg + @stat " +
             (this.data.data.skillBoostsDamage ? ` + ${damageBonus}` : ""),
           rollData
-        ).roll();
+        );
+        await _shockRoll.roll({ async: true });
         shock_roll = await _shockRoll.render();
         rollArray.push(_shockRoll);
       }
@@ -120,7 +136,10 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     // const formula = dice.map(d => (<any>d).formula).join(' + ');
     // const results = dice.reduce((a, b) => a.concat(b.results), [])
     const diceData = Roll.fromTerms([PoolTerm.fromRolls(rollArray)]);
-    if (this.data.data.ammo.type !== "none") {
+    if (
+      this.data.data.ammo.type !== "none" &&
+      this.data.data.ammo.type !== "infinite"
+    ) {
       const newAmmoTotal = this.data.data.ammo.value - 1 - burstFire;
       await this.update({ "data.ammo.value": newAmmoTotal }, {});
       if (newAmmoTotal === 0)
@@ -242,15 +261,18 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       // shock: damage + stat
       // const skill = this.actor.items.filter(w => w.)
       // Burst is +2 To hit and to damage
-      let dmgBonus: number = this.data.data.skillBoostsDamage
-        ? skill.data.data.rank
-        : 0;
-      if (
-        this.actor?.type == "npc" &&
-        this.actor.data.data.attacks.bonusDamage
-      ) {
-        dmgBonus = this.actor.data.data.attacks.bonusDamage;
+      let dmgBonus = 0;
+      if (this.actor?.type == "character") {
+        dmgBonus = this.data.data.skillBoostsDamage ? skill.data.data.rank : 0;
+      } else if (this.actor?.type == "npc") {
+        dmgBonus = this.data.data.skillBoostsDamage
+          ? this.actor.data.data.skillBonus
+          : 0;
+        if (this.actor.data.data.attacks.bonusDamage) {
+          dmgBonus += this.actor.data.data.attacks.bonusDamage;
+        }
       }
+
       return this.rollAttack(dmgBonus, stat.mod, skillMod, modifier, burstFire);
       // END roll form
     };

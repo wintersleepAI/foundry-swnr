@@ -1,0 +1,28 @@
+data:
+  assetType: wealth
+  attackDamage: 2d8
+  attackSource: wealth
+  attackSpecial: ''
+  attackTarget: wealth
+  baseOfInfluence: false
+  cost: 20
+  counter: 1d8
+  description: >-
+    They substantially lessen the cost of large-scale investments by timing materials
+    purchases properly. As an action, the owner of a commodities broker can roll 1d8;
+    that many FacCreds are subtracted from the cost of their next asset purchase,
+    down to a minimum of half normal price, rounded down. Roll: [[1d8]]
+  health:
+    max: 10
+    value: 10
+  income: 0
+  maintenance: 0
+  note: A
+  rating: 6
+  tl: 0
+  turnRoll: ''
+  type: Special Forces
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/wealth.png
+name: Commodities Broker
+type: asset

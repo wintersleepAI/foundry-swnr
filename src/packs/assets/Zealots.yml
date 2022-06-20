@@ -1,0 +1,27 @@
+data:
+  assetType: force
+  attackDamage: 2d6
+  attackSource: force
+  attackSpecial: 'Zealot takes [[1d4]] damage'
+  attackTarget: force
+  baseOfInfluence: false
+  cost: 6
+  counter: 2d6
+  description: >-
+    Members of the faction so utterly dedicated that they are willing to launch suicide
+    attacks or hold positions to the death. Zealots take 1d4 damage every time they
+    launch a successful attack or perform a counterattack.
+  health:
+    max: 4
+    value: 4
+  income: 0
+  maintenance: 0
+  note: S
+  rating: 3
+  tl: 0
+  turnRoll: ''
+  type: Special Forces
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/force.png
+name: Zealots
+type: asset

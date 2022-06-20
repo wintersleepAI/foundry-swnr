@@ -1,0 +1,26 @@
+data:
+  assetType: cunning
+  attackDamage: 2d6
+  attackSource: cunning
+  attackSpecial: ''
+  attackTarget: cunning
+  baseOfInfluence: false
+  cost: 6
+  counter: ''
+  description: >-
+    Outfitted with the latest in personal stealth cyberware, cyberninjas are designed
+    to avoid all but the most careful scans.
+  health:
+    max: 4
+    value: 4
+  income: 0
+  maintenance: 0
+  note: ''
+  rating: 3
+  tl: 4
+  turnRoll: ''
+  type: Special Forces
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/cunning.png
+name: Cyberninjas
+type: asset

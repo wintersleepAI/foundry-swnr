@@ -1,0 +1,28 @@
+data:
+  assetType: wealth
+  attackDamage: 2d4+2
+  attackSource: wealth
+  attackSpecial: ''
+  attackTarget: force
+  baseOfInfluence: false
+  cost: 8
+  counter: 1d6
+  description: >-
+    Groups of well-equipped, highly-trained soldiers willing to serve the highest
+    bidder. Mercenaries have a maintenance cost of one FacCred per turn. As an action,
+    Mercenaries can move to any world within one hex of their current location. To
+    purchase or move a Mercenary asset to a planet requires government permission.
+  health:
+    max: 6
+    value: 6
+  income: 0
+  maintenance: 1
+  note: A,S,P
+  rating: 3
+  tl: 4
+  turnRoll: ''
+  type: Military Unit
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/wealth.png
+name: Mercenaries
+type: asset

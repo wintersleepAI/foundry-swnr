@@ -7,6 +7,7 @@ Actor:
     - mech
     - drone
     - vehicle
+    - faction
   templates:
     vehiclebase: 
       cost: 0
@@ -135,6 +136,21 @@ Actor:
       right:
         label: Bio/Notes
         contents: ""
+  faction:
+    description: ""
+    health:
+      value: 7
+    forceRating: 1
+    cunningRating: 1
+    wealthRating: 1
+    facCreds: 0
+    xp: 0
+    homeworld: ""
+    active: true
+    factionGoal: ""
+    factionGoalDesc: ""
+    tags: []
+    log: []
   ship:
     templates:
       - vehiclebase
@@ -184,6 +200,11 @@ Actor:
       comms: ""
       bridge: ""
     cargoCarried: []
+    commandPoints: 0
+    npcCommandPoints: 0
+    crewSkillBonus: 0
+    actionsTaken: []
+    supportingDept: ""
   mech:
     templates:
       - vehiclebase
@@ -233,6 +254,7 @@ Item:
     - shipWeapon
     - shipDefense
     - shipFitting
+    - asset
   templates:
     modBase:
       pretech:
@@ -252,6 +274,7 @@ Item:
       mass: 1
       broken: false
       destroyed: false
+      juryRigged: false
       costMultiplier: false
       powerMultiplier: false
       massMultiplier: false
@@ -309,11 +332,13 @@ Item:
       - description
     level1: ""
     level2: ""
+    level: 1
   shipWeapon:
     templates:
       - description
       - baseVehicleItem
     damage: d4
+    ab: 0
     hardpoint: 1
     qualities: ""
     ammo:
@@ -338,6 +363,28 @@ Item:
     templates:
       - description
       - modBase
+  asset:
+    templates:
+      - description
+    health:
+      value: 1
+      max: 1
+    cost: 1
+    rating: 1
+    baseOfInfluence: false
+    tl: 0
+    attackTarget: ""
+    attackSource: ""
+    attackDamage: ""
+    counter: ""
+    note: ""
+    turnRoll: ""
+    assetType: cunning
+    location: ""
+    maintenance: 0
+    income: 0
+    unusable: false
+    stealthed: false
   skill:
     templates:
       - description

@@ -28,9 +28,19 @@ a:hover {
   @apply text-shadow-gray-600;
 }
 
-li.item-entry
- {
-  padding-bottom:5px;
+.item-entry
+{
+  @apply  py-0.5 pb-2 ;
+}
+
+.small-cell {
+  max-width:60px;
+  @apply px-2;
+}
+
+.med-cell {
+  max-width:80px;
+  @apply px-2;
 }
 
 div.editor .editor-content{
@@ -122,10 +132,12 @@ $shadowColor: black;
 }
 
 .item-image {
-  flex-basis: 30px;
+  flex-basis: 20px;
   flex-grow: 0;
   background-size: contain;
   background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
 }
 
 .item-image:hover {

@@ -1,0 +1,30 @@
+data:
+  assetType: cunning
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: ''
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 12
+  counter: 2d6
+  description: >-
+    Equipped with a number of postech innovations to make cleaning them out a costly
+    and dangerous pursuit. If a faction Special Forces or Military Unit asset on the
+    same planet as the Boltholes suffers damage sufficient to destroy it, it is instead
+    set at 0 HP and rendered untouchable and unusable until it is repaired to full
+    strength. If the Boltholes are destroyed before this happens, the asset is destroyed
+    with them.
+  health:
+    max: 6
+    value: 6
+  income: 0
+  maintenance: 0
+  note: S
+  rating: 5
+  tl: 4
+  turnRoll: ''
+  type: Logistics Facility
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/cunning.png
+name: Boltholes
+type: asset

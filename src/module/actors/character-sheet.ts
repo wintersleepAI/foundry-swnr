@@ -156,7 +156,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     return await this.popUpDialog.render(true);
   }
 
-  _onItemLevelUp(event: JQuery.ClickEvent): void {
+  async _onItemLevelUp(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
     const wrapper = $(event.currentTarget).parents(".item");
@@ -207,7 +207,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
         ui.notifications?.error(`Skill points not set`);
         return;
       }
-      skill.update({ "data.rank": rank + 1 });
+      await skill.update({ "data.rank": rank + 1 });
       if (isPsy) {
         const newPsySkillPoints = Math.max(
           0,
@@ -219,7 +219,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
           newSkillPoints -=
             skillCost - this.actor.data.data.unspentPsySkillPoints;
         }
-        this.actor.update({
+        await this.actor.update({
           "data.unspentSkillPoints": newSkillPoints,
           "data.unspentPsySkillPoints": newPsySkillPoints,
         });
@@ -229,7 +229,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       } else {
         const newSkillPoints =
           this.actor.data.data.unspentSkillPoints - skillCost;
-        this.actor.update({ "data.unspentSkillPoints": newSkillPoints });
+        await this.actor.update({ "data.unspentSkillPoints": newSkillPoints });
         ui.notifications?.info(`Removed ${skillCost} skill points`);
       }
     }
@@ -247,7 +247,6 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     event: JQuery.ClickEvent
   ): Promise<Application | undefined> {
     event.preventDefault();
-    console.log(event);
     const e = <HTMLDivElement>event.currentTarget;
     const save = e.dataset.saveType;
     if (!save) return;
@@ -258,7 +257,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     });
     const dialogData = {};
     const html = await renderTemplate(template, dialogData);
-    const _doRoll = (html: HTMLFormElement) => {
+    const _doRoll = async (html: HTMLFormElement) => {
       const rollMode = game.settings.get("core", "rollMode");
       const form = <HTMLFormElement>html[0].querySelector("form");
       const formula = `1d20cs>=(@target - @modifier)`;
@@ -268,7 +267,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
         ),
         target: target,
       });
-      roll.roll();
+      await roll.roll({ async: true });
       const save_text = game.i18n.format(
         parseInt(roll.result) >= 1
           ? game.i18n.localize("swnr.npc.saving.success")
@@ -329,7 +328,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       )).value;
       const formula = new Array(6).fill(dice).join("+");
       const roll = new Roll(formula);
-      roll.roll();
+      await roll.roll({ async: true });
       const stats: {
         [p in SWNRStats]: SWNRStatBase & SWNRStatComputed & { dice: number[] };
       } = <never>{};
@@ -485,8 +484,8 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       const formula = `${currentLevel}${baseRoll} + ${boosts} + ${constBonus}`;
 
       let msg = `Rolling Level ${currentLevel} HP: ${formula}<br>(Roll for level + con mod)<br>`;
-      console.log(formula);
-      const roll = new Roll(formula).roll();
+      const roll = new Roll(formula);
+      await roll.roll({ async: true });
       if (roll.total) {
         let hpRoll = Math.max(roll.total, 1);
         msg += `Got a ${hpRoll}<br>`;
@@ -496,7 +495,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
           hpRoll = Math.max(hpRoll, currentHp + 1);
         }
         msg += `Setting HP max to ${hpRoll}<br>`;
-        this.actor.update({
+        await this.actor.update({
           "data.health_max_modified": currentLevel,
           "data.health_base_type": hpBaseInput,
           "data.health.max": hpRoll,
@@ -614,7 +613,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     const html = await renderTemplate(template, data);
     this.popUpDialog?.close();
 
-    const _saveTweakChar = (html: HTMLFormElement) => {
+    const _saveTweakChar = async (html: HTMLFormElement) => {
       const form = <HTMLFormElement>html[0].querySelector("form");
       const advantageInit = (<HTMLInputElement>(
         form.querySelector('[name="advantageInit"]')
@@ -648,7 +647,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
           showResourceList: showResourceList,
         },
       };
-      this.actor.update(update);
+      await this.actor.update(update);
     };
     this.popUpDialog = new Dialog(
       {

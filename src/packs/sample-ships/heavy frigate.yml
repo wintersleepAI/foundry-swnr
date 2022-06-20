@@ -1,0 +1,207 @@
+data:
+  health:
+    max: 50
+    value: 50
+  ac: 15
+  armor:
+    max: 10
+    value: 10
+  speed: 1
+  power:
+    max: 25
+  mass:
+    max: 20
+  crew:
+    min: 30
+    max: 120
+    current: 30
+  lifeSupportDays:
+    value: 1
+    max: 1  
+  cargo:
+    value: 0
+    max: 0
+  spikeDrive: 
+    value: 2
+    max: 2
+  hardpoints:
+    value: 8
+    max: 8
+  commandPoints: 5
+  npcCommandPoints: 5
+  crewSkillBonus: 2
+  shipClass: frigate
+  shipHullType: heavyFrigate
+  amountOwed: 9783000
+  maintenanceCost: 498000
+  operatingCost: 3942000
+  maintenanceMonths: 6
+  description: >-
+        Sometimes confusingly called a “light cruiser”, a heavyfrigate pushes the engineering parameters of a frigate hull to the maximum available to most TL4 worlds. Equipped with a torpedo launcher capable of threatening even cruiser-class enemies, the heavy frigate can intimidate any ship of its weight class. Its heavy crew complement and military drop pod fitting allow it to quickly dispatch well-armed marines to hot spots throughout a solar system. 
+        However, despite the large weapon loadout, the heavy frigate remains a frigate. Its armor is significantly inferior to that of a true cruiser-class warship, and most frigates built for same-class engagements can be a meaningful threat to it. It comes into its own as a bludgeon against the other small warships likely to be fielded by a peer star-faring polity.
+img: systems/swnr/assets/icons/spaceship.png
+items:
+  - name: Plasma Beam
+    type: shipWeapon
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+    data:
+      broken: false
+      cost: 700000
+      costMultiplier: false
+      damage: 3d6
+      description: >-
+        With superior targeting and a smaller energy drain than a CPC, a plasma beam sacrifices some armor penetration.
+      hardpoint: 2
+      mass: 2.0
+      massMultiplier: false
+      minClass: Frigate
+      power: 5
+      powerMultiplier: false
+      qualities: AP 10
+      tl: 4
+      permission:
+        default: 0
+  - name: Plasma Beam
+    type: shipWeapon
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+    data:
+      broken: false
+      cost: 700000
+      costMultiplier: false
+      damage: 3d6
+      description: >-
+        With superior targeting and a smaller energy drain than a CPC, a plasma beam sacrifices some armor penetration.
+      hardpoint: 2
+      mass: 2.0
+      massMultiplier: false
+      minClass: Frigate
+      power: 5
+      powerMultiplier: false
+      qualities: AP 10
+      tl: 4
+      permission:
+        default: 0
+  - name: Hardened Polyceramic Overlay
+    type: shipDefense
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+    data:
+      broken: false
+      cost: 25000
+      costMultiplier: false
+      description: >-
+        A complex glazing process can harden the surface of a ship’s armor to more effectively shed incoming attacks, decreasing the armor-piercing quality of any hit by 5.
+      mass: 2.0
+      massMultiplier: false
+      minClass: fighter
+      power: 0
+      powerMultiplier: false
+      qualities: AP quality of attacking weapons reduced by 5
+      permission:
+        default: 0
+  - name: Spike Drive-2 upgrade
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 10000
+      costMultiplier: true
+      description: >-
+        A ship can improve its standard-issue drive-1 spike drive with additional phase filters and power throughput refinements. A captain needs buy only the final grade of drive desired. He does not have to buy upgrades sequentially. Drives of rating 4 and higher are generally TL5 artifacts that cannot be built most modern worlds.
+      effect: 'Upgrade a spike drive to drive-2 rating'
+      mass: 1.0
+      massMultiplier: true
+      minClass: fighter
+      power: 1
+      powerMultiplier: false    
+  - name: Drop Pod
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 300000
+      costMultiplier: true
+      description: >-
+        Armored and stealthed versions of cargo lighters, these craft are twice as fast, apply a -3 penalty to tracking and targeting skill checks, and can carry up to one hundred troops or passengers. Many are equipped with assorted Heavy weapons to clear the landing zone, and can be treated as flight-capable gravtanks for purposes of combat. This fitting can be purchased multiple times.
+      effect: 'Upgrade a spike drive to drive-2 rating'
+      mass: 2.0
+      massMultiplier: true
+      minClass: frigate
+      power: 0
+      powerMultiplier: false            
+  - name: Fuel Scoops
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 5000
+      costMultiplier: true
+      description: >-
+        Fuel scoops allow for the harvesting and extraction of hydrogen from gas giants or the penumbra of solar bodies. The extraction process requires four days of processing and refinement, but completely refuels the ship. Such fittings are common on explorer craft that cannot expect to find refueling stations.
+      effect: 'Ship can scoop fuel from a gas giant or star'
+      mass: 2.0
+      massMultiplier: true
+      minClass: Frigate
+      power: 2
+      powerMultiplier: false      
+  - name: Fuel Bunker
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 2500
+      costMultiplier: true
+      description: >-
+        Most ships require refueling after each drill jump, no matter the distance. Installing fuel bunkers allows the ship to carry one additional load of fuel. This fitting can be installed multiple times for ships that wish to minimize fueling.
+      effect: 'Adds fuel for one more drill between fuelings'
+      mass: 1.0
+      massMultiplier: true
+      minClass: Fighter
+      power: 0
+      powerMultiplier: false
+  - name: Armory
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 10000
+      costMultiplier: true
+      description: >-
+        Rather than maintaining lengthy lists of ship equipment, a captain can simply buy an armory. Ships so equipped have whatever amounts of TL4 military-grade weaponry and armor that a crew might require, and integral maintenance facilities for its upkeep. There is enough gear available to outfit the entire crew for normal use, but giving it away or losing it in use may deplete it.
+      effect: 'Weapons and armor for the crew'
+      mass: 0.0
+      massMultiplier: true
+      minClass: Frigate
+      power: 0
+      powerMultiplier: false   
+  - name: Ship's Locker
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 2000
+      costMultiplier: true
+      description: >-
+        Much like an armory, this option allows a captain to lay in a general supply of equipment likely to be useful to explorers and spacemen. Any TL4 equipment on the gear list can be found in the ship’s locker in amounts commensurate with the ship’s size. A few guns and some basic armor might be included as well, but for serious armament an armory is required. There is enough gear available to outfit the entire crew for normal use, but giving it away or losing it in use may deplete the locker until it is restocked.
+      effect: 'General equipment for the crew'
+      mass: 0.0
+      massMultiplier: true
+      minClass: Frigate
+      power: 0
+      powerMultiplier: false   
+  - name: Boarding Tubes
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 5000
+      costMultiplier: true
+      description: >-
+        Armored tubes equipped with laser cutter apertures can be used to forcibly invade a hostile ship, provided the target’s engines have been disabled. Ships without boarding tubes have to send invaders across empty space to either make an assault on a doubtless heavily-guarded airlock or cut their way in through the hull with laser cutters and half an hour of work.
+      effect: 'Allows boarding of a hostile disabled ship'
+      mass: 1.0
+      massMultiplier: true
+      minClass: Frigate
+      power: 0
+      powerMultiplier: false    
+name: Heavy Frigate
+type: ship

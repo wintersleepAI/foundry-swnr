@@ -1,0 +1,182 @@
+_id: nSdCqa06jqPekm8M
+description: ""
+displayRoll: true
+flags: {}
+folder: null
+formula: 1d12
+img: icons/svg/d20-grey.svg
+name: One Roll NPCs - Desire
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: Opl5LqFSXSI3194W
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: null
+    text: "Desire: They want a particular romantic partner"
+    type: 0
+    weight: 1
+  - _id: WxpKNIBMJCLsWxP0
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 2
+      - 2
+    rangeH: 2
+    rangeL: 2
+    resultId: null
+    text: "Desire: They want money for them or a loved one"
+    type: 0
+    weight: 1
+  - _id: soqI7gwHdANdxbtz
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 3
+      - 3
+    rangeH: 3
+    rangeL: 3
+    resultId: null
+    text: "Desire: They want a promotion in their job"
+    type: 0
+    weight: 1
+  - _id: Qtoqsg2q5KBKF5sI
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 4
+      - 4
+    rangeH: 4
+    rangeL: 4
+    resultId: null
+    text: "Desire: They want answers about a past trauma"
+    type: 0
+    weight: 1
+  - _id: EntzDIZhYRl7uVYN
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 5
+      - 5
+    rangeH: 5
+    rangeL: 5
+    resultId: null
+    text: "Desire: They want revenge on an enemy"
+    type: 0
+    weight: 1
+  - _id: vlZvgva29Vp2GpuY
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 6
+      - 6
+    rangeH: 6
+    rangeL: 6
+    resultId: null
+    text: "Desire: They want to help a beleaguered friend"
+    type: 0
+    weight: 1
+  - _id: H8SOCY6pnvQkllJ4
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 7
+      - 7
+    rangeH: 7
+    rangeL: 7
+    resultId: null
+    text: "Desire: They want an entirely different job"
+    type: 0
+    weight: 1
+  - _id: iN6qd3I56tNVVPBC
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 8
+      - 8
+    rangeH: 8
+    rangeL: 8
+    resultId: null
+    text: "Desire: They want protection from an enemy"
+    type: 0
+    weight: 1
+  - _id: WpsHJ7VAam52TqxI
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 9
+      - 9
+    rangeH: 9
+    rangeL: 9
+    resultId: null
+    text: "Desire: They want to leave their current life"
+    type: 0
+    weight: 1
+  - _id: mSQgV4vojm2iZo9x
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 10
+      - 10
+    rangeH: 10
+    rangeL: 10
+    resultId: null
+    text: "Desire: They want fame and glory"
+    type: 0
+    weight: 1
+  - _id: CNCYZ6zNWLPHKlem
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 11
+      - 11
+    rangeH: 11
+    rangeL: 11
+    resultId: null
+    text: "Desire: They want power over those around them"
+    type: 0
+    weight: 1
+  - _id: 2ndqvqLe6FugkOnd
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 12
+      - 12
+    rangeH: 12
+    rangeL: 12
+    resultId: null
+    text: "Desire: They have everything they want from life"
+    type: 0
+    weight: 1
+sort: 0

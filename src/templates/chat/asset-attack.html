@@ -1,0 +1,11 @@
+<div>
+  <h3 title="{{ desc }}">{{ name }}</h3>
+  {{#if attackSpecial}}
+   {{attackSpecial}}
+  {{/if}}
+
+  <span>{{ attackKey }}:</span>
+  <span title="">{{{ hitRoll }}}</span>
+  <span>{{localize 'swnr.sheet.faction.damage'}}:</span>
+  <span title="">{{{ damageRoll }}}</span>
+</div>

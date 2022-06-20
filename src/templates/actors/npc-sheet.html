@@ -65,7 +65,7 @@
           class="hidden sm:block col-span-2 border px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="data.faction"
           value="{{actor.data.data.faction}}"
-          placeholder="{{localize 'swnr.sheet.faction'}}"
+          placeholder="{{localize 'swnr.sheet.factionname'}}"
           type="text"
         />
       </div>
@@ -318,7 +318,7 @@
         {{#each itemTypes.weapon as |i|}} {{>
         "systems/swnr/templates/actors/fragments/weapon.html" item=i actor=actor
         damageBonus=actor.data.data.attacks.bonusDamage hitBonus=data.data.ab
-        type=actor.data.data.type}} {{/each}}
+        type=actor.type}} {{/each}}
       </ul>
     </div>
     <div class="flex flex-col flex-grow gap-1">
@@ -326,7 +326,7 @@
       <ul class="flex flex-col gap-0.5">
         {{#each abilities}} {{> (concat
         "systems/swnr/templates/actors/fragments/" (concat this.type '.html'))
-        item=this type=actor.data.data.type }} {{/each}}
+        item=this type=actor.type }} {{/each}}
       </ul>
     </div>
     <div class="flex flex-col flex-grow gap-1">
@@ -334,7 +334,7 @@
       <ul class="flex flex-col gap-0.5">
         {{#each equipment}} {{>
         "systems/swnr/templates/actors/fragments/item.html" item=this
-        type=actor.data.data.type }} {{/each}}
+        type=actor.type }} {{/each}}
       </ul>
     </div>
   </div>

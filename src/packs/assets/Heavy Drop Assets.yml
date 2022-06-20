@@ -1,0 +1,27 @@
+data:
+  assetType: force
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: ''
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 4
+  counter: ''
+  description: >-
+    These craft allow for the transport of resources from one world to another. As
+    an action, any one non-Starship asset, including this one, may be moved to any
+    world within one hex for one FacCred.
+  health:
+    max: 6
+    value: 6
+  income: 0
+  maintenance: 0
+  note: A
+  rating: 2
+  tl: 4
+  turnRoll: ''
+  type: Facility
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/force.png
+name: Heavy Drop Assets
+type: asset

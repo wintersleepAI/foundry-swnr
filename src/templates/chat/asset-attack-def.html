@@ -1,0 +1,30 @@
+<div>
+  <h3 title="{{ desc }}">{{ name }}</h3>
+  <h4>{{ attackDesc }} </h4>
+
+  <span>{{localize 'swnr.sheet.faction.att-roll'}}:</span>
+  <span title="">{{{ hitRoll }}}</span>
+  {{#if attackSpecial}}
+   {{attackSpecial}} <br>
+  {{/if}}
+
+  <span>{{localize 'swnr.sheet.faction.def-roll'}}:</span>
+  <span title="">{{{ defRoll }}}</span>
+  {{#if defenseSpecial}}
+   {{defenseSpecial}} <br>
+  {{/if}}
+
+  <span>{{ attackDesc }} </span>
+
+  {{#if attackDamage}}
+  <span>{{localize 'swnr.sheet.faction.att-damage'}}:</span>
+  <span title="">{{{ attackDamage }}}</span>
+  <span> Def chooses asset or Base of Infl.(+FactionHP) </span>
+  {{/if}}
+
+  {{#if defDamage}}
+  <span>{{localize 'swnr.sheet.faction.def-damage'}}:</span>
+  <span title="">{{{ defDamage }}}</span>
+  {{/if}}
+
+</div>

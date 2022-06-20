@@ -1,0 +1,28 @@
+data:
+  assetType: wealth
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: ''
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 8
+  counter: 1d4
+  description: >-
+    As an action, the owning faction can roll 1d6 for a Postech Industry asset. On
+    a 1, one FacCred is lost, on a 2-4 one FacCred is earned, and a 5-6 returns two
+    FacCreds. If money is lost and no resources are available to pay it, the Postech
+    Industry is destroyed. Roll: [[1d6]]
+  health:
+    max: 4
+    value: 4
+  income: 0
+  maintenance: 0
+  note: A
+  rating: 3
+  tl: 4
+  turnRoll: ''
+  type: Facility
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/wealth.png
+name: Postech Industry
+type: asset

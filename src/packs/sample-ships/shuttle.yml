@@ -1,0 +1,71 @@
+data:
+  health:
+    max: 15
+    value: 15
+  ac: 11
+  armor:
+    max: 0
+    value: 0
+  speed: 3
+  power:
+    max: 3
+  mass:
+    max: 5
+  crew:
+    min: 1
+    max: 20
+    current: 0
+  cargo:
+    value: 6
+    max: 6
+  spikeDrive: 
+    value: 1
+    max: 1
+  commandPoints: 4
+  npcCommandPoints: 4
+  crewSkillBonus: 1
+  shipClass: fighter
+  shipHullType: shuttle
+  cost: 210000
+  maintenanceCost: 10500
+  operatingCost: 43800
+  maintenanceMonths: 6
+  description: >-
+        This craft is a conventional civilian shuttle, albeit one with a spike drive sufficient to get it to a neighboring system and enough passenger space to make it a minimally- acceptable transport for brave VIPs and light cargo. If used as an inter-system transport, however, at least three crew will be needed to safely navigate a drill. While cheap and flexible, the shuttle is entirely unarmed and acutely vulnerable to piracy or hostile warships. In such cases the pilot’s only recourse is to surrender or hope the small craft’s nimble maneuver drives can keep it away from the attacker long enough to get to safety.
+img: systems/swnr/assets/icons/spaceship.png
+items:
+  - name: Atmospheric Configuration
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 5000
+      costMultiplier: true
+      description: >-
+        This fitting must be put in place when the ship is built,
+        and cannot be installed on cruiser-class or larger ships.
+        A ship designed for atmospheric flight can land on most
+        solid or aqueous surfaces.
+      effect: 'Can land: frigates and fighters only.'
+      mass: 1.0
+      massMultiplier: true
+      minClass: fighter
+      power: 0
+      powerMultiplier: false
+  - name: Extended life support
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/fuel-tank.svg
+    data:
+      broken: false
+      cost: 5000
+      costMultiplier: true
+      description: >-
+        The ship can be designed to accommodate a larger number of crew or passengers. Extended life support can be fitted multiple times; each time, the maximum crew rating of the ship increases by 100% of its normal maximum. Thus, a free merchant who installs this twice can have a maximum complement of 18 people.
+      effect: 'Can land: frigates and fighters only.'
+      mass: 1
+      massMultiplier: true
+      minClass: fighter
+      power: 1
+      powerMultiplier: false
+name: Shuttle
+type: ship

@@ -23,9 +23,11 @@
             damageBonus sign=true}}
           </div>
           {{#if (ne item.data.data.ammo.type "none")}}
-          <div>
-            Ammo: {{item.data.data.ammo.value}}/{{item.data.data.ammo.max}}
-          </div>
+            {{#if (ne item.data.data.ammo.type "infinite")}}
+            <div>
+              Ammo: {{item.data.data.ammo.value}}/{{item.data.data.ammo.max}}
+            </div>
+            {{/if}}
           {{/if}}
           {{#if item.data.data.shock.dmg}}
           <div>

@@ -1,0 +1,89 @@
+data:
+  health:
+    max: 8
+    value: 8
+  ac: 16
+  armor:
+    max: 5
+    value: 5
+  speed: 5
+  power:
+    max: 5
+  mass:
+    max: 2
+  crew:
+    min: 1
+    max: 1
+    current: 1
+  cargo:
+    value: 0
+    max: 0
+  spikeDrive: 
+    value: 1
+    max: 1
+  commandPoints: 4
+  npcCommandPoints: 4
+  crewSkillBonus: 2
+  shipClass: fighter
+  shipHullType: strikeFighter
+  cost: 305000
+  maintenanceCost: 15250
+  operatingCost: 43800
+  maintenanceMonths: 6
+  description: >-
+    The standard drill-capable fighter craft of most TL4
+    polities, this model retains a spike drive instead of replacing
+    it with a cheaper systems drive. While the lone
+    pilot would have to be desperate and heavily drugged
+    to make an entire spike drill solo, it remains an option
+    when no larger craft is available.
+
+    This particular model is equipped with a reaper
+    battery for dealing with small, lightly-armored civilian
+    ships. “Bomber”-type fighters usually replace this
+    with a fractal impact charge to threaten larger warships,
+    while fighters built to dogfight their peers favor fitting
+    a multifocal laser.
+img: systems/swnr/assets/icons/spaceship.png
+items:
+  - name: Reaper Battery
+    type: shipWeapon
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+    data:
+      broken: false
+      cost: 100000
+      costMultiplier: false
+      damage: 3d4
+      description: >-
+        Stepped tapping of the spike drive power plant
+        allows for the emission of a torrent of charged
+        particles. The particles have very little armor
+        penetration, but can fry a small ship's power grid
+        in a strike or two.
+      hardpoint: 1
+      mass: 1.0
+      massMultiplier: false
+      minClass: fighter
+      power: 4
+      powerMultiplier: false
+      qualities: Clumsy
+      tl: 4
+      permission:
+        default: 0
+  - name: Atmospheric Configuration
+    type: shipFitting
+    img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+    data:
+      broken: false
+      cost: 5000
+      costMultiplier: true
+      description: >-
+        This fitting must be put in place when the ship is built, and cannot be installed on cruiser-class or larger ships. A ship designed for atmospheric flight can land on most solid or aqueous surfaces.
+      effect: 'Can land: frigates and fighters only.'
+      mass: 1.0
+      massMultiplier: true
+      minClass: fighter
+      power: 0
+      powerMultiplier: false
+name: Strike Fighter
+type: ship

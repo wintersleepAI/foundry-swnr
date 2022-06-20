@@ -1,0 +1,126 @@
+_id: Dj1g6s5hDb6pvZ4S
+description: ""
+displayRoll: true
+flags: {}
+folder: null
+formula: 1d8
+img: icons/svg/d20-grey.svg
+name: One Roll NPCs - Role
+permission:
+  P3lRTKxUBvk8Gei6: 3
+  default: 0
+replacement: true
+results:
+  - _id: H44ppOUStcgFYbOI
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 1
+      - 1
+    rangeH: 1
+    rangeL: 1
+    resultId: null
+    text: "Role: Criminal, thug, thief, swindler"
+    type: 0
+    weight: 1
+  - _id: 2bgwVio9pPSfpsrf
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 2
+      - 2
+    rangeH: 2
+    rangeL: 2
+    resultId: null
+    text: "Role: Menial, cleaner, retail worker, servant"
+    type: 0
+    weight: 1
+  - _id: jrrW0t9u4yMiQvHX
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 3
+      - 3
+    rangeH: 3
+    rangeL: 3
+    resultId: null
+    text: "Role: Unskilled heavy labor, porter, construction"
+    type: 0
+    weight: 1
+  - _id: RJUaBX8iBzrayE5e
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 4
+      - 4
+    rangeH: 4
+    rangeL: 4
+    resultId: null
+    text: "Role: Skilled trade, electrician, mechanic, pilot"
+    type: 0
+    weight: 1
+  - _id: qq6fbXaRgfw8fQiu
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 5
+      - 5
+    rangeH: 5
+    rangeL: 5
+    resultId: null
+    text: "Role: Idea worker, programmer, writer"
+    type: 0
+    weight: 1
+  - _id: 13McgyJO1KO2JJBN
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 6
+      - 6
+    rangeH: 6
+    rangeL: 6
+    resultId: null
+    text: "Role: Merchant, business owner, trader, banker"
+    type: 0
+    weight: 1
+  - _id: 6XyT1XSvSdkD7GBt
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 7
+      - 7
+    rangeH: 7
+    rangeL: 7
+    resultId: null
+    text: "Role: Official, bureaucrat, courtier, clerk"
+    type: 0
+    weight: 1
+  - _id: kaJuME5XLgLwNoa2
+    collection: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 8
+      - 8
+    rangeH: 8
+    rangeL: 8
+    resultId: null
+    text: "Role: Military, soldier, enforcer, law officer"
+    type: 0
+    weight: 1
+sort: 0

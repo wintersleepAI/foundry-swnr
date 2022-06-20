@@ -356,7 +356,10 @@
     delete-item: Delete Item
     edit-item: Edit Item
     reload-item: Reload Item
+    add-item: Add Item
     break-item: Break/Disable Item
+    jury-rig: Jury-Rig Item
+    fix-item: Fix Item
     destroy-item: Destroy Item
     ask: Ask
     description: "Description:"
@@ -368,15 +371,18 @@
     skill: Skill
     employer: Employer
     source: Source
-    faction: Faction
+    factionname: Faction
     movement: Movement
     base-ac: Base AC
     vs: vs
     rollables: Rollables
     roll-skill: Roll Skill
     hit-dice: Hit Dice
+    command-points: Command Points
+    npc-command-points: NPC Ship CP
     unspent-skill: Unspent Skill Points
     unspent-psy-skill: Unspent Psychic Skill Points
+    add-skill: Add New Skill
     level-up: Level Up
     rest: A night's rest
     rest-desc: Apply a good night's rest (reset effort, drop strain, heal HP)?
@@ -427,6 +433,55 @@
         s: S
         m: M
         l: L
+    faction:
+      forceRating: Force Rating
+      cunningRating: Cunning Rating
+      wealthRating: Wealth Rating
+      facCreds: FacCreds
+      xp: XP
+      homeworld: Homeworld
+      tags: Tags
+      assets: Assets
+      assetType: Asset Type
+      baseOfInfluence: Base of Influence
+      attackSource: Source
+      attackTarget: Target
+      attackDamage: Damage
+      attackSpecial: Special Attack Note
+      counter: Counter
+      note: Note
+      turnRoll: On Turn Log/Roll
+      stealthed: Is Stealthed?
+      tl: TL
+      rating: Rating
+      hp: HP
+      assets-tab: Assets
+      desc-tab: Description
+      tags-tab: Tags
+      log-tab: Log
+      add-tag: Add Tag
+      remove-tag: Remove Tag
+      remove-log: Remove Log Entry
+      remove-log-all: Remove All Log Entries
+      active: Active Faction
+      attack-roll: Attack Hit Roll
+      counter-roll: Counter Hit Roll
+      damage: Damage
+      attack: Attack
+      att-damage: Attack Damage
+      def-damage: Counter Damage
+      att-roll: Attacker Roll
+      def-roll: Defender Roll
+      factionGoal: Faction Goal
+      factionGoalDesc: Goal Description
+      setGoal: Set Goal
+      location: Location
+      maintenance: Maintenance
+      income: Income
+      unusable: Unusable
+      turn: Start Turn
+      setHomeworld: Set the faction homeworld to {name}?
+      abandonGoal: Abandon current goal {name}? Will lose income and no actions this turn/
     ship:
       life-support-days: Life Support Days
       fuel: Fuel
@@ -481,18 +536,21 @@
       cost-tab: Ship Costs
       cargo-tab: Cargo
       crew-name: Crew Member
+      crew-skill-bonus: NPC Ship Crew Bonus
       name: Name
       dmg: Dmg
       qualities: Qualities
       effect: Effect
       broken: Is Broken?
       destroyed: Is Destroyed?
+      jury-rigged: Is Jury-Rigged?
       shooter: Shooting
       travel: Travel Days
       spike: Spike Drill 
       spike-drive: Spike Drive
       crisis: Crisis
       system-failure: System Failure(s)
+      repair-all: Repair All
       refuel: Refuel
       costMultiplier: Scale cost by class
       powerMultiplier: Scale power by class
@@ -562,6 +620,7 @@
   foci:
     level2: "Level 2:"
     level1: "Level 1:"
+    level: Current Level
   item:
     bundledCount: Bundle Count
     cost: Cost

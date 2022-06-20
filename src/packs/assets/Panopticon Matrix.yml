@@ -1,0 +1,33 @@
+data:
+  assetType: cunning
+  attackDamage: ''
+  attackSource: null
+  attackSpecial: ''
+  attackTarget: null
+  baseOfInfluence: false
+  cost: 30
+  counter: 1d6
+  description: >-
+    These facilities weave braked-AI intelligence analysts into a web of observation
+    capable of detecting the slightest evidence of intruders on a world. Every rival
+    Stealthed asset on the planet must succeed in a Cunning vs. Cunning test at the
+    beginning of every turn or lose their Stealth. The owner also gains an additional
+    die on all Cunning attacks and defenses on that planet.
+  health:
+    max: 20
+    value: 20
+  income: 0
+  maintenance: 0
+  note: S
+  rating: 8
+  tl: 5
+  turnRoll: >-
+    Every rival
+    Stealthed asset on the planet must succeed in a Cunning vs. Cunning test at the
+    beginning of every turn or lose their Stealth. The owner also gains an additional
+    die on all Cunning attacks and defenses on that planet.
+  type: Logistics Facility
+  unusable: false
+img: systems/swnr/assets/icons/hawkin/cunning.png
+name: Panopticon Matrix
+type: asset
