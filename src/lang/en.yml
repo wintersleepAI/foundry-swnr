@@ -462,6 +462,7 @@
       add-tag: Add Tag
       remove-tag: Remove Tag
       remove-log: Remove Log Entry
+      add-log: Add Manual Log Entry
       remove-log-all: Remove All Log Entries
       active: Active Faction
       attack-roll: Attack Hit Roll

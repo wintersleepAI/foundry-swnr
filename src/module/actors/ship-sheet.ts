@@ -332,14 +332,14 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
             },
           },
           default: "setOrder",
-          render: () => {
-            console.log("hi");
-            //console.log(html.find("#deptOrder"));
-          },
+          // render: () => {
+          //   //console.log(html.find("#deptOrder"));
+          // },
           //render: () => new Sortable($("deptOrder")),
         },
         { classes: ["swnr"] }
       ).render(true);
+      return;
     } else if (actionName == "endRound") {
       //endRound action is special. clear and reset.
       const newCp = this.actor.data.data.npcCommandPoints
@@ -391,6 +391,9 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       diffText += ` (2d6: ${res.total})`;
     }
     const descText = action.desc ? action.desc : "";
+    const order = this.actor.data.data.roleOrder
+      ? ` (${this.actor.data.data.roleOrder.join(",")})`
+      : "";
     if (action.skill) {
       // this action needs a skill roll
       let skillLevel = -1;
@@ -443,7 +446,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
               attrMod,
             });
             await roll.roll({ async: true });
-            const title = `<span title="${descText}">Rolling ${actionTitle} ${attrName}${action.skill} for ${defaultActor.name}<br>${noteText}${diffText}</span>`;
+            const title = `<span title="${descText}">Rolling ${actionTitle} ${attrName}${action.skill} for ${defaultActor.name}<br>${noteText}${diffText}</span><br>${order}`;
             roll.toMessage(
               {
                 speaker: ChatMessage.getSpeaker(),
@@ -509,7 +512,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       }
       // there is no skill
       const chatData = {
-        content: `<span title="${descText}">${this.actor.name} ${actionTitle}<br><span class="flavor-text message-header" style="font-size:12px;">${noteText}${diffText}</span></span>`,
+        content: `<span title="${descText}">${this.actor.name} ${actionTitle}<br><span class="flavor-text message-header" style="font-size:12px;">${noteText}${diffText}</span><br>${order}</span>`,
       };
       ChatMessage.create(chatData);
     }

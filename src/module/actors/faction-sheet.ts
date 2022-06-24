@@ -88,6 +88,18 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
     });
   }
 
+  async _onAddLog(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    Dialog.prompt({
+      title: "Add Log",
+      content: "Log",
+      callback: async (html: JQuery<HTMLElement>) => {
+        console.log("hi");
+      },
+    }).render(true);
+  }
+
   async _onDelLog(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
@@ -447,6 +459,7 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
     html.find(".faction-tag-add").on("click", this._onAddTag.bind(this));
     html.find(".faction-tag-delete").on("click", this._onDelTag.bind(this));
     html.find(".faction-log-delete").on("click", this._onDelLog.bind(this));
+    html.find(".faction-log-add").on("click", this._onAddLog.bind(this));
     html
       .find(".faction-log-delete-all")
       .on("click", this._onDelLogAll.bind(this));
