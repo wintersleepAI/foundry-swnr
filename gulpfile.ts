@@ -31,6 +31,19 @@ const argv = yargs.options("clean", {
   default: false,
 }).argv;
 
+function sortable() {
+  try {
+    return gulp
+      .src([
+        "node_modules/sortablejs/Sortable.min.js",
+        "node_modules/sortablejs/Sortable.js",
+      ])
+      .pipe(gulp.dest("dist/lib/sortable"));
+  } catch (err) {
+    Promise.reject(err);
+  }
+}
+
 function getConfig() {
   const configPath = path.resolve(process.cwd(), "foundryconfig.json");
   let config: { dataPath: string };
@@ -363,6 +376,7 @@ function buildWatch() {
     { ignoreInitial: false },
     copyFiles
   );
+  gulp.watch(["node_modules/sortablejs/*"], { ignoreInitial: false }, sortable);
   gulp.watch("src/**/*.html", { ignoreInitial: false }, buildTemplateList);
   gulp.watch(
     "src/migrations/**/*.ts",
@@ -545,6 +559,7 @@ const execBuild = gulp.series(
     buildPostCSS,
     buildYaml,
     copyFiles,
+    sortable,
     buildTemplateList,
     buildMigrationList,
     buildPack

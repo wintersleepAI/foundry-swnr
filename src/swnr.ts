@@ -19,6 +19,7 @@ import "./module/containerQueries";
 import registerHelpers from "./module/handlebar-helpers";
 import { createSWNRMacro, rollItemMacro } from "./module/macro-bar";
 import { SWNRCombatant } from "./module/combat";
+import { Sortable } from "sortablejs";
 
 /* ------------------------------------ */
 /* Initialize system					*/

@@ -2,7 +2,9 @@
 	"compilerOptions": {
 		"target": "ES2019",
 		"lib": ["es2019", "DOM"],
-		"types": ["@league-of-foundry-developers/foundry-vtt-types"],
+		"types": ["@league-of-foundry-developers/foundry-vtt-types",
+						"sortablejs",
+						"handlebars"],
 		"module": "CommonJS",
 		"sourceMap": true,
 		"strictNullChecks": true,

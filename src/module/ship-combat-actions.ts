@@ -1,4 +1,10 @@
 export const ACTIONS = {
+  startRound: {
+    title: "Start the Round (order departments)",
+    cp: 0,
+    desc: "",
+    dept: "",
+  },
   endRound: {
     title: "End the Round",
     cp: 0,

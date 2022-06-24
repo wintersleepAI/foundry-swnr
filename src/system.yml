@@ -4,7 +4,7 @@ description: >-
   BETA: Stars Without Number: Revised system. This is an alternate version
 version: 0.6.0
 author: Spice_King + wintersleepAI
-scripts: []
+scripts: ["lib/sortablejs/Sortable.min.js"]
 initiative: 1d8+@stats.dex.mod
 esmodules:
   - swnr.js

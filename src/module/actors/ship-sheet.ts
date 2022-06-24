@@ -6,6 +6,7 @@ import { SWNRCharacterActor } from "./character";
 import { SysToFail } from "./ship";
 import { VehicleBaseActorSheet } from "../vehicle-base-sheet";
 import { ACTIONS } from "../ship-combat-actions";
+import "../../lib/sortable/Sortable";
 
 interface ShipActorSheetData extends ActorSheet.Data {
   shipWeapons?: Item[];
@@ -271,8 +272,76 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       );
       return;
     }
-    //endRound action is special. clear and reset.
-    if (actionName == "endRound") {
+    //Special actions
+    if (actionName == "startRound") {
+      let depts = ``;
+      let roleOrder: string[] = [];
+      if (this.actor.data.data.roleOrder) {
+        // we may have set an order prior
+        roleOrder = this.actor.data.data.roleOrder;
+      } else {
+        // get the default list
+        for (const role in this.actor.data.data.roles) {
+          roleOrder.push(role);
+        }
+      }
+      for (const role of roleOrder) {
+        let roleName = "";
+        if (this.actor.data.data.roles[role]) {
+          const roleActor = game.actors?.get(this.actor.data.data.roles[role]);
+          if (roleActor && roleActor.name) {
+            roleName = ` (${roleActor.name})`;
+          }
+        }
+        depts += `<div class="border p-2 flex border-black role-order" data-role="${role}" data-role-name="${roleName}"><a><i class="fas fa-sort"></i></a>${role}${roleName}</div>`;
+      }
+      const dialogTemplate = `
+      <div class="flex flex-col">
+        <h1> Order Department </h1>
+        <div class="flex flexrow">
+            <div id="deptOrder">
+            ${depts}
+            </div>
+        </div>
+        <script>
+        var el = document.getElementById('deptOrder');
+        var sortable = Sortable.create(el);
+        </script>
+      </div>
+      `;
+      new Dialog(
+        {
+          title: "Set Order",
+          content: dialogTemplate,
+          buttons: {
+            setOrder: {
+              label: "Set Order",
+              callback: async (html: JQuery<HTMLElement>) => {
+                const order = html.find("#deptOrder");
+                const orderArr: string[] = [];
+                order.children(".role-order").each(function () {
+                  orderArr.push($(this).data("role"));
+                });
+                if (orderArr.length > 0) {
+                  await this.actor.update({ data: { roleOrder: orderArr } });
+                }
+              },
+            },
+            close: {
+              label: "Close",
+            },
+          },
+          default: "setOrder",
+          render: () => {
+            console.log("hi");
+            //console.log(html.find("#deptOrder"));
+          },
+          //render: () => new Sortable($("deptOrder")),
+        },
+        { classes: ["swnr"] }
+      ).render(true);
+    } else if (actionName == "endRound") {
+      //endRound action is special. clear and reset.
       const newCp = this.actor.data.data.npcCommandPoints
         ? this.actor.data.data.npcCommandPoints
         : 0;

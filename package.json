@@ -26,6 +26,7 @@
     "@types/gulp-sourcemaps": "0.0.32",
     "@types/js-yaml": "^3.12.5",
     "@types/merge-stream": "^1.1.2",
+    "@types/sortablejs": "^1.15.0",
     "@types/node": "^14.14.2",
     "@types/through2": "^2.0.36",
     "@types/yargs": "^15.0.9",
@@ -51,6 +52,7 @@
     "json-stringify-pretty-compact": "^2.0.0",
     "merge-stream": "^2.0.0",
     "prettier": "^2.2.1",
+    "sortablejs": "^1.15.0",
     "stylelint": "^13.7.2",
     "stylelint-config-standard": "^20.0.0",
     "ts-node": "^9.0.0",
@@ -69,6 +71,7 @@
     "postcss-jsmath": "0.0.83",
     "postcss-nested": "^5.0.3",
     "postcss-simple-vars": "^6.0.2",
-    "tailwindcss": "^2.0.2"
+    "tailwindcss": "^2.0.2",
+    "sortablejs": "^1.15.0"
   }
 }
