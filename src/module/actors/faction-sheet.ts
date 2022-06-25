@@ -93,11 +93,26 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
     event.stopPropagation();
     Dialog.prompt({
       title: "Add Log",
-      content: "Log",
+      content: `
+      <form>
+        <div class="form-group">
+          <label>Manual Log Entry</label>
+          <input type='text' name='inputField'></input>
+        </div>
+      </form>`,
       callback: async (html: JQuery<HTMLElement>) => {
-        console.log("hi");
+        const form = <HTMLFormElement>html[0].querySelector("form");
+        const log = (<HTMLInputElement>(
+          form.querySelector('[name="inputField"]')
+        ))?.value;
+        if (log) {
+          this.actor.logMessage("Manual Faction Log", log);
+          // const logEntries = this.actor.data.data.log;
+          // logEntries.push(log);
+          // await this.actor.update({ data: { log: logEntries } });
+        }
       },
-    }).render(true);
+    });
   }
 
   async _onDelLog(event: JQuery.ClickEvent): Promise<void> {

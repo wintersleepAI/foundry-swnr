@@ -235,11 +235,16 @@
         </div>
         <div class="tab assets min-h-full" data-group="primary" data-tab="log">
           <div class="p-2">
-          <a class="faction-log-delete-all"><i class="fas fa-trash  fa-2x faction-log-delete-all"></i>
-            {{localize 'swnr.sheet.faction.remove-log-all'}}</a>
-            <hr>
-          <a class="faction-log-add"><i class="fas fa-plus  fa-2x faction-log-add"></i>
-            {{localize 'swnr.sheet.faction.add-log'}}</a>
+            <div class="flex flexrow min-w-full">
+              <div>
+                <a class="faction-log-add"><i class="fas fa-plus  fa-2x faction-log-add"></i>
+                  {{localize 'swnr.sheet.faction.add-log'}}</a>
+              </div>
+              <div>
+                <a class="faction-log-delete-all"><i class="fas fa-trash  fa-2x faction-log-delete-all"></i>
+                  {{localize 'swnr.sheet.faction.remove-log-all'}}</a>
+              </div>
+            </div>
             <hr>
           </div>
           <div class="p-2">

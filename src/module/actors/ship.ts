@@ -165,7 +165,8 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     const skillRoll = new Roll(skillRollStr, rollData);
     await skillRoll.roll({ async: true });
 
-    const pass = skillRoll.total && skillRoll.total > difficulty ? true : false;
+    const pass =
+      skillRoll.total && skillRoll.total >= difficulty ? true : false;
     const failRoll: string | null = null;
     let failText: string | null = null;
     if (!pass) {

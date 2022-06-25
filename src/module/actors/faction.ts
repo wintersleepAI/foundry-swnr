@@ -51,6 +51,14 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
       .map((i) => i.id)
       .filter((i): i is string => i !== null);
 
+    if (game.modules?.get("foundryvtt-simple-calendar")?.active) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      const c = SimpleCalendar.api.getCurrentCalendar();
+      content = `(${c.currentDate.year}-${c.currentDate.month + 1}-${
+        c.currentDate.day + 1
+      }) ${content}`;
+    }
     const cardData = {
       title,
       content,

@@ -18,7 +18,7 @@ export const ACTIONS = {
       "Push yourself to help the ship or its crew. Pick an attribute and skill check and  explain how you’re using it to help the ship. If the GM agrees, roll it against difficulty 9. On a success, gain your skill level in Command Points plus one. On a failure, take -1 Command Point.",
     dept: "",
     note:
-      "Roll attr/skill vs 9. Success manually give +CP = skill level. Fail -1 CP.",
+      "Roll attr/skill vs 9. Success manually give +CP = skill level+1. Fail -1 CP.",
   },
   dealCrisis: {
     title: "Deal With a Crisis",
