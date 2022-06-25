@@ -535,19 +535,23 @@
           <div class="flex gap-3">
             <div class="flex-grow">
               <h4 class="text-lg underline text-center">
-                {{localize 'swnr.sheet.tabs.weapons'}}
+                {{localize 'swnr.item.locationReadied'}} {{localize 'swnr.sheet.tabs.weapons'}}
               </h4>
               <div class="space-y-2">
-                {{#each itemTypes.weapon as |item id|}} {{>
+                {{#each itemTypes.weapon as |item id|}} 
+                {{#if (eq item.data.data.location "readied")}}
+                {{>
                 "systems/swnr/templates/actors/fragments/weapon.html" item=item
                 damageBonus=(getPCStatModForWeapon actor item true)
                 hitBonus=(concat actor.data.data.ab (getPCStatModForWeapon actor item false))
-                type=actor.type actor=actor}} {{/each}}
+                type=actor.type actor=actor}} 
+                {{/if}}
+                {{/each}}
               </div>
             </div>
             <div class="flex-grow">
               <h4 class="text-lg underline text-center">
-                {{localize 'swnr.sheet.tabs.armor'}}
+                {{localize 'swnr.item.locationReadied'}}  {{localize 'swnr.sheet.tabs.armor'}}
               </h4>
               <div class="flex gap-1 flex-col">
                 <li class="item armor text-center flex items-center gap-1">
@@ -562,9 +566,14 @@
                     data-dtype="Number"
                   />
                 </li>
-                {{#each itemTypes.armor as |item id|}} {{>
-                "systems/swnr/templates/actors/fragments/armor.html" item=item
-                type=actor.type}} {{/each}}
+                {{#each itemTypes.armor as |item id|}} 
+                  {{#if (eq item.data.data.location "readied")}}
+
+                    {{>
+                    "systems/swnr/templates/actors/fragments/armor.html" item=item
+                    type=actor.type}} 
+                  {{/if}}
+                {{/each}}
               </div>
             </div>
           </div>
