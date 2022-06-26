@@ -73,7 +73,11 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
       type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
       whisper: gm_ids,
     };
-    ChatMessage.create(chatData);
+    const msg = await ChatMessage.create(chatData);
+    if (msg) {
+      const chatString = msg.export();
+      content = chatString.split("]", 2)[1];
+    }
     const log = this.data.data.log;
     log.push(content);
     await this.update({
