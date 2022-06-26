@@ -5,7 +5,6 @@ export class SWNRSkill extends SWNRBaseItem<"skill"> {
   popUpDialog?: Dialog;
 
   async roll(): Promise<void> {
-    console.log("Skill roll ", this);
     const skillData = this.data.data;
     const template = "systems/swnr/templates/dialogs/roll-skill.html";
     if (this.actor == null) {

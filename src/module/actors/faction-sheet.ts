@@ -91,28 +91,46 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
   async _onAddLog(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
-    Dialog.prompt({
-      title: "Add Log",
-      content: `
-      <form>
-        <div class="form-group">
-          <label>Manual Log Entry</label>
-          <input type='text' name='inputField'></input>
-        </div>
-      </form>`,
-      callback: async (html: JQuery<HTMLElement>) => {
-        const form = <HTMLFormElement>html[0].querySelector("form");
-        const log = (<HTMLInputElement>(
-          form.querySelector('[name="inputField"]')
-        ))?.value;
-        if (log) {
-          this.actor.logMessage("Manual Faction Log", log);
-          // const logEntries = this.actor.data.data.log;
-          // logEntries.push(log);
-          // await this.actor.update({ data: { log: logEntries } });
-        }
+    this.popUpDialog?.close();
+    const html = `<form class="-m-2 p-2 pb-4 bg-gray-200 space-y-2">
+    <div class="form-group">
+      <label>Manual Log Entry. To inline a roll use [[1dX]].</label>
+      <textarea id="inputField" name="inputField" rows="4" cols="50" 
+        class="bg-gray-100 border border-gray-700 rounded-md p-2"></textarea>
+    </div>
+  </form>`;
+    this.popUpDialog = new ValidatedDialog(
+      {
+        title: "Add Log",
+        content: html,
+        default: "add",
+        buttons: {
+          add: {
+            label: `Add Manual Log Entry`,
+            callback: async (html: JQuery<HTMLElement>) => {
+              const form = <HTMLFormElement>html[0].querySelector("form");
+              const log = (<HTMLInputElement>(
+                form.querySelector('[name="inputField"]')
+              ))?.value;
+              if (log) {
+                this.actor.logMessage("Manual Faction Log", log);
+                // const logEntries = this.actor.data.data.log;
+                // logEntries.push(log);
+                // await this.actor.update({ data: { log: logEntries } });
+              }
+            },
+          },
+        },
       },
-    });
+      {
+        failCallback: () => {
+          return;
+        },
+        classes: ["swnr"],
+      }
+    );
+    const s = this.popUpDialog.render(true);
+    if (s instanceof Promise) await s;
   }
 
   async _onDelLog(event: JQuery.ClickEvent): Promise<void> {
@@ -219,7 +237,7 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
       tagDesc += `<div> <b>${tag.name}</b></div><div>${tag.desc}</div><div><i>Effect:</i> ${tag.effect}</div>`;
     }
     const dialogTemplate = `
-    <div class="flex flex-col">
+    <div class="flex flex-col -m-2 p-2 pb-4 bg-gray-200 space-y-2">
       <h1> Add Tag </h1>
       <div class="flex flexrow">
         Tag: <select id="tag"          
@@ -230,23 +248,35 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
       ${tagDesc}
     </div>
     `;
-    new Dialog({
-      title: "Add Tag",
-      content: dialogTemplate,
-      buttons: {
-        trade: {
-          label: "Add Tag",
-          callback: async (html: JQuery<HTMLElement>) => {
-            const tag = (<HTMLSelectElement>html.find("#tag")[0]).value;
-            this.actor.addTag(tag);
+    this.popUpDialog?.close();
+
+    this.popUpDialog = new ValidatedDialog(
+      {
+        title: "Add Tag",
+        content: dialogTemplate,
+        buttons: {
+          addTag: {
+            label: "Add Tag",
+            callback: async (html: JQuery<HTMLElement>) => {
+              const tag = (<HTMLSelectElement>html.find("#tag")[0]).value;
+              this.actor.addTag(tag);
+            },
+          },
+          close: {
+            label: "Close",
           },
         },
-        close: {
-          label: "Close",
-        },
+        default: "addTag",
       },
-      default: "trade",
-    }).render(true);
+      {
+        failCallback: () => {
+          return;
+        },
+        classes: ["swnr"],
+      }
+    );
+    const s = this.popUpDialog.render(true);
+    if (s instanceof Promise) await s;
   }
 
   async _onStartTurn(event: JQuery.ClickEvent): Promise<void> {
