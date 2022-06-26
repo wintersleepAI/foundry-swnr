@@ -75,8 +75,12 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
     };
     const msg = await ChatMessage.create(chatData);
     if (msg) {
-      const chatString = msg.export();
-      content = chatString.split("]", 2)[1];
+      // Old way but rolls are ugly
+      //const chatString = msg.export();
+      //content = chatString.split("]", 2)[1];
+      const html = await msg.getHTML();
+      html.find(".message-header").remove();
+      content = html.html().toString();
     }
     const log = this.data.data.log;
     log.push(content);
