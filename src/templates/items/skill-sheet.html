@@ -54,4 +54,19 @@
       />
     </div>
   </div>
+  <div class="p-2 m-2">
+    {{#if data.data.remember}}
+      {{#if data.data.remember.use}}
+        <label class="flex items-center gap-1">
+          <input
+            type="checkbox"
+            name="data.remember.use"
+            {{checked data.data.remember.use}}
+          />
+          <div>Use remembered skill (dice, mod, etc). <br>
+            Uncheck to forget and ask on next to roll -- stat and dice selection will remain.</div>
+        </label>
+      {{/if}}
+    {{/if}}
+  </div>
 </form>

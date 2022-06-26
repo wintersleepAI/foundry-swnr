@@ -12,7 +12,7 @@
       {{#if (eq actor.type 'character')}}
       <div class="flex flex-col">
         <label for="skill">{{localize 'swnr.sheet.skill'}}: </label>
-        <select name="skill" {{#if weapon.data.data.skill}} disabled {{else}} required {{/if}} 
+        <select name="skill"  required  
                     class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
           {{#select weapon.skill}}
           <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>

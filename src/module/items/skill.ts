@@ -1,8 +1,38 @@
 import { SWNRBaseItem } from "./../base-item";
 import { ValidatedDialog } from "../ValidatedDialog";
+import { SWNRStats } from "../actor-types";
 
 export class SWNRSkill extends SWNRBaseItem<"skill"> {
   popUpDialog?: Dialog;
+
+  async rollSkill(
+    skillName: string | null,
+    statShortName: string,
+    statMod: number,
+    dice: string,
+    skillRank: number,
+    modifier: string | number
+  ): Promise<void> {
+    const rollMode = game.settings.get("core", "rollMode");
+
+    const formula = `${dice} + @stat + @skillRank + @modifier`;
+    const roll = new Roll(formula, {
+      skill: skillRank,
+      modifier: modifier,
+      stat: statMod,
+    });
+    await roll.roll({ async: true });
+    const title = `${game.i18n.localize(
+      "swnr.chat.skillCheck"
+    )}: ${statShortName}/${skillName}`;
+    roll.toMessage(
+      {
+        speaker: ChatMessage.getSpeaker(),
+        flavor: title,
+      },
+      { rollMode }
+    );
+  }
 
   async roll(): Promise<void> {
     const skillData = this.data.data;
@@ -16,6 +46,35 @@ export class SWNRSkill extends SWNRBaseItem<"skill"> {
       return;
     }
     const skillName = this.name;
+    // Set to not ask and just roll
+    if (this.data.data.remember && this.data.data.remember.use) {
+      const modifier = this.data.data.remember.modifier;
+      const defaultStat = this.data.data.defaultStat;
+      const dice = this.data.data.pool;
+      const skillRank = this.data.data.rank;
+      if (defaultStat == "ask" || dice == "ask") {
+        ui.notifications?.info(
+          "Quick roll set, but dice or stat is set to ask"
+        );
+      } else {
+        const stat = this.actor?.data.data["stats"][defaultStat] || {
+          mod: 0,
+        };
+        const statShortName = game.i18n.localize(
+          "swnr.stat.short." + defaultStat
+        );
+        this.rollSkill(
+          skillName,
+          statShortName,
+          stat.mod,
+          dice,
+          skillRank,
+          modifier
+        );
+        return;
+      }
+    }
+
     const title = `${game.i18n.localize("swnr.chat.skillCheck")}: ${skillName}`;
     const dialogData = {
       title: title,
@@ -25,38 +84,65 @@ export class SWNRSkill extends SWNRBaseItem<"skill"> {
     };
     const html = await renderTemplate(template, dialogData);
     const _doRoll = async (html: HTMLFormElement) => {
-      console.log(html);
-      const rollMode = game.settings.get("core", "rollMode");
       const form = <HTMLFormElement>html[0].querySelector("form");
       const dice = (<HTMLSelectElement>form.querySelector('[name="dicepool"]'))
         .value;
-      const stat = this.actor?.data.data["stats"][
-        (<HTMLSelectElement>form.querySelector('[name="stat"]')).value
-      ] || { mod: 0 };
+      const statShortNameForm = (<HTMLSelectElement>(
+        form.querySelector('[name="stat"]')
+      )).value;
+      if (
+        ["str", "dex", "con", "int", "wis", "cha"].includes(
+          statShortNameForm
+        ) == false
+      ) {
+        ui.notifications?.error("Stat must be set and not ask");
+        return;
+      }
+      if (["2d6", "3d6kh2", "4d6kh2"].includes(dice) == false) {
+        ui.notifications?.error("Dice must be set and not ask");
+        return;
+      }
+      const stat = this.actor?.data.data["stats"][statShortNameForm] || {
+        mod: 0,
+      };
       const modifier = (<HTMLInputElement>(
         form.querySelector('[name="modifier"]')
       )).value;
-      const formula = `${dice} + @stat + @skill + @modifier`;
-      const roll = new Roll(formula, {
-        skill: skillData.rank,
-        modifier: modifier,
-        stat: stat.mod,
-      });
-      await roll.roll({ async: true });
-      const title = `${game.i18n.localize(
-        "swnr.chat.skillCheck"
-      )}: ${game.i18n.localize(
-        "swnr.stat.short." +
-          (<HTMLSelectElement>form.querySelector('[name="stat"]')).value
-      )}/${skillName}`;
-      roll.toMessage(
-        {
-          speaker: ChatMessage.getSpeaker(),
-          flavor: title,
-        },
-        { rollMode }
+      if (Number.isNaN(Number(modifier))) {
+        ui.notifications?.error("Modifier is not a number");
+        return;
+      }
+      const statShortName = game.i18n.localize(
+        "swnr.stat.short." + statShortNameForm
       );
-      return roll;
+
+      // If remember is checked, set the skill and data
+      const remember = (<HTMLInputElement>(
+        form.querySelector('[name="remember"]')
+      ))?.checked
+        ? true
+        : false;
+      if (remember) {
+        await this.update({
+          data: {
+            remember: {
+              use: true,
+              modifier: Number(modifier),
+            },
+            defaultStat: <SWNRStats>statShortNameForm,
+            pool: <"2d6" | "3d6kh2" | "4d6kh2">dice,
+          },
+        });
+      }
+
+      this.rollSkill(
+        skillName,
+        statShortName,
+        stat.mod,
+        dice,
+        skillData.rank,
+        modifier
+      );
     };
     this.popUpDialog?.close();
     this.popUpDialog = new ValidatedDialog(

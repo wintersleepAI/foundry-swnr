@@ -7,8 +7,7 @@
       {{#if (eq skill.pool 'ask')}}
         class="w-16 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
       {{else}}
-        class="w-16 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md opacity-50"
-        disabled
+        class="w-16 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
       {{/if}}
     >
       {{#select skill.pool}}
@@ -44,4 +43,10 @@
       {{/select}}
     </select>
   </div>
+  <div class="flex flexrow">
+    <div class="flex flexrow">
+      <label for="remember">{{localize 'swnr.weapon.remember'}}: </label>
+      <input type="checkbox" name="remember" id="remember">
+    </div>
+  </div> 
 </form>

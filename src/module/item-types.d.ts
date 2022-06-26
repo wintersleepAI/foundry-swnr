@@ -184,6 +184,10 @@ declare interface SWNRSkillData extends SWNRDescData {
   rank: -1 | 0 | 1 | 2 | 3 | 4;
   defaultStat: "ask" | SWNRStats;
   source: string;
+  remember: null | {
+    use: boolean;
+    modifier: number;
+  };
 }
 
 declare type SWNRInventoryItemData =
