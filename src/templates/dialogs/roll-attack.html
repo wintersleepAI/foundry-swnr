@@ -1,35 +1,46 @@
 <form class="bg-gray-200 -m-2 p-2 pb-4 flex gap-1 justify-between">
   <input type="hidden" name="actorId" value="{{actor._id}}">
   <input type="hidden" name="statName" value="{{statName}}">
-  
-  {{#if (and weapon.ammo.burst (ne 'none' weapon.ammo.type)) }}
   <div class="flex flex-col">
-    <label for="burstFire">{{localize 'swnr.weapon.burst'}}: </label>
-    <input type="checkbox" name="burstFire" id="burstFire" {{checked burstFireHasAmmo}}>
-  </div>
-  {{/if}}
-  {{#if (eq actor.type 'character')}}
-  <div class="flex flex-col">
-    <label for="skill">{{localize 'swnr.sheet.skill'}}: </label>
-    <select name="skill" {{#if weapon.data.data.skill}} disabled {{else}} required {{/if}} 
-                class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-      {{#select weapon.skill}}
-      <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
-      {{#each skills }}
-      <option value="{{this.id}}">{{this.name}} {{this.data.data.rank}}</option>
-      {{/each}}
-      {{/select}}
-    </select>
-  </div>
-  {{else}}
-  {{!-- <div class="flex flex-col">
-    <label for="skilled">{{localize 'swnr.npc.skilled-with-weapon'}}:</label>
-    <input type="checkbox" name="skilled" id="skilled" />
-  </div> --}}
-  {{/if}}
-  <div class="flex flex-col">
-    <label for="modifier">{{localize 'swnr.chat.modifier'}}: </label>
-    <input name="modifier" type="number" step="1" value="0" 
-                class="w-10 text-center px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"/>
+    <div class="flex flexrow p-2 gap-2">
+      {{#if (and weapon.ammo.burst (ne 'none' weapon.ammo.type)) }}
+      <div class="flex flex-col ">
+        <label for="burstFire">{{localize 'swnr.weapon.burst'}}: </label>
+        <input type="checkbox" name="burstFire" id="burstFire" {{checked burstFireHasAmmo}}>
+      </div>
+      {{/if}}
+      {{#if (eq actor.type 'character')}}
+      <div class="flex flex-col">
+        <label for="skill">{{localize 'swnr.sheet.skill'}}: </label>
+        <select name="skill" {{#if weapon.data.data.skill}} disabled {{else}} required {{/if}} 
+                    class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+          {{#select weapon.skill}}
+          <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
+          {{#each skills }}
+          <option value="{{this.id}}">{{this.name}} {{this.data.data.rank}}</option>
+          {{/each}}
+          {{/select}}
+        </select>
+      </div>
+      {{else}}
+      {{!-- <div class="flex flex-col">
+        <label for="skilled">{{localize 'swnr.npc.skilled-with-weapon'}}:</label>
+        <input type="checkbox" name="skilled" id="skilled" />
+      </div> --}}
+      {{/if}}
+      <div class="flex flex-col">
+        <label for="modifier">{{localize 'swnr.chat.modifier'}}: </label>
+        <input name="modifier" type="number" step="1" value="0" 
+            class="w-10 text-center px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"/>
+      </div>
+    </div> 
+    {{#if (eq actor.type 'character')}}
+      <div class="flex flexrow">
+        <div class="flex flexrow">
+          <label for="remember">{{localize 'swnr.weapon.remember'}}: </label>
+          <input type="checkbox" name="remember" id="remember">
+        </div>
+      </div> 
+    {{/if}}
   </div>
 </form>

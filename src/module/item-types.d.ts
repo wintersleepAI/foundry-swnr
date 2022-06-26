@@ -86,6 +86,11 @@ interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
     max: number;
   };
   damage: string;
+  remember: null | {
+    use: boolean;
+    burst: boolean;
+    modifier: number;
+  };
 }
 
 declare interface SWNRShipWeaponData

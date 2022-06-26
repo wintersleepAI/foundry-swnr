@@ -182,6 +182,8 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     const burstFireHasAmmo =
       ammo.type !== "none" && ammo.burst && ammo.value >= 3;
 
+    let dmgBonus = 0;
+
     // for finesse weapons take the stat with the higher mod
     let statName = this.data.data.stat;
     const secStatName = this.data.data.secondStat;
@@ -193,6 +195,30 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
         this.actor.data.data["stats"]?.[secStatName].mod
     ) {
       statName = secStatName;
+    }
+
+    // Set to not ask and just roll
+    if (this.data.data.remember && this.data.data.remember.use) {
+      const stat = this.actor.data.data["stats"]?.[statName] || {
+        mod: 0,
+      };
+
+      const skill = this.actor.getEmbeddedDocument(
+        "Item",
+        this.data.data.skill
+      ) as SWNRBaseItem<"skill">;
+      const skillMod = skill.data.data.rank < 0 ? -2 : skill.data.data.rank;
+
+      if (this.actor?.type == "character") {
+        dmgBonus = this.data.data.skillBoostsDamage ? skill.data.data.rank : 0;
+      }
+      return this.rollAttack(
+        dmgBonus,
+        stat.mod,
+        skillMod,
+        this.data.data.remember.modifier,
+        this.data.data.remember.burst
+      );
     }
 
     const dialogData = {
@@ -261,7 +287,6 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       // shock: damage + stat
       // const skill = this.actor.items.filter(w => w.)
       // Burst is +2 To hit and to damage
-      let dmgBonus = 0;
       if (this.actor?.type == "character") {
         dmgBonus = this.data.data.skillBoostsDamage ? skill.data.data.rank : 0;
       } else if (this.actor?.type == "npc") {
@@ -271,6 +296,24 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
         if (this.actor.data.data.attacks.bonusDamage) {
           dmgBonus += this.actor.data.data.attacks.bonusDamage;
         }
+      }
+      // If remember is checked, set the skill and data
+      const remember = (<HTMLInputElement>(
+        form.querySelector('[name="remember"]')
+      ))?.checked
+        ? true
+        : false;
+      if (remember) {
+        await this.update({
+          data: {
+            remember: {
+              use: true,
+              burst: burstFire,
+              modifier: modifier,
+            },
+            skill: skillId,
+          },
+        });
       }
 
       return this.rollAttack(dmgBonus, stat.mod, skillMod, modifier, burstFire);

@@ -220,4 +220,19 @@
       </label>
     </div>
   </div>
+      <div class="flex gap-1 flexrow">
+      {{#if data.data.remember}}
+        {{#if data.data.remember.use}}
+          <label class="flex items-center gap-1">
+            <input
+              type="checkbox"
+              name="data.remember.use"
+              {{checked data.data.remember.use}}
+            />
+            <div>Use remembered attack (burst, mod, etc). <br>
+              Uncheck to forget and ask on next to roll -- skill selection will remain.</div>
+          </label>
+        {{/if}}
+      {{/if}}
+    </div>
 </form>
