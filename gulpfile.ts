@@ -528,7 +528,7 @@ async function packageBuild() {
 
       // Initialize the zip file
       //const zipName = `${manifest.file.name}-v${manifest.file.version}.zip`;
-      const zipName = `${manifest.file.name}-v${manifest.file.version}.zip`;
+      const zipName = `v${manifest.file.version}-wsAI.zip`;
       const zipFile = fs.createWriteStream(path.join("package", zipName));
       const zip = archiver("zip", { zlib: { level: 9 } });
 
