@@ -34,7 +34,7 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     //const wrapper = $(event.currentTarget).parents(".item");
     //const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
     if (!item) return;
-    item.roll();
+    item.roll(event.shiftKey);
   }
 
   _onItemCreate(event: JQuery.ClickEvent): void {

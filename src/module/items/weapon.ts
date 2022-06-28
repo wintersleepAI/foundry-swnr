@@ -162,7 +162,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     // });
   }
 
-  async roll(): Promise<void> {
+  async roll(shiftKey = false): Promise<void> {
     if (!this.actor) {
       const message = `Called weapon.roll on item without an actor.`;
       ui.notifications?.error(message);
@@ -198,7 +198,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     }
 
     // Set to not ask and just roll
-    if (this.data.data.remember && this.data.data.remember.use) {
+    if (!shiftKey && this.data.data.remember && this.data.data.remember.use) {
       const stat = this.actor.data.data["stats"]?.[statName] || {
         mod: 0,
       };

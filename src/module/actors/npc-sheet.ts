@@ -90,7 +90,7 @@ export class NPCActorSheet extends BaseActorSheet<NPCActorSheetData> {
       console.error(`The item named ${weapon.name} is not a weapon.`);
       return;
     }
-    return weapon.roll();
+    return weapon.roll(event.shiftKey);
   }
 
   async _onReaction(event: JQuery.ClickEvent): Promise<void> {

@@ -278,7 +278,8 @@ export class SWNRFactionAsset extends SWNRBaseItem<"asset"> {
     }
   }
 
-  async roll(): Promise<void> {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async roll(_shiftKey = false): Promise<void> {
     const data = this.data.data;
     if (data.unusable) {
       ui.notifications?.error("Asset is unusable");

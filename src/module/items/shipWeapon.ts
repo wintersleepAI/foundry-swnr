@@ -82,7 +82,8 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
     getDocumentClass("ChatMessage").create(chatData);
   }
 
-  async roll(): Promise<void> {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async roll(_shiftKey = false): Promise<void> {
     if (!this.actor) {
       const message = `Called ship weapon.roll on item without an actor.`;
       ui.notifications?.error(message);

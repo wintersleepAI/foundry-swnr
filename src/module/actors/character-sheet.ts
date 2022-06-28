@@ -241,7 +241,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     const weapon = <SWNRBaseItem<"weapon">>(
       this.actor.getEmbeddedDocument("Item", itemId)
     );
-    return weapon.roll();
+    return weapon.roll(event.shiftKey);
   }
   async _onSaveThrow(
     event: JQuery.ClickEvent
@@ -561,7 +561,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     const skill = <SWNRBaseItem<"skill">>(
       this.actor.getEmbeddedDocument("Item", skillID)
     );
-    skill.roll();
+    skill.roll(event.shiftKey);
   }
   /** @override */
   async getData(): Promise<CharacterActorSheetData> {

@@ -1,7 +1,8 @@
 import { SWNRBaseItem } from "../base-item";
 
 export class SWNRShipFitting extends SWNRBaseItem<"shipFitting"> {
-  async roll(): Promise<void> {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async roll(_shiftKey = false): Promise<void> {
     if (this.data.data.broken || this.data.data.destroyed) {
       ui.notifications?.error(
         "Fitting is broken/disabled or destroyed. Cannot use!"

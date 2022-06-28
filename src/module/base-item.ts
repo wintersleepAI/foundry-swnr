@@ -9,7 +9,8 @@ export class SWNRBaseItem<
    * @param {Event} event   The originating click event
    * @private
    */
-  async roll(): Promise<void> {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async roll(_shiftKey = false): Promise<void> {
     if (this.actor == null) {
       console.log("Cannot role without an actor");
       return;

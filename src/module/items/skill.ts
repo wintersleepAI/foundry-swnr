@@ -15,7 +15,7 @@ export class SWNRSkill extends SWNRBaseItem<"skill"> {
   ): Promise<void> {
     const rollMode = game.settings.get("core", "rollMode");
 
-    const formula = `${dice} + @stat + @skillRank + @modifier`;
+    const formula = `${dice} + @stat + @skill + @modifier`;
     const roll = new Roll(formula, {
       skill: skillRank,
       modifier: modifier,
@@ -34,7 +34,8 @@ export class SWNRSkill extends SWNRBaseItem<"skill"> {
     );
   }
 
-  async roll(): Promise<void> {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async roll(shiftKey = false): Promise<void> {
     const skillData = this.data.data;
     const template = "systems/swnr/templates/dialogs/roll-skill.html";
     if (this.actor == null) {
@@ -47,7 +48,7 @@ export class SWNRSkill extends SWNRBaseItem<"skill"> {
     }
     const skillName = this.name;
     // Set to not ask and just roll
-    if (this.data.data.remember && this.data.data.remember.use) {
+    if (!shiftKey && this.data.data.remember && this.data.data.remember.use) {
       const modifier = this.data.data.remember.modifier;
       const defaultStat = this.data.data.defaultStat;
       const dice = this.data.data.pool;
