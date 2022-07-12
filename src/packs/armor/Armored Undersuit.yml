@@ -14,5 +14,6 @@ data:
   shield: false
   tl: 4
   use: false
+  type: street
 name: Armored Undersuit
 type: armor

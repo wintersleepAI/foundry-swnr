@@ -14,6 +14,7 @@ data:
   location: other
   quality: stock
   shield: false
+  type: powered
   tl: 5
   use: false
 name: Field Emitter Panoply

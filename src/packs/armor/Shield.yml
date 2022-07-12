@@ -12,6 +12,7 @@ data:
   quality: stock
   shield: true
   tl: 0
+  type: primitive
   use: false
 name: Shield
 type: armor

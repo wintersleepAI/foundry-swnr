@@ -12,6 +12,7 @@ data:
   quality: stock
   shield: false
   tl: 5
+  type: street
   use: false
 name: Deflector Array
 type: armor

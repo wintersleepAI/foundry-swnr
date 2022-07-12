@@ -20,6 +20,7 @@ data:
   quality: stock
   shield: false
   tl: 5
+  type: powered
   use: false
 name: Storm Armor
 type: armor

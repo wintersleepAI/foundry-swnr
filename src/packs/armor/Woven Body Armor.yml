@@ -13,5 +13,6 @@ data:
   shield: false
   tl: 3
   use: false
+  type: combat
 name: Woven Body Armor
 type: armor

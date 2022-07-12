@@ -14,6 +14,7 @@ data:
   quality: stock
   shield: false
   tl: 5
+  type: powered
   use: false
 name: Vestimentum
 type: armor

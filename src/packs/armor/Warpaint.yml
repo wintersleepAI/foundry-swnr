@@ -18,6 +18,7 @@ data:
   quality: stock
   shield: false
   tl: 4
+  type: street
   use: false
 name: Warpaint
 type: armor

@@ -13,6 +13,7 @@ data:
   quality: stock
   shield: false
   tl: 4
+  type: combat
   use: false
 name: Icarus Harness
 type: armor

@@ -17,6 +17,7 @@ data:
   quality: stock
   shield: false
   tl: 4
+  type: powered
   use: false
 name: Assault Suit
 type: armor

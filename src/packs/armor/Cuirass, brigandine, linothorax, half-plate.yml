@@ -15,6 +15,7 @@ data:
   quality: stock
   shield: false
   tl: 1
+  type: primitive
   use: false
 name: 'Cuirass, brigandine, linothorax, half-plate'
 type: armor

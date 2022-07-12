@@ -15,6 +15,7 @@ data:
   quality: stock
   shield: false
   tl: 0
+  type: primitive
   use: false
 name: 'Leather jacks, thick hides, quilted armor'
 type: armor
