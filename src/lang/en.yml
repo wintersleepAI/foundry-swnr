@@ -538,6 +538,7 @@
       cargo-tab: Cargo
       crew-name: Crew Member
       crew-skill-bonus: NPC Ship Crew Bonus
+      crew-skill-bonus-note: (Mod to attack and skill rolls)
       name: Name
       dmg: Dmg
       qualities: Qualities
