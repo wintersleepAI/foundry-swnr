@@ -12,6 +12,7 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     html.find(".item-edit").on("click", this._onItemEdit.bind(this));
     html.find(".item-delete").on("click", this._onItemDelete.bind(this));
     html.find(".item-reload").on("click", this._onItemReload.bind(this));
+    html.find(".item-show").on("click", this._onItemShow.bind(this));
     html
       .find(".item-toggle-broken")
       .on("click", this._onItemBreakToggle.bind(this));
@@ -131,6 +132,18 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
     if (item instanceof Item) item.sheet?.render(true);
   }
+
+  // Clickable title/name or icon. Invoke Item.roll()
+  _onItemShow(event: JQuery.ClickEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    const wrapper = $(event.currentTarget).parents(".item");
+    const itemId = wrapper.data("itemId");
+    const item = <SWNRBaseItem>this.actor.getEmbeddedDocument("Item", itemId);
+    if (!item) return;
+    if (item instanceof Item) item.showDesc();
+  }
+
 
   async _onItemDelete(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();

@@ -354,6 +354,7 @@
     power: Power
     resources: Resources
     delete-item: Delete Item
+    show-item: Show Item
     edit-item: Edit Item
     reload-item: Reload Item
     add-item: Add Item

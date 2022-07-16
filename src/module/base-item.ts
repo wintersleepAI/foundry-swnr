@@ -11,6 +11,10 @@ export class SWNRBaseItem<
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async roll(_shiftKey = false): Promise<void> {
+    this.showDesc();
+  }
+
+  async showDesc(): Promise<void> {
     if (this.actor == null) {
       console.log("Cannot role without an actor");
       return;
