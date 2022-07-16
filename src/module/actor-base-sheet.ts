@@ -144,7 +144,6 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     if (item instanceof Item) item.showDesc();
   }
 
-
   async _onItemDelete(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();

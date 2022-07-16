@@ -68,6 +68,7 @@ interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
   secondStat: "none" | SWNRStats;
   skill: string;
   skillBoostsDamage: boolean;
+  skillBoostsShock: boolean;
   shock: {
     dmg: number;
     ac: number;

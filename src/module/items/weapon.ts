@@ -104,7 +104,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
         shock_content = `Shock Damage  AC ${this.data.data.shock.ac}`;
         const _shockRoll = new Roll(
           " @shockDmg + @stat " +
-            (this.data.data.skillBoostsDamage ? ` + ${damageBonus}` : ""),
+            (this.data.data.skillBoostsShock ? ` + ${damageBonus}` : ""),
           rollData
         );
         await _shockRoll.roll({ async: true });

@@ -299,6 +299,7 @@ Item:
     secondStat: none
     skill: ""
     skillBoostsDamage: false
+    skillBoostsShock: false
     shock:
       dmg: 0
       ac: 15

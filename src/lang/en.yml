@@ -653,6 +653,7 @@
     noSetSkill: No Skill Set
     burst: Use Burst Fire
     skillAddDamage: Skill adds to damage
+    skillAddShockDamage: Skill adds to shock
     remember: Remember these settings (do not ask again, reset in edit)
   titles:
     savingThrow: "{throwType} Saving Throw"
