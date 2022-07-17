@@ -11,7 +11,6 @@
       value="{{data.data.encumbrance}}"
     />
   </div>
-  {{#if (eq "item" item.type)}}
   <div class="flex flex-col items-center">
     {{localize 'swnr.item.quantity'}}:
     <input
@@ -23,6 +22,7 @@
       value="{{data.data.quantity}}"
     />
   </div>
+  {{#if (eq "item" item.type)}}
   <div class="flex flex-wrap gap-2 justify-around">
     {{localize 'swnr.item.bundledCount'}}:
     <div class="flex gap-2 items-center">

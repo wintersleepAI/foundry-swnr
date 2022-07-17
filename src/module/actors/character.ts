@@ -113,6 +113,11 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
         itemSize = Math.ceil(
           itemData.quantity / (bundle.bundled ? bundle.amount : 1)
         );
+      } else {
+        if (i.data.data.quantity) {
+          // Weapons and armor can have qty
+          itemSize = i.data.data.quantity;
+        }
       }
       return itemSize * i.data.data.encumbrance;
     };

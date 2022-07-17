@@ -291,6 +291,7 @@ Item:
     type: street
     use: false
     shield: false
+    quantity: 1
   weapon:
     templates:
       - baseItem
@@ -315,6 +316,7 @@ Item:
       normal: 1
       max: 2
     damage: d4
+    quantity: 1
   power:
     templates:
       - description

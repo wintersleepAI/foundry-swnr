@@ -92,6 +92,7 @@ interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
     burst: boolean;
     modifier: number;
   };
+  quantity: number;
 }
 
 declare interface SWNRShipWeaponData
@@ -151,6 +152,7 @@ declare interface SWNRArmorData extends SWNRBaseItemData {
   ac: number;
   shield: boolean;
   use: boolean;
+  quantity: number;
 }
 
 declare interface SWNRPowerData extends SWNRDescData {
