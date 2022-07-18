@@ -28,7 +28,12 @@
             <div class="item-image" style="background-image: url({{item.img}})"><a></a>
             </div>
             <div class="  flexrow pr-2.0" role="cell">
-              <a><span title="{{item.data.data.description}}">{{item.name}}</span></a>
+              <a><span title="{{item.data.data.description}}">
+                {{item.name}}
+                {{#if item.data.data.baseOfInfluence}}
+                  <i class="fas fa-home  text-gray-600"></i>
+                {{/if}}
+              </span></a>
             </div>
           </div>
           <div class="flexrow small-cell text-center" role="cell">
@@ -56,6 +61,8 @@
           <div class="item-controls  med-cell pr-1 text-right flex-shrink flexrow" role="cell">
             {{!-- <a class="item-control item-fix text-gray-600 hover:text-purple-800 transition-colors" title='{{localize 'swnr.sheet.fix-item'}}'>
               <i class="fas fa-tools"></i></a> --}}
+
+
             <a class="item-control asset-toggle-unusable  {{#unless item.data.data.unusable}}item-working{{/unless}}"
               title='{{localize 'swnr.sheet.break-item'}}'>
               <i class="fas fa-heart-broken {{#unless item.data.data.unusable}}item-working{{/unless}}"></i>
