@@ -50,7 +50,12 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
     const data = this.data.data;
     // AC
     const armor = <SWNRBaseItem<"armor">[]>(
-      this.items.filter((i) => i.data.type === "armor" && i.data.data.use)
+      this.items.filter(
+        (i) =>
+          i.data.type === "armor" &&
+          i.data.data.use &&
+          i.data.data.location === "readied"
+      )
     );
     const shields = armor.filter((i) => i.data.data.shield);
     const baseAc = Math.max(
