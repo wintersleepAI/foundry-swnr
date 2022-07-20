@@ -16,6 +16,10 @@ export default function registerHelpers(): void {
     if (obj.length <= n) return obj;
     return obj.substring(0, n) + "...";
   });
+  Handlebars.registerHelper("firstLetter", function (obj) {
+    if (!obj) return "";
+    return obj.substring(0, 1).toUpperCase();
+  });
   Handlebars.registerHelper("zeroWidthBreaker", (message: string) => {
     return new Handlebars.SafeString(
       message.replace(

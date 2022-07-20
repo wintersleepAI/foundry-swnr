@@ -1,3 +1,4 @@
+import { SWNRTag } from "../actor-types";
 import { SWNRBaseActor } from "../base-actor";
 import { SWNRBaseItem } from "../base-item";
 
@@ -87,6 +88,25 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
     await this.update({
       data: {
         log: log,
+      },
+    });
+  }
+
+  async addCustomTag(
+    name: string,
+    desc: string,
+    effect: string
+  ): Promise<void> {
+    const tags = this.data.data.tags;
+    const tag: SWNRTag = {
+      name,
+      desc,
+      effect,
+    };
+    tags.push(tag);
+    await this.update({
+      data: {
+        tags: tags,
       },
     });
   }

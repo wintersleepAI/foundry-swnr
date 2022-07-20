@@ -227,6 +227,66 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
     });
   }
 
+  async _onAddCustomTag(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    const dialogTemplate = `
+    <div class="flex flex-col -m-2 p-2 pb-4 bg-gray-200 space-y-2">
+      <h1> Add Tag </h1>
+      <div class="flex flex-col">
+        <div class="flex flexrow p-2 m-2">
+          Tag Name:
+          <input type='text' id="tagname" name='tagname' class="bg-gray-100 border border-gray-700 rounded-md p-2"></input>
+
+        </div>
+        <div class="flex flexrow p-2  m-2">
+          Tag Desc:
+          <textarea id="tagdesc" name="tagdesc" rows="4" cols="50" 
+          class="bg-gray-100 border border-gray-700 rounded-md p-2 m-2"></textarea>
+        </div>
+        <div class="flex flexrow p-2 m-2">
+          Tag Effect: 
+          <textarea id="tageffect" name="tageffect" rows="4" cols="50" 
+          class="bg-gray-100 border border-gray-700 rounded-md p-2 m-1"></textarea>
+        </div>
+
+      </div>
+    </div>
+    `;
+    this.popUpDialog?.close();
+
+    this.popUpDialog = new ValidatedDialog(
+      {
+        title: "Add Custom Tag",
+        content: dialogTemplate,
+        buttons: {
+          addTag: {
+            label: "Add Custom Tag",
+            callback: async (html: JQuery<HTMLElement>) => {
+              const name = (<HTMLSelectElement>html.find("#tagname")[0]).value;
+              const desc = (<HTMLSelectElement>html.find("#tagdesc")[0]).value;
+              const effect = (<HTMLSelectElement>html.find("#tageffect")[0])
+                .value;
+              this.actor.addCustomTag(name, desc, effect);
+            },
+          },
+          close: {
+            label: "Close",
+          },
+        },
+        default: "addTag",
+      },
+      {
+        failCallback: () => {
+          return;
+        },
+        classes: ["swnr"],
+      }
+    );
+    const s = this.popUpDialog.render(true);
+    if (s instanceof Promise) await s;
+  }
+
   async _onAddTag(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
@@ -502,6 +562,9 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
     html.find(".asset-create").on("click", this._onAssetCreate.bind(this));
     html.find(".faction-turn").on("click", this._onStartTurn.bind(this));
     html.find(".faction-tag-add").on("click", this._onAddTag.bind(this));
+    html
+      .find(".faction-tag-add-custom")
+      .on("click", this._onAddCustomTag.bind(this));
     html.find(".faction-tag-delete").on("click", this._onDelTag.bind(this));
     html.find(".faction-log-delete").on("click", this._onDelLog.bind(this));
     html.find(".faction-log-add").on("click", this._onAddLog.bind(this));

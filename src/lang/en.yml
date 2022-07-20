@@ -461,6 +461,7 @@
       tags-tab: Tags
       log-tab: Log
       add-tag: Add Tag
+      add-tag-custom: Add Custom Tag
       remove-tag: Remove Tag
       remove-log: Remove Log Entry
       add-log: Add Manual Log Entry

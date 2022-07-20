@@ -6,7 +6,7 @@
           <div class=" flexrow small-cell text-center" role="columnheader"> {{ localize 'swnr.sheet.faction.rating' }} </div>
           <div class=" flexrow small-cell text-center" role="columnheader"> {{ localize 'swnr.sheet.faction.hp' }} </div>
           <div class=" flexrow text-center" role="columnheader"> {{ localize 'swnr.sheet.faction.location' }} </div>
-          <div class=" flexrow text-center" role="columnheader"> {{ localize 'swnr.sheet.faction.attackTarget' }} / {{ localize
+          <div class=" flexrow text-center" role="columnheader"> {{ localize
             'swnr.sheet.faction.attackDamage' }} </div>
           <div class=" flexrow text-center pl-2" role="columnheader"> {{ localize 'swnr.sheet.faction.counter' }} </div>
           <div class=" flexrow text-center pl-2 small-cell " role="columnheader"> {{ localize 'swnr.sheet.faction.note' }} </div>
@@ -48,7 +48,7 @@
           </div>
           <div class="flexrow text-center" role="cell">
             {{#if item.data.data.attackDamage}}
-            {{ item.data.data.attackSource }} vs {{ item.data.data.attackTarget }} 
+            {{firstLetter item.data.data.attackSource }} vs {{firstLetter item.data.data.attackTarget }} 
             {{ item.data.data.attackDamage }}
             {{/if}}
           </div>
