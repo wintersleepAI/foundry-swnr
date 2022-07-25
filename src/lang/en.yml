@@ -742,8 +742,8 @@
       untrained: "{actor} uses their untrained skill."
     unarmed: Unarmed
     saving:
-      failure: "{actor} failed their saving throw."
-      success: "{actor} succeeded at their saving throw."
+      failure: "{actor} failed (target: {target})"
+      success: "{actor} succeeded (target: {target})"
   migration:
     start: >-
       SWNR: Starting migration from {oldVersion} to {newVersion}. Please let

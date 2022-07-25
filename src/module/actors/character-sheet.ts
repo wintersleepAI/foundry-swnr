@@ -252,7 +252,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     if (!save) return;
     const target = <number>this.actor.data.data.save[save];
     const template = "systems/swnr/templates/dialogs/roll-save.html";
-    let title = game.i18n.format("swnr.titles.savingThrow", {
+    const title = game.i18n.format("swnr.titles.savingThrow", {
       throwType: game.i18n.localize("swnr.sheet.saves." + save),
     });
     const dialogData = {};
@@ -260,29 +260,52 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     const _doRoll = async (html: HTMLFormElement) => {
       const rollMode = game.settings.get("core", "rollMode");
       const form = <HTMLFormElement>html[0].querySelector("form");
-      const formula = `1d20cs>=(@target - @modifier)`;
+      const modString = (<HTMLInputElement>(
+        form.querySelector('[name="modifier"]')
+      )).value;
+      const modifier = parseInt(modString);
+      if (isNaN(modifier)) {
+        ui.notifications?.error(`Error, modifier is not a number ${modString}`);
+        return;
+      }
+      // old approach const formula = `1d20cs>=(@target - @modifier)`;
+      const formula = `1d20`;
       const roll = new Roll(formula, {
-        modifier: parseInt(
-          (<HTMLInputElement>form.querySelector('[name="modifier"]')).value
-        ),
+        modifier,
         target: target,
       });
       await roll.roll({ async: true });
+      const success = roll.total ? roll.total >= target - modifier : false;
       const save_text = game.i18n.format(
-        parseInt(roll.result) >= 1
+        success
           ? game.i18n.localize("swnr.npc.saving.success")
           : game.i18n.localize("swnr.npc.saving.failure"),
-        { actor: this.actor.name }
+        { actor: this.actor.name, target: target - modifier }
       );
-      title += `<br><b>${save_text}</b>`;
-      roll.toMessage(
-        {
-          speaker: ChatMessage.getSpeaker(),
-          flavor: title,
-        },
-        { rollMode }
-      );
-      return roll;
+      const chatTemplate = "systems/swnr/templates/chat/save-throw.html";
+      const chatDialogData = {
+        saveRoll: await roll.render(),
+        title,
+        save_text,
+        success,
+      };
+      const chatContent = await renderTemplate(chatTemplate, chatDialogData);
+      const chatData = {
+        speaker: ChatMessage.getSpeaker(),
+        roll: JSON.stringify(roll),
+        content: chatContent,
+        type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+      };
+      getDocumentClass("ChatMessage").applyRollMode(chatData, rollMode);
+      getDocumentClass("ChatMessage").create(chatData);
+      // roll.toMessage(
+      //   {
+      //     speaker: ChatMessage.getSpeaker(),
+      //     flavor: title,
+      //   },
+      //   { rollMode }
+      // );
+      // return roll;
     };
     this.popUpDialog?.close();
     this.popUpDialog = new ValidatedDialog(

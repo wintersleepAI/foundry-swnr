@@ -231,7 +231,6 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     }
     const diceData = Roll.fromTerms([PoolTerm.fromRolls(poolRolls)]);
     const chatContent = await renderTemplate(template, dialogData);
-    console.log(pilotName);
     const chatData = {
       speaker: { alias: pilotName },
       roll: JSON.stringify(diceData),
