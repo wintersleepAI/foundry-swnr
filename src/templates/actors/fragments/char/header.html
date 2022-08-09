@@ -132,6 +132,32 @@
           value="{{actor.data.data.ab}}"
         />
       </div>  
+      <div class="flex gap-2 items-center">
+        <div
+          class="bg-green-300 border border-green-900 w-full rounded-full h-4 overflow-hidden"
+        >
+          <div
+            class="bg-green-500 h-full rounded-full"
+            style="width: min(calc(100% * {{actor.data.data.health.value}}/{{actor.data.data.health.max}}));"
+          ></div>
+        </div>
+      </div>
+
+      <div class="flex gap-2 items-center">
+        <div
+          class="bg-blue-300 border border-blue-900 w-full rounded-full h-4 overflow-hidden"
+        >
+          <div
+            class="bg-blue-500 h-full rounded-full"
+            style="width: min(calc(100% * {{actor.data.data.systemStrain.value}}/{{actor.data.data.systemStrain.max}}));"
+          ></div>
+        </div>
+      </div>
+      <div class="flex gap-2 items-center">
+      </div>
+      <div class="flex gap-2 items-center">
+      </div>
+      
 
       <!-- Saves -->
       <div
