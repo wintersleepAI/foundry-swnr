@@ -1,0 +1,33 @@
+<div
+  class="tab biography min-h-full"
+  data-group="primary"
+  data-tab="biography"
+>
+  <div class="flex gap-1">
+    <input
+      class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+      name="data.homeworld"
+      value="{{actor.data.data.homeworld}}"
+      placeholder="{{localize 'swnr.sheet.homeworld'}}"
+      type="text"
+    />
+    <input
+      class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+      name="data.background"
+      value="{{actor.data.data.background}}"
+      placeholder="{{localize 'swnr.sheet.background'}}"
+      type="text"
+    />
+    <input
+      class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+      name="data.employer"
+      value="{{actor.data.data.employer}}"
+      placeholder="{{localize 'swnr.sheet.employer'}}"
+      type="text"
+    />
+  </div>
+  <div class="bg-gray-300 border border-gray-700 rounded-md p-2 mt-4">
+    {{editor content=data.data.biography target="data.biography" button=true
+    owner=owner editable=editable}}
+  </div>
+</div>

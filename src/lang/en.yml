@@ -350,6 +350,7 @@
       other: Other
       powers: Powers
       combat: Combat
+      stats: Stats
     xp: XP
     power: Power
     resources: Resources

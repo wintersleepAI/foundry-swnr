@@ -1,0 +1,101 @@
+<div class="">
+  <div class="flex gap-2">
+    <img
+      class="profile-img w-24 h-24 object-contain"
+      src="{{actor.img}}"
+      title="{{actor.name}}"
+      data-edit="img"
+    />
+    <div class="flex-grow grid grid-cols-4 items-center gap-1">
+      <input
+        name="name"
+        class="text-2xl col-span-2 px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="text"
+        value="{{actor.name}}"
+        placeholder="{{localize 'swnr.sheet.name'}}"
+      />
+
+      <!-- Level -->
+      <div class="pr-0.5 text-lg">
+        <div
+          class="gap-1 pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md flex items-center"
+        >
+          <label>{{localize 'swnr.sheet.level'}}</label>
+          <input
+            type="number"
+            class="bg-transparent flex-shrink w-full"
+            min="1"
+            step="1"
+            name="data.level.value"
+            value="{{actor.data.data.level.value}}"
+            data-dtype="Number"
+          />
+        </div>
+      </div>
+
+      <!-- XP -->
+      <div class="exp pr-0.5 text-lg">
+        <div 
+          class="gap-1 pl-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md flex items-center"
+        >
+          <label>{{localize 'swnr.sheet.xp'}}</label>
+          <input
+            class="w-8 text-right pl-1.5 py-3.5 bg-transparent "
+            type="number"
+            step="1"
+            name="data.level.exp"
+            min="0"
+            data-dtype="Number"
+            value="{{actor.data.data.level.exp}}"
+          /><span>/</span
+          ><input
+            class="w-8 text-left pr-1.5 py-3.5 bg-transparent "
+            type="number"
+            step="1"
+            name="data.level.expToLevel"
+            min="0"
+            data-dtype="Number"
+            value="{{actor.data.data.level.expToLevel}}"
+          />
+        </div>
+      </div>
+
+      <!-- Saves -->
+      <div
+        class="saves col-span-4 flex-shrink-0 flex flex-row justify-between py-1 flex-wrap gap-2"
+      >
+        <div
+          data-save-type="physical"
+          class="save sheet-button gap-2"
+        >
+          v{{actor.data.data.save.physical}} {{localize
+          'swnr.sheet.saves.physical'}}
+          <i class="fas fa-dice-d20"></i>
+        </div>
+        <div
+          data-save-type="evasion"
+          class="save sheet-button gap-2"
+        >
+          v{{actor.data.data.save.evasion}} {{localize 'swnr.sheet.saves.evasion'}}
+          <i class="fas fa-dice-d20"></i>
+        </div>
+        <div
+          data-save-type="mental"
+          class="save sheet-button gap-2"
+        >
+          v{{actor.data.data.save.mental}} {{localize 'swnr.sheet.saves.mental'}}
+          <i class="fas fa-dice-d20"></i>
+        </div>
+        {{#if useHomebrewLuckSave}}
+        <div
+          data-save-type="luck"
+          class="save sheet-button gap-2"
+        >
+          v{{actor.data.data.save.luck}} {{localize 'swnr.sheet.saves.luck'}}
+          <i class="fas fa-dice-d20"></i>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
