@@ -28,6 +28,19 @@ export default function registerHelpers(): void {
       )
     );
   });
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Handlebars.registerHelper("halfway", (array: any[], index: number) => {
+    if (Math.ceil(array.length / 2) === index) {
+      return true;
+    }
+    return false;
+  });
+
+  Handlebars.registerHelper("mod2", (index: number) => {
+    return index % 2 == 0;
+  });
+
   Handlebars.registerHelper(
     "getPCStatModForWeapon",
     (

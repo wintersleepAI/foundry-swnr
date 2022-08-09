@@ -19,37 +19,71 @@
       type=actor.type actor=actor}}
     </div>
   </div>
-  <div class="flex gap-3">
-    <div class="flex-grow">
-      <h4 class="text-lg underline text-center">
-        {{localize 'swnr.item.locationReadied'}} {{localize 'swnr.sheet.tabs.weapons'}}
-      </h4>
-      <div class="space-y-2">
-        {{#each itemTypes.weapon as |item id|}} 
-        {{#if (eq item.data.data.location "readied")}}
-        {{>
-        "systems/swnr/templates/actors/fragments/weapon.html" item=item
-        damageBonus=(getPCStatModForWeapon actor item true)
-        hitBonus=(concat actor.data.data.ab (getPCStatModForWeapon actor item false))
-        type=actor.type actor=actor}} 
-        {{/if}}
-        {{/each}}
-      </div>
+  <div class="flex gap-3 min-w-full">
+    <div class="flex flex-col ">
+        <h4 class="text-lg underline text-center">
+          {{localize 'swnr.sheet.tabs.skills'}}
+        </h4>
+        <div class="grid grid-cols-2 ">
+          <div>
+            {{#each itemTypes.skill as |item id|}} 
+            {{#if (halfway @root.itemTypes.skill @index)}}
+            
+          </div>
+          <div>
+            {{/if}}
+            <div data-item-id="{{item.id}}"
+            class="skill p-0.5 pr-3 skillRoll 
+            {{#if (mod2 @index) }}
+            bg-gray-300
+            {{/if}}
+            "
+            >
+              <a class="inline-flex flex-wrap gap-2">
+                <i class="fas fa-dice-d20"></i>
+                {{zeroWidthBreaker item.name}}
+                {{numberFormat item.data.data.rank decimals=0 sign=true}}
+              </a>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+
+          
+
     </div>
-    <div class="flex-grow">
-      <h4 class="text-lg underline text-center">
-        {{localize 'swnr.item.locationReadied'}}  {{localize 'swnr.sheet.tabs.armor'}}
-      </h4>
-      <div class="flex gap-1 flex-col">
-
-        {{#each itemTypes.armor as |item id|}} 
+    <div class="flex flex-col">
+      <div class="flex-grow">
+        <h4 class="text-lg underline text-center">
+          {{localize 'swnr.item.locationReadied'}} {{localize 'swnr.sheet.tabs.weapons'}}
+        </h4>
+        <div class="space-y-2">
+          {{#each itemTypes.weapon as |item id|}} 
           {{#if (eq item.data.data.location "readied")}}
-
-            {{>
-            "systems/swnr/templates/actors/fragments/armor.html" item=item
-            type=actor.type}} 
+          {{>
+          "systems/swnr/templates/actors/fragments/weapon.html" item=item
+          damageBonus=(getPCStatModForWeapon actor item true)
+          hitBonus=(concat actor.data.data.ab (getPCStatModForWeapon actor item false))
+          type=actor.type actor=actor}} 
           {{/if}}
-        {{/each}}
+          {{/each}}
+        </div>
+      </div>
+      <div class="flex-grow">
+        <h4 class="text-lg underline text-center">
+          {{localize 'swnr.item.locationReadied'}}  {{localize 'swnr.sheet.tabs.armor'}}
+        </h4>
+        <div class="flex gap-1 flex-col">
+
+          {{#each itemTypes.armor as |item id|}} 
+            {{#if (eq item.data.data.location "readied")}}
+
+              {{>
+              "systems/swnr/templates/actors/fragments/armor.html" item=item
+              type=actor.type}} 
+            {{/if}}
+          {{/each}}
+        </div>
       </div>
     </div>
   </div>
