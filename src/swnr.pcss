@@ -2,8 +2,45 @@
   font-family: "Gayathri";
   src: url("assets/fonts/Gayathri-Regular.ttf");
 }
+
+@font-face {
+  font-family: "Gayathri";
+  src: url("assets/fonts/Gayathri-Bold.ttf");
+  font-weight: bold;
+}
+
 body {
   font-family: "Gayathri";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Gayathri";
+  font-weight: bold;
+}
+$chatblue: #d4d5d6;
+
+.chat-message {
+  border: none;
+  background: none;
+  padding: 2px;
+  background: $chatblue;
+  //background: url(assets/images/blue-brush.jpg) repeat;
+}
+
+#chat-form textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  background: $chatblue;
+}
+
+.window-app .window-content {
+  background-image: unset;
+  background: $chatblue;
 }
 
 .swnr .window-content {
