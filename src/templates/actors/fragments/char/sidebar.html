@@ -2,12 +2,10 @@
   <table>
     <thead>
       <tr>
-        <th>
-        </th>
-        <th class="px-1 hidden lg:table-cell">
+        <th colspan=2 class="px-1 hidden lg:table-cell">
           {{localize 'swnr.sheet.total'}}
         </th>
-        <th class="px-1">{{localize 'swnr.sheet.modifier'}}</th>
+        <th class="px-1">{{localize 'swnr.sheet.mod'}}</th>
       </tr>
     </thead>
     {{#each actor.data.data.stats as |stat key|}}
@@ -19,7 +17,7 @@
       </td>
       <td class="text-center hidden lg:table-cell">
         <div
-          class="w-6  px-1 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          class="w-8  px-1 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
         >
         {{stat.total}}
         </div>
@@ -37,8 +35,21 @@
 
 </div>
 <div class="flex-col flex gap-1">
-  <h3>{{localize 'swnr.effort.title'}}</h3>
-  <div class="flex flex-col  gap-1"> <!--lg:flex-row-->
+  <div class="flex flexrow">
+    <div class="flex gap-1 items-center">
+      <div><h3>{{localize 'swnr.effort.title'}} {{actor.data.data.effort.value}}/{{actor.data.data.effort.max}}</h3></div>
+      <div
+        class="bg-purple-300 border border-purple-900 w-full rounded-full h-4 overflow-hidden"
+      >
+        <div
+          class="bg-purple-500 h-full rounded-full"
+          style="width: min(calc(100% * {{actor.data.data.effort.value}}/{{actor.data.data.effort.max}}));"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-row  gap-1"> <!--lg:flex-row-->
     <div>
       <label for="data.effort.bonus">
         {{localize 'swnr.effort.bonus'}}:
@@ -67,6 +78,9 @@
         data-dtype="Number"
       />
     </div>
+  </div>
+  <div class="flex flex-row  gap-1"> <!--lg:flex-row-->
+
     <div>
       <label for="data.effort.scene">
         {{localize 'swnr.effort.scene'}}:
@@ -98,22 +112,28 @@
       />
     </div>
   </div>
-  <div class="flex gap-2 items-center">
-    <div>{{actor.data.data.effort.value}}/{{actor.data.data.effort.max}}</div>
-    <div
-      class="bg-purple-300 border border-purple-900 w-full rounded-full h-4 overflow-hidden"
-    >
-      <div
-        class="bg-purple-500 h-full rounded-full"
-        style="width: min(calc(100% * {{actor.data.data.effort.value}}/{{actor.data.data.effort.max}}));"
-      ></div>
-    </div>
-  </div>
+
 </div>
 {{#if actor.data.data.tweak.extraEffortName}}
 <div class="flex-col flex gap-1">
-  <h3>{{ actor.data.data.tweak.extraEffortName }} {{localize 'swnr.effort.title'}}</h3>
-  <div class="flex flex-col  gap-1"> <!--lg:flex-row-->
+  <div class="flex flexrow">
+    <div class="flex gap-1 items-center">
+      <div>
+        <h3>{{ actor.data.data.tweak.extraEffortName }} {{localize 'swnr.effort.title'}}
+        {{actor.data.data.tweak.extraEffort.value}}/{{actor.data.data.tweak.extraEffort.max}}
+      </div>
+      <div
+        class="bg-purple-300 border border-purple-900 w-full rounded-full h-4 overflow-hidden"
+      >
+        <div
+          class="bg-purple-500 h-full rounded-full"
+          style="width: min(calc(100% * {{actor.data.data.tweak.extraEffort.value}}/{{actor.data.data.tweak.extraEffort.max}}));"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-row  gap-1"> <!--lg:flex-row-->
     <div>
       <label for="data.tweak.extraEffort.max">
         {{localize 'swnr.effort.max'}}:
@@ -155,6 +175,9 @@
         data-dtype="Number"
       />
     </div>
+  </div>
+  <div class="flex flex-row  gap-1"> <!--lg:flex-row-->
+
     <div>
       <label for="data.tweak.extraEffort.scene">
         {{localize 'swnr.effort.scene'}}:
