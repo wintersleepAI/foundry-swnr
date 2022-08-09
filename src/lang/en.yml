@@ -341,6 +341,9 @@
     permanent-strain: Perm. Strain
     attack-bonus: Attack Bonus
     system-strain: System Strain
+    ss: Strain
+    ac: AC
+    ab: AB
     tabs:
       biography: Biography
       debug: Sheet Debug

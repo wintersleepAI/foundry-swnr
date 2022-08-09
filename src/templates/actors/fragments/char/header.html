@@ -9,21 +9,22 @@
     <div class="flex-grow grid grid-cols-4 items-center gap-1">
       <input
         name="name"
-        class="text-2xl col-span-2 px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        class="text-2xl  bg-transparent col-span-2 px-1.5 py-3.5 placeholder-blue-800 placeholder-opacity-75 rounded-md"
         type="text"
         value="{{actor.name}}"
         placeholder="{{localize 'swnr.sheet.name'}}"
       />
 
       <!-- Level -->
-      <div class="pr-0.5 text-lg">
+      <div class="pr-0.5 text-lg flex flex-rw gap-2">
+        <label>{{localize 'swnr.sheet.level'}}</label>
+
         <div
           class="gap-1 pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md flex items-center"
         >
-          <label>{{localize 'swnr.sheet.level'}}</label>
           <input
             type="number"
-            class="bg-transparent flex-shrink w-full"
+            class="bg-transparent text-center flex-shrink w-12"
             min="1"
             step="1"
             name="data.level.value"
@@ -34,11 +35,12 @@
       </div>
 
       <!-- XP -->
-      <div class="exp pr-0.5 text-lg">
+      <div class="exp pr-0.5 text-lg flex flex-row gap-2">
+        <label>{{localize 'swnr.sheet.xp'}}</label>
+
         <div 
-          class="gap-1 pl-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md flex items-center"
+          class="gap-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md flex items-center"
         >
-          <label>{{localize 'swnr.sheet.xp'}}</label>
           <input
             class="w-8 text-right pl-1.5 py-3.5 bg-transparent "
             type="number"
@@ -61,7 +63,11 @@
       </div>
 
       <!-- HP -->
-      <div class="hp flex flex-col justify-center items-center">
+      <div class="hp flex flex-row justify-center items-center text-lg">
+        <label class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow"
+            >{{localize 'swnr.sheet.hp'}}
+            <i class="fas fa-dice-d20"></i>
+        </label>
         <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
           <input
             class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
@@ -83,9 +89,6 @@
           />
         </div>
         <span>
-          <label class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow"
-            >{{localize 'swnr.sheet.hp'}} <i class="fas fa-dice-d20"></i
-          ></label>  
           <a class="rest-button pl-1.5" title='{{localize 'swnr.sheet.rest'}}'>
             <i class="fas fa-bed"></i>
           </a>
@@ -93,7 +96,8 @@
       </div>
 
       <!-- strain -->
-      <div class="system flex flex-col items-center justify-center">
+      <div class="system flex flex-row items-center justify-center text-lg pl-5">
+        <label>{{localize 'swnr.sheet.ss'}}</label>
         <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
           <input
             class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
@@ -106,17 +110,17 @@
             >{{actor.data.data.systemStrain.max}}</span
           >
         </div>
-        <label>{{localize 'swnr.sheet.system-strain'}}</label>
       </div>
 
       <!--AC-->
-      <div class="ac flex flex-col justify-around items-center">
-        <div>{{actor.data.data.ac}}</div>
-        <label>{{localize 'swnr.sheet.armor-class'}}</label>
+      <div class="ac flex flex-row justify-around items-center text-lg">
+        
+        <div class="text-left"> <label class="pr-3"><b>{{localize 'swnr.sheet.ac'}}</label> {{actor.data.data.ac}}</b></div>
       </div>
 
       <!-- AB-->
-      <div class="ab flex flex-col justify-around items-center">
+      <div class="ab flex flex-row justify-around items-center text-lg">
+        <label>{{localize 'swnr.sheet.attack-bonus'}}</label>
         <input
           class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           type="number"
@@ -127,7 +131,6 @@
           data-dtype="Number"
           value="{{actor.data.data.ab}}"
         />
-        <label>{{localize 'swnr.sheet.attack-bonus'}}</label>
       </div>  
 
       <!-- Saves -->
