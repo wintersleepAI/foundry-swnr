@@ -1,18 +1,92 @@
 <div class="tab stats" data-group="primary" data-tab="stats">
   <div class="flex gap-2">
-    <input
-      class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-      name="data.class"
-      value="{{actor.data.data.class}}"
-      placeholder="{{localize 'swnr.sheet.class'}}"
-      type="text"
-    />
-    <input
-      class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-      name="data.species"
-      type="text"
-      value="{{actor.data.data.species}}"
-      placeholder="{{localize 'swnr.sheet.species'}}"
-    />
+    <div class="stats -text-xs">
+      <table>
+        <thead>
+          <tr>
+            <th class="statRoll px-1 hover:text-shadow hover:text-shadow-blueGray-900 cursor-pointer transition-text-shadow">
+              {{localize 'swnr.sheet.stats'}} <i class="fas fa-dice-d20"></i>
+            </th>
+            <th class="px-1 hidden lg:table-cell">
+              {{localize 'swnr.sheet.base'}}
+            </th>
+            <th class="px-1 hidden lg:table-cell">
+              {{localize 'swnr.sheet.boosts'}}
+            </th>
+            <th class="px-1 hidden lg:table-cell">
+              {{localize 'swnr.sheet.bonus'}}
+            </th>
+            <th class="px-1">{{localize 'swnr.sheet.modifier'}}</th>
+          </tr>
+        </thead>
+        {{#each actor.data.data.stats as |stat key|}}
+        <tr>
+          <td>
+            <label for="data.stats.{{key}}.base" class="resource-label px-1">
+              {{localize (concat 'swnr.stat.long.' key)}}
+            </label>
+          </td>
+          <td class="text-center hidden lg:table-cell">
+            <input
+              type="number"
+              class="w-8 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              min="3"
+              max="18"
+              step="1"
+              name="data.stats.{{key}}.base"
+              value="{{stat.base}}"
+              data-dtype="Number"
+            />
+          </td>
+          <td class="text-center hidden lg:table-cell">
+            <input
+              type="number"
+              class="w-8 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              min="0"
+              max="5"
+              step="1"
+              name="data.stats.{{key}}.boost"
+              value="{{stat.boost}}"
+              data-dtype="Number"
+            />
+          </td>
+          <td class="text-center hidden lg:table-cell">
+            <input
+              type="number"
+              class="w-8 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              min="0"
+              max="3"
+              step="1"
+              name="data.stats.{{key}}.bonus"
+              value="{{stat.bonus}}"
+              data-dtype="Number"
+            />
+          </td>
+          <td class="text-center">
+            <span class="stat-mod">
+              {{numberFormat stat.mod decimals=0 sign=true}}
+            </span>
+          </td>
+        </tr>
+        {{/each}}
+      </table>
+    </div>
+    <div class="flex">
+      <div class="perm-sys flex flex-col items-center">
+        <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+          <input
+            class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            type="number"
+            min="0"
+            name="data.systemStrain.permanent"
+            value="{{actor.data.data.systemStrain.permanent}}"
+          /> + <span
+              class="inline-block text-left text-gray-700 cursor-not-allowed w-8"
+              >{{actor.data.data.systemStrain.cyberware}}</span>
+        </div>
+        <label>{{localize 'swnr.sheet.permanent-strain'}}</label>
+      </div>
+
+    </div>
   </div>
 </div>

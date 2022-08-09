@@ -1,4 +1,40 @@
 <div class="tab inventory" data-group="primary" data-tab="inventory">
+  <div class="flex flexrow">
+    <div class="flex flex-col items-center">
+      <input
+        class="w-20 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="number"
+        step="1"
+        name="data.credits.debt"
+        data-dtype="Number"
+        value="{{actor.data.data.credits.debt}}"
+      />
+      <label for="data.credits.debt">{{localize 'swnr.credits.debts'}}</label>
+    </div>
+    <div class="flex flex-col items-center">
+      <input
+        class="w-20 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="number"
+        step="1"
+        name="data.credits.balance"
+        data-dtype="Number"
+        value="{{actor.data.data.credits.balance}}"
+      />
+      <label for="data.credits.balance">{{localize "swnr.credits.balance"}}</label>
+    </div>
+    <div class="flex flex-col items-center">
+      <input
+        class="w-20 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="number"
+        step="1"
+        name="data.credits.owed"
+        data-dtype="Number"
+        value="{{actor.data.data.credits.owed}}"
+      />
+      <label for="data.credits.owed">{{localize "swnr.credits.owed"}}</label>
+    </div>
+  </div>
+
   <div class="grid grid-cols-2 gap-1 p-1">
     <div class="text-center text-base">
       {{localize 'swnr.item.locationReadied'}}:

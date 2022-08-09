@@ -60,6 +60,76 @@
         </div>
       </div>
 
+      <!-- HP -->
+      <div class="hp flex flex-col justify-center items-center">
+        <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+          <input
+            class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            type="number"
+            step="1"
+            name="data.health.value"
+            value="{{actor.data.data.health.value}}"
+            data-dtype="Number"
+            min="0"
+          /><span>/</span
+          ><input
+            class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            type="number"
+            name="data.health.max"
+            value="{{actor.data.data.health.max}}"
+            step="1"
+            min="1"
+            data-dtype="Number"
+          />
+        </div>
+        <span>
+          <label class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow"
+            >{{localize 'swnr.sheet.hp'}} <i class="fas fa-dice-d20"></i
+          ></label>  
+          <a class="rest-button pl-1.5" title='{{localize 'swnr.sheet.rest'}}'>
+            <i class="fas fa-bed"></i>
+          </a>
+        </span>
+      </div>
+
+      <!-- strain -->
+      <div class="system flex flex-col items-center justify-center">
+        <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+          <input
+            class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            type="number"
+            name="data.systemStrain.value"
+            value="{{actor.data.data.systemStrain.value}}"
+            data-dtype="Number"
+          />/<span
+            class="inline-block text-left text-gray-700 cursor-not-allowed w-8"
+            >{{actor.data.data.systemStrain.max}}</span
+          >
+        </div>
+        <label>{{localize 'swnr.sheet.system-strain'}}</label>
+      </div>
+
+      <!--AC-->
+      <div class="ac flex flex-col justify-around items-center">
+        <div>{{actor.data.data.ac}}</div>
+        <label>{{localize 'swnr.sheet.armor-class'}}</label>
+      </div>
+
+      <!-- AB-->
+      <div class="ab flex flex-col justify-around items-center">
+        <input
+          class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          type="number"
+          step="1"
+          name="data.ab"
+          min="-9"
+          max="99"
+          data-dtype="Number"
+          value="{{actor.data.data.ab}}"
+        />
+        <label>{{localize 'swnr.sheet.attack-bonus'}}</label>
+      </div>  
+
       <!-- Saves -->
       <div
         class="saves col-span-4 flex-shrink-0 flex flex-row justify-between py-1 flex-wrap gap-2"

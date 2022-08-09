@@ -326,7 +326,9 @@
     base: Base
     boosts: Boosts
     bonus: Bonus
+    total: Total
     modifier: Modifier
+    mod: Mod
     saves:
       luck: Luck
       physical: Physical
