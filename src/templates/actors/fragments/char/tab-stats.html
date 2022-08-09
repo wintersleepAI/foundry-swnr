@@ -1,5 +1,6 @@
 <div class="tab stats" data-group="primary" data-tab="stats">
   <div class="flex gap-2">
+    <!--stat col-->
     <div class="stats -text-xs">
       <table>
         <thead>
@@ -71,7 +72,10 @@
         {{/each}}
       </table>
     </div>
-    <div class="flex">
+    <!-- other stats & foci-->
+    <div class="flex flex-col">
+     <!--other stats-->
+     <div class="flex flex-row">
       <div class="perm-sys flex flex-col items-center">
         <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
           <input
@@ -86,7 +90,55 @@
         </div>
         <label>{{localize 'swnr.sheet.permanent-strain'}}</label>
       </div>
+      <div class="item armor text-center flex flex-col items-center">
+        <input
+          type="number"
+          class="w-8 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          min="1"
+          step="1"
+          name="data.baseAc"
+          value="{{actor.data.data.baseAc}}"
+          data-dtype="Number"
+        />
+        <label>{{localize 'swnr.armor.innateArmorClass'}}</label>
 
+      </div>
+     </div>
+
+    <!-- foci  -->
+    <div class="foci">
+        <div><!-- table-->
+          <li class="item-titles flexrow">
+            <!--<div class="item-caret"><i class="fas fa-caret-down"></i></div>-->
+            <div class="item-name flex2 pr-2">{{localize 'swnr.sheet.tabs.foci'}} </div>
+            <div class="item-effect w-8 flex-shrink">{{localize 'swnr.sheet.level'}}</div>
+            <div class="item-controls w-20 text-right">
+              <a class="item-control item-create text-gray-100 hover:text-green-400 transition-colors"
+                title="{{localize 'swnr.sheet.add-item'}}" data-item-type="focus" data-item-name="Focus">
+                <i class="fas fa-plus"></i>
+              </a> 
+            </div>
+          </li>
+          <ol class="item-list">
+            {{#each itemTypes.focus as |item id|}}
+            <li class="item-entry">
+              <div class="item flexrow" data-item-id="{{item.id}}">
+                <div class="item-name item-click item-rollable flexrow flex2 pr-2">
+                  <div class="item-image" style="background-image: url({{item.img}})"><a></a></div>
+                  <a>{{item.name}}</a>
+                </div>
+                <div class="flex-shrink w-8">{{item.data.data.level}}</div>
+                <div class="item-controls w-20  text-right">
+                  <a class="item-control item-edit text-gray-600 hover:text-purple-800 transition-colors" title='{{localize 'swnr.sheet.edit-item'}}'>
+                    <i class="fas fa-edit"></i></a>
+                  <a class="item-control item-delete text-gray-600 hover:text-red-600 transition-colors" title='{{localize 'swnr.sheet.delete-item'}}'><i
+                      class="fas fa-trash"></i></a>
+                </div>
+            </li>
+            {{/each}}
+          </ol>
+        </div><!--end table-->
+    </div> <!--foci wraoer-->
     </div>
   </div>
 </div>
