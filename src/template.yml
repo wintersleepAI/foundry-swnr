@@ -32,6 +32,7 @@ Actor:
         value: 10
         max: 10
       baseAc: 10
+      hitDie: d6
       ab: 0
       systemStrain:
         value: 0

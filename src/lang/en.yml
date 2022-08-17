@@ -562,6 +562,7 @@
       crisis: Crisis
       system-failure: System Failure(s)
       repair-all: Repair All
+      sensor-roll: Sensor Roll
       refuel: Refuel
       costMultiplier: Scale cost by class
       powerMultiplier: Scale power by class
@@ -679,6 +680,7 @@
   dialog:
     attackRoll: "{actorName} attacking with {weaponName}?"
     spikeRoll: "{actorName} making spike roll"
+    sensorRoll: "{actorName} making sensor roll"
     sysFailure: "Rolling system failures for {actorName}"
     skillRoll: "Rolling skill for {actorName}"
     failure:

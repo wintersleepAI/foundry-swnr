@@ -90,6 +90,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     html.find(".crisis-button").on("click", this._onCrisis.bind(this));
     html.find(".failure-button").on("click", this._onSysFailure.bind(this));
     html.find(".repair-button").on("click", this._onRepair.bind(this));
+    html.find(".sensor-button").on("click", this._onSensor.bind(this));
     html.find(".calc-cost").on("click", this._onCalcCost.bind(this));
     html.find(".make-payment").on("click", this._onPayment.bind(this));
     html.find(".npc-crew-roll").on("click", this._onCrewNPCRoll.bind(this));
@@ -656,6 +657,159 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
         }
       },
     }).render(true);
+  }
+
+  async _onSensor(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    let defaultCommId: string | null = this.actor.data.data.roles.comms;
+    let defaultComm: SWNRCharacterActor | SWNRNPCActor | null = null;
+    if (defaultCommId) {
+      const _temp = game.actors?.get(defaultCommId);
+      if (_temp && (_temp.type == "character" || _temp.type == "npc")) {
+        defaultComm = _temp;
+      }
+    }
+    const crewArray: Array<SWNRCharacterActor | SWNRNPCActor> = [];
+    if (this.actor.data.data.crewMembers) {
+      for (let i = 0; i < this.actor.data.data.crewMembers.length; i++) {
+        const cId = this.actor.data.data.crewMembers[i];
+        const crewMember = game.actors?.get(cId);
+        if (
+          crewMember &&
+          (crewMember.type == "character" || crewMember.type == "npc")
+        ) {
+          crewArray.push(crewMember);
+        }
+      }
+    }
+    const title = game.i18n.format("swnr.dialog.sensorRoll", {
+      actorName: this.actor?.name,
+    });
+
+    if (defaultComm == null && crewArray.length > 0) {
+      //There is no pilot. Use first crew as default
+      defaultComm = crewArray[0];
+      defaultCommId = crewArray[0].id;
+    }
+    if (defaultComm?.type == "npc" && crewArray.length > 0) {
+      //See if we have a non NPC to set as pilot to get skills and attr
+      for (const char of crewArray) {
+        if (char.type == "character") {
+          defaultComm = char;
+          defaultCommId = char.id;
+          break;
+        }
+      }
+    }
+    const dialogData = {
+      actor: this.actor.data,
+      defaultSkill1: "Program",
+      defaultSkill2: "Tech/Astronautic",
+      defaultStat: "int",
+      comm: defaultComm,
+      commId: defaultCommId,
+      crewArray: crewArray,
+    };
+
+    const template = "systems/swnr/templates/dialogs/roll-sensor.html";
+    const html = renderTemplate(template, dialogData);
+    const _rollForm = async (html: HTMLFormElement) => {
+      const form = <HTMLFormElement>html[0].querySelector("form");
+      const mod = parseInt(
+        (<HTMLInputElement>form.querySelector('[name="modifier"]'))?.value
+      );
+      const actorId = (<HTMLInputElement>form.querySelector('[name="commId"]'))
+        ?.value;
+      const rollingActor = actorId ? game.actors?.get(actorId) : null;
+      const dice = (<HTMLSelectElement>form.querySelector('[name="dicepool"]'))
+        .value;
+      const skillName = (<HTMLSelectElement>(
+        form.querySelector('[name="skill"]')
+      ))?.value;
+      const statName = (<HTMLSelectElement>form.querySelector('[name="stat"]'))
+        ?.value;
+      const targetModifier = parseInt(
+        (<HTMLInputElement>form.querySelector('[name="targetModifier"]'))?.value
+      );
+      const observerModifier = parseInt(
+        (<HTMLInputElement>form.querySelector('[name="observerModifier"]'))
+          ?.value
+      );
+      const rollingAs = (<HTMLSelectElement>(
+        form.querySelector('[name="rollingAs"]')
+      ))?.value;
+      if (
+        rollingAs != "observer" &&
+        rollingAs != "target" &&
+        rollingAs != "single"
+      ) {
+        ui.notifications?.error("Error with rolling as ");
+        return;
+      }
+      const rollType = (<HTMLSelectElement>(
+        form.querySelector('[name="rollType"]')
+      ))?.value;
+      if (
+        rollType != "roll" &&
+        rollType != "gmroll" &&
+        rollType != "blindroll"
+      ) {
+        ui.notifications?.error("Error with roll type");
+        return;
+      }
+
+      let skillMod = 0;
+      let statMod = 0;
+      let actorName: string | null = "";
+      if (rollingActor) {
+        if (skillName) {
+          // We need to look up by name
+          for (const skill of rollingActor.itemTypes.skill) {
+            if (skillName == skill.data.name) {
+              skillMod =
+                skill.data.data["rank"] < 0 ? -1 : skill.data.data["rank"];
+            }
+          }
+        } //end skill
+        if (statName) {
+          const sm = rollingActor.data.data["stats"]?.[statName].mod;
+          if (sm) {
+            console.log("setting stat mod", sm);
+            statMod = sm;
+          }
+        }
+        actorName = rollingActor.name;
+      }
+      this.actor.rollSensor(
+        actorName,
+        targetModifier,
+        observerModifier,
+        skillMod,
+        statMod,
+        dice,
+        rollingAs,
+        rollType
+      );
+    };
+
+    this.popUpDialog?.close();
+    this.popUpDialog = new ValidatedDialog(
+      {
+        title: title,
+        content: await html,
+        default: "roll",
+        buttons: {
+          roll: {
+            label: game.i18n.localize("swnr.chat.roll"),
+            callback: _rollForm,
+          },
+        },
+      },
+      {
+        classes: ["swnr"],
+      }
+    );
+    this.popUpDialog.render(true);
   }
 
   async _onSpike(event: JQuery.ClickEvent): Promise<void> {

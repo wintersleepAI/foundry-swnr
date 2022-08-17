@@ -144,6 +144,84 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     }
   }
 
+  async rollSensor(
+    actorName: string | null,
+    targetMod: number,
+    observerMod: number,
+    skillMod: number,
+    statMod: number,
+    dice: string,
+    rollingAs: "observer" | "target" | "single",
+    rollMode: "roll" | "gmroll" | "blindroll"
+  ): Promise<void> {
+    const template = "systems/swnr/templates/chat/sensor-roll.html";
+    let mod = observerMod;
+    let opposedMod = targetMod;
+    let typeDesc = "Observer";
+    let otherDesc = "Target";
+    if (rollingAs == "target") {
+      mod = targetMod;
+      opposedMod = observerMod;
+      typeDesc = "Target";
+      otherDesc = "Observer";
+    }
+    const rollData = {
+      dice,
+      skillMod,
+      statMod,
+      mod,
+    };
+    const skillRollStr = `${dice} + @skillMod + @statMod + @mod`;
+    const skillRoll = new Roll(skillRollStr, rollData);
+    await skillRoll.roll({ async: true });
+
+    const poolRolls: Roll[] = [skillRoll];
+
+    let opposedRoll: null | Roll = null;
+    let opposedRollStr: null | string = null;
+
+    if (rollingAs != "single") {
+      opposedRoll = new Roll(`2d6 + @opposedMod`, { opposedMod });
+      await opposedRoll.roll({ async: true });
+      poolRolls.push(opposedRoll);
+      opposedRollStr = await opposedRoll.render();
+    }
+    const dialogData = {
+      skillRoll: await skillRoll.render(),
+      skillRollStr,
+      opposedRoll: opposedRollStr,
+      rollingAs,
+      actorName,
+      typeDesc,
+      otherDesc,
+    };
+    const diceData = Roll.fromTerms([PoolTerm.fromRolls(poolRolls)]);
+    const chatContent = await renderTemplate(template, dialogData);
+
+    let gm_ids: string[] | null = ChatMessage.getWhisperRecipients("GM")
+      .filter((i) => i)
+      .map((i) => i.id)
+      .filter((i): i is string => i !== null);
+    let blind = false;
+
+    if (rollMode == "roll") {
+      gm_ids = null;
+    } else if (rollMode == "blindroll") {
+      blind = true;
+    }
+    const chatData = {
+      speaker: { alias: actorName },
+      roll: JSON.stringify(diceData),
+      content: chatContent,
+      type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+      whisper: gm_ids,
+      blind,
+    };
+
+    getDocumentClass("ChatMessage").applyRollMode(chatData, rollMode);
+    getDocumentClass("ChatMessage").create(chatData);
+  }
+
   async rollSpike(
     pilotId: string,
     pilotName: string | null,

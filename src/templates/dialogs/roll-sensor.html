@@ -1,0 +1,120 @@
+<form class="bg-gray-200 -m-2 p-2 pb-4 flex gap-1 justify-between">
+  <div class="flex flex-col">
+
+  <div class="flex flexrow gap-2">
+
+    <div class="flex flex-col">
+      <label for="commId">{{localize 'swnr.sheet.ship.station.comms'}}:</label>
+      <select name="commId"
+        class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        {{#select commId}}
+        {{#each crewArray }}
+        <option value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+        {{/select}}
+      </select>
+    </div>
+
+
+
+    <div class="flex flex-col">
+      <label for="skill">{{localize 'swnr.sheet.skill'}}: </label>
+      <select name="skill"
+        class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
+        {{#each comm.itemTypes.skill }}
+        <option value="{{this.name}}" 
+           {{#if (eq this.name ../defaultSkill1)}} selected {{/if}}
+           {{#if (eq this.name ../defaultSkill2)}} selected {{/if}}
+        >{{this.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+
+    <div class="flex flex-col">
+      {{! dice }}
+      <label for="">{{localize 'swnr.chat.dicepool'}}: </label>
+      <select name="dicepool"
+        class="w-16 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        <option value="2d6">2D6</option>
+        <option value="3d6kh2">3D6</option>
+        <option value="4d6kh2">4D6</option>
+      </select>
+    </div>
+
+    <div class="flex flex-col">
+      {{! stat}}
+      <label for="stat">{{localize 'swnr.sheet.stats'}}: </label>
+      <select name="stat"
+        class="w-32 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        {{#select defaultStat}}
+        {{#each comm.data.data.stats as |box name |}}
+        <option value="{{name}}">{{localize (concat "swnr.stat.long." name)}}</option>
+        {{/each}}
+        {{/select}}
+      </select>
+    </div>
+
+    <div class="flex flex-col">
+      <label for="observerModifier">Observer Modifier: </label>
+      <input name="observerModifier" type="number" step="1" value="0"
+        class="w-10 text-center px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md" />
+    </div>
+
+    <div class="flex flex-col">
+      <label for="targetModifier">Target Modifier: </label>
+      <input name="targetModifier" type="number" step="1" value="0"
+        class="w-10 text-center px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md" />
+    </div>
+
+    <div class="flex flex-col">
+      <label for="rollingAs">Rolling As (manually add NPC mod to opposing modifier): </label>
+      <select name="rollingAs"
+        class="w-64 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        <option value="observer">Observer (with Roll for Target)</option>
+        <option value="target">Target (with Roll for Observed)</option>
+        <option value="single">Single Roll (using Observer mod with no Opposed)</option>
+      </select>
+    </div>
+
+    <div class="flex flex-col">
+      <label for="rollType">Roll Type: </label>
+      <select name="rollType"
+        class="w-64 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        <option value="roll">Public</option>
+        <option value="gmroll">Private GM</option>
+        <option value="blindroll" selected>Blind GM Roll</option>
+      </select>
+
+    </div>
+
+  </div>
+  <div class="flex flex-row">
+    <div>
+      Observer is... Modifiers:
+      <ul>
+         <li>+0 Fighter</li> 
+         <li>+1 Frigate</li>
+         <li>+2 Cruiser</li>
+         <li>+3 Capital</li>
+         <li>+2 Minor Outpost</li>
+         <li>+4 Major Station</li>
+         <li>+5 Planet</li>
+         <li>-2 Passive Sensors</li>
+      </ul>
+    </div>
+    <div>
+      Target is... Modifiers:
+      <ul>
+         <li>+3 Fighter</li> 
+         <li>+2 Frigate</li>
+         <li>+1 Cruiser</li>
+         <li>+0 Capital</li>
+         <li>-2 Station</li>
+         <li>+2 Avoiding Planetary Population Centers</li>
+      </ul>
+    </div>
+  </div>
+  </div>
+</form>

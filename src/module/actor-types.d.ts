@@ -54,6 +54,7 @@ declare interface SWNRLivingTemplateBase {
     value: number;
     max: number;
   };
+  hitDie: string;
   baseAc: number; //computed-active effects needed
   ac: number;
   ab: number;
