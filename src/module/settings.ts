@@ -38,4 +38,13 @@ export const registerSettings = function (): void {
     type: Boolean,
     default: true,
   });
+
+  game.settings.register("swnr", "showTempAttrMod", {
+    name: "swnr.settings.showTempAttrMod",
+    hint: "swnr.settings.showTempAttrModHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+  });
 };

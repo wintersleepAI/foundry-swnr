@@ -2,10 +2,18 @@
   <table>
     <thead>
       <tr>
-        <th colspan=2 class="px-1 hidden lg:table-cell">
+        <th>
+        </th>
+        {{#if showTempAttrMod}}
+        <th class="px-1 hidden lg:table-cell">
+          {{localize 'swnr.sheet.temp'}}
+        </th>
+        {{/if}}
+        <th  class="px-1 hidden lg:table-cell">
           {{localize 'swnr.sheet.total'}}
         </th>
         <th class="px-1">{{localize 'swnr.sheet.mod'}}</th>
+
       </tr>
     </thead>
     {{#each actor.data.data.stats as |stat key|}}
@@ -15,9 +23,22 @@
           {{localize (concat 'swnr.stat.short.' key)}}
         </label>
       </td>
+      
+      {{#if ../showTempAttrMod}}
+      <td class="text-center hidden lg:table-cell">
+        <input
+          type="number"
+          class="w-6 px-1 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          step="1"
+          name="data.stats.{{key}}.temp"
+          value="{{stat.temp}}"
+          data-dtype="Number"
+        />
+      </td>
+      {{/if}}
       <td class="text-center hidden lg:table-cell">
         <div
-          class="w-8  px-1 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          class="w-6  px-1 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
         >
         {{stat.total}}
         </div>

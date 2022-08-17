@@ -55,26 +55,32 @@ Actor:
           base: 10
           bonus: 0
           boost: 0
+          temp: 0
         dex:
           base: 10
           bonus: 0
           boost: 0
+          temp: 0
         con:
           base: 10
           bonus: 0
           boost: 0
+          temp: 0
         int:
           base: 10
           bonus: 0
           boost: 0
+          temp: 0
         wis:
           base: 10
           bonus: 0
           boost: 0
+          temp: 0
         cha:
           base: 10
           bonus: 0
           boost: 0
+          temp: 0
   character:
     templates:
       - living

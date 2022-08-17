@@ -2,8 +2,8 @@
   <div class="flex gap-2">
     <!--stat col-->
     <div class="stats -text-xs">
-      <table>
-        <thead>
+      <table >
+        <thead class="item-titles">
           <tr>
             <th class="statRoll px-1 hover:text-shadow hover:text-shadow-blueGray-900 cursor-pointer transition-text-shadow">
               {{localize 'swnr.sheet.stats'}} <i class="fas fa-dice-d20"></i>
@@ -73,13 +73,14 @@
       </table>
     </div>
     <!-- other stats & foci-->
-    <div class="flex flex-col">
+    <div class="flex flex-col flex-grow">
      <!--other stats-->
-     <div class="flex flex-row">
-      <div class="perm-sys flex flex-col items-center">
-        <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+     <div class="flex flex-col gap-2">
+      <div class="perm-sys flex flexrow items-center">
+        <span><label>{{localize 'swnr.sheet.permanent-strain'}}</label>:</span>
+        <div class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 mx-auto rounded-md">
           <input
-            class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            class="w-8 text-right pl-1.5 py-1.5  bg-transparent placeholder-blue-800  placeholder-opacity-75 "
             type="number"
             min="0"
             name="data.systemStrain.permanent"
@@ -88,19 +89,18 @@
               class="inline-block text-left text-gray-700 cursor-not-allowed w-8"
               >{{actor.data.data.systemStrain.cyberware}}</span>
         </div>
-        <label>{{localize 'swnr.sheet.permanent-strain'}}</label>
       </div>
-      <div class="item armor text-center flex flex-col items-center">
+      <div class="armor flex flexrow items-center">
+          <span><label>{{localize 'swnr.armor.innateArmorClass'}}</label>:</span>
         <input
           type="number"
-          class="w-8 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          class="w-8 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           min="1"
           step="1"
           name="data.baseAc"
           value="{{actor.data.data.baseAc}}"
           data-dtype="Number"
         />
-        <label>{{localize 'swnr.armor.innateArmorClass'}}</label>
 
       </div>
      </div>

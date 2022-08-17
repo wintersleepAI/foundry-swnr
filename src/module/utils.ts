@@ -28,7 +28,7 @@ export function calculateStats(
   stats: Merge<SWNRCharacterBaseData, SWNRCharacterComputedData>["stats"]
 ): void {
   for (const stat of Object.values(stats)) {
-    stat.total = stat.base + stat.boost;
+    stat.total = stat.base + stat.boost + stat.temp;
     const v = (stat.total - 10.5) / 3.5;
     stat.mod =
       Math.min(2, Math.max(-2, Math[v < 0 ? "ceil" : "floor"](v))) + stat.bonus;

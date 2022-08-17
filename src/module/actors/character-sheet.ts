@@ -11,6 +11,7 @@ interface CharacterActorSheetData extends ActorSheet.Data {
   gear?: Item[];
   skills?: Item[];
   useHomebrewLuckSave: boolean;
+  showTempAttrMod: boolean;
   itemTypes: SWNRCharacterActor["itemTypes"];
 }
 // < SWNRCharacterData, SWNRCharacterActor>
@@ -593,6 +594,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     return {
       ...data,
       useHomebrewLuckSave: !!game.settings.get("swnr", "useHomebrewLuckSave"),
+      showTempAttrMod: true, //!!game.settings.get("swrn", "showTempAttrMod"),
       itemTypes: this.actor.itemTypes,
     };
   }

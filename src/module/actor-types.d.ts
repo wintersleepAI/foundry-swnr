@@ -43,6 +43,7 @@ declare interface SWNRStatBase {
   base: number;
   bonus: number;
   boost: number;
+  temp: number;
 }
 declare interface SWNRStatComputed {
   mod: number;
