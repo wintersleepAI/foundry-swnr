@@ -650,6 +650,7 @@
     locationStowed: Stowed
     locationReadied: Readied
     range: Range
+    favorite: Favorite
   weapon:
     shock:
       label: Shock Damage

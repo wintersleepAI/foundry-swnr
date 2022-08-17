@@ -7,6 +7,17 @@
       class="text-lg col-span-3 px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
       name="name" type="text" value="{{item.name}}" placeholder="{{localize 'swnr.sheet.name'}}" />
   </div>
+  <div class="pt-5">
+    {{localize 'swnr.item.favorite'}}:
+  </div>
+  <div class="pt-5">
+    <input
+      type="checkbox"
+      name="data.favorite"
+      class="pt-4 bg-gray-400"
+      {{checked data.data.favorite}}
+    />
+  </div>
 </div>
 <div class="border border-gray-600 rounded-md my-2 bg-gray-300">
   <h2 class="text-base p-1">{{localize 'swnr.sheet.description'}}</h2>

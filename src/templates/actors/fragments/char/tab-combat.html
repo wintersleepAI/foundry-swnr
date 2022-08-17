@@ -1,4 +1,18 @@
 <div class="tab combat" data-group="primary" data-tab="combat">
+  <div class="flex">
+    {{#each actor.data.data.favorites as |fav id|}}
+      <div class="item skill skillRoll w-34 flex flex-grow space-y-1 items-center" data-item-id="{{fav.id}}">
+        <a class="fav-button inline-flex gap-1">
+            <div class="flex-shrink">
+              {{zeroWidthBreaker fav.name}}
+            </div>
+            <div class="flex flex-col relative items-center pt-0.5">
+              <i class="fas fa-dice-d20"></i>
+            </div>
+        </a>
+      </div>
+    {{/each}}
+  </div>
   <div class="grid grid-cols-3">
     <div>
       {{>

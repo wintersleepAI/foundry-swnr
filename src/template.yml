@@ -266,6 +266,7 @@ Item:
       tl: 4
       quality: stock
       location: other
+      favorite: false
     description:
       description: ""
     baseVehicleItem:

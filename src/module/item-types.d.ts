@@ -20,6 +20,7 @@ declare type AllItemClasses = ItemsWithCustomClasses | BaseItemIfNeeded;
 
 declare interface SWNRDescData {
   description: string;
+  favorite: boolean;
 }
 
 declare interface SWNRBaseItemData {

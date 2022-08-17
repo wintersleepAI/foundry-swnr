@@ -9,6 +9,10 @@
   font-weight: bold;
 }
 
+@text-centered {
+  text-align: center;
+}
+
 body {
   font-family: "Gayathri";
 }
@@ -163,10 +167,18 @@ $shadowColor: black;
 }
 
 .sheet-button {
-  @apply flex rounded-lg px-1.5 py-1 border border-warmGray-900 bg-warmGray-700 
-    hover:bg-warmGray-500 hover:border-warmGray-700 text-warmGray-200
+  @apply flex rounded-lg px-1.5 py-1 border border-coolGray-900 bg-coolGray-500 
+    hover:bg-coolGray-300 hover:border-coolGray-700 text-coolGray-200
     hover:text-black transition-colors cursor-pointer;
 }
+
+.fav-button {
+  @apply flex rounded-lg px-1.5 py-1 border border-blueGray-900 bg-blueGray-700 
+    text-centered
+    hover:bg-blueGray-500 hover:border-blueGray-700 text-blueGray-200
+    hover:text-black transition-colors cursor-pointer;
+}
+
 
 .item-titles {
   @apply bg-warmGray-700 border border-warmGray-900 py-0.5 px-2 mt-2 font-bold text-white;

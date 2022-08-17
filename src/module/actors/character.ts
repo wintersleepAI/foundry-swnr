@@ -147,6 +147,11 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
       }
     });
     data["powers"] = powers;
+
+    const favs = <SWNRBaseItem[]>(
+      this.items.filter((i) => i.data.data["favorite"])
+    );
+    data["favorites"] = favs;
   }
 }
 
