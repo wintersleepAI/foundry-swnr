@@ -578,7 +578,6 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
   }
   async _onSkillRoll(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
-    console.log(event);
     const target = <HTMLElement>event.currentTarget;
     const dataset = target.dataset;
     const skillID = dataset.itemId as string;
