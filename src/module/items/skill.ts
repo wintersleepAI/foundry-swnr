@@ -75,13 +75,17 @@ export class SWNRSkill extends SWNRBaseItem<"skill"> {
         return;
       }
     }
-
+    const modifier =
+      this.data.data.remember && this.data.data.remember.modifier
+        ? this.data.data.remember.modifier
+        : 0;
     const title = `${game.i18n.localize("swnr.chat.skillCheck")}: ${skillName}`;
     const dialogData = {
       title: title,
       skillName: skillName,
       skill: skillData,
       data: this.actor.data,
+      modifier,
     };
     const html = await renderTemplate(template, dialogData);
     const _doRoll = async (html: HTMLFormElement) => {
