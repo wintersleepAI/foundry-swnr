@@ -152,7 +152,7 @@
         {{!-- <input
           class="min-w-full text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="data.factionGoalDesc" value="{{data.data.factionGoalDesc}}" /> --}}
-        <div class="bg-gray-300 border border-gray-700 rounded-md p-2 w-96">
+        <div class="bg-gray-400 border border-gray-700 rounded-md p-2 w-96">
           {{editor content=data.data.factionGoalDesc target="data.factionGoalDesc" button=true owner=owner
           editable=editable
           }}
@@ -169,7 +169,8 @@
     {{!-- Sheet Body --}}
 
     <div class="w-full">
-      <nav class="pc-sheet-tabs tabs py-1 flex flex-wrap gap-2 border-t border-b border-trueGray-500 border1 mb-1"
+      <nav 
+        class="pc-sheet-tabs tabs py-1 flex flex-wrap gap-2 border-t border-b border-l border-r border-blueGray-900 border0 mb-1 bg-blueGray-700 text-gray-100"
         data-group="primary">
         <a class="item" data-tab="assets">
           {{localize 'swnr.sheet.faction.assets-tab'}}
@@ -209,7 +210,7 @@
           </div>
         </div>
         <div class="tab desc min-h-full" data-group="primary" data-tab="desc">
-          <div class="border border-gray-600 rounded-md my-2 bg-gray-300">
+          <div class="border border-gray-600 rounded-md my-2 bg-gray-400">
             <h2 class="text-base p-1">{{localize 'swnr.sheet.description'}}</h2>
             <div class="p-1 border-t border-black">
               {{!-- TODO: fix is for wrapping around text, because this is a little fixed --}}
