@@ -38,7 +38,7 @@
       {{/if}}
       <td class="text-center hidden lg:table-cell">
         <div
-          class="w-6  px-1 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          class="w-6  px-1 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md text-gray-700"
         >
         {{stat.total}}
         </div>
@@ -70,8 +70,8 @@
     </div>
   </div>
 
-  <div class="flex flex-row  gap-1"> <!--lg:flex-row-->
-    <div>
+  <div class="grid grid-cols-2"> <!--lg:flex-row-->
+    <div class="flex flex-col">
       <label for="data.effort.bonus">
         {{localize 'swnr.effort.bonus'}}:
       </label>
@@ -84,7 +84,8 @@
         data-dtype="Number"
       />
     </div>
-    <div>
+    <div class="flex flex-col">
+
       <label for="data.effort.current">
         {{localize 'swnr.effort.current'}}:
       </label>
@@ -99,10 +100,7 @@
         data-dtype="Number"
       />
     </div>
-  </div>
-  <div class="flex flex-row  gap-1"> <!--lg:flex-row-->
-
-    <div>
+    <div class="flex flex-col">
       <label for="data.effort.scene">
         {{localize 'swnr.effort.scene'}}:
       </label>
@@ -117,7 +115,7 @@
         data-dtype="Number"
       />
     </div>
-    <div>
+    <div class="flex flex-col">
       <label for="data.effort.day"
         >{{localize 'swnr.effort.day'}}:
       </label>
@@ -228,17 +226,6 @@
         value="{{actor.data.data.tweak.extraEffort.day}}"
         data-dtype="Number"
       />
-    </div>
-  </div>
-  <div class="flex gap-2 items-center">
-    <div>{{actor.data.data.tweak.extraEffort.value}}/{{actor.data.data.tweak.extraEffort.max}}</div>
-    <div
-      class="bg-purple-300 border border-purple-900 w-full rounded-full h-4 overflow-hidden"
-    >
-      <div
-        class="bg-purple-500 h-full rounded-full"
-        style="width: min(calc(100% * {{actor.data.data.tweak.extraEffort.value}}/{{actor.data.data.tweak.extraEffort.max}}));"
-      ></div>
     </div>
   </div>
 </div>

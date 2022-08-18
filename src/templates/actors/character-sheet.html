@@ -1,4 +1,4 @@
-<form class="{{cssClass}} -m-2 p-2 bg-gray-200">
+<form class="{{cssClass}} -m-2 p-2 bg-gray-500">
   {{>
   "systems/swnr/templates/actors/fragments/char/header.html"
   actor=actor
@@ -13,7 +13,8 @@
 
     <div class="w-full">
       <nav
-        class="pc-sheet-tabs tabs py-1 flex flex-wrap gap-2 border-t border-b border-trueGray-500 border1 mb-1"
+        {{!-- class="pc-sheet-tabs tabs py-1 flex flex-wrap gap-2 border-t border-b border-bgGray-900 border1 mb-1" --}}
+        class="pc-sheet-tabs tabs py-1 flex flex-wrap gap-2 border-t border-b border-l border-r border-blueGray-900 border0 mb-1 bg-blueGray-700 text-gray-100"
         data-group="primary"
       >
 
