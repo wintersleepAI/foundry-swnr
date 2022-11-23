@@ -322,7 +322,14 @@
       </ul>
     </div>
     <div class="flex flex-col flex-grow gap-1">
-      <h3 class="text-lg">{{localize 'swnr.npc.abilities'}}</h3>
+      <h3 class="text-lg">
+        {{localize 'swnr.npc.abilities'}}
+
+        <a class="item-control item-create text-gray-800 hover:text-green-400 transition-colors"
+            title="{{localize 'swnr.sheet.add-item'}}" data-item-type="power"  data-item-name="Ability">
+            <i class="fas fa-plus"></i>
+        </a> 
+      </h3>
       <ul class="flex flex-col gap-0.5">
         {{#each abilities}} {{> (concat
         "systems/swnr/templates/actors/fragments/" (concat this.type '.html'))
@@ -330,7 +337,13 @@
       </ul>
     </div>
     <div class="flex flex-col flex-grow gap-1">
-      <h3 class="text-lg">{{localize 'swnr.npc.equipment'}}</h3>
+      <h3 class="text-lg">
+        {{localize 'swnr.npc.equipment'}}
+        <a class="item-control item-create text-gray-800 hover:text-green-400 transition-colors"
+            title="{{localize 'swnr.sheet.add-item'}}" data-item-type="weapon"  data-item-name="Weapon">
+            <i class="fas fa-plus"></i>
+        </a> 
+      </h3>
       <ul class="flex flex-col gap-0.5">
         {{#each equipment}} {{>
         "systems/swnr/templates/actors/fragments/item.html" item=this
