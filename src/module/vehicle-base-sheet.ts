@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { SWNRBaseItem } from "./base-item";
 import { SWNRShipActor } from "./actors/ship";
 import { SWNRMechActor } from "./actors/mech";
