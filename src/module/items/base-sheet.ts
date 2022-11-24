@@ -40,17 +40,15 @@ export class BaseSheet extends ItemSheet<DocumentSheet.Options, BaseSheetData> {
     options = {} as TextEditor.Options,
     initialContent = ""
   ): void {
-    const editor = this.editors[name];
-    if (!editor) throw new Error(`${name} is not a registered editor name!`);
-    options = foundry.utils.mergeObject(editor.options, options);
-    options.height = Math.max(options.height, options.target.offsetHeight, 100);
-    TextEditor.create(options, initialContent || editor.initial).then((mce) => {
-      editor.mce = mce;
-      editor.changed = false;
-      editor.active = true;
-      mce.focus();
-      mce.on("change", () => (editor.changed = true));
-    });
+    options.relativeLinks = true;
+    options.plugins = {
+      menu: ProseMirror.ProseMirrorMenu.build(ProseMirror.defaultSchema, {
+        compact: true,
+        destroyOnSave: true,
+        onSave: () => this.saveEditor(name, {remove: true})
+      })
+    };
+    return super.activateEditor(name, options, initialContent);
   }
   /**
    * @override
@@ -60,9 +58,19 @@ export class BaseSheet extends ItemSheet<DocumentSheet.Options, BaseSheetData> {
   }
 
   async getData(): Promise<BaseSheetData> {
-    let data = super.getData();
+    let data = await super.getData();
     if (data instanceof Promise) data = await data;
     data.actor = this.actor;
+    let desc = this.item.data.data["description"] ?  this.item.data.data["description"] : "";
+    foundry.utils.mergeObject(data, {
+          // Enrich HTML description
+          descriptionHTML: await TextEditor.enrichHTML(desc, {
+            secrets: this.item.isOwner,
+            async: true,
+            relativeTo: this.item
+          }),
+        }
+    );
     return data;
   }
 }

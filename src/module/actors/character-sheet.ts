@@ -590,6 +590,15 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
   async getData(): Promise<CharacterActorSheetData> {
     let data = super.getData();
     if (data instanceof Promise) data = await data;
+    let bio = this.actor.data.data.biography;
+    foundry.utils.mergeObject(data, {
+          // Enrich HTML description
+          bioHTML: await TextEditor.enrichHTML(bio, {
+            secrets: this.actor.isOwner,
+            relativeTo: this.actor
+          }),
+        }
+    );
     return {
       ...data,
       useHomebrewLuckSave: !!game.settings.get("swnr", "useHomebrewLuckSave"),
