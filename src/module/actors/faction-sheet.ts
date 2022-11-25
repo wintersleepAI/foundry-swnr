@@ -69,6 +69,14 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
     if (data instanceof Promise) data = await data;
     return mergeObject(data, {
       itemTypes: this.actor.itemTypes,
+      factionGoalDescHTML: await TextEditor.enrichHTML(this.actor.data.data.factionGoalDesc, {
+        secrets: this.actor.isOwner,
+        relativeTo: this.actor
+      }),
+      descriptionHTML: await TextEditor.enrichHTML(this.actor.data.data.description, {
+        secrets: this.actor.isOwner,
+        relativeTo: this.actor
+      }),
     });
   }
 

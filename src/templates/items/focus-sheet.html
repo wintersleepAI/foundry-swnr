@@ -12,15 +12,30 @@
 
     <h3 class="text-base p-1">{{localize 'swnr.foci.level1'}}</h3>
     <div class="p-1 border-t border-black">
-      {{editor content=data.data.level1 target="data.level1" button=true owner=owner
-      editable=editable }}
+      <!-- prettier-ignore  -->
+      <textarea
+        name="data.level1"
+        class=" px-1 bg-transparent  placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        id=""
+        cols="30"
+        rows="10"
+        placeholder="Level 1"
+      >{{data.data.level1}}</textarea>
+
     </div>
   </div>
   <div class="border border-black rounded-md bg-gray-300">
     <h3 class="text-base p-1">{{localize 'swnr.foci.level2'}}</h3>
     <div class="p-1 border-t border-black">
-      {{editor content=data.data.level2 target="data.level2" button=true owner=owner
-      editable=editable }}
+      <!-- prettier-ignore  -->
+      <textarea
+        name="data.level2"
+        class=" px-1 bg-transparent placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        id=""
+        cols="30"
+        rows="10"
+        placeholder="Level 2"
+      >{{data.data.level2}}</textarea>
     </div>
   </div>
 </form>

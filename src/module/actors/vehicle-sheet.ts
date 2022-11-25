@@ -52,6 +52,14 @@ export class VehicleActorSheet extends VehicleBaseActorSheet<VehicleActorSheetDa
     return mergeObject(data, {
       itemTypes: this.actor.itemTypes,
       crewArray: crewArray,
+      descriptionHTML: await TextEditor.enrichHTML(this.actor.data.data.description, {
+        secrets: this.actor.isOwner,
+        relativeTo: this.actor
+      }),
+      modsHTML: await TextEditor.enrichHTML(this.actor.data.data.mods, {
+        secrets: this.actor.isOwner,
+        relativeTo: this.actor
+      }),
     });
   }
 

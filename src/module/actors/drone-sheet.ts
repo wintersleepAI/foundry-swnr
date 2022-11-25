@@ -20,7 +20,7 @@ export class DroneActorSheet extends VehicleBaseActorSheet<DroneActorSheetData> 
     return mergeObject(super.defaultOptions, {
       classes: ["swnr", "sheet", "actor", "drone"],
       template: "systems/swnr/templates/actors/drone-sheet.html",
-      width: 800,
+      width: 1000,
       height: 600,
     });
   }
@@ -45,6 +45,14 @@ export class DroneActorSheet extends VehicleBaseActorSheet<DroneActorSheetData> 
     return mergeObject(data, {
       itemTypes: this.actor.itemTypes,
       pilot: pilot,
+      descriptionHTML: await TextEditor.enrichHTML(this.actor.data.data.description, {
+        secrets: this.actor.isOwner,
+        relativeTo: this.actor
+      }),
+      modsHTML: await TextEditor.enrichHTML(this.actor.data.data.mods, {
+        secrets: this.actor.isOwner,
+        relativeTo: this.actor
+      }),
     });
   }
 
