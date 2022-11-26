@@ -33,6 +33,7 @@ Actor:
         max: 10
       baseAc: 10
       hitDie: d6
+      speed: 10
       ab: 0
       systemStrain:
         value: 0
@@ -127,7 +128,6 @@ Actor:
       number: 1
     hitDice: 0
     armorType: "street"
-    speed: 10
     moralScore: 6
     saves: 15
     effort:
