@@ -159,18 +159,22 @@ export class VehicleBaseActorSheet<
 
 Hooks.on("dropActorSheetData", (actor: Actor, actorSheet: ActorSheet, data) => {
   if (data.type == "Actor") {
+    // the new format for data is {type; uuid}
+    // uuid is in the type.uuid format
+    // the following line returns the actor id in the format addCrew expects
+    const payload = data["uuid"].split(".", 2)[1];
     if (actor.type == "ship") {
       const shipActor = (actor as unknown) as SWNRShipActor;
-      shipActor.addCrew(data["id"]);
+      shipActor.addCrew(payload);
     } else if (actor.type == "mech") {
       const mechActor = (actor as unknown) as SWNRMechActor;
-      mechActor.addCrew(data["id"]);
+      mechActor.addCrew(payload);
     } else if (actor.type == "drone") {
       const droneActor = (actor as unknown) as SWNRDroneActor;
-      droneActor.addCrew(data["id"]);
+      droneActor.addCrew(payload);
     } else if (actor.type == "vehicle") {
       const vActor = (actor as unknown) as SWNRVehicleActor;
-      vActor.addCrew(data["id"]);
+      vActor.addCrew(payload);
     }
   }
 });
