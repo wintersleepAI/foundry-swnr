@@ -36,19 +36,24 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
   ): void {
     super._onCreate(data, options, userId);
     if (this.data["items"]["length"] || game.userId !== userId) return;
-    this.createEmbeddedDocuments("Item", [
-      {
-        name: game.i18n.localize("swnr.npc.unarmed"),
-        type: "weapon",
-        data: {
-          ammo: {
-            type: "none",
+    const unarmed = this.data.items.filter(
+      (i) => i.name == game.i18n.localize("swnr.npc.unarmed")
+    );
+    if (unarmed.length == 0) {
+      this.createEmbeddedDocuments("Item", [
+        {
+          name: game.i18n.localize("swnr.npc.unarmed"),
+          type: "weapon",
+          data: {
+            ammo: {
+              type: "none",
+            },
+            damage: "d2",
           },
-          damage: "d2",
+          img: "icons/equipment/hand/gauntlet-armored-leather-grey.webp",
         },
-        img: "icons/equipment/hand/gauntlet-armored-leather-grey.webp",
-      },
-    ]);
+      ]);
+    }
   }
 }
 
