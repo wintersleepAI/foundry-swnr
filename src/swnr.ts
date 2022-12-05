@@ -20,6 +20,7 @@ import registerHelpers from "./module/handlebar-helpers";
 import { createSWNRMacro, rollItemMacro } from "./module/macro-bar";
 import { SWNRCombatant } from "./module/combat";
 import { Sortable } from "sortablejs";
+import { chatListeners } from "./module/utils";
 
 /* ------------------------------------ */
 /* Initialize system					*/
@@ -89,3 +90,5 @@ Hooks.once("ready", function () {
   migrations();
   Hooks.on("hotbarDrop", (bar, data, slot) => createSWNRMacro(data, slot));
 });
+
+Hooks.on("renderChatLog", (app, html, data) => chatListeners(html));

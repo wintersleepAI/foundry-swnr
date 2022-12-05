@@ -4,6 +4,16 @@ import {
 } from "./actor-types";
 import { SWNRCharacterActor } from "./actors/character";
 
+export function chatListeners(html: JQuery) {
+  html.on("click", ".card-buttons button", _onChatCardAction.bind(this));
+  //html.on("click", ".item-name", this._onChatCardToggleContent.bind(this));
+}
+
+export async function _onChatCardAction(event: JQuery.ClickEvent): Promise<void> {
+  console.log("helloe");
+}
+
+
 export function getDefaultImage(itemType: string): string | null {
   const icon_path = "systems/swnr/assets/icons/game-icons.net/item-icons";
   const imgMap = {
