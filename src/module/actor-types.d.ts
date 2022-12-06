@@ -68,6 +68,7 @@ declare interface SWNRLivingTemplateBase {
     scene: number;
     day: number;
   };
+  speed: number;
 }
 
 declare interface SWNRVehicleTemplateBase {
@@ -399,7 +400,6 @@ declare interface SWNRNPCData extends SWNRLivingTemplateBase {
   };
   hitDice: number;
   saves: number;
-  speed: number;
   moralScore: number;
   reaction:
     | "unknown"
