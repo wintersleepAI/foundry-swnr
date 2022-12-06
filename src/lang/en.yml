@@ -658,8 +658,8 @@
   weapon:
     shock:
       label: Shock Damage
-      damage: Damage
       ac: AC
+    damage: Damage
     damageFormula: Damage Formula
     attackBonus: Attack Bonus
     ammo: Ammo

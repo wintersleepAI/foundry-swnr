@@ -1,12 +1,12 @@
 <div>
   <h3 title="{{ weapon.data.data.description }}">{{ weapon.name }}</h3>
 
-  <span title="{{ diceTooltip.hitExplain }}">{{{ diceTooltip.hit }}}</span>
-  <span>{{localize 'swnr.weapon.shock.damage'}}:</span>
-  <span title="{{ diceTooltip.damageExplain }}">{{{ diceTooltip.damage }}}</span>
+  <span title="{{ diceTooltip.hitExplain }}" class="roll roll-hit">{{{ diceTooltip.hit }}}</span>
+  <span>{{localize 'swnr.weapon.damage'}}:</span>
+  <span title="{{ diceTooltip.damageExplain }}" class="roll roll-damage">{{{ diceTooltip.damage }}}</span>
   {{#if (ne shock_content null)}}
    {{ shock_content }}
-   {{{ shock_roll }}}
+   <span class="roll roll-shock">{{{ shock_roll }}}</span>
   {{/if}}
   {{#if (ne weapon.data.data.ammo.type 'none')}}
     {{#if (ne weapon.data.data.ammo.type 'infinite')}}
