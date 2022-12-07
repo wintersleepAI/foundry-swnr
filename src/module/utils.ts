@@ -3,16 +3,34 @@ import {
   SWNRCharacterComputedData,
 } from "./actor-types";
 import { SWNRCharacterActor } from "./actors/character";
+import { SWNRNPCActor } from "./actors/npc";
 
 export function chatListeners(html: JQuery) {
   html.on("click", ".card-buttons button", _onChatCardAction.bind(this));
   //html.on("click", ".item-name", this._onChatCardToggleContent.bind(this));
 }
 
-export async function _onChatCardAction(event: JQuery.ClickEvent): Promise<void> {
-  console.log("helloe");
+export function _findCharTargets(): (SWNRCharacterActor | SWNRNPCActor)[] {
+  const chars: (SWNRCharacterActor | SWNRNPCActor)[] = [];
+  canvas?.tokens?.controlled.forEach((i) => {
+    if (i.actor?.type == "character" || i.actor?.type == "npc") {
+      chars.push(i.actor);
+    }
+  });
+  if (
+    game.user?.character?.type == "character" ||
+    game.user?.character?.type == "npc"
+  ) {
+    chars.push(game.user.character);
+  }
+  return chars;
 }
 
+export async function _onChatCardAction(
+  event: JQuery.ClickEvent
+): Promise<void> {
+  console.log(_findCharTargets());
+}
 
 export function getDefaultImage(itemType: string): string | null {
   const icon_path = "systems/swnr/assets/icons/game-icons.net/item-icons";
