@@ -29,7 +29,31 @@ export function _findCharTargets(): (SWNRCharacterActor | SWNRNPCActor)[] {
 export async function _onChatCardAction(
   event: JQuery.ClickEvent
 ): Promise<void> {
-  console.log(_findCharTargets());
+  event.preventDefault();
+
+  // Extract card data
+  const button = event.currentTarget;
+  //button.disabled = true;
+  const card = button.closest(".chat-card");
+  const messageId = card.closest(".message").dataset.messageId;
+  const message = game.messages?.get(messageId);
+  const action = button.dataset.action;
+
+  // Validate permission to proceed with the roll
+  const targets = _findCharTargets();
+  if (action === "save") {
+    if (!targets.length) {
+      ui.notifications?.warn(
+        `You must have one or more controlled Tokens in order to use this option.`
+      );
+      //return (button.disabled = false);
+    }
+    for (const t of targets) {
+      await t.rollSave(button.dataset.save, { event });
+    }
+  }
+  
+  
 }
 
 export function getDefaultImage(itemType: string): string | null {
