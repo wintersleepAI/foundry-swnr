@@ -227,6 +227,28 @@
       />
         <div>{{localize 'swnr.weapon.skillAddShockDamage'}}</div>
       </label>
+
+
+      <label class="flex items-center gap-1">
+        <div>{{localize 'swnr.sheet.saves.save'}}:</div>
+
+        <select
+          class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+          name="data.save"
+        >
+          {{#select data.data.save}}
+          <option value="">-</option>
+          <option value="physical">{{localize 'swnr.sheet.saves.physical'}}</option>
+          <option value="mental">{{localize 'swnr.sheet.saves.mental'}}</option>
+          <option value="evasion">{{localize 'swnr.sheet.saves.evasion'}}</option>
+          {{#if useHomebrewLuckSave}}
+            <option value="luck">{{localize 'swnr.sheet.saves.luck'}}</option>
+          {{/if}}
+          {{/select}}
+        </select>  
+      </label>
+
+      
     </div>
   </div>
   <div class="grid grid-cols-1">

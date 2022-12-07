@@ -325,6 +325,7 @@ Item:
       max: 2
     damage: d4
     quantity: 1
+    save: none
   power:
     templates:
       - description

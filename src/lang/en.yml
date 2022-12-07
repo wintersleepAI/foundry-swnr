@@ -331,6 +331,7 @@
     temp: Temp
     mod: Mod
     saves:
+      save: Save
       luck: Luck
       physical: Physical
       mental: Mental

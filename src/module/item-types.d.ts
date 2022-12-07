@@ -94,6 +94,7 @@ interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
     modifier: number;
   };
   quantity: number;
+  save: string;
 }
 
 declare interface SWNRShipWeaponData

@@ -19,4 +19,13 @@
   {{#if weapon.data.data.qualities}}
   <div>{{localize 'swnr.sheet.ship.qualities'}}: {{ weapon.data.data.qualities }}</div>
   {{/if}}
+
+
+  {{#if weapon.data.data.save}}
+  <div class="card-buttons">
+      <button data-action="save" data-save="{{weapon.data.data.save}}">
+          Save {{weapon.data.data.save}}
+      </button>
+  </div>
+  {{/if}}
 </div>
