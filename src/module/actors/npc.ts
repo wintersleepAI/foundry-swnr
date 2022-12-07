@@ -29,6 +29,19 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
     }
   }
 
+  async rollSave(save: string): Promise<void> {
+    const roll = new Roll("1d20");
+    await roll.roll({ async: true });
+    const flavor = game.i18n.format(
+      parseInt(roll.result) >= this.data.data.saves
+        ? game.i18n.localize("swnr.npc.saving.success")
+        : game.i18n.localize("swnr.npc.saving.failure"),
+      { actor: this.name, target: this.data.data.saves }
+    );
+    roll.toMessage({ flavor, speaker: { actor: this.id } });
+  }
+
+
   _onCreate(
     data: Parameters<SWNRBaseActor["_onCreate"]>[0],
     options: Parameters<SWNRBaseActor["_onCreate"]>[1],

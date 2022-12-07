@@ -176,17 +176,7 @@ export class NPCActorSheet extends BaseActorSheet<NPCActorSheetData> {
   async _onSavingThrow(event: JQuery.ClickEvent): Promise<void> {
     event.stopPropagation();
     event.preventDefault();
-
-    const roll = new Roll("1d20");
-    await roll.roll({ async: true });
-    const flavor = game.i18n.format(
-      parseInt(roll.result) >= this.actor.data.data.saves
-        ? game.i18n.localize("swnr.npc.saving.success")
-        : game.i18n.localize("swnr.npc.saving.failure"),
-      { actor: this.actor.name }
-    );
-
-    roll.toMessage({ flavor, speaker: { actor: this.actor._id } });
+    this.actor.rollSave("");
   }
 
   async _onSkill(event: JQuery.ClickEvent): Promise<void> {

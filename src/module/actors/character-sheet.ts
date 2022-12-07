@@ -246,91 +246,12 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
   }
   async _onSaveThrow(
     event: JQuery.ClickEvent
-  ): Promise<Application | undefined> {
+  ): Promise<void> {
     event.preventDefault();
     const e = <HTMLDivElement>event.currentTarget;
     const save = e.dataset.saveType;
     if (!save) return;
-    const target = <number>this.actor.data.data.save[save];
-    const template = "systems/swnr/templates/dialogs/roll-save.html";
-    const title = game.i18n.format("swnr.titles.savingThrow", {
-      throwType: game.i18n.localize("swnr.sheet.saves." + save),
-    });
-    const dialogData = {};
-    const html = await renderTemplate(template, dialogData);
-    const _doRoll = async (html: HTMLFormElement) => {
-      const rollMode = game.settings.get("core", "rollMode");
-      const form = <HTMLFormElement>html[0].querySelector("form");
-      const modString = (<HTMLInputElement>(
-        form.querySelector('[name="modifier"]')
-      )).value;
-      const modifier = parseInt(modString);
-      if (isNaN(modifier)) {
-        ui.notifications?.error(`Error, modifier is not a number ${modString}`);
-        return;
-      }
-      // old approach const formula = `1d20cs>=(@target - @modifier)`;
-      const formula = `1d20`;
-      const roll = new Roll(formula, {
-        modifier,
-        target: target,
-      });
-      await roll.roll({ async: true });
-      const success = roll.total ? roll.total >= target - modifier : false;
-      const save_text = game.i18n.format(
-        success
-          ? game.i18n.localize("swnr.npc.saving.success")
-          : game.i18n.localize("swnr.npc.saving.failure"),
-        { actor: this.actor.name, target: target - modifier }
-      );
-      const chatTemplate = "systems/swnr/templates/chat/save-throw.html";
-      const chatDialogData = {
-        saveRoll: await roll.render(),
-        title,
-        save_text,
-        success,
-      };
-      const chatContent = await renderTemplate(chatTemplate, chatDialogData);
-      const chatData = {
-        speaker: ChatMessage.getSpeaker(),
-        roll: JSON.stringify(roll),
-        content: chatContent,
-        type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-      };
-      getDocumentClass("ChatMessage").applyRollMode(chatData, rollMode);
-      getDocumentClass("ChatMessage").create(chatData);
-      // roll.toMessage(
-      //   {
-      //     speaker: ChatMessage.getSpeaker(),
-      //     flavor: title,
-      //   },
-      //   { rollMode }
-      // );
-      // return roll;
-    };
-    this.popUpDialog?.close();
-    this.popUpDialog = new ValidatedDialog(
-      {
-        title: title,
-        content: html,
-        default: "roll",
-        buttons: {
-          roll: {
-            label: game.i18n.localize("swnr.chat.roll"),
-            callback: _doRoll,
-          },
-        },
-      },
-      {
-        failCallback: () => {
-          return;
-        },
-        classes: ["swnr"],
-      }
-    );
-    const s = this.popUpDialog.render(true);
-    if (s instanceof Promise) await s;
-    return this.popUpDialog;
+    this.actor.rollSave(save);
   }
   async _onStatsRoll(event: JQuery.ClickEvent): Promise<Application> {
     event.preventDefault();
