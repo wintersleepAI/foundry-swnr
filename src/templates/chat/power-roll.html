@@ -1,0 +1,30 @@
+<div class="chat-card">
+  <h3 title="{{ power.data.data.description }}">{{ power.name }}</h3>
+
+
+
+  {{#if power.data.data.range}}
+      <div >
+        {{localize 'swnr.sheet.powers.range'}}: {{ power.data.data.range }}
+      </div>
+  {{/if}}
+
+  {{#if power.data.data.duration}}
+      <div >
+        {{localize 'swnr.sheet.powers.duration'}}: {{ power.data.data.duration }}
+      </div>
+  {{/if}}
+
+  {{#if power.data.data.roll}}
+    <span>{{localize 'swnr.sheet.powers.roll'}}:</span>
+    <span class="roll roll-damage">{{{ powerRoll }}}</span>
+  {{/if}}
+
+  {{#if power.data.data.save}}
+  <div class="card-buttons">
+      <button data-action="save" data-save="{{power.data.data.save}}">
+          Save {{power.data.data.save}}
+      </button>
+  </div>
+  {{/if}}
+</div>
