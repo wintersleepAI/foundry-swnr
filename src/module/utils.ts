@@ -5,9 +5,14 @@ import {
 import { SWNRCharacterActor } from "./actors/character";
 import { SWNRNPCActor } from "./actors/npc";
 
-export function chatListeners(html: JQuery) {
+export function chatListeners(message: MessageEvent, html: JQuery): void {
   html.on("click", ".card-buttons button", _onChatCardAction.bind(this));
+  html.find(".damage-roll").each((_) => _addButton(this));
   //html.on("click", ".item-name", this._onChatCardToggleContent.bind(this));
+}
+
+export function _addButton(html: JQuery): void {
+  console.log(html);
 }
 
 export function _findCharTargets(): (SWNRCharacterActor | SWNRNPCActor)[] {

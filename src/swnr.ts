@@ -91,4 +91,6 @@ Hooks.once("ready", function () {
   Hooks.on("hotbarDrop", (bar, data, slot) => createSWNRMacro(data, slot));
 });
 
-Hooks.on("renderChatLog", (app, html, data) => chatListeners(html));
+Hooks.on("renderChatMessage", (message, html, _data) =>
+  chatListeners(message, html)
+);
