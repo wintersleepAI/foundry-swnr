@@ -244,9 +244,8 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     );
     return weapon.roll(event.shiftKey);
   }
-  async _onSaveThrow(
-    event: JQuery.ClickEvent
-  ): Promise<void> {
+
+  async _onSaveThrow(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     const e = <HTMLDivElement>event.currentTarget;
     const save = e.dataset.saveType;

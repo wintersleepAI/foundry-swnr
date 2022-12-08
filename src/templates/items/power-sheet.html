@@ -23,24 +23,59 @@
       />
     </div>
     <div>
-  <label for="">{{localize 'swnr.sheet.powers.roll'}}:</label>
---roll--
+    <label for="">{{localize 'swnr.sheet.powers.roll'}}:</label>
+			<input
+        type="text"
+        class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-opacity-75 rounded-md"
+        name="data.roll"
+        value="{{data.data.roll}}"
+      />
     </div>
     <div>
-  <label for="">{{localize 'swnr.sheet.powers.duration'}}:</label>
---duration--
+      <label for="">{{localize 'swnr.sheet.powers.duration'}}:</label>
+			<input
+        type="text"
+        class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-opacity-75 rounded-md"
+        name="data.duration"
+        value="{{data.data.duration}}"
+      />
     </div>
+  </div>
+  <div class="flex gap-1">
     <div>
-  <label for="">{{localize 'swnr.sheet.powers.save'}}:</label>
---save--
+      <label for="">{{localize 'swnr.sheet.powers.range'}}:</label>
+			<input
+        type="text"
+        class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-opacity-75 rounded-md"
+        name="data.range"
+        value="{{data.data.range}}"
+      />
     </div>
-    <div>
-  <label for="">{{localize 'swnr.sheet.powers.range'}}:</label>
---range--
+    <div class="flexcol">
+      <label for="">{{localize 'swnr.sheet.powers.save'}}:</label>
+        <select
+          class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+          name="data.save"
+        >
+          {{#select data.data.save}}
+          <option value="">-</option>
+          <option value="physical">{{localize 'swnr.sheet.saves.physical'}}</option>
+          <option value="mental">{{localize 'swnr.sheet.saves.mental'}}</option>
+          <option value="evasion">{{localize 'swnr.sheet.saves.evasion'}}</option>
+          {{#if useHomebrewLuckSave}}
+            <option value="luck">{{localize 'swnr.sheet.saves.luck'}}</option>
+          {{/if}}
+          {{/select}}
+        </select>
     </div>
-    <div>
-  <label for="">{{localize 'swnr.sheet.powers.prepared'}}:</label>
---prepared--
+    <div class="flex items-center">
+      <label for="">{{localize 'swnr.sheet.powers.prepared'}}: </label>
+			<input
+        type="checkbox"
+        class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-opacity-75 rounded-md"
+        name="data.prepared"
+        value="{{data.data.prepared}}"
+      />
     <div>
   </div>
 </form>
