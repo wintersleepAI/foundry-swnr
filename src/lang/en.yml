@@ -360,6 +360,12 @@
       stats: Stats
     xp: XP
     power: Power
+    powers:
+      roll: Roll
+      duration: Duration
+      save: Save
+      range: Range
+      prepared: Is Prepared?
     resources: Resources
     delete-item: Delete Item
     show-item: Show Item

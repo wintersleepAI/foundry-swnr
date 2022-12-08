@@ -160,6 +160,11 @@ declare interface SWNRArmorData extends SWNRBaseItemData {
 declare interface SWNRPowerData extends SWNRDescData {
   source: string;
   level: number;
+  roll: string;
+  duration: string;
+  save: string;
+  range: string;
+  prepared: boolean;
 }
 
 declare interface SWNRCyberware extends SWNRDescData {

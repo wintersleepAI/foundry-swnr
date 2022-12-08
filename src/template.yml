@@ -331,6 +331,10 @@ Item:
       - description
     source: ""
     level: 0
+    roll: ""
+    save: null
+    range: ""
+    prepared: true
   item:
     templates:
       - baseItem
