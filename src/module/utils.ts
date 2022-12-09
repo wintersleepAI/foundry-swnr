@@ -7,7 +7,11 @@ import { SWNRNPCActor } from "./actors/npc";
 
 export function chatListeners(message: MessageEvent, html: JQuery): void {
   html.on("click", ".card-buttons button", _onChatCardAction.bind(this));
-  html.find(".damage-roll").each((_) => _addButton(this));
+  console.log(html);
+  html.find(".roll-damage").map((_i, div) => {
+    console.log("map" , _i , this, div.constructor.name);
+    _addButton(this);
+  });
   //html.on("click", ".item-name", this._onChatCardToggleContent.bind(this));
 }
 

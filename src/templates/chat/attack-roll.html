@@ -6,7 +6,7 @@
   <span title="{{ diceTooltip.damageExplain }}" class="roll roll-damage">{{{ diceTooltip.damage }}}</span>
   {{#if (ne shock_content null)}}
    {{ shock_content }}
-   <span class="roll roll-shock">{{{ shock_roll }}}</span>
+   <span class="roll roll-shock roll-damage">{{{ shock_roll }}}</span>
   {{/if}}
   {{#if (ne weapon.data.data.ammo.type 'none')}}
     {{#if (ne weapon.data.data.ammo.type 'infinite')}}
