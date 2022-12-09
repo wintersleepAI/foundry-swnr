@@ -8,15 +8,56 @@ import { SWNRNPCActor } from "./actors/npc";
 export function chatListeners(message: MessageEvent, html: JQuery): void {
   html.on("click", ".card-buttons button", _onChatCardAction.bind(this));
   console.log(html);
-  html.find(".roll-damage").map((_i, div) => {
-    console.log("map" , _i , this, div.constructor.name);
-    _addButton(this);
+  html.find(".roll-damage").each((_i, div) => {
+    _addButton($(div));
   });
   //html.on("click", ".item-name", this._onChatCardToggleContent.bind(this));
 }
 
 export function _addButton(html: JQuery): void {
-  console.log(html);
+  let totalDiv = html.find(".dice-total"); 
+  const total = totalDiv.text();
+  let btnStyling = 'width: 22px; height:22px; font-size:10px;line-height:1px';
+
+  const fullDamageButton = $(`<button class="dice-total-fullDamage-btn" style="${btnStyling}"><i class="fas fa-user-minus" title="Click to apply full damage to selected token(s)."></i></button>`);
+  // const halfDamageButton = $(`<button class="dice-total-halfDamage-btn" style="${btnStyling}"><i class="fas fa-user-shield" title="Click to apply half damage to selected token(s)."></i></button>`);
+  // const doubleDamageButton = $(`<button class="dice-total-doubleDamage-btn" style="${btnStyling}"><i class="fas fa-user-injured" title="Click to apply double damage to selected token(s)."></i></button>`);
+  const fullHealingButton = $(`<button class="dice-total-fullHealing-btn" style="${btnStyling}"><i class="fas fa-user-plus" title="Click to apply full healing to selected token(s)."></i></button>`);
+
+  const btnContainer = $('<span class="dmgBtn-container" style="position:absolute; right:0; bottom:1px;"></span>');
+  btnContainer.append(fullDamageButton);
+  // btnContainer.append(halfDamageButton);
+  // btnContainer.append(doubleDamageButton);
+  btnContainer.append(fullHealingButton);
+  //console.log()
+
+  totalDiv.append(btnContainer);
+
+  // Handle button clicks
+  fullDamageButton.click(ev => {
+      ev.stopPropagation();
+      console.log("changing " + total);
+      //applyHealthDrop(total);
+      //CONFIG.Actor.entityClass.applyDamage(html, 1);
+  });
+  
+  // halfDamageButton.click(ev => {
+  //     ev.stopPropagation();
+  // applyHealthDrop(total*0.5);
+  // });
+
+  // doubleDamageButton.click(ev => {
+  //     ev.stopPropagation();
+  // applyHealthDrop(total*2);
+  // });
+
+  fullHealingButton.click(ev => {
+      ev.stopPropagation();
+      console.log("changing " + total);
+      
+      //applyHealthDrop(total*-1);
+  });
+
 }
 
 export function _findCharTargets(): (SWNRCharacterActor | SWNRNPCActor)[] {
