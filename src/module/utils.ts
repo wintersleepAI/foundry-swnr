@@ -15,16 +15,26 @@ export function chatListeners(message: MessageEvent, html: JQuery): void {
 }
 
 export function _addButton(html: JQuery): void {
-  let totalDiv = html.find(".dice-total"); 
-  const total = totalDiv.text();
-  let btnStyling = 'width: 22px; height:22px; font-size:10px;line-height:1px';
+  const totalDiv = html.find(".dice-total");
+  const total = parseInt(totalDiv.text());
+  if (isNaN(total)) {
+    console.log("Error in converting a string to a number " + totalDiv.text());
+    return;
+  }
+  const btnStyling = "width: 22px; height:22px; font-size:10px;line-height:1px";
 
-  const fullDamageButton = $(`<button class="dice-total-fullDamage-btn" style="${btnStyling}"><i class="fas fa-user-minus" title="Click to apply full damage to selected token(s)."></i></button>`);
+  const fullDamageButton = $(
+    `<button class="dice-total-fullDamage-btn" style="${btnStyling}"><i class="fas fa-user-minus" title="Click to apply full damage to selected token(s)."></i></button>`
+  );
   // const halfDamageButton = $(`<button class="dice-total-halfDamage-btn" style="${btnStyling}"><i class="fas fa-user-shield" title="Click to apply half damage to selected token(s)."></i></button>`);
   // const doubleDamageButton = $(`<button class="dice-total-doubleDamage-btn" style="${btnStyling}"><i class="fas fa-user-injured" title="Click to apply double damage to selected token(s)."></i></button>`);
-  const fullHealingButton = $(`<button class="dice-total-fullHealing-btn" style="${btnStyling}"><i class="fas fa-user-plus" title="Click to apply full healing to selected token(s)."></i></button>`);
+  const fullHealingButton = $(
+    `<button class="dice-total-fullHealing-btn" style="${btnStyling}"><i class="fas fa-user-plus" title="Click to apply full healing to selected token(s)."></i></button>`
+  );
 
-  const btnContainer = $('<span class="dmgBtn-container" style="position:absolute; right:0; bottom:1px;"></span>');
+  const btnContainer = $(
+    '<span class="dmgBtn-container" style="position:absolute; right:0; bottom:1px;"></span>'
+  );
   btnContainer.append(fullDamageButton);
   // btnContainer.append(halfDamageButton);
   // btnContainer.append(doubleDamageButton);
@@ -34,13 +44,15 @@ export function _addButton(html: JQuery): void {
   totalDiv.append(btnContainer);
 
   // Handle button clicks
-  fullDamageButton.click(ev => {
-      ev.stopPropagation();
-      console.log("changing " + total);
-      //applyHealthDrop(total);
-      //CONFIG.Actor.entityClass.applyDamage(html, 1);
+  fullDamageButton.click((ev) => {
+    ev.stopPropagation();
+    //https://foundryvtt.com/api/classes/client.InterfaceCanvasGroup.html#createScrollingText
+    //https://gitlab.com/mkahvi/fvtt-micro-modules/-/blob/master/pf1-floating-health/floating-health.mjs#L182-194
+    //console.log("changing " + total);
+    applyHealthDrop(total);
+    //CONFIG.Actor.entityClass.applyDamage(html, 1);
   });
-  
+
   // halfDamageButton.click(ev => {
   //     ev.stopPropagation();
   // applyHealthDrop(total*0.5);
@@ -51,13 +63,66 @@ export function _addButton(html: JQuery): void {
   // applyHealthDrop(total*2);
   // });
 
-  fullHealingButton.click(ev => {
-      ev.stopPropagation();
-      console.log("changing " + total);
-      
-      //applyHealthDrop(total*-1);
+  fullHealingButton.click((ev) => {
+    ev.stopPropagation();
+    applyHealthDrop(total * -1);
   });
+}
 
+export async function applyHealthDrop(total: number): Promise<void> {
+  const tokens = canvas?.tokens?.controlled;
+  if (!tokens || tokens.length == 0) {
+    ui.notifications?.error("Please select at least one token");
+    return;
+  }
+  console.log(
+    `Applying health drop ${total} to ${tokens.length} selected tokens`
+  );
+
+  for (const t of tokens) {
+    const actor = t.actor;
+    if (!actor) {
+      ui.notifications?.error("Error getting actor for token " + t.name);
+      continue;
+    }
+    let newHealth = actor.data.data.health.value - total;
+    if (newHealth < 0) {
+      newHealth = 0;
+    } else if (newHealth > actor.data.data.health.max) {
+      newHealth = actor.data.data.health.max;
+    }
+    //console.log(`Updating ${actor.name} health to ${newHealth}`);
+    actor.update({ "data.health.value": newHealth });
+    if (total == 0) continue; // Skip deltas of 0
+    const fillColor = total < 0 ? "0x00FF00" : "0xFF0000";
+    const floaterData = {
+      anchor: CONST.TEXT_ANCHOR_POINTS.CENTER,
+      direction:
+        total > 0
+          ? CONST.TEXT_ANCHOR_POINTS.BOTTOM
+          : CONST.TEXT_ANCHOR_POINTS.TOP,
+      // duration: 2000,
+      fontSize: 32,
+      fill: fillColor,
+      stroke: 0x000000,
+      strokeThickness: 4,
+      jitter: 0.3,
+    };
+
+    if (game?.release?.generation >= 10)
+      canvas?.interface?.createScrollingText(t.center, `${total*-1}`, floaterData);
+    // v10
+    else t.hud.createScrollingText(`${total*-1}`, floaterData); // v9
+
+    // setTimeout(() => {
+    //   if (
+    //     canvas.hud.token._displayState &&
+    //     canvas.hud.token._displayState !== 0
+    //   ) {
+    //     canvas.hud.token.render();
+    //   }
+    // }, 50);
+  }
 }
 
 export function _findCharTargets(): (SWNRCharacterActor | SWNRNPCActor)[] {
@@ -86,7 +151,7 @@ export async function _onChatCardAction(
   //button.disabled = true;
   const card = button.closest(".chat-card");
   const messageId = card.closest(".message").dataset.messageId;
-  const message = game.messages?.get(messageId);
+  //const message = game.messages?.get(messageId);
   const action = button.dataset.action;
 
   // Validate permission to proceed with the roll
@@ -102,8 +167,6 @@ export async function _onChatCardAction(
       await t.rollSave(button.dataset.save, { event });
     }
   }
-  
-  
 }
 
 export function getDefaultImage(itemType: string): string | null {
