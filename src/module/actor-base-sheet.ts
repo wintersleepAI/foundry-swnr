@@ -150,18 +150,20 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     const li = $(event.currentTarget).parents(".item");
     const item = this.actor.getEmbeddedDocument("Item", li.data("itemId"));
     if (!item) return;
-    const performDelete: boolean = await new Promise((resolve) => {
-      Dialog.confirm({
-        title: game.i18n.format("swnr.deleteTitle", { name: item.name }),
-        yes: () => resolve(true),
-        no: () => resolve(false),
-        content: game.i18n.format("swnr.deleteContent", {
-          name: item.name,
-          actor: this.actor.name,
-        }),
+    if (event.shiftKey == false) {
+      const performDelete: boolean = await new Promise((resolve) => {
+        Dialog.confirm({
+          title: game.i18n.format("swnr.deleteTitle", { name: item.name }),
+          yes: () => resolve(true),
+          no: () => resolve(false),
+          content: game.i18n.format("swnr.deleteContent", {
+            name: item.name,
+            actor: this.actor.name,
+          }),
+        });
       });
-    });
-    if (!performDelete) return;
+      if (!performDelete) return;
+    }
     li.slideUp(200, () => {
       requestAnimationFrame(() => {
         this.actor.deleteEmbeddedDocuments("Item", [li.data("itemId")]);

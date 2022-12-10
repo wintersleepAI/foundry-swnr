@@ -47,7 +47,9 @@ export function _addHealthButtons(html: JQuery): void {
   const fullDamageButton = $(
     `<button class="dice-total-fullDamage-btn chat-button-small"><i class="fas fa-user-minus" title="Click to apply full damage to selected token(s)."></i></button>`
   );
-  // const halfDamageButton = $(`<button class="dice-total-halfDamage-btn" style="${btnStyling}"><i class="fas fa-user-shield" title="Click to apply half damage to selected token(s)."></i></button>`);
+  const halfDamageButton = $(
+    `<button class="dice-total-halfDamage-btn chat-button-small"><i class="fas fa-user-shield" title="Click to apply half damage to selected token(s)."></i></button>`
+  );
   // const doubleDamageButton = $(`<button class="dice-total-doubleDamage-btn" style="${btnStyling}"><i class="fas fa-user-injured" title="Click to apply double damage to selected token(s)."></i></button>`);
   const fullHealingButton = $(
     `<button class="dice-total-fullHealing-btn chat-button-small"><i class="fas fa-user-plus" title="Click to apply full healing to selected token(s)."></i></button>`
@@ -57,7 +59,7 @@ export function _addHealthButtons(html: JQuery): void {
     '<span class="dmgBtn-container" style="position:absolute; right:0; bottom:1px;"></span>'
   );
   btnContainer.append(fullDamageButton);
-  // btnContainer.append(halfDamageButton);
+  btnContainer.append(halfDamageButton);
   // btnContainer.append(doubleDamageButton);
   btnContainer.append(fullHealingButton);
 
@@ -69,10 +71,10 @@ export function _addHealthButtons(html: JQuery): void {
     applyHealthDrop(total);
   });
 
-  // halfDamageButton.click(ev => {
-  //     ev.stopPropagation();
-  // applyHealthDrop(total*0.5);
-  // });
+  halfDamageButton.on("click", (ev) => {
+    ev.stopPropagation();
+    applyHealthDrop(Math.floor(total * 0.5));
+  });
 
   // doubleDamageButton.click(ev => {
   //     ev.stopPropagation();
