@@ -3,7 +3,6 @@ import { SWNRBaseItem } from "../base-item";
 import { SWNRBaseActor } from "../base-actor";
 import { ValidatedDialog } from "../ValidatedDialog";
 
-
 export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
   getRollData(): this["data"]["data"] {
     this.data._source.data;
@@ -214,7 +213,7 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
       // );
       // return roll;
     };
-    let popUpDialog = new ValidatedDialog(
+    const popUpDialog = new ValidatedDialog(
       {
         title: title,
         content: html,
@@ -235,7 +234,7 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
     );
     const s = popUpDialog.render(true);
     if (s instanceof Promise) await s;
-    return popUpDialog;
+    return;
   }
 }
 

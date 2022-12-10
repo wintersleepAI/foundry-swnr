@@ -5,7 +5,7 @@ import {
 import { SWNRCharacterActor } from "./actors/character";
 import { SWNRNPCActor } from "./actors/npc";
 
-export function chatListeners(message: MessageEvent, html: JQuery): void {
+export function chatListeners(message: ChatMessage, html: JQuery): void {
   html.on("click", ".card-buttons button", _onChatCardAction.bind(this));
   console.log(html);
   html.find(".roll-damage").each((_i, div) => {
