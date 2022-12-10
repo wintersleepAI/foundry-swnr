@@ -11,15 +11,15 @@
       </div>
       <div class="flex-grow grid grid-cols-1 lg:grid-cols-6 items-center gap-2">
         <input
-          class="text-2xl col-span-3 px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          class="text-2xl col-span-5 px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="name"
           type="text"
           value="{{actor.name}}"
           placeholder="{{localize 'swnr.sheet.name'}}"
         />
-        <h2 class="col-span-3 flex items-center gap-2">
+        <h2 class="col-span-1 flex items-center gap-2">
           <select
-            class="flex-grow w-full border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            class="flex-grow pl-2 w-full border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
             name="data.reaction"
           >
             {{#select actor.data.data.reaction}}
@@ -321,7 +321,7 @@
         type=actor.type}} {{/each}}
       </ul>
     </div>
-    <div class="flex flex-col flex-grow gap-1">
+    <div class="flex flex-col flex-grow gap-1 pr-8">
       <h3 class="text-lg">
         {{localize 'swnr.npc.abilities'}}
 
@@ -331,9 +331,9 @@
         </a> 
       </h3>
       <ul class="flex flex-col gap-0.5">
-        {{#each abilities}} {{> (concat
-        "systems/swnr/templates/actors/fragments/" (concat this.type '.html'))
-        item=this type=actor.type }} {{/each}}
+        {{>
+        "systems/swnr/templates/actors/fragments/item-table-short.html"
+        itemList=abilities }} 
       </ul>
     </div>
     <div class="flex flex-col flex-grow gap-1">
@@ -345,9 +345,10 @@
         </a> 
       </h3>
       <ul class="flex flex-col gap-0.5">
-        {{#each equipment}} {{>
-        "systems/swnr/templates/actors/fragments/item.html" item=this
-        type=actor.type }} {{/each}}
+        {{>
+        "systems/swnr/templates/actors/fragments/item-table-short.html"
+        itemList=equipment }} 
+
       </ul>
     </div>
   </div>
