@@ -21,7 +21,7 @@
 
           <!-- Ship / Hull class -->
           <select name="data.shipHullType"
-            class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+            class="pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
             {{#select actor.data.data.shipHullType}}
             <option value="strikeFighter">
               {{localize 'swnr.sheet.ship.shipHullType.strikeFighter'}}
@@ -48,7 +48,7 @@
         <!-- Ship /  class -->
         <div class="cargo flex flex-col justify-center items-center">
           <select name="data.shipClass"
-            class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+            class="pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
             {{#select actor.data.data.shipClass}}
             <option value="fighter">
               {{localize 'swnr.sheet.ship.shipClass.fighter'}}
@@ -305,7 +305,7 @@
                           </div>
                           <div>
                             <select name="data.roles.bridge"
-                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+                              class="pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
                               {{#select actor.data.data.roles.bridge}}
                               <option value=""></option>
                               {{#each crewArray as | crew id| }}
@@ -323,7 +323,7 @@
                           </div>
                           <div>
                             <select name="data.roles.captain"
-                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+                              class="pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
                               {{#select actor.data.data.roles.captain}}
                               <option value=""></option>
                               {{#each crewArray as | crew id| }}
@@ -341,7 +341,7 @@
                           </div>
                           <div>
                             <select name="data.roles.comms"
-                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+                              class="pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
                               {{#select actor.data.data.roles.comms}}
                               <option value=""></option>
                               {{#each crewArray as | crew id| }}
@@ -359,7 +359,7 @@
                           </div>
                           <div>
                             <select name="data.roles.engineering"
-                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+                              class="pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
                               {{#select actor.data.data.roles.engineering}}
                               <option value=""></option>
                               {{#each crewArray as | crew id| }}
@@ -377,7 +377,7 @@
                           </div>
                           <div>
                             <select name="data.roles.gunnery"
-                              class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+                              class="pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
                               {{#select actor.data.data.roles.gunnery}}
                               <option value=""></option>
                               {{#each crewArray as | crew id| }}
