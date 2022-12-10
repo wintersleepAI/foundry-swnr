@@ -7,29 +7,50 @@ import { SWNRNPCActor } from "./actors/npc";
 
 export function chatListeners(message: ChatMessage, html: JQuery): void {
   html.on("click", ".card-buttons button", _onChatCardAction.bind(this));
-  console.log(html);
   html.find(".roll-damage").each((_i, div) => {
-    _addButton($(div));
+    _addHealthButtons($(div));
   });
+  // html.find(".dice-roll").each((_i, div) => {
+  //   _addRerollButton($(div));
+  // });
   //html.on("click", ".item-name", this._onChatCardToggleContent.bind(this));
 }
 
-export function _addButton(html: JQuery): void {
+export function _addRerollButton(html: JQuery): void {
+  const totalDiv = html.find(".dice-total");
+
+  const total = parseInt(totalDiv.text());
+  if (isNaN(total)) {
+    console.log("Error in converting a string to a number " + totalDiv.text());
+    return;
+  }
+
+  const rerollButton = $(
+    `<button class="dice-total-fullDamage-btn chat-button-small"><i class="fas fa-rotate-right" title="Reroll"></i></button>`
+  );
+
+  const btnContainer = $(
+    '<span class="dmgBtn-container" style="position:absolute; right:0; bottom:1px;"></span>'
+  );
+  btnContainer.append(rerollButton);
+  totalDiv.append(btnContainer);
+}
+
+export function _addHealthButtons(html: JQuery): void {
   const totalDiv = html.find(".dice-total");
   const total = parseInt(totalDiv.text());
   if (isNaN(total)) {
     console.log("Error in converting a string to a number " + totalDiv.text());
     return;
   }
-  const btnStyling = "width: 22px; height:22px; font-size:10px;line-height:1px";
 
   const fullDamageButton = $(
-    `<button class="dice-total-fullDamage-btn" style="${btnStyling}"><i class="fas fa-user-minus" title="Click to apply full damage to selected token(s)."></i></button>`
+    `<button class="dice-total-fullDamage-btn chat-button-small"><i class="fas fa-user-minus" title="Click to apply full damage to selected token(s)."></i></button>`
   );
   // const halfDamageButton = $(`<button class="dice-total-halfDamage-btn" style="${btnStyling}"><i class="fas fa-user-shield" title="Click to apply half damage to selected token(s)."></i></button>`);
   // const doubleDamageButton = $(`<button class="dice-total-doubleDamage-btn" style="${btnStyling}"><i class="fas fa-user-injured" title="Click to apply double damage to selected token(s)."></i></button>`);
   const fullHealingButton = $(
-    `<button class="dice-total-fullHealing-btn" style="${btnStyling}"><i class="fas fa-user-plus" title="Click to apply full healing to selected token(s)."></i></button>`
+    `<button class="dice-total-fullHealing-btn chat-button-small"><i class="fas fa-user-plus" title="Click to apply full healing to selected token(s)."></i></button>`
   );
 
   const btnContainer = $(
@@ -39,18 +60,13 @@ export function _addButton(html: JQuery): void {
   // btnContainer.append(halfDamageButton);
   // btnContainer.append(doubleDamageButton);
   btnContainer.append(fullHealingButton);
-  //console.log()
 
   totalDiv.append(btnContainer);
 
   // Handle button clicks
-  fullDamageButton.click((ev) => {
+  fullDamageButton.on("click", (ev) => {
     ev.stopPropagation();
-    //https://foundryvtt.com/api/classes/client.InterfaceCanvasGroup.html#createScrollingText
-    //https://gitlab.com/mkahvi/fvtt-micro-modules/-/blob/master/pf1-floating-health/floating-health.mjs#L182-194
-    //console.log("changing " + total);
     applyHealthDrop(total);
-    //CONFIG.Actor.entityClass.applyDamage(html, 1);
   });
 
   // halfDamageButton.click(ev => {
@@ -63,21 +79,23 @@ export function _addButton(html: JQuery): void {
   // applyHealthDrop(total*2);
   // });
 
-  fullHealingButton.click((ev) => {
+  fullHealingButton.on("click", (ev) => {
     ev.stopPropagation();
     applyHealthDrop(total * -1);
   });
 }
 
 export async function applyHealthDrop(total: number): Promise<void> {
+  if (total == 0) return; // Skip changes of 0
+
   const tokens = canvas?.tokens?.controlled;
   if (!tokens || tokens.length == 0) {
     ui.notifications?.error("Please select at least one token");
     return;
   }
-  console.log(
-    `Applying health drop ${total} to ${tokens.length} selected tokens`
-  );
+  // console.log(
+  //   `Applying health drop ${total} to ${tokens.length} selected tokens`
+  // );
 
   for (const t of tokens) {
     const actor = t.actor;
@@ -93,7 +111,8 @@ export async function applyHealthDrop(total: number): Promise<void> {
     }
     //console.log(`Updating ${actor.name} health to ${newHealth}`);
     actor.update({ "data.health.value": newHealth });
-    if (total == 0) continue; // Skip deltas of 0
+    // Taken from Mana
+    //https://gitlab.com/mkahvi/fvtt-micro-modules/-/blob/master/pf1-floating-health/floating-health.mjs#L182-194
     const fillColor = total < 0 ? "0x00FF00" : "0xFF0000";
     const floaterData = {
       anchor: CONST.TEXT_ANCHOR_POINTS.CENTER,
@@ -110,18 +129,13 @@ export async function applyHealthDrop(total: number): Promise<void> {
     };
 
     if (game?.release?.generation >= 10)
-      canvas?.interface?.createScrollingText(t.center, `${total*-1}`, floaterData);
+      canvas?.interface?.createScrollingText(
+        t.center,
+        `${total * -1}`,
+        floaterData
+      );
     // v10
-    else t.hud.createScrollingText(`${total*-1}`, floaterData); // v9
-
-    // setTimeout(() => {
-    //   if (
-    //     canvas.hud.token._displayState &&
-    //     canvas.hud.token._displayState !== 0
-    //   ) {
-    //     canvas.hud.token.render();
-    //   }
-    // }, 50);
+    else t.hud.createScrollingText(`${total * -1}`, floaterData); // v9
   }
 }
 
@@ -141,6 +155,7 @@ export function _findCharTargets(): (SWNRCharacterActor | SWNRNPCActor)[] {
   return chars;
 }
 
+//Taken from WWN (which could have come from OSE)
 export async function _onChatCardAction(
   event: JQuery.ClickEvent
 ): Promise<void> {
@@ -150,7 +165,7 @@ export async function _onChatCardAction(
   const button = event.currentTarget;
   //button.disabled = true;
   const card = button.closest(".chat-card");
-  const messageId = card.closest(".message").dataset.messageId;
+  //const messageId = card.closest(".message").dataset.messageId;
   //const message = game.messages?.get(messageId);
   const action = button.dataset.action;
 
@@ -164,7 +179,7 @@ export async function _onChatCardAction(
       //return (button.disabled = false);
     }
     for (const t of targets) {
-      await t.rollSave(button.dataset.save, { event });
+      await t.rollSave(button.dataset.save);
     }
   }
 }
