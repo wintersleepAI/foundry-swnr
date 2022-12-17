@@ -393,6 +393,7 @@
     rollables: Rollables
     roll-skill: Roll Skill
     hit-dice: Hit Dice
+    hd: Hit Dice per level (without CON mod)
     command-points: Command Points
     npc-command-points: NPC Ship CP
     unspent-skill: Unspent Skill Points
@@ -720,7 +721,8 @@
         a customized name. You can delete these attributes 
         from the list.
     hp: 
-      text: Select the base dice per level you want to roll (with con bonus added).
+      title: Confirm rolling level hit dice for {actor}.
+      text: "Confirm rolling {level} level hit dice for {actor}. Each level HD (includes CON mod) is {formula}, where max means taking the higher of the roll or 1. To change the hitdie see the stats tab."
       revised: Revised Expert/Psychic d6
       revised-war: Revised Warrior/Partial Warrior d6+2
       codex-mage: Arcanist / Magister d6-1

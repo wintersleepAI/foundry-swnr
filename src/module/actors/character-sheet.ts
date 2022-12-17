@@ -405,33 +405,21 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     // currentLevel === 1 ? 0 : this.actor.getFlag("swnr", "lastHpLevel");
     const health = this.actor.data.data.health;
     const currentHp = health.max;
+    const hd = this.actor.data.data.hitDie;
     //todo: sort out health boosts from classes.
-    let boosts = 0 * currentLevel;
-    const constBonus = this.actor.data.data.stats.con.mod * currentLevel;
+    const constBonus = this.actor.data.data.stats.con.mod;
     //console.log(currentLevel, this.actor.data.data.stats.con, this.actor.data.data.stats.con.mod)
+    const perLevel =`max(${hd} + ${constBonus}, 1)`;
 
-    const _rollHP = async (hpBaseInput: string) => {
-      let baseRoll = "d6";
-      if (hpBaseInput == "revisedWarrior") {
-        baseRoll = "d6";
-        boosts = 2 * currentLevel;
-      } else if (hpBaseInput == "classicPsychic") {
-        baseRoll = "d4";
-      } else if (hpBaseInput == "classicWarrior") {
-        baseRoll = "d8";
-      } else if (hpBaseInput == "codexMage") {
-        baseRoll = "d6";
-        boosts = -1 * currentLevel;
-      } else {
-        baseRoll = "d6";
-      }
-      const formula = `${currentLevel}${baseRoll} + ${boosts} + ${constBonus}`;
+    const _rollHP = async () => {
+      const hitArray =  Array(currentLevel).fill(perLevel);
+      const formula = hitArray.join("+")
 
       let msg = `Rolling Level ${currentLevel} HP: ${formula}<br>(Roll for level + con mod)<br>`;
       const roll = new Roll(formula);
       await roll.roll({ async: true });
       if (roll.total) {
-        let hpRoll = Math.max(roll.total, 1);
+        let hpRoll = roll.total;
         msg += `Got a ${hpRoll}<br>`;
         if (currentLevel == 1) {
           // Rolling the first time
@@ -441,7 +429,6 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
         msg += `Setting HP max to ${hpRoll}<br>`;
         await this.actor.update({
           "data.health_max_modified": currentLevel,
-          "data.health_base_type": hpBaseInput,
           "data.health.max": hpRoll,
         });
         getDocumentClass("ChatMessage").create({
@@ -455,43 +442,24 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       }
     };
 
-    const _setAndRollHP = async (html: HTMLFormElement) => {
-      const form: HTMLFormElement | null = html[0].querySelector("form");
-      if (!form) {
-        console.log("Form missing");
-        return;
-      }
-      const hpBaseInput = <HTMLInputElement>(
-        form.querySelector('[name="hpRoll"]:checked')
-      );
-
-      return _rollHP(hpBaseInput.value);
-    };
-
-    if (this.actor.data.data["health_base_type"]) {
-      await _rollHP(this.actor.data.data["health_base_type"]);
-    } else {
-      const template = "systems/swnr/templates/dialogs/roll_hp.html";
-      const html = await renderTemplate(template, {});
-      this.popUpDialog?.close();
-
-      this.popUpDialog = new Dialog(
-        {
-          title: game.i18n.format("swnr.dialog.hp.text", {
+    if (this.actor.data.data.hitDie) {
+      const performHPRoll: boolean = await new Promise((resolve) => {
+        Dialog.confirm({
+          title: game.i18n.format("swnr.dialog.hp.title", {
             actor: this.actor.name,
           }),
-          content: html,
-          default: "rollHP",
-          buttons: {
-            rollHP: {
-              label: game.i18n.localize("swnr.chat.roll"),
-              callback: _setAndRollHP,
-            },
-          },
-        },
-        { classes: ["swnr"] }
-      );
-      await this.popUpDialog.render(true);
+          yes: () => resolve(true),
+          no: () => resolve(false),
+          content: game.i18n.format("swnr.dialog.hp.text", {
+            actor: this.actor.name,
+            level: currentLevel,
+            formula: perLevel,
+          })
+        });
+      });
+      if (performHPRoll) await _rollHP();
+    } else {
+      ui.notifications?.info("Set the character's HitDie")
     }
 
     return;
