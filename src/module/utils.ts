@@ -4,6 +4,8 @@ import {
 } from "./actor-types";
 import { SWNRCharacterActor } from "./actors/character";
 import { SWNRNPCActor } from "./actors/npc";
+import { SWNRBaseItem } from "./base-item";
+import { SWNRSkill } from "./items/skill";
 
 export function chatListeners(message: ChatMessage, html: JQuery): void {
   html.on("click", ".card-buttons button", _onChatCardAction.bind(this));
@@ -182,6 +184,67 @@ export async function _onChatCardAction(
     }
     for (const t of targets) {
       await t.rollSave(button.dataset.save);
+    }
+  } else if (action === "skill") {
+    if (!targets.length) {
+      ui.notifications?.warn(
+        `You must have one or more controlled Tokens in order to use this option.`
+      );
+      //return (button.disabled = false);
+    }
+    let skill = button.dataset.skill;
+    let stat = null; 
+    if (skill.indexOf("/") != -1){
+      stat = skill.split("/")[0].toLowerCase();
+      skill = skill.split("/")[1];
+    } 
+    for (const t of targets) {
+      if (t.type == "npc") {
+        const skill = t.data.data.skillBonus;
+        const roll = new Roll("2d6 + @skill", { skill });
+        await roll.roll({ async: true });
+        const flavor = game.i18n.format(
+          game.i18n.localize("swnr.npc.skill.trained"),
+          { actor: t.name }
+        );
+        roll.toMessage({ flavor, speaker: { actor: t } });
+      } else {
+        const candidates = t.itemTypes.skill.filter((i)=> i.name?.toLocaleLowerCase() === skill.toLocaleLowerCase());
+        if (candidates.length == 1) {
+          if(candidates[0].type =="skill"){
+            if (stat == null || stat === "ask") {
+              // No stat given or written as ask. Use roll default.
+              candidates[0].roll(false);
+            } else {
+              // Stat given force the roll
+              const skillItem = <SWNRSkill>(<SWNRBaseItem<"skill">>(candidates[0]));
+              const dice = skillItem.data.data.pool === "ask" ? "2d6" : skillItem.data.data.pool;
+              const skillRank = skillItem.data.data.rank;
+        
+              const statShortName = game.i18n.localize(
+                "swnr.stat.short." + stat
+              );
+              let statData = { 
+                mod: 0
+              };
+        
+              if (t.data.data["stats"][stat]) statData = t.data.data["stats"][stat];
+        
+              skillItem.rollSkill(
+                skillItem.name,
+                statShortName,
+                statData.mod,
+                dice,
+                skillRank,
+                0
+              );
+            }
+          }
+        } else {
+          ui.notifications?.info(`Cannot find skill ${skill}`);
+        } 
+
+      }
     }
   }
 }

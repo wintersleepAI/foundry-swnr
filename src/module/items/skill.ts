@@ -47,6 +47,7 @@ export class SWNRSkill extends SWNRBaseItem<"skill"> {
       return;
     }
     const skillName = this.name;
+
     // Set to not ask and just roll
     if (!shiftKey && this.data.data.remember && this.data.data.remember.use) {
       const modifier = this.data.data.remember.modifier;

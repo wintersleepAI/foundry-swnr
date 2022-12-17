@@ -27,4 +27,12 @@
       </button>
   </div>
   {{/if}}
+
+  {{#if power.data.data.skill}}
+  <div class="card-buttons">
+      <button data-action="skill" data-skill="{{power.data.data.skill}}">
+          {{power.data.data.skill}}
+      </button>
+  </div>
+  {{/if}}
 </div>

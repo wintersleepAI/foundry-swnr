@@ -337,6 +337,7 @@ Item:
     roll: ""
     save: null
     range: ""
+    skill: null
     prepared: true
   item:
     templates:

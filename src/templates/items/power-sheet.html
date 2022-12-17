@@ -31,6 +31,7 @@
         value="{{data.data.roll}}"
       />
     </div>
+
     <div>
       <label for="">{{localize 'swnr.sheet.powers.duration'}}:</label>
 			<input
@@ -40,17 +41,7 @@
         value="{{data.data.duration}}"
       />
     </div>
-  </div>
-  <div class="flex gap-1">
-    <div>
-      <label for="">{{localize 'swnr.sheet.powers.range'}}:</label>
-			<input
-        type="text"
-        class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-opacity-75 rounded-md"
-        name="data.range"
-        value="{{data.data.range}}"
-      />
-    </div>
+
     <div class="flexcol">
       <label for="">{{localize 'swnr.sheet.powers.save'}}:</label>
         <select
@@ -67,7 +58,28 @@
           {{/if}}
           {{/select}}
         </select>
+    </div>  
+  </div>
+  <div class="flex gap-1">
+    <div>
+      <label for="">{{localize 'swnr.sheet.powers.range'}}:</label>
+			<input
+        type="text"
+        class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-opacity-75 rounded-md"
+        name="data.range"
+        value="{{data.data.range}}"
+      />
     </div>
+    <div>
+    <label for="">{{localize 'swnr.sheet.powers.skill'}}:</label>
+			<input
+        type="text"
+        class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-opacity-75 rounded-md"
+        name="data.skill"
+        value="{{data.data.skill}}"
+      />
+    </div>
+
     <div class="flex items-center">
       <label for="">{{localize 'swnr.sheet.powers.prepared'}}: </label>
 			<input

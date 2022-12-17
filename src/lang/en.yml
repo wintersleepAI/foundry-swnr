@@ -364,6 +364,7 @@
       roll: Roll
       duration: Duration
       save: Save
+      skill: Skill Button (e.g. dex/pilot)
       range: Range
       prepared: Is Prepared?
     resources: Resources

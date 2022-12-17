@@ -164,6 +164,7 @@ declare interface SWNRPowerData extends SWNRDescData {
   duration: string;
   save: string;
   range: string;
+  skill: string;
   prepared: boolean;
 }
 
