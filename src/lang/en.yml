@@ -709,6 +709,9 @@
       quick-skill-1: Quick Skill 1
       quick-skill-2: Quick Skill 2
       quick-skill-3: Quick Skill 3
+      debtDisplay: Name of Currency 1
+      owedDisplay: Name of Currency 3
+      balanceDisplay: Name of Currency 2
       extra-effort-name: Extra Effort Name (leave blank to not show on sheet)
       show-resource-list: >- 
         On the combat tab, show optional resource tracking. 

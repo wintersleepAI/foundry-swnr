@@ -574,8 +574,21 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
         (<HTMLSelectElement>form.querySelector('[name="quickSkill3"]'))
           ?.value || null;
       const extraEffortName =
-        (<HTMLInputElement>form.querySelector('[name="extraEffortName"]'))
+          (<HTMLInputElement>form.querySelector('[name="extraEffortName"]'))
+            ?.value || "";
+      const owedDisplay =
+        (<HTMLInputElement>form.querySelector('[name="owedDisplay"]'))
           ?.value || "";
+
+      
+      const debtDisplay =
+      (<HTMLInputElement>form.querySelector('[name="debtDisplay"]'))
+        ?.value || "";
+
+      const balanceDisplay =
+      (<HTMLInputElement>form.querySelector('[name="balanceDisplay"]'))
+        ?.value || "";
+
       const showResourceList = (<HTMLInputElement>(
         form.querySelector('[name="showResourceList"]')
       ))?.checked
@@ -589,6 +602,9 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
           quickSkill3: quickSkill3,
           extraEffortName: extraEffortName,
           showResourceList: showResourceList,
+          owedDisplay: owedDisplay,
+          debtDisplay: debtDisplay,
+          balanceDisplay: balanceDisplay
         },
       };
       await this.actor.update(update);

@@ -163,6 +163,9 @@ declare interface SWNRCharacterBaseData
     };
     showResourceList: boolean;
     resourceList: SWNRResource[];
+    debtDisplay: string;
+    owedDisplay: string;
+    balanceDisplay: string;
   };
 }
 

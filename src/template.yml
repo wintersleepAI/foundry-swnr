@@ -117,6 +117,9 @@ Actor:
         scene: 0
         day: 0
         max: 0
+      debtDisplay: "Debt"
+      owedDisplay: "Owed"
+      balanceDisplay: "Balance"
       resourceList: []
       showResourceList: false
   npc:

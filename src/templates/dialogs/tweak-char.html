@@ -47,6 +47,30 @@
       class="w-32 text-center px-1.5 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
       value="{{actor.data.data.tweak.extraEffortName}}">
   </div>
+
+  
+  <div  class="mb-4">
+    <label for="debtDisplay">{{localize 'swnr.dialog.tweak.debtDisplay'}}: </label>
+    <input type="input" name="debtDisplay" id="debtDisplay"
+      class="w-32 text-center px-1.5 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+      value="{{actor.data.data.tweak.debtDisplay}}">
+  </div>
+
+  <div  class="mb-4">
+    <label for="balanceDisplay">{{localize 'swnr.dialog.tweak.balanceDisplay'}}: </label>
+    <input type="input" name="balanceDisplay" id="balanceDisplay"
+      class="w-32 text-center px-1.5 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+      value="{{actor.data.data.tweak.balanceDisplay}}">
+  </div>
+
+  <div  class="mb-4">
+    <label for="owedDisplay">{{localize 'swnr.dialog.tweak.owedDisplay'}}: </label>
+    <input type="input" name="owedDisplay" id="owedDisplay"
+      class="w-32 text-center px-1.5 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+      value="{{actor.data.data.tweak.owedDisplay}}">
+  </div>
+
+
   <div  class="mb-4">
     <label for="showResourceList">{{localize 'swnr.dialog.tweak.show-resource-list'}}: </label>
     <input type="checkbox" name="showResourceList" id="showResourceList" {{checked actor.data.data.tweak.showResourceList}}>
