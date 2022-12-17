@@ -1,0 +1,19 @@
+<div class="">
+  <div class="flex gap-2">
+    <img
+      class="profile-img w-32 h-32 object-contain"
+      src="{{actor.img}}"
+      title="{{actor.name}}"
+      data-edit="img"
+    />
+    <div class="flex-grow items-center gap-1">
+      <input
+        name="name"
+        class="text-2xl  bg-transparent col-span-2 px-1.5 py-3.5 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="text"
+        value="{{actor.name}}"
+        placeholder="{{localize 'swnr.sheet.name'}}"
+      />
+    </div>
+  </div>
+</div>

@@ -1,4 +1,10 @@
 <form class="{{cssClass}} -m-2 p-2 bg-gray-500">
+  {{#if actor.limited}}
+    {{>
+    "systems/swnr/templates/actors/fragments/limited-sheet.html"
+    actor=actor
+    }}
+  {{else}}
   <div>
     <div class="flex flex-col gap-2">
       <!-- Grid div for header -->
@@ -186,4 +192,5 @@
       </div>
     </div>
   </div>
+  {{/if}}
 </form>

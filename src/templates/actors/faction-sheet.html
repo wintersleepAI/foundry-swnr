@@ -1,4 +1,10 @@
 <form class="{{cssClass}} bg-gray-500 -m-2 p-2 space-y-2">
+  {{#if actor.limited}}
+    {{>
+    "systems/swnr/templates/actors/fragments/limited-sheet.html"
+    actor=actor
+    }}
+  {{else}}
   <div class="flex gap-2 flex-col">
     <div class="flex">
       <div class="flex-shrink-0 h-40 hidden md:block lg:h-16 md:w-16">
@@ -267,5 +273,5 @@
 
 
       </section>
-
+  {{/if}}
 </form>
