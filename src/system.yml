@@ -212,11 +212,11 @@ languages:
 gridDistance: 2
 gridUnits: "m"
 minimumCoreVersion: 0.8.6
-compatibleCoreVersion: 9.269
+compatibleCoreVersion: 10.291
 url: "https://github.com/wintersleepAI/foundry-swnr"
 manifest: >-
   https://github.com/wintersleepAI/foundry-swnr/releases/latest/download/system.json
-download: "https://github.com/wintersleepAI/foundry-swnr/releases/download/v1.0.0-wsAI/v1.0.0-wsAI.zip"
+download: "https://github.com/wintersleepAI/foundry-swnr/releases/download/v1.0.0-wsAI-alpha/v1.0.0-wsAI-alpha.zip"
 license: "https://github.com/wintersleepAI/foundry-swnr/blob/master/LICENSE.txt"
 readme: ""
 bugs: "https://github.com/wintersleepAI/foundry-swnr/issues"
