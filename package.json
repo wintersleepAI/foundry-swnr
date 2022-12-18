@@ -18,7 +18,7 @@
   "author": "",
   "license": "",
   "devDependencies": {
-    "@league-of-foundry-developers/foundry-vtt-types": "github:Spice-King/foundry-vtt-types#foundry-0.8.x",
+    "@league-of-foundry-developers/foundry-vtt-types": "^0.7.9-6",
     "@types/archiver": "^3.1.1",
     "@types/fs-extra": "^9.0.2",
     "@types/gulp": "^4.0.7",
@@ -55,7 +55,7 @@
     "sortablejs": "^1.15.0",
     "stylelint": "^13.7.2",
     "stylelint-config-standard": "^20.0.0",
-    "ts-node": "^9.0.0",
+    "ts-node": "^10.8.0",
     "typescript": "^4.1",
     "yargs": "^16.1.0"
   },
