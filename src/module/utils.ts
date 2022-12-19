@@ -193,11 +193,11 @@ export async function _onChatCardAction(
       //return (button.disabled = false);
     }
     let skill = button.dataset.skill;
-    let stat = null; 
-    if (skill.indexOf("/") != -1){
+    let stat = null;
+    if (skill.indexOf("/") != -1) {
       stat = skill.split("/")[0].toLowerCase();
       skill = skill.split("/")[1];
-    } 
+    }
     for (const t of targets) {
       if (t.type == "npc") {
         const skill = t.data.data.skillBonus;
@@ -209,27 +209,35 @@ export async function _onChatCardAction(
         );
         roll.toMessage({ flavor, speaker: { actor: t } });
       } else {
-        const candidates = t.itemTypes.skill.filter((i)=> i.name?.toLocaleLowerCase() === skill.toLocaleLowerCase());
+        const candidates = t.itemTypes.skill.filter(
+          (i) => i.name?.toLocaleLowerCase() === skill.toLocaleLowerCase()
+        );
         if (candidates.length == 1) {
-          if(candidates[0].type =="skill"){
+          if (candidates[0].type == "skill") {
             if (stat == null || stat === "ask") {
               // No stat given or written as ask. Use roll default.
               candidates[0].roll(false);
             } else {
               // Stat given force the roll
-              const skillItem = <SWNRSkill>(<SWNRBaseItem<"skill">>(candidates[0]));
-              const dice = skillItem.data.data.pool === "ask" ? "2d6" : skillItem.data.data.pool;
+              const skillItem = <SWNRSkill>(
+                (<SWNRBaseItem<"skill">>candidates[0])
+              );
+              const dice =
+                skillItem.data.data.pool === "ask"
+                  ? "2d6"
+                  : skillItem.data.data.pool;
               const skillRank = skillItem.data.data.rank;
-        
+
               const statShortName = game.i18n.localize(
                 "swnr.stat.short." + stat
               );
-              let statData = { 
-                mod: 0
+              let statData = {
+                mod: 0,
               };
-        
-              if (t.data.data["stats"][stat]) statData = t.data.data["stats"][stat];
-        
+
+              if (t.data.data["stats"][stat])
+                statData = t.data.data["stats"][stat];
+
               skillItem.rollSkill(
                 skillItem.name,
                 statShortName,
@@ -242,8 +250,7 @@ export async function _onChatCardAction(
           }
         } else {
           ui.notifications?.info(`Cannot find skill ${skill}`);
-        } 
-
+        }
       }
     }
   }
@@ -293,6 +300,40 @@ export function limitConcurrency<Callback extends (...unknown) => unknown>(
     limited = false;
     return r;
   };
+}
+
+export async function initCompendSkills(
+  actor: SWNRCharacterActor
+): Promise<void> {
+  const candidates: CompendiumCollection<CompendiumCollection.Metadata>[] = [];
+  game.packs.forEach(async (e) => {
+    if (e.metadata.entity === "Item") {
+      const items = await e.getDocuments();
+      if (items.filter((i) => (<SWNRBaseItem>i).type == "skill").length) {
+        candidates.push(e);
+        console.log("skills", e.name);
+      }
+    }
+    if (!candidates.length) {
+      ui.notifications?.error("Cannot find a compendium with a skill item");
+      return;
+    }
+    let compOptions = "";
+    for (const comp of candidates) {
+      compOptions += `<option value='${comp.metadata.label}'>${comp.metadata.name}</option>`;
+    }
+    const dialogTemplate = `
+    <div class="flex flex-col -m-2 p-2 pb-4 bg-gray-200 space-y-2">
+      <h1> Select Compendium </h1>
+      <div class="flex flexrow">
+        Tag: <select id="tag"          
+        class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        ${compOptions}
+        </select>
+      </div>
+    </div>
+    `;
+  });
 }
 
 export function initSkills(

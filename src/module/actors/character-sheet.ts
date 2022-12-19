@@ -1,5 +1,10 @@
 import { SWNRCharacterActor } from "./character";
-import { calculateStats, initSkills, limitConcurrency } from "../utils";
+import {
+  calculateStats,
+  initSkills,
+  initCompendSkills,
+  limitConcurrency,
+} from "../utils";
 import { ValidatedDialog } from "../ValidatedDialog";
 import { SWNRBaseItem } from "../base-item";
 import { SWNRStats, SWNRStatBase, SWNRStatComputed } from "../actor-types";
@@ -130,8 +135,13 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       const extra = <HTMLInputElement>(
         form.querySelector("[name=extra]:checked")
       );
-      initSkills(this.actor, <"revised" | "classic" | "none">skillList.value);
-      initSkills(this.actor, <"spaceMagic" | "psionic" | "none">extra.value);
+      if (skillList && skillList.value === "compendiumList") {
+        initCompendSkills(this.actor);
+      } else {
+        initSkills(this.actor, <"revised" | "classic" | "none">skillList.value);
+      }
+      if (extra)
+        initSkills(this.actor, <"spaceMagic" | "psionic" | "none">extra.value);
       return;
     };
     const template = "systems/swnr/templates/dialogs/add-bulk-skills.html";
