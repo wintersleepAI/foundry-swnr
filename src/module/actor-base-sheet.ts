@@ -63,9 +63,9 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
 
     if (Object.keys(candiateItems).length) {
       let itemOptions = "";
-      const sortedNames = Object.keys(candiateItems).sort();
-      console.log(sortedNames);
-      for (const label in candiateItems) {
+      const keys = Object.keys(candiateItems);
+      const sortedNames = keys.sort();
+      for (const label of sortedNames) {
         const cand = candiateItems[label];
         itemOptions += `<option value='${label}'>${cand.name}</option>`;
       }
