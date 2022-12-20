@@ -309,7 +309,7 @@ export async function initCompendSkills(
   const candidates: {
     [name: string]: CompendiumCollection<CompendiumCollection.Metadata>;
   } = {};
-  for (let e of game.packs) {
+  for (const e of game.packs) {
     if (e.metadata.entity === "Item") {
       const items = await e.getDocuments();
       if (items.filter((i) => (<SWNRBaseItem>i).type == "skill").length) {

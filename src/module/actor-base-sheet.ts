@@ -1,5 +1,6 @@
 import { SWNRBaseItem } from "./base-item";
 import { getDefaultImage } from "./utils";
+import { ValidatedDialog } from "./ValidatedDialog";
 
 export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
   ActorSheet.Options,
@@ -24,6 +25,7 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
       .on("click", this._onItemJuryToggle.bind(this));
     html.find(".item-click").on("click", this._onItemClick.bind(this));
     html.find(".item-create").on("click", this._onItemCreate.bind(this));
+    html.find(".item-search").on("click", this._onItemSearch.bind(this));
   }
 
   // Clickable title/name or icon. Invoke Item.roll()
@@ -36,6 +38,81 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     //const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
     if (!item) return;
     item.roll(event.shiftKey);
+  }
+
+  async _onItemSearch(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    event.stopPropagation();
+    const mappings: { [name: string]: string } = {
+      armor: "armor",
+    };
+    const candiateItems: { [name: string]: Item } = {};
+    const itemType = $(event.currentTarget).data("itemType");
+    const givenName = $(event.currentTarget).data("itemName");
+    if (mappings[itemType]) {
+      const skillPack = game.packs.get(`swnr.${mappings[itemType]}`);
+      if (skillPack) {
+        const convert = await skillPack.getDocuments();
+        for (const item of convert.map((i) => i.toObject())) {
+          candiateItems[item.name] = item;
+        }
+      }
+    } else {
+      console.log("TODO no pack defined");
+    }
+
+    if (Object.keys(candiateItems).length) {
+      let itemOptions = "";
+      const sortedNames = Object.keys(candiateItems).sort();
+      console.log(sortedNames);
+      for (const label in candiateItems) {
+        const cand = candiateItems[label];
+        itemOptions += `<option value='${label}'>${cand.name}</option>`;
+      }
+      const dialogTemplate = `
+      <div class="flex flex-col -m-2 p-2 pb-4 bg-gray-200 space-y-2">
+        <h1> Select ${givenName} to Add </h1>
+        <div class="flex flexrow">
+          ${givenName}: <select id="itemList"
+          class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+          ${itemOptions}
+          </select>
+        </div>
+      </div>
+      `;
+      const popUpDialog = new ValidatedDialog(
+        {
+          title: "Add Skills",
+          content: dialogTemplate,
+          buttons: {
+            addSkills: {
+              label: "Add Skills",
+              callback: async (html: JQuery<HTMLElement>) => {
+                const itemNameToAdd = (<HTMLSelectElement>(
+                  html.find("#itemList")[0])).value;
+                const toAdd = await candiateItems[itemNameToAdd];
+                await this.actor.createEmbeddedDocuments("Item", [toAdd], {});
+              },
+            },
+            close: {
+              label: "Close",
+            },
+          },
+          default: "addSkills",
+        },
+        {
+          failCallback: () => {
+            return;
+          },
+          classes: ["swnr"],
+        }
+      );
+      const s = popUpDialog.render(true);
+      if (s instanceof Promise) await s;
+
+    } else {
+      ui.notifications?.info("Could not find any items in the compendium");
+    }
   }
 
   _onItemCreate(event: JQuery.ClickEvent): void {
