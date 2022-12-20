@@ -41,31 +41,32 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
     roll.toMessage({ flavor, speaker: { actor: this.id } });
   }
 
-
   _onCreate(
     data: Parameters<SWNRBaseActor["_onCreate"]>[0],
     options: Parameters<SWNRBaseActor["_onCreate"]>[1],
     userId: string
   ): void {
     super._onCreate(data, options, userId);
-    if (this.data["items"]["length"] || game.userId !== userId) return;
-    const unarmed = this.data.items.filter(
-      (i) => i.name == game.i18n.localize("swnr.npc.unarmed")
-    );
-    if (unarmed.length == 0) {
-      this.createEmbeddedDocuments("Item", [
-        {
-          name: game.i18n.localize("swnr.npc.unarmed"),
-          type: "weapon",
-          data: {
-            ammo: {
-              type: "none",
+    if (game.user?.isGM) {
+      if (this.data["items"]["length"] || game.userId !== userId) return;
+      const unarmed = this.data.items.filter(
+        (i) => i.name == game.i18n.localize("swnr.npc.unarmed")
+      );
+      if (unarmed.length == 0) {
+        this.createEmbeddedDocuments("Item", [
+          {
+            name: game.i18n.localize("swnr.npc.unarmed"),
+            type: "weapon",
+            data: {
+              ammo: {
+                type: "none",
+              },
+              damage: "d2",
             },
-            damage: "d2",
+            img: "icons/equipment/hand/gauntlet-armored-leather-grey.webp",
           },
-          img: "icons/equipment/hand/gauntlet-armored-leather-grey.webp",
-        },
-      ]);
+        ]);
+      }
     }
   }
 }
@@ -73,8 +74,10 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 Hooks.on("createToken", (document, options, userId) => {
   if (game.settings.get("swnr", "useRollNPCHD")) {
-    if (document.actor?.type == "npc") {
-      document.actor.rollHitDice(false);
+    if (game.user?.isGM) {
+      if (document.actor?.type == "npc") {
+        document.actor.rollHitDice(false);
+      }
     }
   }
 });

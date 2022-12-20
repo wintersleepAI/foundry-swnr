@@ -6,6 +6,7 @@ import { SWNRCharacterActor } from "./actors/character";
 import { SWNRNPCActor } from "./actors/npc";
 import { SWNRBaseItem } from "./base-item";
 import { SWNRSkill } from "./items/skill";
+import { ValidatedDialog } from "./ValidatedDialog";
 
 export function chatListeners(message: ChatMessage, html: JQuery): void {
   html.on("click", ".card-buttons button", _onChatCardAction.bind(this));
@@ -305,35 +306,71 @@ export function limitConcurrency<Callback extends (...unknown) => unknown>(
 export async function initCompendSkills(
   actor: SWNRCharacterActor
 ): Promise<void> {
-  const candidates: CompendiumCollection<CompendiumCollection.Metadata>[] = [];
-  game.packs.forEach(async (e) => {
+  const candidates: {
+    [name: string]: CompendiumCollection<CompendiumCollection.Metadata>;
+  } = {};
+  for (let e of game.packs) {
     if (e.metadata.entity === "Item") {
       const items = await e.getDocuments();
       if (items.filter((i) => (<SWNRBaseItem>i).type == "skill").length) {
-        candidates.push(e);
-        console.log("skills", e.name);
+        candidates[e.metadata.name] = e;
+        console.log("skills", e.name, e.metadata, candidates);
       }
     }
-    if (!candidates.length) {
-      ui.notifications?.error("Cannot find a compendium with a skill item");
-      return;
-    }
-    let compOptions = "";
-    for (const comp of candidates) {
-      compOptions += `<option value='${comp.metadata.label}'>${comp.metadata.name}</option>`;
-    }
-    const dialogTemplate = `
-    <div class="flex flex-col -m-2 p-2 pb-4 bg-gray-200 space-y-2">
-      <h1> Select Compendium </h1>
-      <div class="flex flexrow">
-        Tag: <select id="tag"          
-        class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-        ${compOptions}
-        </select>
-      </div>
+  }
+  if (Object.keys(candidates).length == 0) {
+    ui.notifications?.error("Cannot find a compendium with a skill item");
+    return;
+  }
+  let compOptions = "";
+  for (const label in candidates) {
+    const cand = candidates[label];
+    compOptions += `<option value='${cand.metadata.name}'>${cand.metadata.label}</option>`;
+  }
+  const dialogTemplate = `
+  <div class="flex flex-col -m-2 p-2 pb-4 bg-gray-200 space-y-2">
+    <h1> Select Compendium </h1>
+    <div class="flex flexrow">
+      Compendium: <select id="compendium"
+      class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+      ${compOptions}
+      </select>
     </div>
-    `;
-  });
+  </div>
+  `;
+
+  const popUpDialog = new ValidatedDialog(
+    {
+      title: "Add Skills",
+      content: dialogTemplate,
+      buttons: {
+        addSkills: {
+          label: "Add Skills",
+          callback: async (html: JQuery<HTMLElement>) => {
+            const comped = (<HTMLSelectElement>html.find("#compendium")[0])
+              .value;
+            const toAdd = await candidates[comped].getDocuments();
+            const primarySkills = toAdd
+              .filter((i) => i.data.type === "skill")
+              .map((item) => item.toObject());
+            await actor.createEmbeddedDocuments("Item", primarySkills);
+          },
+        },
+        close: {
+          label: "Close",
+        },
+      },
+      default: "addSkills",
+    },
+    {
+      failCallback: () => {
+        return;
+      },
+      classes: ["swnr"],
+    }
+  );
+  const s = popUpDialog.render(true);
+  if (s instanceof Promise) await s;
 }
 
 export function initSkills(
