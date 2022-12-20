@@ -81,13 +81,15 @@
     </div>
 
     <div class="flex items-center">
-      <label for="">{{localize 'swnr.sheet.powers.prepared'}}: </label>
-			<input
-        type="checkbox"
-        class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-opacity-75 rounded-md"
-        name="data.prepared"
-        value="{{data.data.prepared}}"
+      <label class="flex items-center gap-1">
+        <input
+          class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-opacity-75 rounded-md"
+          type="checkbox"
+          name="data.prepared"
+          {{checked data.data.prepared}}
       />
-    <div>
+        <div>{{localize 'swnr.sheet.powers.prepared'}}</div>
+      </label>
+    </div>
   </div>
 </form>
