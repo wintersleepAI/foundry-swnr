@@ -47,7 +47,7 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
     userId: string
   ): void {
     super._onCreate(data, options, userId);
-    if (game.user?.isGM) {
+    if (game.user?.isGM && game.userId === userId) {
       if (this.data["items"]["length"] || game.userId !== userId) return;
       const unarmed = this.data.items.filter(
         (i) => i.name == game.i18n.localize("swnr.npc.unarmed")
@@ -74,7 +74,7 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 Hooks.on("createToken", (document, options, userId) => {
   if (game.settings.get("swnr", "useRollNPCHD")) {
-    if (game.user?.isGM) {
+    if (game.user?.isGM && game.userId === userId) {
       if (document.actor?.type == "npc") {
         document.actor.rollHitDice(false);
       }
