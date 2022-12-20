@@ -45,6 +45,9 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     event.stopPropagation();
     const mappings: { [name: string]: string } = {
       armor: "armor",
+      item: "all-items",
+      cyberware: "cyberware",
+      focus: "foci",
     };
     const candiateItems: { [name: string]: Item } = {};
     const itemType = $(event.currentTarget).data("itemType");
@@ -73,7 +76,7 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
       <div class="flex flex-col -m-2 p-2 pb-4 bg-gray-200 space-y-2">
         <h1> Select ${givenName} to Add </h1>
         <div class="flex flexrow">
-          ${givenName}: <select id="itemList"
+          <select id="itemList"
           class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
           ${itemOptions}
           </select>
@@ -82,11 +85,11 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
       `;
       const popUpDialog = new ValidatedDialog(
         {
-          title: "Add Skills",
+          title: `Add ${givenName}`,
           content: dialogTemplate,
           buttons: {
             addSkills: {
-              label: "Add Skills",
+              label: `Add ${givenName}`,
               callback: async (html: JQuery<HTMLElement>) => {
                 const itemNameToAdd = (<HTMLSelectElement>(
                   html.find("#itemList")[0])).value;
