@@ -1,3 +1,4 @@
+import { Cipher } from "crypto";
 import { SWNRBaseItem } from "./base-item";
 import { getDefaultImage } from "./utils";
 import { ValidatedDialog } from "./ValidatedDialog";
@@ -40,6 +41,22 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     item.roll(event.shiftKey);
   }
 
+  async populateItemList(
+    itemType: string,
+    candiateItems: { [name: string]: Item }
+  ): Promise<void> {
+    for (const e of game.packs) {
+      if (e.metadata.entity === "Item") {
+        const items = await e.getDocuments();
+        if (items.filter((i) => (<SWNRBaseItem>i).type == itemType).length) {
+          for (const ci of items.map((item) => item.toObject())) {
+            candiateItems[ci.name] = ci;
+          }
+        }
+      }
+    }
+  }
+
   async _onItemSearch(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
@@ -61,7 +78,7 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
         }
       }
     } else {
-      console.log("TODO no pack defined");
+      await this.populateItemList(itemType, candiateItems);
     }
 
     if (Object.keys(candiateItems).length) {
