@@ -602,23 +602,5 @@ Hooks.on("dropActorSheetData", (actor: Actor, actorSheet: ActorSheet, data) => {
   }
 });
 
-// A button to show long descriptions
-Hooks.on(
-  "renderChatMessage",
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (message: ChatMessage, html: JQuery, _user: User) => {
-    const longDesc = <JQuery<HTMLButtonElement>>html.find(".longShowDesc");
-    if (longDesc) {
-      const bind = function (event: JQuery.ClickEvent) {
-        event.preventDefault();
-        const hiddenDesc = <JQuery<HTMLDivElement>>html.find(".hiddenLong");
-        hiddenDesc.show();
-        longDesc.hide();
-      };
-      longDesc.one("click", bind);
-    }
-  }
-);
-
 export const sheet = FactionActorSheet;
 export const types = ["faction"];

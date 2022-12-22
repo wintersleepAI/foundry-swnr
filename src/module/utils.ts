@@ -17,6 +17,30 @@ export function chatListeners(message: ChatMessage, html: JQuery): void {
   //   _addRerollButton($(div));
   // });
   //html.on("click", ".item-name", this._onChatCardToggleContent.bind(this));
+  const longDesc = <JQuery<HTMLButtonElement>>html.find(".longShowDesc");
+  if (longDesc) {
+    const bind = function (event: JQuery.ClickEvent) {
+      event.preventDefault();
+      const hiddenDesc = <JQuery<HTMLDivElement>>html.find(".hiddenLong");
+      const shownDesc = <JQuery<HTMLDivElement>>html.find(".hiddenShort");
+      hiddenDesc.show();
+      //longDesc.hide();
+      shownDesc.hide();
+    };
+    longDesc.on("click", bind);
+  }
+  const shortDesc = <JQuery<HTMLButtonElement>>html.find(".longHideDesc");
+  if (shortDesc) {
+    const bind = function (event: JQuery.ClickEvent) {
+      event.preventDefault();
+      const hiddenDesc = <JQuery<HTMLDivElement>>html.find(".hiddenLong");
+      const shownDesc = <JQuery<HTMLDivElement>>html.find(".hiddenShort");
+      hiddenDesc.hide();
+      //longDesc.hide();
+      shownDesc.show();
+    };
+    shortDesc.on("click", bind);
+  }
 }
 
 export function _addRerollButton(html: JQuery): void {

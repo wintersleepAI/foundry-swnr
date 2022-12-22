@@ -2,14 +2,24 @@
   <h3 title="{{ power.data.data.description }}">{{ power.name }}</h3>
 
   <div class="chat-desc">
-    {{{trim power.data.data.description 200}}}
     {{#if (wouldTrim power.data.data.description 200)}}
+      <span class="hiddenShort">
+        {{{trim power.data.data.description 200}}}
+        <div class="border border-gray-700 placeholder-blue-800 pt-0">
+          <button class="longShowDesc">Show Long Desc.</button>
+        </div>
+      </span>
       <div class="border border-gray-700 placeholder-blue-800 pt-0">
-        <span style="display:none" class="hiddenLong">{{{ power.data.data.description }}} </span> 
-        <button class="longShowDesc ">Show Long Desc.</button>
+        <span style="display:none" class="hiddenLong">
+        {{{ power.data.data.description }}}
+        <button class="longHideDesc">Hide Long Desc.</button>
+        </span>
       </div>
+    {{else}}
+      <span>
+        {{{power.data.data.description }}}
+      </span>
     {{/if}}
-
   </div>
 
   {{#if power.data.data.range}}

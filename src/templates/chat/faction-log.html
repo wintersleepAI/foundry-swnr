@@ -2,10 +2,17 @@
   <div><h4>{{{ title }}}</h4></div>
   <div>{{{ content }}}</div>
   {{#if longContent}}
-  <span style="display:none" class="hiddenLong">{{{ longContent }}} </span> 
-
-  <div class="border border-gray-700 p-2 placeholder-blue-800 ">
-    <button class="longShowDesc">Show Long Desc.</button></div>
+  <span class="hiddenShort">
+    <div class="border border-gray-700 placeholder-blue-800 pt-0">
+      <button class="longShowDesc">Show Long Desc.</button>
+    </div>
+  </span>
+  <div class="border border-gray-700 placeholder-blue-800 pt-0">
+    <span style="display:none" class="hiddenLong">
+    {{{ longContent }}}
+    <button class="longHideDesc">Hide Long Desc.</button>
+    </span>
+  </div>
   {{/if}}
   {{{ roll }}}
 </div>

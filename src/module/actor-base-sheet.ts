@@ -46,7 +46,11 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     candiateItems: { [name: string]: Item }
   ): Promise<void> {
     for (const e of game.packs) {
-      if (e.metadata.entity === "Item") {
+      if (
+        e.metadata.private == false &&
+        ((game?.release?.generation >= 10 && e.metadata.type === "Item") ||
+          (game?.release?.generation < 10 && e.metadata.entity === "Item"))
+      ) {
         const items = await e.getDocuments();
         if (items.filter((i) => (<SWNRBaseItem>i).type == itemType).length) {
           for (const ci of items.map((item) => item.toObject())) {
