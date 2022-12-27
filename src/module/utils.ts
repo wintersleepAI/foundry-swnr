@@ -139,7 +139,7 @@ export async function applyHealthDrop(total: number): Promise<void> {
       newHealth = actor.data.data.health.max;
     }
     //console.log(`Updating ${actor.name} health to ${newHealth}`);
-    actor.update({ "data.health.value": newHealth });
+    await actor.update({ "data.health.value": newHealth });
     // Taken from Mana
     //https://gitlab.com/mkahvi/fvtt-micro-modules/-/blob/master/pf1-floating-health/floating-health.mjs#L182-194
     const fillColor = total < 0 ? "0x00FF00" : "0xFF0000";
@@ -276,6 +276,22 @@ export async function _onChatCardAction(
         } else {
           ui.notifications?.info(`Cannot find skill ${skill}`);
         }
+      }
+    }
+  } else if (action === "effort") {
+    if (!targets.length) {
+      ui.notifications?.warn(
+        `You must have one or more controlled Tokens in order to use this option.`
+      );
+      //return (button.disabled = false);
+    }
+    let effort = button.dataset.effort;
+
+    for (const t of targets) {
+      if (t.type === "character") {
+        let updated_effort = t.data.data.effort[effort] + 1;
+        const effort_key = `data.effort.${effort}`; 
+        await t.update({[effort_key]:  updated_effort });
       }
     }
   }

@@ -80,6 +80,22 @@
       />
     </div>
 
+
+    <div class="flexcol">
+      <label for="">{{localize 'swnr.effort.title'}}:</label>
+        <select
+          class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+          name="data.effort"
+        >
+          {{#select data.data.effort}}
+          <option value="">-</option>
+          <option value="day">{{localize 'swnr.effort.day'}}</option>
+          <option value="scene">{{localize 'swnr.effort.scene'}}</option>
+          <option value="current">{{localize 'swnr.effort.current'}}</option>
+          {{/select}}
+        </select>
+    </div>
+
     <div class="flex items-center">
       <label class="flex items-center gap-1">
         <input

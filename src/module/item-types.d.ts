@@ -1,5 +1,5 @@
 import { SWNRBaseItem } from "./base-item";
-import { SWNRStats } from "./actor-types";
+import { SWNRStats, SWNREffort } from "./actor-types";
 import { SWNRWeapon } from "./items/weapon";
 import { SWNRAllVehicleClasses, FactionRating } from "./actor-types";
 
@@ -166,6 +166,7 @@ declare interface SWNRPowerData extends SWNRDescData {
   range: string;
   skill: string;
   prepared: boolean;
+  effort : null | SWNREffort;
 }
 
 declare interface SWNRCyberware extends SWNRDescData {

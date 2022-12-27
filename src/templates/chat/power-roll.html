@@ -54,4 +54,13 @@
       </button>
   </div>
   {{/if}}
+
+
+  {{#if power.data.data.effort}}
+  <div class="card-buttons">
+      <button data-action="effort" data-effort="{{power.data.data.effort}}">
+          Use {{power.data.data.effort}} effort
+      </button>
+  </div>
+  {{/if}}
 </div>

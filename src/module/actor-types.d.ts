@@ -13,6 +13,8 @@ type ActorTypes =
 
 declare type SWNRStats = "str" | "dex" | "con" | "int" | "wis" | "cha";
 
+declare type SWNREffort = "day" | "scene" | "current";
+
 type SWNRMechClass = "suit" | "light" | "heavy";
 type SWNRShipClass = "fighter" | "frigate" | "cruiser" | "capital";
 type SWNRVehicleClass = "s" | "m" | "l";

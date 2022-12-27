@@ -339,6 +339,7 @@ Item:
     range: ""
     skill: null
     prepared: true
+    effort: null
   item:
     templates:
       - baseItem
