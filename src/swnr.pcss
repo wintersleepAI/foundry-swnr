@@ -60,6 +60,7 @@ $chatblue: #d4d5d6;
 .window-app .window-content {
   background-image: unset;
   background: $chatblue;
+  color: unset;
 }
 
 .swnr .window-content {
@@ -69,9 +70,11 @@ $chatblue: #d4d5d6;
   }
   all: initial; */
   @tailwind base;
+  color: white;
 }
 section.window-content {
-  @apply bg-gray-500;
+  @apply bg-gray-700;
+  font-size: 12pt;
 }
 input[type="text"], input[type="number"], input[type="password"], input[type="date"], input[type="time"], select, textarea { 
   @appy focus:shadow-none focus:outline-none;
@@ -86,11 +89,11 @@ a:hover {
   text-shadow: unset;
 }
 .tabs .item {
-  @apply transition-text-shadow text-shadow text-shadow-transparent hover:text-shadow-gray-600;
+  @apply transition-text-shadow text-shadow text-shadow-transparent hover:text-shadow-gray-400;
 }
 .tabs .item.active {
   text-decoration-line: underline;
-  @apply text-shadow-gray-600;
+  @apply text-shadow-gray-6400;
 }
 
 .item-entry
