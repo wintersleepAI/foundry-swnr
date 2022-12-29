@@ -146,7 +146,7 @@
         <!--fittings-->
         <div class="fittings flex flex-col justify-center items-center">
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
-            <span class="inline-block text-right text-gray-700 cursor-not-allowed w-8">
+            <span class="inline-block text-right text-gray-300 cursor-not-allowed w-8">
               {{actor.data.data.fittings.value}}</span><span>/</span><input
               class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
               type="number" name="data.fittings.max" value="{{actor.data.data.fittings.max}}" step="1" min="1"
@@ -225,7 +225,7 @@
                     <div class="item-name flex2">Description </div>
                   </li>
                 </div>
-                <div class="bg-gray-400 border border-gray-700 rounded-md p-2 mt-4">
+                <div class="bg-gray-400 bg-opacity-75 border border-gray-700 rounded-md p-2 mt-4">
                   {{editor content=data.data.description target="data.description" button=true
                   owner=owner editable=editable}}
                 </div>
@@ -238,7 +238,7 @@
                     <div class="item-name flex2">Mods</div>
                   </li>
                 </div>
-                <div class="bg-gray-400 border border-gray-700 rounded-md p-2 mt-4">
+                <div class="bg-gray-400 bg-opacity-75 border border-gray-700 rounded-md p-2 mt-4">
                   {{editor content=data.data.mods target="data.mods" button=true
                   owner=owner editable=editable}}
                 </div>

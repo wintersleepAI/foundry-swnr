@@ -1,7 +1,7 @@
 <div class="tab combat" data-group="primary" data-tab="combat">
-  <div class="flex">
+  <div class="flex gap-2">
     {{#each actor.data.data.favorites as |fav id|}}
-      <div class="item skill skillRoll w-34 flex flex-grow space-y-1 items-center" data-item-id="{{fav.id}}">
+      <div class="item skill skillRoll flex flex-grow space-y-1 items-center" data-item-id="{{fav.id}}">
         <a class="fav-button inline-flex gap-1">
             <div class="flex-shrink">
               {{zeroWidthBreaker fav.name}}
@@ -49,7 +49,7 @@
             <div data-item-id="{{item.id}}"
             class="skill p-0.5 pr-3 skillRoll 
             {{#if (mod2 @index) }}
-            bg-gray-400
+            bg-gray-600
             {{/if}}
             "
             >

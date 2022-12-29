@@ -60,7 +60,6 @@ $chatblue: #d4d5d6;
 .window-app .window-content {
   background-image: unset;
   background: $chatblue;
-  color: unset;
 }
 
 .swnr .window-content {
@@ -70,7 +69,9 @@ $chatblue: #d4d5d6;
   }
   all: initial; */
   @tailwind base;
-  color: white;
+  @layer base {
+    color: white;
+  }
 }
 section.window-content {
   @apply bg-gray-700;
@@ -93,7 +94,7 @@ a:hover {
 }
 .tabs .item.active {
   text-decoration-line: underline;
-  @apply text-shadow-gray-6400;
+  @apply text-shadow-gray-400;
 }
 
 .item-entry
