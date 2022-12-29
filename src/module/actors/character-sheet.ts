@@ -71,6 +71,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       .find(".item.weapon .item-name")
       .on("click", this._onWeaponRoll.bind(this));
     html.find(".skill-load-button").on("click", this._onLoadSkills.bind(this));
+    html.find(".attrClick").on("click", this._onAttrRoll.bind(this));
     // Drag events for macros.
     if (this.actor.isOwner) {
       const handler = (ev) => this._onDragStart(ev);
@@ -84,6 +85,73 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       });
     }
   }
+
+
+  async _onAttrRoll(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    const action = game.settings.get("swnr", "attrRoll");
+    if (action === "none") {
+      return;
+    }
+    const attrShort = $(event.currentTarget).data("attr");
+    const attr = this.actor.data.data.stats[attrShort];  
+    const msg = game.i18n.format("swnr.chat.statRollFlavor", {
+      name: this.actor?.name,
+      stat: attrShort,
+    });
+    const rollMode = game.settings.get("core", "rollMode");
+
+    let formula = "d20";
+    if (action == "d20" || action == "2d6") {
+      if (action == "d20") {
+        formula = `d20 + ${attr.mod}`;
+      } else if (action == "2d6") {
+        formula = `2d6 + ${attr.mod}`;
+      }
+      const roll = new Roll(formula);
+      await roll.roll({ async: true });
+      getDocumentClass("ChatMessage").create({
+        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+        flavor: msg,
+        roll: JSON.stringify(roll),
+        type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+      });
+    } else {
+      const roll = new Roll(formula);
+      await roll.roll({ async: true });
+      let success = false;
+      let target = `<${attr.total}`;
+      if (action == "d20under") {
+        success = roll.total ? roll.total < attr.total : false;
+      } else if (action == "d20underEqual") {
+        success = roll.total ? roll.total <= attr.total : false;
+        target = `<=${attr.total}`;
+      }
+      const save_text = game.i18n.format(
+        success
+          ? game.i18n.localize("swnr.npc.saving.success")
+          : game.i18n.localize("swnr.npc.saving.failure"),
+        { actor: this.actor.name, target: target }
+      );
+      const chatTemplate = "systems/swnr/templates/chat/save-throw.html";
+      const chatDialogData = {
+        saveRoll: await roll.render(),
+        title: msg,
+        save_text,
+        success,
+      };
+      const chatContent = await renderTemplate(chatTemplate, chatDialogData);
+      const chatData = {
+        speaker: ChatMessage.getSpeaker(),
+        roll: JSON.stringify(roll),
+        content: chatContent,
+        type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+      };
+      getDocumentClass("ChatMessage").applyRollMode(chatData, rollMode);
+      getDocumentClass("ChatMessage").create(chatData);
+    }
+  }
+
   async _onResourceName(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();

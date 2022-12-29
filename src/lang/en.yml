@@ -596,6 +596,13 @@
     addShockMessageHint: When attacking this adds another roll for shock damage in the attack chat message.
     showTempAttrMod: Show Temporary Attribute Total Modifiers?
     showTempAttrModHint: On the character sidebar show the temporary modifiers to an attribute (e.g. attribute damage)
+    attrRoll: Stat/Attribute Roll
+    attrRollHint: What action/roll, if any, to take on an stat roll/click?
+    attrRollNo: Nothing
+    attrRolld20: d20 + mod
+    attrRoll2d6: 2d6 + mod
+    attrRollUnder: Roll d20 under
+    attrRollUnderEqual: Roll d20 under or equal
   chat:
     dicepool: Dice Pool
     difficulty: Difficulty
@@ -605,6 +612,7 @@
     skillCheck: Skill Check
     savingThrow: Saving Throw
     statApply: Apply stats to {name}
+    statRollFlavor: "{name} rolling {stat}"
     totalModifier: Total Modifier
     statRoll: Roll stats
     savemoddesc: (Positive makes save easier, negative harder)

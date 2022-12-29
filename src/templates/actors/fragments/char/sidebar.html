@@ -18,7 +18,7 @@
     </thead>
     {{#each actor.data.data.stats as |stat key|}}
     <tr>
-      <td>
+      <td class="attrClick" data-attr="{{key}}">
         <label for="data.stats.{{key}}.base" class="resource-label px-1">
           {{localize (concat 'swnr.stat.short.' key)}}
         </label>

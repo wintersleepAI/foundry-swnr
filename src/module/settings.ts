@@ -47,4 +47,22 @@ export const registerSettings = function (): void {
     type: Boolean,
     default: true,
   });
+
+  game.settings.register("swnr", "attrRoll", {
+    name: "swnr.settings.attrRoll",
+    hint: "swnr.settings.attrRollHint",
+    scope: "world",
+    config: true,
+    type: String,
+    choices: {           // If choices are defined, the resulting setting will be a select menu
+      "none": game.i18n.localize("swnr.settings.attrRollNo"),
+      "d20": game.i18n.localize("swnr.settings.attrRolld20"),
+      "2d6": game.i18n.localize("swnr.settings.attrRoll2d6"),
+      "d20under": game.i18n.localize("swnr.settings.attrRollUnder"),
+      "d20underEqual": game.i18n.localize("swnr.settings.attrRollUnderEqual"),
+    },
+    default: "none",        // The default value for the setting
+    onChange: value => { // A callback function which triggers when the setting is changed
+    }
+  });
 };
