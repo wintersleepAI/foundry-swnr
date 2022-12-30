@@ -157,6 +157,10 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
 
   async rollSave(save: string): Promise<void> {
     const target = <number>this.data.data.save[save];
+    if (isNaN(target)) {
+      ui.notifications?.error("Unable to find save: " + save);
+      return;
+    }
     const template = "systems/swnr/templates/dialogs/roll-save.html";
     const title = game.i18n.format("swnr.titles.savingThrow", {
       throwType: game.i18n.localize("swnr.sheet.saves." + save),
