@@ -24,7 +24,7 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
   async _onCreate(): Promise<void> {
     await this.update({
       "token.actorLink": true,
-      img: "systems/wwn/assets/default/faction.png",
+      img: "systems/swnr/assets/icons/faction.png",
     });
   }
 
