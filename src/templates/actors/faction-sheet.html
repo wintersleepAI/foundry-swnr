@@ -35,14 +35,14 @@
             type="number" step="1" name="data.health.value" value="{{actor.data.data.health.value}}" data-dtype="Number"
             min="0" /><span>/</span>
           <span
-            class="inline-block text-left text-gray-700 cursor-not-allowed w-8">{{actor.data.data.health.max}}</span>
+            class="inline-block text-left text-gray-300 cursor-not-allowed w-8">{{actor.data.data.health.max}}</span>
         </div>
         <div>{{localize 'swnr.sheet.hp'}}</div>
       </div>
 
       <!-- force -->
       <div class="flex-col text-center items-center p-2">
-        <select class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+        <select class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
           name="data.forceRating">
           {{#select data.data.forceRating}}
           <option value="1">1</option>
@@ -64,7 +64,7 @@
       </div>
       <!-- cunning -->
       <div class="flex-col text-center items-center p-2">
-        <select class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+        <select class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
           name="data.cunningRating">
           {{#select data.data.cunningRating}}
           <option value="1">1</option>
@@ -86,7 +86,7 @@
       </div>
       <!-- wealth -->
       <div class="flex-col text-center items-center p-2">
-        <select class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+        <select class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
           name="data.wealthRating">
           {{#select data.data.wealthRating}}
           <option value="1">1</option>
@@ -176,7 +176,7 @@
 
     <div class="w-full">
       <nav 
-        class="pc-sheet-tabs tabs py-1 flex flex-wrap gap-2 border-t border-b border-l border-r border-blueGray-900 border0 mb-1 bg-blueGray-700 text-gray-100"
+        class="pc-sheet-tabs tabs py-1 flex flex-wrap gap-2 border-t border-b border-l border-r border-blueGray-900 border0 mb-1 bg-blueGray-800 text-gray-100"
         data-group="primary">
         <a class="item" data-tab="assets">
           {{localize 'swnr.sheet.faction.assets-tab'}}
