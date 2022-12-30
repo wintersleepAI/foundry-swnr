@@ -285,13 +285,17 @@ export async function _onChatCardAction(
       );
       //return (button.disabled = false);
     }
-    let effort = button.dataset.effort;
+    const effort = button.dataset.effort;
 
     for (const t of targets) {
       if (t.type === "character") {
-        let updated_effort = t.data.data.effort[effort] + 1;
-        const effort_key = `data.effort.${effort}`; 
-        await t.update({[effort_key]:  updated_effort });
+        if (t.data.data.effort.value == 0) {
+          ui.notifications?.info(`${t.name} has no available effort`);
+          return;
+        }
+        const updated_effort = t.data.data.effort[effort] + 1;
+        const effort_key = `data.effort.${effort}`;
+        await t.update({ [effort_key]: updated_effort });
       }
     }
   }
