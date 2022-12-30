@@ -92,7 +92,7 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
     event.preventDefault();
     event.stopPropagation();
     this.popUpDialog?.close();
-    const html = `<form class="-m-2 p-2 pb-4 bg-gray-200 space-y-2">
+    const html = `<form class="-m-2 p-2 pb-4 space-y-2">
     <div class="form-group">
       <label>Manual Log Entry. To inline a roll use [[1dX]].</label>
       <textarea id="inputField" name="inputField" rows="4" cols="50" 
@@ -231,7 +231,7 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
     event.preventDefault();
     event.stopPropagation();
     const dialogTemplate = `
-    <div class="flex flex-col -m-2 p-2 pb-4 bg-gray-200 space-y-2">
+    <div class="flex flex-col -m-2 p-2 pb-4 space-y-2">
       <h1> Add Tag </h1>
       <div class="flex flex-col">
         <div class="flex flexrow p-2 m-2">
@@ -297,7 +297,7 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
       tagDesc += `<div> <b>${tag.name}</b></div><div>${tag.desc}</div><div><i>Effect:</i> ${tag.effect}</div>`;
     }
     const dialogTemplate = `
-    <div class="flex flex-col -m-2 p-2 pb-4 bg-gray-200 space-y-2">
+    <div class="flex flex-col -m-2 p-2 pb-4 space-y-2">
       <h1> Add Tag </h1>
       <div class="flex flexrow">
         Tag: <select id="tag"          

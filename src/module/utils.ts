@@ -368,7 +368,7 @@ export async function initCompendSkills(
     compOptions += `<option value='${cand.metadata.name}'>${cand.metadata.label}</option>`;
   }
   const dialogTemplate = `
-  <div class="flex flex-col -m-2 p-2 pb-4 bg-gray-200 space-y-2">
+  <div class="flex flex-col -m-2 p-2 pb-4 space-y-2">
     <h1> Select Compendium </h1>
     <div class="flex flexrow">
       Compendium: <select id="compendium"

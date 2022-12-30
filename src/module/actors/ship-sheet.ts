@@ -297,7 +297,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
         depts += `<div class="border p-2 flex border-black role-order" data-role="${role}" data-role-name="${roleName}"><a><i class="fas fa-sort"></i></a>${role}${roleName}</div>`;
       }
       const dialogTemplate = `
-      <div class="flex flex-col -m-2 p-2 pb-4 bg-gray-200 space-y-2">
+      <div class="flex flex-col -m-2 p-2 pb-4 space-y-2">
         <h1> Order Departments/Roles </h1>
         <div class="flex flexrow">
             <div id="deptOrder">

@@ -96,7 +96,7 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
         itemOptions += `<option value='${label}'>${cand.name}</option>`;
       }
       const dialogTemplate = `
-      <div class="flex flex-col -m-2 p-2 pb-4 bg-gray-200 space-y-2">
+      <div class="flex flex-col -m-2 p-2 pb-4 space-y-2">
         <h1> Select ${givenName} to Add </h1>
         <div class="flex flexrow">
           <select id="itemList"
