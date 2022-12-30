@@ -33,5 +33,7 @@ data:
     can be re-established, but only by activating this technique again.</p>
   level: 0
   source: telepathy
+  save: metal
+  effort: day
 name: Telepathic Contact
 type: power

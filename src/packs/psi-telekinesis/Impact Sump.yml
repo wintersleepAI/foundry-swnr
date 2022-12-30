@@ -7,5 +7,6 @@ data:
     after damage is rolled.</p>
   level: 2
   source: telekInesIs
+  effort: day
 name: Impact Sump
 type: power

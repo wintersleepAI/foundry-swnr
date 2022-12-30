@@ -11,6 +11,9 @@ data:
     driving directly forward for a round and crashing into any obstacles.
     Targets who save are immune to this technique for the scene.</p>
   level: 2
-  source: telekInesIs
+  source: telekinesis
+  save: evasion
+  skill: dex/pilot
+  effort: scene
 name: Slip Field
 type: power

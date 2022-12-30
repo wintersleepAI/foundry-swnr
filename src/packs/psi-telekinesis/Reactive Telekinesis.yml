@@ -9,5 +9,6 @@ data:
     possible.</p>
   level: 3
   source: telekInesIs
+  effort: scene
 name: Reactive Telekinesis
 type: power

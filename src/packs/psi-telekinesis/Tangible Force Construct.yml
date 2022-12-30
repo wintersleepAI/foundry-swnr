@@ -11,5 +11,6 @@ data:
     smashed with 20 points of damage against AC 15.</p>
   level: 3
   source: telekInesIs
+  effort: scene
 name: Tangible Force Construct
 type: power

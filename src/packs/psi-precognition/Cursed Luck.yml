@@ -12,5 +12,7 @@ data:
     power.</p>
   level: 3
   source: precognition
+  effort: day
+  save: metal
 name: Cursed Luck
 type: power

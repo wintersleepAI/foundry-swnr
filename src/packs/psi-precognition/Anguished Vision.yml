@@ -11,5 +11,6 @@ data:
     per day.</p>
   level: 3
   source: precognition
+  effort: day
 name: Anguished Vision
 type: power

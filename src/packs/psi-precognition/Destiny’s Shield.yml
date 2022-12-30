@@ -11,5 +11,6 @@ data:
     attack.</p>
   level: 2
   source: precognition
+  effort: day
 name: Destiny’s Shield
 type: power

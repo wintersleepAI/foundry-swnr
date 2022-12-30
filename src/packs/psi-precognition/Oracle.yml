@@ -32,5 +32,6 @@ data:
     year into the future.</p>
   level: 0
   source: precognition
+  effort: day
 name: Oracle
 type: power

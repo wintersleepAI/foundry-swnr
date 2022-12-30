@@ -14,5 +14,6 @@ data:
     for only one round and do not interfere with the adept’s other actions.</p>
   level: 1
   source: metapsionics
+  effort: scene
 name: Mindtracing
 type: power

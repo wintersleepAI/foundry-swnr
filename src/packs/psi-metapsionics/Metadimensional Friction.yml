@@ -10,5 +10,8 @@ data:
     Only one application of this friction can affect a target at once.</p>
   level: 3
   source: metapsionics
+  effort: scene
+  roll: 3d8
+  save: mental
 name: Metadimensional Friction
 type: power

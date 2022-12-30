@@ -9,5 +9,6 @@ data:
     lasts as long as the Effort remains Committed to the technique.</p>
   level: 1
   source: teleportation
+  effort: current
 name: Spatial Awareness
 type: power

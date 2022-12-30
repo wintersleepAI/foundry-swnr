@@ -11,5 +11,6 @@ data:
     only one <em>Neural Trap</em> from a given psychic at a time</p>
   level: 2
   source: metapsionics
+  effort: current
 name: Neural Trap
 type: power

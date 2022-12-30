@@ -10,5 +10,6 @@ data:
     surprised.</p>
   level: 1
   source: precognition
+  effort: scene
 name: Intuitive Response
 type: power

@@ -17,5 +17,6 @@ data:
     to count as an Execution Attack as described on page 52.</p>
   level: 3
   source: teleportation
+  effort: day
 name: Rift Reduplication
 type: power

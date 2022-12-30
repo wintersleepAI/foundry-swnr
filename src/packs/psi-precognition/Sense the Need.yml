@@ -12,5 +12,6 @@ data:
     loaded laser pistol.</p>
   level: 1
   source: precognition
+  effort: day
 name: Sense the Need
 type: power

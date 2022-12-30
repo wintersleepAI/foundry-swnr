@@ -10,5 +10,6 @@ data:
     comrades. This lasts until the user reclaims the Effort.</p>
   level: 1
   source: telekInesIs
+  effort: current
 name: Pressure Field
 type: power

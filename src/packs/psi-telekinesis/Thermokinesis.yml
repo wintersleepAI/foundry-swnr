@@ -14,5 +14,7 @@ data:
     technique is applied to them.</p>
   level: 2
   source: telekInesIs
+  effort: scene
+  roll: 2d12
 name: Thermokinesis
 type: power

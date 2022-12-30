@@ -12,5 +12,6 @@ data:
     time.</p>
   level: 2
   source: metapsionics
+  effort: day
 name: Suspended Manifestation
 type: power

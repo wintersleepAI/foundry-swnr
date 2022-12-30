@@ -13,5 +13,6 @@ data:
     lasts for as long as the Effort remains Committed.</p>
   level: 4
   source: telekInesIs
+  effort: current
 name: Telekinetic Flight
 type: power

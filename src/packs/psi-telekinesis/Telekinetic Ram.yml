@@ -14,5 +14,7 @@ data:
     were struck by a Heavy weapon.</p>
   level: 3
   source: telekInesIs
+  effort: scene
+  roll: 5d12
 name: Telekinetic Ram
 type: power

@@ -10,5 +10,6 @@ data:
     a Main Action.</p>
   level: 1
   source: telepathy
+  effort: scene
 name: Facile Mind
 type: power

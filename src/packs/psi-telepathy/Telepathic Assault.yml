@@ -11,5 +11,8 @@ data:
     per scene.</p>
   level: 3
   source: telepathy
+  save: metal
+  effort: day
+  roll: 6d6
 name: Telepathic Assault
 type: power

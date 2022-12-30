@@ -9,5 +9,6 @@ data:
     any given target more than once a day.</p>
   level: 2
   source: precognition
+  effort: day
 name: Alternate Outcome
 type: power

@@ -11,5 +11,6 @@ data:
     the adept.</p>
   level: 4
   source: metapsionics
+  effort: day
 name: Impervious Pavis of Will
 type: power

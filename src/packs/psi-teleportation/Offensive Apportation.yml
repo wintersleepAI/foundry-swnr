@@ -18,5 +18,7 @@ data:
     hits or not.</p>
   level: 4
   source: teleportation
+  save: metal
+  effort: day
 name: Offensive Apportation
 type: power

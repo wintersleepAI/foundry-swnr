@@ -8,5 +8,6 @@ data:
     long as the Effort is committed.</p>
   level: 1
   source: telekInesIs
+  effort: current
 name: Kinetic Transversal
 type: power

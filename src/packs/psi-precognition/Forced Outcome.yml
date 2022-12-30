@@ -13,5 +13,6 @@ data:
     chance per scene is likely impossible to produce.</p>
   level: 3
   source: precognition
+  effort: scene
 name: Forced Outcome
 type: power

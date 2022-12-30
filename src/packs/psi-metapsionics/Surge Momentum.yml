@@ -12,5 +12,6 @@ data:
     up, they automatically fail their saving throw.</p>
   level: 3
   source: metapsionics
+  effort: day
 name: Surge Momentum
 type: power

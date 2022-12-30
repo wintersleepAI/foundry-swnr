@@ -10,5 +10,6 @@ data:
     day.</p>
   level: 1
   source: precognition
+  effort: day
 name: Terminal Reflection
 type: power

@@ -11,5 +11,6 @@ data:
     point for the day.</p>
   level: 4
   source: teleportation
+  effort: day
 name: Deep Intrusion
 type: power

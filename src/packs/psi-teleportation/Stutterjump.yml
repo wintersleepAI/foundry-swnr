@@ -14,5 +14,6 @@ data:
     area-effect attacks.</p>
   level: 3
   source: teleportation
+  effort: current
 name: Stutterjump
 type: power

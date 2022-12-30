@@ -13,5 +13,6 @@ data:
     any obvious way of identifying the metapsion.</p>
   level: 2
   source: metapsionics
+  effort: day
 name: Psychic Static
 type: power

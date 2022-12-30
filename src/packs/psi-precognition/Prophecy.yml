@@ -13,5 +13,6 @@ data:
     time.</p>
   level: 4
   source: precognition
+  effort: current
 name: Prophecy
 type: power

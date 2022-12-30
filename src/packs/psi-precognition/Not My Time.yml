@@ -12,5 +12,6 @@ data:
     technique can trigger no more often than once per week.</p>
   level: 4
   source: precognition
+  effort: day
 name: Not My Time
 type: power

@@ -18,5 +18,7 @@ data:
     silent.</p>
   level: 4
   source: telekInesIs
+  save: metal
+  effort: day
 name: Force Puppetry
 type: power

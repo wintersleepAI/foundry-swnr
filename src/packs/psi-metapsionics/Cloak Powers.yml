@@ -11,5 +11,7 @@ data:
     the investigator’s <em>Psychic Refinement</em> remains oblivious.</p>
   level: 1
   source: metapsionics
+  effort: current
+  skill: wis/metapsionics
 name: Cloak Powers
 type: power

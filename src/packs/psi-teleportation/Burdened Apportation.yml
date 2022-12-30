@@ -13,5 +13,6 @@ data:
     Committed for the day.</p>
   level: 2
   source: teleportation
+  effort: day
 name: Burdened Apportation
 type: power

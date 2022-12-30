@@ -6,5 +6,6 @@ data:
     fifteen minutes at most.</p>
   level: 2
   source: teleportation
+  effort: day
 name: Perceptive Dislocation
 type: power

@@ -13,5 +13,6 @@ data:
     invisible or visible at the psychic’s discretion.</p>
   level: 1
   source: telekInesIs
+  effort: current
 name: Telekinetic Armory
 type: power

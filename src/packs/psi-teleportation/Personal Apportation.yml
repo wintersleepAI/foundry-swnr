@@ -27,5 +27,6 @@ data:
     surface or near orbit.</p>
   level: 0
   source: teleportation
+  effort: scene
 name: Personal Apportation
 type: power

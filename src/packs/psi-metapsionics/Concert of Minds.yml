@@ -15,5 +15,6 @@ data:
     the scene.</p>
   level: 3
   source: metapsionics
+  effort: current
 name: Concert of Minds
 type: power
