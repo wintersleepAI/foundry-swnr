@@ -615,7 +615,7 @@
     statRollFlavor: "{name} rolling {stat}"
     totalModifier: Total Modifier
     statRoll: Roll stats
-    savemoddesc: (Positive makes save easier, negative harder)
+    savemoddesc: (Positive makes easier, negative harder)
     spike:
       fail3: >-
         Catastrophic dimensional energy incursion. 
