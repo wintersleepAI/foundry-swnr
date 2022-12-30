@@ -8,5 +8,6 @@ data:
     in addition to the cost of the <em>Psychic Succor</em>.</p>
   level: 2
   source: biopsionics
+  effort: day
 name: Tissue Integrity Field
 type: power

@@ -8,5 +8,7 @@ data:
     this technique is used, Effort must be Committed for the scene.</p>
   level: 1
   source: biopsionics
+  range: 100m
+  effort: scene
 name: Remote Repair
 type: power

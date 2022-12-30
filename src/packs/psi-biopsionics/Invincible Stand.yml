@@ -12,5 +12,6 @@ data:
     target, regardless of this technique.</p>
   level: 2
   source: biopsionics
+  effort: scene
 name: Invincible Stand
 type: power

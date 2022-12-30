@@ -16,5 +16,6 @@ data:
     one hundred kilometers away.</p>
   level: 3
   source: biopsionics
+  effort: current
 name: Metamorph
 type: power

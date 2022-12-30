@@ -8,5 +8,6 @@ data:
     succor apply normally, such as with <em>Tissue Integrity Field</em>.</p>
   level: 3
   source: biopsionics
+  effort: day
 name: Accelerated Succor
 type: power

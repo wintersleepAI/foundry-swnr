@@ -10,5 +10,7 @@ data:
     illnesses.</p>
   level: 1
   source: biopsionics
+  skill: wis/biopsionics
+  effort: day
 name: Organic Purification Protocols
 type: power

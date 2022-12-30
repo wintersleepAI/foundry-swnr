@@ -13,5 +13,6 @@ data:
     scene.</p>
   level: 4
   source: biopsionics
+  effort: day
 name: Holistic Optimization Patterning
 type: power

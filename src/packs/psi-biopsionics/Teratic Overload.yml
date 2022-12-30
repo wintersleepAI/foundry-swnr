@@ -15,6 +15,9 @@ data:
     Whether a success or failure, this power cannot be used on the same target
     more than once per scene.</p>
   level: 3
+  roll: 3d6
+  effort: scene
+  save: physical
   source: biopsionics
 name: Teratic Overload
 type: power

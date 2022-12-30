@@ -22,5 +22,6 @@ data:
     instead.</p>
   level: 0
   source: biopsionics
+  effort: day
 name: Psychic Succor
 type: power
