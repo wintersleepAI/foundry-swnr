@@ -56,7 +56,7 @@
           {{/select}}
         </select>
         <div>{{localize 'swnr.sheet.faction.forceRating'}}
-          <a class="force-up text-gray-600 hover:text-red-600 transition-colors"
+          <a class="force-up text-gray-400 hover:text-red-600 transition-colors"
             title="{{localize 'swnr.sheet.level-up'}}">
             <i class="fas fa-level-up-alt"></i>
           </a>
@@ -78,7 +78,7 @@
           {{/select}}
         </select>
         <div>{{localize 'swnr.sheet.faction.cunningRating'}}
-          <a class="cunning-up text-gray-600 hover:text-red-600 transition-colors"
+          <a class="cunning-up text-gray-400 hover:text-red-600 transition-colors"
             title="{{localize 'swnr.sheet.level-up'}}">
             <i class="fas fa-level-up-alt"></i>
           </a>
@@ -100,7 +100,7 @@
           {{/select}}
         </select>
         <div>{{localize 'swnr.sheet.faction.wealthRating'}}
-          <a class="wealth-up text-gray-600 hover:text-red-600 transition-colors"
+          <a class="wealth-up text-gray-400 hover:text-red-600 transition-colors"
             title="{{localize 'swnr.sheet.level-up'}}">
             <i class="fas fa-level-up-alt"></i>
           </a>
@@ -146,7 +146,7 @@
           name="data.factionGoal" value="{{data.data.factionGoal}}" />
         <div>
           {{localize 'swnr.sheet.faction.factionGoal'}}
-          <a class="set-goal text-gray-600 hover:text-red-600 transition-colors"
+          <a class="set-goal text-gray-400 hover:text-red-600 transition-colors"
             title="{{localize 'swnr.sheet.faction.setGoal'}}">
             <i class="fas fa-exchange-alt"></i>
           </a>
@@ -229,7 +229,7 @@
           <div class="p-2">
             {{#each actor.data.data.tags as |tag id|}}
             <div class="p-1 border-b border-black tagdiv" data-idx="{{id}}">
-              <a class="item-control faction-tag-delete text-gray-600 hover:text-red-600 transition-colors"
+              <a class="item-control faction-tag-delete text-gray-400 hover:text-red-600 transition-colors"
                 title='{{localize 'swnr.sheet.faction.remove-tag'}}'><i class="fas fa-trash"></i></a>
               <b>{{ tag.name}}</b> <br>{{tag.desc}}<br> Effect: {{tag.effect}}<br>
               <hr>
@@ -260,7 +260,7 @@
             
             {{#each actor.data.data.log as |logentry id|}}
             <div class="p-1 border-b border-black logdiv" data-idx="{{id}}">
-              <a class="item-control faction-log-delete text-gray-600 hover:text-red-600 transition-colors"
+              <a class="item-control faction-log-delete text-gray-400 hover:text-red-600 transition-colors"
                 title='{{localize 'swnr.sheet.faction.remove-log'}}'><i class="fas fa-trash"></i></a>
               {{{logentry}}}<br>
               <hr>
