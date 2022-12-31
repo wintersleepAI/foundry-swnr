@@ -17,192 +17,166 @@ packs:
     module: swnr
     path: packs/ammo-and-power.db
     type: Item
-    entity: Item
   - name: armor
     label: Armor
     system: swnr
     module: swnr
     path: packs/armor.db
     type: Item
-    entity: Item
   - name: psi-biopsionics
     label: Biopsionics
     system: swnr
     module: swnr
     path: packs/psi-biopsionics.db
     type: Item
-    entity: Item
   - name: communications
     label: Communications
     system: swnr
     module: swnr
     path: packs/communications.db
     type: Item
-    entity: Item
   - name: computing-gear
     label: Computing Gear
     system: swnr
     module: swnr
     path: packs/computing-gear.db
     type: Item
-    entity: Item
   - name: field-equipment
     label: Field Equipment
     system: swnr
     module: swnr
     path: packs/field-equipment.db
     type: Item
-    entity: Item
   - name: foci
     label: Foci
     system: swnr
     module: swnr
     path: packs/foci.db
     type: Item
-    entity: Item
   - name: heavy
     label: Heavy Weapons
     system: swnr
     module: swnr
     path: packs/heavy.db
     type: Item
-    entity: Item
   - name: melee
     label: Melee Weapons
     system: swnr
     module: swnr
     path: packs/melee.db
     type: Item
-    entity: Item
   - name: psi-metapsionics
     label: Metapsionics
     system: swnr
     module: swnr
     path: packs/psi-metapsionics.db
     type: Item
-    entity: Item
   - name: pharmaceuticals
     label: Pharmaceuticals
     system: swnr
     module: swnr
     path: packs/pharmaceuticals.db
     type: Item
-    entity: Item
   - name: psi-precognition
     label: Precognition
     system: swnr
     module: swnr
     path: packs/psi-precognition.db
     type: Item
-    entity: Item
   - name: ranged
     label: Ranged Weapons
     system: swnr
     module: swnr
     path: packs/ranged.db
     type: Item
-    entity: Item
   - name: psi-telekinesis
     label: Telekinesis
     system: swnr
     module: swnr
     path: packs/psi-telekinesis.db
     type: Item
-    entity: Item
   - name: psi-telepathy
     label: Telepathy
     system: swnr
     module: swnr
     path: packs/psi-telepathy.db
     type: Item
-    entity: Item
   - name: psi-teleportation
     label: Teleportation
     system: swnr
     module: swnr
     path: packs/psi-teleportation.db
     type: Item
-    entity: Item
   - name: tools-and-medical
     label: Tools And Medical
     system: swnr
     module: swnr
     path: packs/tools-and-medical.db
     type: Item
-    entity: Item
   - name: ship-weapon
     label: Ship Weapons
     system: swnr
     module: swnr
     path: packs/ship-weapon.db
     type: Item
-    entity: Item
   - name: ship-defense
     label: Ship Defense
     system: swnr
     module: swnr
     path: packs/ship-defense.db
     type: Item
-    entity: Item
   - name: ship-fitting
     label: Ship Fitting
     system: swnr
     module: swnr
     path: packs/ship-fitting.db
     type: Item
-    entity: Item
   - name: cyberware
     label: Cyberware
     system: swnr
     module: swnr
     path: packs/cyberware.db
     type: Item
-    entity: Item
   - name: bestiary
     label: Bestiary
     system: swnr
     module: swnr
     path: packs/bestiary.db
     type: Actor
-    entity: Actor
   - name: sample-ships
     label: Sample Ships
     system: swnr
     module: swnr
     path: packs/sample-ships.db
     type: Actor
-    entity: Actor
   - name: all-items
     label: All Items
     system: swnr
     module: swnr
     path: packs/all-items.db
     type: Item
-    entity: Item
   - name: drone-fittings
     label: Drone Fittings
     system: swnr
     module: swnr
     path: packs/drone-fittings.db
     type: Item
-    entity: Item
   - name: assets
     label: Faction Assets
     system: swnr
     module: swnr
     path: packs/assets.db
     type: Item
-    entity: Item
-  - entity: RollTable
+  - name: one-roll-tables
     label: One Roll Tables
     module: swnr
-    name: one-roll-tables
+    type: RollTable
     path: packs/one-roll-tables.db
     system: swnr
-  - entity: RollTable
+  - name: one-roll-backing
     label: One Roll Tables - backing
     module: swnr
-    name: one-roll-backing
+    type: RollTable
     path: packs/one-roll-backing.db
     system: swnr    
 languages:
