@@ -3,7 +3,9 @@ title: "Stars Without Number: Revised (wsAI Alter.)"
 description: >-
   Stars Without Number: Revised system (alternate version)
 version: 1.0.0
-author: Spice_King + wintersleepAI
+authors: 
+  - "name": "Spice_King"
+  - "name": "wintersleepAI"
 scripts: ["lib/sortable/Sortable.min.js"]
 initiative: 1d8+@stats.dex.mod
 esmodules:
@@ -185,8 +187,11 @@ languages:
     path: lang/en.json
 gridDistance: 2
 gridUnits: "m"
-minimumCoreVersion: 0.8.6
-compatibleCoreVersion: 10.291
+compatibleCoreVersion: 9.235
+compatibility: 
+  - "coreVersion": "10"
+    "minimumVersion": "9.235"
+    "verified": "10"
 url: "https://github.com/wintersleepAI/foundry-swnr"
 manifest: >-
   https://github.com/wintersleepAI/foundry-swnr/releases/latest/download/system.json
