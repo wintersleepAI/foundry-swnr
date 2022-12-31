@@ -9,6 +9,7 @@
     "build:watch": "gulp link watch",
     "clean": "gulp clean && gulp link --clean",
     "foundry": "node foundry/resources/app/main.js --noupnp --dataPath=./data",
+    "foundry": "node foundry9/resources/app/main.js --noupnp --dataPath=./data",
     "update": "npm install --save-dev github:Spice-King/foundry-vtt-types#foundry-0.8.x"
   },
   "engines": {
