@@ -93,7 +93,10 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
       const sortedNames = keys.sort();
       for (const label of sortedNames) {
         const cand = candiateItems[label];
-        itemOptions += `<option value='${label}'>${cand.name}</option>`;
+        itemOptions += `<option value='${label}'
+        class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        ${cand.name}
+        </option>`;
       }
       const dialogTemplate = `
       <div class="flex flex-col -m-2 p-2 pb-4 space-y-2">
