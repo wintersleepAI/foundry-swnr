@@ -86,7 +86,6 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     }
   }
 
-
   async _onAttrRoll(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     const action = game.settings.get("swnr", "attrRoll");
@@ -94,7 +93,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       return;
     }
     const attrShort = $(event.currentTarget).data("attr");
-    const attr = this.actor.data.data.stats[attrShort];  
+    const attr = this.actor.data.data.stats[attrShort];
     const msg = game.i18n.format("swnr.chat.statRollFlavor", {
       name: this.actor?.name,
       stat: attrShort,
@@ -487,13 +486,13 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     //todo: sort out health boosts from classes.
     const constBonus = this.actor.data.data.stats.con.mod;
     //console.log(currentLevel, this.actor.data.data.stats.con, this.actor.data.data.stats.con.mod)
-    const perLevel =`max(${hd} + ${constBonus}, 1)`;
+    const perLevel = `max(${hd} + ${constBonus}, 1)`;
 
     const _rollHP = async () => {
-      const hitArray =  Array(currentLevel).fill(perLevel);
-      const formula = hitArray.join("+")
+      const hitArray = Array(currentLevel).fill(perLevel);
+      const formula = hitArray.join("+");
 
-      let msg = `Rolling Level ${currentLevel} HP: ${formula}<br>(Roll for level + con mod)<br>`;
+      let msg = `Rolling Level ${currentLevel} HP: ${formula}<br>(Rolling a hitdice per level, with adding the CON mod. Each roll cannot be less than 1)<br>`;
       const roll = new Roll(formula);
       await roll.roll({ async: true });
       if (roll.total) {
@@ -532,12 +531,12 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
             actor: this.actor.name,
             level: currentLevel,
             formula: perLevel,
-          })
+          }),
         });
       });
       if (performHPRoll) await _rollHP();
     } else {
-      ui.notifications?.info("Set the character's HitDie")
+      ui.notifications?.info("Set the character's HitDie");
     }
 
     return;
@@ -620,20 +619,19 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
         (<HTMLSelectElement>form.querySelector('[name="quickSkill3"]'))
           ?.value || null;
       const extraEffortName =
-          (<HTMLInputElement>form.querySelector('[name="extraEffortName"]'))
-            ?.value || "";
-      const owedDisplay =
-        (<HTMLInputElement>form.querySelector('[name="owedDisplay"]'))
+        (<HTMLInputElement>form.querySelector('[name="extraEffortName"]'))
           ?.value || "";
+      const owedDisplay =
+        (<HTMLInputElement>form.querySelector('[name="owedDisplay"]'))?.value ||
+        "";
 
-      
       const debtDisplay =
-      (<HTMLInputElement>form.querySelector('[name="debtDisplay"]'))
-        ?.value || "";
+        (<HTMLInputElement>form.querySelector('[name="debtDisplay"]'))?.value ||
+        "";
 
       const balanceDisplay =
-      (<HTMLInputElement>form.querySelector('[name="balanceDisplay"]'))
-        ?.value || "";
+        (<HTMLInputElement>form.querySelector('[name="balanceDisplay"]'))
+          ?.value || "";
 
       const showResourceList = (<HTMLInputElement>(
         form.querySelector('[name="showResourceList"]')
@@ -650,7 +648,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
           showResourceList: showResourceList,
           owedDisplay: owedDisplay,
           debtDisplay: debtDisplay,
-          balanceDisplay: balanceDisplay
+          balanceDisplay: balanceDisplay,
         },
       };
       await this.actor.update(update);

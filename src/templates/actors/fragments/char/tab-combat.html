@@ -68,7 +68,7 @@
     </div>
     <div class="flex flex-col">
       <div class="flex-grow">
-        <h4 class="text-lg underline text-center">
+        <h4 class="text-lg underline">
           {{localize 'swnr.item.locationReadied'}} {{localize 'swnr.sheet.tabs.weapons'}}
         </h4>
         <div class="space-y-2">
@@ -84,10 +84,10 @@
         </div>
       </div>
       <div class="flex-grow">
-        <h4 class="text-lg underline text-center">
+        <h4 class="text-lg underline">
           {{localize 'swnr.item.locationReadied'}}  {{localize 'swnr.sheet.tabs.armor'}}
         </h4>
-        <div class="flex gap-1 flex-col">
+        <div class="flex flex-col">
 
           {{#each itemTypes.armor as |item id|}} 
             {{#if (eq item.data.data.location "readied")}}

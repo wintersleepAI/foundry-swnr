@@ -732,7 +732,7 @@
         from the list.
     hp: 
       title: Confirm rolling level hit dice for {actor}.
-      text: "Confirm rolling {level} level hit dice for {actor}. Each level HD (includes CON mod) is {formula}, where max means taking the higher of the roll or 1. To change the hitdie see the stats tab."
+      text: "Confirm rolling {level} level hit dice for {actor}. Each level HD (includes CON mod) is {formula}, where max means taking the higher of the roll with modifiers or 1 (note this is not a fractional number like 0.1). This action will set the HP to the roll results or the current HP + 1, whatever is larger. To change the hitdie see the stats tab."
       revised: Revised Expert/Psychic d6
       revised-war: Revised Warrior/Partial Warrior d6+2
       codex-mage: Arcanist / Magister d6-1
