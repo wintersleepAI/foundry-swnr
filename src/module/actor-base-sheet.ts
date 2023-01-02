@@ -43,7 +43,8 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
 
   async populateItemList(
     itemType: string,
-    candiateItems: { [name: string]: Item }
+    candiateItems: { [name: string]: Item },
+    itemSubType?: string
   ): Promise<void> {
     for (const e of game.packs) {
       if (
@@ -52,7 +53,9 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
           (game?.release?.generation < 10 && e.metadata.entity === "Item"))
       ) {
         const items = (await e.getDocuments()).filter(
-          (i) => (<SWNRBaseItem>i).type == itemType
+          (i) => 
+            (<SWNRBaseItem>i).type == itemType &&
+            (<SWNRBaseItem>i).system.type == itemSubType
         );
         if (items.length) {
           for (const ci of items.map((item) => item.toObject())) {
@@ -75,6 +78,7 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     const candiateItems: { [name: string]: Item } = {};
     const itemType = $(event.currentTarget).data("itemType");
     const givenName = $(event.currentTarget).data("itemName");
+    const itemSubType = $(event.currentTarget).data("itemSubtype");
     if (mappings[itemType]) {
       const skillPack = game.packs.get(`swnr.${mappings[itemType]}`);
       if (skillPack) {
@@ -84,7 +88,7 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
         }
       }
     } else {
-      await this.populateItemList(itemType, candiateItems);
+      await this.populateItemList(itemType, candiateItems, itemSubType);
     }
 
     if (Object.keys(candiateItems).length) {
