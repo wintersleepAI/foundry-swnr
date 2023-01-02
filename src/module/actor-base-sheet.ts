@@ -52,10 +52,12 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
         ((game?.release?.generation >= 10 && e.metadata.type === "Item") ||
           (game?.release?.generation < 10 && e.metadata.entity === "Item"))
       ) {
-        const items = (await e.getDocuments()).filter(
+        const items = itemSubType ? (await e.getDocuments()).filter(
           (i) => 
             (<SWNRBaseItem>i).type == itemType &&
             (<SWNRBaseItem>i).system.type == itemSubType
+        ) : (await e.getDocuments()).filter(
+          (i) => (<SWNRBaseItem>i).type == itemType
         );
         if (items.length) {
           for (const ci of items.map((item) => item.toObject())) {
