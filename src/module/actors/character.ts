@@ -14,8 +14,7 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
   prepareBaseData(): void {
     const data = this.data.data;
     calculateStats(data.stats);
-    data.systemStrain.max =
-      data.stats.con.base + data.stats.con.boost - data.systemStrain.permanent;
+    data.systemStrain.max = data.stats.con.total - data.systemStrain.permanent;
 
     const cyberware = <SWNRBaseItem<"cyberware">[]>(
       this.items.filter((i) => i.type === "cyberware")

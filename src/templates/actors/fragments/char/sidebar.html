@@ -2,17 +2,20 @@
   <table>
     <thead>
       <tr>
-        <th>
+        <th></th>
+        <th class="text-gray-400 text-xs">
+          {{localize 'swnr.sheet.base'}}
         </th>
         {{#if showTempAttrMod}}
-        <th class="px-1 hidden lg:table-cell">
-          {{localize 'swnr.sheet.temp'}}
+        <th class="text-xs lg:table-cell">
+          +/-
         </th>
         {{/if}}
-        <th  class="px-1 hidden lg:table-cell">
+        <th  class="text-gray-400 pr-0.5 text-xs lg:table-cell">
+         
           {{localize 'swnr.sheet.total'}}
         </th>
-        <th class="px-1">{{localize 'swnr.sheet.mod'}}</th>
+        <th class=" text-sm">{{localize 'swnr.sheet.mod'}}</th>
 
       </tr>
     </thead>
@@ -23,7 +26,13 @@
           {{localize (concat 'swnr.stat.short.' key)}}
         </label>
       </td>
-      
+      <td class="text-right lg:table-cell">
+        <div
+          class="pr-1 text-gray-400"
+        >
+        {{stat.baseTotal}}
+        </div>
+      </td>
       {{#if ../showTempAttrMod}}
       <td class="text-center hidden lg:table-cell">
         <input
@@ -36,16 +45,16 @@
         />
       </td>
       {{/if}}
-      <td class="text-center hidden lg:table-cell">
+      <td class="text-left lg:table-cell">
         <div
-          class="w-8  px-1 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md text-gray-300"
+          class="pl-1 text-gray-400"
         >
         {{stat.total}}
         </div>
       </td>
       <td class="text-center">
         <span class="stat-mod">
-          {{numberFormat stat.mod decimals=0 sign=true}}
+          <b>{{numberFormat stat.mod decimals=0 sign=true}}</b>
         </span>
       </td>
     </tr>
