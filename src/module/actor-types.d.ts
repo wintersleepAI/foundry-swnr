@@ -50,6 +50,7 @@ declare interface SWNRStatBase {
 declare interface SWNRStatComputed {
   mod: number;
   total: number;
+  baseTotal: number;
 }
 declare interface SWNRLivingTemplateBase {
   health: {
