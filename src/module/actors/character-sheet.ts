@@ -361,6 +361,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
           mod: 0,
           bonus: 0,
           total: 0,
+          temp: 0,
         };
       });
       calculateStats(stats);
