@@ -55,7 +55,7 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
         const items = itemSubType ? (await e.getDocuments()).filter(
           (i) => 
             (<SWNRBaseItem>i).type == itemType &&
-            (<SWNRBaseItem>i).system.type == itemSubType
+            (<SWNRBaseItem>i).data.data["type"] == itemSubType
         ) : (await e.getDocuments()).filter(
           (i) => (<SWNRBaseItem>i).type == itemType
         );
