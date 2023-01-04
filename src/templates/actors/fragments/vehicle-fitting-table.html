@@ -1,17 +1,22 @@
+<!-- fittings -->
 <div>
   <li class="item-titles flexrow">
     <!--<div class="item-caret"><i class="fas fa-caret-down"></i></div>-->
     <div class="item-name flex2">{{localize 'swnr.sheet.ship.fittings'}} </div>
     <div class="item-effect">{{localize 'swnr.sheet.ship.effect'}}</div>
     <div class="item-controls text-right">
-    
       <a class="item-control item-search text-gray-100 hover:text-green-400 transition-colors"
-        title="{{localize 'swnr.sheet.search-item'}}" data-item-type="shipFitting"  data-item-name="Fitting">
-        <i class="fas fa-search"></i>
+        title="{{localize 'swnr.sheet.search-item'}}" 
+        data-item-type="shipFitting"  
+        data-item-name="Fitting" 
+        data-item-subtype={{subtype}}>
+          <i class="fas fa-search"></i>
       </a> 
       <a class="item-control item-create text-gray-100 hover:text-green-400 transition-colors"
-        title="{{localize 'swnr.sheet.add-item'}}" data-item-type="shipFitting"  data-item-name="Fitting">
-        <i class="fas fa-plus"></i>
+        title="{{localize 'swnr.sheet.add-item'}}" 
+        data-item-type="shipFitting"  
+        data-item-name="Fitting">
+         <i class="fas fa-plus"></i>
       </a> 
     </div>
   </li>
