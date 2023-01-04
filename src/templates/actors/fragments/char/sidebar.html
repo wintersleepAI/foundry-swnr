@@ -2,26 +2,25 @@
   <table>
     <thead>
       <tr>
-        <th></th>
-        <th class="text-gray-400 text-xs">
+        <th colspan="2" class="text-gray-400 text-xs pr-0.5 text-right">
           {{localize 'swnr.sheet.base'}}
         </th>
         {{#if showTempAttrMod}}
-        <th class="text-xs lg:table-cell">
+        <th class="text-xs lg:table-cell" colspan="2">
           +/-
+          <span class="text-gray-400 pr-0.5 ">
+            {{localize 'swnr.sheet.total'}}
+          </span>
         </th>
+
         {{/if}}
-        <th  class="text-gray-400 pr-0.5 text-xs lg:table-cell">
-         
-          {{localize 'swnr.sheet.total'}}
-        </th>
         <th class=" text-sm">{{localize 'swnr.sheet.mod'}}</th>
 
       </tr>
     </thead>
     {{#each actor.data.data.stats as |stat key|}}
     <tr>
-      <td class="attrClick" data-attr="{{key}}">
+      <td class="attrClick pr-1" data-attr="{{key}}">
         <label for="data.stats.{{key}}.base" class="resource-label px-1">
           {{localize (concat 'swnr.stat.short.' key)}}
         </label>
@@ -44,7 +43,6 @@
           data-dtype="Number"
         />
       </td>
-      {{/if}}
       <td class="text-left lg:table-cell">
         <div
           class="pl-1 text-gray-400"
@@ -52,6 +50,8 @@
         {{stat.total}}
         </div>
       </td>
+      {{/if}}
+
       <td class="text-center">
         <span class="stat-mod">
           <b>{{numberFormat stat.mod decimals=0 sign=true}}</b>
