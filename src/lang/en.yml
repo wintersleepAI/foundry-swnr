@@ -346,6 +346,7 @@
     ss: Strain
     ac: AC
     ab: AB
+    credit-change: Add/Remove 
     tabs:
       biography: Biography
       debug: Sheet Debug

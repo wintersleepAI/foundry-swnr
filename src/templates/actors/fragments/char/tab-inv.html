@@ -9,7 +9,13 @@
         data-dtype="Number"
         value="{{actor.data.data.credits.debt}}"
       />
-      <label for="data.credits.debt">{{actor.data.data.tweak.debtDisplay}}</label>
+      <label for="data.credits.debt">{{actor.data.data.tweak.debtDisplay}}
+      <a class="credits-change text-gray-100 hover:text-green-400 transition-colors"
+        title="{{localize 'swnr.sheet.credit-change'}} {{actor.data.data.tweak.debtDisplay}}"
+        data-item-type="debt">
+          <i class="fas fa-coins"></i>
+      </a> 
+      </label>
     </div>
     <div class="flex flex-col items-center">
       <input
@@ -20,7 +26,13 @@
         data-dtype="Number"
         value="{{actor.data.data.credits.balance}}"
       />
-      <label for="data.credits.balance">{{actor.data.data.tweak.balanceDisplay}}</label>
+      <label for="data.credits.balance">{{actor.data.data.tweak.balanceDisplay}}
+      <a class="credits-change text-gray-100 hover:text-green-400 transition-colors"
+        title="{{localize 'swnr.sheet.credit-change'}} {{actor.data.data.tweak.balanceDisplay}}"
+        data-item-type="balance">
+          <i class="fas fa-coins"></i>
+      </a> 
+      </label>
     </div>
     <div class="flex flex-col items-center">
       <input
@@ -31,7 +43,13 @@
         data-dtype="Number"
         value="{{actor.data.data.credits.owed}}"
       />
-      <label for="data.credits.owed">{{actor.data.data.tweak.owedDisplay}}</label>
+      <label for="data.credits.owed">{{actor.data.data.tweak.owedDisplay}}
+      <a class="credits-change text-gray-100 hover:text-green-400 transition-colors"
+        title="{{localize 'swnr.sheet.credit-change'}} {{actor.data.data.tweak.owedDisplay}}"
+        data-item-type="owed">
+          <i class="fas fa-coins"></i>
+      </a> 
+      </label>
     </div>
   </div>
 
