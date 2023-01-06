@@ -106,7 +106,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     //show a dialog prompting for amount of change to add
     const amount = await new Promise((resolve) => {
       new ValidatedDialog({
-        title: game.i18n.localize("SWNR.AddCurrency"),
+        title: game.i18n.localize("swnr.AddCurrency"),
         content: html,
         buttons: {
           one: {
@@ -127,7 +127,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
 
     //If it's not super easily parsable as a number
     if(isNaN(parseInt(await amount))){
-      ui.notifications?.error(game.i18n.localize("SWNR.InvalidNumber"));
+      ui.notifications?.error(game.i18n.localize("swnr.InvalidNumber"));
       return;
     }
 
