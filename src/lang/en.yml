@@ -1,5 +1,5 @@
-swnr:
-  title: 'Stars Without Number: Revised'
+ swnr:
+  title: "Stars Without Number: Revised"
   CharacterActorSheet: Basic Sheet
   stat:
     long:
@@ -142,149 +142,149 @@ swnr:
     spaceMagic:
       knowMagic:
         name: Know Magic
-        text: ''
+        text: ""
       useMagic:
         name: Use Magic
-        text: ''
+        text: ""
       sunblade:
         name: Sunblade
-        text: ''
+        text: ""
       fight:
         name: Fight
-        text: ''
+        text: ""
     classic:
       artist:
         name: Artist
-        text: ''
+        text: ""
       athletics:
         name: Athletics
-        text: ''
+        text: ""
       bureaucracy:
         name: Bureaucracy
-        text: ''
+        text: ""
       business:
         name: Business
-        text: ''
+        text: ""
       combat-energy:
         name: Combat/Energy
-        text: ''
+        text: ""
       combat-gunnery:
         name: Combat/Gunnery
-        text: ''
+        text: ""
       combat-primitive:
         name: Combat/Primitive
-        text: ''
+        text: ""
       combat-projectile:
         name: Combat/Projectile
-        text: ''
+        text: ""
       combat-psitech:
         name: Combat/Psitech
-        text: ''
+        text: ""
       combat-unarmed:
         name: Combat/Unarmed
-        text: ''
+        text: ""
       computer:
         name: Computer
-        text: ''
+        text: ""
       culture-alien:
         name: Culture/Alien/
-        text: ''
+        text: ""
       culture-criminal:
         name: Culture/Criminal
-        text: ''
+        text: ""
       culture-spacer:
         name: Culture/Spacer
-        text: ''
+        text: ""
       culture-traveller:
         name: Culture/Traveller
-        text: ''
+        text: ""
       culture:
         name: Culture/
-        text: ''
+        text: ""
       exosuit:
         name: Exosuit
-        text: ''
+        text: ""
       gambling:
         name: Gambling
-        text: ''
+        text: ""
       history:
         name: History
-        text: ''
+        text: ""
       instructor:
         name: Instructor
-        text: ''
+        text: ""
       language:
         name: Language
-        text: ''
+        text: ""
       leadership:
         name: Leadership
-        text: ''
+        text: ""
       navigation:
         name: Navigation
-        text: ''
+        text: ""
       perception:
         name: Perception
-        text: ''
+        text: ""
       persuade:
         name: Persuade
-        text: ''
+        text: ""
       profession:
         name: Profession/
-        text: ''
+        text: ""
       religion:
         name: Religion
-        text: ''
+        text: ""
       science:
         name: Science
-        text: ''
+        text: ""
       security:
         name: Security
-        text: ''
+        text: ""
       stealth:
         name: Stealth
-        text: ''
+        text: ""
       steward:
         name: Steward
-        text: ''
+        text: ""
       survival:
         name: Survival
-        text: ''
+        text: ""
       tactics:
         name: Tactics
-        text: ''
+        text: ""
       tech-astronautic:
         name: Tech/Astronautic
-        text: ''
+        text: ""
       tech-maltech:
         name: Tech/Maltech
-        text: ''
+        text: ""
       tech-medical:
         name: Tech/Medical
-        text: ''
+        text: ""
       tech-postech:
         name: Tech/Postech
-        text: ''
+        text: ""
       tech-pretech:
         name: Tech/Pretech
-        text: ''
+        text: ""
       tech-psitech:
         name: Tech/Psitech
-        text: ''
+        text: ""
       vehicle-air:
         name: Vehicle/Air
-        text: ''
+        text: ""
       vehicle-grav:
         name: Vehicle/Grav
-        text: ''
+        text: ""
       vehicle-land:
         name: Vehicle/Land
-        text: ''
+        text: ""
       vehicle-space:
         name: Vehicle/Space
-        text: ''
+        text: ""
       vehicle-water:
         name: Vehicle/Water
-        text: ''
+        text: ""
     psionic:
       biopsionics:
         name: Biopsionics
@@ -346,7 +346,7 @@ swnr:
     ss: Strain
     ac: AC
     ab: AB
-    credit-change: Add/Remove
+    credit-change: Add/Remove 
     tabs:
       biography: Biography
       debug: Sheet Debug
@@ -380,7 +380,7 @@ swnr:
     fix-item: Fix Item
     destroy-item: Destroy Item
     ask: Ask
-    description: 'Description:'
+    description: "Description:"
     ammoType: Ammo Type
     longReload: Long Reload
     burst: Burst Fire
@@ -529,19 +529,19 @@ swnr:
       pay-maintenance: Pay maintenance (using ship's pool)
       crew: Crew (min/cur/max)
       shipHullType:
-        strikeFighter: Strike Fighter
+        strikeFighter: Strike Fighter 
         shuttle: Shuttle
         freeMerchant: Free Merchant
         patrolBoat: Patrol Boat
         corvette: Corvette
-        heavyFrigate: Heavy Frigate
-        bulkFreighter: Bulk Freighter
-        fleetCruiser: Fleet Cruiser
-        battleship: Battleship
-        carrier: Carrier
-        smallStation: Small Station
+        heavyFrigate:  Heavy Frigate
+        bulkFreighter:  Bulk Freighter
+        fleetCruiser:  Fleet Cruiser
+        battleship:  Battleship
+        carrier: Carrier 
+        smallStation:  Small Station
         largeStation: Large Station
-      shipClass:
+      shipClass: 
         fighter: Fighter
         frigate: Frigate
         cruiser: Cruiser
@@ -568,7 +568,7 @@ swnr:
       jury-rigged: Is Jury-Rigged?
       shooter: Shooting
       travel: Travel Days
-      spike: Spike Drill
+      spike: Spike Drill 
       spike-drive: Spike Drive
       crisis: Crisis
       system-failure: System Failure(s)
@@ -590,19 +590,13 @@ swnr:
     tweaks: Tweaks
   settings:
     useRollNPCHD: Use NPC HD on token create?
-    useRollNPCHDHint: >-
-      When creating a npc token, if the HP or Hit Dice (HD) has not been rolled,
-      it will roll d8 HD for health automatically.
+    useRollNPCHDHint: When creating a npc token, if the HP or Hit Dice (HD) has not been rolled, it will roll d8 HD for health automatically.
     useHomebrewLuckSave: Use Homebrew Luck saves?
     useHomebrewLuckSaveHint: Uses 16 - Level for the save, no modifiers, just pure luck
     addShockMessage: Add Shock Damage Message?
-    addShockMessageHint: >-
-      When attacking this adds another roll for shock damage in the attack chat
-      message.
+    addShockMessageHint: When attacking this adds another roll for shock damage in the attack chat message.
     showTempAttrMod: Show Temporary Attribute Total Modifiers?
-    showTempAttrModHint: >-
-      On the character sidebar show the temporary modifiers to an attribute
-      (e.g. attribute damage)
+    showTempAttrModHint: On the character sidebar show the temporary modifiers to an attribute (e.g. attribute damage)
     attrRoll: Stat/Attribute Roll
     attrRollHint: What action/roll, if any, to take on an stat roll/click?
     attrRollNo: Nothing
@@ -619,28 +613,35 @@ swnr:
     skillCheck: Skill Check
     savingThrow: Saving Throw
     statApply: Apply stats to {name}
-    statRollFlavor: '{name} rolling {stat}'
+    statRollFlavor: "{name} rolling {stat}"
     totalModifier: Total Modifier
     statRoll: Roll stats
     savemoddesc: (Positive makes easier, negative harder)
     spike:
       fail3: >-
-        Catastrophic dimensional energy incursion.  Ship emerges around a star
-        within 1d6 hexes  of the target destination with drive and all systems
-        destroyed.
+        Catastrophic dimensional energy incursion. 
+        Ship emerges around a star within 1d6 hexes 
+        of the target destination with drive and all systems destroyed.
       fail4-5: >-
-        Shear surge overwhelms internal systems. Ship emerges around star
-        nearest to drill origin. 50% chance for each system to be disabled until
-        repaired. If the spike drive is disabled, treat as if a 3 were rolled.
+        Shear surge overwhelms internal systems.
+        Ship emerges around star nearest to drill
+        origin. 50% chance for each system to be
+        disabled until repaired. If the spike drive is
+        disabled, treat as if a 3 were rolled.
       fail6-8: >-
-        Power spike. One system disabled until repaired, ship stuck in transit
-        for full  base time before being able to make another Pilot check. If
-        the spike drive fails, treat as if a 3 were rolled.
+        Power spike. One system disabled until
+        repaired, ship stuck in transit for full 
+        base time before being able to make another
+        Pilot check. If the spike drive fails, treat as if
+        a 3 were rolled.
       fail9-12: >-
-        Ship off course. Spend base time in transit, then make another Pilot
-        check.
-      fail13-15: Ship off course, but detected early. Make another Pilot check.
-      fail16-17: Drill successful, but takes twice base time
+        Ship off course. Spend base time in transit,
+        then make another Pilot check.
+      fail13-15: >-
+        Ship off course, but detected early. Make
+        another Pilot check.
+      fail16-17: >-
+        Drill successful, but takes twice base time
       fail18: Drill successful and on time, by blind luck.
   ammo:
     ammo: Standard Ammo
@@ -651,8 +652,8 @@ swnr:
     typeBPower: Type B Power Cell
     infinite: Infinite
   foci:
-    level2: 'Level 2:'
-    level1: 'Level 1:'
+    level2: "Level 2:"
+    level1: "Level 1:"
     level: Current Level
   item:
     bundledCount: Bundle Count
@@ -687,7 +688,7 @@ swnr:
     skillAddShockDamage: Skill adds to shock
     remember: Remember these settings (do not ask again, reset in edit)
   titles:
-    savingThrow: '{throwType} Saving Throw'
+    savingThrow: "{throwType} Saving Throw"
   effort:
     bonus: Bonus
     current: Current
@@ -696,27 +697,25 @@ swnr:
     title: Effort
     max: Max
   dialog:
-    attackRoll: '{actorName} attacking with {weaponName}?'
-    spikeRoll: '{actorName} making spike roll'
-    sensorRoll: '{actorName} making sensor roll'
-    sysFailure: Rolling system failures for {actorName}
-    skillRoll: Rolling skill for {actorName}
+    attackRoll: "{actorName} attacking with {weaponName}?"
+    spikeRoll: "{actorName} making spike roll"
+    sensorRoll: "{actorName} making sensor roll"
+    sysFailure: "Rolling system failures for {actorName}"
+    skillRoll: "Rolling skill for {actorName}"
     failure:
       inc-drive: Include Drive (Spike Level Drop)
       inc-wpn: Include Weapons
       inc-fit: Include Fittings
       inc-def: Include Defenses
-      what: >-
-        What to fail? <br>(disabling/breaking an already disabled system will
-        destroy it)
+      what: What to fail? <br>(disabling/breaking an already disabled system will destroy it)
       dest-all: Destroy All
-      break-all: Break/disable All
-      all-50: 50% chance to break/disable each system
+      break-all: Break/disable All 
+      all-50: 50% chance to break/disable each system 
       break-1: Break/disable one system
     add-skills: Add Skills
     add-bulk-skills: Add Bulk Skills to {actor}
-    tweak-char: Tweaking options for {actorName}
-    save-changes: Save Changes
+    tweak-char: "Tweaking options for {actorName}"
+    save-changes: "Save Changes"
     tweak:
       adv-init: Initiative Advantage (roll 2x and keep higher)
       quick-skill-1: Quick Skill 1
@@ -726,19 +725,15 @@ swnr:
       owedDisplay: Name of Currency 3
       balanceDisplay: Name of Currency 2
       extra-effort-name: Extra Effort Name (leave blank to not show on sheet)
-      show-resource-list: >-
-        On the combat tab, show optional resource tracking.  This allows you to
-        add an arbitrary resource that tracks a value and max (just 2 numbers
-        really) with  a customized name. You can delete these attributes  from
-        the list.
-    hp:
+      show-resource-list: >- 
+        On the combat tab, show optional resource tracking. 
+        This allows you to add an arbitrary resource that
+        tracks a value and max (just 2 numbers really) with 
+        a customized name. You can delete these attributes 
+        from the list.
+    hp: 
       title: Confirm rolling level hit dice for {actor}.
-      text: >-
-        Confirm rolling {level} level hit dice for {actor}. Each level HD
-        (includes CON mod) is {formula}, where max means taking the higher of
-        the roll with modifiers or 1 (note this is not a fractional number like
-        0.1). This action will set the HP to the roll results or the current HP
-        + 1, whatever is larger. To change the hitdie see the stats tab.
+      text: "Confirm rolling {level} level hit dice for {actor}. Each level HD (includes CON mod) is {formula}, where max means taking the higher of the roll with modifiers or 1 (note this is not a fractional number like 0.1). This action will set the HP to the roll results or the current HP + 1, whatever is larger. To change the hitdie see the stats tab."
       revised: Revised Expert/Psychic d6
       revised-war: Revised Warrior/Partial Warrior d6+2
       codex-mage: Arcanist / Magister d6-1
@@ -778,17 +773,17 @@ swnr:
       failure: Fails their Moral Check!
       success: Succeeds in their Moral Check!
     skill:
-      trained: '{actor} uses their trained skill.'
-      untrained: '{actor} uses their untrained skill.'
+      trained: "{actor} uses their trained skill."
+      untrained: "{actor} uses their untrained skill."
     unarmed: Unarmed
     saving:
-      failure: '{actor} failed (target: {target})'
-      success: '{actor} succeeded (target: {target})'
+      failure: "{actor} failed (target: {target})"
+      success: "{actor} succeeded (target: {target})"
   migration:
     start: >-
       SWNR: Starting migration from {oldVersion} to {newVersion}. Please let
       this finish before closing.
-    done: 'SWNR: Done Migration to {newVersion}'
+    done: "SWNR: Done Migration to {newVersion}"
     needsGM: >-
       SWNR: A GM needs to log in to do run {count} migrations from {oldVersion}
       to {newVersion}!
@@ -799,9 +794,6 @@ swnr:
   deleteTitle: Delete {name}?
   deleteCrew: Do you want to remove {name} from the crew?
   deletePilot: Do you want to remove {name} as the pilot?
-  deleteContent: >-
-    Are you sure you want to delete {name} from the actor {actor}? (hold shift
-    to skip confirm dialog)
-SWNR:
+  deleteContent: Are you sure you want to delete {name} from the actor {actor}? (hold shift to skip confirm dialog)
   AddCurrency: Add Currency
   InvalidNumber: Enter a valid whole number
