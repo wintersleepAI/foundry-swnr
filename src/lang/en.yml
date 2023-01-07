@@ -795,3 +795,5 @@
   deleteCrew: Do you want to remove {name} from the crew?
   deletePilot: Do you want to remove {name} as the pilot?
   deleteContent: Are you sure you want to delete {name} from the actor {actor}? (hold shift to skip confirm dialog)
+  AddCurrency: Add Currency
+  InvalidNumber: Enter a valid whole number

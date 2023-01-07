@@ -72,6 +72,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       .on("click", this._onWeaponRoll.bind(this));
     html.find(".skill-load-button").on("click", this._onLoadSkills.bind(this));
     html.find(".attrClick").on("click", this._onAttrRoll.bind(this));
+    html.find(".credits-change").on("click", this._onAddCurrency.bind(this));
     // Drag events for macros.
     if (this.actor.isOwner) {
       const handler = (ev) => this._onDragStart(ev);
@@ -82,6 +83,66 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
         // Add draggable attribute and dragstart listener.
         li.setAttribute("draggable", "true");
         li.addEventListener("dragstart", handler, false);
+      });
+    }
+  }
+
+  //Add Currency to  selected type
+  async _onAddCurrency(event: JQuery.ClickEvent): Promise<void> {
+    // Stop propgation
+    event.preventDefault();
+    event.stopPropagation();
+
+    //get any useful params
+    const currencyType = $(event.currentTarget).data("creditType");
+
+    //load html variable data for dialog
+    const template = "systems/swnr/templates/dialogs/add-currency.html";
+    const data = {
+    };
+    const html = await renderTemplate(template, data);
+    this.popUpDialog?.close();
+    
+    //show a dialog prompting for amount of change to add
+    const amount = await new Promise((resolve) => {
+      new ValidatedDialog({
+        title: game.i18n.localize("swnr.AddCurrency"),
+        content: html,
+        buttons: {
+          one: {
+            label: "Add",
+            callback: (html) => resolve(html.find('[name="amount"]').val()),
+          },
+          two: {
+            label: "Cancel",
+            callback: () => resolve("0"),
+          },
+        },
+        default: "one",
+        close: () => resolve("0")
+      },{
+        classes: ["swnr"]
+      }).render(true);
+    }) as string;
+
+    //If it's not super easily parsable as a number
+    if(isNaN(parseInt(await amount))){
+      ui.notifications?.error(game.i18n.localize("swnr.InvalidNumber"));
+      return;
+    }
+
+    // if the amount is 0, or the cancel button was hit
+    if (parseInt(amount) == 0){
+      //we can return silently in this case
+      return;
+    } else {
+      //this is our valid input scenario
+      await this.actor.update({
+        data: {
+          credits: {
+            [currencyType]: this.actor.data.data.credits[currencyType] + parseInt(await amount)
+          }
+        }
       });
     }
   }
