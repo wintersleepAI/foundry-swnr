@@ -82,10 +82,15 @@ export function _addHealthButtons(html: JQuery): void {
     `<button class="dice-total-fullHealing-btn chat-button-small"><i class="fas fa-user-plus" title="Click to apply full healing to selected token(s)."></i></button>`
   );
 
+  const fullDamageModifiedButton = $(
+    `<button class="dice-total-fullDamageMod-btn chat-button-small"><i class="fas fa-user-edit" title="Click to apply full damage with modifier prompt to selected token(s)."></i></button>`
+  );
+
   const btnContainer = $(
     '<span class="dmgBtn-container" style="position:absolute; right:0; bottom:1px;"></span>'
   );
   btnContainer.append(fullDamageButton);
+  btnContainer.append(fullDamageModifiedButton);
   btnContainer.append(halfDamageButton);
   // btnContainer.append(doubleDamageButton);
   btnContainer.append(fullHealingButton);
@@ -96,6 +101,41 @@ export function _addHealthButtons(html: JQuery): void {
   fullDamageButton.on("click", (ev) => {
     ev.stopPropagation();
     applyHealthDrop(total);
+  });
+
+  fullDamageModifiedButton.on("click", (ev) => {
+    ev.stopPropagation();
+    new Dialog({
+      title: "Apply Modifier to Damage",
+      content: `
+          <form>
+            <div class="form-group">
+              <label>Modifier to damage (${total}) </label>
+              <input type='text' name='inputField'></input>
+            </div>
+          </form>`,
+      buttons: {
+        yes: {
+          icon: "<i class='fas fa-check'></i>",
+          label: `Apply`,
+        },
+      },
+      default: "yes",
+      close: (html) => {
+        const form = <HTMLFormElement>html[0].querySelector("form");
+        const modifier = (<HTMLInputElement>(
+          form.querySelector('[name="inputField"]')
+        ))?.value;
+        if (modifier && modifier != "") {
+          const nModifier = Number(modifier);
+          if (nModifier) {
+            applyHealthDrop(total + nModifier);
+          } else {
+            ui.notifications?.error(modifier + " is not a number");
+          }
+        }
+      },
+    }).render(true);
   });
 
   halfDamageButton.on("click", (ev) => {
