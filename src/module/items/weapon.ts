@@ -62,6 +62,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     // const skill = this.actor.items.filter(w => w.)
     // Burst is +2 To hit and to damage
 
+    const attackRollDie = game.settings.get("swnr", "attackRoll");
     const rollData = {
       actor: this.actor.getRollData(),
       weapon: this.data.data,
@@ -72,10 +73,11 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       damageBonus,
       effectiveSkillRank: skillMod < 0 ? -2 : skillMod,
       shockDmg: this.data.data.shock?.dmg > 0 ? this.data.data.shock.dmg : 0,
+      attackRollDie,
     };
 
     const hitRoll = new Roll(
-      "1d20 + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat + @effectiveSkillRank",
+      "@attackRollDie + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat + @effectiveSkillRank",
       rollData
     );
     await hitRoll.roll({ async: true });

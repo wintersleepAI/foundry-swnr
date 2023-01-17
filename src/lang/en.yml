@@ -604,6 +604,8 @@
     attrRoll2d6: 2d6 + mod
     attrRollUnder: Roll d20 under
     attrRollUnderEqual: Roll d20 under or equal
+    attackRoll: Attack Roll?
+    attackRollHint: What to roll for attacks?
   chat:
     dicepool: Dice Pool
     difficulty: Difficulty

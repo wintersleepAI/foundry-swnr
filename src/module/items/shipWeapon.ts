@@ -26,6 +26,7 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
   ): Promise<void> {
     const template = "systems/swnr/templates/chat/attack-roll.html";
 
+    const attackRollDie = game.settings.get("swnr", "attackRoll");
     const rollData = {
       skillMod,
       statMod,
@@ -33,9 +34,10 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
       mod,
       weaponAb,
       npcSkill,
+      attackRollDie,
     };
     const hitRollStr =
-      "1d20 + @skillMod + @statMod + @abMod + @mod +@weaponAb +@npcSkill";
+      "@attackRollDie + @skillMod + @statMod + @abMod + @mod +@weaponAb +@npcSkill";
     const damageRollStr = `${this.data.data.damage} + @statMod`;
     const hitRoll = new Roll(hitRollStr, rollData);
     await hitRoll.roll({ async: true });
