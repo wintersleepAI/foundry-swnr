@@ -10,13 +10,16 @@ import { ValidatedDialog } from "./ValidatedDialog";
 
 export function chatListeners(message: ChatMessage, html: JQuery): void {
   html.on("click", ".card-buttons button", _onChatCardAction.bind(this));
+  //Reroll 
+  html.find(".dice-roll").each((_i, div) => {
+    _addRerollButton($(div));
+  });
+  // Health Buttons
   html.find(".roll-damage").each((_i, div) => {
     _addHealthButtons($(div));
   });
-  // html.find(".dice-roll").each((_i, div) => {
-  //   _addRerollButton($(div));
-  // });
-  //html.on("click", ".item-name", this._onChatCardToggleContent.bind(this));
+  //  html.on("click", ".item-name", _onChatCardToggleContent.bind(this));
+  // Desc toggle
   const longDesc = <JQuery<HTMLButtonElement>>html.find(".longShowDesc");
   if (longDesc) {
     const bind = function (event: JQuery.ClickEvent) {
@@ -43,22 +46,54 @@ export function chatListeners(message: ChatMessage, html: JQuery): void {
   }
 }
 
+function getRerollButton(diceRoll: string, isAttack: boolean): JQuery<HTMLElement> {
+  const rerollButton = $(
+    `<button class="dice-total-fullDamage-btn chat-button-small"><i class="fas fa-redo" title="Reroll"></i></button>`
+  );
+  rerollButton.on("click", async (ev) => {
+    const rollMode = game.settings.get("core", "rollMode");
+    ev.stopPropagation();
+    const roll = new Roll(diceRoll);
+    await roll.roll({ async: true });
+    const flavor = "Reroll";
+    const chatTemplate = "systems/swnr/templates/chat/re-roll.html";
+    const chatDialogData = {
+        roll: await roll.render(),
+        title: flavor,
+        isAttack,
+    };
+    const chatContent = await renderTemplate(chatTemplate, chatDialogData);
+    const chatData = {
+        speaker: ChatMessage.getSpeaker(),
+        roll: JSON.stringify(roll),
+        content: chatContent,
+        type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+    };
+    getDocumentClass("ChatMessage").applyRollMode(chatData, rollMode);
+    getDocumentClass("ChatMessage").create(chatData);
+
+  });
+  return rerollButton;
+}
+
 export function _addRerollButton(html: JQuery): void {
   const totalDiv = html.find(".dice-total");
+  if (totalDiv.parent().parent().parent().hasClass("re-roll")) {
+    // this is a re-roll do not add
+    return;
+  }
 
+  const diceRoll = totalDiv.parent().find(".dice-formula").text();
   const total = parseInt(totalDiv.text());
   if (isNaN(total)) {
     console.log("Error in converting a string to a number " + totalDiv.text());
     return;
   }
 
-  const rerollButton = $(
-    `<button class="dice-total-fullDamage-btn chat-button-small"><i class="fas fa-rotate-right" title="Reroll"></i></button>`
-  );
-
   const btnContainer = $(
     '<span class="dmgBtn-container" style="position:absolute; right:0; bottom:1px;"></span>'
   );
+  const rerollButton = getRerollButton(diceRoll, false);
   btnContainer.append(rerollButton);
   totalDiv.append(btnContainer);
 }
@@ -70,6 +105,8 @@ export function _addHealthButtons(html: JQuery): void {
     console.log("Error in converting a string to a number " + totalDiv.text());
     return;
   }
+  const diceRoll = totalDiv.parent().find(".dice-formula").text();
+
 
   const fullDamageButton = $(
     `<button class="dice-total-fullDamage-btn chat-button-small"><i class="fas fa-user-minus" title="Click to apply full damage to selected token(s)."></i></button>`
@@ -89,12 +126,16 @@ export function _addHealthButtons(html: JQuery): void {
   const btnContainer = $(
     '<span class="dmgBtn-container" style="position:absolute; right:0; bottom:1px;"></span>'
   );
+
+  const rerollButton = getRerollButton(diceRoll, true);
   btnContainer.append(fullDamageButton);
   btnContainer.append(fullDamageModifiedButton);
   btnContainer.append(halfDamageButton);
   // btnContainer.append(doubleDamageButton);
   btnContainer.append(fullHealingButton);
-
+  if (totalDiv.parent().parent().parent().hasClass("re-roll")==false) {
+    btnContainer.append(rerollButton);
+  }
   totalDiv.append(btnContainer);
 
   // Handle button clicks
