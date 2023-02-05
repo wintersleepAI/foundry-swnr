@@ -221,7 +221,7 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
               statMod = sm;
             }
           }
-          if (shooter.type == "character") {
+          if (shooter.type == "character" || shooter.type == "npc") {
             abMod = shooter.data.data.ab;
           }
           shooterName = shooter.name;
