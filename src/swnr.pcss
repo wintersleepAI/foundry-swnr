@@ -197,11 +197,11 @@ button.dialog-button {
   @apply -m-2 p-2 mt-0 pt-0 bg-gray-700;
 }
 
-a.sheet-button {
+a.skill-button {
   /* makes the button container a root element for positioning */
   position: relative;
 }
-.sheet-button > .button-background {
+.skill-button:before {
   /* this is positioned relative the the first parent component
      with position: relative; */
   position: absolute;
@@ -213,16 +213,16 @@ a.sheet-button {
   height: 100%;
   
   /* make sure the icon doesn't overpower the skill text */
-  opacity: 0.1;
+  opacity: 0.4;
 
   /* align the contents of the "underlay" span to the center. */
   display: flex;
   justify-content: center;
   align-items: center;
 
-  /* slightly bigger icon than normal */
-  font-size: 24px;
+  background-image: url(assets/icons/dice-d20-solid.svg) no-repeat;
 }
+
 
 .sheet-button {
   @apply flex rounded-lg px-1.5 py-1 border border-coolGray-900 bg-coolGray-800 
