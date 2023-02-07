@@ -122,7 +122,13 @@
       <!--AC-->
       <div class="ac flex flex-row justify-around items-center text-lg">
         
-        <div class="text-left"> <label class="pr-3"><b>{{localize 'swnr.sheet.ac'}}</label> {{actor.data.data.ac}}</b></div>
+        <div class="text-left"> 
+          <label class="pr-3"><b>
+            {{#if actor.data.data.settings.useCWNArmor}}
+              {{localize 'swnr.armor.ranged'}}
+            {{/if}}
+          {{localize 'swnr.sheet.ac'}}</label> {{actor.data.data.ac}}</b>
+        </div>
       </div>
 
       <!-- AB-->
@@ -160,6 +166,14 @@
         </div>
       </div>
       <div class="flex gap-2 items-center">
+        <!-- meleeAC -->
+        {{#if actor.data.data.settings.useCWNArmor}}
+          <div class="ac flex flex-row justify-around items-center text-lg">
+          <label class="px-4"><b>
+              {{localize 'swnr.armor.melee'}}
+            {{localize 'swnr.sheet.ac'}}</label> {{actor.data.data.meleeAc}}</b>
+          </div>
+          {{/if}}
       </div>
       <!-- speed/movement -->
       <div class="flex gap-2 items-center text-lg">

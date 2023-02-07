@@ -48,6 +48,15 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
   }
   prepareDerivedData(): void {
     const data = this.data.data;
+    const useCWNArmor = game.settings.get("swnr", "useCWNArmor") ? true : false;
+    if (data.settings == null) {
+      data.settings = {
+        useCWNArmor: useCWNArmor,
+      };
+    } else {
+      data.settings.useCWNArmor = useCWNArmor;
+    }
+
     // AC
     const armor = <SWNRBaseItem<"armor">[]>(
       this.items.filter(
@@ -67,6 +76,18 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
       )
     );
     data.ac = baseAc + data.stats.dex.mod;
+    if (useCWNArmor) {
+      const baseMeleeAc = Math.max(
+        data.baseAc,
+        ...armor.map(
+          (i) =>
+            i.data.data.meleeAc +
+            (shields.filter((s) => s.id !== i.id).length !== 0 ? 1 : 0)
+        )
+      );
+      data.meleeAc = baseMeleeAc + data.stats.dex.mod;
+    }
+
     // effort
     const psychicSkills = <SWNRBaseItem<"skill">[]>(
       this.items.filter(

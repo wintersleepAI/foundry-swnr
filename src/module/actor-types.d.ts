@@ -115,6 +115,11 @@ declare interface SWNRLivingTemplateComputed {
       value: number;
     };
   };
+  //CWN
+  settings: null | {
+    useCWNArmor: boolean;
+  };
+  meleeAc: number; // SWN computer
 }
 declare interface SWNREncumbranceTemplateBase {
   encumbrance: {
