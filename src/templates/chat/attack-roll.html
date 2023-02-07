@@ -20,6 +20,21 @@
   <div>{{localize 'swnr.sheet.ship.qualities'}}: {{ weapon.data.data.qualities }}</div>
   {{/if}}
 
+  {{#if weapon.data.data.settings.useTrauma}}
+    <span>{{localize 'swnr.weapon.trauma.label'}}:</span>
+    {{#if traumaRollRender}}
+    <span class="roll">
+      {{{traumaRollRender}}}
+    </span>
+    {{/if}}
+
+    {{#if traumaDamage}}
+      <span>{{localize 'swnr.weapon.trauma.damage'}}:</span>
+      <span class="roll roll-damage">
+        {{{traumaDamage}}}
+      </span>
+    {{/if}}
+  {{/if}}
 
   {{#if weapon.data.data.save}}
   <div class="card-buttons">

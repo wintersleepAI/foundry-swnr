@@ -4,6 +4,13 @@ import { ValidatedDialog } from "../ValidatedDialog";
 export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
   popUpDialog?: Dialog;
 
+  prepareDerivedData(): void {
+    const data = this.data.data;
+    data.settings = {
+      useTrauma: game.settings.get("swnr", "useTrauma") ? true : false,
+    };
+  }
+
   get ammo(): this["data"]["data"]["ammo"] {
     return this.data.data.ammo;
   }
@@ -89,12 +96,37 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     );
     await damageRoll.roll({ async: true });
     const damageExplainTip = "roll +burst +statBonus +dmgBonus";
+
     const diceTooltip = {
       hit: await hitRoll.render(),
       damage: await damageRoll.render(),
       hitExplain: hitExplainTip,
       damageExplain: damageExplainTip,
     };
+
+    let traumaRollRender: null | string = null;
+    let traumaDamage: null | string = null;
+    if (
+      this.data.data.settings?.useTrauma &&
+      this.data.data.trauma.die != null &&
+      this.data.data.trauma.rating != null
+    ) {
+      const traumaRoll = new Roll(this.data.data.trauma.die);
+      await traumaRoll.roll({ async: true });
+      traumaRollRender = await traumaRoll.render();
+      if (
+        traumaRoll &&
+        traumaRoll.total &&
+        traumaRoll.total >= 6 &&
+        damageRoll?.total
+      ) {
+        const traumaDamageRoll = new Roll(
+          `${damageRoll.total} * ${this.data.data.trauma.rating}`
+        );
+        await traumaDamageRoll.roll({ async: true });
+        traumaDamage = await traumaDamageRoll.render();
+      }
+    }
 
     const rollArray = [hitRoll, damageRoll];
     // Placeholder for shock damage
@@ -132,6 +164,8 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       ),
       shock_roll,
       shock_content,
+      traumaDamage,
+      traumaRollRender,
     };
     const rollMode = game.settings.get("core", "rollMode");
     // const dice = hitRoll.dice.concat(damageRoll.dice)

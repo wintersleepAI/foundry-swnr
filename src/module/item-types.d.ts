@@ -95,8 +95,13 @@ interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
   };
   quantity: number;
   save: string;
-  traumaDice: null | string;
-  traumaRating: null | number;
+  trauma: {
+    die: null | string;
+    rating: null | number;
+  };
+  settings: null | {
+    useTrauma: boolean;
+  };
 }
 
 declare interface SWNRShipWeaponData

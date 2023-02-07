@@ -609,7 +609,7 @@
     useTrauma: Use Trauma?
     useTraumaHint: Use CWN trauma dice for rolling attacks?
     useCWNArmor: Use CWN Armor?
-    useCWNArmorhint: Use CWN armor options (soak, melee and ranged AC)?
+    useCWNArmorHint: Use CWN armor options (soak, melee and ranged AC)?
   chat:
     dicepool: Dice Pool
     difficulty: Difficulty
@@ -684,6 +684,11 @@
     shock:
       label: Shock Damage
       ac: AC
+    trauma:
+      label: Trauma
+      die: Trauma Die
+      rating: Trauma Rating
+      damage: Trauma Damage
     damage: Damage
     damageFormula: Damage Formula
     attackBonus: Attack Bonus

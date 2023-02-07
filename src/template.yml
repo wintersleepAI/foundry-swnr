@@ -303,7 +303,7 @@ Item:
     use: false
     shield: false
     quantity: 1
-    meleeAc: none
+    meleeAc: 10
     soak: 
       value: 0
       max: 0
@@ -337,6 +337,9 @@ Item:
     damage: d4
     quantity: 1
     save: null
+    trauma:
+      die: none
+      rating: none
   power:
     templates:
       - description

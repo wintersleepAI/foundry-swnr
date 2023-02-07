@@ -11,11 +11,11 @@
   <div class="grid grid-cols-2">
     <div class="flex flex-wrap gap-1">
       <h3 class="text-base w-full">Damage:</h3>
-      <div>
+      <div  class="ml-2">
         {{!-- <div>{{localize 'swnr.weapon.damageFormula'}}:</div> --}}
         <div>Formula:</div>
         <input
-          class="w-32 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          class="w-24 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           type="text"
           name="data.damage"
           value="{{data.data.damage}}"
@@ -37,7 +37,7 @@
       <h3 class="text-base w-full md:col-span-2">
         {{localize 'swnr.weapon.shock.label'}}:
       </h3>
-      <div>
+      <div  class="ml-2">
         <div>{{localize 'swnr.weapon.damage'}}:</div>
         <input
           type="number"
@@ -56,7 +56,35 @@
         min="10" step="1" {{#if (lte data.data.shock.dmg 0)}} disabled {{/if}}>
       </div>
     </div>
-    <div>
+    {{#if data.data.settings.useTrauma}}
+    <!-- Trauma -->
+    <div class="grid md:grid-cols-2 gap-1 pt-1">
+      <h3 class="text-base w-full md:col-span-2">
+        {{localize 'swnr.weapon.trauma.label'}}:
+      </h3>
+      <div class="ml-2">
+        <div>{{localize 'swnr.weapon.trauma.die'}}:</div>
+        <input
+          class="w-16 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          name="data.trauma.die"
+          type="text"
+          value="{{data.data.trauma.die}}"
+        />
+      </div>
+      <div>
+        <div>{{localize 'swnr.weapon.trauma.rating'}}:</div>
+          <input
+          type="number"
+          class="w-8 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          name="data.trauma.rating"
+          value="{{data.data.trauma.rating}}"
+          min="0"
+          step="1"
+        />
+      </div>
+    </div>
+    {{/if}}
+    <div class="pt-1">
       <div>{{localize 'swnr.sheet.stats'}}:</div>
       <select
         class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
@@ -247,8 +275,6 @@
           {{/select}}
         </select>  
       </label>
-
-      
     </div>
   </div>
   <div class="grid grid-cols-1">
