@@ -5,7 +5,13 @@
       name="items.{{item.id}}.data.use"
       {{checked item.data.data.use}}
     />
-    <span class="ml-1 item-name">{{item.name}}</span>
+    <span class="ml-1 item-name">{{item.name}}
+      {{#if (eq item.type "armor")}}
+        {{#if (ne item.data.data.soak.max 0)}}
+         ({{item.data.data.soak.value}}/{{item.data.data.soak.max}})
+        {{/if}}
+      {{/if}}
+    </span>
     {{!-- {{localize 'swnr.armor.equipped'}} --}}
   </label>
   <a

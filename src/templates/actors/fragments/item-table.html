@@ -26,6 +26,11 @@
         <div class="item-image item-click item-rollable" style="background-image: url({{item.img}})"><a></a></div>
         <div class="item-name item-click item-rollable flexrow pr-2.0">
           <a>{{item.name}}</a>
+            {{#if (eq item.type "armor")}}
+              {{#if (ne item.data.data.soak.max 0)}}
+              ({{item.data.data.soak.value}}/{{item.data.data.soak.max}})
+              {{/if}}
+            {{/if}}
         </div>
         <div class="text-center">{{ item.data.data.encumbrance }} </div>
         {{#if (eq ../itemType "item")}}
