@@ -98,41 +98,43 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
 
     //load html variable data for dialog
     const template = "systems/swnr/templates/dialogs/add-currency.html";
-    const data = {
-    };
+    const data = {};
     const html = await renderTemplate(template, data);
     this.popUpDialog?.close();
-    
+
     //show a dialog prompting for amount of change to add
-    const amount = await new Promise((resolve) => {
-      new ValidatedDialog({
-        title: game.i18n.localize("swnr.AddCurrency"),
-        content: html,
-        buttons: {
-          one: {
-            label: "Add",
-            callback: (html) => resolve(html.find('[name="amount"]').val()),
+    const amount = (await new Promise((resolve) => {
+      new ValidatedDialog(
+        {
+          title: game.i18n.localize("swnr.AddCurrency"),
+          content: html,
+          buttons: {
+            one: {
+              label: "Add",
+              callback: (html) => resolve(html.find('[name="amount"]').val()),
+            },
+            two: {
+              label: "Cancel",
+              callback: () => resolve("0"),
+            },
           },
-          two: {
-            label: "Cancel",
-            callback: () => resolve("0"),
-          },
+          default: "one",
+          close: () => resolve("0"),
         },
-        default: "one",
-        close: () => resolve("0")
-      },{
-        classes: ["swnr"]
-      }).render(true);
-    }) as string;
+        {
+          classes: ["swnr"],
+        }
+      ).render(true);
+    })) as string;
 
     //If it's not super easily parsable as a number
-    if(isNaN(parseInt(await amount))){
+    if (isNaN(parseInt(await amount))) {
       ui.notifications?.error(game.i18n.localize("swnr.InvalidNumber"));
       return;
     }
 
     // if the amount is 0, or the cancel button was hit
-    if (parseInt(amount) == 0){
+    if (parseInt(amount) == 0) {
       //we can return silently in this case
       return;
     } else {
@@ -140,9 +142,11 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       await this.actor.update({
         data: {
           credits: {
-            [currencyType]: this.actor.data.data.credits[currencyType] + parseInt(await amount)
-          }
-        }
+            [currencyType]:
+              this.actor.data.data.credits[currencyType] +
+              parseInt(await amount),
+          },
+        },
       });
     }
   }
