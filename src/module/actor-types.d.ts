@@ -95,6 +95,7 @@ declare interface SWNRVehicleTemplateBase {
   tl: number;
   description: string;
   mods: string;
+  meleeAc: number; // SWN computed
 }
 
 declare interface SWNRLivingTemplateComputed {
@@ -119,7 +120,6 @@ declare interface SWNRLivingTemplateComputed {
   settings: null | {
     useCWNArmor: boolean;
   };
-  meleeAc: number; // SWN computer
 }
 declare interface SWNREncumbranceTemplateBase {
   encumbrance: {

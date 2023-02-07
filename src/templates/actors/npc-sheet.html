@@ -115,6 +115,9 @@
         </a>
       </div>        
       <div>
+        {{#if actor.data.data.settings.useCWNArmor}}
+          {{localize 'swnr.armor.ranged'}}
+        {{/if}}
         {{localize 'swnr.sheet.armor-class'}}:
         <input
           class="w-8 border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
@@ -125,6 +128,20 @@
           value="{{actor.data.data.baseAc}}"
         />
       </div>
+      {{#if actor.data.data.settings.useCWNArmor}}
+      <div>
+        {{localize 'swnr.armor.melee'}}
+         {{localize 'swnr.sheet.armor-class'}}:
+        <input
+          class="w-8 border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          type="number"
+          name="data.meleeAc"
+          min="0"
+          step="1"
+          value="{{actor.data.data.meleeAc}}"
+        />
+      </div>
+      {{/if}}
       <div>
         {{localize 'swnr.armor.type.label'}}:
         <select

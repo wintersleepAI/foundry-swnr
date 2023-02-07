@@ -4,6 +4,14 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
   prepareBaseData(): void {
     const e = this.data.data.effort;
     e.value = e.max - e.current - e.scene - e.day;
+    const useCWNArmor = game.settings.get("swnr", "useCWNArmor") ? true : false;
+    if (this.data.data.settings == null) {
+      this.data.data.settings = {
+        useCWNArmor: useCWNArmor,
+      };
+    } else {
+      this.data.data.settings.useCWNArmor = useCWNArmor;
+    }
   }
 
   // Set the max/value health based on D8 hit dice

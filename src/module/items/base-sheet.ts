@@ -21,7 +21,7 @@ export class BaseSheet extends ItemSheet<DocumentSheet.Options, BaseSheetData> {
   static get defaultOptions(): DocumentSheet.Options {
     return mergeObject(super.defaultOptions, {
       classes: ["swnr", "sheet", "item"],
-      width: 520,
+      width: 600,
       height: 480,
       tabs: [],
     });
