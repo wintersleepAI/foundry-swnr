@@ -81,4 +81,23 @@ export const registerSettings = function (): void {
     },
     default: "d20", // The default value for the setting
   });
+
+  //CWN Settings
+  game.settings.register("swnr", "useTrauma", {
+    name: "swnr.settings.useTrauma",
+    hint: "swnr.settings.useTraumaHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+  });
+
+  game.settings.register("swnr", "useCWNArmor", {
+    name: "swnr.settings.useCWNArmor",
+    hint: "swnr.settings.useCWNArmorHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+  });
 };

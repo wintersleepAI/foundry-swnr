@@ -1,9 +1,16 @@
 name: swnr
-title: "Stars Without Number: Revised (wsAI Alter.)"
+title: "Stars Without Number: Revised and Cities Without Number"
 description: >-
-  Stars Without Number: Revised system (alternate version)
+  A system for playing Stars Without Number: Revised and Cities Without Number
 version: 1.0.0
-author: Spice_King + wintersleepAI
+authors: [
+  {
+    "name": "wintersleepAI"
+  },
+  {
+    "name": "Spice_King"
+  },
+]
 scripts: ["lib/sortable/Sortable.min.js"]
 initiative: 1d8+@stats.dex.mod
 esmodules:

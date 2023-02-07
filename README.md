@@ -8,13 +8,25 @@ _Now, the long isolation of the Silence falls away as men and women return to th
 
 _Will you be among them once more?_
 
+The is the open-source unofficial foundry system for Stars Without Number: Revised and Cities Without Number.
+This project originally began as a fork of SpiceKing's SWNR system.
+
 ## Features
 
 * Player characters
-* Weapons and items
-* Psionic powers and foci
+* NPCs
+* Ships
+* Drones
+* Factions
+* Mechs (but no data / compendium available)
+* Vehicles
+* Weapons, items, cyberware
+* Psionic powers, foci, and support for magic based users
 
 ## Dev crash course
+
+Note that the TypeScript definition files are out of date, so there are several compilation errors. There are plans to 
+fix this with a v10 migration.
 
 1. `npm install`
 2. Copy `foundryconfig.example.json` to `foundryconfig.json` and make edits if you want a different dataPath for working from.
@@ -23,24 +35,11 @@ _Will you be among them once more?_
 
 ### Special dev features
 
-I've done some weird/unique things to this systems, and more are set to come.
+SK original system differs from many foundry systems:
 
 * Avoiding Javascript for Typescript for better type sanity
 * Since JSON it down right picky, I compile YAML into JSON
 * The NeDB files are a pain for diffs, between compaction and the append only nature which scrambles the lines around, so I make them as well from a folder of YAML files.
-
-## The todo list
-
-- Class power support
-- Ships
-- Vehicles
-- Copies of all the roll tables
-- Mods
-- Factions and Faction Assets
-- Deluxe Rules support, sans content:
-  - Mechs
-  - True Ai
-  - Transhumans
 
 ## Licence
 
@@ -52,4 +51,4 @@ The contents of `src/packs/` are mostly text from [SWN Revised Edition (Free Ver
 
 ## Abandonment
 
-TBD. I'll figure out the exact wording and times later, but I do want to make a proper note about it, since I'm aware that modules and systems not getting updates is a bad time for all users.
+This project is in active development.

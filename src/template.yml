@@ -303,6 +303,14 @@ Item:
     use: false
     shield: false
     quantity: 1
+    meleeAc: none
+    soak: 
+      value: 0
+      max: 0
+    dr: 0
+    traumaDiePenalty: 0
+    isSubtle: false
+    isHeavy: false
   weapon:
     templates:
       - baseItem

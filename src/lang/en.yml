@@ -606,6 +606,10 @@
     attrRollUnderEqual: Roll d20 under or equal
     attackRoll: Attack Roll?
     attackRollHint: What to roll for attacks?
+    useTrauma: Use Trauma?
+    useTraumaHint: Use CWN trauma dice for rolling attacks?
+    useCWNArmor: Use CWN Armor?
+    useCWNArmorhint: Use CWN armor options (soak, melee and ranged AC)?
   chat:
     dicepool: Dice Pool
     difficulty: Difficulty

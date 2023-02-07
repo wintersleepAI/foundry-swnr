@@ -95,6 +95,8 @@ interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
   };
   quantity: number;
   save: string;
+  traumaDice: null | string;
+  traumaRating: null | number;
 }
 
 declare interface SWNRShipWeaponData
@@ -155,6 +157,15 @@ declare interface SWNRArmorData extends SWNRBaseItemData {
   shield: boolean;
   use: boolean;
   quantity: number;
+  meleeAc: number;
+  soak: {
+    value: number;
+    max: number;
+  };
+  dr: number;
+  traumaDiePenalty: number;
+  isSubtle: boolean;
+  isHeavy: boolean;
 }
 
 declare interface SWNRPowerData extends SWNRDescData {
@@ -166,7 +177,7 @@ declare interface SWNRPowerData extends SWNRDescData {
   range: string;
   skill: string;
   prepared: boolean;
-  effort : null | SWNREffort;
+  effort: null | SWNREffort;
 }
 
 declare interface SWNRCyberware extends SWNRDescData {
