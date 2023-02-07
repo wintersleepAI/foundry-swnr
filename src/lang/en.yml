@@ -763,6 +763,13 @@
     innateArmorClass: Innate Armor Class
     equipped: Equipped
     shield: Counts as a shield
+    soak:
+      label: Soak
+    dr: Damage Reduction
+    subtle: Is Subtle?
+    heavy: Is Heavy?
+    ranged: Ranged
+    melee: Melee
   npc:
     reaction:
       unknown: Unknown

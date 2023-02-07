@@ -171,6 +171,9 @@ declare interface SWNRArmorData extends SWNRBaseItemData {
   traumaDiePenalty: number;
   isSubtle: boolean;
   isHeavy: boolean;
+  settings: null | {
+    useCWNArmor: boolean;
+  };
 }
 
 declare interface SWNRPowerData extends SWNRDescData {

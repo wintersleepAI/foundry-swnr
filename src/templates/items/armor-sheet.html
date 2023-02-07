@@ -2,8 +2,14 @@
   {{> "systems/swnr/templates/items/fragments/desc.html"}}
   {{> "systems/swnr/templates/items/fragments/item-base.html"}}
   <div class="flex gap-1 justify-between">
-    <div>
-      <div>{{localize 'swnr.sheet.armor-class'}}:</div>
+    <div class="items-center">
+      <div>
+        {{#if data.data.settings.useCWNArmor}}
+          {{localize 'swnr.armor.ranged'}}
+        {{/if}}
+        {{localize 'swnr.sheet.armor-class'}}:
+      </div>
+
       <input
         type="number"
         class="px-1 w-10 text-center border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
@@ -14,25 +20,105 @@
         value="{{data.data.ac}}"
       />
     </div>
-    <div>
-      <div>{{localize 'swnr.armor.type.label'}}:</div>
-      <select
-        name="data.type"
-        class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
-      >
-        {{#select data.data.type}}
-        <option value="primitive">
-          {{localize 'swnr.armor.type.primitive'}}
-        </option>
-        <option value="street">{{localize 'swnr.armor.type.street'}}</option>
-        <option value="combat">{{localize 'swnr.armor.type.combat'}}</option>
-        <option value="powered">{{localize 'swnr.armor.type.powered'}}</option>
-        {{/select}}
-      </select>
+    {{#if data.data.settings.useCWNArmor}}
+      <div class="items-center">
+        <div>
+            {{localize 'swnr.armor.melee'}}
+          {{localize 'swnr.sheet.armor-class'}}:
+        </div>
+
+        <input
+          type="number"
+          class="px-1 w-10 text-center border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+          step="1"
+          name="data.meleeAc"
+          min="0"
+          data-dtype="Number"
+          value="{{data.data.meleeAc}}"
+        />
+      </div>
+
+      <div class="items-center">
+        <div>
+          {{localize 'swnr.armor.soak.label'}}:
+        </div>
+        <div class="flex flex-row">
+          <input
+            type="number"
+            class="px-1 w-8 text-center border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+            step="1"
+            name="data.soak.value"
+            min="0"
+            data-dtype="Number"
+            value="{{data.data.soak.value}}"
+          /> /
+          <input
+            type="number"
+            class="px-1 w-8 text-center border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+            step="1"
+            name="data.soak.max"
+            min="0"
+            data-dtype="Number"
+            value="{{data.data.soak.max}}"
+          />
+        </div> 
+      </div>
+
+    {{/if}}
+
+    {{#if data.data.settings.useCWNArmor}}
     </div>
-    <label class="flex gap-1">
-      <input type="checkbox" name="data.shield" {{checked data.data.shield}} />
-      {{localize 'swnr.armor.shield'}}
-    </label>
+    <div class="flex gap-1 justify-between">
+    {{/if}}
+      <div class="items-center">
+        <div>
+          {{localize 'swnr.armor.dr'}}:
+        </div>
+
+        <input
+          type="number"
+          class="px-1 w-10 text-center border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+          step="1"
+          name="data.dr"
+          min="0"
+          data-dtype="Number"
+          value="{{data.data.dr}}"
+        />
+      </div>
+
+      <div>
+        <div>{{localize 'swnr.armor.type.label'}}:</div>
+        <select
+          name="data.type"
+          class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+        >
+          {{#select data.data.type}}
+          <option value="primitive">
+            {{localize 'swnr.armor.type.primitive'}}
+          </option>
+          <option value="street">{{localize 'swnr.armor.type.street'}}</option>
+          <option value="combat">{{localize 'swnr.armor.type.combat'}}</option>
+          <option value="powered">{{localize 'swnr.armor.type.powered'}}</option>
+          {{/select}}
+        </select>
+      </div>
+      <div class="flex flexcol">
+        <label class="flex gap-1">
+          <input type="checkbox" name="data.shield" {{checked data.data.shield}} />
+          {{localize 'swnr.armor.shield'}}
+        </label>
+        {{#if data.data.settings.useCWNArmor}}
+        <label class="flex gap-1">
+          <input type="checkbox" name="data.subtle" {{checked data.data.subtle}} />
+          {{localize 'swnr.armor.subtle'}}
+        </label>
+        <label class="flex gap-1">
+          <input type="checkbox" name="data.heavy" {{checked data.data.heavy}} />
+          {{localize 'swnr.armor.heavy'}}
+        </label>
+        {{/if}}
+            {{#if data.data.settings.useCWNArmor}}
+            {{/if}}
+      </div>
   </div>
 </form>
