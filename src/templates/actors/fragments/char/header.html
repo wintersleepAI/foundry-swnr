@@ -1,11 +1,22 @@
 <div class="">
   <div class="flex gap-2">
-    <img
-      class="profile-img w-24 h-24 object-contain"
-      src="{{actor.img}}"
-      title="{{actor.name}}"
-      data-edit="img"
-    />
+    <div class="flex flex-col items-center">
+      <img
+        class="profile-img w-24 h-24 object-contain"
+        src="{{actor.img}}"
+        title="{{actor.name}}"
+        data-edit="img"
+      />
+      <div class="flex flex-row items-center center text-xl">
+          <a class="rest-button px-2.5" title='{{localize 'swnr.sheet.rest'}}'>
+            <i class="fas fa-bed"></i>
+          </a>
+          <a class="scene-button px-2.5" title='{{localize 'swnr.sheet.scene'}}'>
+            <i class="fas fa-hourglass-end"></i>
+          </a>
+      </div>
+    </div>
+
     <div class="flex-grow grid grid-cols-4 items-center gap-1">
       <input
         name="name"
@@ -88,11 +99,7 @@
             data-dtype="Number"
           />
         </div>
-        <span>
-          <a class="rest-button pl-1.5" title='{{localize 'swnr.sheet.rest'}}'>
-            <i class="fas fa-bed"></i>
-          </a>
-        </span>
+
       </div>
 
       <!-- strain -->

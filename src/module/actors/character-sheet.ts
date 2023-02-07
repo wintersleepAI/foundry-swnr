@@ -64,6 +64,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       .find(".hp-label")
       .on("click", limitConcurrency(this._onHpRoll.bind(this)));
     html.find(".rest-button").on("click", this._onRest.bind(this));
+    html.find(".scene-button").on("click", this._onScene.bind(this));
     html
       .find('[name="data.health.max"]')
       .on("input", this._onHPMaxChange.bind(this));
@@ -479,6 +480,37 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     if (s instanceof Promise) await s;
     return this.popUpDialog;
   }
+  async _onScene(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    await this.actor.update({
+      data: {
+        effort: { scene: 0 },
+        tweak: {
+          extraEffort: {
+            scene: 0,
+          },
+        },
+      },
+    });
+    if (game.settings.get("swnr", "useCWNArmor")) {
+      const armorWithSoak = <SWNRBaseItem<"armor">[]>(
+        this.actor.items.filter(
+          (i) =>
+            i.data.type === "armor" &&
+            i.data.data.use &&
+            i.data.data.location === "readied" &&
+            i.data.data.soak.value < i.data.data.soak.max
+        )
+      );
+      for (const armor of armorWithSoak) {
+        const soak = armor.data.data.soak.max;
+        await armor.update({
+          "data.soak.value": soak,
+        });
+      }
+    }
+  }
+
   async _onRest(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
 

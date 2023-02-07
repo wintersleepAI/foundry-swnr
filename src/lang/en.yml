@@ -404,6 +404,7 @@
     add-skill: Add New Skill
     level-up: Level Up
     rest: A night's rest
+    scene: End Scene
     rest-desc: Apply a good night's rest (reset effort, drop strain, heal HP)?
     rest-title: Apply a Good Night's Rest?
     cyberware:
