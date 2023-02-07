@@ -5,12 +5,13 @@ import {
 import { SWNRCharacterActor } from "./actors/character";
 import { SWNRNPCActor } from "./actors/npc";
 import { SWNRBaseItem } from "./base-item";
+import { SWNRArmor } from "./items/armor";
 import { SWNRSkill } from "./items/skill";
 import { ValidatedDialog } from "./ValidatedDialog";
 
 export function chatListeners(message: ChatMessage, html: JQuery): void {
   html.on("click", ".card-buttons button", _onChatCardAction.bind(this));
-  //Reroll 
+  //Reroll
   html.find(".dice-roll").each((_i, div) => {
     _addRerollButton($(div));
   });
@@ -46,7 +47,10 @@ export function chatListeners(message: ChatMessage, html: JQuery): void {
   }
 }
 
-function getRerollButton(diceRoll: string, isAttack: boolean): JQuery<HTMLElement> {
+function getRerollButton(
+  diceRoll: string,
+  isAttack: boolean
+): JQuery<HTMLElement> {
   const rerollButton = $(
     `<button class="dice-total-fullDamage-btn chat-button-small"><i class="fas fa-redo" title="Reroll"></i></button>`
   );
@@ -58,20 +62,19 @@ function getRerollButton(diceRoll: string, isAttack: boolean): JQuery<HTMLElemen
     const flavor = "Reroll";
     const chatTemplate = "systems/swnr/templates/chat/re-roll.html";
     const chatDialogData = {
-        roll: await roll.render(),
-        title: flavor,
-        isAttack,
+      roll: await roll.render(),
+      title: flavor,
+      isAttack,
     };
     const chatContent = await renderTemplate(chatTemplate, chatDialogData);
     const chatData = {
-        speaker: ChatMessage.getSpeaker(),
-        roll: JSON.stringify(roll),
-        content: chatContent,
-        type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+      speaker: ChatMessage.getSpeaker(),
+      roll: JSON.stringify(roll),
+      content: chatContent,
+      type: CONST.CHAT_MESSAGE_TYPES.ROLL,
     };
     getDocumentClass("ChatMessage").applyRollMode(chatData, rollMode);
     getDocumentClass("ChatMessage").create(chatData);
-
   });
   return rerollButton;
 }
@@ -107,7 +110,6 @@ export function _addHealthButtons(html: JQuery): void {
   }
   const diceRoll = totalDiv.parent().find(".dice-formula").text();
 
-
   const fullDamageButton = $(
     `<button class="dice-total-fullDamage-btn chat-button-small"><i class="fas fa-user-minus" title="Click to apply full damage to selected token(s)."></i></button>`
   );
@@ -133,7 +135,7 @@ export function _addHealthButtons(html: JQuery): void {
   btnContainer.append(halfDamageButton);
   // btnContainer.append(doubleDamageButton);
   btnContainer.append(fullHealingButton);
-  if (totalDiv.parent().parent().parent().hasClass("re-roll")==false) {
+  if (totalDiv.parent().parent().parent().hasClass("re-roll") == false) {
     btnContainer.append(rerollButton);
   }
   totalDiv.append(btnContainer);
@@ -195,6 +197,35 @@ export function _addHealthButtons(html: JQuery): void {
   });
 }
 
+export async function showValueChange(
+  t: Token,
+  fillColor: string,
+  total: number
+): Promise<void> {
+  const floaterData = {
+    anchor: CONST.TEXT_ANCHOR_POINTS.CENTER,
+    direction:
+      total > 0
+        ? CONST.TEXT_ANCHOR_POINTS.BOTTOM
+        : CONST.TEXT_ANCHOR_POINTS.TOP,
+    // duration: 2000,
+    fontSize: 32,
+    fill: fillColor,
+    stroke: 0x000000,
+    strokeThickness: 4,
+    jitter: 0.3,
+  };
+
+  if (game?.release?.generation >= 10)
+    canvas?.interface?.createScrollingText(
+      t.center,
+      `${total * -1}`,
+      floaterData
+    );
+  // v10
+  else t.hud.createScrollingText(`${total * -1}`, floaterData); // v9
+}
+
 export async function applyHealthDrop(total: number): Promise<void> {
   if (total == 0) return; // Skip changes of 0
 
@@ -213,39 +244,40 @@ export async function applyHealthDrop(total: number): Promise<void> {
       ui.notifications?.error("Error getting actor for token " + t.name);
       continue;
     }
-    let newHealth = actor.data.data.health.value - total;
-    if (newHealth < 0) {
-      newHealth = 0;
-    } else if (newHealth > actor.data.data.health.max) {
-      newHealth = actor.data.data.health.max;
-    }
-    //console.log(`Updating ${actor.name} health to ${newHealth}`);
-    await actor.update({ "data.health.value": newHealth });
-    // Taken from Mana
-    //https://gitlab.com/mkahvi/fvtt-micro-modules/-/blob/master/pf1-floating-health/floating-health.mjs#L182-194
-    const fillColor = total < 0 ? "0x00FF00" : "0xFF0000";
-    const floaterData = {
-      anchor: CONST.TEXT_ANCHOR_POINTS.CENTER,
-      direction:
-        total > 0
-          ? CONST.TEXT_ANCHOR_POINTS.BOTTOM
-          : CONST.TEXT_ANCHOR_POINTS.TOP,
-      // duration: 2000,
-      fontSize: 32,
-      fill: fillColor,
-      stroke: 0x000000,
-      strokeThickness: 4,
-      jitter: 0.3,
-    };
-
-    if (game?.release?.generation >= 10)
-      canvas?.interface?.createScrollingText(
-        t.center,
-        `${total * -1}`,
-        floaterData
+    if (game.settings.get("swnr", "useCWNArmor")) {
+      const armorWithSoak = <SWNRBaseItem<"armor">[]>(
+        actor.items.filter(
+          (i) =>
+            i.data.type === "armor" &&
+            i.data.data.use &&
+            i.data.data.location === "readied" &&
+            i.data.data.soak.value > 0
+        )
       );
-    // v10
-    else t.hud.createScrollingText(`${total * -1}`, floaterData); // v9
+      for (const armor of armorWithSoak) {
+        if (total > 0) {
+          const soakValue = armor.data.data.soak.value;
+          const newSoak = Math.max(soakValue - total, 0);
+          total -= soakValue - newSoak;
+          await armor.update({ "data.soak.value": newSoak });
+          await showValueChange(t, "0xFFA500", soakValue - newSoak);
+        }
+      }
+    }
+    if (total != 0) {
+      let newHealth = actor.data.data.health.value - total;
+      if (newHealth < 0) {
+        newHealth = 0;
+      } else if (newHealth > actor.data.data.health.max) {
+        newHealth = actor.data.data.health.max;
+      }
+      //console.log(`Updating ${actor.name} health to ${newHealth}`);
+      await actor.update({ "data.health.value": newHealth });
+      // Taken from Mana
+      //https://gitlab.com/mkahvi/fvtt-micro-modules/-/blob/master/pf1-floating-health/floating-health.mjs#L182-194
+      const fillColor = total < 0 ? "0x00FF00" : "0xFF0000";
+      showValueChange(t, fillColor, total);
+    }
   }
 }
 
