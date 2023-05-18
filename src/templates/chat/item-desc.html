@@ -1,0 +1,24 @@
+<div class="chat-card">
+  <h3>{{ item.name }}</h3>
+
+  <div class="chat-desc">
+    {{#if (wouldTrim item.data.description 175)}}
+      <span class="hiddenShort">
+        {{{trim item.data.description 175}}}
+        <div class="border border-gray-700 placeholder-blue-800 pt-0">
+          <button class="longShowDesc">Show Long Desc.</button>
+        </div>
+      </span>
+      <div class="border border-gray-700 placeholder-blue-800 pt-0">
+        <span style="display:none" class="hiddenLong">
+        {{{ item.data.description }}}
+        <button class="longHideDesc">Hide Long Desc.</button>
+        </span>
+      </div>
+    {{else}}
+      <span>
+        {{{item.data.description }}}
+      </span>
+    {{/if}}
+  </div>
+</div>

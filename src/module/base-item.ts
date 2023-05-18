@@ -19,19 +19,16 @@ export class SWNRBaseItem<
       console.log("Cannot role without an actor");
       return;
     }
-    // Basic template rendering data
-    const item = this.data;
-    let content = `<h3> ${item.name} </h3>`;
-    if ("description" in item.data) {
-      content += `<span class="flavor-text"> ${item.data.description}</span>`;
-    } else {
-      content += "<span class='flavor-text'> No Description</span>";
-    }
 
-    ChatMessage.create({
+    const cardData = {
+      item: this.data,
+    };
+    const template = "systems/swnr/templates/chat/item-desc.html";
+
+    const chatData = {
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-      content: content, //${item.data.description}
-      //type: CONST.CHAT_MESSAGE_TYPES.OTHER,
-    });
+      content: await renderTemplate(template, cardData),
+    };
+    await ChatMessage.create(chatData);
   }
 }
