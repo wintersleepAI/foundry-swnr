@@ -264,13 +264,11 @@ export async function applyHealthDrop(total: number): Promise<void> {
         }
       }
     }
+    const oldHealth = actor.data.data.health.value;
     if (total != 0) {
-      let newHealth = actor.data.data.health.value - total;
+      let newHealth = oldHealth - total;
       if (newHealth < 0) {
         newHealth = 0;
-        if (t.inCombat) {
-          CombatTracker._onToggleDefeatedStatus(t.combatant);
-        }
       } else if (newHealth > actor.data.data.health.max) {
         newHealth = actor.data.data.health.max;
       }
@@ -280,6 +278,34 @@ export async function applyHealthDrop(total: number): Promise<void> {
       //https://gitlab.com/mkahvi/fvtt-micro-modules/-/blob/master/pf1-floating-health/floating-health.mjs#L182-194
       const fillColor = total < 0 ? "0x00FF00" : "0xFF0000";
       showValueChange(t, fillColor, total);
+
+      let isDefeated = false;
+      if (newHealth <= 0) {
+        isDefeated = true;
+      } else if (oldHealth <= 0) {
+        // token was at <=0 and now is not
+        isDefeated = false;
+      } else {
+        // we can return no status to update
+        return;
+      }
+      await t.combatant?.update({ defeated: isDefeated });
+      const status = CONFIG.statusEffects.find(
+        (e) => e.id === CONFIG.specialStatusEffects.DEFEATED
+      );
+      if (!status) return;
+      const effect = actor && status ? status : CONFIG.controlIcons.defeated;
+      if (t.object) {
+        await t.object.toggleEffect(effect, {
+          overlay: true,
+          active: isDefeated,
+        });
+      } else {
+        await t.toggleEffect(effect, {
+          overlay: true,
+          active: isDefeated,
+        });
+      }
     }
   }
 }
