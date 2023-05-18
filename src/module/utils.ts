@@ -268,6 +268,9 @@ export async function applyHealthDrop(total: number): Promise<void> {
       let newHealth = actor.data.data.health.value - total;
       if (newHealth < 0) {
         newHealth = 0;
+        if (t.inCombat) {
+          CombatTracker._onToggleDefeatedStatus(t.combatant);
+        }
       } else if (newHealth > actor.data.data.health.max) {
         newHealth = actor.data.data.health.max;
       }
