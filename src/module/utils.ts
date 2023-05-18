@@ -471,7 +471,7 @@ export async function initCompendSkills(
     [name: string]: CompendiumCollection<CompendiumCollection.Metadata>;
   } = {};
   for (const e of game.packs) {
-    if (e.metadata.entity === "Item") {
+    if (e.metadata.type === "Item") {
       const items = await e.getDocuments();
       if (items.filter((i) => (<SWNRBaseItem>i).type == "skill").length) {
         candidates[e.metadata.name] = e;
@@ -513,7 +513,16 @@ export async function initCompendSkills(
             const toAdd = await candidates[comped].getDocuments();
             const primarySkills = toAdd
               .filter((i) => i.data.type === "skill")
-              .map((item) => item.toObject());
+              .map((item) => item.toObject())
+              .sort((a, b) => {
+                if (a.name < b.name) {
+                  return -1;
+                }
+                if (a.name > b.name) {
+                  return 1;
+                }
+                return 0;
+              });
             await actor.createEmbeddedDocuments("Item", primarySkills);
           },
         },

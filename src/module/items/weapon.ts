@@ -109,6 +109,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     if (
       this.data.data.settings?.useTrauma &&
       this.data.data.trauma.die != null &&
+      this.data.data.trauma.die !== "none" &&
       this.data.data.trauma.rating != null
     ) {
       const traumaRoll = new Roll(this.data.data.trauma.die);
