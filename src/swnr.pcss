@@ -9,6 +9,10 @@
   font-weight: bold;
 }
 
+:root{
+   --color-text-dark-secondary: #0F0F0F;
+}
+
 body {
   font-family: "Gayathri";
 }
@@ -83,7 +87,15 @@ input[type="text"], input[type="number"], input[type="password"], input[type="da
   @appy focus:shadow-none focus:outline-none;
 }
 input, select, textarea {
-  @apply bg-white rounded-none placeholder-gray-500 focus:shadow-none;
+  @apply rounded-none placeholder-gray-500 focus:shadow-none;
+}
+
+.window-content input, select, textarea {
+  @apply border-gray-800  mx-auto rounded-md bg-gray-400 pl-1.5 placeholder-gray-500;
+}
+
+.window-app button {
+  color: #2d3748;
 }
 
 .subfield {
