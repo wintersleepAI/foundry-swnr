@@ -427,5 +427,24 @@
       >{{actor.data.data.notes.right.contents}}</textarea>
     </div>
   </div>
+  <div class="flex flex-row flex-wrap gap-2">
+    <div class="flex-grow w-100 space-y-2">
+      <input
+        class="border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="text"
+        name="data.notes.public.label"
+        value="{{actor.data.data.notes.public.label}}"
+      />
+      <!-- prettier-ignore  -->
+      <textarea
+        name="data.notes.public.contents"
+        class="border px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        id=""
+        cols="30"
+        rows="10"
+        placeholder="{{actor.data.data.notes.public.label}}"
+      >{{actor.data.data.notes.public.contents}}</textarea>
+    </div>
+  </div>
   {{/if}}
 </form>

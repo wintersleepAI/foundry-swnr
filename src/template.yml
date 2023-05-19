@@ -146,6 +146,9 @@ Actor:
       right:
         label: Bio/Notes
         contents: ""
+      public:
+        label: Public Notes
+        contents: ""
   faction:
     description: ""
     health:

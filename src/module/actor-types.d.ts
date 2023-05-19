@@ -422,7 +422,7 @@ declare interface SWNRNPCData extends SWNRLivingTemplateBase {
   homeworld: string;
   faction: string;
   notes: {
-    [key in "left" | "right"]: {
+    [key in "left" | "right" | "public"]: {
       label: string;
       contents: string;
     };
