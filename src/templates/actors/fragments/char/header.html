@@ -178,9 +178,9 @@
       <!-- speed/movement -->
       <div class="flex gap-2 items-center text-lg">
         <label>{{localize 'swnr.sheet.movement'}}</label>
-          <div class="flex w-12">
+          <div class="flex w-12 border border-r-0 border-gray-800 bg-gray-400 rounded-md  placeholder-blue-800">
           <input
-            class="border border-r-0 border-gray-800 bg-gray-400  placeholder-blue-800 placeholder-opacity-75 rounded-l-md text-right"
+            class="placeholder-opacity-75 rounded-l-md text-right subfield"
             type="number"
             name="data.speed"
             min="0"
@@ -188,7 +188,7 @@
             value="{{actor.data.data.speed}}"
           />
           <div
-            class="border border-l-0 border-gray-800 bg-gray-400  placeholder-blue-800 placeholder-opacity-75 rounded-r-md text-base pl-0.5 pr-1"
+            class="rounded-r-md text-base pl-0.5 pr-1"
           >
             m
           </div>
