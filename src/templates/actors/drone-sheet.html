@@ -61,10 +61,10 @@
         <div class="hp flex flex-col justify-center items-center">
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
-              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
               type="number" step="1" name="data.health.value" value="{{actor.data.data.health.value}}"
               data-dtype="Number" min="0" /><span>/</span><input
-              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
               type="number" name="data.health.max" value="{{actor.data.data.health.max}}" step="1" min="1"
               data-dtype="Number" />
           </div>
@@ -148,7 +148,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <span class="inline-block text-right text-gray-300 cursor-not-allowed w-8">
               {{actor.data.data.fittings.value}}</span><span>/</span><input
-              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
               type="number" name="data.fittings.max" value="{{actor.data.data.fittings.max}}" step="1" min="1"
               data-dtype="Number" />
           </div>

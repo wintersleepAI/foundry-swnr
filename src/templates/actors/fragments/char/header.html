@@ -20,7 +20,7 @@
     <div class="flex-grow grid grid-cols-4 items-center gap-1">
       <input
         name="name"
-        class="text-2xl  bg-transparent col-span-2 px-1.5 py-3.5 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        class="text-2xl  subfield col-span-2 px-1.5 py-3.5 placeholder-blue-800 placeholder-opacity-75 rounded-md"
         type="text"
         value="{{actor.name}}"
         placeholder="{{localize 'swnr.sheet.name'}}"
@@ -35,7 +35,7 @@
         >
           <input
             type="number"
-            class="bg-transparent text-center flex-shrink w-12"
+            class="subfield text-center flex-shrink w-12"
             min="1"
             step="1"
             name="data.level.value"
@@ -53,7 +53,7 @@
           class="gap-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md flex items-center"
         >
           <input
-            class="w-8 text-right pl-1.5 py-3.5 bg-transparent "
+            class="w-8 text-right pl-1.5 py-3.5 subfield "
             type="number"
             step="1"
             name="data.level.exp"
@@ -62,7 +62,7 @@
             value="{{actor.data.data.level.exp}}"
           /><span>/</span
           ><input
-            class="w-8 text-left pr-1.5 py-3.5 bg-transparent "
+            class="w-8 text-left pr-1.5 py-3.5 subfield "
             type="number"
             step="1"
             name="data.level.expToLevel"
@@ -79,9 +79,9 @@
             >{{localize 'swnr.sheet.hp'}}
             <i class="fas fa-dice-d20"></i>
         </label>
-        <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+        <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md subfield">
           <input
-            class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
             type="number"
             step="1"
             name="data.health.value"
@@ -90,7 +90,7 @@
             min="0"
           /><span>/</span
           ><input
-            class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
             type="number"
             name="data.health.max"
             value="{{actor.data.data.health.max}}"
@@ -107,13 +107,13 @@
         <label>{{localize 'swnr.sheet.ss'}}</label>
         <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
           <input
-            class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
             type="number"
             name="data.systemStrain.value"
             value="{{actor.data.data.systemStrain.value}}"
             data-dtype="Number"
           />/<span
-            class="inline-block text-left text-gray-300 cursor-not-allowed w-8"
+            class="inline-block text-left text-gray-300 cursor-not-allowed w-8 subfield"
             >{{actor.data.data.systemStrain.max}}</span
           >
         </div>
