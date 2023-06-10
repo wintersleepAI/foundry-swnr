@@ -11,6 +11,14 @@ _Will you be among them once more?_
 The is the open-source unofficial foundry system for Stars Without Number: Revised and Cities Without Number.
 This project originally began as a fork of SpiceKing's SWNR system.
 
+## Development Note June 2023
+This project is still under active development, but is worked on sporadically when life allows.  Right now 
+there are plans to add CWN features, fix a few issues introduced by foundry v10, fix issues for foundry v11, 
+and eventually try to clean up some code issues (e.g. technical debt). 
+
+Some of this debt relates to the dated type-script definitions, which results in compilation errors for TypeScript
+and complicated code base for certain components. 
+
 ## Features
 
 * Player characters
@@ -40,6 +48,10 @@ SK original system differs from many foundry systems:
 * Avoiding Javascript for Typescript for better type sanity
 * Since JSON it down right picky, I compile YAML into JSON
 * The NeDB files are a pain for diffs, between compaction and the append only nature which scrambles the lines around, so I make them as well from a folder of YAML files.
+
+## Support 
+
+The best way to get support is on the [discord channel](https://discord.com/channels/351180092442935296/765417889938931732)
 
 ## Licence
 
