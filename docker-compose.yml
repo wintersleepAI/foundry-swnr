@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  swnr:
+    image: swnr
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 30000:30000
