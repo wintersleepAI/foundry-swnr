@@ -212,15 +212,14 @@ packs:
     module: swnr
     name: one-roll-backing
     path: packs/one-roll-backing.db
-    system: swnr    
+    system: swnr
 languages:
   - lang: en
     name: English
     path: lang/en.json
 gridDistance: 2
 gridUnits: "m"
-minimumCoreVersion: 0.8.6
-compatibleCoreVersion: 10.291
+compatibility: { "minimum": "0.8.6", "verified": "10.291" }
 url: "https://github.com/wintersleepAI/foundry-swnr"
 manifest: >-
   https://github.com/wintersleepAI/foundry-swnr/releases/latest/download/system.json
