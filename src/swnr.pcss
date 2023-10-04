@@ -9,8 +9,14 @@
   font-weight: bold;
 }
 
+
+$chatblue: #d4d5d6;
+$bgblue: #2d3748;
+
+
 :root{
    --color-text-dark-secondary: #0F0F0F;
+   --color-text-dark-primary: $chatblue;
 }
 
 body {
@@ -25,13 +31,21 @@ h6 {
   font-family: "Gayathri";
   font-weight: bold;
 }
-$chatblue: #d4d5d6;
+
+.dialog .dialog-buttons button.default {
+  background: $chatblue;
+}
+
+form .notes {
+  color: $chatblue !important;
+}
 
 .chat-message {
   border: none;
   background: none;
   padding: 2px;
   background: $chatblue;
+  color: darkslategray;
   //background: url(assets/images/blue-brush.jpg) repeat;
 }
 
@@ -59,6 +73,13 @@ $chatblue: #d4d5d6;
   height: 100%;
   resize: none;
   background: $chatblue;
+}
+
+.sheet.journal-entry .journal-entry-content{
+  background-image: unset;
+  border:none;
+  color: white;
+  background: $bgblue !important;
 }
 
 .window-app .window-content {
