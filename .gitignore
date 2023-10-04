@@ -7,3 +7,5 @@ src/module/entities.ts
 src/module/documents.ts
 data/
 .vscode/launch.json
+data10/
+foundry10/
