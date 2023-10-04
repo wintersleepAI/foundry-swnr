@@ -89,7 +89,7 @@ export const registerSettings = function (): void {
     scope: "world",
     config: true,
     type: Boolean,
-    default: true,
+    default: false,
   });
 
   game.settings.register("swnr", "useCWNArmor", {
@@ -98,6 +98,6 @@ export const registerSettings = function (): void {
     scope: "world",
     config: true,
     type: Boolean,
-    default: true,
+    default: false,
   });
 };
