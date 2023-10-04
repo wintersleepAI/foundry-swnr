@@ -1,4 +1,3 @@
-import { Cipher } from "crypto";
 import { SWNRBaseItem } from "./base-item";
 import { getDefaultImage } from "./utils";
 import { ValidatedDialog } from "./ValidatedDialog";

@@ -264,8 +264,8 @@ async function buildEntities(cb: () => void) {
       "const actors = <Record<string, typeof SWNRBaseActor>>{};",
     ];
     const ends = [
-      "export const SWNRItem = proxy(items, Item) as typeof SWNRBaseItem;",
-      "export const SWNRActor = proxy(actors, Actor) as typeof SWNRBaseActor;",
+      "export const SWNRItem = proxy(items, SWNRBaseItem) as typeof SWNRBaseItem;",
+      "export const SWNRActor = proxy(actors, SWNRBaseActor) as typeof SWNRBaseActor;",
       "",
     ];
     const out = imports.concat(mids, adds, ends).join("\n");
