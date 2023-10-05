@@ -5,6 +5,7 @@ import { SWNRMechActor } from "../actors/mech";
 import { SWNRNPCActor } from "../actors/npc";
 import { SWNRShipActor } from "../actors/ship";
 import { SWNRVehicleActor } from "../actors/vehicle";
+import { SWNRCyberdeckActor } from "../actors/cyberdeck";
 
 interface BaseSheetData extends ItemSheet.Data {
   actor:
@@ -15,6 +16,7 @@ interface BaseSheetData extends ItemSheet.Data {
     | SWNRVehicleActor
     | SWNRMechActor
     | SWNRFactionActor
+    | SWNRCyberdeckActor
     | null;
 }
 export class BaseSheet extends ItemSheet<DocumentSheet.Options, BaseSheetData> {

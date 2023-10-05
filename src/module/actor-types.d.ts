@@ -1,5 +1,4 @@
 import { SWNRArmorTypes, AllItemClasses, ItemTypes } from "./item-types";
-import { SWNRFactionAsset } from "./items/asset";
 import { SWNRBaseItem } from "./base-item";
 
 type ActorTypes =
@@ -9,7 +8,8 @@ type ActorTypes =
   | "mech"
   | "drone"
   | "vehicle"
-  | "faction";
+  | "faction"
+  | "cyberdeck";
 
 declare type SWNRStats = "str" | "dex" | "con" | "int" | "wis" | "cha";
 
@@ -302,7 +302,25 @@ declare interface SWNRVehicleComputed {
     value: number;
   };
 }
-
+declare interface SWNRCyberdeckData {
+  name: string;
+  health: {
+    value: number;
+    max: number;
+    temp: number;
+  };
+  bonusAccess: number;
+  memory: {
+    value: number;
+    max: number;
+  };
+  cpu: {
+    value: number;
+    max: number;
+  };
+  encumberance: number;
+  hackerId: string;
+}
 declare interface SWNRDroneComputed {
   fittings: {
     value: number;
@@ -453,7 +471,8 @@ declare global {
       | { type: "mech"; data: Merge<SWNRMechData, SWNRMechComputed> }
       | { type: "drone"; data: Merge<SWNRDroneData, SWNRDroneComputed> }
       | { type: "vehicle"; data: Merge<SWNRVehicleData, SWNRVehicleComputed> }
-      | { type: "faction"; data: Merge<SWNRFactionData, SWNRFactionComputed> };
+      | { type: "faction"; data: Merge<SWNRFactionData, SWNRFactionComputed> }
+      | { type: "cyberdeck"; data: SWNRCyberdeckData };
   }
   interface SourceConfig {
     Actor:
@@ -463,6 +482,7 @@ declare global {
       | { type: "mech"; data: SWNRMechData }
       | { type: "drone"; data: SWNRDroneData }
       | { type: "vehicle"; data: SWNRVehicleData }
-      | { type: "faction"; data: SWNRFactionData };
+      | { type: "faction"; data: SWNRFactionData }
+      | { type: "cyberdeck"; data: SWNRCyberdeckData };
   }
 }

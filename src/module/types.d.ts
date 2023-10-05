@@ -7,6 +7,7 @@ import { SWNRShipActor } from "./actors/ship";
 import { SWNRFactionActor } from "./actors/faction";
 import { SWNRVehicleActor } from "./actors/vehicle";
 import { SWNRBaseItem } from "./base-item";
+import { SWNRCyberdeckActor } from "./actors/cyberdeck";
 
 declare global {
   namespace TextEditor {
@@ -22,7 +23,8 @@ declare global {
       | typeof SWNRMechActor
       | typeof SWNRVehicleActor
       | typeof SWNRDroneActor
-      | typeof SWNRFactionActor;
+      | typeof SWNRFactionActor
+      | typeof SWNRCyberdeckActor;
 
     Item: typeof SWNRBaseItem;
   }

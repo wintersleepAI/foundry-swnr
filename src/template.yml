@@ -8,6 +8,7 @@ Actor:
     - drone
     - vehicle
     - faction
+    - cyberdeck
   templates:
     vehiclebase: 
       cost: 0
@@ -258,6 +259,20 @@ Actor:
     kmph: 100
     tonnage: 10
     size: s
+  cyberdeck:
+    health:
+      value: 0
+      max: 0
+      temp: 0
+    bonusAccess: 0
+    memory:
+      value: 0
+      max: 0
+    cpu:
+      value: 0
+      max: 0
+    encumerance: 1
+    hackerId: ""
 
 Item:
   types:
