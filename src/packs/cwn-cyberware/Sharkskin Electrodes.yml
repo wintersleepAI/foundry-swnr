@@ -1,0 +1,16 @@
+data:
+  concealment: Touch
+  cost: 20000
+  description: >-
+    An implanted mesh of electrodes beneath the user's skin allows them to deliver
+    debilitating shocks while grappling a target, even if both are heavily clothed.
+    At the end of each round of grappling, the user inflicts 2d6 non-lethal electrical
+    damage on anyone they grapple or who is grappling them. The shielding built into
+    the cyber automatically negates non-lethal electrical damage for the user and
+    halves lethal shocks.
+  effect: Shock grapplers
+  strain: 1
+  type: Skin
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Sharkskin Electrodes
+type: cyberware

@@ -1,0 +1,15 @@
+data:
+  concealment: Sight
+  cost: 50000
+  description: >-
+    Any standard fleshmod can supply beauty, but an aesthetic augmentation suite provides
+    not only a fleshmod's versatility, but tailored pheromones, vocal harmonizharmers,
+    social cue triggers, and an absolutely inhuman visual perfection. Subjects gain
+    a Charisma score of 14, or a +2 score bonus if already 14 or greater, up to a
+    maximum of 18.
+  effect: Body sculpt and Cha bonus
+  strain: 2
+  type: Body
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Aesthetic Augmentation Suite
+type: cyberware

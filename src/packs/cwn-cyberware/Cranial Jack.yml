@@ -1,0 +1,11 @@
+data:
+  concealment: Touch
+  cost: 1000
+  description: "A discreetly-placed plug socket in the user's head or neck allows\
+    \ interfacing with cyberdecks and gear equipped with a jack line. "
+  effect: Link to jack-equipped gear
+  strain: 0.25
+  type: Head
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Cranial Jack
+type: cyberware

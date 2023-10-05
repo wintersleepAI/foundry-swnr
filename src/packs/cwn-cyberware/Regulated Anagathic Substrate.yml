@@ -1,0 +1,14 @@
+data:
+  concealment: Medical
+  cost: 200000
+  description: >-
+    This whole-body network of chem regulators can prolong human lifespans by up to
+    1d4+2 decades. Maintenance on this cyber costs $50,000 a month, however, and interruptions
+    have catastrophic consequences. Rumors persist of even more effective models existing
+    among the megacorp ultra-elite.
+  effect: Prolongs human lifespan
+  strain: 1
+  type: None
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Regulated Anagathic Substrate
+type: cyberware

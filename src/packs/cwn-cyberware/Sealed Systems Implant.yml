@@ -1,0 +1,17 @@
+data:
+  concealment: Medical
+  cost: 15000
+  description: >-
+    When triggered as an Instant action, implanted shields deploy and skinweaves energize
+    to seal the user off from hostile external environments. For the next six hours,
+    the user can operate as if wearing a vacuum suit, ignoring vacuum, contact poisons,
+    non-immediately-lethal levels of radiation, toxic gases, low or high-pressure
+    atmospheres, and environmental temperature hazards short of open flame. After
+    deployment, the implant needs an equal time of recovery before it can be deployed
+    again.
+  effect: Trigger a temp space suit
+  strain: 1
+  type: Skin
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Sealed Systems Implant
+type: cyberware

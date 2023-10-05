@@ -1,0 +1,12 @@
+data:
+  concealment: Sight
+  cost: 200000
+  description: >-
+    The subject gains a Strength score of 18, and can smash through standard interior
+    doors or equivalent barriers as a Move action.
+  effect: Str 18 and extreme feats
+  strain: 2
+  type: Limb
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Muscle Fiber Replacement II
+type: cyberware

@@ -1,0 +1,16 @@
+data:
+  concealment: Medical
+  cost: 10000
+  description: >-
+    A small cranial bomb that can be keyed go off when it receives- or does not receive-
+    certain codes or transmissions. Its unfortunate tendency to misfire its anti-removal
+    protocols makes it an unpopular choice for use in anyone but the most disposable
+    subjects. Removing this cyber is done at a +2 difficulty, and failure causes the
+    death of the subject and a Physical save to avoid the death of the physician,
+    with 5d6 damage taken on success.
+  effect: Cranial bomb with remote key
+  strain: 0.5
+  type: Head
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Discretion Insurance Unit
+type: cyberware

@@ -1,0 +1,15 @@
+data:
+  concealment: Medical
+  cost: 10000
+  description: >-
+    Assorted retractable blades and spikes are implanted in the user's limbs. Their
+    unarmed attacks do 1d8 damage, Shock of 2/15, Trauma Die 1d8/x3 and can be rolled
+    with either Stab or Punch as the relevant combat skill. The Punch skill does not
+    add damage to Body Blades attacks. When not in use, the blades are perceptible
+    only to a medical scan.
+  effect: Integral body weaponry
+  strain: 1
+  type: Limb
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Body Blades I
+type: cyberware

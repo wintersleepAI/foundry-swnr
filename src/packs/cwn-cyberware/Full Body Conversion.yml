@@ -1,0 +1,23 @@
+data:
+  concealment: Sight
+  cost: 6000000
+  description: >-
+    The user's brain and central nervous system are transplanted into a cutting-edge
+    synthetic shell at a cost and difficulty as if this cyber took 4 System Strain.
+    Once converted, the subject has an effective Constitution of 20 for System Strain
+    purpose, but cannot be healed by conventional first aid or medical drugs, requiring
+    ten minutes of repair work with a toolkit to repair any amount of damage, and
+    $250 worth of parts for each hit point to be restored. A full conversion borg
+    no longer requires food, water, air, or sleep, but each day without the latter
+    adds one System Strain due to the mental stress. The conversion requires twelve
+    hours of maintenance every two weeks, and missing it will result in the user's
+    death in 2d6 days unless the omitted maintenance is performed. Current full-body
+    conversion tech is unstable; after 1d4 years, the subject has a cumulative 5%
+    death chance each year. Borgs do not take Major Injuries and gain a +6 bonus to
+    their Trauma Target that stacks with existing bonuses.
+  effect: Become a full body cyborg
+  strain: 0
+  type: Body
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Full Body Conversion
+type: cyberware

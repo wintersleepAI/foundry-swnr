@@ -1,0 +1,15 @@
+data:
+  concealment: Medical
+  cost: 15000
+  description: >-
+    Several pieces of prosthetic support cyber are preemptively installed to mitigate
+    future trauma. When the user takes a Major Injury, they may instead choose to
+    have the Redundant Systems critically damaged instead of accepting the major injury
+    roll result. Redundant Systems can be installed more than once, but the System
+    Strain inflicted increases by one point each time.
+  effect: Sacrifice to avoid Major Injury
+  strain: 1
+  type: Body
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Redundant Systems
+type: cyberware

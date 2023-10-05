@@ -1,0 +1,13 @@
+data:
+  concealment: Medical
+  cost: 100000
+  description: >-
+    Neural acceleration matrices can be deployed to briefly boost the user's reaction
+    speed. Once per scene, as an On Turn action, the user gets a bonus non-cyberspace
+    Main Action.
+  effect: 1/scene, bonus Main Action
+  strain: 2
+  type: Nerve
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Enhanced Reflexes I
+type: cyberware

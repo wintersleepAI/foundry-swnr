@@ -1,0 +1,13 @@
+data:
+  concealment: Sight
+  cost: 200000
+  description: >-
+    Overt ceramic body plating and double-mesh joint reinforcement acts as Dermal
+    Armor II, but with a base ranged and melee AC of 20 and +2 to the user's Trauma
+    Target.
+  effect: As II, but AC 20 and +2 TT
+  strain: 3
+  type: Skin
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Dermal Armor III
+type: cyberware

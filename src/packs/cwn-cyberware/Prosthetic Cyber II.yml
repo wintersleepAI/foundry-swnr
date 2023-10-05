@@ -1,0 +1,12 @@
+data:
+  concealment: Medical
+  cost: 15000
+  description: >-
+    A more sophisticated and expensive version of basic prosthetic cyber, inobvious
+    to anything but a medical scan and far less burdensome on the user's system.
+  effect: Mitigates a Major Injury
+  strain: 0.25
+  type: None
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Prosthetic Cyber II
+type: cyberware

@@ -1,0 +1,15 @@
+data:
+  concealment: Medical
+  cost: 10000
+  description: >-
+    One unit of cranial Memory is installed with a subdermal upload pad. The person
+    uploading the data can set a passphrase; while the implant user can erase the
+    data, they can't download it again without the passphrase, which is usually told
+    only to the data's intended recipient. Courier memory is exceptionally well-hidden
+    and even medical scans take a -2 penalty to find it.
+  effect: Carry locked Memory data
+  strain: 0.25
+  type: Head
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Courier Memory
+type: cyberware

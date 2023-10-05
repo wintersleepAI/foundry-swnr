@@ -1,0 +1,15 @@
+data:
+  concealment: Touch
+  cost: 25000
+  description: >-
+    Hardwired control points interface with the onboard targeting systems of most
+    modern firearms. When using a modern firearm, the PC ignores range penalties and
+    negates up to 4 points of hit penalties for cover, concealment, or prone targets.
+    Once per scene, as an Instant action, they can reroll a missed attack roll with
+    a gun.
+  effect: Bonus when using firearms
+  strain: 1
+  type: Sensory
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Gunlink
+type: cyberware

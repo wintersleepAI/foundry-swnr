@@ -1,0 +1,13 @@
+data:
+  concealment: Sight
+  cost: '250 '
+  description: >-
+    Various neon tattoos, skin texture and color changes, and other superficial physical
+    mods can be performed with no real systemic burden beyond the usual need for regular
+    maintenance.
+  effect: Make cosmetic-level body mods
+  strain: 0
+  type: Skin
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Skinmod
+type: cyberware

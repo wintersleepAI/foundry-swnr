@@ -1,0 +1,13 @@
+data:
+  concealment: Medical
+  cost: 50000
+  description: >-
+    These implants grant a +2 bonus to your Initiative, perhaps making you act before
+    the rest of your team. Once per scene, as an Instant action, ignore Snap Attack
+    hit penalties.
+  effect: +2 Init and Snap Attack benefits
+  strain: 1
+  type: Nerve
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Reaction Booster I
+type: cyberware

@@ -1,0 +1,15 @@
+data:
+  concealment: Sight
+  cost: 100000
+  description: >-
+    Usable only by full body conversion cyborgs or subjects with a Strength score
+    of 18, this mount allows the installation of any man-portable Heavy weapon such
+    as those on page 57. The user counts as a stable firing rest, and the weapon has
+    two integral magazines of ammo, though it can be loaded by hand as well. The specific
+    weapon mounted can be swapped during maintenance.
+  effect: Mount a Heavy weapon
+  strain: 1
+  type: Body
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Titan Gun System
+type: cyberware

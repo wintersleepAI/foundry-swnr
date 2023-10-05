@@ -1,0 +1,18 @@
+data:
+  concealment: Touch
+  cost: 50000
+  description: >-
+    Numerous small projectile launchers are embedded under synthetic skin. When triggered
+    as an On Turn action, the user gains one System Strain to launch a cloud of shrapnel
+    around them, acting as ground zero of a frag grenade explosion. The user has enough
+    targeting control to avoid hitting allies in range. If grappling or grappled at
+    the time, their opponent automatically takes maximum damage. Reloading the Retribution
+    Shield takes five minutes, and the system will not function if the user is wearing
+    suit-grade armor. Lesser armor can usually be tailored to expose adequate amounts
+    of skin.
+  effect: Burst to harm melee targets
+  strain: 1
+  type: Body
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Retribution Shield
+type: cyberware

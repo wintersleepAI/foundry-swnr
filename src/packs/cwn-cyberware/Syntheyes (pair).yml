@@ -1,0 +1,12 @@
+data:
+  concealment: Medical
+  cost: 25000
+  description: "These high-end cybereyes are designed to be indistinguishable from\
+    \ normal eyes under anything short of a medical examination. Any additional mods\
+    \ made to the eyes share this subtlety. "
+  effect: Lifelike artificial eyes
+  strain: 0.25
+  type: Sensory
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Syntheyes (pair)
+type: cyberware

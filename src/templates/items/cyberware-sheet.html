@@ -46,5 +46,45 @@
           {{checked data.data.disabled}}>
     </div>
 
+    {{#if data.data.settings.useCWNCyber}}
+    <!--Concealment -->
+    <div>
+      <div> {{localize 'swnr.sheet.cyberware.concealment'}}: </div>
+      <select class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md" name="data.concealment">
+        {{#select data.data.concealment}}
+        <option value="">{{localize 'swnr.ammo.none'}}</option>
+        <option value="Sight">{{localize 'swnr.sheet.cyberware.conc.sight'}}</option>
+        <option value="Touch">{{localize 'swnr.sheet.cyberware.conc.touch'}}</option>
+        <option value="Medical">{{localize 'swnr.sheet.cyberware.conc.medical'}}</option>
+        {{/select}}
+      </select>
+    </div>
+
+    <!--Type-->
+    <div>
+      <div>
+        {{localize 'swnr.sheet.cyberware.type'}}:
+      </div>
+      <select class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md" name="data.type">
+        {{#select data.data.type}}
+        <option value="">{{localize 'swnr.ammo.none'}}</option>
+        <option value="Head">{{localize 'swnr.sheet.cyberware.types.head'}}</option>
+        <option value="Body">{{localize 'swnr.sheet.cyberware.types.body'}}</option>
+        <option value="Limb">{{localize 'swnr.sheet.cyberware.types.limb'}}</option>
+        <option value="Nerve">{{localize 'swnr.sheet.cyberware.types.nevre'}}</option>
+        <option value="Sensory">{{localize 'swnr.sheet.cyberware.types.sensory'}}</option>
+        {{/select}}
+      </select>
+    </div>
+
+    <div class="flex flex-col items-center">
+      {{localize 'swnr.sheet.cyberware.complication'}}:
+      <input
+        class="w-64 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="text" name="data.complication" value="{{data.data.complication}}" />
+    </div>
+
+    {{/if}}
+
   </div>
 </form>

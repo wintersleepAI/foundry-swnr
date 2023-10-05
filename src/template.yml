@@ -435,3 +435,6 @@ Item:
     cost: 0
     effect: ""
     disabled: false
+    type: ""
+    concealment: ""
+    complication: ""

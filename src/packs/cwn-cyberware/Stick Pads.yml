@@ -1,0 +1,13 @@
+data:
+  concealment: Touch
+  cost: 15000
+  description: >-
+    Macroscale van der Waals generators allow the user's hands and feet to stick to
+    vertical or overhanging surfaces, their full weight supported by one arm. They
+    can climb such surfaces at their full movement rate with one free hand.
+  effect: Climb sheer or vertical surfaces
+  strain: 0.5
+  type: Limb
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Stick Pads
+type: cyberware

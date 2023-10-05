@@ -1,0 +1,12 @@
+data:
+  concealment: Touch
+  cost: 80000
+  description: >-
+    Heavier subcutaneous plating acts as Dermal Armor I with a base ranged and melee
+    AC of 18. In addition, the user can ignore the first instance of Shock in a round.
+  effect: As I, but AC 18 and Shock resist
+  strain: 2
+  type: Skin
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Dermal Armor II
+type: cyberware

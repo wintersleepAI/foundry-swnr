@@ -411,6 +411,20 @@
       disabled: Disabled
       strain: Strain
       name: Cyberware
+      concealment: Concealment
+      type: Type
+      complication: Complication
+      conc:
+        sight: Sight
+        touch: Touch
+        medical: Medical
+      types:
+        head: Head
+        body: Body
+        skin: Skin
+        limb: Limb
+        nerve: Nerve
+        sensory: Sensory
     type:
       mech: Mech
       ship: Ship
@@ -611,6 +625,8 @@
     useTraumaHint: Use CWN trauma dice for rolling attacks?
     useCWNArmor: Use CWN Armor?
     useCWNArmorHint: Use CWN armor options (soak, melee and ranged AC)?
+    useCWNCyber: Use CWN Cyber Options?
+    useCWNCyberHint: Use CWN cyber options (concealment, type, complications, etc)?
   chat:
     dicepool: Dice Pool
     difficulty: Difficulty

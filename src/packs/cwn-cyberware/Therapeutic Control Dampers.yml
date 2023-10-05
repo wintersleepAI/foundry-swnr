@@ -1,0 +1,15 @@
+data:
+  concealment: Medical
+  cost: 25000
+  description: >-
+    A set of customized medical and therapeutic implants are used to control the side-effects
+    of a partially-successful cyberware implant. For each implantation of this system,
+    the user can choose to ignore one implant side-effect they currently suffer. The
+    skill check to implant this system can fail, but it never induces any side effects
+    on its own.
+  effect: Suppress an implant side-effect
+  strain: 1
+  type: Body
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Therapeutic Control Dampers
+type: cyberware

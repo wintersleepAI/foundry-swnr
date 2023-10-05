@@ -1,0 +1,18 @@
+data:
+  concealment: Medical
+  cost: 25000
+  description: >-
+    A tool of assassins, a Viper Sting is a fang, fingernail needle, palm injector,
+    or more exotic implement for injecting an unsuspecting target with a drug of the
+    user's choice. A Viper Sting can be loaded with up to four doses of pharmaceuticals,
+    dispensed as the user wishes. If loaded with a toxin, it does 1d12 damage with
+    a 1d10/x3 Trauma Die. If a tranquilizer is used, the damage is the same, but unconsciousness
+    will result instead of death. A Viper Sting can only be effectively used as part
+    of an Execution Attack, as an alert opponent can avoid it easily. This cyber inflicts
+    a -2 penalty on any check to detect its presence.
+  effect: Hidden drug injection system
+  strain: 0.5
+  type: Body
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Viper Sting
+type: cyberware

@@ -1,0 +1,17 @@
+data:
+  concealment: Touch
+  cost: 30000
+  description: >-
+    These implants allow the user to function normally while submerged for an indefinite
+    period, drawing any necessary oxygen or drinking water from the surrounding salt
+    or freshwater. Normal temperature extremes are managed without difficulty, and
+    pressure can be handled down to depths of one kilometer. Visual augments and pressure
+    gradient sensors allow the equivalent of normal sight up to 30 meters even in
+    lightless water, and miniaturized support jets allow three-dimensional movement
+    at twice the user's normal Move rating.
+  effect: Aquatic adaptation mods
+  strain: 1
+  type: Skin
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Poseidon Implants
+type: cyberware

@@ -1,0 +1,17 @@
+data:
+  concealment: Obvious
+  cost: 20000
+  description: >-
+    These prehensile cranial tendrils take multiple forms, from thick armored cables
+    to bundles of brightly-colored articulated polymer fibers not unlike normal hair.
+    The tendrils are shoulder-length under most circumstances, but can extend to manipulate
+    objects up to three meters distant with the agility of a human hand. The bundles
+    are not very strong, however, and cannot lift more than ten kilograms. Like other
+    extra limbs, they do not grant extra actions, but can hold and use items as any
+    other limb could.
+  effect: Prehensile hair implants
+  strain: 0.5
+  type: Head
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Medusa Implant
+type: cyberware

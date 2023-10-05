@@ -1,0 +1,14 @@
+data:
+  concealment: Medical
+  cost: 5000
+  description: >-
+    The infrared vision this mod allows permits basic navigation in dark areas and
+    makes the presence of heat sources such as humans, engines, and infrared tripwires
+    very obvious. The user gains a +1 bonus on any Notice checks to detect the presence
+    of thermally-unshielded living creatures.
+  effect: See heat patterns in the area
+  strain: 0.5
+  type: Sensory
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Eye Mod/Infrared Vision
+type: cyberware

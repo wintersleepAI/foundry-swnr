@@ -1,0 +1,15 @@
+data:
+  concealment: Sight
+  cost: 5000
+  description: >-
+    One of an array of minimally-adequate and very obvious organ replacements, eye
+    prosthetics, neural patches, and other medical cyber. Prosthetic cyber grants
+    no benefits over ordinary flesh, but can mitigate a Major Injury as explained
+    on page 41. Patients who've lost an arm or leg don't need this cyber; they need
+    a serviceable new limb system such as a Cyberlimb or Synthlimb.
+  effect: Mitigates a Major Injury
+  strain: 1
+  type: None
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Prosthetic Cyber I
+type: cyberware

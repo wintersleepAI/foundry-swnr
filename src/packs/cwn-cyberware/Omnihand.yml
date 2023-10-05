@@ -1,0 +1,14 @@
+data:
+  concealment: Touch
+  cost: 10000
+  description: >-
+    A full array of small mechanical and electronic tools are folded into this cybernetic
+    hand. The user is never without the tools for relevant skill checks, and once
+    per day as an Instant action can gain +1 on any skill check involving the omnihand's
+    tool use. As an improvised weapon, the tools do damage as a knife.
+  effect: Toolkit hand, +1 check 1/scene
+  strain: 0.25
+  type: Limb
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Omnihand
+type: cyberware

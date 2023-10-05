@@ -1,0 +1,13 @@
+data:
+  concealment: Medical
+  cost: 10000
+  description: >-
+    The user's sense of hearing is sharpened remarkably, allowing them to follow individual
+    conversations in a noisy crowd, eavesdrop on whispers up to twenty meters distant,
+    and gain a +2 bonus on all hearing-related Notice checks.
+  effect: Get +2 on hearing skill checks
+  strain: 0.5
+  type: Sensory
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Ear Mod/Filter
+type: cyberware

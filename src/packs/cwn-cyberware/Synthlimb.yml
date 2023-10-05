@@ -1,0 +1,12 @@
+data:
+  concealment: Medical
+  cost: 25000
+  description: "A high-grade cyberlimb that's indistinguishable from an organic body\
+    \ part by anything short of a medical examination. It functions as a Cyberlimb\
+    \ for purposes of implanted equipment. "
+  effect: Lifelike artificial limb
+  strain: 0.5
+  type: Limb
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Synthlimb
+type: cyberware

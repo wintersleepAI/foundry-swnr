@@ -1,0 +1,15 @@
+data:
+  concealment: Sight
+  cost: 25000
+  description: >-
+    As level one, but the user's body armament includes not only conventional blades,
+    but assorted improvements such as monomolecular edges, cutting vibrations, or
+    thermal augmentation. Their unarmed attacks do 2d6 damage with a Shock of 4/15,
+    and a Trauma Die 1d10/x3. Anyone who sees or touches their arms can detect signs
+    of the cyber, however.
+  effect: Larger body weaponry
+  strain: 2
+  type: Limb
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Body Blades II
+type: cyberware

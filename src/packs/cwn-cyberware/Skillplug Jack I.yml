@@ -1,0 +1,13 @@
+data:
+  concealment: Touch
+  cost: 10000
+  description: >-
+    A discreet head-mounted plug port allows use of an intellectual skillplug for
+    a skill requiring minimal physical ability, up to level-1. Once slotted, a skillplug
+    takes fifteen minutes to boot up and integrate properly.
+  effect: Use level-1 intellectual plugs
+  strain: 0.25
+  type: Head
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Skillplug Jack I
+type: cyberware

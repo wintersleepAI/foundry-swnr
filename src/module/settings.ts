@@ -100,4 +100,13 @@ export const registerSettings = function (): void {
     type: Boolean,
     default: false,
   });
+
+  game.settings.register("swnr", "useCWNCyber", {
+    name: "swnr.settings.useCWNCyber",
+    hint: "swnr.settings.useCWNCyberHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+  });
 };

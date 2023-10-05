@@ -1,0 +1,16 @@
+data:
+  concealment: Medical
+  cost: 25000
+  description: >-
+    A wide-spectrum array of blood scrubbers, intake filters, and microbial barriers
+    grants the user effective immunity to most natural diseases and non-synthetic
+    toxins. Weaponized toxins and certain exotic natural afflictions can still affect
+    the user, but they get a +2 bonus on all saving throws against them. The system
+    automatically alerts the user if they have been exposed to a recognized disease
+    or toxin, whether or not it affects them.
+  effect: Immune to normal disease/toxin
+  strain: 1
+  type: Body
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Hemosynthetic Filter System
+type: cyberware

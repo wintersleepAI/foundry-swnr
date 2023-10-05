@@ -1,0 +1,16 @@
+data:
+  concealment: Medical
+  cost: 20000
+  description: >-
+    A holdout weapon designed for surprise short-ranged attacks, this eye has been
+    loaded with a small explosive flechette. It has the statistics of a light pistol,
+    has a range of 10 meters, and requires a Main Action to reload its single-round
+    magazine. If used against a target in melee range who does not suspect its existence,
+    a normal hit roll is made; on a miss, it does full normal damage anyway, and on
+    a hit, the damage is doubled. It can be used for Execution Attacks.
+  effect: Surprise light pistol attack
+  strain: 0.5
+  type: Head
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Eye Mod/Flechette Launcher
+type: cyberware

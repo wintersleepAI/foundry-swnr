@@ -194,6 +194,12 @@ declare interface SWNRCyberware extends SWNRDescData {
   cost: number;
   disabled: boolean;
   effect: string;
+  type: "" | "Body" | "Head" | "Skin" | "Limb" | "Nerve" | "Sensory" | "None";
+  concealment: "" | "Sight" | "Touch" | "Medical";
+  complication: string;
+  settings: null | {
+    useCWNCyber: boolean;
+  };
 }
 
 declare interface SWNRItemData extends SWNRBaseItemData {

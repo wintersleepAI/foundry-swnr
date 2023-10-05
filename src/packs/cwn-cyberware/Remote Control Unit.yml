@@ -1,0 +1,12 @@
+data:
+  concealment: Touch
+  cost: 10000
+  description: >-
+    A neurally-integrated control link allows for near-range control of drones or
+    remote-rigged vehicles, as per page 81.
+  effect: Remote control drones/vehicles
+  strain: 2
+  type: Nerve
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Remote Control Unit
+type: cyberware

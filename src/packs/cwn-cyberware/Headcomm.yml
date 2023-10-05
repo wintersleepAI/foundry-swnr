@@ -1,0 +1,14 @@
+data:
+  concealment: Medical
+  cost: 1000
+  description: >-
+    An implanted phone/short-range radio that can directly communicate within 100
+    meters or use the phone grid, if it's available. For cranial security reasons,
+    only text and voice can be transmitted, but conversations can be held without
+    audible vocalization.
+  effect: Silent radio or phone comms
+  strain: 0.25
+  type: Sensory
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Headcomm
+type: cyberware
