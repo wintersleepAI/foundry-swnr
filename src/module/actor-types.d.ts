@@ -56,7 +56,13 @@ declare interface SWNRLivingTemplateBase {
   health: {
     value: number;
     max: number;
+    temp: number;
   };
+  access: {
+    value: number;
+    temp: number;
+  };
+  traumaTarget: number;
   hitDie: string;
   baseAc: number; //computed-active effects needed
   ac: number;
@@ -79,7 +85,9 @@ declare interface SWNRVehicleTemplateBase {
   health: {
     value: number;
     max: number;
+    temp: number;
   };
+  traumaTarget: number;
   armor: {
     value: number;
     max: number;
@@ -117,6 +125,9 @@ declare interface SWNRLivingTemplateComputed {
     };
   };
   //CWN
+  access: {
+    max: number;
+  };
   settings: null | {
     useCWNArmor: boolean;
   };
@@ -216,6 +227,7 @@ declare interface SWNRFactionData {
   description: string;
   health: {
     value: number;
+    temp: number;
   };
   active: boolean;
   forceRating: FactionRating;

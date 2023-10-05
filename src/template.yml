@@ -14,6 +14,8 @@ Actor:
       health:
         value: 15
         max: 15
+        temp: 0
+      traumaTarget: 6
       ac: 10
       speed: 1
       armor: 
@@ -31,8 +33,10 @@ Actor:
       health:
         value: 10
         max: 10
+        temp: 0
       baseAc: 10
       hitDie: d6
+      traumaTarget: 6
       speed: 10
       ab: 0
       systemStrain:
@@ -43,6 +47,9 @@ Actor:
         current: 0
         scene: 0
         day: 0
+      access:
+        value: 0
+        bonus: 0
     encumbrance:
       encumbrance:
         stowed:
@@ -153,6 +160,7 @@ Actor:
     description: ""
     health:
       value: 7
+      temp: 0
     forceRating: 1
     cunningRating: 1
     wealthRating: 1
