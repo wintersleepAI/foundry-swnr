@@ -271,8 +271,9 @@ Actor:
     cpu:
       value: 0
       max: 0
-    encumerance: 1
+    encumberance: 1
     hackerId: ""
+    cost: 0
 
 Item:
   types:

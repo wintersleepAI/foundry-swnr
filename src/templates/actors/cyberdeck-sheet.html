@@ -19,7 +19,7 @@
           <input name="name"
             class="text-2xl px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
             type="text" value="{{actor.name}}" placeholder="{{localize 'swnr.sheet.name'}}" />
-          <span>{{localize 'swnr.sheet.drone.name'}}</span>
+          <span>{{localize 'swnr.sheet.name'}}</span>
         </div>
 
         <!--HP-->
@@ -35,7 +35,102 @@
           </div>
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
-            {{localize 'swnr.sheet.hp'}}
+            {{localize 'swnr.sheet.cyberdeck.shielding'}}
+          </label>
+        </div>
+
+        <!--memory-->
+        <div class="hp flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
+              type="number" step="1" name="data.memory.value" value="{{actor.data.data.memory.value}}"
+              data-dtype="Number" min="0" /><span>/</span><input
+              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
+              type="number" name="data.memory.max" value="{{actor.data.data.memory.max}}" step="1" min="1"
+              data-dtype="Number" />
+          </div>
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.cyberdeck.memory'}}
+          </label>
+        </div>
+
+        <!--cpu-->
+        <div class="hp flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
+              type="number" step="1" name="data.cpu.value" value="{{actor.data.data.cpu.value}}"
+              data-dtype="Number" min="0" /><span>/</span><input
+              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
+              type="number" name="data.cpu.max" value="{{actor.data.data.cpu.max}}" step="1" min="1"
+              data-dtype="Number" />
+          </div>
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.cyberdeck.cpu'}}
+          </label>
+        </div>
+
+
+        <!--enc-->
+        <div class="mass flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" step="1" name="data.encumberance" value="{{actor.data.data.encumberance}}" data-dtype="Number" min="0" />
+          </div>
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.drone.enc'}}
+          </label>
+        </div>
+
+        <!--bonus access-->
+        <div class="mass flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" step="1" name="data.bonusAccess" value="{{actor.data.data.bonusAccess}}" data-dtype="Number" min="0" />
+          </div>
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.cyberdeck.bonusAccess'}}
+          </label>
+        </div>
+
+
+        <!--cost-->
+        <div class="mass flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-20 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" step="1" name="data.cost" value="{{actor.data.data.cost}}" data-dtype="Number" min="0" />
+          </div>
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.ship.cost'}}
+          </label>
+        </div>
+
+        <!--hacker-->
+        <div class="hacker flex flex-col justify-center items-center">
+          <div class="border item border-gray-800 bg-gray-400 mx-auto rounded-md" data-crew-id="{{hacker.id}}"
+            data-crew-name="{{hacker.name}}">
+            <input
+              class="crew-show w-16 text-center pl-0.5 py-0.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+               value="{{hacker.name}}" readonly />
+            {{#if hacker}}
+            <a class="item-control mr-1 crew-roll text-gray-700 hover:text-purple-600 transition-colors"
+              title='{{localize ' swnr.sheet.roll-skill'}}'><i class="fas fa-dice"></i></a>
+            <a class="item-control mr-1 crew-delete text-gray-700 hover:text-red-600 transition-colors"
+              title='{{localize ' swnr.sheet.delete-item'}}'><i class="fas fa-trash"></i></a>
+            {{/if}}
+          </div>
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.cyberdeck.hacker'}}
           </label>
         </div>
       </div><!-- header -->

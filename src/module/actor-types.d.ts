@@ -320,6 +320,7 @@ declare interface SWNRCyberdeckData {
   };
   encumberance: number;
   hackerId: string;
+  cost: number;
 }
 declare interface SWNRDroneComputed {
   fittings: {

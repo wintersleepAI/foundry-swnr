@@ -602,6 +602,12 @@
         role: Station
         crew: Crew
       cargo-name: Cargo Name / Description
+    cyberdeck:
+      shielding: Shielding
+      hacker: Hacker
+      bonusAccess: Bonus Access
+      memory: Memory
+      cpu: CPU
     tweaks: Tweaks
   settings:
     useRollNPCHD: Use NPC HD on token create?
