@@ -339,6 +339,7 @@
     name: Name
     armor-class: Armor Class
     armor: Armor
+    access: Access
     hp: HP
     permanent-strain: Perm. Strain
     attack-bonus: Attack Bonus

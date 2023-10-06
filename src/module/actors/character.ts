@@ -45,6 +45,17 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
       base - Math.max(data.stats.wis.mod, data.stats.cha.mod)
     );
     save.luck = Math.max(1, base);
+
+    data.access.max = data.stats.int.mod;
+    // If the character has a program skill add it
+    const programSkill = <SWNRBaseItem<"skill">[]>(
+      this.items
+        .filter((i) => i.type === "skill")
+        .filter((i) => i.data.name === "Program")
+    );
+    if (programSkill && programSkill.length == 1) {
+      data.access.max += programSkill[0].data.data.rank;
+    }
   }
   prepareDerivedData(): void {
     const data = this.data.data;

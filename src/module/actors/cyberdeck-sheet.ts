@@ -1,14 +1,14 @@
 import { SWNRCyberdeckActor } from "./cyberdeck";
 import { SWNRNPCActor } from "./npc";
 import { SWNRCharacterActor } from "./character";
-import { BaseActorSheet } from "../actor-base-sheet";
+import { VehicleBaseActorSheet } from "../vehicle-base-sheet";
 
 interface CyberdeckActorSheetData extends ActorSheet.Data {
   //shipWeapons?: Item[];
   itemTypes: SWNRCyberdeckActor["itemTypes"];
 }
 
-export class CyberdeckActorSheet extends BaseActorSheet<CyberdeckActorSheetData> {
+export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorSheetData> {
   object: SWNRCyberdeckActor;
 
   get actor(): SWNRCyberdeckActor {
