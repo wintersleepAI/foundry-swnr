@@ -2,6 +2,9 @@ import { calculateStats } from "../utils";
 import { SWNRBaseItem } from "../base-item";
 import { SWNRBaseActor } from "../base-actor";
 import { ValidatedDialog } from "../ValidatedDialog";
+import { data } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/module.mjs";
+import { Options } from "@league-of-foundry-developers/foundry-vtt-types/src/types/augments/simple-peer";
+import { DocumentModificationOptions } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/abstract/document.mjs";
 
 export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
   getRollData(): this["data"]["data"] {
@@ -270,6 +273,23 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
     const s = popUpDialog.render(true);
     if (s instanceof Promise) await s;
     return;
+  }
+
+  _onUpdate(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    data: any,
+    options: DocumentModificationOptions,
+    userId: string
+  ): void {
+    if (this.data.data.cyberdecks && this.data.data.cyberdecks.length > 0) {
+      for (const deckId of this.data.data.cyberdecks) {
+        const deck = game.actors?.get(deckId);
+        if (deck) {
+          deck.sheet?.render();
+        }
+      }
+    }
+    super._onUpdate(data, options, userId);
   }
 }
 

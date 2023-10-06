@@ -51,6 +51,7 @@ Actor:
       access:
         value: 0
         bonus: 0
+      cyberdecks: []
     encumbrance:
       encumbrance:
         stowed:

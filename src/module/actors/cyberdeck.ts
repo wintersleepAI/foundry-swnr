@@ -28,6 +28,13 @@ export class SWNRCyberdeckActor extends SWNRBaseActor<"cyberdeck"> {
           await this.update({
             "data.hackerId": actorId,
           });
+          const cyberdecks = actor.data.data.cyberdecks;
+          if (this.id && cyberdecks.indexOf(this.id) === -1) {
+            cyberdecks.push(this.id);
+            await actor.update({
+              "data.cyberdecks": cyberdecks,
+            });
+          }
         }
         const itemName = this.name;
         actor.createEmbeddedDocuments(
@@ -69,6 +76,22 @@ export class SWNRCyberdeckActor extends SWNRBaseActor<"cyberdeck"> {
       await this.update({
         "data.hackerId": "",
       });
+      // Remove the deck from the list of decks ID's on the hacker actor
+      const actor = game.actors?.get(actorId);
+      if (
+        actor &&
+        this.id &&
+        (actor.type === "character" || actor.type === "npc")
+      ) {
+        const cyberdeck = actor.data.data.cyberdecks;
+        const idx = cyberdeck.indexOf(this.id);
+        if (idx != -1) {
+          cyberdeck.splice(idx, 1);
+          await actor.update({
+            "data.cyberdecks": cyberdeck,
+          });
+        }
+      }
       ui.notifications?.info(
         `Removed hacker from ${this.name}. Manually remove the cyberdeck from the hacker's sheet`
       );

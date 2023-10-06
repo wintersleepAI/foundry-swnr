@@ -66,6 +66,7 @@ declare interface SWNRLivingTemplateBase {
   hitDie: string;
   baseAc: number; //computed-active effects needed
   ac: number;
+  meleeAc: number; // CWN
   ab: number;
   systemStrain: {
     value: number;
@@ -78,6 +79,7 @@ declare interface SWNRLivingTemplateBase {
     day: number;
   };
   speed: number;
+  cyberdecks: string[]; // Ids of decks
 }
 
 declare interface SWNRVehicleTemplateBase {
