@@ -626,16 +626,11 @@ export class SWNRShipActor extends SWNRBaseActor<"ship"> {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  async _preCreate(actorDataConstructorData, options, user): Promise<void> {
-    await super._preCreate(actorDataConstructorData, options, user);
-    if (
-      actorDataConstructorData.type &&
-      this.data._source.img == "icons/svg/mystery-man.svg"
-    ) {
-      const shipImg = "systems/swnr/assets/icons/starfighter.png";
-      this.data._source.img = shipImg;
-    }
+  async _onCreate(): Promise<void> {
+    await this.update({
+      "token.actorLink": true,
+      img: "systems/swnr/assets/icons/starfighter.png",
+    });
   }
 }
 

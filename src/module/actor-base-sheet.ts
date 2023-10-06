@@ -140,7 +140,6 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
       );
       const s = popUpDialog.render(true);
       if (s instanceof Promise) await s;
-
     } else {
       ui.notifications?.info("Could not find any items in the compendium");
     }

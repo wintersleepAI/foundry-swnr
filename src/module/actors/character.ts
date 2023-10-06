@@ -291,6 +291,12 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
     }
     super._onUpdate(data, options, userId);
   }
+
+  async _onCreate(): Promise<void> {
+    await this.update({
+      "token.actorLink": true,
+    });
+  }
 }
 
 // canvas.tokens.controlled[0].actor.update({ data: { effort: { bonus: 0, value: 0, scene: 0, day: 0 } } })
