@@ -276,7 +276,7 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
   }
 
   _onUpdate(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
     data: any,
     options: DocumentModificationOptions,
     userId: string
