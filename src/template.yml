@@ -293,6 +293,8 @@ Item:
     - shipDefense
     - shipFitting
     - asset
+    - edge
+    - program
   templates:
     modBase:
       pretech:
@@ -463,3 +465,16 @@ Item:
     type: ""
     concealment: ""
     complication: ""
+  edge:
+    templates:
+      - description
+  program:
+    templates:
+      - description
+    cost: 0
+    type: datafile
+    accessCost: 0
+    target: ""
+    selfTerminating: false
+    useAffects: ""
+    skillCheckMod: 0
