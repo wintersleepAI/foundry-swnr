@@ -305,7 +305,6 @@ declare interface SWNRVehicleComputed {
   };
 }
 declare interface SWNRCyberdeckData {
-  name: string;
   health: {
     value: number;
     max: number;

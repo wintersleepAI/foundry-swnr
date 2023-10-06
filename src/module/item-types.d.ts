@@ -21,6 +21,7 @@ declare type AllItemClasses = ItemsWithCustomClasses | BaseItemIfNeeded;
 declare interface SWNRDescData {
   description: string;
   favorite: boolean;
+  modDesc: string;
 }
 
 declare interface SWNRBaseItemData {
@@ -216,6 +217,16 @@ declare interface SWNRFocusData extends SWNRDescData {
   level: number;
 }
 
+declare interface SWNRProgramData extends SWNRDescData {
+  type: "verb" | "subject" | "datafile";
+  cost: number;
+  accessCost: number;
+  skillCheckMod: number;
+  target: string;
+  selfTerminating: boolean;
+  useAffects: string; //Short description
+}
+
 declare interface SWNRSkillData extends SWNRDescData {
   pool: "ask" | "2d6" | "3d6kh2" | "4d6kh2";
   rank: -1 | 0 | 1 | 2 | 3 | 4;
@@ -246,6 +257,8 @@ declare global {
       | { type: "shipWeapon"; data: SWNRShipWeaponData }
       | { type: "shipDefense"; data: SWNRShipDefenseData }
       | { type: "shipFitting"; data: SWNRShipFittingData }
+      | { type: "edge"; data: SWNRDescData }
+      | { type: "program"; data: SWNRProgramData }
       | { type: "asset"; data: SWNRFactionAsset };
   }
 
@@ -262,6 +275,8 @@ declare global {
       | { type: "shipWeapon"; data: SWNRShipWeaponData }
       | { type: "shipDefense"; data: SWNRShipDefenseData }
       | { type: "shipFitting"; data: SWNRShipFittingData }
+      | { type: "edge"; data: SWNRDescData }
+      | { type: "program"; data: SWNRProgramData }
       | { type: "asset"; data: SWNRFactionAsset };
   }
 }

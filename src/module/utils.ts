@@ -455,6 +455,8 @@ export function getDefaultImage(itemType: string): string | null {
     weapon: "weapon-white.svg",
     power: "psychic-waves-white.svg",
     skill: "book-white.svg",
+    edge: "edge.svg",
+    program: "program.svg",
   };
   if (itemType in imgMap) {
     return `${icon_path}/${imgMap[itemType]}`;
