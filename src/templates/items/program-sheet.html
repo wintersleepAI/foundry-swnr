@@ -1,8 +1,57 @@
 <form class="{{cssClass}} -m-2 p-2 form-sheet">
   {{> "systems/swnr/templates/items/fragments/desc.html"}}
   <div class="flex flexrow gap-2 text-center">
-    <div class="flex flex-col items-center">
-        <pre>{{stringify item}}</pre>
+    <div class="flex flexrow">
+      {{localize 'swnr.sheet.program.type'}}:
+       <select name="data.type"
+        class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        {{#select data.data.type}}
+        <option value="verb">
+          {{localize 'swnr.sheet.program.verb'}}
+        </option>
+        <option value="subject">{{localize 'swnr.sheet.program.subject'}}</option>
+        <option value="datafile">{{localize 'swnr.sheet.program.datafile'}}</option>
+        
+        {{/select}}
+      </select>
     </div>
+
+    <div class="flex flex-col items-center">
+       {{localize 'swnr.sheet.program.cost'}}:
+      <input
+            type="number"
+            class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            step="1"
+            name="data.cost"
+            min="0"
+            data-dtype="Number"
+            value="{{data.data.cost}}"
+          />
+    </div>
+
+    {{#if (eq item.data.data.type "verb")}}
+    <div class="flex flex-col items-center">
+      VERB
+      target
+      accessCost
+      skillCheckMod
+      selfTerminating
+    </div>
+    {{/if}}
+
+
+    {{#if (eq item.data.data.type "subject")}}
+    <div>
+      SUBJECT
+      target
+    </div>
+    {{/if}}
+
+    {{#if (ne item.data.data.type "datafile")}}
+
+    <div class="flex flex-col items-center">
+      useAffect
+    </div>
+    {{/if}}
   </div>
 </form>

@@ -613,6 +613,12 @@
       bonusShielding: Bonus Shielding
       neuralBuffer: Neural Buffer
       wirelessConnectionPenalty: Wireless(-2)
+    program:
+      type: Type
+      verb: Verb
+      subject: Subject
+      datafile: Datafile
+      cost: Cost
     tweaks: Tweaks
   settings:
     useRollNPCHD: Use NPC HD on token create?
