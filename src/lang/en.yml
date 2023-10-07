@@ -619,6 +619,14 @@
       subject: Subject
       datafile: Datafile
       cost: Cost
+      use: Use
+      affect: Affects
+      selfTerminating: Self-Terminating
+      accessCost: Access Cost
+      skillCheckMod: Skill Check Modifier
+      target: Subject Type
+      targetAllowed: Target Types Allowed
+      subjectType: Subject Type
     tweaks: Tweaks
   settings:
     useRollNPCHD: Use NPC HD on token create?

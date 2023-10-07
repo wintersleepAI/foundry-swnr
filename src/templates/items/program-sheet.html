@@ -15,6 +15,9 @@
         {{/select}}
       </select>
     </div>
+  </div>
+  <div class="flex flexrow gap-2 text-center">
+
 
     <div class="flex flex-col items-center">
        {{localize 'swnr.sheet.program.cost'}}:
@@ -30,27 +33,78 @@
     </div>
 
     {{#if (eq item.data.data.type "verb")}}
+    
     <div class="flex flex-col items-center">
-      VERB
-      target
-      accessCost
-      skillCheckMod
-      selfTerminating
+       {{localize 'swnr.sheet.program.accessCost'}}:
+      <input
+            type="number"
+            class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            step="1"
+            name="data.accessCost"
+            min="0"
+            data-dtype="Number"
+            value="{{data.data.accessCost}}"
+          />
     </div>
+
+    <div class="flex flex-col items-center">
+       {{localize 'swnr.sheet.program.skillCheckMod'}}:
+      <input
+            type="number"
+            class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            step="1"
+            name="data.skillCheckMod"
+            data-dtype="Number"
+            value="{{data.data.skillCheckMod}}"
+          />
+    </div>
+  </div>
+  <div class="flex flexrow gap-2 text-center">
+    <div class="flexrow items-center">
+        <span>
+          {{localize 'swnr.sheet.program.selfTerminating'}}:
+          <input type="checkbox" name="data.selfTerminating" {{checked data.data.selfTerminating}}>
+
+        </span>
+    </div>
+      
     {{/if}}
 
 
     {{#if (eq item.data.data.type "subject")}}
-    <div>
-      SUBJECT
-      target
-    </div>
+    <!-- placeholder-->
     {{/if}}
 
     {{#if (ne item.data.data.type "datafile")}}
 
     <div class="flex flex-col items-center">
-      useAffect
+      {{#if (eq item.data.data.type "subject")}}
+         {{localize 'swnr.sheet.program.affect'}}:
+      {{else}}
+         {{localize 'swnr.sheet.program.use'}}:
+      {{/if}}
+
+      <input
+            class="w-32 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            name="data.useAffect"
+            min="0"
+            value="{{data.data.useAffect}}"
+          />
+    </div>
+
+
+    <div class="flex flex-col items-center">
+      {{#if (eq item.data.data.type "subject")}}
+         {{localize 'swnr.sheet.program.target'}}:
+      {{else}}
+         {{localize 'swnr.sheet.program.targetAllowed'}}:
+      {{/if}}
+      <input
+            class="w-32 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            name="data.target"
+            min="0"
+            value="{{data.data.targetAllowed}}"
+          />
     </div>
     {{/if}}
   </div>
