@@ -10,7 +10,19 @@ export class SWNRCyberdeckActor extends SWNRBaseActor<"cyberdeck"> {
 
   prepareDerivedData(): void {
     const data = this.data.data;
-    //TODO
+    data.health.max = data.baseShielding + data.bonusShielding;
+    const actor = game.actors?.get(data.hackerId);
+    if (data.neuralBuffer && actor) {
+      if (actor.type === "character") {
+        const nbBonus = actor.data.data.level.value * 3;
+        data.health.max += nbBonus;
+      } else if (actor.type === "npc") {
+        const nbBonus = actor.data.data.hitDice * 3;
+        data.health.max += nbBonus;
+      }
+    }
+    data.cpu.value = data.cpu.max;
+    data.memory.value = data.memory.max;
   }
 
   async addHacker(actorId: string): Promise<void> {

@@ -22,55 +22,94 @@
           <span>{{localize 'swnr.sheet.name'}}</span>
         </div>
 
-        <!--HP-->
+        <!--HP/shielding-->
         <div class="hp flex flex-col justify-center items-center">
-          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
-            <input
-              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" step="1" name="data.health.value" value="{{actor.data.data.health.value}}"
-              data-dtype="Number" min="0" /><span>/</span><input
-              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" name="data.health.max" value="{{actor.data.data.health.max}}" step="1" min="1"
-              data-dtype="Number" />
+          <div class="flex flexcol">
+            <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+              <input
+                class="w-8 text-right py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
+                type="number" step="1" name="data.health.value" value="{{actor.data.data.health.value}}"
+                data-dtype="Number" min="0" /><span>/</span>
+                <span="cursor-not-allowed w-12 text-left pr-6 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield">
+                  {{actor.data.data.health.max}}
+                </span>
+            </div>
+            <label
+              class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+              {{localize 'swnr.sheet.cyberdeck.shielding'}}
+            </label>
+            <!-- bar -->
+            <div class="flex gap-2 items-center">
+              <div
+                class="bg-green-300 border border-green-900 w-full rounded-full h-4 overflow-hidden"
+              >
+                <div
+                  class="bg-green-500 h-full rounded-full"
+                  style="width: min(calc(100% * {{actor.data.data.health.value}}/{{actor.data.data.health.max}}));"
+                ></div>
+              </div>
+            </div>
           </div>
-          <label
-            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
-            {{localize 'swnr.sheet.cyberdeck.shielding'}}
-          </label>
         </div>
 
         <!--memory-->
         <div class="hp flex flex-col justify-center items-center">
-          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
-            <input
-              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" step="1" name="data.memory.value" value="{{actor.data.data.memory.value}}"
-              data-dtype="Number" min="0" /><span>/</span><input
-              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" name="data.memory.max" value="{{actor.data.data.memory.max}}" step="1" min="1"
-              data-dtype="Number" />
+          <div class="flex flexcol">
+            <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+              <span
+                class="cursor-not-allowed w-8 text-right pl-1.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield">
+                {{actor.data.data.memory.value}}
+                </span><span>/</span><input
+                class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
+                type="number" name="data.memory.max" value="{{actor.data.data.memory.max}}" step="1" min="1"
+                data-dtype="Number" />
+            </div>
+            <label
+              class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+              {{localize 'swnr.sheet.cyberdeck.memory'}}
+            </label>
+            <!-- bar -->
+            <div class="flex gap-2 items-center">
+              <div
+                class="bg-purple-300 border border-purple-900 w-full rounded-full h-4 overflow-hidden"
+              >
+                <div
+                  class="bg-purple-500 h-full rounded-full"
+                  style="width: min(calc(100% * {{actor.data.data.memory.value}}/{{actor.data.data.memory.max}}));"
+                ></div>
+              </div>
+            </div>
           </div>
-          <label
-            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
-            {{localize 'swnr.sheet.cyberdeck.memory'}}
-          </label>
         </div>
 
         <!--cpu-->
         <div class="hp flex flex-col justify-center items-center">
-          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
-            <input
-              class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" step="1" name="data.cpu.value" value="{{actor.data.data.cpu.value}}"
-              data-dtype="Number" min="0" /><span>/</span><input
-              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" name="data.cpu.max" value="{{actor.data.data.cpu.max}}" step="1" min="1"
-              data-dtype="Number" />
+          <div class="flex flexcol">
+            <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+              <span
+                class="cursor-not-allowed w-8 text-right pl-1.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield">
+                {{actor.data.data.cpu.value}}
+                </span><span>/</span><input
+                class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
+                type="number" name="data.cpu.max" value="{{actor.data.data.cpu.max}}" step="1" min="1"
+                data-dtype="Number" />
+            </div>
+            <label
+              class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+              {{localize 'swnr.sheet.cyberdeck.cpu'}}
+            </label>
+            <!-- bar -->
+            <div class="flex gap-2 items-center">
+              <div
+                class="bg-yellow-200 border border-yellow-600 w-full rounded-full h-4 overflow-hidden"
+              >
+                <div
+                  class="bg-yellow-400 h-full rounded-full"
+                  style="width: min(calc(100% * {{actor.data.data.cpu.value}}/{{actor.data.data.cpu.max}}));"
+                ></div>
+              </div>
+            </div>
           </div>
-          <label
-            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
-            {{localize 'swnr.sheet.cyberdeck.cpu'}}
-          </label>
         </div>
 
 
@@ -100,6 +139,42 @@
           </label>
         </div>
 
+        <!--base shieldng-->
+        <div class="mass flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" step="1" name="data.baseShielding" value="{{actor.data.data.baseShielding}}" data-dtype="Number" min="0" />
+          </div>
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.cyberdeck.baseShielding'}}
+          </label>
+        </div>
+
+        <!--bonus shieldng-->
+        <div class="mass flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" step="1" name="data.bonusShielding" value="{{actor.data.data.bonusShielding}}" data-dtype="Number" min="0" />
+          </div>
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.cyberdeck.bonusShielding'}}
+          </label>
+        </div>
+
+        <div class="mass flex flex-col justify-center items-center">
+          <div class="flex flexrow">
+            {{localize 'swnr.sheet.cyberdeck.neuralBuffer'}}:<input type="checkbox" name="data.neuralBuffer" {{checked data.data.neuralBuffer}}>
+          </div>
+          <div class="flex flexrow">
+            {{localize 'swnr.sheet.cyberdeck.wirelessConnectionPenalty'}}:<input type="checkbox" name="data.wirelessConnectionPenalty" {{checked data.data.wirelessConnectionPenalty}}>
+
+          </div>
+        </div>
+
 
         <!--cost-->
         <div class="mass flex flex-col justify-center items-center">
@@ -113,7 +188,9 @@
             {{localize 'swnr.sheet.ship.cost'}}
           </label>
         </div>
-
+      </div>
+      <!-- new row for health & hacker -->
+      <div class="flex-grow grid grid-cols-6 items-center gap-1">
         <!--hacker-->
         <div class="hacker flex flex-col justify-center items-center">
           <div class="border item border-gray-800 bg-gray-400 mx-auto rounded-md" data-crew-id="{{hacker.id}}"
@@ -140,7 +217,7 @@
               <!-- HP -->
               <div class="hp flex flex-row justify-center items-center text-lg">
                 <label class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow"
-                    > {{localize 'swnr.sheet.hp'}}
+                    > {{localize 'swnr.sheet.hp'}}:
                 </label>
                 <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md subfield">
                   
@@ -172,7 +249,7 @@
               <!-- access -->
               <div class="hp flex flex-row justify-center items-center text-lg">
                 <label class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow"
-                    > {{localize 'swnr.sheet.access'}}
+                    > {{localize 'swnr.sheet.access'}}: 
                 </label>
                 <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md subfield">
                   
@@ -188,10 +265,10 @@
               <!-- bar -->
               <div class="flex gap-2 items-center">
                 <div
-                  class="bg-green-300 border border-green-900 w-full rounded-full h-4 overflow-hidden"
+                  class="bg-yellow-200 border border-yellow-600 w-full rounded-full h-4 overflow-hidden"
                 >
                   <div
-                    class="bg-green-500 h-full rounded-full"
+                    class="bg-yellow-400 h-full rounded-full"
                     style="width: min(calc(100% * {{hacker.data.data.access.value}}/{{hacker.data.data.access.max}}));"
                   ></div>
                 </div>

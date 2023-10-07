@@ -263,18 +263,18 @@ Actor:
   cyberdeck:
     health:
       value: 0
-      max: 0
-      temp: 0
     bonusAccess: 0
     memory:
-      value: 0
       max: 0
     cpu:
-      value: 0
       max: 0
     encumberance: 1
     hackerId: ""
     cost: 0
+    neuralBuffer: false
+    wirelessConnectionPenalty: false
+    baseShielding: 0
+    bonusShielding: 0
 
 Item:
   types:

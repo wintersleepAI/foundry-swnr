@@ -307,22 +307,37 @@ declare interface SWNRVehicleComputed {
 declare interface SWNRCyberdeckData {
   health: {
     value: number;
-    max: number;
-    temp: number;
   };
   bonusAccess: number;
   memory: {
-    value: number;
     max: number;
   };
   cpu: {
-    value: number;
     max: number;
   };
   encumberance: number;
   hackerId: string;
   cost: number;
+  neuralBuffer: boolean;
+  wirelessConnectionPenalty: boolean;
+  baseShielding: number;
+  bonusShielding: number;
 }
+
+declare interface SWNRCyberdeckComputed {
+  health: {
+    max: number;
+  };
+  memory: {
+    value: number;
+  };
+  cpu: {
+    value: number;
+  };
+  }
+  }
+}
+
 declare interface SWNRDroneComputed {
   fittings: {
     value: number;
@@ -474,7 +489,10 @@ declare global {
       | { type: "drone"; data: Merge<SWNRDroneData, SWNRDroneComputed> }
       | { type: "vehicle"; data: Merge<SWNRVehicleData, SWNRVehicleComputed> }
       | { type: "faction"; data: Merge<SWNRFactionData, SWNRFactionComputed> }
-      | { type: "cyberdeck"; data: SWNRCyberdeckData };
+      | {
+          type: "cyberdeck";
+          data: Merge<SWNRCyberdeckData, SWNRCyberdeckComputed>;
+        };
   }
   interface SourceConfig {
     Actor:

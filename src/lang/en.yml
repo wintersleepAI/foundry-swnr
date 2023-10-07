@@ -609,6 +609,10 @@
       bonusAccess: Bonus Access
       memory: Memory
       cpu: CPU
+      baseShielding: Base Shielding
+      bonusShielding: Bonus Shielding
+      neuralBuffer: Neural Buffer
+      wirelessConnectionPenalty: Wireless(-2)
     tweaks: Tweaks
   settings:
     useRollNPCHD: Use NPC HD on token create?
