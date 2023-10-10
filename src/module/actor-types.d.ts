@@ -320,6 +320,7 @@ declare interface SWNRCyberdeckData {
   cost: number;
   neuralBuffer: boolean;
   wirelessConnectionPenalty: boolean;
+  crownPenalty: boolean;
   baseShielding: number;
   bonusShielding: number;
 }

@@ -273,6 +273,7 @@ Actor:
     cost: 0
     neuralBuffer: false
     wirelessConnectionPenalty: false
+    crownPenalty: false
     baseShielding: 0
     bonusShielding: 0
 

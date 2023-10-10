@@ -613,6 +613,7 @@
       bonusShielding: Bonus Shielding
       neuralBuffer: Neural Buffer
       wirelessConnectionPenalty: Wireless(-2)
+      crownPenalty: Crown (-1)
     program:
       type: Type
       verb: Verb

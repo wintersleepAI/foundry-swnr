@@ -171,7 +171,10 @@
           </div>
           <div class="flex flexrow">
             {{localize 'swnr.sheet.cyberdeck.wirelessConnectionPenalty'}}:<input type="checkbox" name="data.wirelessConnectionPenalty" {{checked data.data.wirelessConnectionPenalty}}>
+          </div>
 
+          <div class="flex flexrow">
+            {{localize 'swnr.sheet.cyberdeck.crownPenalty'}}:<input type="checkbox" name="data.crownPenalty" {{checked data.data.crownPenalty}}>
           </div>
         </div>
 
@@ -279,6 +282,72 @@
         {{/if}}
       </div><!-- header -->
     </div>
+
+    <!-- body-->
+    <div class="w-full">
+        <section class="sheet-body">
+          <!--<div class="tab mods min-h-full" data-group="primary" data-tab="mods">-->
+          <div class="flex flex-col gap-2 min-h-full">
+            <div class="min-h-full">
+              <div><!-- running programs -->
+                <li class="item-titles flexrow">
+                  <div class="item-name">Name</div>
+                  <div class="item-status">      
+                    <a class="item-control item-create text-gray-100 hover:text-green-400 transition-colors"
+                    title="{{localize 'swnr.sheet.add-item'}}" data-item-type="program" data-item-name="Program">
+                      <i class="fas fa-plus"></i>
+                    </a>
+                  </div>
+                </li>
+                <ol class="item-list">
+                  {{#each itemTypes.activePrograms as |item id|}}
+                  <li class="item-entry">
+                    <div class="item flexrow" data-item-id="{{item.id}}">
+                      <div class="item-name item-click item-rollable flexrow flex2">
+                        <div class="item-image" style="background-image: url({{item.img}})">
+                          <a></a>
+                        </div>
+                        <a>{{item.name}}</a>
+                      </div>
+                      <div class="item-controls  text-right">
+                        <a class="item-control item-delete text-gray-400 hover:text-red-600 transition-colors" 
+                          title='{{localize 'swnr.sheet.delete-item'}}'><i class="fas fa-trash"></i></a>
+                      </div>
+                    </div>
+                  </li>
+                  {{/each}}
+                  {{#times actor.data.data.cpu.value}}
+                  <li class="item-alternating">
+                    <div class="item flexrow
+                      {{#if (mod2 @this) }}
+                      bg-gray-600
+                      {{else}}
+                      bg-gray-400
+                      {{/if}}
+                    ">
+                      [free slot]
+                    </div>
+                  </li>
+                  {{/times}}
+                </ol>
+              </div>
+            </div>
+            <div class="grid grid-cols-3">
+              <div>
+                Verbs
+              </div>
+              <div>
+                Subjects
+              </div>
+              <div>
+                Datafiles
+              </div>
+  
+            </div>
+
+    </div>
+
+
   </div>
   {{/if}}
 </form>

@@ -20,7 +20,7 @@ export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorShe
     return mergeObject(super.defaultOptions, {
       classes: ["swnr", "sheet", "actor", "cyberdeck"],
       template: "systems/swnr/templates/actors/cyberdeck-sheet.html",
-      width: 800,
+      width: 850,
       height: 600,
     });
   }
