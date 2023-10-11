@@ -305,6 +305,9 @@ declare interface SWNRVehicleComputed {
   };
 }
 declare interface SWNRCyberdeckData {
+  // itemTypes: {
+  //   program: SWNRBaseItem<"program">[];
+  // };
   health: {
     value: number;
   };
@@ -335,8 +338,6 @@ declare interface SWNRCyberdeckComputed {
   cpu: {
     value: number;
   };
-  }
-  }
 }
 
 declare interface SWNRDroneComputed {

@@ -218,7 +218,7 @@ declare interface SWNRFocusData extends SWNRDescData {
 }
 
 declare interface SWNRProgramData extends SWNRDescData {
-  type: "verb" | "subject" | "datafile";
+  type: "verb" | "subject" | "datafile" | "running";
   cost: number;
   accessCost: number;
   skillCheckMod: number;

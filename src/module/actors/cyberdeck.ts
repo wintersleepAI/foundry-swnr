@@ -1,4 +1,5 @@
 import { SWNRBaseActor } from "../base-actor";
+import { SWNRProgram } from "../items/program";
 
 export class SWNRCyberdeckActor extends SWNRBaseActor<"cyberdeck"> {
   getRollData(): this["data"]["data"] {
@@ -21,7 +22,15 @@ export class SWNRCyberdeckActor extends SWNRBaseActor<"cyberdeck"> {
         data.health.max += nbBonus;
       }
     }
-    data.cpu.value = data.cpu.max;
+    const programs: SWNRProgram[] = this.items.filter(
+      (item): item is SWNRProgram => item.type === "program"
+    ) as SWNRProgram[];
+
+    const activePrograms: number = programs.filter(
+      (item): item is SWNRProgram => item.data.data.type === "running"
+    ).length;
+
+    data.cpu.value = data.cpu.max - activePrograms;
     data.memory.value = data.memory.max;
   }
 

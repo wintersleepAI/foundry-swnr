@@ -2,10 +2,15 @@ import { SWNRCyberdeckActor } from "./cyberdeck";
 import { SWNRNPCActor } from "./npc";
 import { SWNRCharacterActor } from "./character";
 import { VehicleBaseActorSheet } from "../vehicle-base-sheet";
+import { SWNRProgram } from "../items/program";
 
 interface CyberdeckActorSheetData extends ActorSheet.Data {
   //shipWeapons?: Item[];
   itemTypes: SWNRCyberdeckActor["itemTypes"];
+  activePrograms: SWNRProgram[];
+  verbs: SWNRProgram[];
+  subjects: SWNRProgram[];
+  datafiles: SWNRProgram[];
 }
 
 export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorSheetData> {
@@ -41,8 +46,17 @@ export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorShe
         }
       }
     }
+    const programs: SWNRProgram[] = this.actor.items.filter(
+      (item): item is SWNRProgram => item.type === "program"
+    ) as SWNRProgram[];
+
+    const activePrograms: SWNRProgram[] = programs.filter(
+      (item): item is SWNRProgram => item.data.data.type === "running"
+    ) as SWNRProgram[];
+
     return mergeObject(data, {
       itemTypes: this.actor.itemTypes,
+      activePrograms: activePrograms,
       hacker: hacker,
     });
   }

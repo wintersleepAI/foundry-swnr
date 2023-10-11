@@ -619,6 +619,7 @@
       verb: Verb
       subject: Subject
       datafile: Datafile
+      running: Running/Active Program
       cost: Cost
       use: Use
       affect: Affects

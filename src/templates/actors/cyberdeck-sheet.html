@@ -300,9 +300,15 @@
                   </div>
                 </li>
                 <ol class="item-list">
-                  {{#each itemTypes.activePrograms as |item id|}}
-                  <li class="item-entry">
-                    <div class="item flexrow" data-item-id="{{item.id}}">
+                  {{#each activePrograms as |item id|}}
+                  <li class="item-alternating">
+                    <div class="item flexrow
+                      {{#if (mod2 @this) }}
+                        bg-gray-600
+                        {{else}}
+                        bg-gray-400
+                        {{/if}}
+                    " data-item-id="{{item.id}}">
                       <div class="item-name item-click item-rollable flexrow flex2">
                         <div class="item-image" style="background-image: url({{item.img}})">
                           <a></a>
