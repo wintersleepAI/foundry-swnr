@@ -303,7 +303,7 @@
                   {{#each activePrograms as |item id|}}
                   <li class="item-alternating">
                     <div class="item flexrow
-                      {{#if (mod2 @this) }}
+                      {{#if (mod2 @id) }}
                         bg-gray-600
                         {{else}}
                         bg-gray-400
@@ -325,7 +325,7 @@
                   {{#times actor.data.data.cpu.value}}
                   <li class="item-alternating">
                     <div class="item flexrow
-                      {{#if (mod2 @this) }}
+                      {{#if (mod2Offset @this ../activePrograms.length) }}
                       bg-gray-600
                       {{else}}
                       bg-gray-400
