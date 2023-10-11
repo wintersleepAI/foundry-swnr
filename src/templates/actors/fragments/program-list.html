@@ -1,0 +1,37 @@
+  <li class="item-titles flexrow">
+    <div class="item-name">{{subtype}}</div>
+    <div class="item-status">      
+      <a class="item-control item-create text-gray-100 hover:text-green-400 transition-colors"
+        title="{{localize 'swnr.sheet.add-item'}}" 
+          data-item-type="program" 
+          data-item-name="Program"
+          data-item-subtype={{subtype}}
+        >
+        <i class="fas fa-plus"></i>
+      </a>
+    </div>
+  </li>
+  <ol class="item-list">
+    {{#each items as |item id|}}
+    <li class="item-alternating">
+      <div class="item flexrow
+        {{#if (mod2 @id) }}
+          bg-gray-600
+          {{else}}
+          bg-gray-400
+          {{/if}}
+      " data-item-id="{{item.id}}">
+        <div class="item-name item-click item-rollable flexrow flex2">
+          <div class="item-image" style="background-image: url({{item.img}})">
+            <a></a>
+          </div>
+          <a>{{item.name}}</a>
+        </div>
+        <div class="item-controls  text-right">
+          <a class="item-control item-delete text-gray-400 hover:text-red-600 transition-colors" 
+            title='{{localize 'swnr.sheet.delete-item'}}'><i class="fas fa-trash"></i></a>
+        </div>
+      </div>
+    </li>
+  {{/each}}
+  </ol>

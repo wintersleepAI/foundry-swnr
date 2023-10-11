@@ -340,13 +340,25 @@
             </div>
             <div class="grid grid-cols-3">
               <div>
-                Verbs
+                <!-- verbs -->
+                {{>
+                "systems/swnr/templates/actors/fragments/program-list.html" 
+                  type=actor.type actor=actor subtype="verb" items=verbs
+                }}
               </div>
               <div>
-                Subjects
+                <!-- Subjects -->
+                {{>
+                "systems/swnr/templates/actors/fragments/program-list.html" 
+                  type=actor.type actor=actor subtype="subject" items=subjects
+                }}
               </div>
               <div>
-                Datafiles
+                <!--Datafiles-->
+                {{>
+                "systems/swnr/templates/actors/fragments/program-list.html" 
+                  type=actor.type actor=actor subtype="datafile" items=datafiles
+                }}
               </div>
   
             </div>

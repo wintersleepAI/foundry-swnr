@@ -31,7 +31,7 @@ export class SWNRCyberdeckActor extends SWNRBaseActor<"cyberdeck"> {
     ).length;
 
     data.cpu.value = data.cpu.max - activePrograms;
-    data.memory.value = data.memory.max;
+    data.memory.value = data.memory.max - programs.length + activePrograms;
   }
 
   async addHacker(actorId: string): Promise<void> {

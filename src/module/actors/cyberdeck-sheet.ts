@@ -54,9 +54,24 @@ export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorShe
       (item): item is SWNRProgram => item.data.data.type === "running"
     ) as SWNRProgram[];
 
+    const verbs: SWNRProgram[] = programs.filter(
+      (item): item is SWNRProgram => item.data.data.type === "verb"
+    ) as SWNRProgram[];
+
+    const subjects: SWNRProgram[] = programs.filter(
+      (item): item is SWNRProgram => item.data.data.type === "subject"
+    ) as SWNRProgram[];
+
+    const datafiles: SWNRProgram[] = programs.filter(
+      (item): item is SWNRProgram => item.data.data.type === "datafile"
+    ) as SWNRProgram[];
+
     return mergeObject(data, {
       itemTypes: this.actor.itemTypes,
       activePrograms: activePrograms,
+      verbs: verbs,
+      subjects: subjects,
+      datafiles: datafiles,
       hacker: hacker,
     });
   }
