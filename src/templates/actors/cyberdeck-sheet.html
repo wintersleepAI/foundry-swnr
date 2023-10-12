@@ -291,9 +291,9 @@
             <div class="min-h-full">
               <div><!-- running programs -->
                 <li class="item-titles flexrow">
-                  <div class="item-name">Name</div>
-                  <div class="item-status">      
-                    <a class="item-control item-create text-gray-100 hover:text-green-400 transition-colors"
+                  <div class="item-name">Active Running Programs</div>
+                  <div class="item-status text-right">      
+                    <a class="item-control activate-program text-gray-100 hover:text-green-400 transition-colors"
                     title="{{localize 'swnr.sheet.add-item'}}" data-item-type="program" data-item-name="Program">
                       <i class="fas fa-plus"></i>
                     </a>
@@ -338,7 +338,7 @@
                 </ol>
               </div>
             </div>
-            <div class="grid grid-cols-3">
+            <div class="min-h-full">
               <div>
                 <!-- verbs -->
                 {{>
@@ -346,6 +346,8 @@
                   type=actor.type actor=actor subtype="verb" items=verbs
                 }}
               </div>
+            </div>
+            <div class="grid grid-cols-2">
               <div>
                 <!-- Subjects -->
                 {{>

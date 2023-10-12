@@ -1,6 +1,8 @@
   <li class="item-titles flexrow">
-    <div class="item-name">{{subtype}}</div>
-    <div class="item-status">      
+    <div class="item-name" style="text-transform: capitalize;">
+      {{subtype}}s
+    </div>
+    <div class="item-status text-right">      
       <a class="item-control item-create text-gray-100 hover:text-green-400 transition-colors"
         title="{{localize 'swnr.sheet.add-item'}}" 
           data-item-type="program" 
@@ -26,10 +28,18 @@
             <a></a>
           </div>
           <a>{{item.name}}</a>
+          {{#if item.data.data.useAffects}}
+          [{{item.data.data.useAffects}}]
+          {{/if}}
         </div>
-        <div class="item-controls  text-right">
+        <div class="item-controls text-right">
+          <a class="item-control item-edit text-gray-400 hover:text-purple-800 transition-colors" 
+            title='{{localize 'swnr.sheet.edit-item'}}'><i class="fas fa-edit"></i></a>
+          
           <a class="item-control item-delete text-gray-400 hover:text-red-600 transition-colors" 
             title='{{localize 'swnr.sheet.delete-item'}}'><i class="fas fa-trash"></i></a>
+
+
         </div>
       </div>
     </li>

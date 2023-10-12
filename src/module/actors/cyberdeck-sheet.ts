@@ -76,8 +76,14 @@ export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorShe
     });
   }
 
+  _onActivate(event: JQuery.ClickEvent): void {
+    event.preventDefault();
+    ui.notifications?.info("activate");
+  }
+
   activateListeners(html: JQuery): void {
     super.activateListeners(html);
+    html.find(".activate-program").on("click", this._onActivate.bind(this));
   }
 }
 
