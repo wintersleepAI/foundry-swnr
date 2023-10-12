@@ -1,0 +1,14 @@
+data:
+  accessCost: 0
+  cost: 500
+  description: >-
+    hostile program, used most often with the Terminate verb to end the effects of
+    an enemy hacker's programs prematurely.
+  selfTerminating: true
+  skillCheckMod: 0
+  target: Program
+  type: subject
+  useAffects: Active running program
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Program
+type: program

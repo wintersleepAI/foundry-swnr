@@ -1,0 +1,16 @@
+data:
+  accessCost: 1
+  cost: 2000
+  description: >-
+    Turn a device or piece of cyberware off. Most devices and cyber can be rebooted
+    by the network or the user, but it'll take a Main Action and a round to do so.
+    If a network alert hasn't been issued, the network may not notice a deactivated
+    device until someone spots the problem.
+  selfTerminating: true
+  skillCheckMod: 1
+  target: Device/Cyber
+  type: verb
+  useAffects: Turn off the target for at least a round
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Deactivate
+type: program

@@ -1,0 +1,15 @@
+data:
+  accessCost: 0
+  cost: 1000
+  description: >-
+    Piggyback on the sensory feed of a device or piece of cyber. Anything the device
+    senses or records, the hacker can sense. Swapping focus from cyberspace to reality
+    is an On Turn action.
+  selfTerminating: true
+  skillCheckMod: 0
+  target: Device/Cyber
+  type: verb
+  useAffects: Piggyback on a sensor feed or cyber
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Sense
+type: program

@@ -1,0 +1,14 @@
+data:
+  accessCost: 1
+  cost: 500
+  description: >-
+    Prematurely end an undesired program. Any damage or changes the program already
+    inflicted are unaffected.
+  selfTerminating: true
+  skillCheckMod: 0
+  target: Program
+  type: verb
+  useAffects: Forcibly end an unwanted program
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Terminate
+type: program

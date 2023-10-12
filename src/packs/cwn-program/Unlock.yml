@@ -1,0 +1,14 @@
+data:
+  accessCost: 1
+  cost: 500
+  description: >-
+    Unlock a physical device with an electronic lock or a network's cyberspace node
+    barrier.
+  selfTerminating: true
+  skillCheckMod: 1
+  target: Device/Data
+  type: verb
+  useAffects: Unlock an electric lock or node barrier
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Unlock
+type: program

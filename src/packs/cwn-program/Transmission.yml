@@ -1,0 +1,16 @@
+data:
+  accessCost: 0
+  cost: 1000
+  description: >-
+    Ambient radio transmissions can be affected with this element, most often for
+    the purpose of tampering with local comms. A hacker need not be jacked into a
+    cyberspace node to target local radio transmissions, but the usual -2 check penalty
+    for wireless hacking applies.
+  selfTerminating: true
+  skillCheckMod: 0
+  target: Data
+  type: subject
+  useAffects: Radio and wifi signals
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Transmission
+type: program

@@ -1,0 +1,14 @@
+data:
+  accessCost: 0
+  cost: 500
+  description: >-
+    A cyberspace avatar, whether one adopted by a hacker who's jacked into the network
+    or a Demon program standing guard there.
+  selfTerminating: true
+  skillCheckMod: 0
+  target: Avatar
+  type: subject
+  useAffects: Avatars and Demons
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Avatar
+type: program

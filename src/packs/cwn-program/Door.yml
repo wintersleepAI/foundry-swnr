@@ -1,0 +1,14 @@
+data:
+  accessCost: 0
+  cost: 500
+  description: >-
+    A physical door, shutter, hatch, or other barrier with an electronic lock or opening
+    mechanism.
+  selfTerminating: true
+  skillCheckMod: 0
+  target: Device
+  type: subject
+  useAffects: Physical doors/barriers
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Door
+type: program

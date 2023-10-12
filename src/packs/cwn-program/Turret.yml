@@ -1,0 +1,13 @@
+data:
+  accessCost: 0
+  cost: 1000
+  description: >-
+    A security turret, emplaced gun, or other fixed automated weapon.
+  selfTerminating: true
+  skillCheckMod: 0
+  target: Device
+  type: subject
+  useAffects: Automated weaponry
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Turret
+type: program

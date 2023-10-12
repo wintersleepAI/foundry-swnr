@@ -1,0 +1,16 @@
+data:
+  accessCost: 0
+  cost: 1000
+  description: >-
+    Temporarily deactivate a device or cyberware system while the program remains
+    running, for no more than one round per Program skill level plus two. A device
+    can be targeted by a particular hacker's Glitch only once a day, successful or
+    not.
+  selfTerminating: true
+  skillCheckMod: 2
+  target: Device/Cyber
+  type: verb
+  useAffects: Briefly deactivate a device or cyber
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Glitch
+type: program

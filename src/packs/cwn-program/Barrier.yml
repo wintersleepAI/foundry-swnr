@@ -1,0 +1,13 @@
+data:
+  accessCost: 0
+  cost: 1000
+  description: >-
+    A network node barrier that blocks avatars from passing through a network connection.
+  selfTerminating: true
+  skillCheckMod: 0
+  target: ' Data'
+  type: subject
+  useAffects: Inter Node Barriers
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Barrier
+type: program

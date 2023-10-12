@@ -1,0 +1,15 @@
+data:
+  accessCost: 1
+  cost: 2000
+  description: >-
+    Renders the targeted friendly avatar or Demon 'invisible' until they take some
+    cyberspace action other than Move Nodes. Observers in a node get an automatic
+    opposed Int/Program check to detect a ghosted avatar's presence, ending the program.
+  selfTerminating: true
+  skillCheckMod: 0
+  target: Avatar
+  type: verb
+  useAffects: Turn 'invisible' so long as you only move
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Ghost
+type: program
