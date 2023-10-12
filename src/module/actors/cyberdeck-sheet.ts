@@ -76,9 +76,56 @@ export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorShe
     });
   }
 
-  _onActivate(event: JQuery.ClickEvent): void {
+  async _onActivate(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
-    ui.notifications?.info("activate");
+    if (this.actor.data.data.cpu.value < 1) {
+      ui.notifications?.error("Not enough CPU to activate program");
+      return;
+    }
+    const sheetData = await this.getData();
+    let verbOptions = "";
+    let subjectOptions = "";
+    for (const verb of sheetData.verbs) {
+      verbOptions += `<option value="${verb.id}">${verb.name}</option>`;
+    }
+    for (const subject of sheetData.subjects) {
+      subjectOptions += `<option value="${subject.id}">${subject.name}</option>`;
+    }
+    console.log(verbOptions);
+    const formContent = `<form>
+    <div class="form-group">
+    <label>Verb:</label>
+    <select name="verbId"
+      class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+      ${verbOptions}
+    </select>
+    <label>Subject:</label>
+    <select name="subjectId"
+      class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+      ${subjectOptions}
+    </select>
+    </div>
+  </form>`;
+    new Dialog({
+      title: game.i18n.localize("swnr.sheet.cyberdeck.run"),
+      content: formContent,
+      buttons: {
+        yes: {
+          icon: "<i class='fas fa-check'></i>",
+          label: `Run`,
+        },
+      },
+      default: "Run",
+      close: (html) => {
+        const form = <HTMLFormElement>html[0].querySelector("form");
+        const verbID = (<HTMLInputElement>form.querySelector('[name="verbId"]'))
+          ?.value;
+        const days = (<HTMLInputElement>(
+          form.querySelector('[name="inputField"]')
+        ))?.value;
+        ui.notifications?.info(`Traveling ${days} days`);
+      },
+    }).render(true);
   }
 
   activateListeners(html: JQuery): void {

@@ -614,6 +614,7 @@
       neuralBuffer: Neural Buffer
       wirelessConnectionPenalty: Wireless(-2)
       crownPenalty: Crown (-1)
+      run: Run/ Activate Program
     program:
       type: Type
       verb: Verb
