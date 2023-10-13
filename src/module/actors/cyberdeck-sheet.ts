@@ -94,18 +94,53 @@ export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorShe
     console.log(verbOptions);
     const formContent = `<form>
     <div class="form-group">
-    <label>Verb:</label>
-    <select name="verbId"
-      class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-      ${verbOptions}
-    </select>
-    <label>Subject:</label>
-    <select name="subjectId"
-      class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-      ${subjectOptions}
-    </select>
+      <label>Verb:</label>
+      <select name="verbId"
+        class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        ${verbOptions}
+      </select>
+      <label>Subject:</label>
+      <select name="subjectId"
+        class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        ${subjectOptions}
+      </select>
     </div>
-  </form>`;
+    </form>`;
+
+    const _activateForm = async (html: HTMLFormElement) => {
+      const form = <HTMLFormElement>html[0].querySelector("form");
+      const verbID = (<HTMLInputElement>form.querySelector('[name="verbId"]'))
+        ?.value;
+      const subID = (<HTMLInputElement>form.querySelector('[name="subjectId"]'))
+        ?.value;
+      if (!verbID || !subID) {
+        ui.notifications?.error("Verb or Subject not selected");
+        return;
+      }
+      const verb = sheetData.verbs.find((item) => item.id === verbID);
+      const subject = sheetData.subjects.find((item) => item.id === subID);
+      if (!verb || !subject) {
+        ui.notifications?.error("Verb or Subject not found");
+        return;
+      }
+
+      const newProgram = {
+        name: `${verb.name} ${subject.name}`,
+        type: `program`,
+        img: verb.img,
+        data: {
+          type: "running",
+          cost: verb.data.data.cost,
+          accessCost: verb.data.data.accessCost,
+          useAffects: verb.data.data.useAffects,
+        },
+      };
+      // Consume access
+      // Is self terminating
+      // Roll skill / create button
+      this.actor.createEmbeddedDocuments("Item", [newProgram], {});
+    };
+
     new Dialog({
       title: game.i18n.localize("swnr.sheet.cyberdeck.run"),
       content: formContent,
@@ -113,18 +148,10 @@ export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorShe
         yes: {
           icon: "<i class='fas fa-check'></i>",
           label: `Run`,
+          callback: _activateForm,
         },
       },
       default: "Run",
-      close: (html) => {
-        const form = <HTMLFormElement>html[0].querySelector("form");
-        const verbID = (<HTMLInputElement>form.querySelector('[name="verbId"]'))
-          ?.value;
-        const days = (<HTMLInputElement>(
-          form.querySelector('[name="inputField"]')
-        ))?.value;
-        ui.notifications?.info(`Traveling ${days} days`);
-      },
     }).render(true);
   }
 
