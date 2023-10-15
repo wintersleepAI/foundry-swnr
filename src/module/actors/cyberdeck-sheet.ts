@@ -5,12 +5,15 @@ import { VehicleBaseActorSheet } from "../vehicle-base-sheet";
 import { SWNRProgram } from "../items/program";
 
 interface CyberdeckActorSheetData extends ActorSheet.Data {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  hacker: any;
   //shipWeapons?: Item[];
   itemTypes: SWNRCyberdeckActor["itemTypes"];
   activePrograms: SWNRProgram[];
   verbs: SWNRProgram[];
   subjects: SWNRProgram[];
   datafiles: SWNRProgram[];
+  //hacker: SWNRCharacterActor | SWNRNPCActor | null;
 }
 
 export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorSheetData> {
@@ -66,6 +69,25 @@ export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorShe
       (item): item is SWNRProgram => item.data.data.type === "datafile"
     ) as SWNRProgram[];
 
+    const access = {
+      value: 0,
+      max: 0,
+    };
+
+    if (hacker) {
+      if (hacker.type == "character") {
+        access.value =
+          hacker.data.data.access.value + this.actor.data.data.bonusAccess;
+        access.max =
+          hacker.data.data.access.max + this.actor.data.data.bonusAccess;
+      } else if (hacker.type == "npc") {
+        access.value =
+          hacker.data.data.access.value + this.actor.data.data.bonusAccess;
+        access.max =
+          hacker.data.data.access.max + this.actor.data.data.bonusAccess;
+      }
+    }
+
     return mergeObject(data, {
       itemTypes: this.actor.itemTypes,
       activePrograms: activePrograms,
@@ -73,6 +95,7 @@ export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorShe
       subjects: subjects,
       datafiles: datafiles,
       hacker: hacker,
+      access: access,
     });
   }
 
@@ -91,7 +114,10 @@ export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorShe
     for (const subject of sheetData.subjects) {
       subjectOptions += `<option value="${subject.id}">${subject.name}</option>`;
     }
-    console.log(verbOptions);
+    if (!sheetData.verbs.length || !sheetData.subjects.length) {
+      ui.notifications?.error("No verbs or subjects found");
+      return;
+    }
     const formContent = `<form>
     <div class="form-group">
       <label>Verb:</label>
@@ -138,7 +164,25 @@ export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorShe
       // Consume access
       // Is self terminating
       // Roll skill / create button
-      this.actor.createEmbeddedDocuments("Item", [newProgram], {});
+      const docs = await this.actor.createEmbeddedDocuments(
+        "Item",
+        [newProgram],
+        {}
+      );
+      const program = docs[0];
+      if (!program) {
+        ui.notifications?.error("Failed to create program");
+        return;
+      }
+      if (sheetData.hacker) {
+        if (sheetData.hacker.type == "character") {
+          const access = sheetData.hacker.data.data.access.value;
+        } else if (sheetData.hacker.type == "npc") {
+        }
+      }
+      await this.actor.update({
+        "data.cpu.value": this.actor.data.data.cpu.value - 1,
+      });
     };
 
     new Dialog({
