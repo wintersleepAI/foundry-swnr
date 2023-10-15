@@ -84,6 +84,17 @@ export class SWNRCyberdeckActor extends SWNRBaseActor<"cyberdeck"> {
     }
   }
 
+  getHacker(): SWNRBaseActor<"character"> | SWNRBaseActor<"npc"> | null {
+    const hackerId = this.data.data.hackerId;
+    if (hackerId) {
+      const actor = game.actors?.get(hackerId);
+      if (actor && (actor.type == "character" || actor.type == "npc")) {
+        return actor;
+      }
+    }
+    return null;
+  }
+
   async removeCrew(actorId: string): Promise<void> {
     const hackerId = this.data.data.hackerId;
     //Only remove if there;

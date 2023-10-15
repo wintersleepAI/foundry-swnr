@@ -1,0 +1,47 @@
+<div class="chat-card">
+  <h3 title="{{ program.data.data.description }}">
+    {{ program.name }}
+  </h3>
+
+  <div class="chat-desc">
+    {{#if (wouldTrim program.data.data.description 200)}}
+      <span class="hiddenShort">
+        {{{trim program.data.data.description 200}}}
+        <div class="border border-gray-700 placeholder-blue-800 pt-0">
+          <button class="longShowDesc">Show Long Desc.</button>
+        </div>
+      </span>
+      <div class="border border-gray-700 placeholder-blue-800 pt-0">
+        <span style="display:none" class="hiddenLong">
+        {{{ program.data.data.description }}}
+        <button class="longHideDesc">Hide Long Desc.</button>
+        </span>
+      </div>
+    {{else}}
+      <span>
+        {{{program.data.data.description }}}
+      </span>
+    {{/if}}
+  </div>
+
+
+  {{#if skillRoll}}
+    <span>{{localize 'swnr.sheet.program.skillRoll'}}:</span>
+    <span class="roll">{{{ skillRoll }}}</span>
+  {{/if}}
+
+  {{#if programRoll}}
+    <span>{{localize 'swnr.sheet.program.attackRoll'}}:</span>
+    <span class="roll roll-damage">{{{ programRoll }}}</span>
+  {{/if}}
+
+
+  {{#if programSkill}}
+  <div class="card-buttons">
+      <button data-action="skill" data-skill="{{programSkill}}">
+          {{programSkill}}
+      </button>
+  </div>
+  {{/if}}
+
+</div>

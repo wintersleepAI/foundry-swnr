@@ -630,6 +630,8 @@
       target: Subject Type
       targetAllowed: Target Types Allowed
       subjectType: Subject Type
+      attackRoll: Attack Roll
+      skillRoll: Skill Roll
     tweaks: Tweaks
   settings:
     useRollNPCHD: Use NPC HD on token create?

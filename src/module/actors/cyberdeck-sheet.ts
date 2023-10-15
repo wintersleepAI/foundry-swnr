@@ -161,28 +161,46 @@ export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorShe
           useAffects: verb.data.data.useAffects,
         },
       };
-      // Consume access
-      // Is self terminating
-      // Roll skill / create button
+
       const docs = await this.actor.createEmbeddedDocuments(
         "Item",
         [newProgram],
         {}
       );
       const program = docs[0];
-      if (!program) {
+      if (!program || !(program instanceof SWNRProgram)) {
         ui.notifications?.error("Failed to create program");
         return;
       }
+
+      // Consume access
       if (sheetData.hacker) {
+        let access = 0;
         if (sheetData.hacker.type == "character") {
-          const access = sheetData.hacker.data.data.access.value;
+          access = sheetData.hacker.data.data.access.value;
+          access -= program.data.data.accessCost;
         } else if (sheetData.hacker.type == "npc") {
+          access = sheetData.hacker.data.data.access.value;
+          access -= program.data.data.accessCost;
+        }
+        await sheetData.hacker.update({
+          "data.access.value": access,
+        });
+        if (access <= 0) {
+          ui.notifications?.info("Hacker has no access left");
         }
       }
-      await this.actor.update({
-        "data.cpu.value": this.actor.data.data.cpu.value - 1,
-      });
+
+      // Roll skill / create button
+      program.roll();
+
+      if (program.data.data.selfTerminating) {
+        program.delete();
+      } else {
+        // await this.actor.update({
+        //   "data.cpu.value": this.actor.data.data.cpu.value - 1,
+        // });
+      }
     };
 
     new Dialog({

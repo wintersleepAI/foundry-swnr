@@ -5,6 +5,7 @@ import { ValidatedDialog } from "../ValidatedDialog";
 import { data } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/module.mjs";
 import { Options } from "@league-of-foundry-developers/foundry-vtt-types/src/types/augments/simple-peer";
 import { DocumentModificationOptions } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/abstract/document.mjs";
+import { SWNRSkill } from "../items/skill";
 
 export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
   getRollData(): this["data"]["data"] {
@@ -273,6 +274,18 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
     const s = popUpDialog.render(true);
     if (s instanceof Promise) await s;
     return;
+  }
+
+  getSkill(skill: string): SWNRBaseItem<"skill"> | null {
+    const skillItem = <SWNRBaseItem<"skill">[]>(
+      this.items
+        .filter((i) => i.type === "skill")
+        .filter((i) => i.data.name === skill)
+    );
+    if (skillItem && skillItem.length == 1) {
+      return skillItem[0];
+    }
+    return null; //skill not found
   }
 
   _onUpdate(
