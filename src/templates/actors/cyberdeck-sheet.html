@@ -27,17 +27,26 @@
           <div class="flex flexcol">
             <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
               <input
-                class="w-8 text-right py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
+                class="w-6 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
                 type="number" step="1" name="data.health.value" value="{{actor.data.data.health.value}}"
                 data-dtype="Number" min="0" /><span>/</span>
-                <span="cursor-not-allowed w-12 text-left pr-6 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield">
+                <span 
+                    class="w-8 text-left pr-1.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
+                >
                   {{actor.data.data.health.max}}
                 </span>
             </div>
             <label
               class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
-              {{localize 'swnr.sheet.cyberdeck.shielding'}}
+              {{localize 'swnr.sheet.cyberdeck.shielding'}} 
+              <a
+                class="shielding-refresh text-gray-400 hover:text-purple-800 transition-colors"
+                title="{{localize 'swnr.sheet.refresh'}}"
+              >
+                <i class="fas fa-retweet"></i>
+              </a>
             </label>
+            
             <!-- bar -->
             <div class="flex gap-2 items-center">
               <div
@@ -57,10 +66,10 @@
           <div class="flex flexcol">
             <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
               <span
-                class="cursor-not-allowed w-8 text-right pl-1.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield">
+                class="cursor-not-allowed w-6 text-right pl-1.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield">
                 {{actor.data.data.memory.value}}
                 </span><span>/</span><input
-                class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
+                class="w-6 text-left pr-1.5  bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
                 type="number" name="data.memory.max" value="{{actor.data.data.memory.max}}" step="1" min="1"
                 data-dtype="Number" />
             </div>
@@ -152,7 +161,7 @@
           </label>
         </div>
 
-        <!--bonus shieldng-->
+        <!--bonus shielding-->
         <div class="mass flex flex-col justify-center items-center">
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
@@ -162,7 +171,7 @@
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
             {{localize 'swnr.sheet.cyberdeck.bonusShielding'}}
-          </label>
+          </label> 
         </div>
 
         <div class="mass flex flex-col justify-center items-center">
@@ -193,9 +202,13 @@
         </div>
       </div>
       <!-- new row for health & hacker -->
-      <div class="flex-grow grid grid-cols-6 items-center gap-1">
+      <div class="flex-grow grid grid-cols-4 items-center gap-1">
         <!--hacker-->
-        <div class="hacker flex flex-col justify-center items-center">
+        <div class="hacker flex flex-row justify-center items-right">
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.cyberdeck.hacker'}}:
+          </label>
           <div class="border item border-gray-800 bg-gray-400 mx-auto rounded-md" data-crew-id="{{hacker.id}}"
             data-crew-name="{{hacker.name}}">
             <input
@@ -208,19 +221,16 @@
               title='{{localize 'swnr.sheet.delete-item'}}'><i class="fas fa-trash"></i></a>
             {{/if}}
           </div>
-          <label
-            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
-            {{localize 'swnr.sheet.cyberdeck.hacker'}}
-          </label>
+
         </div>
 
         {{#if hacker}}
         <div class="hackerhp flex flex-col justify-center items-center">
           <div class="flex flexcol">
               <!-- HP -->
-              <div class="hp flex flex-row justify-center items-center text-lg">
+              <div class="hp flex flex-row justify-center items-center">
                 <label class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow"
-                    > {{localize 'swnr.sheet.hp'}}:
+                    > {{localize 'swnr.sheet.hp'}}: 
                 </label>
                 <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md subfield">
                   
@@ -247,17 +257,23 @@
           </div>
         </div>
 
-        <div class="hackeraccess flex flex-col justify-center items-center">
+        <div class="hackeraccess flex flex-col justify-center items-center grid-cols-2">
           <div class="flex flexcol">
               <!-- access -->
-              <div class="hp flex flex-row justify-center items-center text-lg">
+              <div class="hp flex flex-row justify-center items-center">
                 <label class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow"
-                    > {{localize 'swnr.sheet.access'}}: 
+                    > {{localize 'swnr.sheet.access'}} 
+                  <a
+                    class="access-refresh text-gray-400 hover:text-purple-800 transition-colors"
+                    title="{{localize 'swnr.sheet.refresh'}}"
+                  >
+                    <i class="fas fa-retweet"></i>
+                  </a>: 
                 </label>
                 <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md subfield">
                   
                   <span 
-                    class="inline-block text-right text-gray-300 cursor-not-allowed w-8 subfield"
+                      class="cursor-not-allowed text-gray-300 w-6 text-right pl-1.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
                   >{{access.value}}</span>
                   <span>/</span>
                   <span 

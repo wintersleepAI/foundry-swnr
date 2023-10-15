@@ -217,9 +217,46 @@ export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorShe
     }).render(true);
   }
 
+  async _onRefreshShielding(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    const oldShielding = this.actor.data.data.health.value;
+    const maxShielding = this.actor.data.data.health.max;
+
+    ui.notifications?.info(
+      `Refreshing shielding from ${oldShielding} to ${maxShielding} (reminder 15 minutes to pass)`
+    );
+    await this.actor.update({
+      "data.health.value": maxShielding,
+    });
+  }
+
+  async _onRefreshAccess(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+
+    const hacker = this.actor.getHacker();
+    if (hacker) {
+      const maxAccess = hacker.data.data.access.max;
+      const newAccessDisplay = maxAccess + this.actor.data.data.bonusAccess;
+      const oldAccess =
+        hacker.data.data.access.value + this.actor.data.data.bonusAccess;
+      ui.notifications?.info(
+        `Refreshing access from ${oldAccess} to ${newAccessDisplay} (reminder after 1 hour reprogramming, once per day)`
+      );
+      await hacker.update({
+        "data.access.value": maxAccess,
+      });
+    } else {
+      ui.notifications?.error("No hacker found");
+    }
+  }
+
   activateListeners(html: JQuery): void {
     super.activateListeners(html);
     html.find(".activate-program").on("click", this._onActivate.bind(this));
+    html
+      .find(".shielding-refresh")
+      .on("click", this._onRefreshShielding.bind(this));
+    html.find(".access-refresh").on("click", this._onRefreshAccess.bind(this));
   }
 }
 
