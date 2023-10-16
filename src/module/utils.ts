@@ -240,9 +240,36 @@ export async function applyHealthDrop(total: number): Promise<void> {
 
   for (const t of tokens) {
     const actor = t.actor;
+    let isDefeated = false;
+
     if (!actor) {
       ui.notifications?.error("Error getting actor for token " + t.name);
       continue;
+    }
+    if (actor.type == "cyberdeck") {
+      const shielding = actor.data.data.health.value;
+      if (total > 0) {
+        // take from shielding first
+        const newShielding = Math.max(shielding - total, 0);
+        total -= shielding - newShielding;
+        await actor.update({ "data.health.value": newShielding });
+        await showValueChange(t, "0xFFA500", shielding - newShielding);
+        if (total > 0) {
+          isDefeated = true;
+          const hacker = actor.getHacker();
+          // damage still to player
+          if (hacker) {
+            const oldHealth = hacker.data.data.health.value;
+            const newHealth = Math.max(oldHealth - total, 0);
+            const damage = oldHealth - newHealth;
+            await hacker.update({ "data.health.value": newHealth });
+            total = 0; // prevent later damage
+            ui.notifications?.info(
+              `${hacker.name} takes ${damage} damage, now at ${newHealth} health`
+            );
+          }
+        }
+      }
     }
     if (game.settings.get("swnr", "useCWNArmor")) {
       const armorWithSoak = <SWNRBaseItem<"armor">[]>(
@@ -279,7 +306,6 @@ export async function applyHealthDrop(total: number): Promise<void> {
       const fillColor = total < 0 ? "0x00FF00" : "0xFF0000";
       showValueChange(t, fillColor, total);
 
-      let isDefeated = false;
       if (newHealth <= 0) {
         isDefeated = true;
       } else if (oldHealth <= 0) {
