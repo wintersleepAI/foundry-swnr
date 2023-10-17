@@ -629,6 +629,7 @@
       skillCheckMod: Skill Check Modifier
       target: Subject Type
       targetAllowed: Target Types Allowed
+      targetAllowedShort: Targets
       subjectType: Subject Type
       attackRoll: Attack Roll
       skillRoll: Skill Roll

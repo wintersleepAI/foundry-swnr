@@ -1,8 +1,16 @@
   <li class="item-titles flexrow">
-    <div class="item-name" style="text-transform: capitalize;">
+    <div class="item-name pr-2" style="text-transform: capitalize;">
       {{subtype}}s
     </div>
-    <div class="item-status text-right">      
+    <div class="field-long">
+      {{#if (eq subtype "subject")}}
+         {{localize 'swnr.sheet.program.target'}}
+      {{else if (eq subtype "datafile")}}
+      {{else}}
+         {{localize 'swnr.sheet.program.targetAllowedShort'}}
+      {{/if}}
+    </div>
+    <div class="item-status text-right field-short">      
       <a class="item-control item-create text-gray-100 hover:text-green-400 transition-colors"
         title="{{localize 'swnr.sheet.add-item'}}" 
           data-item-type="program" 
@@ -16,23 +24,28 @@
   <ol class="item-list">
     {{#each items as |item id|}}
     <li class="item-alternating">
-      <div class="item flexrow
+      <div class="item flexrow 
         {{#if (mod2 @id) }}
           bg-gray-600
           {{else}}
           bg-gray-400
           {{/if}}
       " data-item-id="{{item.id}}">
-        <div class="item-name item-click item-rollable flexrow flex2">
-          <div class="item-image" style="background-image: url({{item.img}})">
+        <div class="item-name item-click item-rollable flexrow flex2 pr-2">
+          <span class="item-image" style="background-image: url({{item.img}})">
             <a></a>
-          </div>
+          </span>
           <a>{{item.name}}</a>
-          {{#if item.data.data.useAffects}}
-          [{{item.data.data.useAffects}}]
+          {{#if (ne subtype "subject")}}
+              {{#if item.data.data.useAffects}}
+              [{{item.data.data.useAffects}}]
+              {{/if}}
           {{/if}}
         </div>
-        <div class="item-controls text-right">
+        <div class="field-long">
+          {{ item.data.data.target }}
+        </div>
+        <div class="item-controls text-right field-short">
           <a class="item-control item-edit text-gray-400 hover:text-purple-800 transition-colors" 
             title='{{localize 'swnr.sheet.edit-item'}}'><i class="fas fa-edit"></i></a>
           
