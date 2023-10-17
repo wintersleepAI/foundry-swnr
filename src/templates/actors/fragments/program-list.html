@@ -36,11 +36,11 @@
             <a></a>
           </span>
           <a>{{item.name}}</a>
-          {{#if (ne subtype "subject")}}
+          {{#unless (eq subtype "subject")}}
               {{#if item.data.data.useAffects}}
               [{{item.data.data.useAffects}}]
               {{/if}}
-          {{/if}}
+          {{/unless}}
         </div>
         <div class="field-long">
           {{ item.data.data.target }}
