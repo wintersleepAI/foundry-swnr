@@ -356,6 +356,7 @@
       inventory: Inventory
       armor: Armor
       foci: Foci
+      edge: Edge
       other: Other
       powers: Powers
       combat: Combat
@@ -406,6 +407,7 @@
     level-up: Level Up
     rest: A night's rest
     scene: End Scene
+    traumaTarget: Trauma Target
     rest-desc: Apply a good night's rest (reset effort, drop strain, heal HP)?
     rest-title: Apply a Good Night's Rest?
     cyberware:
@@ -413,6 +415,7 @@
       strain: Strain
       name: Cyberware
       concealment: Concealment
+      concealmentShort: Conc.
       type: Type
       complication: Complication
       conc:
