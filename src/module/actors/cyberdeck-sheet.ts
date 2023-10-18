@@ -150,6 +150,15 @@ export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorShe
         return;
       }
 
+      if (
+        verb.data.data.target &&
+        verb.data.data.target.indexOf(subject.data.data.target) === -1
+      ) {
+        ui.notifications?.error(
+          "Verb and Subject are incompatible (target and type does not match)"
+        );
+        return;
+      }
       const newProgram = {
         name: `${verb.name} ${subject.name}`,
         type: `program`,
@@ -159,6 +168,7 @@ export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorShe
           cost: verb.data.data.cost,
           accessCost: verb.data.data.accessCost,
           useAffects: verb.data.data.useAffects,
+          selfTerminating: verb.data.data.selfTerminating,
         },
       };
 

@@ -626,6 +626,7 @@
       affect: Affects
       selfTerminating: Self-Terminating
       accessCost: Access Cost
+      accessCostShort: A/C
       skillCheckMod: Skill Check Modifier
       target: Subject Type
       targetAllowed: Target Types Allowed
