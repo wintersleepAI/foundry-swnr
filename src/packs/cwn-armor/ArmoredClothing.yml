@@ -1,0 +1,19 @@
+data:
+  ac: 16
+  cost: 1000
+  description: >-
+    The bulky plates and heavy ballistic weaves of this outfit are disguised as drapes
+    and fashion elements.
+  encumbrance: 2
+  isHeavy: true
+  isSubtle: true
+  meleeAc: 14
+  shieldACBonus: 0
+  shieldMeleeACBonus: 0
+  soak:
+    max: 5
+    value: 5
+  traumaDiePenalty: 1
+img: systems/swnr/assets/icons/game-icons.net/item-icons/armor.svg
+name: ArmoredClothing
+type: armor

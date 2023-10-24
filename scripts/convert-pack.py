@@ -23,6 +23,7 @@ yaml.add_representer(folded_str, represent_folded_str)
 IMG_MAP = {
     "cyberware": "systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg",
     "program": "systems/swnr/assets/icons/game-icons.net/item-icons/program.svg",
+    "armor": "systems/swnr/assets/icons/game-icons.net/item-icons/armor.svg",
 }
 
 
@@ -42,6 +43,18 @@ def convert(item, itemtype):
                 data[k] = bool(v)
             else:
                 data[k] = v
+    to_change = []
+    for k in data.keys():
+        if "." in k:
+            to_change.append(k)
+    for k in to_change:
+        v = data[k]
+        del data[k]
+        sub, k = k.split(".")
+        if sub not in data:
+            data[sub] = {}
+        data[sub][k] = v
+
     print("D:\n", data)
     print()
     res = {
@@ -69,5 +82,6 @@ if __name__ == "__main__":
     #     "../src/packs/csv/cwn-cyberware.csv", "../src/packs/cwn-cyberware", "cyberware"
     # )
     convert_file(
-        "../src/packs/csv/cwn-programs.csv", "../src/packs/cwn-program", "program"
+        #"../src/packs/csv/cwn-programs.csv", "../src/packs/cwn-program", "program"
+        "../src/packs/csv/cwn-armor.csv", "../src/packs/cwn-armor", "armor"
     )

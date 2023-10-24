@@ -308,6 +308,7 @@ Item:
       quality: stock
       location: other
       favorite: false
+      noEncReadied: false
     description:
       description: ""
     baseVehicleItem:
@@ -342,6 +343,8 @@ Item:
     traumaDiePenalty: 0
     isSubtle: false
     isHeavy: false
+    shieldMeleeACBonus: 1
+    shieldACBonus: 1
   weapon:
     templates:
       - baseItem
@@ -408,6 +411,14 @@ Item:
       type: none
       max: 0
       value: 0
+    trauma:
+      die: none
+      rating: none
+      vehicle: false
+    range:
+      normal: 0
+      max: 0
+    stat: none
   shipDefense:
     templates:
       - description

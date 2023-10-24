@@ -105,7 +105,6 @@ declare interface SWNRVehicleTemplateBase {
   tl: number;
   description: string;
   mods: string;
-  meleeAc: number; // SWN computed
 }
 
 declare interface SWNRLivingTemplateComputed {

@@ -30,6 +30,7 @@ declare interface SWNRBaseItemData {
   tl: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   location: "readied" | "stowed" | "other";
   quality: "stock" | "masterwork" | "makeshift";
+  noEncReadied: boolean;
 }
 
 declare interface SWNRBaseVehicleItemData {
@@ -118,6 +119,16 @@ declare interface SWNRShipWeaponData
     max: number;
     value: number;
   };
+  trauma: {
+    die: null | string;
+    rating: null | number;
+    vehicle: boolean;
+  };
+  range: {
+    normal: number;
+    max: number;
+  };
+  stat: null | SWNRStats;
 }
 
 declare interface SWNRShipDefenseData
@@ -175,6 +186,8 @@ declare interface SWNRArmorData extends SWNRBaseItemData {
   settings: null | {
     useCWNArmor: boolean;
   };
+  shieldMeleeACBonus: null | number;
+  shieldACBonus: null | number;
 }
 
 declare interface SWNRPowerData extends SWNRDescData {

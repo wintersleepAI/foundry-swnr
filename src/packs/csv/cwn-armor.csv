@@ -1,0 +1,3 @@
+name,cost,ac,meleeAc,soak.value,soak.max,encumbrance,traumaDiePenalty,isSubtle,isHeavy,shieldMeleeACBonus,shieldACBonus,description
+ArmoredClothing,1000,16,14,5,5,2,1,True,False,0,0,"The bulky plates and heavy ballistic weaves of this outfit are disguised as drapes and fashion elements."
+RiotShield,1000,0,0,0,0,2,0,False,False,2,4,"These bulky, transparent shields are most effective in fending off melee attackers. They must be Readied in one hand; users with multi- ple cyberarms can benefit from only one shield at a time. A shield negates the first melee Shock damage a bearer takes in a round."

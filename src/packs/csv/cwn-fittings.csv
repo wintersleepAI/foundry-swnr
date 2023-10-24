@@ -1,0 +1,3 @@
+name,cost,power,mass,minClass,effect
+Advanced Sensors,8000,1,0,S,"Adds night vision and more"
+(NOTE max +power a negative number)

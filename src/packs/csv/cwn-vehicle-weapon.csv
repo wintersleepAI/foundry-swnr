@@ -1,0 +1,2 @@
+name,cost,damage,range.normal,range.max,ammo.type,ammo.max,ammo.value,power,mass,minClass,stat,effect,trauma.die,trauma.rating,trauma.vehicle,type,description
+Drone Cannon,5000,2d8,200,1000,"ammo",10,10,1,1,"m","dex","",1d10,3,True,"Drone cannons are heavy semi-automatic weap- ons too bulky for human portability. A round of firing costs $100 worth of ammunition."
