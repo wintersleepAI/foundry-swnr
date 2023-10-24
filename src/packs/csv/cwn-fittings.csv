@@ -1,3 +1,3 @@
-name,cost,power,mass,minClass,effect
-Advanced Sensors,8000,1,0,S,"Adds night vision and more"
-(NOTE max +power a negative number)
+name,cost,power,mass,minClass,effect,type,description
+Advanced Sensors,8000,1,0,S,"Adds night vision and more","vehicle","The vehicle is equipped with night vision, infrared sensors, and short-range radar good up to twenty kilometers of airspace. It can be driven safely even in pitch darkness."
+(NOTE something that adds max power should be a negative number)
