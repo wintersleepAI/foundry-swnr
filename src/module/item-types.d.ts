@@ -94,6 +94,7 @@ interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
     use: boolean;
     burst: boolean;
     modifier: number;
+    isNonLethal: boolean;
   };
   quantity: number;
   save: string;
@@ -104,6 +105,8 @@ interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
   settings: null | {
     useTrauma: boolean;
   };
+  isTwoHanded: boolean;
+  isNonLethal: boolean;
 }
 
 declare interface SWNRShipWeaponData

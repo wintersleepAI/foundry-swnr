@@ -374,6 +374,8 @@ Item:
     trauma:
       die: none
       rating: none
+    isTwoHanded: false
+    isNonLethal: false
   power:
     templates:
       - description
