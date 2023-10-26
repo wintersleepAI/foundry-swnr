@@ -1,0 +1,30 @@
+data:
+  ammo:
+    burst: true
+    max: 15
+    suppress: true
+    type: ammo
+    value: 15
+  cost: 200
+  damage: 1d6
+  description: >-
+    Light and heavy pistols are categorized by the caliber of the bullet they fire.
+    Some operators prefer the low recoil and high mag capacity possible with a low-caliber
+    round, while others like to have a little more certainty in dropping the targets
+    they hit.
+  encumbrance: 1
+  isNonLethal: true
+  range:
+    max: 80
+    normal: 10
+  secondStat: None
+  shock:
+    ac: 0
+    dmg: 0
+  stat: dex
+  trauma:
+    die: 1d8
+    rating: 2
+img: systems/swnr/assets/icons/game-icons.net/item-icons/weapon-white.svg
+name: Light Pistol
+type: weapon

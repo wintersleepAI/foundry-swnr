@@ -229,6 +229,27 @@ packs:
     path: packs/cwn-program.db
     type: Item
     entity: Item
+  - name: cwnarmor
+    label: CWN Armor
+    system: swnr
+    module: swnr
+    path: packs/cwn-armor.db
+    type: Item
+    entity: Item
+  - name: cwnweapon
+    label: CWN Weapons
+    system: swnr
+    module: swnr
+    path: packs/cwn-weapons.db
+    type: Item
+    entity: Item
+  - name: cwnvehicleweapon
+    label: CWN Vehicle Weapons
+    system: swnr
+    module: swnr
+    path: packs/cwn-vehicle-weapons.db
+    type: Item
+    entity: Item
 languages:
   - lang: en
     name: English

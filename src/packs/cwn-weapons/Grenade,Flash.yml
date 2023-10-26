@@ -1,0 +1,33 @@
+data:
+  ammo:
+    burst: true
+    max: 0
+    suppress: true
+    type: None
+    value: 0
+  cost: 50
+  damage: 0
+  description: >-
+    Grenades may be thrown at a point within range and always target AC 10. On a miss,
+    the grenade bounces 1d10 meters in a random direction before exploding. Grenades
+    have a 5-meter radius of effect. Flash grenades force victims without eye and
+    ear protection to make a Physical save; on a failure, the victim loses their next
+    Main Action and takes a -2 penalty to hit rolls and AC for the next 1d6 rounds.
+    Flashbang effects don't stack, and a target who makes their save cannot be flashbanged
+    again that same round.
+  encumbrance: 1
+  isNonLethal: true
+  range:
+    max: 30
+    normal: 10
+  secondStat: None
+  shock:
+    ac: 0
+    dmg: 0
+  stat: dex
+  trauma:
+    die: None
+    rating: None
+img: systems/swnr/assets/icons/game-icons.net/item-icons/weapon-white.svg
+name: Grenade,Flash
+type: weapon

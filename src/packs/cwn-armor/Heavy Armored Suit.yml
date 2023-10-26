@@ -1,0 +1,19 @@
+data:
+  ac: 20
+  cost: 20000
+  description: >-
+    A head-to-toe suit of interlocking plates and impact absorption units, these suits
+    are reserved for high-end response teams and military operations.
+  encumbrance: 3
+  isHeavy: true
+  isSubtle: true
+  meleeAc: 18
+  shieldACBonus: 0
+  shieldMeleeACBonus: 0
+  soak:
+    max: 15
+    value: 15
+  traumaDiePenalty: 3
+img: systems/swnr/assets/icons/game-icons.net/item-icons/armor-white.svg
+name: Heavy Armored Suit
+type: armor

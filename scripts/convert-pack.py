@@ -2,6 +2,7 @@ import yaml
 import csv
 import json
 from os import path
+import os
 from yaml.representer import SafeRepresenter
 
 class folded_str(str):
@@ -20,10 +21,19 @@ represent_folded_str = change_style(">", SafeRepresenter.represent_str)
 
 yaml.add_representer(folded_str, represent_folded_str)
 
+IMG_PATH = "systems/swnr/assets/icons/game-icons.net/item-icons"
 IMG_MAP = {
-    "cyberware": "systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg",
-    "program": "systems/swnr/assets/icons/game-icons.net/item-icons/program.svg",
-    "armor": "systems/swnr/assets/icons/game-icons.net/item-icons/armor.svg",
+    "shipWeapon": "sinusoidal-beam.svg",
+    "shipDefense": "bubble-field.svg",
+    "shipFitting": "power-generator.svg",
+    "cyberware": "cyber-eye.svg",
+    "focus": "reticule.svg",
+    "armor": "armor-white.svg",
+    "weapon": "weapon-white.svg",
+    "power": "psychic-waves-white.svg",
+    "skill": "book-white.svg",
+    "edge": "edge.svg",
+    "program": "program.svg",
 }
 
 
@@ -60,13 +70,16 @@ def convert(item, itemtype):
     res = {
         "name": name,
         "type": itemtype,
-        "img": IMG_MAP[itemtype],
+        "img": path.join(IMG_PATH,IMG_MAP[itemtype]),
         "data": data,
     }
     return res
 
 
 def convert_file(input_file, out_dir, itemtype):
+    if not path.exists(out_dir):
+        print("Creating directory %s" % out_dir)
+        os.mkdir(out_dir)
     with open(input_file, "r") as inf:
         items = csv.DictReader(inf)
         for x in items:
@@ -81,7 +94,14 @@ if __name__ == "__main__":
     # convert_file(
     #     "../src/packs/csv/cwn-cyberware.csv", "../src/packs/cwn-cyberware", "cyberware"
     # )
-    convert_file(
-        #"../src/packs/csv/cwn-programs.csv", "../src/packs/cwn-program", "program"
-        "../src/packs/csv/cwn-armor.csv", "../src/packs/cwn-armor", "armor"
-    )
+    conversions = [
+        ( "../src/packs/csv/cwn-cyberware.csv", "../src/packs/cwn-cyberware", "cyberware"),
+        ("../src/packs/csv/cwn-programs.csv", "../src/packs/cwn-program", "program"),
+        ("../src/packs/csv/cwn-armor.csv", "../src/packs/cwn-armor", "armor"),
+        ("../src/packs/csv/cwn-weapons.csv", "../src/packs/cwn-weapons", "weapon"),
+        ("../src/packs/csv/cwn-vehicle-weapon.csv", "../src/packs/cwn-vehicle-weapons", "shipWeapon"),
+
+    ]
+    for f,p,n in conversions:
+        convert_file(f,p,n)
+        

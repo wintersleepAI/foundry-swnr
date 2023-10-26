@@ -1,0 +1,20 @@
+data:
+  ac: 13
+  cost: 250
+  description: >-
+    Fashionable, aggressive, and often mismatched, 'street leathers' seldom have any
+    non-synthetic leather in their makeup, but are light and comfortable enough to
+    wear as a habit.
+  encumbrance: 0
+  isHeavy: true
+  isSubtle: true
+  meleeAc: 12
+  shieldACBonus: 0
+  shieldMeleeACBonus: 0
+  soak:
+    max: 3
+    value: 3
+  traumaDiePenalty: 0
+img: systems/swnr/assets/icons/game-icons.net/item-icons/armor-white.svg
+name: Street Leathers
+type: armor

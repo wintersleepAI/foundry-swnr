@@ -1,0 +1,31 @@
+data:
+  ammo:
+    burst: true
+    max: None
+    suppress: true
+    type: None
+    value: None
+  cost: 25000
+  damage: 2d6
+  description: >-
+    As level one, but the user's body armament includes not only conventional blades,
+    but assorted improvements such as monomolecular edges, cutting vibrations, or
+    thermal augmentation. Their unarmed attacks do 2d6 damage with a Shock of 4/15,
+    and a Trauma Die 1d10/x3. Anyone who sees or touches their arms can detect signs
+    of the cyber, however.
+  encumbrance: 0
+  isNonLethal: true
+  range:
+    max: 0
+    normal: 0
+  secondStat: None
+  shock:
+    ac: 15
+    dmg: 4
+  stat: dex
+  trauma:
+    die: 1d10
+    rating: 3
+img: systems/swnr/assets/icons/game-icons.net/item-icons/weapon-white.svg
+name: Body Blades II
+type: weapon

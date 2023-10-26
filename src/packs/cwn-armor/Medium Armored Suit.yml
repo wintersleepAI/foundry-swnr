@@ -1,0 +1,19 @@
+data:
+  ac: 18
+  cost: 10000
+  description: >-
+    Heavy security usually sports armor on this level, including police rapid response
+    teams.
+  encumbrance: 3
+  isHeavy: true
+  isSubtle: true
+  meleeAc: 14
+  shieldACBonus: 0
+  shieldMeleeACBonus: 0
+  soak:
+    max: 10
+    value: 10
+  traumaDiePenalty: 2
+img: systems/swnr/assets/icons/game-icons.net/item-icons/armor-white.svg
+name: Medium Armored Suit
+type: armor

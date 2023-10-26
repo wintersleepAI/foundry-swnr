@@ -1,0 +1,30 @@
+data:
+  ammo:
+    burst: true
+    max: 1
+    suppress: true
+    type: special
+    value: 1
+  cost: 500
+  damage: 1d8
+  description: >-
+    Advanced bows are used by a few specialists who prefer the near-silence that modern
+    composites provide or the massive blood loss induced by a modern fractal broadhead
+    carried on a fifty-gram arrow. This weapon can be reloaded with a Move action,
+    or an On Turn if the user has at least Shoot-1 skill.
+  encumbrance: 2
+  isNonLethal: true
+  range:
+    max: 200
+    normal: 30
+  secondStat: None
+  shock:
+    ac: 0
+    dmg: 0
+  stat: dex
+  trauma:
+    die: 1d8+1
+    rating: 3
+img: systems/swnr/assets/icons/game-icons.net/item-icons/weapon-white.svg
+name: Advanced Bow
+type: weapon

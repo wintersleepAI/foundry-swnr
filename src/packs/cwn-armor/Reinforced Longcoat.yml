@@ -1,0 +1,19 @@
+data:
+  ac: 15
+  cost: 500
+  description: >-
+    Long, draping clothing is bolstered with advanced fabrics and discreetly- placed
+    absorption plates, the whole remaining deniable as armor.
+  encumbrance: 1
+  isHeavy: true
+  isSubtle: true
+  meleeAc: 13
+  shieldACBonus: 0
+  shieldMeleeACBonus: 0
+  soak:
+    max: 5
+    value: 5
+  traumaDiePenalty: 1
+img: systems/swnr/assets/icons/game-icons.net/item-icons/armor-white.svg
+name: Reinforced Longcoat
+type: armor

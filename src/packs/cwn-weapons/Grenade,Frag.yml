@@ -1,0 +1,32 @@
+data:
+  ammo:
+    burst: true
+    max: 0
+    suppress: true
+    type: None
+    value: 0
+  cost: 100
+  damage: 2d6
+  description: >-
+    Grenades may be thrown at a point within range and always target AC 10. On a miss,
+    the grenade bounces 1d10 meters in a random direction before exploding. Grenades
+    have a 5-meter radius of effect. Frag grenades inflict 2d6 damage on all victims
+    in range, plus the chance for a Traumatic Hit. An Evasion save can halve a frag
+    grenade's damage, and each point of melee AC the target has above 14 reduces the
+    final damage total by one point, possibly down to zero.
+  encumbrance: 1
+  isNonLethal: true
+  range:
+    max: 30
+    normal: 10
+  secondStat: None
+  shock:
+    ac: 0
+    dmg: 0
+  stat: dex
+  trauma:
+    die: 1d8
+    rating: 2
+img: systems/swnr/assets/icons/game-icons.net/item-icons/weapon-white.svg
+name: Grenade,Frag
+type: weapon

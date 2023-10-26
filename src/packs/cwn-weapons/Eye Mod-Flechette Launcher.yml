@@ -1,0 +1,32 @@
+data:
+  ammo:
+    burst: true
+    max: 1
+    suppress: true
+    type: ammo
+    value: 1
+  cost: 20000
+  damage: 1d6
+  description: >-
+    A holdout weapon designed for surprise short-ranged attacks, this eye has been
+    loaded with a small explosive flechette. It has the statistics of a light pistol,
+    has a range of 10 meters, and requires a Main Action to reload its single-round
+    magazine. If used against a target in melee range who does not suspect its existence,
+    a normal hit roll is made; on a miss, it does full normal damage anyway, and on
+    a hit, the damage is doubled. It can be used for Execution Attacks.
+  encumbrance: 0
+  isNonLethal: true
+  range:
+    max: 10
+    normal: 10
+  secondStat: None
+  shock:
+    ac: 0
+    dmg: 0
+  stat: dex
+  trauma:
+    die: 1d8
+    rating: 2
+img: systems/swnr/assets/icons/game-icons.net/item-icons/weapon-white.svg
+name: Eye Mod/Flechette Launcher
+type: weapon

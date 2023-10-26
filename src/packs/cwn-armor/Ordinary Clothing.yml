@@ -1,0 +1,19 @@
+data:
+  ac: 10
+  cost: 25
+  description: >-
+    Some bold, impoverished, or highly fashionable people still insist on wearing
+    clothing that has no functional use as armor.
+  encumbrance: 0
+  isHeavy: true
+  isSubtle: true
+  meleeAc: 10
+  shieldACBonus: 0
+  shieldMeleeACBonus: 0
+  soak:
+    max: 0
+    value: 0
+  traumaDiePenalty: 0
+img: systems/swnr/assets/icons/game-icons.net/item-icons/armor-white.svg
+name: Ordinary Clothing
+type: armor

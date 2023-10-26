@@ -1,0 +1,26 @@
+data:
+  ammo:
+    max: 10
+    type: ammo
+    value: 100
+  cost: 15000
+  damage: 3d8
+  description: >-
+    None
+  effect: ''
+  mass: 2
+  minClass: l
+  power: 1
+  range:
+    max: 2000
+    normal: 500
+  stat: dex
+  trauma:
+    die: 1d12
+    rating: 2
+    vehicle: true
+  type: "Mounted autoguns are a drone cannon\u2019s big brother, for larger platforms.\
+    \ Each round of firing costs $100."
+img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+name: Mounted Autogun
+type: shipWeapon

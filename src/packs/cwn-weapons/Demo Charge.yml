@@ -1,0 +1,34 @@
+data:
+  ammo:
+    burst: true
+    max: None
+    suppress: true
+    type: None
+    value: None
+  cost: 1000
+  damage: 3d10
+  description: >-
+    Demo charges are shaped explosive charges usually meant to knock human-sized holes
+    in anything short of fortified defensive walls. While ineffective as thrown weapons,
+    when used as part of a trap or ambush they inflict their listed damage in a cone
+    out to normal range, with an Evasion save for half damage. If applied carefully
+    to a vehicle target, the following explosion will inevitably destroy it. Like
+    frag grenades, use of demo charges tends to be very exciting to security forces
+    and can provoke more heat than many operators like to draw. This weapon's Trauma
+    Die can inflict Traumatic Hits on drones, vehicles, and other machines.
+  encumbrance: 1
+  isNonLethal: true
+  range:
+    max: 20
+    normal: 20
+  secondStat: None
+  shock:
+    ac: 0
+    dmg: 0
+  stat: None
+  trauma:
+    die: 1d10
+    rating: 3
+img: systems/swnr/assets/icons/game-icons.net/item-icons/weapon-white.svg
+name: Demo Charge
+type: weapon

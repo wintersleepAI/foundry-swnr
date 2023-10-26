@@ -1,0 +1,33 @@
+data:
+  ammo:
+    burst: true
+    max: 1
+    suppress: true
+    type: special
+    value: 1
+  cost: 5000
+  damage: 3d10
+  description: >-
+    Rocket launchers include a wide variety of single-shot disposable launchers. Their
+    general imprecision forces a -4 hit penalty against human-sized targets, but they
+    inflict frag grenade damage on any target within 5 meters of the rocket's landing
+    point. Specialized anti-armor warheads lose this frag grenade bonus, but do double
+    damage to vehicles or obstacles. Operators who intend to take down enemy vehicles
+    favor them for their effectiveness in that role. This weapon's Trauma Die can
+    inflict Traumatic Hits on drones, vehicles, and other machines.
+  encumbrance: 2
+  isNonLethal: true
+  range:
+    max: 4000
+    normal: 2000
+  secondStat: None
+  shock:
+    ac: 0
+    dmg: 0
+  stat: dex
+  trauma:
+    die: 1d10
+    rating: 3
+img: systems/swnr/assets/icons/game-icons.net/item-icons/weapon-white.svg
+name: Rocket Launcher
+type: weapon

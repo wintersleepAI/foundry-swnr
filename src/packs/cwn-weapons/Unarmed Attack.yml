@@ -1,0 +1,30 @@
+data:
+  ammo:
+    burst: true
+    max: 0
+    suppress: true
+    type: None
+    value: 0
+  cost: None
+  damage: 1d2
+  description: "Knives, clubs, swords, and other simple melee weap- ons are available\
+    \ almost anywhere on the street. Par- ticularly impoverished gangers sometimes\
+    \ fashion makeshift machetes and improvised shivs when better can\u2019t be obtained.\
+    \ Such weapons are effectively free, but have a -1 penalty to hit and damage rolls\
+    \ due to their ungainly make."
+  encumbrance: None
+  isNonLethal: true
+  range:
+    max: 0
+    normal: 0
+  secondStat: dex
+  shock:
+    ac: 0
+    dmg: 0
+  stat: str
+  trauma:
+    die: 1d6
+    rating: 1
+img: systems/swnr/assets/icons/game-icons.net/item-icons/weapon-white.svg
+name: Unarmed Attack
+type: weapon

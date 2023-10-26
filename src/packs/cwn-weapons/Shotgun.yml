@@ -1,0 +1,32 @@
+data:
+  ammo:
+    burst: true
+    max: 2
+    suppress: true
+    type: ammo
+    value: 2
+  cost: 200
+  damage: 3d4
+  description: >-
+    Shotguns of various stripes can be found under the counter of practically every
+    bar and shop in a slum. Simple double-barrel models can be made by any home gunsmith
+    with a pulse, but the finer tolerances and more elaborate machining of a burst-fire
+    capable combat shotgun leaves them as a more selective product. Ranges and damages
+    given are for shot shells; slugs double their normal and extreme ranges but apply
+    a -1 penalty to hit rolls.
+  encumbrance: 2
+  isNonLethal: true
+  range:
+    max: 30
+    normal: 10
+  secondStat: None
+  shock:
+    ac: 0
+    dmg: 0
+  stat: dex
+  trauma:
+    die: 1d10
+    rating: 3
+img: systems/swnr/assets/icons/game-icons.net/item-icons/weapon-white.svg
+name: Shotgun
+type: weapon
