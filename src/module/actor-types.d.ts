@@ -343,15 +343,22 @@ declare interface SWNRDroneComputed {
   fittings: {
     value: number;
   };
+  hardpoints: {
+    value: number;
+  };
 }
 
 declare interface SWNRDroneData extends SWNRVehicleTemplateBase {
   fittings: {
     max: number;
   };
+  hardpoints: {
+    max: number;
+  };
   enc: number;
   range: string;
   model: string;
+  moveType: string;
 }
 
 declare interface SWNRMechData extends SWNRVehicleTemplateBase {

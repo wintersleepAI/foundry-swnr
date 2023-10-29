@@ -245,9 +245,12 @@ Actor:
       - vehiclebase
     fittings:
       max: 1
+    hardpoints:
+      max: 1
     enc: 2
     range: 500m
     model: ""
+    moveType: ""
   vehicle:
     templates:
       - vehiclebase
