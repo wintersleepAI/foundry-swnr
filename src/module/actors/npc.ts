@@ -5,9 +5,11 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
     const e = this.data.data.effort;
     e.value = e.max - e.current - e.scene - e.day;
     const useCWNArmor = game.settings.get("swnr", "useCWNArmor") ? true : false;
+    const useCWNTrauma = game.settings.get("swnr", "useTrauma") ? true : false;
     if (this.data.data.settings == null) {
       this.data.data.settings = {
         useCWNArmor: useCWNArmor,
+        useTrauma: useCWNTrauma,
       };
     } else {
       this.data.data.settings.useCWNArmor = useCWNArmor;

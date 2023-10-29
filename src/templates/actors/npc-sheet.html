@@ -160,6 +160,24 @@
           {{/select}}
         </select>
       </div>
+
+      {{#if actor.data.data.settings.useTrauma}}
+      <div class="flex items-baseline gap-1">
+
+        {{localize 'swnr.sheet.traumaTarget'}}:
+        <div class="flex w-8">
+          <input
+            class="w-8 border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            type="number"
+            name="data.traumaTarget"
+            min="0"
+            step="1"
+            value="{{actor.data.data.traumaTarget}}"
+          />
+        </div>
+      </div>
+      {{/if}}
+
       <div class="flex items-baseline gap-1">
         {{localize 'swnr.sheet.movement'}}:
         <div class="flex w-16">
