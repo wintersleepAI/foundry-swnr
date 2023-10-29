@@ -33,7 +33,8 @@ export class NPCActorSheet extends BaseActorSheet<NPCActorSheetData> {
     return mergeObject(data, {
       itemTypes: this.actor.itemTypes,
       abilities: this.actor.items.filter(
-        (i: SWNRBaseItem) => ["power", "focus"].indexOf(i.data.type) !== -1
+        (i: SWNRBaseItem) =>
+          ["power", "focus", "cyberware"].indexOf(i.data.type) !== -1
       ),
       equipment: this.actor.items.filter(
         (i: SWNRBaseItem) =>
