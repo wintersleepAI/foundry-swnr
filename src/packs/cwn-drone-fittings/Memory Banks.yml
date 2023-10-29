@@ -1,0 +1,11 @@
+data:
+  cost: 0.1
+  description: >-
+    The drone has two units of cyberdeck Memory added to it. While this Memory can
+    be used to store hacker programs or datafiles, it also has room to record up to
+    a week of audiovisual data per unit used. This fitting can be added more than
+    once.
+  mass: 1
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Memory Banks
+type: shipFitting

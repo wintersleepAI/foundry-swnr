@@ -1,0 +1,12 @@
+data:
+  cost: 0.2
+  description: "Usable only by flying drones of Enc 3\n size or greater, this fitting\
+    \ allows a human-sized\n mass to use the drone as a form of parachute-glider.\
+    \ As a Main Action, a user can leap off a high\nplace after grabbing the drone\
+    \ and descend safely \nto the ground at a distance as far from the initial\n point\
+    \ as that point was above the ground. Similar\n weights can be sent safely to\
+    \ the ground in the\nsame way."
+  mass: 1
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Glider Grips
+type: shipFitting

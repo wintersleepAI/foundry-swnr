@@ -1,0 +1,21 @@
+data:
+  ac: 16
+  cost: 10000
+  description: >-
+    While weighing more than a hundred kilos when fully loaded, Sui's Kraken still
+    fits into the trunk of most car-sized vehicles and can be deployed when aquatic
+    operations are needed.
+  enc: 99
+  fittings:
+    max: 5
+  hardpoint:
+    max: 2
+  health:
+    max: 20
+    value: 20
+  moveType: swim
+  speed: 15
+  traumaTarget: 8
+img: systems/swnr/assets/icons/game-icons.net/item-icons/../../drone.png
+name: Sui Kraken
+type: drone

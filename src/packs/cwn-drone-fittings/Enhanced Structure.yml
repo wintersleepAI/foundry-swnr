@@ -1,0 +1,9 @@
+data:
+  cost: 0.25
+  description: "The drone\u2019s maximum hit points increase by 25% of its unmodified\
+    \ base, rounded up. As with Improved Armor, this fitting is ineffective on drones\
+    \ that aren\u2019t man-portable."
+  mass: 1
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Enhanced Structure
+type: shipFitting

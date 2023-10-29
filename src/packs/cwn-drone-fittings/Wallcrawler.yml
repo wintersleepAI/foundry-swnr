@@ -1,0 +1,15 @@
+data:
+  cost: 0.2
+  description: >-
+    Usable only on ground-based drones
+
+    of Enc 3 or less, this fitting allows the drone to
+     climb sheer surfaces at its normal movement rate,
+     assuming the surface is sturdy enough to bear its
+     weight. Most high-security buildings are constructed with veneers that defeat
+    this fitting, but
+    ordinary structures seldom have such measures.
+  mass: 1
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Wallcrawler
+type: shipFitting

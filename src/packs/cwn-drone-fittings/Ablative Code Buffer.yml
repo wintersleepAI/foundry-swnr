@@ -1,0 +1,10 @@
+data:
+  cost: 0.1
+  description: >-
+    Numerous self-correcting back- up circuits are wired in to delay any hostile hack-
+    ing intrusions. The drone automatically succeeds on the first opposed skill check
+    made against a hostile hacker in a given scene.
+  mass: 1
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Ablative Code Buffer
+type: shipFitting

@@ -1,0 +1,21 @@
+data:
+  ac: 15
+  cost: 5000
+  description: >-
+    Lem Robotics has sold more than a million of these wheeled patrol drones to megacorps
+    and governments around the world. Needless to say, a significant number of them
+    have fallen into private hands.
+  enc: 5
+  fittings:
+    max: 5
+  hardpoint:
+    max: 1
+  health:
+    max: 15
+    value: 15
+  moveType: ground
+  speed: 20
+  traumaTarget: 8
+img: systems/swnr/assets/icons/game-icons.net/item-icons/../../drone.png
+name: Lem Robotics Pitbull
+type: drone

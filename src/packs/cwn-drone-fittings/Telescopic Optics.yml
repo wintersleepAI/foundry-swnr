@@ -1,0 +1,10 @@
+data:
+  cost: 0.2
+  description: >-
+    The drone can focus on objects up to one kilometer away with a visual acuity sufficient
+    to read a newspaper. Integral low-light sensors allow it to see in all but total
+    darkness.
+  mass: 1
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Telescopic Optics
+type: shipFitting

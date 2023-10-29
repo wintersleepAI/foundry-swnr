@@ -1,0 +1,11 @@
+data:
+  cost: 0.1
+  description: >-
+    This fitting provides both a set of universal transceiver plug-ins and a laser
+    comm hub for the drone. Provided the PCs are in line of sight of the drone, normal
+    radio-wave based comms can be switched to lasers, providing uncrackable, electromagnetically-inaudible
+    communications within the group. Radio comms can still be used as needed.
+  mass: 1
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Laser Comms
+type: shipFitting

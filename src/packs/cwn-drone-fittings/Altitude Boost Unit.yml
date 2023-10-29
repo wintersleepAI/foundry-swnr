@@ -1,0 +1,12 @@
+data:
+  cost: 0.1
+  description: "Most flying drones have an effective ceiling of 1,000 meters if there\
+    \ are no scramblers to lessen the effective control range. This unit increases\
+    \ a flying drone\u2019s maximum altitude to 5,000 meters, making most effectively\
+    \ invisible to ordinary sight. Such height does, however, make it extremely conspicuous\
+    \ to aerial scanners used by city law enforcement and high-security corp buildings.\
+    \ The speed of their response will depend on the drone\u2019s apparent threat."
+  mass: 1
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Altitude Boost Unit
+type: shipFitting

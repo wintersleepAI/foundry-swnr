@@ -1,0 +1,13 @@
+data:
+  cost: 0.25
+  description: >-
+    The drone has autonomous attack routines wired into it. As a Main Action, it can
+    be ordered to kill one specific visible target. If the target is in range of its
+    weapons, it will use its Main Action to attack; if no additional fittings are
+    added, its autonomous attacks have a total hit bonus of +2. The drone will not
+    automatically move to follow or engage its target or otherwise position itself
+    tactically unless directly piloted to do so or operating under the Follow command.
+  mass: 1
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Command Deck/Kill
+type: shipFitting
