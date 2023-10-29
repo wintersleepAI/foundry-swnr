@@ -98,20 +98,35 @@
           </label>
         </div>
 
-        <div class="flex flexrow"> <!-- bundle speed and tl-->
-          <!--speed-->
-          <div class="mass flex flex-col justify-center items-center">
-            <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
-              <input
-                class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                type="number" step="1" name="data.speed" value="{{actor.data.data.speed}}" data-dtype="Number"
-                min="0" />
-            </div>
-            <label
-              class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
-              {{localize 'swnr.sheet.ship.speed'}}
-            </label>
+        <!--speed-->
+        <div class="mass flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" step="1" name="data.speed" value="{{actor.data.data.speed}}" data-dtype="Number"
+              min="0" />
           </div>
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.drone.move'}}
+          </label>
+        </div>
+
+        <!--speed type-->
+        <div class="mass flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-16 text-center bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              name="data.moveType" value="{{actor.data.data.moveType}}" />
+          </div>
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.drone.moveType'}}
+          </label>
+        </div>
+
+
+        
 
           <!--tl-->
           <div class="mass flex flex-col justify-center items-center">
@@ -125,10 +140,6 @@
               {{localize 'swnr.sheet.drone.tl'}}
             </label>
           </div>
-        </div>
-
-
-
 
         <!--range-->
         <div class="mass flex flex-col justify-center items-center">
@@ -152,14 +163,27 @@
               type="number" name="data.fittings.max" value="{{actor.data.data.fittings.max}}" step="1" min="1"
               data-dtype="Number" />
           </div>
-          <label
+          <label title="{{localize 'swnr.sheet.drone.fitTip'}}"
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
-            {{localize 'swnr.sheet.drone.fittings'}}
+            {{localize 'swnr.sheet.drone.fittings'}}*
           </label>
         </div>
 
 
-
+        <!--fittings-->
+        <div class="hardpoints flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <span class="inline-block text-right text-gray-300 cursor-not-allowed w-8">
+              {{actor.data.data.hardpoints.value}}</span><span>/</span><input
+              class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
+              type="number" name="data.hardpoints.max" value="{{actor.data.data.hardpoints.max}}" step="1" min="1"
+              data-dtype="Number" />
+          </div>
+          <label title="{{localize 'swnr.sheet.drone.fitTip'}}"
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.drone.hardpoints'}}*
+          </label>
+        </div>
 
         <!--cost-->
         <div class="mass flex flex-col justify-center items-center">

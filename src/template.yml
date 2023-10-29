@@ -250,7 +250,7 @@ Actor:
     enc: 2
     range: 500m
     model: ""
-    moveType: ""
+    moveType: "fly"
   vehicle:
     templates:
       - vehiclebase

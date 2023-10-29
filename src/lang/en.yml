@@ -450,7 +450,11 @@
       tl: TL
       name: Drone Name
       fittings: Fittings (mass)
+      hardpoints: Hardpoints
+      fitTip: CWN uses hardpoints for weapons. If hardpoint max > 0, the system will count ship/vehicle weapons and weapons against hardpoints and not fittings.
       model: Model
+      moveType: Move Type
+      move: Move
       models:
         custom: Custom
         primitive-drone: Primitive Drone
