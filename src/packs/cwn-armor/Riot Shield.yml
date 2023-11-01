@@ -10,6 +10,7 @@ data:
   isHeavy: true
   isSubtle: true
   meleeAc: 0
+  shield: true
   shieldACBonus: 4
   shieldMeleeACBonus: 2
   soak:

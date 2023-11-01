@@ -41,21 +41,19 @@ export class SWNRProgram extends SWNRBaseItem<"program"> {
       // no actor, set default values?
     } else {
       if (hacker.type == "character") {
-        level = hacker.data.data.level.value;
         const skill = (<SWNRCharacterActor>hacker).getSkill("Program");
         if (skill) {
           if (skill.data.data.pool != "ask") {
             skillRollData.skillRoll = skill.data.data.pool;
           }
           skillRollData.skillMod = skill.data.data.rank;
+          level = skillRollData.skillMod;
         }
         skillRollData.attrMod = hacker.data.data.stats.int.mod;
       } else if (hacker.type == "npc") {
-        level = hacker.data.data.hitDice;
         skillRollData.skillMod = hacker.data.data.skillBonus;
+        level = skillRollData.skillMod;
       } else {
-        console.log(this);
-        console.log(this.actor);
         ui.notifications?.error(
           "Rolling program non-character or non-npc actor"
         );
@@ -63,6 +61,8 @@ export class SWNRProgram extends SWNRBaseItem<"program"> {
       }
     }
     let programRoll = "";
+    let traumaRoll = "";
+    let traumaDamage = "";
     // A bit hacky, but it works
     if (
       this.name &&
@@ -72,6 +72,16 @@ export class SWNRProgram extends SWNRBaseItem<"program"> {
       const roll = new Roll(rollStr);
       await roll.roll({ async: true });
       programRoll = await roll.render();
+      if (this.name?.indexOf("Kill") >= 0) {
+        const traumaRollStr = `1d8`;
+        const traumaRollObj = new Roll(traumaRollStr);
+        await traumaRollObj.roll({ async: true });
+        traumaRoll = await traumaRollObj.render();
+
+        const traumaDamageRoll = new Roll(`${roll.total} * 3`);
+        await traumaDamageRoll.roll({ async: true });
+        traumaDamage = await traumaDamageRoll.render();
+      }
     }
     const skillRoll = new Roll(
       "@skillRoll + @skillMod + @attrMod + @crownPenalty + @wirelessPenalty",
@@ -84,6 +94,9 @@ export class SWNRProgram extends SWNRBaseItem<"program"> {
       program: this,
       programRoll: programRoll,
       skillRoll: await skillRoll.render(),
+      traumaRoll: traumaRoll,
+      traumaDamage: traumaDamage,
+      useTrauma: game.settings.get("swnr", "useTrauma"),
       programSkill: "Int/Program",
     };
     const rollMode = game.settings.get("core", "rollMode");

@@ -35,6 +35,22 @@
     <span class="roll roll-damage">{{{ programRoll }}}</span>
   {{/if}}
 
+  {{#if useTrauma}}
+    <span>{{localize 'swnr.weapon.trauma.label'}}:</span>
+    {{#if traumaRoll}}
+    <span class="roll">
+      {{{traumaRoll}}}
+    </span>
+    {{/if}}
+
+    {{#if traumaDamage}}
+      <span>{{localize 'swnr.weapon.trauma.damage'}}:</span>
+      <span class="roll roll-damage">
+        {{{traumaDamage}}}
+      </span>
+    {{/if}}
+  {{/if}}
+
 
   {{#if programSkill}}
   <div class="card-buttons">
