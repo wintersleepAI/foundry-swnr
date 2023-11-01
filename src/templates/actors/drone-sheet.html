@@ -17,7 +17,7 @@
         <!-- name -->
         <div class="name flex flex-col items-center">
           <input name="name"
-            class="text-2xl px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            class="text-l px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
             type="text" value="{{actor.name}}" placeholder="{{localize 'swnr.sheet.name'}}" />
           <span>{{localize 'swnr.sheet.drone.name'}}</span>
         </div>
@@ -52,6 +52,18 @@
             <option value="alecto">
               {{localize 'swnr.sheet.drone.models.alecto'}}
             </option>
+
+            <option value="Mouse">Mouse</option>
+            <option value="Roach">Roach</option>
+            <option value="Hummingbird">Hummingbird</option>
+            <option value="Sunfish">Sunfish</option>
+            <option value="Pitbull">Pitbull</option>
+            <option value="Javelin">Javelin</option>
+            <option value="Kerberos">Kerberos</option>
+            <option value="Kraken">Kraken</option>
+            <option value="Shrike">Shrike</option>
+
+
             {{/select}}
           </select>
           <span>{{localize 'swnr.sheet.drone.model'}}</span>
