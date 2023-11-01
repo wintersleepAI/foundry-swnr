@@ -1,0 +1,10 @@
+data:
+  cost: 50
+  description: >-
+    Corp-approved media devices are cheap and ubiquitous, but few operators trust
+    them with sensitive information.
+  encumbrance: 0
+  noEncReadied: true
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item.svg
+name: Smartphone,basic
+type: item

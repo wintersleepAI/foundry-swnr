@@ -1,0 +1,10 @@
+data:
+  cost: 100
+  description: >-
+    Both manual lockpicks and a selection of useful electronic shims sufficient to
+    threaten most modern locks.
+  encumbrance: 1
+  noEncReadied: true
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item.svg
+name: Lockpicks
+type: item

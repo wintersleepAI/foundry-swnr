@@ -1,0 +1,11 @@
+data:
+  cost: 20
+  description: >-
+    This food brick is unappetizing but contains the nutrition necessary for a day
+    of heavy activity. Water can be included for an extra point of Encumbrance per
+    day.
+  encumbrance: 1
+  noEncReadied: true
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item.svg
+name: Military ration (1 day)
+type: item

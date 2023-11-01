@@ -1,0 +1,10 @@
+data:
+  cost: 1000
+  description: >-
+    Bulky and uncomfortable, but once Readied it leaves the user immune to most inhaled
+    gases, including tear gas grenades.
+  encumbrance: 1
+  noEncReadied: true
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item.svg
+name: Gas mask
+type: item
