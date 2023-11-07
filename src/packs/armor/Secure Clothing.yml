@@ -1,6 +1,12 @@
 _id: gCPr27qbMy9MU854
 data:
   ac: 13
+  meleeAc: 13
+  traumaDiePenalty: 1
+  isSubtle: true
+  soak:
+    value: 2
+    max: 2
   cost: 300
   description: >-
     Secure clothing comes in assorted styles and fashions ranging from casual

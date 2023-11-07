@@ -1,6 +1,12 @@
 _id: MWAXczNIBAqGtYO2
 data:
   ac: 18
+  meleeAc: 18
+  traumaDiePenalty: 3
+  isSubtle: false
+  soak:
+    value: 15
+    max: 15
   cost: 10000
   description: >-
     An assault suit represents the most sophisticated armor in common use among

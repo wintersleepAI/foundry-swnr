@@ -1,6 +1,12 @@
 _id: eRFhzEJQcGlad393
 data:
   ac: 14
+  meleeAc: 14
+  traumaDiePenalty: 1
+  isSubtle: false
+  soak:
+    value: 5
+    max: 5
   cost: 700
   description: >-
     Security armor is the ordinary working uniform of most law enforcement

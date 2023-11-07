@@ -1,6 +1,14 @@
 _id: hV4Ysi2LSuAKj5RL
 data:
   ac: 13
+  meleeAc: 13
+  traumaDiePenalty: 0
+  isSubtle: false
+  soak:
+    value: 0
+    max: -
+  shieldACBonus: 1
+  shieldMeleeACBonus: 1
   cost: 10
   description: >-
     Shields are an ancient yet extremely useful adjunct to body armor. Primitive

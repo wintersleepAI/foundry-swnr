@@ -1,6 +1,12 @@
 _id: U0FuiXlGgfhSh7M6
 data:
   ac: 13
+  meleeAc: 13
+  traumaDiePenalty: 2
+  isSubtle: false
+  soak:
+    value: 2
+    max: 2
   cost: 400
   description: >-
     An armored vacc suit has traded off some comfort and flexibility for

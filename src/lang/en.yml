@@ -826,6 +826,7 @@
     heavy: Is Heavy?
     ranged: Ranged
     melee: Melee
+    shieldAC: Shield AC Bonus
   npc:
     reaction:
       unknown: Unknown

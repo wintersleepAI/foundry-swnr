@@ -1,6 +1,12 @@
 _id: rGzMoWVxjFZpv1oE
 data:
   ac: 16
+  meleeAc: 16
+  traumaDiePenalty: 0
+  isSubtle: false
+  soak:
+    value: 0
+    max: 0
   cost: 8000
   description: >-
     The Icarus harness is a CFU upgrade for paratroopers, and replaces a

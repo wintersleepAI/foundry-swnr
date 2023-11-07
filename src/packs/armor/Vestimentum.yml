@@ -1,6 +1,12 @@
 _id: EHV2k09gnSvkadXb
 data:
   ac: 18
+  meleeAc: 18
+  traumaDiePenalty: 3
+  isSubtle: false
+  soak:
+    value: 10
+    max: 10
   cost: 15000
   description: >-
     A “vestimentum” is a catch-all term for one of the many ancient Mandate

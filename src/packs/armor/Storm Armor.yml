@@ -1,6 +1,12 @@
 _id: zQ8PX1rdb3ptHVP8
 data:
   ac: 19
+  meleeAc: 19
+  traumaDiePenalty: 4
+  isSubtle: false
+  soak:
+    value: 20
+    max: 20
   cost: 20000
   description: >-
     Storm armor is a more advanced form of assault suit, one that can be

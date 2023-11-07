@@ -1,6 +1,12 @@
 _id: XzLiy8ea5FNFlJID
 data:
   ac: 18
+  meleeAc: 18
+  traumaDiePenalty: 2
+  isSubtle: true
+  soak:
+    value: 5
+    max: 5
   cost: 30000
   description: >-
     A deflector array consists of several force field nodes worn beneath

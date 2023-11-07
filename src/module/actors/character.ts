@@ -82,24 +82,30 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
       )
     );
     const shields = armor.filter((i) => i.data.data.shield);
-    const baseAc = Math.max(
-      data.baseAc,
-      ...armor.map(
-        (i) =>
-          i.data.data.ac +
-          (shields.filter((s) => s.id !== i.id).length !== 0 ? 1 : 0)
-      )
-    );
+    let armorId = "";
+    let baseAc = data.baseAc;
+    let baseMeleeAc = data.baseAc;
+    for (const a of armor) {
+      if (a.data.data.ac > baseAc) {
+        baseAc = a.data.data.ac;
+        if (a.data.data.meleeAc) {
+          baseMeleeAc = a.data.data.meleeAc;
+        }
+        if (a.id) {
+          armorId = a.id;
+        }
+      }
+    }
+    for (const shield of shields) {
+      if (shield.data.data.shieldACBonus && shield.id != armorId) {
+        baseAc += shield.data.data.shieldACBonus;
+        if (shield.data.data.shieldMeleeACBonus) {
+          baseMeleeAc += shield.data.data.shieldMeleeACBonus;
+        }
+      }
+    }
     data.ac = baseAc + data.stats.dex.mod;
     if (useCWNArmor) {
-      const baseMeleeAc = Math.max(
-        data.baseAc,
-        ...armor.map(
-          (i) =>
-            i.data.data.meleeAc +
-            (shields.filter((s) => s.id !== i.id).length !== 0 ? 1 : 0)
-        )
-      );
       data.meleeAc = baseMeleeAc + data.stats.dex.mod;
     }
 
