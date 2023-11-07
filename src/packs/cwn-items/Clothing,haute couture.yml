@@ -5,6 +5,6 @@ data:
     outfit in your pack.
   encumbrance: 1
   noEncReadied: true
-img: systems/swnr/assets/icons/game-icons.net/item-icons/item.svg
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: Clothing,haute couture
 type: item

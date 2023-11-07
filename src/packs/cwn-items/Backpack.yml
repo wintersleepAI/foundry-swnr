@@ -6,6 +6,6 @@ data:
     their entire loadout in their jacket pockets.
   encumbrance: 1
   noEncReadied: true
-img: systems/swnr/assets/icons/game-icons.net/item-icons/item.svg
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: Backpack
 type: item

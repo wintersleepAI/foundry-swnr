@@ -4,6 +4,6 @@ data:
     A critical mobility resource for the first mission of many operators.
   encumbrance: 0
   noEncReadied: true
-img: systems/swnr/assets/icons/game-icons.net/item-icons/item.svg
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: Bus pass,monthly
 type: item

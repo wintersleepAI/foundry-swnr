@@ -9,6 +9,6 @@ data:
     other such gear for extended wilderness stays.
   encumbrance: 1
   noEncReadied: true
-img: systems/swnr/assets/icons/game-icons.net/item-icons/item.svg
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: Kit,Medkit
 type: item

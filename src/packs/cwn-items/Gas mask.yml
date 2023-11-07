@@ -5,6 +5,6 @@ data:
     gases, including tear gas grenades.
   encumbrance: 1
   noEncReadied: true
-img: systems/swnr/assets/icons/game-icons.net/item-icons/item.svg
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: Gas mask
 type: item

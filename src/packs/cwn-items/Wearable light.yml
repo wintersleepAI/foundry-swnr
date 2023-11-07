@@ -4,6 +4,6 @@ data:
     These clip-on lights can illuminate up to 30 meters ahead of the wearer.
   encumbrance: 1
   noEncReadied: true
-img: systems/swnr/assets/icons/game-icons.net/item-icons/item.svg
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: Wearable light
 type: item

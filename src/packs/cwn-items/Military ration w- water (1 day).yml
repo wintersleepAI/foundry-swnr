@@ -6,6 +6,6 @@ data:
     day.
   encumbrance: 2
   noEncReadied: true
-img: systems/swnr/assets/icons/game-icons.net/item-icons/item.svg
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: Military ration w/ water (1 day)
 type: item

@@ -14,6 +14,13 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
     return this.ammo.type === "none" || this.ammo.value > 0;
   }
 
+  prepareDerivedData(): void {
+    const data = this.data.data;
+    data.settings = {
+      useTrauma: game.settings.get("swnr", "useTrauma") ? true : false,
+    };
+  }
+
   async rollAttack(
     shooterId: string | null,
     shooterName: string | null,
@@ -44,6 +51,31 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
     const damageRoll = new Roll(damageRollStr, rollData);
     await damageRoll.roll({ async: true });
 
+    let traumaRollRender: null | string = null;
+    let traumaDamage: null | string = null;
+    if (
+      this.data.data.settings?.useTrauma &&
+      this.data.data.trauma.die != null &&
+      this.data.data.trauma.die !== "none" &&
+      this.data.data.trauma.rating != null
+    ) {
+      const traumaRoll = new Roll(this.data.data.trauma.die);
+      await traumaRoll.roll({ async: true });
+      traumaRollRender = await traumaRoll.render();
+      if (
+        traumaRoll &&
+        traumaRoll.total &&
+        traumaRoll.total >= 6 &&
+        damageRoll?.total
+      ) {
+        const traumaDamageRoll = new Roll(
+          `${damageRoll.total} * ${this.data.data.trauma.rating}`
+        );
+        await traumaDamageRoll.roll({ async: true });
+        traumaDamage = await traumaDamageRoll.render();
+      }
+    }
+
     const diceTooltip = {
       hit: await hitRoll.render(),
       damage: await damageRoll.render(),
@@ -63,6 +95,8 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
       hitRoll,
       damageRoll,
       diceTooltip,
+      traumaDamage,
+      traumaRollRender,
     };
 
     const rollMode = game.settings.get("core", "rollMode");

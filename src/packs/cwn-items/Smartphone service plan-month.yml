@@ -5,6 +5,6 @@ data:
     them with sensitive information.
   encumbrance: 0
   noEncReadied: true
-img: systems/swnr/assets/icons/game-icons.net/item-icons/item.svg
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: Smartphone service plan/month
 type: item

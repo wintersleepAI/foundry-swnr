@@ -264,6 +264,13 @@ packs:
     path: packs/cwn-drone-fittings.db
     type: Item
     entity: Item
+  - name: cwnfittings
+    label: CWN Vehicle Fittings
+    system: swnr
+    module: swnr
+    path: packs/cwn-vehicle-fittings.db
+    type: Item
+    entity: Item
   - name: cwnitems
     label: CWN Items
     system: swnr

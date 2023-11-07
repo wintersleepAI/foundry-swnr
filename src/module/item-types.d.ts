@@ -132,6 +132,10 @@ declare interface SWNRShipWeaponData
     max: number;
   };
   stat: null | SWNRStats;
+
+  settings: null | {
+    useTrauma: boolean;
+  };
 }
 
 declare interface SWNRShipDefenseData

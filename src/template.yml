@@ -417,8 +417,8 @@ Item:
       max: 0
       value: 0
     trauma:
-      die: none
-      rating: none
+      die: ""
+      rating: ""
       vehicle: false
     range:
       normal: 0

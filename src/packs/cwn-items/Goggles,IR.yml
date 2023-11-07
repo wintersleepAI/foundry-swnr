@@ -6,6 +6,6 @@ data:
     out to 50 meters in most environments.
   encumbrance: 1
   noEncReadied: true
-img: systems/swnr/assets/icons/game-icons.net/item-icons/item.svg
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: Goggles,IR
 type: item

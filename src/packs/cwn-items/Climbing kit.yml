@@ -5,6 +5,6 @@ data:
     wall adhesive make up this kit.
   encumbrance: 2
   noEncReadied: true
-img: systems/swnr/assets/icons/game-icons.net/item-icons/item.svg
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: Climbing kit
 type: item

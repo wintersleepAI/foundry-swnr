@@ -34,7 +34,7 @@ IMG_MAP = {
     "skill": "book-white.svg",
     "edge": "edge.svg",
     "program": "program.svg",
-    "item": "item.svg",
+    "item": "item-white.svg",
     "drone": "../../drone.png",
 }
 
@@ -97,15 +97,17 @@ if __name__ == "__main__":
     #     "../src/packs/csv/cwn-cyberware.csv", "../src/packs/cwn-cyberware", "cyberware"
     # )
     conversions = [
-        ( "../src/packs/csv/cwn-cyberware.csv", "../src/packs/cwn-cyberware", "cyberware"),
-        ("../src/packs/csv/cwn-programs.csv", "../src/packs/cwn-program", "program"),
         # shield set manually
         #("../src/packs/csv/cwn-armor.csv", "../src/packs/cwn-armor", "armor"),
-        ("../src/packs/csv/cwn-weapons.csv", "../src/packs/cwn-weapons", "weapon"),
-        ("../src/packs/csv/cwn-vehicle-weapon.csv", "../src/packs/cwn-vehicle-weapons", "shipWeapon"),
-        ("../src/packs/csv/cwn-drone-fittings.csv", "../src/packs/cwn-drone-fittings", "shipFitting"),
-        ("../src/packs/csv/cwn-drones.csv", "../src/packs/cwn-drones", "drone"),
+
+        # ( "../src/packs/csv/cwn-cyberware.csv", "../src/packs/cwn-cyberware", "cyberware"),
+        # ("../src/packs/csv/cwn-programs.csv", "../src/packs/cwn-program", "program"),
+        # ("../src/packs/csv/cwn-weapons.csv", "../src/packs/cwn-weapons", "weapon"),
+        # ("../src/packs/csv/cwn-vehicle-weapon.csv", "../src/packs/cwn-vehicle-weapons", "shipWeapon"),
+        # ("../src/packs/csv/cwn-drone-fittings.csv", "../src/packs/cwn-drone-fittings", "shipFitting"),
+        # ("../src/packs/csv/cwn-drones.csv", "../src/packs/cwn-drones", "drone"),
         ("../src/packs/csv/cwn-items.csv", "../src/packs/cwn-items", "item"),
+        ("../src/packs/csv/cwn-fittings.csv", "../src/packs/cwn-vehicle-fittings", "shipFitting"),
 
     ]
     for f,p,n in conversions:

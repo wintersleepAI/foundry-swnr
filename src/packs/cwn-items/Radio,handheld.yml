@@ -5,6 +5,6 @@ data:
     can be had. Ranges are one kilometer in the city and six in an open, flat area.
   encumbrance: 1
   noEncReadied: true
-img: systems/swnr/assets/icons/game-icons.net/item-icons/item.svg
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: Radio,handheld
 type: item
