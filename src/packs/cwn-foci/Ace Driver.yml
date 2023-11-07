@@ -1,0 +1,10 @@
+data:
+  description: >2-
+     "If it's got wheels or wings
+  level1: ' you can drive it. Your background may lend itself to a particular type
+    of transport'
+  level2: ' but your natural talent lets you operate any vehicle with an almost instinctive
+    aptitude. These Focus benefits do not apply to drone piloting'
+img: systems/swnr/assets/icons/game-icons.net/item-icons/reticule.svg
+name: Ace Driver
+type: focus

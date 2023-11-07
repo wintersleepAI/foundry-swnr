@@ -1,0 +1,13 @@
+data:
+  description: >-
+    You are keenly aware of your surroundings and virtually impossible to take unaware.
+    You have an instinctive alacrity of response that helps you act before less wary
+    persons can think to move.
+  level1: Gain Notice as a bonus skill. You cannot be surprised, nor can others use
+    the Execution Attack option on you. When your group rolls initiative, your vigilance
+    allows them to roll twice and take the higher roll.
+  level2: 'In addition to the benefits of level 1, you always act first in a combat
+    round unless someone else involved is also this  '
+img: systems/swnr/assets/icons/game-icons.net/item-icons/reticule.svg
+name: Alert
+type: focus

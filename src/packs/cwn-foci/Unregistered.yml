@@ -1,0 +1,15 @@
+data:
+  description: >-
+    Whether by unrecorded birth, database corruption, or sheer luck, you simply do
+    not exist in any government or corporate database. If taken with the Many Faces
+    Focus, your own identity is lost, but you can create others for your own uses.
+    If this Focus is taken after character creation, it means your existing records
+    have become hopelessly corrupted and lost.",You have no government or corporate
+    database records associated with you
+  level1: ' and it is almost impossible to add any such records without them ending
+    up corrupted or deleted within a week. Human beings can remember you'
+  level2: ' but they can''t rely on computerized records to keep track of you or your
+    activities. You can keep money on credit chips or in cash'
+img: systems/swnr/assets/icons/game-icons.net/item-icons/reticule.svg
+name: Unregistered
+type: focus

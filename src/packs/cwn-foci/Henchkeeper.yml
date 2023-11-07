@@ -1,0 +1,28 @@
+data:
+  description: "You have a distinct knack for picking up lost souls who willingly\
+    \ do your bidding. You might induce them with promises of money, power, excitement,\
+    \ sex, or some other prize that you may or may not eventually grant. A henchman\
+    \ obtained with this Focus will serve in loyal fashion until clearly betrayed\
+    \ or placed in unacceptable danger. Henchmen are not \u201Cimportant\u201D people,\
+    \ and are usually marginal sorts, criminals, the desperate, or other persons with\
+    \ few options.You can use more conventional pay or inducements to acquire additional\
+    \ henchmen, but these extra hirelings are no more loyal or competent than your\
+    \ pay and treatment can purchase."
+  level1: Gain Lead as a bonus skill. You can acquire henchmen within 24 hours of
+    arriving in a community, assuming anyone is suitable hench material. These henchmen
+    will not fight except to save their own lives, but will go with you on missions
+    and risk great danger to help you. Most corper henchmen will have 5 HP, a +0 attack
+    bonus, and a Morale of 7, plus whatever gear they're given. Slum-dwellers and
+    other natives of harsh societies will fight as Street Thugs per page 188 if pressed.
+    You can have one henchmen at a time for every three character levels you have,
+    rounded up. You can release henchmen with no hard feelings at any plausible time
+    and pick them back up later should you be without a current henchman.
+  level2: Your henchmen are remarkably loyal and determined, and will fight for you
+    against anything but clearly overwhelming odds. Whether through natural competence
+    or their devotion to you, they're treated as a Basic Corp Security from page 186.
+    You can make faithful henchmen out of skilled and highly-capable NPCs, but this
+    requires that you actually have done them some favor or help that would reasonably
+    earn such fierce loyalty.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/reticule.svg
+name: Henchkeeper
+type: focus

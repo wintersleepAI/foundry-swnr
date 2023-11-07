@@ -1,0 +1,9 @@
+data:
+  description: >-
+    Gain a combat skill as a bonus skill. Whenever you inflict hit point damage on
+    something, whether by weapon, Shock, special ability, or any other source, the
+    damage is increased by 1 point per two character levels, rounded up. Any Trauma
+    Die you roll gains a +1 bonus.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/edge.svg
+name: Killing Blow
+type: edge

@@ -1,0 +1,11 @@
+data:
+  description: >2-
+     "Healing comes naturally to you
+  level1: ' and you''re particularly gifted at preventing the quick bleed-out of wounded
+    allies and comrades."'
+  level2: Gain Heal as a bonus skill. You may attempt to stabilize one mortally-wounded
+    adjacent person per round as an On Turn action. When rolling Heal skill checks,
+    roll 3d6 and drop the lowest die.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/reticule.svg
+name: Healer
+type: focus

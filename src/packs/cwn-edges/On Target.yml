@@ -1,0 +1,7 @@
+data:
+  description: >-
+    Gain a combat skill as a bonus skill. Your basic attack bonus is equal to your
+    character level, instead of the usual half level, rounded down.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/edge.svg
+name: On Target
+type: edge

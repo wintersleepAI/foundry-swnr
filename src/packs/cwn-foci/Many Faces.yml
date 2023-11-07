@@ -1,0 +1,16 @@
+data:
+  description: >-
+    You have multiple usable identities registered with corporate and governmental
+    databases. These identities are so deeply embedded in the systems that they're
+    almost impossible to pry out unless you do something to compromise them.
+  level1: Gain Sneak as a bonus skill. You can maintain one alternate identity at
+    a time per three character levels, rounded up. These identities have their own
+    names, backgrounds, criminal records, financial dealings, and bank accounts, and
+    will register as authentic to all normal corporate and governmental checks. If
+    an identity is compromised or you want a different one, you can replace it with
+    a week's work. False identities cannot be important people or involve corporations
+    you don't have a Contact in already.
+  level2: ''
+img: systems/swnr/assets/icons/game-icons.net/item-icons/reticule.svg
+name: Many Faces
+type: focus

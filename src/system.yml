@@ -278,6 +278,20 @@ packs:
     path: packs/cwn-items.db
     type: Item
     entity: Item
+  - name: cwnedge
+    label: CWN Edges
+    system: swnr
+    module: swnr
+    path: packs/cwn-edges.db
+    type: Item
+    entity: Item
+  - name: cwnfoci
+    label: CWN Foci
+    system: swnr
+    module: swnr
+    path: packs/cwn-foci.db
+    type: Item
+    entity: Item
 languages:
   - lang: en
     name: English

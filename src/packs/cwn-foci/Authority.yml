@@ -1,0 +1,17 @@
+data:
+  description: >-
+    You have an uncanny kind of charisma about you, one that makes others instinctively
+    follow your instructions and further your causes. Where this Focus refers to followers,
+    it means NPCs who have voluntarily chosen to be in your service. PCs never count
+    as followers.
+  level1: Gain Lead as a bonus skill. Once per day, you can make a request from an
+    NPC who is not openly hostile to you, rolling a Cha/Lead skill check at a difficulty
+    of the NPC's Morale score. If you succeed, they will comply with the request,
+    provided it is not harmful or very uncharacteristic.
+  level2: Those who follow you are fired with confidence. Any NPC being directly led
+    by you gains a Morale and hit roll bonus equal to your Lead skill and a +1 bonus
+    on all skill checks. Your followers will not act against your interests unless
+    under extreme pressure.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/reticule.svg
+name: Authority
+type: focus

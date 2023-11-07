@@ -1,0 +1,13 @@
+data:
+  description: >2-
+     "A skilled hacker can program their own utilities
+  level1: ' but you take this expertise far beyond the norm."'
+  level2: Gain Program as a bonus skill. You can create and maintain an additional
+    number of program elements equal to your character level+2, split among Verbs
+    and Subjects as you see fit as explained in section 4.3.0. You can change your
+    choices with a week's work. Once per day, as an On Turn action, you can make an
+    on-the-fly edit to a Subject program element to turn it into any other Subject
+    program element you need. The element remains altered until you change it again.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/reticule.svg
+name: Expert Programmer
+type: focus

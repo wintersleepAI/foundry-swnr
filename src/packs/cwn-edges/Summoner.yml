@@ -1,0 +1,7 @@
+data:
+  description: >-
+    You are a summoner, capable of calling up spirit servants as described in page
+    6.2.0, though you also have limits in using cyberware.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/edge.svg
+name: Summoner
+type: edge

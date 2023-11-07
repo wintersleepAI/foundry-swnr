@@ -1,0 +1,6 @@
+data:
+  description: >-
+    You begin play with an extra Focus pick. You may choose this Edge more than once.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/edge.svg
+name: Focused
+type: edge

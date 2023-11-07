@@ -1,0 +1,7 @@
+data:
+  description: >-
+    You are a mage, capable of casting spells as described in section 6.1.0and suffering
+    a mage's limits in using cyberware.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/edge.svg
+name: Spellcaster
+type: edge

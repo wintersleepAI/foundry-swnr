@@ -1,0 +1,15 @@
+data:
+  description: >-
+    You have a natural talent for modifying and improving equipment, as given in the
+    rules in section 2.8.2.
+  level1: Gain Fix as a bonus skill. Your Maintenance score is doubled, allowing you
+    to maintain twice as many mods. Vehicle, cyber, and gear mods cost only half their
+    usual price in dollars, though experimental component requirements remain the
+    same.
+  level2: Your Fix skill is treated as one level higher for purposes of building and
+    maintaining mods and calculating your Maintenance score, up to a maximum of Fix-5.
+    Advanced mods require one fewer experimental components to make, down to a minimum
+    of zero.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/reticule.svg
+name: Tinker
+type: focus

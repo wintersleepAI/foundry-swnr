@@ -107,7 +107,9 @@ if __name__ == "__main__":
         # ("../src/packs/csv/cwn-drone-fittings.csv", "../src/packs/cwn-drone-fittings", "shipFitting"),
         # ("../src/packs/csv/cwn-drones.csv", "../src/packs/cwn-drones", "drone"),
         #("../src/packs/csv/cwn-items.csv", "../src/packs/cwn-items", "item"),
-        ("../src/packs/csv/cwn-fittings.csv", "../src/packs/cwn-vehicle-fittings", "shipFitting"),
+        #"../src/packs/csv/cwn-fittings.csv", "../src/packs/cwn-vehicle-fittings", "shipFitting"),
+        #("../src/packs/csv/cwn-edge.csv", "../src/packs/cwn-edges", "edge"),
+        ("../src/packs/csv/cwn-foci.csv", "../src/packs/cwn-foci", "focus"),
 
     ]
     for f,p,n in conversions:

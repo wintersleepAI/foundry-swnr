@@ -1,0 +1,10 @@
+data:
+  description: >-
+    You are uncannily elusive. Gain Sneak as a bonus skill and the Fighting Withdrawal
+    combat action is an On Turn action for you. Once per scene, reroll a failed Sneak
+    check related to sneaking or going unseen. Once per game day, as a Move action,
+    move up to 10 meters without anyone around you seeing you move. If you use this
+    movement to get behind cover, you might seem to vanish outright to onlookers.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/edge.svg
+name: Ghost
+type: edge
