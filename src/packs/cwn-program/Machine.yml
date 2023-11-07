@@ -6,7 +6,7 @@ data:
     device not covered under an existing Subject. Its generality applies a +1 penalty
     to the security difficulty.
   selfTerminating: true
-  skillCheckMod: 0
+  skillCheckMod: -1
   target: Device
   type: subject
   useAffects: Unclassified devices
