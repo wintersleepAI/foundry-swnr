@@ -1,0 +1,13 @@
+data:
+  cost: 10000
+  description: >-
+    Once per day, for one hour, the vehicle can become almost invisible to infrared
+    or radar. This cloak becomes useless if the vehicle is visually spotted by defenders.
+  effect: Radar and thermal near-invisibility
+  mass: 2
+  minClass: S
+  power: 1
+  type: vehicle
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Emissions Cloaking
+type: shipFitting

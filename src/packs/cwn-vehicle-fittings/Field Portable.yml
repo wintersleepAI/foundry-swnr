@@ -1,0 +1,15 @@
+data:
+  cost: 1000
+  description: >-
+    Only Small or Medium vehicles can take this option, allowing them to be broken
+    down into easily-portable parts packages. Small vehicles turn into 30 items of
+    Encumbrance and Medium ones into 150. Disassembly takes 30 minutes for a Small
+    vehicle and 3 hours for a Medium one, with reassembly taking four times as long.
+  effect: Break it down into portable components
+  mass: 2
+  minClass: S
+  power: 0
+  type: vehicle
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Field Portable
+type: shipFitting

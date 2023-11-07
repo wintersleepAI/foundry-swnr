@@ -1,0 +1,14 @@
+data:
+  cost: 2500
+  description: >-
+    Small vehicles add 1 Crew, Medium ones add 2, and Large ones add 4. This fitting
+    can be taken multiple times, and any vehicle amenities such as crash pods or living
+    quarters extend to these additional Crew as well.
+  effect: Add additional Crew
+  mass: 2
+  minClass: S
+  power: 0
+  type: vehicle
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Extra Passengers
+type: shipFitting

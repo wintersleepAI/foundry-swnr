@@ -1,0 +1,14 @@
+data:
+  cost: 5000
+  description: >-
+    While any modern vehicle can handle abandoned roads and mostly-flat terrain, this
+    package includes winches, tire armor, chassis reinforcement, and other upgrades
+    needed to go through all but the most impassible terrain.
+  effect: Enables deep wilderness operation
+  mass: 3
+  minClass: L
+  power: 1
+  type: vehicle
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Offroad Package
+type: shipFitting

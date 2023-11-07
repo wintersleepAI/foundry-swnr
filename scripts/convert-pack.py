@@ -106,7 +106,7 @@ if __name__ == "__main__":
         # ("../src/packs/csv/cwn-vehicle-weapon.csv", "../src/packs/cwn-vehicle-weapons", "shipWeapon"),
         # ("../src/packs/csv/cwn-drone-fittings.csv", "../src/packs/cwn-drone-fittings", "shipFitting"),
         # ("../src/packs/csv/cwn-drones.csv", "../src/packs/cwn-drones", "drone"),
-        ("../src/packs/csv/cwn-items.csv", "../src/packs/cwn-items", "item"),
+        #("../src/packs/csv/cwn-items.csv", "../src/packs/cwn-items", "item"),
         ("../src/packs/csv/cwn-fittings.csv", "../src/packs/cwn-vehicle-fittings", "shipFitting"),
 
     ]

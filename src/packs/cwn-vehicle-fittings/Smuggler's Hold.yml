@@ -1,0 +1,15 @@
+data:
+  cost: 1000
+  description: >-
+    This fitting can be taken more than once, and adds 10 kg of concealed cargo space
+    in Small vehicles, 100 kg in Medium ones, and 400 kg in Large ones. It can be
+    detected only by taking the vehicle apart or by an acute, careful inspection with
+    a difficulty 12 Wis/Notice or Wis/Drive skill check.
+  effect: Hidden cargo space
+  mass: 1
+  minClass: S
+  power: 0
+  type: vehicle
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Smuggler's Hold
+type: shipFitting

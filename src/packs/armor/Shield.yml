@@ -6,7 +6,7 @@ data:
   isSubtle: false
   soak:
     value: 0
-    max: -
+    max: 0
   shieldACBonus: 1
   shieldMeleeACBonus: 1
   cost: 10

@@ -1,0 +1,13 @@
+data:
+  cost: 10000
+  description: >-
+    This fitting adds extra Power in battery capacity and computing support at the
+    cost of an additional Mass burden.
+  effect: Adds Power at a cost in Mass
+  mass: 5
+  minClass: L
+  power: '-8'
+  type: vehicle
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Power System,Large
+type: shipFitting

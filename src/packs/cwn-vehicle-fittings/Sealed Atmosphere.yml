@@ -1,0 +1,16 @@
+data:
+  cost: 5000
+  description: >-
+    For up to two hours per day the vehicle can seal itself entirely from the outside
+    atmosphere, with internal air tanks and positive pressure to keep out external
+    toxins. At all times it can maintain a comfortable interior temperature in any
+    terrestrial climate. Aircraft do not need this fitting to function normally at
+    high altitudes.
+  effect: Pressurized, temp-controlled interior
+  mass: 1
+  minClass: M
+  power: 1
+  type: vehicle
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Sealed Atmosphere
+type: shipFitting

@@ -1,0 +1,14 @@
+data:
+  cost: 8000
+  description: >-
+    The vehicle is equipped with night vision, infrared sensors, and short-range radar
+    good up to twenty kilometers of airspace. It can be driven safely even in pitch
+    darkness.
+  effect: Adds night vision and more
+  mass: 0
+  minClass: S
+  power: 1
+  type: vehicle
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Advanced Sensors
+type: shipFitting

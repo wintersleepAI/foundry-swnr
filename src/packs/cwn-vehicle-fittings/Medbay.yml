@@ -1,0 +1,14 @@
+data:
+  cost: 10000
+  description: >-
+    Surgical tools and medical support are provided for up to one critically-injured
+    patient at a time. A medbay counts as an emergency clinic for purposes of treating
+    Major Injuries, if someone with at least Heal-0 is available to tend to the patient.
+  effect: Emergency bay for one patient
+  mass: 2
+  minClass: M
+  power: 1
+  type: vehicle
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Medbay
+type: shipFitting

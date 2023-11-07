@@ -1,0 +1,12 @@
+data:
+  cost: 5000
+  description: >-
+    The vehicle's maximum hit points increase by 25%, rounded up.
+  effect: Increases maximum HP by 25%
+  mass: 4
+  minClass: M
+  power: 0
+  type: vehicle
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Extra Durability
+type: shipFitting

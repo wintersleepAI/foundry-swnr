@@ -1,0 +1,14 @@
+data:
+  cost: 5000
+  description: >-
+    The vehicle is wired to be controlled through a plugged-in cranial jack as well
+    as a conventional wheel. While jacked in, the driver need only use a Move Action
+    to control the vehicle rather than a Main Action.
+  effect: Can drive the vehicle via cranial jack
+  mass: 0
+  minClass: S
+  power: 2
+  type: vehicle
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Jack Control Port
+type: shipFitting

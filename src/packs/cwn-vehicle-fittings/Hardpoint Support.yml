@@ -1,0 +1,12 @@
+data:
+  cost: 5000
+  description: >-
+    Additional power and structural support enable the addition of a hardpoint.
+  effect: Adds another hardpoint
+  mass: 1
+  minClass: M
+  power: 1
+  type: vehicle
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Hardpoint Support
+type: shipFitting

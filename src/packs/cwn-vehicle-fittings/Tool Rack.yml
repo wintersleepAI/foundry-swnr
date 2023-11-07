@@ -1,0 +1,14 @@
+data:
+  cost: 2500
+  description: >-
+    Any vehicle can carry a toolkit in the trunk, but this rack is equipped with welders,
+    heavy tooling, winches, and room for up 40 HP worth of spare parts. It can repair
+    any vehicle and can be used as a makeshift workshop for related efforts.
+  effect: Can repair vehicle or other things
+  mass: 2
+  minClass: M
+  power: 0
+  type: vehicle
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Tool Rack
+type: shipFitting
