@@ -827,6 +827,7 @@
     ranged: Ranged
     melee: Melee
     shieldAC: Shield AC Bonus
+    traumaMod: Trauma Target Mod
   npc:
     reaction:
       unknown: Unknown

@@ -64,14 +64,18 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
   prepareDerivedData(): void {
     const data = this.data.data;
     const useCWNArmor = game.settings.get("swnr", "useCWNArmor") ? true : false;
+    const useTrauma = game.settings.get("swnr", "useTrauma") ? true : false;
     if (data.settings == null) {
       data.settings = {
         useCWNArmor: useCWNArmor,
+        useTrauma: useTrauma,
       };
     } else {
       data.settings.useCWNArmor = useCWNArmor;
     }
-
+    if (useTrauma) {
+      data.modifiedTraumaTarget = data.traumaTarget;
+    }
     // AC
     const armor = <SWNRBaseItem<"armor">[]>(
       this.items.filter(
@@ -90,6 +94,10 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
         baseAc = a.data.data.ac;
         if (a.data.data.meleeAc) {
           baseMeleeAc = a.data.data.meleeAc;
+          if (useTrauma) {
+            data.modifiedTraumaTarget =
+              data.traumaTarget + a.data.data.traumaDiePenalty;
+          }
         }
         if (a.id) {
           armorId = a.id;

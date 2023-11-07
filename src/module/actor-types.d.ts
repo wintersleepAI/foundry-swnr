@@ -133,6 +133,7 @@ declare interface SWNRLivingTemplateComputed {
     useCWNArmor: boolean;
     useTrauma: boolean;
   };
+  modifiedTraumaTarget: number;
 }
 declare interface SWNREncumbranceTemplateBase {
   encumbrance: {

@@ -86,6 +86,9 @@
       <div class="flex-grow">
         <h4 class="text-lg underline">
           {{localize 'swnr.item.locationReadied'}}  {{localize 'swnr.sheet.tabs.armor'}}
+          {{#if actor.data.data.settings.useTrauma}}
+            ({{localize 'swnr.sheet.traumaTarget'}}: {{actor.data.data.modifiedTraumaTarget}})
+          {{/if}}
         </h4>
         <div class="flex flex-col">
 

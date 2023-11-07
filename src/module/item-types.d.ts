@@ -188,6 +188,7 @@ declare interface SWNRArmorData extends SWNRBaseItemData {
   isHeavy: boolean;
   settings: null | {
     useCWNArmor: boolean;
+    useTrauma: boolean;
   };
   shieldMeleeACBonus: null | number;
   shieldACBonus: null | number;
