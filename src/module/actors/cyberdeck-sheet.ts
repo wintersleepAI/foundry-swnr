@@ -159,6 +159,13 @@ export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorShe
         );
         return;
       }
+      let skillCheckMod = 0;
+      if (verb.data.data.skillCheckMod) {
+        skillCheckMod += verb.data.data.skillCheckMod;
+      }
+      if (subject.data.data.skillCheckMod) {
+        skillCheckMod += subject.data.data.skillCheckMod;
+      }
       const newProgram = {
         name: `${verb.name} ${subject.name}`,
         type: `program`,
@@ -169,6 +176,7 @@ export class CyberdeckActorSheet extends VehicleBaseActorSheet<CyberdeckActorShe
           accessCost: verb.data.data.accessCost,
           useAffects: verb.data.data.useAffects,
           selfTerminating: verb.data.data.selfTerminating,
+          skillCheckMod: skillCheckMod,
         },
       };
 

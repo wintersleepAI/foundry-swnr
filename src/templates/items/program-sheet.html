@@ -48,17 +48,6 @@
           />
     </div>
 
-    <div class="flex flex-col items-center">
-       {{localize 'swnr.sheet.program.skillCheckMod'}}:
-      <input
-            type="number"
-            class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-            step="1"
-            name="data.skillCheckMod"
-            data-dtype="Number"
-            value="{{data.data.skillCheckMod}}"
-          />
-    </div>
   </div>
   <div class="flex flexrow gap-2 text-center">
     <div class="flexrow items-center">
@@ -77,6 +66,18 @@
     {{/if}}
 
     {{#if (ne item.data.data.type "datafile")}}
+
+    <div class="flex flex-col items-center">
+       {{localize 'swnr.sheet.program.skillCheckMod'}}:
+      <input
+            type="number"
+            class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            step="1"
+            name="data.skillCheckMod"
+            data-dtype="Number"
+            value="{{data.data.skillCheckMod}}"
+          />
+    </div>
 
     <div class="flex flex-col items-center">
       {{#if (eq item.data.data.type "subject")}}

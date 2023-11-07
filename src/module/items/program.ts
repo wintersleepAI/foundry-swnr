@@ -19,6 +19,7 @@ export class SWNRProgram extends SWNRBaseItem<"program"> {
     let level = 1;
     const skillRollData = {
       skillMod: 0,
+      skillCheckMod: 0,
       attrMod: 0,
       crownPenalty: 0,
       wirelessPenalty: 0,
@@ -60,6 +61,9 @@ export class SWNRProgram extends SWNRBaseItem<"program"> {
         return;
       }
     }
+    if (this.data.data.skillCheckMod) {
+      skillRollData.skillCheckMod = this.data.data.skillCheckMod;
+    }
     let programRoll = "";
     let traumaRoll = "";
     let traumaDamage = "";
@@ -84,7 +88,7 @@ export class SWNRProgram extends SWNRBaseItem<"program"> {
       }
     }
     const skillRoll = new Roll(
-      "@skillRoll + @skillMod + @attrMod + @crownPenalty + @wirelessPenalty",
+      "@skillRoll + @skillMod + @skillCheckMod + @attrMod + @crownPenalty + @wirelessPenalty",
       skillRollData
     );
     await skillRoll.roll({ async: true });
