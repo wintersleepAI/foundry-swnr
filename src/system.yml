@@ -2,7 +2,7 @@ name: swnr
 title: "Stars Without Number: Revised and Cities Without Number"
 description: >-
   A system for playing Stars Without Number: Revised and Cities Without Number.
-  CWN is in alpha state.
+  CWN is in beta state (check system settings for options).
 version: 1.0.4
 authors: [
   {
