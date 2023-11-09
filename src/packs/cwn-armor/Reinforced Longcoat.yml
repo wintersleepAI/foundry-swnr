@@ -5,7 +5,7 @@ data:
     Long, draping clothing is bolstered with advanced fabrics and discreetly- placed
     absorption plates, the whole remaining deniable as armor.
   encumbrance: 1
-  isHeavy: true
+  isHeavy: false
   isSubtle: true
   meleeAc: 13
   shieldACBonus: 0

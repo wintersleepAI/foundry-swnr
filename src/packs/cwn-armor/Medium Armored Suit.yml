@@ -5,8 +5,8 @@ data:
     Heavy security usually sports armor on this level, including police rapid response
     teams.
   encumbrance: 3
-  isHeavy: true
-  isSubtle: true
+  isHeavy: false
+  isSubtle: false
   meleeAc: 14
   shieldACBonus: 0
   shieldMeleeACBonus: 0

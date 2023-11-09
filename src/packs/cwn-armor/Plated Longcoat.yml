@@ -7,7 +7,7 @@ data:
     absorb a lot of punishment.
   encumbrance: 3
   isHeavy: true
-  isSubtle: true
+  isSubtle: false
   meleeAc: 15
   shieldACBonus: 0
   shieldMeleeACBonus: 0

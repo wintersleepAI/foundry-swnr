@@ -5,7 +5,7 @@ data:
     Subtle polymer sheets and reinforced weaves are used to provide a modicum of protection
     in this clothing without sacrificing taste.
   encumbrance: 0
-  isHeavy: true
+  isHeavy: false
   isSubtle: true
   meleeAc: 10
   shieldACBonus: 0
