@@ -229,6 +229,22 @@
             {{localize 'swnr.sheet.mech.pilot'}}
           </label>
         </div>
+
+        {{#if (useTrauma)}}
+          <!--TT-->
+          <div class="TT flex flex-col justify-center items-center">
+            <input
+              type="number"
+              class="w-8 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              min="1"
+              step="1"
+              name="data.traumaTarget"
+              value="{{actor.data.data.traumaTarget}}"
+              data-dtype="Number"
+            />
+            <label>{{localize 'swnr.sheet.traumaTarget'}}</label>
+          </div> 
+        {{/if}}
       </div> <!-- end grid div for header -->
       {{!-- Sheet Body --}}
 
