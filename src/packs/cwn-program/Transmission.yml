@@ -6,7 +6,7 @@ data:
     the purpose of tampering with local comms. A hacker need not be jacked into a
     cyberspace node to target local radio transmissions, but the usual -2 check penalty
     for wireless hacking applies.
-  selfTerminating: true
+  selfTerminating: false
   skillCheckMod: 0
   target: Data
   type: subject

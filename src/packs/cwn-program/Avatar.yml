@@ -4,7 +4,7 @@ data:
   description: >-
     A cyberspace avatar, whether one adopted by a hacker who's jacked into the network
     or a Demon program standing guard there.
-  selfTerminating: true
+  selfTerminating: false
   skillCheckMod: 0
   target: Avatar
   type: subject

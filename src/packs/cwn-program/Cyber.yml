@@ -9,7 +9,7 @@ data:
     on the target's body. Given the difficulty of affecting cyber wirelessly, many
     hackers prefer to use more specific Subjects for a +1 bonus, such as Nerve Cyber
     or Limb Cyber.
-  selfTerminating: true
+  selfTerminating: false
   skillCheckMod: 0
   target: Cyber
   type: subject

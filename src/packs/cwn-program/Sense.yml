@@ -5,7 +5,7 @@ data:
     Piggyback on the sensory feed of a device or piece of cyber. Anything the device
     senses or records, the hacker can sense. Swapping focus from cyberspace to reality
     is an On Turn action.
-  selfTerminating: true
+  selfTerminating: false
   skillCheckMod: 0
   target: Device/Cyber
   type: verb

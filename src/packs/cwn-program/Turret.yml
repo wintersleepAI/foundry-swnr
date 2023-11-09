@@ -3,7 +3,7 @@ data:
   cost: 1000
   description: >-
     A security turret, emplaced gun, or other fixed automated weapon.
-  selfTerminating: true
+  selfTerminating: false
   skillCheckMod: 0
   target: Device
   type: subject

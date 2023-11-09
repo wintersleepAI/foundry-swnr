@@ -8,7 +8,7 @@ data:
     be taken normally. Human hackers are also physically paralyzed while the program
     runs, incapable of moving in meatspace until the connection is cut or the program
     ends.
-  selfTerminating: true
+  selfTerminating: false
   skillCheckMod: '-1'
   target: Avatar
   type: verb
