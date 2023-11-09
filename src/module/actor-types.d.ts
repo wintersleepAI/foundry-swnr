@@ -68,6 +68,7 @@ declare interface SWNRLivingTemplateBase {
   ac: number;
   meleeAc: number; // CWN
   ab: number;
+  meleeAb: number; // CWN
   systemStrain: {
     value: number;
     permanent: number; //computed-active effects needed

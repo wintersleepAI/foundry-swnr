@@ -7,6 +7,11 @@ export default function registerHelpers(): void {
     return useT;
   });
 
+  Handlebars.registerHelper("useCWNArmor", function () {
+    const useT = game.settings.get("swnr", "useCWNArmor") ? true : false;
+    return useT;
+  });
+
   Handlebars.registerHelper("debug", function () {
     return JSON.stringify(this, null, 2);
   });
