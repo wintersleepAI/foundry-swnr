@@ -292,6 +292,13 @@ packs:
     path: packs/cwn-foci.db
     type: Item
     entity: Item
+  - name: cwnpharm
+    label: CWN Pharmaceuticals
+    system: swnr
+    module: swnr
+    path: packs/cwn-pharmaceuticals.db
+    type: Item
+    entity: Item
 languages:
   - lang: en
     name: English

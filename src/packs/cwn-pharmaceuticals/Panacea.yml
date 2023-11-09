@@ -1,0 +1,14 @@
+data:
+  cost: 200
+  description: >-
+    (Heal-1) Not so much a single drug as a pharmaceutical suite in a single injection
+    system, this chem requires a skilled physician to adjust its mix. When used as
+    part of a first aid attempt, this drug doubles the amount of hit points recovered
+    by the attempt, with a minimum healing rate of 6 HP. Rumors of a drastically increased
+    rate of bone cancers among regular users are, of course, mere slander against
+    its manufacturer.
+  encumbrance: 0
+  noEncReadied: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
+name: Panacea
+type: item

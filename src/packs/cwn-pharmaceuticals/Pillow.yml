@@ -1,0 +1,16 @@
+data:
+  cost: 10
+  description: >-
+    (Heal-0) A powerful sedative that requires medical expertise to administer properly,
+    Pillow must be injected into a restrained or helpless subject, as vigorous physical
+    action can disrupt the effects. Once injected, the subject falls into a torpor
+    indistinguishable from death that lasts for 24 hours. They require only trace
+    amounts of oxygen while in their trance, and can be identified as alive only through
+    careful medical examination. If Pillow is administered with less than a 24-hour
+    gap between doses, the victim must make a Physical save or die sometime before
+    the dose ends.
+  encumbrance: 0
+  noEncReadied: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
+name: Pillow
+type: item

@@ -101,7 +101,7 @@ if __name__ == "__main__":
     conversions = [
         # shield set manually
         # ("../src/packs/csv/cwn-armor.csv", "../src/packs/cwn-armor", "armor"),
-        ("../src/packs/csv/cwn-test.csv", "../src/packs/cwn-armor", "armor"),
+        #("../src/packs/csv/cwn-test.csv", "../src/packs/cwn-armor", "armor"),
 
         #  ( "../src/packs/csv/cwn-cyberware.csv", "../src/packs/cwn-cyberware", "cyberware"),
         # ("../src/packs/csv/cwn-programs.csv", "../src/packs/cwn-program", "program"),
@@ -110,6 +110,7 @@ if __name__ == "__main__":
         # ("../src/packs/csv/cwn-drone-fittings.csv", "../src/packs/cwn-drone-fittings", "shipFitting"),
         # ("../src/packs/csv/cwn-drones.csv", "../src/packs/cwn-drones", "drone"),
         # ("../src/packs/csv/cwn-items.csv", "../src/packs/cwn-items", "item"),
+        ("../src/packs/csv/cwn-pharm.csv", "../src/packs/cwn-pharmaceuticals", "item"),
         # ("../src/packs/csv/cwn-fittings.csv", "../src/packs/cwn-vehicle-fittings", "shipFitting"),
         # ("../src/packs/csv/cwn-edge.csv", "../src/packs/cwn-edges", "edge"),
         # ("../src/packs/csv/cwn-foci.csv", "../src/packs/cwn-foci", "focus"),

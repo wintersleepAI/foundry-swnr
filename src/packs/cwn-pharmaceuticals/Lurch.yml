@@ -1,0 +1,14 @@
+data:
+  cost: 25
+  description: >-
+    (Heal-0) An emergency stimulant meant to shock a downed ally back into mobility,
+    Lurch heals 1d10 damage plus the physician's Heal skill on application, adding
+    one System Strain to the target. Each dose of Lurch after the first each day increases
+    the required Heal skill by one, so the third dose requires Heal-2 to successfully
+    administer. Lurch only works on conscious and stabilized targets; the shock will
+    kill a Mortally Wounded subject that hasn't been made stable.
+  encumbrance: 0
+  noEncReadied: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
+name: Lurch
+type: item

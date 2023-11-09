@@ -1,0 +1,18 @@
+data:
+  cost: 1000
+  description: >-
+    A rare drug of desperation, Reset is a combination injector patch and wireless
+    cyber override key. When applied to a willing subject with at least one Body or
+    Nerve cyber system, it deluges the user's system with safety override commands
+    and neurotransmitter stimulants. They lose all accumulated System Strain in excess
+    of their permanent minimum. Five minutes later, their System Strain is maximized
+    and they must make a Physical saving throw at a penalty equal to the number of
+    System Strain they've gained since the drug was taken. On a success, they drop
+    to 1 hit point. On a failure, they become Mortally Wounded. If their adjusted
+    roll is 1 or less, they must make a second modified Physical save or instantly
+    and unavoidably die. Using Reset more than once a week is invariably fatal.
+  encumbrance: 0
+  noEncReadied: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
+name: Reset
+type: item

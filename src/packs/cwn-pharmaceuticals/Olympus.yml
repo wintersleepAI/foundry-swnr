@@ -1,0 +1,13 @@
+data:
+  cost: 100
+  description: >-
+    (Heal-0) A 'respectable' combat chem used by certain units of corporate security,
+    Olympus numbs pain, sharpens mental focus, and slows down instinctive panic or
+    rush instincts, allowing a calm observation of the battlefield. Users can reroll
+    their first failed Morale check in a fight and gain a +2 bonus to hit rolls. One
+    dose of Olympus lasts for one scene, and adds one System Strain at its end.
+  encumbrance: 0
+  noEncReadied: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
+name: Olympus
+type: item
