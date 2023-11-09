@@ -1,0 +1,16 @@
+data:
+  accessCost: 0
+  cost: 500
+  description: >-
+    Identify the specific functionality of a device or the general topics of local
+    datafiles. Hackers get a general idea of what kind of device a cyberspace node
+    represents, but Analyze is needed to give specific details of where a device is
+    in reality.
+  selfTerminating: true
+  skillCheckMod: 1
+  target: Device/Data
+  type: verb
+  useAffects: Identify a target device or a file's topic
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Analyze
+type: program

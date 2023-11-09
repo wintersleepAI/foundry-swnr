@@ -1,0 +1,18 @@
+data:
+  description: >-
+    Your mind and body are superbly gifted, but this very excellence leaves you profoundly
+    incompatible with most cyber. You cannot accept implants except for minor cosmetic
+    ones with an unmodified System Strain cost of zero. If a GM is mixing rules from
+    multiple Without Number games, this Focus should not be allowed unless cyberware
+    is expected equipment for all PCs. If you're using the deluxe version rules for
+    magic, PCs with magical or psychic Edges such as Spellcaster, Summoner, or Graced
+    cannot take this Focus.
+  level1: Gain any skill as a bonus skill. Pick an attribute; its modifier increases
+    by +1, up to a maximum of +3. You can make another such attribute pick at levels
+    3, 5, 7, and 10, choosing the same attribute or a different one. While you can
+    still suffer Traumatic Hits, you never suffer major injuries as described on page
+    41.
+  level2: Armsmaster
+img: systems/swnr/assets/icons/game-icons.net/item-icons/reticule.svg
+name: All Natural
+type: focus

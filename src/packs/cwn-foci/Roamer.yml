@@ -1,0 +1,8 @@
+data:
+  description: >2-
+     "You might be a footloose bum with a knack for stowing aboard cargo shipments
+  level1: ' a hard-bitten outlander smuggler'
+  level2: ' or a restless seeker of the horizon. Either way'
+img: systems/swnr/assets/icons/game-icons.net/item-icons/reticule.svg
+name: Roamer
+type: focus

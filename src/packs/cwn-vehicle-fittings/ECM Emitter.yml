@@ -1,0 +1,15 @@
+data:
+  cost: 10000
+  description: >-
+    On a successful hit roll by a headshot pod, rocket launcher, or other long-range
+    guided projectile, the driver can make an opposed Int or Dex/Drive skill check
+    against the attacker's combat skill. On a success, the attacker must reroll their
+    hit roll and take the worst result.
+  effect: Jams incoming missiles
+  mass: 0
+  minClass: M
+  power: 2
+  type: vehicle
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: ECM Emitter
+type: shipFitting

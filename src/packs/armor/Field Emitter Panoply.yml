@@ -1,6 +1,12 @@
 _id: FoFeyIkRZCqNWjOb
 data:
   ac: 20
+  meleeAc: 20
+  traumaDiePenalty: 4
+  isSubtle: false
+  soak:
+    value: 15
+    max: 15
   cost: 40000
   description: >-
     A field emitter panoply is a heavy-duty pretech defensive system composed of

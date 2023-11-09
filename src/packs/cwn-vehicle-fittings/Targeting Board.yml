@@ -1,0 +1,13 @@
+data:
+  cost: 2500
+  description: >-
+    A single unified targeting board allows one gunner to manage up to three vehicle
+    weapons instead of the one gun per gunner that would usually be allowed.
+  effect: One gunner can run up to three guns
+  mass: 1
+  minClass: M
+  power: 1
+  type: vehicle
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Targeting Board
+type: shipFitting

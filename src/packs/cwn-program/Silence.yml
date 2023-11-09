@@ -1,0 +1,14 @@
+data:
+  accessCost: 1
+  cost: 1000
+  description: >-
+    The affected avatar or Demon is unable to use the Send Message cyberspace action
+    while this program runs. Alert the Network can still be done.
+  selfTerminating: true
+  skillCheckMod: 1
+  target: Avatar
+  type: verb
+  useAffects: Lock out the Send Message action
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Silence
+type: program

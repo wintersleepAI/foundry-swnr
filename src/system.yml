@@ -2,8 +2,8 @@ name: swnr
 title: "Stars Without Number: Revised and Cities Without Number"
 description: >-
   A system for playing Stars Without Number: Revised and Cities Without Number.
-  CWN is in alpha state.
-version: 1.0.0
+  CWN is in beta state (check system settings for options).
+version: 1.0.4
 authors: [
   {
     "name": "wintersleepAI"
@@ -207,24 +207,105 @@ packs:
     name: one-roll-tables
     path: packs/one-roll-tables.db
     system: swnr
+    type: RollTable
   - entity: RollTable
     label: One Roll Tables - backing
     module: swnr
     name: one-roll-backing
     path: packs/one-roll-backing.db
-    system: swnr    
+    type: RollTable
+    system: swnr
+  - name: cwncyberware
+    label: CWN Cyberware
+    system: swnr
+    module: swnr
+    path: packs/cwn-cyberware.db
+    type: Item
+    entity: Item
+  - name: programs
+    label: CWN Programs
+    system: swnr
+    module: swnr
+    path: packs/cwn-program.db
+    type: Item
+    entity: Item
+  - name: cwnarmor
+    label: CWN Armor
+    system: swnr
+    module: swnr
+    path: packs/cwn-armor.db
+    type: Item
+    entity: Item
+  - name: cwnweapon
+    label: CWN Weapons
+    system: swnr
+    module: swnr
+    path: packs/cwn-weapons.db
+    type: Item
+    entity: Item
+  - name: cwnvehicleweapon
+    label: CWN Vehicle Weapons
+    system: swnr
+    module: swnr
+    path: packs/cwn-vehicle-weapons.db
+    type: Item
+    entity: Item
+  - name: cwndrones
+    label: CWN Drones
+    system: swnr
+    module: swnr
+    path: packs/cwn-drones.db
+    type: Actor
+    entity: Actor
+  - name: cwndronefittings
+    label: CWN Drone Fittings
+    system: swnr
+    module: swnr
+    path: packs/cwn-drone-fittings.db
+    type: Item
+    entity: Item
+  - name: cwnfittings
+    label: CWN Vehicle Fittings
+    system: swnr
+    module: swnr
+    path: packs/cwn-vehicle-fittings.db
+    type: Item
+    entity: Item
+  - name: cwnitems
+    label: CWN Items
+    system: swnr
+    module: swnr
+    path: packs/cwn-items.db
+    type: Item
+    entity: Item
+  - name: cwnedge
+    label: CWN Edges
+    system: swnr
+    module: swnr
+    path: packs/cwn-edges.db
+    type: Item
+    entity: Item
+  - name: cwnfoci
+    label: CWN Foci
+    system: swnr
+    module: swnr
+    path: packs/cwn-foci.db
+    type: Item
+    entity: Item
 languages:
   - lang: en
     name: English
     path: lang/en.json
 gridDistance: 2
 gridUnits: "m"
-minimumCoreVersion: 0.8.6
-compatibleCoreVersion: 10.291
+compatibility: 
+  - minimum: 8.6
+    verified: 10
+    maximum: 11
 url: "https://github.com/wintersleepAI/foundry-swnr"
 manifest: >-
   https://github.com/wintersleepAI/foundry-swnr/releases/latest/download/system.json
-download: "https://github.com/wintersleepAI/foundry-swnr/releases/download/v1.0.0/v1.0.0.zip"
+download: "https://github.com/wintersleepAI/foundry-swnr/releases/download/v1.0.4/v1.0.4.zip"
 license: "https://github.com/wintersleepAI/foundry-swnr/blob/master/LICENSE.txt"
 readme: ""
 bugs: "https://github.com/wintersleepAI/foundry-swnr/issues"

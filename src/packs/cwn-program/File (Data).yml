@@ -1,0 +1,14 @@
+data:
+  accessCost: 0
+  cost: 0
+  description: >-
+    A file of data, whether a text document, a video, a program, or something else.
+    Consumes 1 memory
+  selfTerminating: true
+  skillCheckMod: 0
+  target: ''
+  type: datafile
+  useAffects: A file of data
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: File (Data)
+type: program

@@ -1,0 +1,10 @@
+data:
+  cost: 10
+  description: >-
+    Individual rounds are loaded into empty magazines that are specific to individual
+    firearms.
+  encumbrance: 1
+  noEncReadied: true
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
+name: Ammunition Magazine
+type: item

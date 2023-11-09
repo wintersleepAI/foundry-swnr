@@ -1,0 +1,32 @@
+data:
+  ammo:
+    burst: true
+    max: 5
+    suppress: true
+    type: special
+    value: 5
+  cost: 8000
+  damage: 3d8
+  description: >-
+    Anti-materiel rifles have encountered something of a renaissance with the ubiquity
+    of armored drones and heavily cybered combatants. While not suitable for downing
+    tanks or other heavily armored vehicles, their 20mm rounds are more than sufficient
+    to punch through lighter armor plating, concrete walls, and full body conversion
+    cyborgs. Use of a secure firing rest is recommended for best results. This weapon's
+    Trauma Die can inflict Traumatic Hits on drones, vehicles, and other machines.
+  encumbrance: 3
+  isNonLethal: true
+  range:
+    max: 2000
+    normal: 1000
+  secondStat: None
+  shock:
+    ac: 0
+    dmg: 0
+  stat: dex
+  trauma:
+    die: 1d12
+    rating: 3
+img: systems/swnr/assets/icons/game-icons.net/item-icons/weapon-white.svg
+name: Anti-Materiel Rifle
+type: weapon

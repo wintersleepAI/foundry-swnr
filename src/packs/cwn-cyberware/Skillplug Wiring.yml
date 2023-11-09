@@ -1,0 +1,13 @@
+data:
+  concealment: Medical
+  cost: 50000
+  description: >-
+    A neural wiring connection improves a skillplug jack's limits to allow up to level-3
+    skill usage. One set of wires can support any number of jacks, but at least one
+    is needed.
+  effect: Boost skillplug max to level-3
+  strain: 1
+  type: Nerve
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Skillplug Wiring
+type: cyberware

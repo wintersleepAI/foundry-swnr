@@ -1,0 +1,15 @@
+data:
+  accessCost: 0
+  cost: 500
+  description: >-
+    A datafile stored within a cyberspace location. While individual files may have
+    very little actual data in them, the autoencryption functions and anti-tamper
+    code they're wrapped in almost always take up a full unit of Memory per file .
+  selfTerminating: true
+  skillCheckMod: 0
+  target: Data
+  type: subject
+  useAffects: Files on servers
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Datafile
+type: program

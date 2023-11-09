@@ -1,0 +1,31 @@
+data:
+  ammo:
+    burst: true
+    max: 10
+    suppress: true
+    type: special
+    value: 10
+  cost: 10000
+  damage: 3d6
+  description: >-
+    Heavy machine guns are old tech, but reliable. Without a fixed firing position
+    or vehicle mount, however, their recoil makes them almost uncontrollable. Due
+    to the mass of lead involved in firing an HMG, each 'round' of its ammunition
+    costs $100 and counts as a full item of encumbrance. This weapon's Trauma Die
+    can inflict Traumatic Hits on drones, vehicles, and other machines.
+  encumbrance: 3
+  isNonLethal: true
+  range:
+    max: 2000
+    normal: 500
+  secondStat: None
+  shock:
+    ac: 0
+    dmg: 0
+  stat: dex
+  trauma:
+    die: 1d12
+    rating: 3
+img: systems/swnr/assets/icons/game-icons.net/item-icons/weapon-white.svg
+name: Heavy Machine Gun
+type: weapon

@@ -1,0 +1,10 @@
+data:
+  description: >-
+    Gain Program as a bonus skill. You may begin play with an installed Cranial Jack
+    cybersystem, a scrap deck from page 75, and eight program elements of your choice
+    among available Verbs and Subjects. Each round, you gain a bonus Main Action that
+    can only be used to perform hacking or cyberspace-related mental actions. This
+    does not include drone piloting or vehicle driving.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/edge.svg
+name: Hacker
+type: edge

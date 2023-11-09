@@ -1,0 +1,15 @@
+data:
+  accessCost: 1
+  cost: 2500
+  description: >-
+    If a Device is successfully Sieged, its network connections are severed for everyone
+    but the hacker, blocking transit, data, or drone control. Defenders can run Terminate
+    Program against it from any adjacent node.
+  selfTerminating: true
+  skillCheckMod: '-2'
+  target: Device
+  type: verb
+  useAffects: Cut off a device's node from the network
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Siege
+type: program

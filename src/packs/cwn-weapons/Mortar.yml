@@ -1,0 +1,35 @@
+data:
+  ammo:
+    burst: true
+    max: 1
+    suppress: true
+    type: special
+    value: 1
+  cost: 5000
+  damage: 3d6
+  description: >-
+    Mortars are rare, but have their uses amid the tall buildings of an urban sprawl.
+    They have a minimum range of 20 meters, but can lob indirect fire over buildings
+    and obstacles. Mortars always target AC 20 at first, but each round of fire at
+    the same target grants a +1 hit bonus if there's a forward spotter to adjust the
+    aim. Mortar rounds act as frag grenades on the target point, but do 3d6 damage
+    at base with a 10-meter radius. Armor doesn't lessen harm from mortar rounds.
+
+    Relatively simple as they are, a mortar round costs $50 and counts as one item
+    of encumbrance.
+  encumbrance: 3
+  isNonLethal: true
+  range:
+    max: 2000
+    normal: 1000
+  secondStat: None
+  shock:
+    ac: 0
+    dmg: 0
+  stat: wis
+  trauma:
+    die: 1d12
+    rating: 3
+img: systems/swnr/assets/icons/game-icons.net/item-icons/weapon-white.svg
+name: Mortar
+type: weapon

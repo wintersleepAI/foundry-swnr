@@ -1,0 +1,17 @@
+data:
+  concealment: Sight
+  cost: 25000
+  description: >-
+    The user gains an additional limb that normal humans lack. Usual choices involve
+    an additional pair of arms or manipulatory mechano-tentacles, though functional
+    prehensile tails are popular too. One installation of the cyber covers paired
+    limbs or a single tail or body-mounted tendril up to 3 meters long. Neolimbs can
+    support up to one Encumbrance point of non-weaponry built-in tech and add two
+    items to the user's Readied encumbrance allowance. Neolimbs can hold or grip objects,
+    but cannot employ additional shields or grant extra actions.
+  effect: Add a new additional limb
+  strain: 1
+  type: Limb
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Neolimb
+type: cyberware

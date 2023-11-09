@@ -1,0 +1,15 @@
+data:
+  accessCost: 1
+  cost: 500
+  description: >-
+    Erase a data file. This Verb is extremely thorough, and any on-site backups can
+    be expected to be nuked as well, either immediately or as soon as the automatic
+    backup protocols expose them.
+  selfTerminating: true
+  skillCheckMod: 1
+  target: Data
+  type: verb
+  useAffects: Erase a data file and corrupt backups
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Erase
+type: program

@@ -1,0 +1,15 @@
+data:
+  accessCost: 1
+  cost: 5000
+  description: >-
+    Seize control of a device, operating it as you wish within the limits of its functionality
+    for as long as the program remains running. One command is free with the program's
+    successful execution; others take a Main Action to issue.
+  selfTerminating: true
+  skillCheckMod: '-1'
+  target: Device
+  type: verb
+  useAffects: Take remote control of a device
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Hijack
+type: program

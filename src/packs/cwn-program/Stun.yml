@@ -1,0 +1,16 @@
+data:
+  accessCost: 0
+  cost: 1000
+  description: >-
+    Disrupt an avatar or Demon with sensory glitching, non-lethal current surges,
+    and code corruption. Make an Int/Program skill check; beat an opposed Int/Program
+    check for a human target, or a static 8+skill bonus target for a Demon. The target
+    takes 1d10 non-lethal damage per Program level, to a minimum of 1d10.
+  selfTerminating: true
+  skillCheckMod: 1
+  target: Avatar
+  type: verb
+  useAffects: Inflict non-lethal damage on an avatar
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Stun
+type: program

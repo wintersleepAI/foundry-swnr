@@ -1,0 +1,15 @@
+data:
+  cost: 0.2
+  description: >-
+    The drone is equipped with IR optics
+
+    that can see heat patterns. The drone can function adequately even in complete
+    darkness and
+
+    grants the pilot a +1 bonus to Notice skill checks
+
+    where thermal imaging might be useful.
+  mass: 1
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Thermal Optics
+type: shipFitting

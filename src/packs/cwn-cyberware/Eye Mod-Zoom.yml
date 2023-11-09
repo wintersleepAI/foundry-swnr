@@ -1,0 +1,12 @@
+data:
+  concealment: Medical
+  cost: 10000
+  description: "The user's vision can zoom in on distant targets. The user can see\
+    \ objects within 500 meters as if they were standing next to them. The hit penalty\
+    \ for a ranged weapon's long range is eliminated. "
+  effect: 500m telescopic vision
+  strain: 0.5
+  type: Sensory
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Eye Mod/Zoom
+type: cyberware

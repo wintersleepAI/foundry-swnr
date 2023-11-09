@@ -1,0 +1,31 @@
+data:
+  ammo:
+    burst: true
+    max: 0
+    suppress: true
+    type: None
+    value: 0
+  cost: 100
+  damage: 1d10
+  description: "Knives, clubs, swords, and other simple melee weap- ons are available\
+    \ almost anywhere on the street. Par- ticularly impoverished gangers sometimes\
+    \ fashion makeshift machetes and improvised shivs when better can\u2019t be obtained.\
+    \ Such weapons are effectively free, but have a -1 penalty to hit and damage rolls\
+    \ due to their ungainly make. This is a two-handed weapon, making it impossible\
+    \ to have a Readied item in the user's off-hand"
+  encumbrance: 2
+  isNonLethal: true
+  range:
+    max: 0
+    normal: 0
+  secondStat: None
+  shock:
+    ac: 18
+    dmg: 2
+  stat: str
+  trauma:
+    die: 1d8
+    rating: 3
+img: systems/swnr/assets/icons/game-icons.net/item-icons/weapon-white.svg
+name: Big Club
+type: weapon

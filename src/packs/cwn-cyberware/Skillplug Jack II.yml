@@ -1,0 +1,12 @@
+data:
+  concealment: Touch
+  cost: 25000
+  description: >-
+    This improved plug jack allows use of either an intellectual skillplug or one
+    requiring physical expertise, up to level-1.
+  effect: Use level-1 plugs of any kind
+  strain: 0.5
+  type: Head
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Skillplug Jack II
+type: cyberware

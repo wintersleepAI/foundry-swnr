@@ -1,0 +1,15 @@
+data:
+  concealment: Medical
+  cost: 10000
+  description: >-
+    As an On Turn action, the user can nominate a target within 20 meters. Until they
+    get more than 100 meters away from the user or pass behind a solid barrier, the
+    implant's hyper-specific hearing can track their motions perfectly and overhear
+    anything they say or that is said to them. The user can listen to one such target
+    at a time.
+  effect: Eavesdrop on specific targets
+  strain: 0.5
+  type: Sensory
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Ear Mod/Tracer
+type: cyberware

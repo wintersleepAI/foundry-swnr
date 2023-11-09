@@ -1,0 +1,14 @@
+data:
+  accessCost: 1
+  cost: 1000
+  description: >-
+    Edit a data file, changing one piece of data in it into another of the hacker's
+    choice. It cannot erase or add data outright, only alter it.
+  selfTerminating: true
+  skillCheckMod: 0
+  target: Data
+  type: verb
+  useAffects: Change file data to something else
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Replace
+type: program

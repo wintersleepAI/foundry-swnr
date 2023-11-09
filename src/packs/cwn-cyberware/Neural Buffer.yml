@@ -1,0 +1,14 @@
+data:
+  concealment: Medical
+  cost: 40000
+  description: >-
+    A system favored by hackers, a Neural Buffer rearranges the user's brain topography,
+    making it more difficult to harm the user with neural feedback. The user gains
+    an additional 3 hit points per level that can only absorb cyberspace damage from
+    Stun or 000ill Verbs. These phantom hit points refresh completely each hour.
+  effect: Gain 3 HP/level vs hacker dmg
+  strain: 1
+  type: Head
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Neural Buffer
+type: cyberware

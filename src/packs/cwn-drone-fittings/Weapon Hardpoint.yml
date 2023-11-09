@@ -1,0 +1,10 @@
+data:
+  cost: 0.25
+  description: "Drones that are not factory-equipped with weapon hardpoints can have\n\
+    \ one worked in as an aftermarket addition. The\n usual hardpoint limits on maximum\
+    \ allowed\n weapon size still apply, however, and this fitting \ncounts as two\
+    \ for purposes of the drone\u2019s maximum fittings."
+  mass: 1
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Weapon Hardpoint
+type: shipFitting

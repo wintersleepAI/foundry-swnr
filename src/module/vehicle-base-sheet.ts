@@ -9,6 +9,7 @@ import { SWNRShipDefense } from "./items/shipDefense";
 import { SWNRShipFitting } from "./items/shipFitting";
 import { SWNRShipWeapon } from "./items/shipWeapon";
 import { SWNRAllVehicleClasses } from "./actor-types";
+import { SWNRCyberdeckActor } from "./actors/cyberdeck";
 
 export class VehicleBaseActorSheet<
   T extends ActorSheet.Data
@@ -38,6 +39,7 @@ export class VehicleBaseActorSheet<
     }
     const actor:
       | SWNRDroneActor
+      | SWNRCyberdeckActor
       | SWNRMechActor
       | SWNRShipActor
       | SWNRVehicleActor = this.actor;
@@ -172,6 +174,9 @@ Hooks.on("dropActorSheetData", (actor: Actor, actorSheet: ActorSheet, data) => {
     } else if (actor.type == "vehicle") {
       const vActor = (actor as unknown) as SWNRVehicleActor;
       vActor.addCrew(payload);
+    } else if (actor.type == "cyberdeck") {
+      const cActor = (actor as unknown) as SWNRCyberdeckActor;
+      cActor.addHacker(payload);
     }
   }
 });

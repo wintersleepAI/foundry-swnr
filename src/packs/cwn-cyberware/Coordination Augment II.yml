@@ -1,0 +1,12 @@
+data:
+  concealment: Touch
+  cost: 200000
+  description: >-
+    As Coordination Augment I, but the subject gains a Dexterity score of 18, and
+    their base Move rate is increased by 10 meters.
+  effect: Dex 18 and +10m Move
+  strain: 3
+  type: Nerve
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Coordination Augment II
+type: cyberware

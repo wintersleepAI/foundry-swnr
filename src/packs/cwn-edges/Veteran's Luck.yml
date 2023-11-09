@@ -1,0 +1,7 @@
+data:
+  description: >-
+    Once per scene, as an Instant action, trigger this ability to gain one of two
+    effects,an attack roll that just hit you is instead treated as a miss
+img: systems/swnr/assets/icons/game-icons.net/item-icons/edge.svg
+name: Veteran's Luck
+type: edge

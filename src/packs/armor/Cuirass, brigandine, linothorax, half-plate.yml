@@ -1,6 +1,12 @@
 _id: TLueYtc5h2OZnTyJ
 data:
   ac: 15
+  meleeAc: 15
+  traumaDiePenalty: 2
+  isSubtle: false
+  soak:
+    value: 8
+    max: 8
   cost: 50
   description: >-
     Primitive armor is a catch-all covering all armor technology that lacks

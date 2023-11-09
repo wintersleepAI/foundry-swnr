@@ -1,0 +1,11 @@
+data:
+  cost: 25
+  description: >-
+    Backpacks, gear harnesses, and other such kit may add some bulk to an operator`s
+    burden, but without them the GM is perfectly justified in asking how a PC is fitting
+    their entire loadout in their jacket pockets.
+  encumbrance: 1
+  noEncReadied: true
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
+name: Backpack
+type: item

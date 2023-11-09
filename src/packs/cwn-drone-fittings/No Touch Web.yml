@@ -1,0 +1,13 @@
+data:
+  cost: 0.1
+  description: >-
+    Most commonly installed on small ground drones, this web can be armed as a Main
+    Action by the pilot. Until disarmed, any attempt to grab or pick up the drone
+    automatically inflicts 2d6 non-lethal electrical damage on the grabber. This shock
+    continues each round as long as the drone is held, with up to 5 discharges total
+    before the battery must be recharged. The firm contact required makes it impractical
+    to use the web as an offensive weapon.
+  mass: 1
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: No Touch Web
+type: shipFitting

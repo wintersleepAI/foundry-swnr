@@ -1,0 +1,14 @@
+data:
+  concealment: Medical
+  cost: 250000
+  description: >-
+    Once per scene, as an On Turn action, the user gains a bonus non-cyberspace Main
+    Action and Move action. By accepting one System Strain, this ability can be used
+    as an Instant action, potentially interrupting incoming attacks if the user moves
+    out of reach.
+  effect: 1/scene, bonus Main and Move
+  strain: 3
+  type: Nerve
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Enhanced Reflexes II
+type: cyberware

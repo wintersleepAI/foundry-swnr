@@ -1,0 +1,15 @@
+data:
+  cost: 2500
+  description: >-
+    The driver can order the vehicle directly or by radio or phone to go to particular
+    places at particular times or perform other simple, direct actions on a given
+    schedule. The onboard expert system can handle traffic-related challenges, but
+    has no real intelligence to process more complicated problems.
+  effect: Limited AI driving capabilities
+  mass: 1
+  minClass: S
+  power: 1
+  type: vehicle
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Ghost Driver
+type: shipFitting

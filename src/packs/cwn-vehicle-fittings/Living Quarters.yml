@@ -1,0 +1,15 @@
+data:
+  cost: 8000
+  description: >-
+    Basic, cramped quarters are provided for sleeping, sanitation, and cooking for
+    all crew. Permanent living in a vehicle costs and counts as a slum lifestyle,
+    though occupants with the Ace Driver or Roamer Focus can treat it as middle-class
+    for the same price.
+  effect: Cramped but usable living quarters
+  mass: 4
+  minClass: L
+  power: 0
+  type: vehicle
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Living Quarters
+type: shipFitting

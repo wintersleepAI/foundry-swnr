@@ -1,0 +1,18 @@
+data:
+  description: >-
+    While anyone can drive a drone under casual circumstances, your knack for it is
+    something unusual.
+  level1: Gain Drive and Fix as bonus skills. You acquire or start play with a Remote
+    Control Unit cybersystem and its installation. Through connections, scavenging,
+    and parts repurpose, you have free drones and their weapons and fittings worth
+    no more than the budget given in section 1.6.2. You can repair these drones without
+    needing spare parts, and destroyed drones can be replaced with a week's work.
+    You always have the equivalent of a drone repair kit on you at no Encumbrance
+    cost.
+  level2: You can use the Assume Command drone action once per round as an On Turn
+    action. Once per scene, gain a bonus Main Action to command a drone. Any drones
+    you control gain a +2 bonus to their hit rolls, whether or not you're personally
+    firing their weaponry.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/reticule.svg
+name: Drone Pilot
+type: focus

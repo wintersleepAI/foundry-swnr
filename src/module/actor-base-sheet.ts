@@ -1,4 +1,3 @@
-import { Cipher } from "crypto";
 import { SWNRBaseItem } from "./base-item";
 import { getDefaultImage } from "./utils";
 import { ValidatedDialog } from "./ValidatedDialog";
@@ -141,7 +140,6 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
       );
       const s = popUpDialog.render(true);
       if (s instanceof Promise) await s;
-
     } else {
       ui.notifications?.info("Could not find any items in the compendium");
     }
@@ -152,20 +150,23 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     event.stopPropagation();
     const itemType = $(event.currentTarget).data("itemType");
     const givenName = $(event.currentTarget).data("itemName");
-    const itemName = givenName ? `New ${givenName}` : "New Item";
+    let itemName = givenName ? `New ${givenName}` : "New Item";
     const imgPath = getDefaultImage(itemType);
+    const itemObj = {
+      name: itemName,
+      type: itemType,
+      img: imgPath,
+    };
+    const itemSubType = $(event.currentTarget).data("itemSubtype");
+    if (itemSubType) {
+      itemName = `New ${itemSubType}`;
+      itemObj["name"] = itemName;
+      itemObj["data"] = {
+        type: itemSubType,
+      };
+    }
     if (itemType) {
-      this.actor.createEmbeddedDocuments(
-        "Item",
-        [
-          {
-            name: itemName,
-            type: itemType,
-            img: imgPath,
-          },
-        ],
-        {}
-      );
+      this.actor.createEmbeddedDocuments("Item", [itemObj], {});
     }
   }
 

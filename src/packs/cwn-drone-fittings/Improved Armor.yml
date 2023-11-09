@@ -1,0 +1,9 @@
+data:
+  cost: 0.25
+  description: "The drone\u2019s AC improves by 2, to a maximum of 18, but its Encumbrance\
+    \ rating increases by one. This fitting is ineffective on drones too big to have\
+    \ an Encumbrance rating; they need vehicle-grade armor upgrades."
+  mass: 1
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Improved Armor
+type: shipFitting

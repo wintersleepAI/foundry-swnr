@@ -1,0 +1,32 @@
+data:
+  ammo:
+    burst: true
+    max: None
+    suppress: true
+    type: None
+    value: None
+  cost: 150
+  damage: 1d8
+  description: >-
+    Land mines come in anti-personnel and anti-vehicle flavors. The first activates
+    on any human-sized approach within 1 meter, inflicting damage in a 2-meter radius
+    with an Evasion save for half. Anti-vehicle mines can only be activated by vehicular
+    levels of ground pressure or vehicle-sized proximate metal masses, but do their
+    damage in a 5-meter radius. Humans get an Evasion save for half damage in either
+    case.
+  encumbrance: 1
+  isNonLethal: true
+  range:
+    max: 0
+    normal: 0
+  secondStat: None
+  shock:
+    ac: 0
+    dmg: 0
+  stat: None
+  trauma:
+    die: 1d10
+    rating: 3
+img: systems/swnr/assets/icons/game-icons.net/item-icons/weapon-white.svg
+name: Land Mine, Anti-Pers.
+type: weapon

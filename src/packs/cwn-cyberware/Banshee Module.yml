@@ -1,0 +1,16 @@
+data:
+  concealment: Medical
+  cost: 30000
+  description: >-
+    Resonant cavities are designed into the user's torso, along with an advanced amplification
+    system. They can reproduce any sound or voice they have heard before, and at maximum
+    volume can be heard clearly up to five hundred meters away. Once per day, as a
+    Main Action, this sound can be used to shatter normal glass in a ten-meter line
+    in front of the user; creatures without ear protection in this area must make
+    a Physical save or take 2d6 non-lethal damage.
+  effect: Mimic voices and stun enemies
+  strain: 1
+  type: Body
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Banshee Module
+type: cyberware

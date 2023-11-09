@@ -240,9 +240,36 @@ export async function applyHealthDrop(total: number): Promise<void> {
 
   for (const t of tokens) {
     const actor = t.actor;
+    let isDefeated = false;
+
     if (!actor) {
       ui.notifications?.error("Error getting actor for token " + t.name);
       continue;
+    }
+    if (actor.type == "cyberdeck") {
+      const shielding = actor.data.data.health.value;
+      if (total > 0) {
+        // take from shielding first
+        const newShielding = Math.max(shielding - total, 0);
+        total -= shielding - newShielding;
+        await actor.update({ "data.health.value": newShielding });
+        await showValueChange(t, "0xFFA500", shielding - newShielding);
+        if (total > 0) {
+          isDefeated = true;
+          const hacker = actor.getHacker();
+          // damage still to player
+          if (hacker) {
+            const oldHealth = hacker.data.data.health.value;
+            const newHealth = Math.max(oldHealth - total, 0);
+            const damage = oldHealth - newHealth;
+            await hacker.update({ "data.health.value": newHealth });
+            total = 0; // prevent later damage
+            ui.notifications?.info(
+              `${hacker.name} takes ${damage} damage, now at ${newHealth} health`
+            );
+          }
+        }
+      }
     }
     if (game.settings.get("swnr", "useCWNArmor")) {
       const armorWithSoak = <SWNRBaseItem<"armor">[]>(
@@ -264,8 +291,9 @@ export async function applyHealthDrop(total: number): Promise<void> {
         }
       }
     }
+    const oldHealth = actor.data.data.health.value;
     if (total != 0) {
-      let newHealth = actor.data.data.health.value - total;
+      let newHealth = oldHealth - total;
       if (newHealth < 0) {
         newHealth = 0;
       } else if (newHealth > actor.data.data.health.max) {
@@ -277,6 +305,33 @@ export async function applyHealthDrop(total: number): Promise<void> {
       //https://gitlab.com/mkahvi/fvtt-micro-modules/-/blob/master/pf1-floating-health/floating-health.mjs#L182-194
       const fillColor = total < 0 ? "0x00FF00" : "0xFF0000";
       showValueChange(t, fillColor, total);
+
+      if (newHealth <= 0) {
+        isDefeated = true;
+      } else if (oldHealth <= 0) {
+        // token was at <=0 and now is not
+        isDefeated = false;
+      } else {
+        // we can return no status to update
+        return;
+      }
+      await t.combatant?.update({ defeated: isDefeated });
+      const status = CONFIG.statusEffects.find(
+        (e) => e.id === CONFIG.specialStatusEffects.DEFEATED
+      );
+      if (!status) return;
+      const effect = actor && status ? status : CONFIG.controlIcons.defeated;
+      if (t.object) {
+        await t.object.toggleEffect(effect, {
+          overlay: true,
+          active: isDefeated,
+        });
+      } else {
+        await t.toggleEffect(effect, {
+          overlay: true,
+          active: isDefeated,
+        });
+      }
     }
   }
 }
@@ -426,6 +481,8 @@ export function getDefaultImage(itemType: string): string | null {
     weapon: "weapon-white.svg",
     power: "psychic-waves-white.svg",
     skill: "book-white.svg",
+    edge: "edge.svg",
+    program: "program.svg",
   };
   if (itemType in imgMap) {
     return `${icon_path}/${imgMap[itemType]}`;
@@ -468,7 +525,7 @@ export async function initCompendSkills(
     [name: string]: CompendiumCollection<CompendiumCollection.Metadata>;
   } = {};
   for (const e of game.packs) {
-    if (e.metadata.entity === "Item") {
+    if (e.metadata.type === "Item") {
       const items = await e.getDocuments();
       if (items.filter((i) => (<SWNRBaseItem>i).type == "skill").length) {
         candidates[e.metadata.name] = e;
@@ -510,7 +567,16 @@ export async function initCompendSkills(
             const toAdd = await candidates[comped].getDocuments();
             const primarySkills = toAdd
               .filter((i) => i.data.type === "skill")
-              .map((item) => item.toObject());
+              .map((item) => item.toObject())
+              .sort((a, b) => {
+                if (a.name < b.name) {
+                  return -1;
+                }
+                if (a.name > b.name) {
+                  return 1;
+                }
+                return 0;
+              });
             await actor.createEmbeddedDocuments("Item", primarySkills);
           },
         },

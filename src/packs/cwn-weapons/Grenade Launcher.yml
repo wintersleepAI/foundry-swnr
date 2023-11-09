@@ -1,0 +1,35 @@
+data:
+  ammo:
+    burst: true
+    max: 3
+    suppress: true
+    type: special
+    value: 3
+  cost: 3000
+  damage: 0
+  description: >-
+    Grenade launchers are accessories that are mounted on rifle-sized firearms, adding
+    1 Encumbrance to their bulk. These weapons can launch specially-designed grenades
+    to the listed range, targeting them as if they were thrown normally. These special
+    grenades cost and function the same as their regular equivalents but cannot be
+    thrown by hand. When attacking, the user can choose whether to fire the grenade
+    launcher or the weapon it's mounted to, but both cannot be fired in the same round.
+
+    Stand-alone grenade launcher models are available for vehicle or drone mounting,
+    counting as 2 Encumbrance but otherwise having the same cost and statistics.
+  encumbrance: 1
+  isNonLethal: true
+  range:
+    max: 350
+    normal: 150
+  secondStat: None
+  shock:
+    ac: 0
+    dmg: 0
+  stat: Dex
+  trauma:
+    die: None
+    rating: None
+img: systems/swnr/assets/icons/game-icons.net/item-icons/weapon-white.svg
+name: Grenade Launcher
+type: weapon

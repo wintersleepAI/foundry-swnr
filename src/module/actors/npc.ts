@@ -5,9 +5,11 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
     const e = this.data.data.effort;
     e.value = e.max - e.current - e.scene - e.day;
     const useCWNArmor = game.settings.get("swnr", "useCWNArmor") ? true : false;
+    const useCWNTrauma = game.settings.get("swnr", "useTrauma") ? true : false;
     if (this.data.data.settings == null) {
       this.data.data.settings = {
         useCWNArmor: useCWNArmor,
+        useTrauma: useCWNTrauma,
       };
     } else {
       this.data.data.settings.useCWNArmor = useCWNArmor;
@@ -76,6 +78,24 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
         ]);
       }
     }
+  }
+
+  _onUpdate(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
+    data: any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
+    options: any,
+    userId: string
+  ): void {
+    if (this.data.data.cyberdecks && this.data.data.cyberdecks.length > 0) {
+      for (const deckId of this.data.data.cyberdecks) {
+        const deck = game.actors?.get(deckId);
+        if (deck) {
+          deck.sheet?.render();
+        }
+      }
+    }
+    super._onUpdate(data, options, userId);
   }
 }
 

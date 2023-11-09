@@ -1,0 +1,12 @@
+data:
+  description: "You are a frenzy of bloody havoc in melee combat, and can hack down\
+    \ numerous lesser foes in close combat\u2026 assuming you survive being surrounded."
+  level1: 'Gain Stab or Punch as a bonus skill. Once per scene, as an On Turn action,
+    apply your Shock damage to all foes within melee range, assuming they''re susceptible
+    to your Shock. '
+  level2: The first time you kill someone in a round with a normal attack, either
+    with its rolled damage on a hit or with the Shock damage it inflicts, instantly
+    gain a second attack on any target within range using any Ready weapon you have.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/reticule.svg
+name: Whirlwind Assault
+type: focus

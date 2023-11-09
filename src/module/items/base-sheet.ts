@@ -5,6 +5,7 @@ import { SWNRMechActor } from "../actors/mech";
 import { SWNRNPCActor } from "../actors/npc";
 import { SWNRShipActor } from "../actors/ship";
 import { SWNRVehicleActor } from "../actors/vehicle";
+import { SWNRCyberdeckActor } from "../actors/cyberdeck";
 
 interface BaseSheetData extends ItemSheet.Data {
   actor:
@@ -15,6 +16,7 @@ interface BaseSheetData extends ItemSheet.Data {
     | SWNRVehicleActor
     | SWNRMechActor
     | SWNRFactionActor
+    | SWNRCyberdeckActor
     | null;
 }
 export class BaseSheet extends ItemSheet<DocumentSheet.Options, BaseSheetData> {
@@ -47,6 +49,33 @@ export class BaseSheet extends ItemSheet<DocumentSheet.Options, BaseSheetData> {
     data.actor = this.actor;
     return data;
   }
+
+  // Commenting out for now in case it is needed for mods
+  // /** @override */
+  // activateListeners(html: JQuery): void {
+  //   super.activateListeners(html);
+  //   html.on("drop", (ev) => {
+  //     this._onDrop(ev.originalEvent as DragEvent);
+  //   });
+  // }
+
+  // protected async _onDrop(event: DragEvent): Promise<boolean | any> {
+  //   event.preventDefault();
+  //   if (event) {
+  //     super._onDrop(event);
+  //     if (this.item.data.type !== "cyberware") return false;
+  //     let data;
+  //     try {
+  //       if (event.dataTransfer == null) return false;
+  //       data = JSON.parse(event.dataTransfer.getData("text/plain"));
+  //       if (data.type === "Item") {
+  //         const item = game.items?.find((item) => item.uuid === data.uuid);
+  //       }
+  //     } catch (err) {
+  //       return false;
+  //     }
+  //   }
+  // }
 }
 export const sheet = BaseSheet;
 export const types = [];

@@ -34,7 +34,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     return mergeObject(super.defaultOptions, {
       classes: ["swnr", "sheet", "actor", "character", "test broken"],
       template: "systems/swnr/templates/actors/character-sheet.html",
-      width: 750,
+      width: 770,
       height: 600,
       tabs: [
         {

@@ -1,0 +1,14 @@
+data:
+  concealment: Touch
+  cost: 10000
+  description: >-
+    A standard medical-grade cyberlimb, albeit one Encumbrance worth of non-weapon
+    equipment or storage can be implanted in each limb and remain Readied without
+    counting against the character's Encumbrance. Add the equipment cost to the limb.
+    The limb provides power to any electronic equipment implanted.
+  effect: Prosthetic with storage space
+  strain: 0.5
+  type: Limb
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Cyberlimb
+type: cyberware

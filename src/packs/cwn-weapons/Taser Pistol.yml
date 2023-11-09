@@ -1,0 +1,29 @@
+data:
+  ammo:
+    burst: true
+    max: 2
+    suppress: true
+    type: ammo
+    value: 2
+  cost: 500
+  damage: 1d8
+  description: >-
+    Taser pistols cover a family of ranged non-lethal weapons small and light enough
+    to carry concealed. Most rely on tried-and-True electrical shocks to drop a target;
+    they inflict non-lethal hit point damage and cannot make Traumatic Hits.
+  encumbrance: 1
+  isNonLethal: true
+  range:
+    max: 15
+    normal: 10
+  secondStat: None
+  shock:
+    ac: 0
+    dmg: 0
+  stat: dex
+  trauma:
+    die: None
+    rating: None
+img: systems/swnr/assets/icons/game-icons.net/item-icons/weapon-white.svg
+name: Taser Pistol
+type: weapon

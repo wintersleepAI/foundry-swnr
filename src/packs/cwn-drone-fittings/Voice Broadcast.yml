@@ -1,0 +1,9 @@
+data:
+  cost: 0.1
+  description: >-
+    The pilot can speak through the drone or cause it to emit other noises at a volume
+    loud enough to be heard clearly a hundred meters away.
+  mass: 1
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Voice Broadcast
+type: shipFitting

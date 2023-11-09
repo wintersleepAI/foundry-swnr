@@ -1,0 +1,13 @@
+data:
+  concealment: Medical
+  cost: 100000
+  description: >-
+    A system that can only be installed on a user with at least one level of Dermal
+    Armor, the trauma shielding addition adds +1 to the user's Trauma Target. This
+    benefit stacks with any existing Dermal Armor bonus to the roll.
+  effect: Add +1 to user's Trauma Target
+  strain: 1
+  type: Body
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Dermal Armor/Trauma Shielding
+type: cyberware

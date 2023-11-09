@@ -1,0 +1,395 @@
+<form class="{{cssClass}} -m-2 p-2 form-sheet">
+  {{#if actor.limited}}
+    {{>
+    "systems/swnr/templates/actors/fragments/limited-sheet.html"
+    actor=actor
+    }}
+  {{else}}
+  <div>
+    <div class="flex flex-col gap-2">
+      <!-- Grid div for header -->
+      <div class="flex-grow grid grid-cols-6 items-center gap-1">
+        <div class="name  row-span-2 flex flex-col items-center">
+          <img class="profile-img w-24 h-24 object-contain" src="{{actor.img}}" title="{{actor.name}}"
+            data-edit="img" />
+        </div>
+
+        <!-- name -->
+        <div class="name flex flex-col items-center">
+          <input name="name"
+            class="text-2xl px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            type="text" value="{{actor.name}}" placeholder="{{localize 'swnr.sheet.name'}}" />
+          <span>{{localize 'swnr.sheet.name'}}</span>
+        </div>
+
+        <!--HP/shielding-->
+        <div class="hp flex flex-col justify-center items-center">
+          <div class="flex flexcol">
+            <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+              <input
+                class="w-6 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
+                type="number" step="1" name="data.health.value" value="{{actor.data.data.health.value}}"
+                data-dtype="Number" min="0" /><span>/</span>
+                <span 
+                    class="w-8 text-left pr-1.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
+                >
+                  {{actor.data.data.health.max}}
+                </span>
+            </div>
+            <label
+              class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+              {{localize 'swnr.sheet.cyberdeck.shielding'}} 
+              <a
+                class="shielding-refresh text-gray-400 hover:text-purple-800 transition-colors"
+                title="{{localize 'swnr.sheet.refresh'}}"
+              >
+                <i class="fas fa-retweet"></i>
+              </a>
+            </label>
+            
+            <!-- bar -->
+            <div class="flex gap-2 items-center">
+              <div
+                class="bg-green-300 border border-green-900 w-full rounded-full h-4 overflow-hidden"
+              >
+                <div
+                  class="bg-green-500 h-full rounded-full"
+                  style="width: min(calc(100% * {{actor.data.data.health.value}}/{{actor.data.data.health.max}}));"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--memory-->
+        <div class="hp flex flex-col justify-center items-center">
+          <div class="flex flexcol">
+            <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+              <span
+                class="cursor-not-allowed w-6 text-right pl-1.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield">
+                {{actor.data.data.memory.value}}
+                </span><span>/</span><input
+                class="w-6 text-left pr-1.5  bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
+                type="number" name="data.memory.max" value="{{actor.data.data.memory.max}}" step="1" min="1"
+                data-dtype="Number" />
+            </div>
+            <label
+              class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+              {{localize 'swnr.sheet.cyberdeck.memory'}}
+            </label>
+            <!-- bar -->
+            <div class="flex gap-2 items-center">
+              <div
+                class="bg-purple-300 border border-purple-900 w-full rounded-full h-4 overflow-hidden"
+              >
+                <div
+                  class="bg-purple-500 h-full rounded-full"
+                  style="width: min(calc(100% * {{actor.data.data.memory.value}}/{{actor.data.data.memory.max}}));"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--cpu-->
+        <div class="hp flex flex-col justify-center items-center">
+          <div class="flex flexcol">
+            <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+              <span
+                class="cursor-not-allowed w-8 text-right pl-1.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield">
+                {{actor.data.data.cpu.value}}
+                </span><span>/</span><input
+                class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
+                type="number" name="data.cpu.max" value="{{actor.data.data.cpu.max}}" step="1" min="1"
+                data-dtype="Number" />
+            </div>
+            <label
+              class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+              {{localize 'swnr.sheet.cyberdeck.cpu'}}
+            </label>
+            <!-- bar -->
+            <div class="flex gap-2 items-center">
+              <div
+                class="bg-yellow-200 border border-yellow-600 w-full rounded-full h-4 overflow-hidden"
+              >
+                <div
+                  class="bg-yellow-400 h-full rounded-full"
+                  style="width: min(calc(100% * {{actor.data.data.cpu.value}}/{{actor.data.data.cpu.max}}));"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!--enc-->
+        <div class="mass flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" step="1" name="data.encumberance" value="{{actor.data.data.encumberance}}" data-dtype="Number" min="0" />
+          </div>
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.drone.enc'}}
+          </label>
+        </div>
+
+        <!--bonus access-->
+        <div class="mass flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" step="1" name="data.bonusAccess" value="{{actor.data.data.bonusAccess}}" data-dtype="Number" min="0" />
+          </div>
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.cyberdeck.bonusAccess'}}
+          </label>
+        </div>
+
+        <!--base shieldng-->
+        <div class="mass flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" step="1" name="data.baseShielding" value="{{actor.data.data.baseShielding}}" data-dtype="Number" min="0" />
+          </div>
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.cyberdeck.baseShielding'}}
+          </label>
+        </div>
+
+        <!--bonus shielding-->
+        <div class="mass flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" step="1" name="data.bonusShielding" value="{{actor.data.data.bonusShielding}}" data-dtype="Number" min="0" />
+          </div>
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.cyberdeck.bonusShielding'}}
+          </label> 
+        </div>
+
+        <div class="mass flex flex-col justify-center items-center">
+          <div class="flex flexrow">
+            {{localize 'swnr.sheet.cyberdeck.neuralBuffer'}}:<input type="checkbox" name="data.neuralBuffer" {{checked data.data.neuralBuffer}}>
+          </div>
+          <div class="flex flexrow">
+            {{localize 'swnr.sheet.cyberdeck.wirelessConnectionPenalty'}}:<input type="checkbox" name="data.wirelessConnectionPenalty" {{checked data.data.wirelessConnectionPenalty}}>
+          </div>
+
+          <div class="flex flexrow">
+            {{localize 'swnr.sheet.cyberdeck.crownPenalty'}}:<input type="checkbox" name="data.crownPenalty" {{checked data.data.crownPenalty}}>
+          </div>
+        </div>
+
+
+        <!--cost-->
+        <div class="mass flex flex-col justify-center items-center">
+          <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
+            <input
+              class="w-20 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number" step="1" name="data.cost" value="{{actor.data.data.cost}}" data-dtype="Number" min="0" />
+          </div>
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.ship.cost'}}
+          </label>
+        </div>
+      </div>
+      <!-- new row for health & hacker -->
+      <div class="flex-grow grid grid-cols-4 items-center gap-1">
+        <!--hacker-->
+        <div class="hacker flex flex-row justify-center items-right">
+          <label
+            class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
+            {{localize 'swnr.sheet.cyberdeck.hacker'}}:
+          </label>
+          <div class="border item border-gray-800 bg-gray-400 mx-auto rounded-md" data-crew-id="{{hacker.id}}"
+            data-crew-name="{{hacker.name}}">
+            <input
+              class="crew-show w-16 text-center pl-0.5 py-0.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+               value="{{hacker.name}}" readonly />
+            {{#if hacker}}
+            <a class="item-control mr-1 crew-roll text-gray-700 hover:text-purple-600 transition-colors"
+              title='{{localize 'swnr.sheet.roll-skill'}}'><i class="fas fa-dice"></i></a>
+            <a class="item-control mr-1 crew-delete text-gray-700 hover:text-red-600 transition-colors"
+              title='{{localize 'swnr.sheet.delete-item'}}'><i class="fas fa-trash"></i></a>
+            {{/if}}
+          </div>
+
+        </div>
+
+        {{#if hacker}}
+        <div class="hackerhp flex flex-col justify-center items-center">
+          <div class="flex flexcol">
+              <!-- HP -->
+              <div class="hp flex flex-row justify-center items-center">
+                <label class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow"
+                    > {{localize 'swnr.sheet.hp'}}: 
+                </label>
+                <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md subfield">
+                  
+                  <span 
+                    class="inline-block text-right text-gray-300 cursor-not-allowed w-8 subfield"
+                  >{{hacker.data.data.health.value}}</span>
+                  <span>/</span>
+                  <span 
+                    class="inline-block text-left text-gray-300 cursor-not-allowed w-8 subfield"
+                  >{{hacker.data.data.health.max}}</span>
+                </div>
+              </div>
+              <!-- bar -->
+              <div class="flex gap-2 items-center">
+                <div
+                  class="bg-green-300 border border-green-900 w-full rounded-full h-4 overflow-hidden"
+                >
+                  <div
+                    class="bg-green-500 h-full rounded-full"
+                    style="width: min(calc(100% * {{hacker.data.data.health.value}}/{{hacker.data.data.health.max}}));"
+                  ></div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="hackeraccess flex flex-col justify-center items-center grid-cols-2">
+          <div class="flex flexcol">
+              <!-- access -->
+              <div class="hp flex flex-row justify-center items-center">
+                <label class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow"
+                    > {{localize 'swnr.sheet.access'}} 
+                  <a
+                    class="access-refresh text-gray-400 hover:text-purple-800 transition-colors"
+                    title="{{localize 'swnr.sheet.refresh'}}"
+                  >
+                    <i class="fas fa-retweet"></i>
+                  </a>: 
+                </label>
+                <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md subfield">
+                  
+                  <span 
+                      class="cursor-not-allowed text-gray-300 w-6 text-right pl-1.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
+                  >{{access.value}}</span>
+                  <span>/</span>
+                  <span 
+                    class="inline-block text-left text-gray-300 cursor-not-allowed w-8 subfield"
+                  >{{access.max}}</span>
+                </div>
+              </div>
+              <!-- bar -->
+              <div class="flex gap-2 items-center">
+                <div
+                  class="bg-yellow-200 border border-yellow-600 w-full rounded-full h-4 overflow-hidden"
+                >
+                  <div
+                    class="bg-yellow-400 h-full rounded-full"
+                    style="width: min(calc(100% * {{hacker.data.data.access.value}}/{{hacker.data.data.access.max}}));"
+                  ></div>
+                </div>
+              </div>
+          </div> <!--access-->
+        </div>
+
+        {{/if}}
+      </div><!-- header -->
+    </div>
+
+    <!-- body-->
+    <div class="w-full">
+        <section class="sheet-body">
+          <!--<div class="tab mods min-h-full" data-group="primary" data-tab="mods">-->
+          <div class="flex flex-col gap-2 min-h-full">
+            <div class="min-h-full">
+              <div><!-- running programs -->
+                <li class="item-titles flexrow">
+                  <div class="item-name">Active Running Programs</div>
+                  <div class="item-status text-right">   
+                    <a class="item-control activate-program text-gray-100 hover:text-green-400 transition-colors"
+                    title="{{localize 'swnr.sheet.add-item'}}" data-item-type="program" data-item-name="Program">
+                      <i class="fas fa-plus"></i>
+                    </a>
+                  </div>
+                </li>
+                <ol class="item-list">
+                  {{#each activePrograms as |item id|}}
+                  <li class="item-alternating">
+                    <div class="item flexrow
+                      {{#if (mod2 @id) }}
+                        bg-gray-600
+                        {{else}}
+                        bg-gray-400
+                        {{/if}}
+                    " data-item-id="{{item.id}}">
+                      <div class="item-name item-click item-rollable flexrow flex2">
+                        <div class="item-image" style="background-image: url({{item.img}})">
+                          <a></a>
+                        </div>
+                        <a>{{item.name}}</a> 
+                        {{#if item.data.data.useAffects}}
+                          [{{item.data.data.useAffects}}]
+                        {{/if}}
+                      </div>
+                      <div class="item-controls  text-right">
+                        <a class="item-control item-edit text-gray-200 hover:text-purple-800 transition-colors" 
+                          title='{{localize 'swnr.sheet.edit-item'}}'><i class="fas fa-edit"></i></a>
+          
+                        <a class="item-control item-delete text-gray-200 hover:text-red-600 transition-colors" 
+                          title='{{localize 'swnr.sheet.delete-item'}}'><i class="fas fa-trash"></i></a>
+                      </div>
+                    </div>
+                  </li>
+                  {{/each}}
+                  {{#times actor.data.data.cpu.value}}
+                  <li class="item-alternating">
+                    <div class="item flexrow
+                      {{#if (mod2Offset @this ../activePrograms.length) }}
+                      bg-gray-600
+                      {{else}}
+                      bg-gray-400
+                      {{/if}}
+                    ">
+                      [free slot]
+                    </div>
+                  </li>
+                  {{/times}}
+                </ol>
+              </div>
+            </div>
+            <div class="min-h-full">
+              <div>
+                <!-- verbs -->
+                {{>
+                "systems/swnr/templates/actors/fragments/program-list.html" 
+                  type=actor.type actor=actor subtype="verb" items=verbs
+                }}
+              </div>
+            </div>
+            <div class="grid grid-cols-2">
+              <div>
+                <!-- Subjects -->
+                {{>
+                "systems/swnr/templates/actors/fragments/program-list.html" 
+                  type=actor.type actor=actor subtype="subject" items=subjects
+                }}
+              </div>
+              <div>
+                <!--Datafiles-->
+                {{>
+                "systems/swnr/templates/actors/fragments/program-list.html" 
+                  type=actor.type actor=actor subtype="datafile" items=datafiles
+                }}
+              </div>
+  
+            </div>
+
+    </div>
+
+
+  </div>
+  {{/if}}
+</form>

@@ -1,0 +1,14 @@
+data:
+  accessCost: 1
+  cost: 1000
+  description: >-
+    Lock a physical device that has some sort of electronic locking mechanism or a
+    currently-unlocked cyberspace node barrier.
+  selfTerminating: true
+  skillCheckMod: 1
+  target: Device/Data
+  type: verb
+  useAffects: Lock an electronic lock or node barrier
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Lock
+type: program

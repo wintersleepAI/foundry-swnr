@@ -88,7 +88,7 @@ Hooks.once("ready", function () {
   // Reference a Compendium pack by it's collection ID
   // packImport();
   migrations();
-  Hooks.on("hotbarDrop", (bar, data, slot) => createSWNRMacro(data, slot));
+  Hooks.on("hotbarDrop", (_bar, data, slot) => createSWNRMacro(data, slot));
 });
 
 Hooks.on("renderChatMessage", (message, html, _data) =>

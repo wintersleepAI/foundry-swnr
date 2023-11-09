@@ -1,0 +1,113 @@
+<form class="{{cssClass}} -m-2 p-2 form-sheet">
+  {{> "systems/swnr/templates/items/fragments/desc.html"}}
+  <div class="flex flexrow gap-2 text-center">
+    <div class="flex flexrow">
+      {{localize 'swnr.sheet.program.type'}}:
+       <select name="data.type"
+        class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
+        {{#select data.data.type}}
+        <option value="verb">
+          {{localize 'swnr.sheet.program.verb'}}
+        </option>
+        <option value="subject">{{localize 'swnr.sheet.program.subject'}}</option>
+        <option value="datafile">{{localize 'swnr.sheet.program.datafile'}}</option>
+        <option value="running">{{localize 'swnr.sheet.program.running'}}</option>
+        
+        {{/select}}
+      </select>
+    </div>
+  </div>
+  <div class="flex flexrow gap-2 text-center">
+
+
+    <div class="flex flex-col items-center">
+       {{localize 'swnr.sheet.program.cost'}}:
+      <input
+            type="number"
+            class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            step="1"
+            name="data.cost"
+            min="0"
+            data-dtype="Number"
+            value="{{data.data.cost}}"
+          />
+    </div>
+
+    {{#if (eq item.data.data.type "verb")}}
+    
+    <div class="flex flex-col items-center">
+       {{localize 'swnr.sheet.program.accessCost'}}:
+      <input
+            type="number"
+            class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            step="1"
+            name="data.accessCost"
+            min="0"
+            data-dtype="Number"
+            value="{{data.data.accessCost}}"
+          />
+    </div>
+
+  </div>
+  <div class="flex flexrow gap-2 text-center">
+    <div class="flexrow items-center">
+        <span>
+          {{localize 'swnr.sheet.program.selfTerminating'}}:
+          <input type="checkbox" name="data.selfTerminating" {{checked data.data.selfTerminating}}>
+
+        </span>
+    </div>
+      
+    {{/if}}
+
+
+    {{#if (eq item.data.data.type "subject")}}
+    <!-- placeholder-->
+    {{/if}}
+
+    {{#if (ne item.data.data.type "datafile")}}
+
+    <div class="flex flex-col items-center">
+       {{localize 'swnr.sheet.program.skillCheckMod'}}:
+      <input
+            type="number"
+            class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            step="1"
+            name="data.skillCheckMod"
+            data-dtype="Number"
+            value="{{data.data.skillCheckMod}}"
+          />
+    </div>
+
+    <div class="flex flex-col items-center">
+      {{#if (eq item.data.data.type "subject")}}
+         {{localize 'swnr.sheet.program.affect'}}:
+      {{else}}
+         {{localize 'swnr.sheet.program.use'}}:
+      {{/if}}
+
+      <input
+            class="w-32 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            name="data.useAffects"
+            min="0"
+            value="{{data.data.useAffects}}"
+          />
+    </div>
+
+
+    <div class="flex flex-col items-center">
+      {{#if (eq item.data.data.type "subject")}}
+         {{localize 'swnr.sheet.program.target'}}:
+      {{else}}
+         {{localize 'swnr.sheet.program.targetAllowed'}}:
+      {{/if}}
+      <input
+            class="w-32 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            name="data.target"
+            min="0"
+            value="{{data.data.target}}"
+          />
+    </div>
+    {{/if}}
+  </div>
+</form>

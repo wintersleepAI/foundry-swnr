@@ -1,0 +1,14 @@
+data:
+  concealment: Medical
+  cost: 20000
+  description: >-
+    The user can navigate even in darkness or while blinded by means of ultrasonic
+    sensors, being able to construct a crude map of people and obstacles in front
+    of them out to 20 meters. This sense is the equivalent of vision, though it can't
+    discern details more subtle than faces.
+  effect: Sense surrounds as if visually
+  strain: 0.5
+  type: Sensory
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Ear Mod/Sonar
+type: cyberware

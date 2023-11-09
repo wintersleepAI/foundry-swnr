@@ -1,0 +1,15 @@
+data:
+  concealment: Medical
+  cost: 10000
+  description: >-
+    A diagnostic system is interfaced with the user's biological processes, allowing
+    a realtime analysis of their current health and any significant injuries. Aside
+    from immediately alerting the user when they are poisoned, diseased, or injured,
+    it grants any healing or medical support skill check a +2 bonus thanks to the
+    diagnostic information and increases first aid or drug healing by +2 HP per application.
+  effect: Gain +2 to Heal checks on you
+  strain: 0.25
+  type: Body
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Medical Support Readout
+type: cyberware

@@ -8,12 +8,15 @@ Actor:
     - drone
     - vehicle
     - faction
+    - cyberdeck
   templates:
     vehiclebase: 
       cost: 0
       health:
         value: 15
         max: 15
+        temp: 0
+      traumaTarget: 6
       ac: 10
       speed: 1
       armor: 
@@ -31,8 +34,10 @@ Actor:
       health:
         value: 10
         max: 10
+        temp: 0
       baseAc: 10
       hitDie: d6
+      traumaTarget: 6
       speed: 10
       ab: 0
       systemStrain:
@@ -43,6 +48,10 @@ Actor:
         current: 0
         scene: 0
         day: 0
+      access:
+        value: 0
+        bonus: 0
+      cyberdecks: []
     encumbrance:
       encumbrance:
         stowed:
@@ -146,10 +155,14 @@ Actor:
       right:
         label: Bio/Notes
         contents: ""
+      public:
+        label: Public Notes
+        contents: ""
   faction:
     description: ""
     health:
       value: 7
+      temp: 0
     forceRating: 1
     cunningRating: 1
     wealthRating: 1
@@ -232,9 +245,12 @@ Actor:
       - vehiclebase
     fittings:
       max: 1
+    hardpoints:
+      max: 1
     enc: 2
     range: 500m
     model: ""
+    moveType: "fly"
   vehicle:
     templates:
       - vehiclebase
@@ -247,6 +263,22 @@ Actor:
     kmph: 100
     tonnage: 10
     size: s
+  cyberdeck:
+    health:
+      value: 0
+    bonusAccess: 0
+    memory:
+      max: 0
+    cpu:
+      max: 0
+    encumberance: 1
+    hackerId: ""
+    cost: 0
+    neuralBuffer: false
+    wirelessConnectionPenalty: false
+    crownPenalty: false
+    baseShielding: 0
+    bonusShielding: 0
 
 Item:
   types:
@@ -265,6 +297,8 @@ Item:
     - shipDefense
     - shipFitting
     - asset
+    - edge
+    - program
   templates:
     modBase:
       pretech:
@@ -277,6 +311,7 @@ Item:
       quality: stock
       location: other
       favorite: false
+      noEncReadied: false
     description:
       description: ""
     baseVehicleItem:
@@ -311,6 +346,8 @@ Item:
     traumaDiePenalty: 0
     isSubtle: false
     isHeavy: false
+    shieldMeleeACBonus: 1
+    shieldACBonus: 1
   weapon:
     templates:
       - baseItem
@@ -340,6 +377,8 @@ Item:
     trauma:
       die: none
       rating: none
+    isTwoHanded: false
+    isNonLethal: false
   power:
     templates:
       - description
@@ -377,6 +416,14 @@ Item:
       type: none
       max: 0
       value: 0
+    trauma:
+      die: ""
+      rating: ""
+      vehicle: false
+    range:
+      normal: 0
+      max: 0
+    stat: none
   shipDefense:
     templates:
       - description
@@ -432,3 +479,19 @@ Item:
     cost: 0
     effect: ""
     disabled: false
+    type: ""
+    concealment: ""
+    complication: ""
+  edge:
+    templates:
+      - description
+  program:
+    templates:
+      - description
+    cost: 0
+    type: datafile
+    accessCost: 0
+    target: ""
+    selfTerminating: false
+    useAffects: ""
+    skillCheckMod: 0

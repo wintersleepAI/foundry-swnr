@@ -1,0 +1,15 @@
+data:
+  concealment: Touch
+  cost: 40000
+  description: >-
+    Absorption plates and kinetic ablation units are implanted in the user's arms
+    and linked with a reactive ballistic calculator. Once per scene, as an Instant
+    action, the user can deflect a successful ranged bullet, arrow, or thrown weapon
+    attack, including burst or suppressive fire. Surprise attacks cannot be deflected
+    this way, nor can melee attacks or explosives.
+  effect: Deflect one ranged hit per scene
+  strain: 1
+  type: Limb
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Iron Hand Aegis
+type: cyberware

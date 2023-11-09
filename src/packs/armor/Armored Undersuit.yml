@@ -1,6 +1,12 @@
 _id: W2mLODdQMJ8jL2cH
 data:
   ac: 13
+  meleeAc: 13
+  traumaDiePenalty: 1
+  isSubtle: true
+  soak:
+    value: 2
+    max: 2
   cost: 600
   description: >-
     An armored undersuit is a skin-tight bodysuit woven of advanced TL4 fibers

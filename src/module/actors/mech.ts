@@ -102,16 +102,11 @@ export class SWNRMechActor extends SWNRBaseActor<"mech"> {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  async _preCreate(actorDataConstructorData, options, user): Promise<void> {
-    await super._preCreate(actorDataConstructorData, options, user);
-    if (
-      actorDataConstructorData.type &&
-      this.data._source.img == "icons/svg/mystery-man.svg"
-    ) {
-      const mechImg = "systems/swnr/assets/icons/mech.png";
-      this.data._source.img = mechImg;
-    }
+  async _onCreate(): Promise<void> {
+    await this.update({
+      "token.actorLink": false,
+      img: "systems/swnr/assets/icons/mech.png",
+    });
   }
 }
 

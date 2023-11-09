@@ -1,0 +1,17 @@
+data:
+  accessCost: 1
+  cost: 1000
+  description: >-
+    Turn a device or piece of cyberware on. You can't control it or direct its function,
+    but if it'sprogrammed to do something when activated, such as grant a bonus action
+    in exchange for System Strain, it does it for one round or one action. The spasmodic
+    activation of cyber outside of the wearer's turn is unlikely to do anything useful,
+    but it eats System Strain as usual if relevant.
+  selfTerminating: true
+  skillCheckMod: 1
+  target: Device/Cyber
+  type: verb
+  useAffects: Turn on a device or piece of cyberware
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Activate
+type: program

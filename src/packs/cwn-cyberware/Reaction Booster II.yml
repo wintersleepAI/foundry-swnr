@@ -1,0 +1,13 @@
+data:
+  concealment: Medical
+  cost: 100000
+  description: >-
+    As level one, but the user automatically wins initiative against targets that
+    don't also automatically win initiative; if both have this ability, initiative
+    is rolled without modifications. The user can act normally during surprise rounds.
+  effect: Automatically win initiative
+  strain: 2
+  type: Nerve
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Reaction Booster II
+type: cyberware

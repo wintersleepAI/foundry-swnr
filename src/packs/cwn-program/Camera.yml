@@ -1,0 +1,15 @@
+data:
+  accessCost: 0
+  cost: 500
+  description: >-
+    Any device that transmits audiovisual information. Some defensive hardware has
+    its own onboard camera, which is susceptible to this target, while the others
+    rely on a separate device's input.
+  selfTerminating: true
+  skillCheckMod: 0
+  target: Device
+  type: subject
+  useAffects: Audiovisual sensors
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Camera
+type: program

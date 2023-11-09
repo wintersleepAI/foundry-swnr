@@ -1,0 +1,14 @@
+data:
+  accessCost: 1
+  cost: 1000
+  description: >-
+    Decrypt a data file or radio transmission. This is often automatic for civilian
+    encoding, though some files take Int/Program checks.
+  selfTerminating: true
+  skillCheckMod: 0
+  target: Data
+  type: verb
+  useAffects: Decrypt a file or radio transmission
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Decrypt
+type: program

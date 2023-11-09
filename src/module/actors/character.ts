@@ -2,6 +2,10 @@ import { calculateStats } from "../utils";
 import { SWNRBaseItem } from "../base-item";
 import { SWNRBaseActor } from "../base-actor";
 import { ValidatedDialog } from "../ValidatedDialog";
+import { data } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/module.mjs";
+import { Options } from "@league-of-foundry-developers/foundry-vtt-types/src/types/augments/simple-peer";
+import { DocumentModificationOptions } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/abstract/document.mjs";
+import { SWNRSkill } from "../items/skill";
 
 export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
   getRollData(): this["data"]["data"] {
@@ -45,18 +49,33 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
       base - Math.max(data.stats.wis.mod, data.stats.cha.mod)
     );
     save.luck = Math.max(1, base);
+
+    data.access.max = data.stats.int.mod;
+    // If the character has a program skill add it
+    const programSkill = <SWNRBaseItem<"skill">[]>(
+      this.items
+        .filter((i) => i.type === "skill")
+        .filter((i) => i.data.name === "Program")
+    );
+    if (programSkill && programSkill.length == 1) {
+      data.access.max += programSkill[0].data.data.rank;
+    }
   }
   prepareDerivedData(): void {
     const data = this.data.data;
     const useCWNArmor = game.settings.get("swnr", "useCWNArmor") ? true : false;
+    const useTrauma = game.settings.get("swnr", "useTrauma") ? true : false;
     if (data.settings == null) {
       data.settings = {
         useCWNArmor: useCWNArmor,
+        useTrauma: useTrauma,
       };
     } else {
       data.settings.useCWNArmor = useCWNArmor;
     }
-
+    if (useTrauma) {
+      data.modifiedTraumaTarget = data.traumaTarget;
+    }
     // AC
     const armor = <SWNRBaseItem<"armor">[]>(
       this.items.filter(
@@ -67,24 +86,34 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
       )
     );
     const shields = armor.filter((i) => i.data.data.shield);
-    const baseAc = Math.max(
-      data.baseAc,
-      ...armor.map(
-        (i) =>
-          i.data.data.ac +
-          (shields.filter((s) => s.id !== i.id).length !== 0 ? 1 : 0)
-      )
-    );
+    let armorId = "";
+    let baseAc = data.baseAc;
+    let baseMeleeAc = data.baseAc;
+    for (const a of armor) {
+      if (a.data.data.ac > baseAc) {
+        baseAc = a.data.data.ac;
+        if (a.data.data.meleeAc) {
+          baseMeleeAc = a.data.data.meleeAc;
+          if (useTrauma) {
+            data.modifiedTraumaTarget =
+              data.traumaTarget + a.data.data.traumaDiePenalty;
+          }
+        }
+        if (a.id) {
+          armorId = a.id;
+        }
+      }
+    }
+    for (const shield of shields) {
+      if (shield.data.data.shieldACBonus && shield.id != armorId) {
+        baseAc += shield.data.data.shieldACBonus;
+        if (shield.data.data.shieldMeleeACBonus) {
+          baseMeleeAc += shield.data.data.shieldMeleeACBonus;
+        }
+      }
+    }
     data.ac = baseAc + data.stats.dex.mod;
     if (useCWNArmor) {
-      const baseMeleeAc = Math.max(
-        data.baseAc,
-        ...armor.map(
-          (i) =>
-            i.data.data.meleeAc +
-            (shields.filter((s) => s.id !== i.id).length !== 0 ? 1 : 0)
-        )
-      );
       data.meleeAc = baseMeleeAc + data.stats.dex.mod;
     }
 
@@ -259,6 +288,41 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
     const s = popUpDialog.render(true);
     if (s instanceof Promise) await s;
     return;
+  }
+
+  getSkill(skill: string): SWNRBaseItem<"skill"> | null {
+    const skillItem = <SWNRBaseItem<"skill">[]>(
+      this.items
+        .filter((i) => i.type === "skill")
+        .filter((i) => i.data.name === skill)
+    );
+    if (skillItem && skillItem.length == 1) {
+      return skillItem[0];
+    }
+    return null; //skill not found
+  }
+
+  _onUpdate(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
+    data: any,
+    options: DocumentModificationOptions,
+    userId: string
+  ): void {
+    if (this.data.data.cyberdecks && this.data.data.cyberdecks.length > 0) {
+      for (const deckId of this.data.data.cyberdecks) {
+        const deck = game.actors?.get(deckId);
+        if (deck) {
+          deck.sheet?.render();
+        }
+      }
+    }
+    super._onUpdate(data, options, userId);
+  }
+
+  async _onCreate(): Promise<void> {
+    await this.update({
+      "token.actorLink": true,
+    });
   }
 }
 

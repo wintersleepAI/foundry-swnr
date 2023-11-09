@@ -1,0 +1,11 @@
+data:
+  concealment: Medical
+  cost: 40000
+  description: "Subtle dermal weave reinforcement grants a base ranged and melee AC\
+    \ of 16 and a +1 bonus to the user's Trauma Target. "
+  effect: AC 16, +1 to Trauma Target
+  strain: 1
+  type: Skin
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Dermal Armor I
+type: cyberware

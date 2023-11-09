@@ -4,12 +4,9 @@ import { getDefaultImage } from "./utils";
 export async function createSWNRMacro(data, slot: number): Promise<void> {
   if (game == null) return; // Quiet TS
   if (data.type !== "Item") return;
-  if (!("data" in data))
-    return ui.notifications?.warn(
-      "You can only create macro buttons for owned Items"
-    );
-  const item = data.data;
-  const id = data.data._id;
+
+  const item = fromUuidSync(data.uuid);
+  const id = item.id;
   console.log("creating macro ", id, data);
 
   // Create the macro command

@@ -1,0 +1,14 @@
+data:
+  accessCost: 1
+  cost: 500
+  description: >-
+    Add a new entry or new data into a file. These new entries can't overwrite or
+    erase any existing data, however.
+  selfTerminating: true
+  skillCheckMod: 0
+  target: Data
+  type: verb
+  useAffects: Add a new entry or data into a file
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Append
+type: program

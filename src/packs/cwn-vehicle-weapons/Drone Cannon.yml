@@ -1,0 +1,26 @@
+data:
+  ammo:
+    max: 100
+    type: ammo
+    value: 10
+  cost: 5000
+  damage: 2d8
+  description: >-
+    None
+  effect: ''
+  mass: 1
+  minClass: m
+  power: 1
+  range:
+    max: 1000
+    normal: 200
+  stat: dex
+  trauma:
+    die: 1d10
+    rating: 3
+    vehicle: true
+  type: Drone cannons are heavy semi-automatic weap- ons too bulky for human portability.
+    A round of firing costs $100 worth of ammunition.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+name: Drone Cannon
+type: shipWeapon

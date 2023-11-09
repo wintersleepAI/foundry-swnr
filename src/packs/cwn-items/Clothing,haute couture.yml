@@ -1,0 +1,10 @@
+data:
+  cost: 10000
+  description: >-
+    Clothing has no Encumbrance when worn, but it`s sometimes prudent to have a spare
+    outfit in your pack.
+  encumbrance: 1
+  noEncReadied: true
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
+name: Clothing,haute couture
+type: item

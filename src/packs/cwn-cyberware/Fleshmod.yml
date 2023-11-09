@@ -1,0 +1,14 @@
+data:
+  concealment: Medical
+  cost: 20000
+  description: >-
+    Careful surgery and support implants allow for a complete physical remolding within
+    generally humanoid lines, including alterations of sex, height, cosmetic limbs
+    such as tails or decorative ears, and overall weight. Reproductive ability is
+    not conferred, but rumors persist of experimental mods that can grant even that.
+  effect: Completely rework your body
+  strain: 1
+  type: Body
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Fleshmod
+type: cyberware

@@ -1,0 +1,11 @@
+data:
+  description: >-
+    You may or may not be good, but you are undeniably lucky. Once per game session
+    as an Instant action, when something bad happens to you such as an injury, a failed
+    save, or a botched skill check, test your luck and roll 1d6. On a 1, the bad event
+    is unaffected. On a 2-5, you somehow avert the consequences by blind chance. On
+    a 6, it actually lands on an enemy or rival of the GM's choice, if that's possible.
+    Only events that happened in this same round can be averted.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/edge.svg
+name: Operator's Fortune
+type: edge

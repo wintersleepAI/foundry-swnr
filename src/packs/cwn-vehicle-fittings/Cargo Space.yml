@@ -1,0 +1,14 @@
+data:
+  cost: 0
+  description: >-
+    This fitting can be taken multiple times. Each time it adds 50 kg of protected
+    cargo space for Small vehicles, 500 kg for Medium ones, and 2 metric tons for
+    Large ones.
+  effect: Adds protected cargo space
+  mass: 1
+  minClass: S
+  power: 0
+  type: vehicle
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Cargo Space
+type: shipFitting

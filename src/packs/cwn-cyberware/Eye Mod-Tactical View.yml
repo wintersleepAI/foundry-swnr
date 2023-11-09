@@ -1,0 +1,14 @@
+data:
+  concealment: Medical
+  cost: 10000
+  description: >-
+    These eyes can receive text or video transmissions and play them on an inset in
+    the user's normal vision. Outline and pattern discrimination is enhanced; when
+    specifically looking for things or keeping watch, gain a +1 bonus to any relevant
+    Notice check.
+  effect: Get transmission, search better
+  strain: 0.5
+  type: Sensory
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Eye Mod/Tactical View
+type: cyberware

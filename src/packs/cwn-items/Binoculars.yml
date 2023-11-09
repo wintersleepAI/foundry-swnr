@@ -1,0 +1,10 @@
+data:
+  cost: 100
+  description: >-
+    Most modern binocs have low-light functionality and magnification sufficient to
+    bring targets as much as a kilometer distant into view.
+  encumbrance: 1
+  noEncReadied: true
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
+name: Binoculars
+type: item

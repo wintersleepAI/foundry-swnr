@@ -160,6 +160,24 @@
           {{/select}}
         </select>
       </div>
+
+      {{#if actor.data.data.settings.useTrauma}}
+      <div class="flex items-baseline gap-1">
+
+        {{localize 'swnr.sheet.traumaTarget'}}:
+        <div class="flex w-8">
+          <input
+            class="w-8 border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            type="number"
+            name="data.traumaTarget"
+            min="0"
+            step="1"
+            value="{{actor.data.data.traumaTarget}}"
+          />
+        </div>
+      </div>
+      {{/if}}
+
       <div class="flex items-baseline gap-1">
         {{localize 'swnr.sheet.movement'}}:
         <div class="flex w-16">
@@ -425,6 +443,25 @@
         rows="10"
         placeholder="{{actor.data.data.notes.right.label}}"
       >{{actor.data.data.notes.right.contents}}</textarea>
+    </div>
+  </div>
+  <div class="flex flex-row flex-wrap gap-2">
+    <div class="flex-grow w-100 space-y-2">
+      <input
+        class="border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="text"
+        name="data.notes.public.label"
+        value="{{actor.data.data.notes.public.label}}"
+      />
+      <!-- prettier-ignore  -->
+      <textarea
+        name="data.notes.public.contents"
+        class="border px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        id=""
+        cols="30"
+        rows="10"
+        placeholder="{{actor.data.data.notes.public.label}}"
+      >{{actor.data.data.notes.public.contents}}</textarea>
     </div>
   </div>
   {{/if}}

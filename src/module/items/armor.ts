@@ -7,6 +7,7 @@ export class SWNRArmor extends SWNRBaseItem<"armor"> {
     const data = this.data.data;
     data.settings = {
       useCWNArmor: game.settings.get("swnr", "useCWNArmor") ? true : false,
+      useTrauma: game.settings.get("swnr", "useTrauma") ? true : false,
     };
   }
 }

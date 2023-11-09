@@ -1,0 +1,15 @@
+data:
+  accessCost: 0
+  cost: 500
+  description: >-
+    Similar to the Camera element, this code block handles sensors of any kind, regardless
+    of what they are intended to detect. The generality of the element decreases its
+    efficiency, however, and it applies a +1 security difficulty penalty.
+  selfTerminating: true
+  skillCheckMod: -1
+  target: Device
+  type: subject
+  useAffects: Any sensors at -1 penalty
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Sensor
+type: program

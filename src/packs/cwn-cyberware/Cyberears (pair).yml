@@ -1,0 +1,15 @@
+data:
+  concealment: Touch
+  cost: 10000
+  description: >-
+    While normal in appearance, touch reveals the synthetic nature of these ears.
+    Some owners prefer to style them in fanciful or unnatural ways. While the base
+    model provides only normal human hearing, all are equipped with ear protection
+    against loud noises. A pair of cyberears or synthears halves the System Strain
+    cost of ear implants.
+  effect: Noise-filtering synthetic ears
+  strain: 0.25
+  type: Sensory
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Cyberears (pair)
+type: cyberware

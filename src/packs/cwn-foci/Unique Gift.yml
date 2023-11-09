@@ -1,0 +1,21 @@
+data:
+  description: >-
+    Your PC has a unique piece of cyberware, an exceptional human ability, or some
+    experimental genetic modification that grants them some benefit that isn't covered
+    under existing options.This benefit shouldn't be a simple bonus to something you
+    already do; it should be a power or ability that gives you options that you just
+    wouldn't have otherwise. It also shouldn't be used to simply optimize an existing
+    character concept, but instead should allow you to make a character who wouldn't
+    make sense without this special ability. It's up to the GM to decide what's reasonable
+    and fair to be covered under this gift, and whatever they allow should be roughly
+    equivalent to the existing Focus options in overall power If an ability is particularly
+    powerful or the cybernetics are especially draining, it might require the user
+    to take System Strain to use it, as described on page 40. As a general rule this
+    ability should be better than a piece of gear the PC could buy. The player is
+    spending a very limited resource when they make this Focus pick, so what they
+    get should be good enough that they can't just duplicate it with a fat bank account.
+  level1: ''
+  level2: ''
+img: systems/swnr/assets/icons/game-icons.net/item-icons/reticule.svg
+name: Unique Gift
+type: focus

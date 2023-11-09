@@ -48,6 +48,39 @@
         class="w-32 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
         type="number" step="1" data-dtype="Number" name="data.ab" value="{{data.data.ab}}" />
     </div>
+  </div>
+  <div class="flex flexrow gap-2">
+
+    {{#if data.data.settings.useTrauma}}
+
+      <!-- Trauma -->
+      <div class="grid md:grid-cols-2 gap-1 pt-1">
+        <h3 class="text-base w-full md:col-span-2">
+          {{localize 'swnr.weapon.trauma.label'}}:
+        </h3>
+        <div class="ml-2">
+          <div>{{localize 'swnr.weapon.trauma.die'}}:</div>
+          <input
+            class="w-16 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            name="data.trauma.die"
+            type="text"
+            value="{{data.data.trauma.die}}"
+          />
+        </div>
+        <div>
+          <div>{{localize 'swnr.weapon.trauma.rating'}}:</div>
+            <input
+            type="number"
+            class="w-8 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            name="data.trauma.rating"
+            value="{{data.data.trauma.rating}}"
+            min="0"
+            step="1"
+          />
+        </div>
+      </div>
+    </div>  
+    {{/if}}
 
     <div class="flex flex-wrap gap-1">
       <h3 class="text-base w-full">{{localize 'swnr.weapon.ammo'}}:</h3>
@@ -74,7 +107,7 @@
           >
             <input
               type="number"
-              class="w-10 text-right bg-transparent"
+              class="w-10 text-right subfield"
               name="data.ammo.value"
               max="{{data.data.ammo.max}}"
               value="{{data.data.ammo.value}}"
@@ -85,7 +118,7 @@
             <span>/</span>
             <input
               type="number"
-              class="w-10 text-left bg-transparent"
+              class="w-10 text-left subfield"
               name="data.ammo.max"
               value="{{data.data.ammo.max}}"
               data-dtype="Number"

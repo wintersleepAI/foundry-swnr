@@ -1,0 +1,33 @@
+data:
+  ammo:
+    burst: true
+    max: 0
+    suppress: true
+    type: None
+    value: 0
+  cost: 1000
+  damage: 1d10
+  description: >-
+    Advanced weapons employ modern polymers, sophisticated metallurgy, fractal edges,
+    electro-stun tech, and a small legion of marketers to sell products that are distinctly
+    superior to the plain steel edges of a prior age. An advanced micro-edged butcher
+    knife can go through bone like bamboo and keep an edge for weeks between sharpenings.
+    The more martial offerings go to even greater lengths in their marketing, with
+    some enterprising serial killers and gang enforcers inking exclusivity deals with
+    particular knife manufacturers.
+  encumbrance: 1
+  isNonLethal: true
+  range:
+    max: 0
+    normal: 0
+  secondStat: dex
+  shock:
+    ac: 15
+    dmg: 3
+  stat: str
+  trauma:
+    die: 1d8
+    rating: 3
+img: systems/swnr/assets/icons/game-icons.net/item-icons/weapon-white.svg
+name: Advanced Sword
+type: weapon

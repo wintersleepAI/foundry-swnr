@@ -1,0 +1,13 @@
+data:
+  description: >-
+    You know how to get your way in personal negotiations, and can manipulate the
+    attitudes of those around you. Even so, while smooth words are versatile, they'll
+    only work if your interlocutor is actually willing to listen to you.
+  level1: Gain Talk as a bonus skill. You speak all the languages common to the city
+    and can learn new ones to a workable level in a week, becoming fluent in a month.
+    Reroll 1s on any skill check dice related to negotiation or diplomacy.
+  level2: Once per game session, shift an intelligent NPC's reaction roll one step
+    closer to friendly if you can talk to them for at least thirty seconds.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/reticule.svg
+name: Diplomat
+type: focus

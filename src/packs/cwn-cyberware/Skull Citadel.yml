@@ -1,0 +1,17 @@
+data:
+  concealment: Medical
+  cost: 100000
+  description: >-
+    The user's head is augmented with independent blood oxygenation pumps, armor plating,
+    and trauma buffers designed to keep the brain intact even after the rest of the
+    body is critically damaged. Barring dismemberment or the use of high-powered ammunition
+    directly on the target's head, the subject ignores head-affecting Major Injuries
+    and can be stabilized even as long as ten minutes after their technical 'death'.
+    Each such delayed revivification permanently reduces a randomly-chosen attribute
+    by 2 points, however. This ability damage cannot be undone.
+  effect: Armor the brain against harm
+  strain: 2
+  type: Head
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Skull Citadel
+type: cyberware

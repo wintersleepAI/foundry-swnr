@@ -1,0 +1,22 @@
+data:
+  ac: 13
+  cost: 500
+  description: >-
+    Little more than a fist-sized drive core with wheels, Shintetsu's Mouse is about
+    as small as a functional drone can get with its low-cost technology. Incapable
+    of supporting more than its basic functionality, it still provides eyes and ears
+    for a pilot in a cheap, portable format.
+  enc: 1
+  fittings:
+    max: 0
+  hardpoint:
+    max: 0
+  health:
+    max: 1
+    value: 1
+  moveType: ground
+  speed: 5
+  traumaTarget: 6
+img: systems/swnr/assets/icons/game-icons.net/item-icons/../../drone.png
+name: Shintetsu Mouse
+type: drone

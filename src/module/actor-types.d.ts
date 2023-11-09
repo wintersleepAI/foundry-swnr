@@ -1,5 +1,4 @@
 import { SWNRArmorTypes, AllItemClasses, ItemTypes } from "./item-types";
-import { SWNRFactionAsset } from "./items/asset";
 import { SWNRBaseItem } from "./base-item";
 
 type ActorTypes =
@@ -9,7 +8,8 @@ type ActorTypes =
   | "mech"
   | "drone"
   | "vehicle"
-  | "faction";
+  | "faction"
+  | "cyberdeck";
 
 declare type SWNRStats = "str" | "dex" | "con" | "int" | "wis" | "cha";
 
@@ -56,10 +56,17 @@ declare interface SWNRLivingTemplateBase {
   health: {
     value: number;
     max: number;
+    temp: number;
   };
+  access: {
+    value: number;
+    temp: number;
+  };
+  traumaTarget: number;
   hitDie: string;
   baseAc: number; //computed-active effects needed
   ac: number;
+  meleeAc: number; // CWN
   ab: number;
   systemStrain: {
     value: number;
@@ -72,6 +79,7 @@ declare interface SWNRLivingTemplateBase {
     day: number;
   };
   speed: number;
+  cyberdecks: string[]; // Ids of decks
 }
 
 declare interface SWNRVehicleTemplateBase {
@@ -79,7 +87,9 @@ declare interface SWNRVehicleTemplateBase {
   health: {
     value: number;
     max: number;
+    temp: number;
   };
+  traumaTarget: number;
   armor: {
     value: number;
     max: number;
@@ -95,7 +105,6 @@ declare interface SWNRVehicleTemplateBase {
   tl: number;
   description: string;
   mods: string;
-  meleeAc: number; // SWN computed
 }
 
 declare interface SWNRLivingTemplateComputed {
@@ -117,9 +126,14 @@ declare interface SWNRLivingTemplateComputed {
     };
   };
   //CWN
+  access: {
+    max: number;
+  };
   settings: null | {
     useCWNArmor: boolean;
+    useTrauma: boolean;
   };
+  modifiedTraumaTarget: number;
 }
 declare interface SWNREncumbranceTemplateBase {
   encumbrance: {
@@ -216,6 +230,7 @@ declare interface SWNRFactionData {
   description: string;
   health: {
     value: number;
+    temp: number;
   };
   active: boolean;
   forceRating: FactionRating;
@@ -290,9 +305,47 @@ declare interface SWNRVehicleComputed {
     value: number;
   };
 }
+declare interface SWNRCyberdeckData {
+  // itemTypes: {
+  //   program: SWNRBaseItem<"program">[];
+  // };
+  health: {
+    value: number;
+  };
+  bonusAccess: number;
+  memory: {
+    max: number;
+  };
+  cpu: {
+    max: number;
+  };
+  encumberance: number;
+  hackerId: string;
+  cost: number;
+  neuralBuffer: boolean;
+  wirelessConnectionPenalty: boolean;
+  crownPenalty: boolean;
+  baseShielding: number;
+  bonusShielding: number;
+}
+
+declare interface SWNRCyberdeckComputed {
+  health: {
+    max: number;
+  };
+  memory: {
+    value: number;
+  };
+  cpu: {
+    value: number;
+  };
+}
 
 declare interface SWNRDroneComputed {
   fittings: {
+    value: number;
+  };
+  hardpoints: {
     value: number;
   };
 }
@@ -301,9 +354,13 @@ declare interface SWNRDroneData extends SWNRVehicleTemplateBase {
   fittings: {
     max: number;
   };
+  hardpoints: {
+    max: number;
+  };
   enc: number;
   range: string;
   model: string;
+  moveType: string;
 }
 
 declare interface SWNRMechData extends SWNRVehicleTemplateBase {
@@ -422,7 +479,7 @@ declare interface SWNRNPCData extends SWNRLivingTemplateBase {
   homeworld: string;
   faction: string;
   notes: {
-    [key in "left" | "right"]: {
+    [key in "left" | "right" | "public"]: {
       label: string;
       contents: string;
     };
@@ -441,7 +498,11 @@ declare global {
       | { type: "mech"; data: Merge<SWNRMechData, SWNRMechComputed> }
       | { type: "drone"; data: Merge<SWNRDroneData, SWNRDroneComputed> }
       | { type: "vehicle"; data: Merge<SWNRVehicleData, SWNRVehicleComputed> }
-      | { type: "faction"; data: Merge<SWNRFactionData, SWNRFactionComputed> };
+      | { type: "faction"; data: Merge<SWNRFactionData, SWNRFactionComputed> }
+      | {
+          type: "cyberdeck";
+          data: Merge<SWNRCyberdeckData, SWNRCyberdeckComputed>;
+        };
   }
   interface SourceConfig {
     Actor:
@@ -451,6 +512,7 @@ declare global {
       | { type: "mech"; data: SWNRMechData }
       | { type: "drone"; data: SWNRDroneData }
       | { type: "vehicle"; data: SWNRVehicleData }
-      | { type: "faction"; data: SWNRFactionData };
+      | { type: "faction"; data: SWNRFactionData }
+      | { type: "cyberdeck"; data: SWNRCyberdeckData };
   }
 }

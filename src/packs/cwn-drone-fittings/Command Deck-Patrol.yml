@@ -1,0 +1,11 @@
+data:
+  cost: 0.1
+  description: >-
+    As a Main Action, the drone can be ordered to autonomously move to one or more
+    waypoints on whatever schedule the pilot wishes. The drone can also be ordered
+    to loiter at a particular location until it gets an On Turn command to proceed
+    to the next location.
+  mass: 1
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Command Deck/Patrol
+type: shipFitting

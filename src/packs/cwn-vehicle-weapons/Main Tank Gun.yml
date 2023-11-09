@@ -1,0 +1,27 @@
+data:
+  ammo:
+    max: 1
+    type: ammo
+    value: 1000
+  cost: 100000
+  damage: 4d12
+  description: >-
+    None
+  effect: AC 10 to hit
+  mass: 4
+  minClass: l
+  power: 1
+  range:
+    max: 3000
+    normal: 1000
+  stat: dex
+  trauma:
+    die: 1d20
+    rating: 4
+    vehicle: true
+  type: Main tank gun attacks always target AC 10, and anyone within 10 meters of
+    impact takes 1d20 damage if not behind heavy cover. They cannot be mounted on
+    aircraft or anything smaller than a tank. Each round costs $1,000.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
+name: Main Tank Gun
+type: shipWeapon

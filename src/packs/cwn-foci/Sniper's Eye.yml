@@ -1,0 +1,14 @@
+data:
+  description: >-
+    You are an expert at placing a bullet or arrow on an unsuspecting target. These
+    special benefits only apply when making an Execution Attack with a gun, bow, or
+    thrown weapon, as described in section 2.4.7.3.
+  level1: Gain Shoot as a bonus skill. When making a skill check for a ranged Execution
+    Attack or target shooting, roll 3d6 and drop the lowest die.
+  level2: You don't miss ranged Execution Attacks. A target hit by one takes a -4
+    penalty on the Physical saving throw to avoid immediate mortal injury. Even if
+    the save is successful, the target takes double the normal damage inflicted by
+    the attack.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/reticule.svg
+name: Sniper's Eye
+type: focus

@@ -1,6 +1,12 @@
 _id: FSOqDmDkmH69IJIA
 data:
   ac: 12
+  meleeAc: 12
+  traumaDiePenalty: 0
+  isSubtle: false
+  soak:
+    value: 0
+    max: 0
   cost: 300
   description: >-
     Warpaint is the common term for the bizarre combat fashions and scrap-built

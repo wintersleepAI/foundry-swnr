@@ -1,0 +1,14 @@
+data:
+  cost: 100
+  description: >-
+    These bundles of gear are carefully packed for minimal weight. Toolkits give a
+    tech the gear they need for basic repairs and construction, while medical kits
+    provide first aid implements. Cyberdoc kits contain everything medical kits do,
+    as well as gear for cyber maintenance or even emergency implantation. Survival
+    kits are for badlands operations, with water filtration, firemaking tools, and
+    other such gear for extended wilderness stays.
+  encumbrance: 2
+  noEncReadied: true
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
+name: Kit,Basic Tools
+type: item

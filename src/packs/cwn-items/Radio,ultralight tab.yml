@@ -1,0 +1,10 @@
+data:
+  cost: 500
+  description: >-
+    Both conventional handheld radios and ultra-convenient headset or collar-tab radios
+    can be had. Ranges are one kilometer in the city and six in an open, flat area.
+  encumbrance: 0
+  noEncReadied: true
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
+name: Radio,ultralight tab
+type: item

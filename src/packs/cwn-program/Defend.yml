@@ -1,0 +1,18 @@
+data:
+  accessCost: 0
+  cost: 1000
+  description: >-
+    A special Verb that can only be targeted at a friendly device or allied cyberware
+    user within range, and costs no Access to use. While the program remains running,
+    any hostile hacking attempts aimed at that device or any of the target's cyber
+    systems must first beat the user in an opposed Int/Program skill check before
+    they can attempt their hack. This Verb cannot negate programs that are already
+    running on the target.
+  selfTerminating: true
+  skillCheckMod: N/A
+  target: Device/Cyber
+  type: verb
+  useAffects: Shield a friendly device or cyber system
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Defend
+type: program

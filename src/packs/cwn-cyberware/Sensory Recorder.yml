@@ -1,0 +1,13 @@
+data:
+  concealment: Medical
+  cost: 10000
+  description: >-
+    The user can record up to 180 minutes of sensory input. If they have a jack line
+    into a transmitter or cyberware capable of transmitting data, they can share these
+    recordings in real time or afterwards.
+  effect: Record 3 hours of sense input
+  strain: 0.5
+  type: Sensory
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Sensory Recorder
+type: cyberware

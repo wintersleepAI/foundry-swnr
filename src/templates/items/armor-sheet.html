@@ -86,7 +86,7 @@
         />
       </div> --}}
 
-      <div>
+      <div class="flex flexcol">
         <div>{{localize 'swnr.armor.type.label'}}:</div>
         <select
           name="data.type"
@@ -101,24 +101,81 @@
           <option value="powered">{{localize 'swnr.armor.type.powered'}}</option>
           {{/select}}
         </select>
+        {{#if data.data.settings.useTrauma}}
+          <div>
+            {{localize 'swnr.armor.traumaMod'}}:
+            <input
+              type="number"
+              class="px-1 w-10 text-center border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+              step="1"
+              name="data.traumaDiePenalty"
+              min="0"
+              data-dtype="Number"
+              value="{{data.data.traumaDiePenalty}}"
+            />
+          </div>
+        {{/if}}
+
       </div>
       <div class="flex flexcol">
-        <label class="flex gap-1">
+        <label class="">
           <input type="checkbox" name="data.shield" {{checked data.data.shield}} />
           {{localize 'swnr.armor.shield'}}
         </label>
         {{#if data.data.settings.useCWNArmor}}
-        <label class="flex gap-1">
-          <input type="checkbox" name="data.subtle" {{checked data.data.subtle}} />
+        <label class="">
+          <input type="checkbox" name="data.isSubtle" {{checked data.data.isSubtle}} />
           {{localize 'swnr.armor.subtle'}}
         </label>
-        <label class="flex gap-1">
-          <input type="checkbox" name="data.heavy" {{checked data.data.heavy}} />
+        <label class="">
+          <input type="checkbox" name="data.isHeavy" {{checked data.data.isHeavy}} />
           {{localize 'swnr.armor.heavy'}}
         </label>
         {{/if}}
-            {{#if data.data.settings.useCWNArmor}}
-            {{/if}}
+
       </div>
+      <div class="flex flexcol">
+        {{#if data.data.shield}}
+          <div class="items-center">
+            <div>
+              {{#if data.data.settings.useCWNArmor}}
+                {{localize 'swnr.armor.ranged'}}
+              {{/if}}          
+              {{localize 'swnr.armor.shieldAC'}}:
+            </div>
+
+            <input
+              type="number"
+              class="px-1 w-10 text-center border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+              step="1"
+              name="data.shieldACBonus"
+              min="0"
+              data-dtype="Number"
+              value="{{data.data.shieldACBonus}}"
+            />
+          </div>
+
+          {{#if data.data.settings.useCWNArmor}}
+            <div class="items-center">
+              <div>
+                {{localize 'swnr.armor.melee'}}
+                {{localize 'swnr.armor.shieldAC'}}:
+              </div>
+
+              <input
+                type="number"
+                class="px-1 w-10 text-center border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+                step="1"
+                name="data.shieldMeleeACBonus"
+                min="0"
+                data-dtype="Number"
+                value="{{data.data.shieldMeleeACBonus}}"
+              />
+            </div>
+
+          {{/if}}
+        {{/if}}
+      </div>
+              
   </div>
 </form>

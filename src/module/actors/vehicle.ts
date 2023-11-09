@@ -37,18 +37,6 @@ export class SWNRVehicleActor extends SWNRBaseActor<"vehicle"> {
     data.hardpoints.value = hardpoints - totalHardpoint;
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  async _preCreate(actorDataConstructorData, options, user): Promise<void> {
-    await super._preCreate(actorDataConstructorData, options, user);
-    if (
-      actorDataConstructorData.type &&
-      this.data._source.img == "icons/svg/mystery-man.svg"
-    ) {
-      const mechImg = "systems/swnr/assets/icons/vehicle.png";
-      this.data._source.img = mechImg;
-    }
-  }
-
   async addCrew(actorId: string): Promise<void> {
     const actor = game.actors?.get(actorId);
     if (actor) {
@@ -83,6 +71,13 @@ export class SWNRVehicleActor extends SWNRBaseActor<"vehicle"> {
         "data.crewMembers": crewMembers,
       });
     }
+  }
+
+  async _onCreate(): Promise<void> {
+    await this.update({
+      "token.actorLink": true,
+      img: "systems/swnr/assets/icons/vehicle.png",
+    });
   }
 }
 

@@ -1,0 +1,12 @@
+data:
+  concealment: Medical
+  cost: 25000
+  description: >-
+    This model of artificial ear is designed to be indistinguishable from normal ears,
+    though they have all the properties of a normal pair of cyberears.
+  effect: Lifelike artificial ears
+  strain: 0.25
+  type: Sensory
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Synthears (pair)
+type: cyberware

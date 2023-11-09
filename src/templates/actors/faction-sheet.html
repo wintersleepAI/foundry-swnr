@@ -31,11 +31,11 @@
       <div class="flex flex-col items-center p-2">
         <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
           <input
-            class="w-8 text-right pl-1.5  bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            class="w-8 text-right pl-1.5  bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
             type="number" step="1" name="data.health.value" value="{{actor.data.data.health.value}}" data-dtype="Number"
             min="0" /><span>/</span>
           <span
-            class="inline-block text-left text-gray-300 cursor-not-allowed w-8">{{actor.data.data.health.max}}</span>
+            class="inline-block text-left text-gray-300 cursor-not-allowed w-8 subfield">{{actor.data.data.health.max}}</span>
         </div>
         <div>{{localize 'swnr.sheet.hp'}}</div>
       </div>

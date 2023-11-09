@@ -1,0 +1,13 @@
+data:
+  concealment: Medical
+  cost: 30000
+  description: "A number of support systems and blood purification filters are installed.\
+    \ The user can absorb up to four points of System Strain incurred from healing\
+    \ or wound stabilization effects; this is a separate pool that recovers one point\
+    \ every night at the same time as the user's natural System Strain recovers. "
+  effect: Gain 4 System Strain for heals
+  strain: 1
+  type: Body
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Recovery Support Unit
+type: cyberware

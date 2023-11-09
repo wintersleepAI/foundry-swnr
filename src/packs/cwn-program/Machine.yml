@@ -1,0 +1,15 @@
+data:
+  accessCost: 0
+  cost: 500
+  description: >-
+    Security panels, factory machinery, electronic minefields, or any other hackable
+    device not covered under an existing Subject. Its generality applies a +1 penalty
+    to the security difficulty.
+  selfTerminating: true
+  skillCheckMod: -1
+  target: Device
+  type: subject
+  useAffects: Unclassified devices
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Machine
+type: program

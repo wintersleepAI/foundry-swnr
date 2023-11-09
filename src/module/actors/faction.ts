@@ -183,8 +183,9 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
       this.items.filter((i) => i.type === "asset")
     );
     const wealthIncome = Math.ceil(this.data.data.wealthRating / 2);
-    const cunningIncome = Math.floor(this.data.data.cunningRating / 4);
-    const forceIncome = Math.floor(this.data.data.forceRating / 4);
+    const cunningForceIncome = Math.floor(
+      (this.data.data.cunningRating + this.data.data.forceRating) / 4
+    );
     const assetIncome = assets
       .map((i) => i.data.data.income)
       .reduce((i, n) => i + n, 0);
@@ -209,8 +210,7 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
       cunningAssetsOverLimit + forceAssetsOverLimit + wealthAssetsOverLimit;
     const income =
       wealthIncome +
-      cunningIncome +
-      forceIncome +
+      cunningForceIncome +
       assetIncome -
       assetMaintTotal +
       costFromAssetsOver;
@@ -218,8 +218,8 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
 
     const assetsWithTurn = assets.filter((i) => i.data.data.turnRoll);
     let msg = `<b>Income this round: ${income}</b>.<br> From ratings: ${
-      wealthIncome + cunningIncome + forceIncome
-    } (W:${wealthIncome} C:${cunningIncome} F:${forceIncome})<br>From assets: ${assetIncome}.<br>Maintenance -${assetMaintTotal}.<br>`;
+      wealthIncome + cunningForceIncome
+    } (W:${wealthIncome} C+F:${cunningForceIncome})<br>From assets: ${assetIncome}.<br>Maintenance -${assetMaintTotal}.<br>`;
     if (costFromAssetsOver < 0) {
       msg += `Cost from # of assets over rating: ${costFromAssetsOver}.<br>`;
     }

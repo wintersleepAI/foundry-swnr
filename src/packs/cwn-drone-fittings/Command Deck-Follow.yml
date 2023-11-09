@@ -1,0 +1,12 @@
+data:
+  cost: 0.1
+  description: >-
+    The drone is equipped with minimal autonomous pursuit capabilities. As a Main
+    Action, the drone can be ordered to follow a particular visible target at a given
+    distance at either half or full speed. If half speed, it will use its Move action
+    to follow, and full speed will use both Move and Main Actions. Following can be
+    ended as an On Turn command.
+  mass: 1
+img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
+name: Command Deck/Follow
+type: shipFitting

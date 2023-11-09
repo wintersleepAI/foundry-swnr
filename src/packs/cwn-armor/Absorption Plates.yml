@@ -1,0 +1,20 @@
+data:
+  ac: 0
+  cost: 500
+  description: >-
+    Additional impact-absorbing buffer plates are added to the armor. Their bulk inflicts
+    a -1 penalty to the user's Sneak and Exert checks.
+  encumbrance: 1
+  isHeavy: true
+  isSubtle: true
+  meleeAc: 0
+  shield: true
+  shieldACBonus: 2
+  shieldMeleeACBonus: 2
+  soak:
+    max: 3
+    value: 3
+  traumaDiePenalty: 0
+img: systems/swnr/assets/icons/game-icons.net/item-icons/armor-white.svg
+name: Absorption Plates
+type: armor

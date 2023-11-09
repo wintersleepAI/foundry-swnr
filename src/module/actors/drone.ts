@@ -15,17 +15,33 @@ export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
     const data = this.data.data;
     //TODO
     data.fittings.value = data.fittings.max;
-    const shipInventory = <
-      SWNRBaseItem<"shipDefense" | "shipWeapon" | "shipFitting">[]
-    >this.items.filter(
-      (i) =>
-        i.type === "shipDefense" ||
-        i.type === "shipWeapon" ||
-        i.type === "shipFitting"
+    const shipInventory = <SWNRBaseItem<"shipDefense" | "shipFitting">[]>(
+      this.items.filter(
+        (i) => i.type === "shipDefense" || i.type === "shipFitting"
+      )
     );
-    const totalMass = shipInventory
+    const shipWeaponInventory = <SWNRBaseItem<"shipWeapon">[]>(
+      this.items.filter((i) => i.type === "shipWeapon")
+    );
+    const weaponInventory = <SWNRBaseItem<"weapon">[]>(
+      this.items.filter((i) => i.type === "weapon")
+    );
+    let totalMass = shipInventory
       .map((i) => i.data.data.mass)
       .reduce((i, n) => i + n, 0);
+    const totalWeaponMass = shipWeaponInventory
+      .map((i) => i.data.data.mass)
+      .reduce((i, n) => i + n, 0);
+    //CWN has hardpoints. Caclulate max hardpoints based on item count
+    if (data.hardpoints.max > 0) {
+      data.hardpoints.value =
+        data.hardpoints.max -
+        shipWeaponInventory.length -
+        weaponInventory.length;
+    } else {
+      totalMass += totalWeaponMass;
+      data.hardpoints.value = 0;
+    }
     data.fittings.value -= totalMass;
   }
 
@@ -130,16 +146,11 @@ export class SWNRDroneActor extends SWNRBaseActor<"drone"> {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  async _preCreate(actorDataConstructorData, options, user): Promise<void> {
-    await super._preCreate(actorDataConstructorData, options, user);
-    if (
-      actorDataConstructorData.type &&
-      this.data._source.img == "icons/svg/mystery-man.svg"
-    ) {
-      const mechImg = "systems/swnr/assets/icons/drone.png";
-      this.data._source.img = mechImg;
-    }
+  async _onCreate(): Promise<void> {
+    await this.update({
+      "token.actorLink": false,
+      img: "systems/swnr/assets/icons/drone.png",
+    });
   }
 }
 

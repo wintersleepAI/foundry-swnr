@@ -1,6 +1,12 @@
 _id: qjZyNVEfUFQITtgl
 data:
   ac: 15
+  meleeAc: 15
+  traumaDiePenalty: 1
+  isSubtle: false
+  soak:
+    value: 5
+    max: 5
   cost: 400
   description: >-
     Woven body armor represents the best armor that a TL3 world can manufacture,

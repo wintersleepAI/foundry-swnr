@@ -1,0 +1,7 @@
+data:
+  description: >-
+    Instead of rolling 1d6 per level for your hit points, you roll 1d6+2. Your base
+    Trauma Target increases by +1, turning the base 6 into 7.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/edge.svg
+name: Hard To Kill
+type: edge

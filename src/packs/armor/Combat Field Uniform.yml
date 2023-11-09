@@ -1,6 +1,12 @@
 _id: cmm4YopG9hFJrSmB
 data:
   ac: 16
+  meleeAc: 16
+  traumaDiePenalty: 2
+  isSubtle: false
+  soak:
+    value: 5
+    max: 5
   cost: 1000
   description: >-
     A combat field uniform is sophisticated battle dress fabricated from TL4

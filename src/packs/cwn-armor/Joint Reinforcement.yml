@@ -1,0 +1,21 @@
+data:
+  ac: 0
+  cost: 250
+  description: >-
+    The weak points around limb joints are reinforced with extra layers of weave.
+    The extra weave hinders movement, and applies a -1 penalty to the wearer's Sneak
+    and Exert checks.
+  encumbrance: 0
+  isHeavy: true
+  isSubtle: true
+  meleeAc: 0
+  shield: true
+  shieldACBonus: 1
+  shieldMeleeACBonus: 1
+  soak:
+    max: 0
+    value: 0
+  traumaDiePenalty: 0
+img: systems/swnr/assets/icons/game-icons.net/item-icons/armor-white.svg
+name: Joint Reinforcement
+type: armor

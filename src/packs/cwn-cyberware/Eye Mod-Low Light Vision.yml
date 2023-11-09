@@ -1,0 +1,12 @@
+data:
+  concealment: Medical
+  cost: 5000
+  description: >-
+    This mod grants low-light vision, allowing clear sight to normal distances in
+    any light condition better than pitch blackness.
+  effect: See in low-light conditions
+  strain: 0.5
+  type: Sensory
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Eye Mod/Low Light Vision
+type: cyberware

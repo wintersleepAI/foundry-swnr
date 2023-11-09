@@ -89,12 +89,21 @@ export const registerSettings = function (): void {
     scope: "world",
     config: true,
     type: Boolean,
-    default: true,
+    default: false,
   });
 
   game.settings.register("swnr", "useCWNArmor", {
     name: "swnr.settings.useCWNArmor",
     hint: "swnr.settings.useCWNArmorHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: false,
+  });
+
+  game.settings.register("swnr", "useCWNCyber", {
+    name: "swnr.settings.useCWNCyber",
+    hint: "swnr.settings.useCWNCyberHint",
     scope: "world",
     config: true,
     type: Boolean,

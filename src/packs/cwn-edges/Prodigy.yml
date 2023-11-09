@@ -1,0 +1,8 @@
+data:
+  description: >-
+    Pick an attribute other than Constitution; its score becomes 18 and it grants
+    a +3 modifier instead of +2. Characters benefiting from the Underdog Rule can't
+    take this Edge.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/edge.svg
+name: Prodigy
+type: edge

@@ -1,6 +1,12 @@
 _id: AaqIKMgSlsZaj0PB
 data:
   ac: 15
+  meleeAc: 15
+  traumaDiePenalty: 0
+  isSubtle: false
+  soak:
+    value: 0
+    max: 0
   cost: 10000
   description: >-
     A force pavis is more effective shield, being a small pretech force disc
@@ -10,6 +16,8 @@ data:
   location: other
   quality: stock
   shield: true
+  shieldACBonus: 1
+  shieldMeleeACBonus: 1
   tl: 5
   type: combat
   use: false

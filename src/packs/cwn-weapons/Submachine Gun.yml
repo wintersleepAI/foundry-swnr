@@ -1,0 +1,28 @@
+data:
+  ammo:
+    burst: true
+    max: 20
+    suppress: true
+    type: ammo
+    value: 20
+  cost: 2000
+  damage: 1d8
+  description: >-
+    Submachine guns are popular for their small form factor and convenient burst fire,
+    though like other burst-fire weaponry the corps frown heavily on civilian possession.
+  encumbrance: 1
+  isNonLethal: true
+  range:
+    max: 100
+    normal: 30
+  secondStat: None
+  shock:
+    ac: 0
+    dmg: 0
+  stat: dex
+  trauma:
+    die: 1d6
+    rating: 2
+img: systems/swnr/assets/icons/game-icons.net/item-icons/weapon-white.svg
+name: Submachine Gun
+type: weapon

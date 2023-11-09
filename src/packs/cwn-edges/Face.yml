@@ -1,0 +1,11 @@
+data:
+  description: >-
+    Gain Connect as a bonus skill. Once per game week, whenever it's convenient, gain
+    one temporary Acquaintance Contact of your choice, describing them in any way
+    the GM finds acceptable. You lose touch with this Contact after you use this Edge
+    again, but you can use this Edge to connect with them again at a different time.
+    You may also provide favors or payment sufficient to cement the relationship at
+    the GM's discretion.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/edge.svg
+name: Face
+type: edge

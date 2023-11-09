@@ -1,0 +1,18 @@
+data:
+  concealment: Medical
+  cost: 60000
+  description: >-
+    Functioning only for a user with at least one Body cybersystem to serve as a motor
+    substrate, 'zombie wires' allow a user to keep functioning even at zero hit points.
+    As an Instant action at zero hit points, the user can give their body a one-sentence
+    command involving physical action. Their insensate flesh will blindly carry out
+    that action for up to six rounds until it is complete or they take up to one quarter
+    of their maximum hit points in further damage, which will kill them instantly.
+    Time spent under Zombie Wires counts against a user's stabilization time limit.
+    Triggering this cyber adds 2 System Strain.
+  effect: Keep acting at zero HP
+  strain: 2
+  type: Nerve
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Zombie Wires
+type: cyberware

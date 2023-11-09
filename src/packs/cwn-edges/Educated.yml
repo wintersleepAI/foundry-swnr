@@ -1,0 +1,7 @@
+data:
+  description: >-
+    You may pick a bonus skill of your choice. Whenever you gain skill points from
+    character level advancement, you get a bonus skill point.
+img: systems/swnr/assets/icons/game-icons.net/item-icons/edge.svg
+name: Educated
+type: edge

@@ -1,0 +1,15 @@
+data:
+  accessCost: 0
+  cost: 500
+  description: >-
+    A Frisk Cyber program can give a list of all the cyber implanted in a specific
+    human target within 30 meters, assuming the hacker's skill check beats the cyber
+    user's security difficulty.
+  selfTerminating: true
+  skillCheckMod: 1
+  target: Cyber
+  type: verb
+  useAffects: Get a list of a target person's cyberware
+img: systems/swnr/assets/icons/game-icons.net/item-icons/program.svg
+name: Frisk
+type: program

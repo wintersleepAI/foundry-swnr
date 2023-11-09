@@ -21,6 +21,7 @@ declare type AllItemClasses = ItemsWithCustomClasses | BaseItemIfNeeded;
 declare interface SWNRDescData {
   description: string;
   favorite: boolean;
+  modDesc: string;
 }
 
 declare interface SWNRBaseItemData {
@@ -29,6 +30,7 @@ declare interface SWNRBaseItemData {
   tl: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   location: "readied" | "stowed" | "other";
   quality: "stock" | "masterwork" | "makeshift";
+  noEncReadied: boolean;
 }
 
 declare interface SWNRBaseVehicleItemData {
@@ -92,6 +94,7 @@ interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
     use: boolean;
     burst: boolean;
     modifier: number;
+    isNonLethal: boolean;
   };
   quantity: number;
   save: string;
@@ -102,6 +105,8 @@ interface SWNRWeaponData extends SWNRBaseItemData, SWNRDescData {
   settings: null | {
     useTrauma: boolean;
   };
+  isTwoHanded: boolean;
+  isNonLethal: boolean;
 }
 
 declare interface SWNRShipWeaponData
@@ -116,6 +121,20 @@ declare interface SWNRShipWeaponData
     type: SWNRWeaponAmmoTypes;
     max: number;
     value: number;
+  };
+  trauma: {
+    die: null | string;
+    rating: null | number;
+    vehicle: boolean;
+  };
+  range: {
+    normal: number;
+    max: number;
+  };
+  stat: null | SWNRStats;
+
+  settings: null | {
+    useTrauma: boolean;
   };
 }
 
@@ -173,7 +192,10 @@ declare interface SWNRArmorData extends SWNRBaseItemData {
   isHeavy: boolean;
   settings: null | {
     useCWNArmor: boolean;
+    useTrauma: boolean;
   };
+  shieldMeleeACBonus: null | number;
+  shieldACBonus: null | number;
 }
 
 declare interface SWNRPowerData extends SWNRDescData {
@@ -194,6 +216,12 @@ declare interface SWNRCyberware extends SWNRDescData {
   cost: number;
   disabled: boolean;
   effect: string;
+  type: "" | "Body" | "Head" | "Skin" | "Limb" | "Nerve" | "Sensory" | "None";
+  concealment: "" | "Sight" | "Touch" | "Medical";
+  complication: string;
+  settings: null | {
+    useCWNCyber: boolean;
+  };
 }
 
 declare interface SWNRItemData extends SWNRBaseItemData {
@@ -208,6 +236,16 @@ declare interface SWNRFocusData extends SWNRDescData {
   level1: string;
   level2: string;
   level: number;
+}
+
+declare interface SWNRProgramData extends SWNRDescData {
+  type: "verb" | "subject" | "datafile" | "running";
+  cost: number;
+  accessCost: number;
+  skillCheckMod: number;
+  target: string;
+  selfTerminating: boolean;
+  useAffects: string; //Short description
 }
 
 declare interface SWNRSkillData extends SWNRDescData {
@@ -240,6 +278,8 @@ declare global {
       | { type: "shipWeapon"; data: SWNRShipWeaponData }
       | { type: "shipDefense"; data: SWNRShipDefenseData }
       | { type: "shipFitting"; data: SWNRShipFittingData }
+      | { type: "edge"; data: SWNRDescData }
+      | { type: "program"; data: SWNRProgramData }
       | { type: "asset"; data: SWNRFactionAsset };
   }
 
@@ -256,6 +296,8 @@ declare global {
       | { type: "shipWeapon"; data: SWNRShipWeaponData }
       | { type: "shipDefense"; data: SWNRShipDefenseData }
       | { type: "shipFitting"; data: SWNRShipFittingData }
+      | { type: "edge"; data: SWNRDescData }
+      | { type: "program"; data: SWNRProgramData }
       | { type: "asset"; data: SWNRFactionAsset };
   }
 }

@@ -1,0 +1,14 @@
+data:
+  concealment: Medical
+  cost: 20000
+  description: "A set of standardized support implants provide a baseline degree of\
+    \ cyber-compatibility to a subject. They can ignore System Strain from cyber implants\
+    \ equal to 12 minus their Constitution score- so a PC with a Constitution of 9\
+    \ could ignore three points worth of System Strain from cyber implants. PCs with\
+    \ a Con of 12 or more have no use for this system. "
+  effect: Gain Con 12 for cyber purposes
+  strain: 0
+  type: Body
+img: systems/swnr/assets/icons/game-icons.net/item-icons/cyber-eye.svg
+name: Cybernetic Infrastructure Baseline
+type: cyberware
