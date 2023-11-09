@@ -7,7 +7,7 @@ data:
   damage: 2d6
   description: >-
     None
-  mass: true
+  mass: false
   minClass: Shrieker guns are sonic cannons used for crowd control and non-lethal
     suppression. While highly effective against unprotected targets, military-grade
     ear protection or the integral dampers in cyber-ears are sufficient to render

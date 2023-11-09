@@ -3,7 +3,7 @@ data:
   description: >-
     A cheap headset for a VR addict or a hacker too poor for a cranial jack.
   encumbrance: 1
-  noEncReadied: true
+  noEncReadied: false
 img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: VR crown,cheap
 type: item

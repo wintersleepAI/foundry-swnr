@@ -1,8 +1,8 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: 1
-    suppress: true
+    suppress: false
     type: special
     value: 1
   cost: 500
@@ -13,7 +13,7 @@ data:
     carried on a fifty-gram arrow. This weapon can be reloaded with a Move action,
     or an On Turn if the user has at least Shoot-1 skill.
   encumbrance: 2
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 200
     normal: 30

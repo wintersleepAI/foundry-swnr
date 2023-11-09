@@ -5,7 +5,7 @@ data:
     of heavy activity. Water can be included for an extra point of Encumbrance per
     day.
   encumbrance: 1
-  noEncReadied: true
+  noEncReadied: false
 img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: Military ration (1 day)
 type: item

@@ -2,7 +2,7 @@ data:
   ammo:
     burst: true
     max: 12
-    suppress: true
+    suppress: false
     type: ammo
     value: 12
   cost: 3000
@@ -15,7 +15,7 @@ data:
     given are for shot shells; slugs double their normal and extreme ranges but apply
     a -1 penalty to hit rolls.
   encumbrance: 2
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 30
     normal: 10

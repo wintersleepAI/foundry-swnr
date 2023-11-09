@@ -8,7 +8,7 @@ data:
     kits are for badlands operations, with water filtration, firemaking tools, and
     other such gear for extended wilderness stays.
   encumbrance: 2
-  noEncReadied: true
+  noEncReadied: false
 img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: Kit,Survival
 type: item

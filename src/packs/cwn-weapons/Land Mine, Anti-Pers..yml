@@ -1,8 +1,8 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: None
-    suppress: true
+    suppress: false
     type: None
     value: None
   cost: 150
@@ -15,7 +15,7 @@ data:
     damage in a 5-meter radius. Humans get an Evasion save for half damage in either
     case.
   encumbrance: 1
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 0
     normal: 0

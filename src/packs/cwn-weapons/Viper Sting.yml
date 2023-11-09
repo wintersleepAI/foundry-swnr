@@ -1,8 +1,8 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: 4
-    suppress: true
+    suppress: false
     type: special
     value: 4
   cost: 25000
@@ -17,7 +17,7 @@ data:
     of an Execution Attack, as an alert opponent can avoid it easily. This cyber inflicts
     a -2 penalty on any check to detect its presence.
   encumbrance: 0
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 0
     normal: 0

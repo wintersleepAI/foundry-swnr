@@ -4,7 +4,7 @@ data:
     Individual rounds are loaded into empty magazines that are specific to individual
     firearms.
   encumbrance: 0
-  noEncReadied: true
+  noEncReadied: false
 img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: Ammunition (Round)
 type: item

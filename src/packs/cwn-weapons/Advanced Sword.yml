@@ -1,8 +1,8 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: 0
-    suppress: true
+    suppress: false
     type: None
     value: 0
   cost: 1000
@@ -16,7 +16,7 @@ data:
     some enterprising serial killers and gang enforcers inking exclusivity deals with
     particular knife manufacturers.
   encumbrance: 1
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 0
     normal: 0

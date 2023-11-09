@@ -4,7 +4,7 @@ data:
     This headset protects the wearer from disorientation due to loud noises. It passes
     along conversational-level speech without difficulty.
   encumbrance: 1
-  noEncReadied: true
+  noEncReadied: false
 img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: Active Hearing Protection
 type: item

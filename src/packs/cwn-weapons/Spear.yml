@@ -1,8 +1,8 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: 0
-    suppress: true
+    suppress: false
     type: None
     value: 0
   cost: 50
@@ -13,7 +13,7 @@ data:
     \ Such weapons are effectively free, but have a -1 penalty to hit and damage rolls\
     \ due to their ungainly make."
   encumbrance: 1
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 20
     normal: 10
