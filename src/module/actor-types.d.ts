@@ -134,6 +134,10 @@ declare interface SWNRLivingTemplateComputed {
     useCWNArmor: boolean;
     useTrauma: boolean;
   };
+  soakTotal: {
+    value: number;
+    max: number;
+  };
   modifiedTraumaTarget: number;
 }
 declare interface SWNREncumbranceTemplateBase {

@@ -408,6 +408,7 @@
     rest: A night's rest
     scene: End Scene
     traumaTarget: Trauma Target
+    traumaTargetShort: TT
     rest-desc: Apply a good night's rest (reset effort, drop strain, heal HP)?
     rest-title: Apply a Good Night's Rest?
     cyberware:

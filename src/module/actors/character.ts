@@ -103,6 +103,10 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
           armorId = a.id;
         }
       }
+      if (a.data.data.soak.max > 0) {
+        data.soakTotal.max += a.data.data.soak.max;
+        data.soakTotal.value += a.data.data.soak.value;
+      }
     }
     for (const shield of shields) {
       if (shield.data.data.shieldACBonus && shield.id != armorId) {

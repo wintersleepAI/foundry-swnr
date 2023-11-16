@@ -86,10 +86,14 @@
       <div class="flex-grow">
         <h4 class="text-lg underline">
           {{localize 'swnr.item.locationReadied'}}  {{localize 'swnr.sheet.tabs.armor'}}
+        </h4>
           {{#if actor.data.data.settings.useTrauma}}
             ({{localize 'swnr.sheet.traumaTarget'}}: {{actor.data.data.modifiedTraumaTarget}})
           {{/if}}
-        </h4>
+          {{#if actor.data.data.settings.useCWNArmor}}
+            ({{localize 'swnr.armor.soak.label'}} Total: {{actor.data.data.soakTotal.value}}/{{actor.data.data.soakTotal.max}} )
+          {{/if}}
+  
         <div class="flex flex-col">
 
           {{#each itemTypes.armor as |item id|}} 
