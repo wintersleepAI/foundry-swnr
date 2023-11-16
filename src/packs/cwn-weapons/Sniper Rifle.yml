@@ -15,7 +15,7 @@ data:
   encumbrance: 2
   isNonLethal: false
   range:
-    max: 2,000
+    max: 2000
     normal: 1000
   secondStat: None
   shock:

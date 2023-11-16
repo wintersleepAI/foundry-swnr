@@ -3,7 +3,7 @@ data:
     burst: false
     max: None
     suppress: false
-    type: None
+    type: none
     value: None
   cost: 10000
   damage: 1d8

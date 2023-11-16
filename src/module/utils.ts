@@ -11,10 +11,21 @@ import { ValidatedDialog } from "./ValidatedDialog";
 
 export function chatListeners(message: ChatMessage, html: JQuery): void {
   html.on("click", ".card-buttons button", _onChatCardAction.bind(this));
-  //Reroll
-  html.find(".dice-roll").each((_i, div) => {
-    _addRerollButton($(div));
+  const foundDiv: HTMLElement[] = [];
+  html.find(".dice-roll").each((_i , _d) => {
+    foundDiv.push(_d);
   });
+  if (foundDiv.length == 1) {
+    _addHealthButtons($(foundDiv[0]));
+  } else if (foundDiv.length > 1) {
+    for (const div of foundDiv) {
+      _addRerollButton($(div));
+    }
+  }
+  // //Reroll
+  // html.find(".dice-roll").each((_i, div) => {
+  //   _addRerollButton($(div));
+  // });
   // Health Buttons
   html.find(".roll-damage").each((_i, div) => {
     _addHealthButtons($(div));
