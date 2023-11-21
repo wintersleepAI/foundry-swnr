@@ -70,20 +70,48 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
   async _onItemSearch(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
-    const mappings: { [name: string]: string } = {
-      armor: "armor",
-      item: "all-items",
-      cyberware: "cyberware",
-      focus: "foci",
+    const searchType = game.settings.get("swnr", "search");
+
+    const swnMappings: { [name: string]: [string] } = {
+      armor: ["armor"],
+      item: ["all-items"],
+      cyberware: ["cyberware"],
+      focus: ["foci"],
     };
+    const cwnMappings: { [name: string]: [string] } = {
+      armor: ["cwnarmor"],
+    };
+
     const candiateItems: { [name: string]: Item } = {};
     const itemType = $(event.currentTarget).data("itemType");
     const givenName = $(event.currentTarget).data("itemName");
     const itemSubType = $(event.currentTarget).data("itemSubtype");
-    if (mappings[itemType]) {
-      const skillPack = game.packs.get(`swnr.${mappings[itemType]}`);
-      if (skillPack) {
-        const convert = await skillPack.getDocuments();
+    let selectedMapping = swnMappings;
+    if (searchType == "cwnOnly") {
+      selectedMapping = cwnMappings;
+    } else if (searchType == "swnCWN") {
+      // both, merge the mappings
+      selectedMapping = swnMappings;
+      for (const [key, value] of Object.entries(cwnMappings)) {
+        if (key in selectedMapping) {
+          for (const val of value) {
+            console.log(selectedMapping[key]);
+            selectedMapping[key].push(val);
+            console.log(selectedMapping[key]);
+          }
+        } else {
+          selectedMapping[key] = value;
+        }
+      }
+      console.log(selectedMapping[itemType]);
+    }
+    if (selectedMapping[itemType]) {
+      for (const itemPackName of selectedMapping[itemType]) {
+        const itemPack = game.packs.get(`swnr.${itemPackName}`);
+        if (itemPack == null || itemPack == undefined) {
+          continue;
+        }
+        const convert = await itemPack.getDocuments();
         for (const item of convert.map((i) => i.toObject())) {
           candiateItems[item.name] = item;
         }
