@@ -51,6 +51,7 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
         (gameGen >= 10 && e.metadata.type === "Item") ||
         (gameGen < 10 && e.metadata.entity === "Item")
       ) {
+        //console.log("Checking pack ", e.metadata, " ", e.name);
         if (gameGen <= 10 && e.metadata.private == true) {
           continue;
         } else if (gameGen > 10 && e.metadata.ownership.PLAYER == "NONE") {
@@ -64,6 +65,7 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
           : (await e.getDocuments()).filter(
               (i) => (<SWNRBaseItem>i).type == itemType
             );
+        //console.log("Found items ", items.length, " : ", items);
         if (items.length) {
           for (const ci of items.map((item) => item.toObject())) {
             candiateItems[ci.name] = ci;
