@@ -6,7 +6,8 @@ data:
   cost: 5000
   damage: 2d8
   description: >-
-    None
+    Drone cannons are heavy semi-automatic weapons too bulky for human portability.
+    A round of firing costs $100 worth of ammunition.
   effect: ''
   mass: 1
   minClass: m
@@ -19,8 +20,7 @@ data:
     die: 1d10
     rating: 3
     vehicle: true
-  type: Drone cannons are heavy semi-automatic weap- ons too bulky for human portability.
-    A round of firing costs $100 worth of ammunition.
+  type: vehicle
 img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
 name: Drone Cannon
 type: shipWeapon
