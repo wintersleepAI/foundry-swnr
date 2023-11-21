@@ -45,19 +45,25 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     candiateItems: { [name: string]: Item },
     itemSubType?: string
   ): Promise<void> {
+    const gameGen = game?.release?.generation;
     for (const e of game.packs) {
       if (
-        e.metadata.private == false &&
-        ((game?.release?.generation >= 10 && e.metadata.type === "Item") ||
-          (game?.release?.generation < 10 && e.metadata.entity === "Item"))
+        (gameGen >= 10 && e.metadata.type === "Item") ||
+        (gameGen < 10 && e.metadata.entity === "Item")
       ) {
+        if (gameGen <= 10 && e.metadata.private == true) {
+          continue;
+        } else if (gameGen > 10 && e.metadata.ownership.PLAYER == "NONE") {
+          continue;
+        }
         const items = itemSubType ? (await e.getDocuments()).filter(
-          (i) => 
-            (<SWNRBaseItem>i).type == itemType &&
-            (<SWNRBaseItem>i).data.data["type"] == itemSubType
-        ) : (await e.getDocuments()).filter(
-          (i) => (<SWNRBaseItem>i).type == itemType
-        );
+              (i) =>
+                (<SWNRBaseItem>i).type == itemType &&
+                (<SWNRBaseItem>i).data.data["type"] == itemSubType
+            )
+          : (await e.getDocuments()).filter(
+              (i) => (<SWNRBaseItem>i).type == itemType
+            );
         if (items.length) {
           for (const ci of items.map((item) => item.toObject())) {
             candiateItems[ci.name] = ci;
