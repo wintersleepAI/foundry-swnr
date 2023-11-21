@@ -5,7 +5,7 @@ data:
     Renders the targeted friendly avatar or Demon 'invisible' until they take some
     cyberspace action other than Move Nodes. Observers in a node get an automatic
     opposed Int/Program check to detect a ghosted avatar's presence, ending the program.
-  selfTerminating: true
+  selfTerminating: false
   skillCheckMod: 0
   target: Avatar
   type: verb

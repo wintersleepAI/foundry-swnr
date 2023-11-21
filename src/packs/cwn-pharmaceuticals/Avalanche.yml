@@ -1,0 +1,14 @@
+data:
+  cost: 100
+  description: >-
+    (Heal-0) A somewhat pricey combat drug favored by shock troops and those first
+    out of the trenches, Avalanche numbs sensations of pain or exhaustion for one
+    hour, granting the user an effective +10 to their current hit points, even if
+    it takes them above their maximum. This numbness tends to make it harder to notice
+    serious harms, however, and the d12 roll for any Major Injury suffered while under
+    its effects takes a -1 penalty.
+  encumbrance: 0
+  noEncReadied: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
+name: Avalanche
+type: item

@@ -492,6 +492,10 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
         },
       },
     });
+    this._resetSoak();
+  }
+
+  async _resetSoak(): Promise<void> {
     if (game.settings.get("swnr", "useCWNArmor")) {
       const armorWithSoak = <SWNRBaseItem<"armor">[]>(
         this.actor.items.filter(
@@ -533,6 +537,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
           },
         },
       });
+      this._resetSoak();
     };
 
     const d = new Dialog(

@@ -1,9 +1,9 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: None
-    suppress: true
-    type: None
+    suppress: false
+    type: none
     value: None
   cost: 10000
   damage: 1d8
@@ -14,7 +14,7 @@ data:
     add damage to Body Blades attacks. When not in use, the blades are perceptible
     only to a medical scan.
   encumbrance: 0
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 0
     normal: 0

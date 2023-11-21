@@ -40,6 +40,7 @@ Actor:
       traumaTarget: 6
       speed: 10
       ab: 0
+      meleeAb: 0
       systemStrain:
         value: 0
         permanent: 0
@@ -52,6 +53,9 @@ Actor:
         value: 0
         bonus: 0
       cyberdecks: []
+      soakTotal:
+        value: 0
+        max: 0
     encumbrance:
       encumbrance:
         stowed:

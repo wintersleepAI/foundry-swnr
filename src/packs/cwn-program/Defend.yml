@@ -8,7 +8,7 @@ data:
     systems must first beat the user in an opposed Int/Program skill check before
     they can attempt their hack. This Verb cannot negate programs that are already
     running on the target.
-  selfTerminating: true
+  selfTerminating: false
   skillCheckMod: N/A
   target: Device/Cyber
   type: verb

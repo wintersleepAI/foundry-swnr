@@ -2,7 +2,7 @@ data:
   ammo:
     burst: true
     max: 30
-    suppress: true
+    suppress: false
     type: ammo
     value: 30
   cost: 2500
@@ -12,7 +12,7 @@ data:
     equipped with a burst-fire selector and usually trades the range of a heavier
     caliber for the ability to carry more ammunition.
   encumbrance: 2
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 300
     normal: 100

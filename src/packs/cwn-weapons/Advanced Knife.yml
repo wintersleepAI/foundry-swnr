@@ -1,9 +1,9 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: 0
-    suppress: true
-    type: None
+    suppress: false
+    type: none
     value: 0
   cost: 200
   damage: 1d6
@@ -16,7 +16,7 @@ data:
     some enterprising serial killers and gang enforcers inking exclusivity deals with
     particular knife manufacturers.
   encumbrance: 1
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 20
     normal: 10

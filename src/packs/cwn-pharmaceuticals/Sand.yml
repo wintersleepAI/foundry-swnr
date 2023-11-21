@@ -1,0 +1,13 @@
+data:
+  cost: 2
+  description: >-
+    A gritty powder trafficked to those addicts too poor to afford anything better,
+    a snorted dose of Sand will put its user into a euphoric haze for as long as an
+    hour, depending on tolerance. Beautiful visions and dreamy contentment give way
+    to shooting pains and intense light sensitivity afterwards, with most heavy users
+    dying within six to twelve months of picking up the habit.
+  encumbrance: 0
+  noEncReadied: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
+name: Sand
+type: item

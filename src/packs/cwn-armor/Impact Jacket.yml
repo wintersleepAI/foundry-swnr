@@ -6,8 +6,8 @@ data:
     and unguided vehicle races, these jackets usually come as part of a full-body
     protective outfit.
   encumbrance: 1
-  isHeavy: true
-  isSubtle: true
+  isHeavy: false
+  isSubtle: false
   meleeAc: 14
   shieldACBonus: 0
   shieldMeleeACBonus: 0

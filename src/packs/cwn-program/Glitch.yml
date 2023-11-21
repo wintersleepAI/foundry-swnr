@@ -6,7 +6,7 @@ data:
     running, for no more than one round per Program skill level plus two. A device
     can be targeted by a particular hacker's Glitch only once a day, successful or
     not.
-  selfTerminating: true
+  selfTerminating: false
   skillCheckMod: 2
   target: Device/Cyber
   type: verb

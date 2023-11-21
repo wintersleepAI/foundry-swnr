@@ -4,7 +4,7 @@ data:
     Bulky and uncomfortable, but once Readied it leaves the user immune to most inhaled
     gases, including tear gas grenades.
   encumbrance: 1
-  noEncReadied: true
+  noEncReadied: false
 img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: Gas mask
 type: item

@@ -5,7 +5,7 @@ data:
     A datafile stored within a cyberspace location. While individual files may have
     very little actual data in them, the autoencryption functions and anti-tamper
     code they're wrapped in almost always take up a full unit of Memory per file .
-  selfTerminating: true
+  selfTerminating: false
   skillCheckMod: 0
   target: Data
   type: subject

@@ -7,8 +7,8 @@ data:
     sew or bolt on. It's usually the best armor that local gangs or common thugs can
     afford.
   encumbrance: 1
-  isHeavy: true
-  isSubtle: true
+  isHeavy: false
+  isSubtle: false
   meleeAc: 14
   shieldACBonus: 0
   shieldMeleeACBonus: 0

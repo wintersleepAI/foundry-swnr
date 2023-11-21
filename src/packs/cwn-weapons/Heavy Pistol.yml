@@ -1,8 +1,8 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: 8
-    suppress: true
+    suppress: false
     type: ammo
     value: 8
   cost: 200
@@ -13,7 +13,7 @@ data:
     round, while others like to have a little more certainty in dropping the targets
     they hit.
   encumbrance: 1
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 100
     normal: 10

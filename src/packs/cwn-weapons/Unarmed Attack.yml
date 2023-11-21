@@ -1,9 +1,9 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: 0
-    suppress: true
-    type: None
+    suppress: false
+    type: none
     value: 0
   cost: None
   damage: 1d2
@@ -12,7 +12,7 @@ data:
     \ fashion makeshift machetes and improvised shivs when better can\u2019t be obtained.\
     \ Such weapons are effectively free, but have a -1 penalty to hit and damage rolls\
     \ due to their ungainly make."
-  encumbrance: None
+  encumbrance: 0
   isNonLethal: true
   range:
     max: 0

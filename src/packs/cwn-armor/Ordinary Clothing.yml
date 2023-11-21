@@ -5,7 +5,7 @@ data:
     Some bold, impoverished, or highly fashionable people still insist on wearing
     clothing that has no functional use as armor.
   encumbrance: 0
-  isHeavy: true
+  isHeavy: false
   isSubtle: true
   meleeAc: 10
   shieldACBonus: 0

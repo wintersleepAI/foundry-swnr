@@ -1,0 +1,15 @@
+data:
+  cost: 10
+  description: >-
+    A filthy mix of jailbroken corp industrial chems and amphetamine scrapings, Boneshaker
+    is a popular combat drug among the most impoverished or savage street gangs. On
+    application, the subject is filled with blind aggression, gaining a +2 Morale
+    bonus and a +2 bonus to hit rolls, damage, and Shock. The recklessness induced
+    by Boneshaker leaves them wide open, however, and all attacks against them add
+    +2 to any Trauma Die rolls. Boneshaker lasts for one scene and adds 2 System Strain
+    at the end of it.
+  encumbrance: 0
+  noEncReadied: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
+name: Boneshaker
+type: item

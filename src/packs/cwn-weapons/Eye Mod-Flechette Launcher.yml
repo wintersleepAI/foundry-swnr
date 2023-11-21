@@ -1,8 +1,8 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: 1
-    suppress: true
+    suppress: false
     type: ammo
     value: 1
   cost: 20000
@@ -15,7 +15,7 @@ data:
     a normal hit roll is made; on a miss, it does full normal damage anyway, and on
     a hit, the damage is doubled. It can be used for Execution Attacks.
   encumbrance: 0
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 10
     normal: 10

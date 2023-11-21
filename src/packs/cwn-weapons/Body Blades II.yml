@@ -1,9 +1,9 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: None
-    suppress: true
-    type: None
+    suppress: false
+    type: none
     value: None
   cost: 25000
   damage: 2d6
@@ -14,7 +14,7 @@ data:
     and a Trauma Die 1d10/x3. Anyone who sees or touches their arms can detect signs
     of the cyber, however.
   encumbrance: 0
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 0
     normal: 0

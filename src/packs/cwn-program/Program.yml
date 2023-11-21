@@ -4,7 +4,7 @@ data:
   description: >-
     hostile program, used most often with the Terminate verb to end the effects of
     an enemy hacker's programs prematurely.
-  selfTerminating: true
+  selfTerminating: false
   skillCheckMod: 0
   target: Program
   type: subject

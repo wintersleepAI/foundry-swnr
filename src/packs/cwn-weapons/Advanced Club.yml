@@ -1,9 +1,9 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: 0
-    suppress: true
-    type: None
+    suppress: false
+    type: none
     value: 0
   cost: 500
   damage: 1d8

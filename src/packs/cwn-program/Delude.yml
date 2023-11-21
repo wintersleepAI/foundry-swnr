@@ -7,7 +7,7 @@ data:
     operator false visuals, and a turret can be made to mistake friends for foes.
     This Verb can't control a device directly, however, and must rely on feeding it
     false sensor data.
-  selfTerminating: true
+  selfTerminating: false
   skillCheckMod: '-1'
   target: Device
   type: verb

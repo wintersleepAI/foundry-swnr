@@ -1,0 +1,14 @@
+data:
+  cost: 100
+  description: >-
+    A watery black toxin that must be administered through food or direct injection,
+    Hellbender causes the victim to convulse with bone-cracking force shortly after
+    consumption. A dose of Hellbender has a distinct acrid taste, but if the victim
+    consumes it they must make a Physical saving throw or begin convulsing helplessly
+    for 1d6 rounds, suffering 1d10 damage each round unless restrained by at least
+    two associates. This damage can kill an unfortunate victim.
+  encumbrance: 0
+  noEncReadied: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
+name: Hellbender
+type: item

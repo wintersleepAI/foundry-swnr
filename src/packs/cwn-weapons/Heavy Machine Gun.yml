@@ -1,6 +1,6 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: 10
     suppress: true
     type: special
@@ -14,7 +14,7 @@ data:
     costs $100 and counts as a full item of encumbrance. This weapon's Trauma Die
     can inflict Traumatic Hits on drones, vehicles, and other machines.
   encumbrance: 3
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 2000
     normal: 500

@@ -1,9 +1,9 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: 0
-    suppress: true
-    type: None
+    suppress: false
+    type: none
     value: 0
   cost: 50
   damage: 0
@@ -16,7 +16,7 @@ data:
     Flashbang effects don't stack, and a target who makes their save cannot be flashbanged
     again that same round.
   encumbrance: 1
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 30
     normal: 10

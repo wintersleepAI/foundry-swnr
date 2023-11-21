@@ -6,7 +6,7 @@ data:
     are reserved for high-end response teams and military operations.
   encumbrance: 3
   isHeavy: true
-  isSubtle: true
+  isSubtle: false
   meleeAc: 18
   shieldACBonus: 0
   shieldMeleeACBonus: 0

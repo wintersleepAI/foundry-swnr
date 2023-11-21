@@ -1,9 +1,9 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: 0
-    suppress: true
-    type: None
+    suppress: false
+    type: none
     value: 0
   cost: 100
   damage: 2d6
@@ -15,7 +15,7 @@ data:
     grenade's damage, and each point of melee AC the target has above 14 reduces the
     final damage total by one point, possibly down to zero.
   encumbrance: 1
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 30
     normal: 10

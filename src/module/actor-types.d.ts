@@ -68,6 +68,7 @@ declare interface SWNRLivingTemplateBase {
   ac: number;
   meleeAc: number; // CWN
   ab: number;
+  meleeAb: number; // CWN
   systemStrain: {
     value: number;
     permanent: number; //computed-active effects needed
@@ -132,6 +133,10 @@ declare interface SWNRLivingTemplateComputed {
   settings: null | {
     useCWNArmor: boolean;
     useTrauma: boolean;
+  };
+  soakTotal: {
+    value: number;
+    max: number;
   };
   modifiedTraumaTarget: number;
 }

@@ -1,9 +1,9 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: None
-    suppress: true
-    type: None
+    suppress: false
+    type: none
     value: None
   cost: 1000
   damage: 3d8
@@ -16,7 +16,7 @@ data:
     case. This weapon's Trauma Die can inflict Traumatic Hits on drones, vehicles,
     and other machines.
   encumbrance: 2
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 0
     normal: 0

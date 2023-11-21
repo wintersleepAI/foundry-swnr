@@ -5,7 +5,7 @@ data:
     The bulky plates and heavy ballistic weaves of this outfit are disguised as drapes
     and fashion elements.
   encumbrance: 2
-  isHeavy: true
+  isHeavy: false
   isSubtle: true
   meleeAc: 14
   shieldACBonus: 0

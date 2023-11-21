@@ -1,8 +1,8 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: 1
-    suppress: true
+    suppress: false
     type: special
     value: 1
   cost: 5000
@@ -18,7 +18,7 @@ data:
     Relatively simple as they are, a mortar round costs $50 and counts as one item
     of encumbrance.
   encumbrance: 3
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 2000
     normal: 1000

@@ -1,0 +1,14 @@
+data:
+  cost: 10
+  description: >-
+    Ingesting one of these small pills rapidly flattens a user's capacity for emotional
+    distress while heavily increasing their aggressiveness. For roughly one hour,
+    users gain a +2 bonus to Morale checks and experience no immediate emotional trauma
+    from performing even the most heinous and violent actions. The drug is a favorite
+    pre-fight dose among gangers, and used as self-medication among many of them who
+    would otherwise be incapacitated by the emotional scars of what they've done.
+  encumbrance: 0
+  noEncReadied: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
+name: Psycho
+type: item

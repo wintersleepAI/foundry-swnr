@@ -2,7 +2,7 @@ data:
   ammo:
     burst: true
     max: 20
-    suppress: true
+    suppress: false
     type: ammo
     value: 20
   cost: 2000
@@ -11,7 +11,7 @@ data:
     Submachine guns are popular for their small form factor and convenient burst fire,
     though like other burst-fire weaponry the corps frown heavily on civilian possession.
   encumbrance: 1
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 100
     normal: 30

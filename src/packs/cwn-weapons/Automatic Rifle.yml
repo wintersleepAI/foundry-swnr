@@ -1,6 +1,6 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: 10
     suppress: true
     type: special
@@ -15,7 +15,7 @@ data:
     needing a refill, with each 'round' costing $50 worth of ammunition. The compactness
     of their loaded magazines still only counts as one item, however.
   encumbrance: 4
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 400
     normal: 200

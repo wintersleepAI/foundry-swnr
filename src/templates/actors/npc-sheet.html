@@ -334,6 +334,9 @@
         />
       </div>
       <div>
+        {{#if (useCWNArmor)}}
+        {{localize 'swnr.armor.ranged'}}
+        {{/if}}
         {{localize 'swnr.npc.attack-bonus-hit'}}:
         <input
           class="w-8 border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
@@ -344,6 +347,21 @@
           value="{{actor.data.data.ab}}"
         />
       </div>
+
+      {{#if (useCWNArmor)}}
+        <!--melee AB-->
+      <div>
+        {{localize 'swnr.armor.melee'}} {{localize 'swnr.npc.attack-bonus-hit'}}:
+        <input
+          class="w-8 border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          type="number"
+          name="data.meleeAb"
+          min="0"
+          step="1"
+          value="{{actor.data.data.meleeAb}}"
+        />
+      </div>
+      {{/if}}
       <div>
         {{localize 'swnr.npc.attack-bonus-damage'}}:
         <input

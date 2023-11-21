@@ -1,0 +1,14 @@
+data:
+  cost: 100
+  description: >-
+    A chem that intensely stimulates a subject's memory centers, Madeleine has its
+    dangers. Users normally focus on a particular memory before injecting the drug;
+    for the next 1d6 hours, they relive some portion of that memory with perfect fidelity
+    while remaining oblivious to their physical surroundings. Psychological addiction
+    is a considerable risk for long-term users, as well as choosing a less pleasant
+    memory to recall.
+  encumbrance: 0
+  noEncReadied: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
+name: Madeleine
+type: item

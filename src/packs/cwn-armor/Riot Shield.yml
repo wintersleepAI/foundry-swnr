@@ -7,8 +7,8 @@ data:
     only one shield at a time. A shield negates the first melee Shock damage a bearer
     takes in a round.
   encumbrance: 2
-  isHeavy: true
-  isSubtle: true
+  isHeavy: false
+  isSubtle: false
   meleeAc: 0
   shield: true
   shieldACBonus: 4

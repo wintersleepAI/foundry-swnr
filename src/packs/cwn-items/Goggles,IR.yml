@@ -5,7 +5,7 @@ data:
     IR goggles include anti-flash tech, but also give the user effective IR vision
     out to 50 meters in most environments.
   encumbrance: 1
-  noEncReadied: true
+  noEncReadied: false
 img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: Goggles,IR
 type: item

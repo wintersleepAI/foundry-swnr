@@ -4,7 +4,7 @@ data:
   description: >-
     The affected avatar or Demon is unable to use the Send Message cyberspace action
     while this program runs. Alert the Network can still be done.
-  selfTerminating: true
+  selfTerminating: false
   skillCheckMod: 1
   target: Avatar
   type: verb

@@ -2,6 +2,16 @@ import { SWNRCharacterActor } from "./actors/character";
 import { SWNRWeapon } from "./items/weapon";
 
 export default function registerHelpers(): void {
+  Handlebars.registerHelper("useTrauma", function () {
+    const useT = game.settings.get("swnr", "useTrauma") ? true : false;
+    return useT;
+  });
+
+  Handlebars.registerHelper("useCWNArmor", function () {
+    const useT = game.settings.get("swnr", "useCWNArmor") ? true : false;
+    return useT;
+  });
+
   Handlebars.registerHelper("debug", function () {
     return JSON.stringify(this, null, 2);
   });

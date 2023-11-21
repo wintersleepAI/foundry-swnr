@@ -5,7 +5,7 @@ data:
     Seize control of a device, operating it as you wish within the limits of its functionality
     for as long as the program remains running. One command is free with the program's
     successful execution; others take a Main Action to issue.
-  selfTerminating: true
+  selfTerminating: false
   skillCheckMod: '-1'
   target: Device
   type: verb

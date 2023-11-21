@@ -6,7 +6,7 @@ data:
     non-synthetic leather in their makeup, but are light and comfortable enough to
     wear as a habit.
   encumbrance: 0
-  isHeavy: true
+  isHeavy: false
   isSubtle: true
   meleeAc: 12
   shieldACBonus: 0

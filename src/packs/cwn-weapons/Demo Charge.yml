@@ -1,9 +1,9 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: None
-    suppress: true
-    type: None
+    suppress: false
+    type: none
     value: None
   cost: 1000
   damage: 3d10
@@ -17,7 +17,7 @@ data:
     and can provoke more heat than many operators like to draw. This weapon's Trauma
     Die can inflict Traumatic Hits on drones, vehicles, and other machines.
   encumbrance: 1
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 20
     normal: 20

@@ -5,8 +5,8 @@ data:
     Ordinary law enforcement and security guards will be wearing suits like this,
     usually brightly emblazoned with their corporate affiliation.
   encumbrance: 2
-  isHeavy: true
-  isSubtle: true
+  isHeavy: false
+  isSubtle: false
   meleeAc: 13
   shieldACBonus: 0
   shieldMeleeACBonus: 0

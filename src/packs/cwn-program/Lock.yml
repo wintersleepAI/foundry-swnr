@@ -4,7 +4,7 @@ data:
   description: >-
     Lock a physical device that has some sort of electronic locking mechanism or a
     currently-unlocked cyberspace node barrier.
-  selfTerminating: true
+  selfTerminating: false
   skillCheckMod: 1
   target: Device/Data
   type: verb

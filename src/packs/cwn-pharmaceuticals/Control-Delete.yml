@@ -1,0 +1,13 @@
+data:
+  cost: 25
+  description: >-
+    A chemical that temporarily destroys a person's ability to form long-term memories,
+    Control-Delete must be ingested in food or drink. Toxin-filtering cyber can fend
+    it off, but it otherwise grants no saving throw. Once affected, the target will
+    continue to act normally, but anything that happens to them between then and their
+    next sleep or unconsciousness will be completely forgotten by the time they awake.
+  encumbrance: 0
+  noEncReadied: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
+name: Control-Delete
+type: item

@@ -4,7 +4,7 @@ data:
     Palm-sized and discreet, this camera can record up to twelve hours of high-def
     video before its internal memory is filled.
   encumbrance: 1
-  noEncReadied: true
+  noEncReadied: false
 img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: Portable video camera
 type: item

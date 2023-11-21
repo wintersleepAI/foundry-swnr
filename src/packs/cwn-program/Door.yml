@@ -4,7 +4,7 @@ data:
   description: >-
     A physical door, shutter, hatch, or other barrier with an electronic lock or opening
     mechanism.
-  selfTerminating: true
+  selfTerminating: false
   skillCheckMod: 0
   target: Device
   type: subject

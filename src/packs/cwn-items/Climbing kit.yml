@@ -4,7 +4,7 @@ data:
     Ultralight cord, a grapnel, some grip handholds, and a fast-acting, ultra-strong
     wall adhesive make up this kit.
   encumbrance: 2
-  noEncReadied: true
+  noEncReadied: false
 img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
 name: Climbing kit
 type: item

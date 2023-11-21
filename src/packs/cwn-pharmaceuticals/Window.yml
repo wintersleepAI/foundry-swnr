@@ -1,0 +1,14 @@
+data:
+  cost: 200
+  description: >-
+    (Heal-1) A neurobooster favored among hackers and knowledge workers, Window augments
+    the user's focus and mental reaction speed at the cost of distracting them from
+    their terrestrial surroundings. A Window user can trade their Move action to gain
+    a bonus Main Action that can only be used for cyberspace actions. Each time this
+    is done in a scene, however, the user gains one System Strain. One dose lasts
+    for one scene.
+  encumbrance: 0
+  noEncReadied: false
+img: systems/swnr/assets/icons/game-icons.net/item-icons/item-white.svg
+name: Window
+type: item

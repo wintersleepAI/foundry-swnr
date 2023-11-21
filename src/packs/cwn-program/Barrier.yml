@@ -3,7 +3,7 @@ data:
   cost: 1000
   description: >-
     A network node barrier that blocks avatars from passing through a network connection.
-  selfTerminating: true
+  selfTerminating: false
   skillCheckMod: 0
   target: ' Data'
   type: subject

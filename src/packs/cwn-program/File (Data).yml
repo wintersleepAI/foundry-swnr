@@ -4,7 +4,7 @@ data:
   description: >-
     A file of data, whether a text document, a video, a program, or something else.
     Consumes 1 memory
-  selfTerminating: true
+  selfTerminating: false
   skillCheckMod: 0
   target: ''
   type: datafile

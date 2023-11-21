@@ -1,8 +1,8 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: 5
-    suppress: true
+    suppress: false
     type: special
     value: 5
   cost: 8000
@@ -15,7 +15,7 @@ data:
     cyborgs. Use of a secure firing rest is recommended for best results. This weapon's
     Trauma Die can inflict Traumatic Hits on drones, vehicles, and other machines.
   encumbrance: 3
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 2000
     normal: 1000

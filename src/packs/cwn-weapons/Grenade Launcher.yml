@@ -1,8 +1,8 @@
 data:
   ammo:
-    burst: true
+    burst: false
     max: 3
-    suppress: true
+    suppress: false
     type: special
     value: 3
   cost: 3000
@@ -18,7 +18,7 @@ data:
     Stand-alone grenade launcher models are available for vehicle or drone mounting,
     counting as 2 Encumbrance but otherwise having the same cost and statistics.
   encumbrance: 1
-  isNonLethal: true
+  isNonLethal: false
   range:
     max: 350
     normal: 150

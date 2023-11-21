@@ -82,11 +82,24 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       shockDmg: this.data.data.shock?.dmg > 0 ? this.data.data.shock.dmg : 0,
       attackRollDie,
     };
+    let dieString =
+      "@attackRollDie + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat + @effectiveSkillRank";
 
-    const hitRoll = new Roll(
-      "@attackRollDie + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat + @effectiveSkillRank",
-      rollData
-    );
+    // If the weapon is a melee weapon and the actor has the melee AB, add it to the roll instead
+    const useA = game.settings.get("swnr", "useCWNArmor") ? true : false;
+    if (
+      useA &&
+      this.data.data.range.normal <= 1 &&
+      this.data.data.ammo.type == "none"
+    ) {
+      if (this.actor.type == "character" || this.actor.type == "npc") {
+        if (this.actor.data.data.meleeAb) {
+          dieString =
+            "@attackRollDie + @burstFire + @modifier + @actor.meleeAb + @weapon.ab + @stat + @effectiveSkillRank";
+        }
+      }
+    }
+    const hitRoll = new Roll(dieString, rollData);
     await hitRoll.roll({ async: true });
     const hitExplainTip = "1d20 +burst +mod +CharAB +WpnAB +Stat +Skill";
     rollData.hitRoll = +(hitRoll.dice[0].total?.toString() ?? 0);
