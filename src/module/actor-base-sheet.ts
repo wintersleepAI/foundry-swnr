@@ -78,14 +78,20 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     event.stopPropagation();
     const searchType = game.settings.get("swnr", "search");
 
-    const swnMappings: { [name: string]: [string] } = {
+    const swnMappings: { [name: string]: Array<string> } = {
       armor: ["armor"],
       item: ["all-items"],
       cyberware: ["cyberware"],
       focus: ["foci"],
+      weapon: ["heavy", "melee", "ranged"],
     };
-    const cwnMappings: { [name: string]: [string] } = {
+    const cwnMappings: { [name: string]: Array<string> } = {
       armor: ["cwnarmor"],
+      cyberware: ["cwncyberware"],
+      focus: ["cwnfoci"],
+      item: ["cwnitems"],
+      edge: ["cwnedge"],
+      weapon: ["cwnweapon"],
     };
 
     const candiateItems: { [name: string]: Item } = {};
@@ -106,7 +112,7 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
         selectedMapping[itemType] = cwnMappings[itemType];
       }
     }
-    if (searchType == "search") {
+    if (searchType == "search" || selectedMapping[itemType] == undefined) {
       await this.populateItemList(itemType, candiateItems, itemSubType);
     } else {
       if (selectedMapping[itemType]) {
@@ -172,7 +178,17 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
       const s = popUpDialog.render(true);
       if (s instanceof Promise) await s;
     } else {
-      ui.notifications?.info("Could not find any items in the compendium (check system settings)");
+      // Get the union of keys
+      const keysUnion = [
+        ...new Set([...Object.keys(swnMappings), ...Object.keys(cwnMappings)]),
+      ];
+
+      // Create a string with keys separated by commas
+      const resultString = keysUnion.join(",");
+      ui.notifications?.info(
+        "Could not find any items in the compendium. " +
+          `Searching if not defined in list ${resultString}. Check system settings for CWN/SWN search settings.`
+      );
     }
   }
 
