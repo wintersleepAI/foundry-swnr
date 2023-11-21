@@ -89,35 +89,32 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     let selectedMapping = swnMappings;
     if (searchType == "cwnOnly") {
       selectedMapping = cwnMappings;
-    } else if (searchType == "swnCWN") {
+    } else if (searchType == "swnCWN" && itemType in cwnMappings) {
       // both, merge the mappings
       selectedMapping = swnMappings;
-      for (const [key, value] of Object.entries(cwnMappings)) {
-        if (key in selectedMapping) {
-          for (const val of value) {
-            console.log(selectedMapping[key]);
-            selectedMapping[key].push(val);
-            console.log(selectedMapping[key]);
-          }
-        } else {
-          selectedMapping[key] = value;
+      if (itemType in selectedMapping) {
+        for (const val of cwnMappings[itemType]) {
+          selectedMapping[itemType].push(val);
         }
+      } else {
+        selectedMapping[itemType] = cwnMappings[itemType];
       }
-      console.log(selectedMapping[itemType]);
     }
-    if (selectedMapping[itemType]) {
-      for (const itemPackName of selectedMapping[itemType]) {
-        const itemPack = game.packs.get(`swnr.${itemPackName}`);
-        if (itemPack == null || itemPack == undefined) {
-          continue;
-        }
-        const convert = await itemPack.getDocuments();
-        for (const item of convert.map((i) => i.toObject())) {
-          candiateItems[item.name] = item;
+    if (searchType == "search") {
+      await this.populateItemList(itemType, candiateItems, itemSubType);
+    } else {
+      if (selectedMapping[itemType]) {
+        for (const itemPackName of selectedMapping[itemType]) {
+          const itemPack = game.packs.get(`swnr.${itemPackName}`);
+          if (itemPack == null || itemPack == undefined) {
+            continue;
+          }
+          const convert = await itemPack.getDocuments();
+          for (const item of convert.map((i) => i.toObject())) {
+            candiateItems[item.name] = item;
+          }
         }
       }
-    } else {
-      await this.populateItemList(itemType, candiateItems, itemSubType);
     }
 
     if (Object.keys(candiateItems).length) {
@@ -169,7 +166,7 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
       const s = popUpDialog.render(true);
       if (s instanceof Promise) await s;
     } else {
-      ui.notifications?.info("Could not find any items in the compendium");
+      ui.notifications?.info("Could not find any items in the compendium (check system settings)");
     }
   }
 
