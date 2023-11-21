@@ -1,10 +1,12 @@
 data:
   cost: 0.25
-  description: "With a Main Action command to detonate, the drone will explode, doing\
-    \ 3d6 damage\nto anyone within ten meters, with an Evasion\nsave for half. Subjects\
-    \ behind solid cover further halve the damage. Drones reduced to zero \nhit points\
-    \ are too badly damaged to respond to \ndetonation commands."
+  description: >-
+    With a Main Action command to detonate, the drone will explode, doing 3d6 damage
+    to anyone within ten meters, with an Evasion save for half. Subjects behind solid
+    cover further halve the damage. Drones reduced to zero hit points are too badly
+    damaged to respond to detonation commands.
   mass: 1
+  type: drone
 img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
 name: Suicide Charge
 type: shipFitting

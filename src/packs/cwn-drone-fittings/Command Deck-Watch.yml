@@ -1,11 +1,13 @@
 data:
   cost: 0.1
-  description: "The drone is equipped to monitor its surroundings autonomously and\
-    \ alert its pilot when something of interest is noticed. Its onboard intelligence\
-    \ is limited, however, and it can only handle about a sentence\u2019s worth of\
-    \ specific orders or subjects to be watchful for. Putting a drone in Watch mode\
-    \ is a command that takes a Main Action."
+  description: >-
+    The drone is equipped to monitor its surroundings autonomously and alert its pilot
+    when something of interest is noticed. Its onboard intelligence is limited, however,
+    and it can only handle about a sentence`s worth of specific orders or subjects
+    to be watchful for. Putting a drone in Watch mode is a command that takes a Main
+    Action.
   mass: 1
+  type: drone
 img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
 name: Command Deck/Watch
 type: shipFitting

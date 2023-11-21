@@ -1,10 +1,9 @@
 data:
   cost: 0.25
   description: >-
-    The drone can now operate for two
-
-    hours on a full battery charge.
+    The drone can now operate for two hours on a full battery charge.
   mass: 1
+  type: drone
 img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
 name: Extended Range
 type: shipFitting

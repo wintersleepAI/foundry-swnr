@@ -1,10 +1,12 @@
 data:
   cost: 0.25
-  description: "Usable only on drones of Enc 3 or\n smaller, this fitting adds color-changing\
-    \ drone\n sheathing, noise damping, and thermal sealing to \nthe unit. It gains\
-    \ an effective Sneak-1 skill when\n operating autonomously, or a +2 bonus to Sneak\n\
-    checks when being directly piloted."
+  description: >-
+    Usable only on drones of Enc 3 or smaller, this fitting adds color-changing drone
+    sheathing, noise damping, and thermal sealing to the unit. It gains an effective
+    Sneak-1 skill when operating autonomously, or a +2 bonus to Sneak checks when
+    being directly piloted.
   mass: 1
+  type: drone
 img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
 name: Stealth Package
 type: shipFitting

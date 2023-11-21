@@ -1,10 +1,12 @@
 data:
   cost: 0.2
-  description: "This unit allows a skilled drone pilot to tweak the combat logic of\
-    \ its onboard weaponry. The drone\u2019s attack gains a hit bonus equal to the\
-    \ pilot\u2019s Drive or Program skill level when firing autonomously; no bonus\
-    \ is given if the pilot is in direct control."
+  description: >-
+    This unit allows a skilled drone pilot to tweak the combat logic of its onboard
+    weaponry. The drone`s attack gains a hit bonus equal to the pilot`s Drive or Program
+    skill level when firing autonomously; no bonus is given if the pilot is in direct
+    control.
   mass: 1
+  type: drone
 img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
 name: Improved Targeting Logic
 type: shipFitting

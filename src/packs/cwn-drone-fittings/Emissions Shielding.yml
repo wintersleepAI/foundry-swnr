@@ -1,10 +1,10 @@
 data:
   cost: 0.2
   description: >-
-    The drone is designed to minimize its electromagnetic emissions and thermal
-     signature. Skill checks to spot it with such sensor s
-    suffer a -2 penalty.
+    The drone is designed to minimize its electromagnetic emissions and thermal signature.
+    Skill checks to spot it with such sensor suffer a -2 penalty.
   mass: 1
+  type: drone
 img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
 name: Emissions Shielding
 type: shipFitting
