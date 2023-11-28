@@ -20,7 +20,7 @@ data:
   range:
     max: 30
     normal: 10
-  secondStat: None
+  secondStat: none
   shock:
     ac: 0
     dmg: 0

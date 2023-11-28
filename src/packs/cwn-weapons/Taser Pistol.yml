@@ -9,14 +9,13 @@ data:
   damage: 1d8
   description: >-
     Taser pistols cover a family of ranged non-lethal weapons small and light enough
-    to carry concealed. Most rely on tried-and-True electrical shocks to drop a target;
-    they inflict non-lethal hit point damage and cannot make Traumatic Hits.
+    to carry concealed. Most rely on tried-and-True electrical shocks to drop a target
   encumbrance: 1
   isNonLethal: true
   range:
     max: 15
     normal: 10
-  secondStat: None
+  secondStat: none
   shock:
     ac: 0
     dmg: 0
