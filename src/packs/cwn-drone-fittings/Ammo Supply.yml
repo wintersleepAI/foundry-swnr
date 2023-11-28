@@ -1,9 +1,11 @@
 data:
   cost: 0.1
-  description: "An automated ammo feeder is added to the drone. Two full magazines\
-    \ are added to one mounted weapon\u2019s allotment, or one magazine to two weapons.\
-    \ This fitting can be added more than once."
+  description: >-
+    An automated ammo feeder is added to the drone. Two full magazines are added to
+    one mounted weapon`s allotment, or one magazine to two weapons. This fitting can
+    be added more than once.
   mass: 1
+  type: drone
 img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
 name: Ammo Supply
 type: shipFitting

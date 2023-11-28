@@ -1,13 +1,15 @@
 data:
   cost: 0.1
-  description: "The drone is equipped with reactive chemical booster that can be ignited\
-    \ to give it a very brief burst of tremendous speed. When activated as a Move\
-    \ action, the burner launches the drone up to 500 meters in a straight line. The\
-    \ boost is not precise enough to use as an aimed weapon, but solid obstacles in\
-    \ front of the drone will suffer half the drone\u2019s HP in damage and inflict\
-    \ all of theirs on the drone. The burner functions only once before it require\
-    \ a scene to regenerate its charge."
+  description: >-
+    The drone is equipped with reactive chemical booster that can be ignited to give
+    it a very brief burst of tremendous speed. When activated as a Move action, the
+    burner launches the drone up to 500 meters in a straight line. The boost is not
+    precise enough to use as an aimed weapon, but solid obstacles in front of the
+    drone will suffer half the drone`s HP in damage and inflict all of theirs on the
+    drone. The burner functions only once before it require a scene to regenerate
+    its charge.
   mass: 1
+  type: drone
 img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
 name: Assisted Boost Burner
 type: shipFitting

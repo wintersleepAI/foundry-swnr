@@ -6,6 +6,7 @@ data:
     radio-wave based comms can be switched to lasers, providing uncrackable, electromagnetically-inaudible
     communications within the group. Radio comms can still be used as needed.
   mass: 1
+  type: drone
 img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
 name: Laser Comms
 type: shipFitting

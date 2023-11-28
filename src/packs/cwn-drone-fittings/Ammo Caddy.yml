@@ -1,12 +1,13 @@
 data:
   cost: 0.1
-  description: "A specialized form of cargo space, this drone is able to carry and\
-    \ dispense substantial amounts of ammunition to adjacent allies. It can hold up\
-    \ to 6 fully-loaded magazines in quick-release clips that can be grabbed as On\
-    \ Turn actions by an ally. The clips remain locked for strangers. This fitting\
-    \ can be taken up to once per two points of the drone\u2019s Encumbrance, rounded\
-    \ up."
+  description: >-
+    A specialized form of cargo space, this drone is able to carry and dispense substantial
+    amounts of ammunition to adjacent allies. It can hold up to 6 fully-loaded magazines
+    in quick-release clips that can be grabbed as On Turn actions by an ally. The
+    clips remain locked for strangers. This fitting can be taken up to once per two
+    points of the drone`s Encumbrance, rounded up.
   mass: 1
+  type: drone
 img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
 name: Ammo Caddy
 type: shipFitting

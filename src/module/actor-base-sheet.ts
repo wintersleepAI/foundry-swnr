@@ -45,19 +45,27 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     candiateItems: { [name: string]: Item },
     itemSubType?: string
   ): Promise<void> {
+    const gameGen = game?.release?.generation;
     for (const e of game.packs) {
       if (
-        e.metadata.private == false &&
-        ((game?.release?.generation >= 10 && e.metadata.type === "Item") ||
-          (game?.release?.generation < 10 && e.metadata.entity === "Item"))
+        (gameGen >= 10 && e.metadata.type === "Item") ||
+        (gameGen < 10 && e.metadata.entity === "Item")
       ) {
+        //console.log("Checking pack ", e.metadata, " ", e.name);
+        if (gameGen <= 10 && e.metadata.private == true) {
+          continue;
+        } else if (gameGen > 10 && e.metadata.ownership.PLAYER == "NONE") {
+          continue;
+        }
         const items = itemSubType ? (await e.getDocuments()).filter(
-          (i) => 
-            (<SWNRBaseItem>i).type == itemType &&
-            (<SWNRBaseItem>i).data.data["type"] == itemSubType
-        ) : (await e.getDocuments()).filter(
-          (i) => (<SWNRBaseItem>i).type == itemType
-        );
+              (i) =>
+                (<SWNRBaseItem>i).type == itemType &&
+                (<SWNRBaseItem>i).data.data["type"] == itemSubType
+            )
+          : (await e.getDocuments()).filter(
+              (i) => (<SWNRBaseItem>i).type == itemType
+            );
+        //console.log("Found items ", items.length, " : ", items);
         if (items.length) {
           for (const ci of items.map((item) => item.toObject())) {
             candiateItems[ci.name] = ci;
@@ -70,26 +78,57 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
   async _onItemSearch(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
-    const mappings: { [name: string]: string } = {
-      armor: "armor",
-      item: "all-items",
-      cyberware: "cyberware",
-      focus: "foci",
+    const searchType = game.settings.get("swnr", "search");
+
+    const swnMappings: { [name: string]: Array<string> } = {
+      armor: ["armor"],
+      item: ["all-items"],
+      cyberware: ["cyberware"],
+      focus: ["foci"],
+      weapon: ["heavy", "melee", "ranged"],
     };
+    const cwnMappings: { [name: string]: Array<string> } = {
+      armor: ["cwnarmor"],
+      cyberware: ["cwncyberware"],
+      focus: ["cwnfoci"],
+      item: ["cwnitems"],
+      edge: ["cwnedge"],
+      weapon: ["cwnweapon"],
+    };
+
     const candiateItems: { [name: string]: Item } = {};
     const itemType = $(event.currentTarget).data("itemType");
     const givenName = $(event.currentTarget).data("itemName");
     const itemSubType = $(event.currentTarget).data("itemSubtype");
-    if (mappings[itemType]) {
-      const skillPack = game.packs.get(`swnr.${mappings[itemType]}`);
-      if (skillPack) {
-        const convert = await skillPack.getDocuments();
-        for (const item of convert.map((i) => i.toObject())) {
-          candiateItems[item.name] = item;
+    let selectedMapping = swnMappings;
+    if (searchType == "cwnOnly") {
+      selectedMapping = cwnMappings;
+    } else if (searchType == "swnCWN" && itemType in cwnMappings) {
+      // both, merge the mappings
+      selectedMapping = swnMappings;
+      if (itemType in selectedMapping) {
+        for (const val of cwnMappings[itemType]) {
+          selectedMapping[itemType].push(val);
+        }
+      } else {
+        selectedMapping[itemType] = cwnMappings[itemType];
+      }
+    }
+    if (searchType == "search" || selectedMapping[itemType] == undefined) {
+      await this.populateItemList(itemType, candiateItems, itemSubType);
+    } else {
+      if (selectedMapping[itemType]) {
+        for (const itemPackName of selectedMapping[itemType]) {
+          const itemPack = game.packs.get(`swnr.${itemPackName}`);
+          if (itemPack == null || itemPack == undefined) {
+            continue;
+          }
+          const convert = await itemPack.getDocuments();
+          for (const item of convert.map((i) => i.toObject())) {
+            candiateItems[item.name] = item;
+          }
         }
       }
-    } else {
-      await this.populateItemList(itemType, candiateItems, itemSubType);
     }
 
     if (Object.keys(candiateItems).length) {
@@ -141,7 +180,17 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
       const s = popUpDialog.render(true);
       if (s instanceof Promise) await s;
     } else {
-      ui.notifications?.info("Could not find any items in the compendium");
+      // Get the union of keys
+      const keysUnion = [
+        ...new Set([...Object.keys(swnMappings), ...Object.keys(cwnMappings)]),
+      ];
+
+      // Create a string with keys separated by commas
+      const resultString = keysUnion.join(",");
+      ui.notifications?.info(
+        "Could not find any items in the compendium. " +
+          `Searching if not defined in list ${resultString}. Check system settings for CWN/SWN search settings.`
+      );
     }
   }
 

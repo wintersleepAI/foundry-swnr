@@ -6,16 +6,22 @@ data:
   cost: 10000
   damage: 2d6
   description: >-
-    None
-  mass: false
-  minClass: Shrieker guns are sonic cannons used for crowd control and non-lethal
-    suppression. While highly effective against unprotected targets, military-grade
-    ear protection or the integral dampers in cyber-ears are sufficient to render
-    the weapon useless.
-  power: m
+    Shrieker guns are sonic cannons used for crowd control and non-lethal suppression.
+    While highly effective against unprotected targets, military-grade ear protection
+    or the integral dampers in cyber-ears are sufficient to render the weapon useless.
+  effect: ''
+  mass: 2
+  minClass: m
+  power: 2
   range:
     max: 400
     normal: 100
+  stat: dex
+  trauma:
+    die: ''
+    rating: ''
+    vehicle: true
+  type: vehicle
 img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
 name: Shrieker Gun
 type: shipWeapon

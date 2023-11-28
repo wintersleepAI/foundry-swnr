@@ -6,7 +6,8 @@ data:
   cost: 15000
   damage: 3d8
   description: >-
-    None
+    Mounted autoguns are a drone cannon `s big brother, for larger platforms. Each
+    round of firing costs $100.
   effect: ''
   mass: 2
   minClass: l
@@ -19,8 +20,7 @@ data:
     die: 1d12
     rating: 2
     vehicle: true
-  type: "Mounted autoguns are a drone cannon\u2019s big brother, for larger platforms.\
-    \ Each round of firing costs $100."
+  type: vehicle
 img: systems/swnr/assets/icons/game-icons.net/item-icons/sinusoidal-beam.svg
 name: Mounted Autogun
 type: shipWeapon

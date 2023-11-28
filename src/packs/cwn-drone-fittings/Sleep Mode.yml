@@ -1,11 +1,13 @@
 data:
   cost: 0.1
-  description: "Sleep mode can be enabled with a Main\nAction command or ended with\
-    \ an On Turn command. While in sleep mode, a drone cannot fly,\nmove, or perform\
-    \ actions, but it will continue\nto communicate with the pilot and observe its\n\
-    surroundings. A day of sleep mode counts as ten\nminutes of ordinary operation\
-    \ for battery drain \npurposes."
+  description: >-
+    Sleep mode can be enabled with a Main Action command or ended with an On Turn
+    command. While in sleep mode, a drone cannot fly, move, or perform actions, but
+    it will continue to communicate with the pilot and observe its surroundings. A
+    day of sleep mode counts as ten minutes of ordinary operation for battery drain
+    purposes.
   mass: 1
+  type: drone
 img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
 name: Sleep Mode
 type: shipFitting

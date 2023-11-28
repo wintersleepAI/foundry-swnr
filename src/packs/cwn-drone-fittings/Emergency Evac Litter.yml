@@ -1,16 +1,17 @@
 data:
   cost: 0.25
-  description: "Functioning only for groundbased drones of Enc 3 or greater, the drone\
-    \ is equipped with a retractable litter that can fit one human patient, along\
-    \ with manipulators sufficient to get a prone victim onto the litter with\n a\
-    \ Main Action. Onboard meds allow for remote \nHeal skill checks to stabilize\
-    \ a Mortally Wounded\n target, with one attempt allowed as part of the \nloading\
-    \ action. A loaded patient can\u2019t be harmed \nuntil the drone is destroyed\
-    \ or opens the litter,\n but if the drone dies, the patient does too. As a \n\
-    Main Action, the drone can be ordered to autonomously take the patient to a particular\
-    \ location. \nAs an On Turn action, an onboard transmitter\ncan also place a call\
-    \ for medical assistance to a \npre-arranged number."
+  description: >-
+    Functioning only for ground based drones of Enc 3 or greater, the drone is equipped
+    with a retractable litter that can fit one human patient, along with manipulators
+    sufficient to get a prone victim onto the litter with a Main Action. Onboard meds
+    allow for remote Heal skill checks to stabilize a Mortally Wounded target, with
+    one attempt allowed as part of the loading action. A loaded patient can`t be harmed
+    until the drone is destroyed or opens the litter, but if the drone dies, the patient
+    does too. As a Main Action, the drone can be ordered to autonomously take the
+    patient to a particular location. As an On Turn action, an onboard transmitter
+    can also place a call for medical assistance to a pre-arranged number.
   mass: 1
+  type: drone
 img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
 name: Emergency Evac Litter
 type: shipFitting

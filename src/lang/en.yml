@@ -667,6 +667,8 @@
     useCWNArmorHint: Use CWN armor options (soak, melee and ranged AC)?
     useCWNCyber: Use CWN Cyber Options?
     useCWNCyberHint: Use CWN cyber options (concealment, type, complications, etc)?
+    search: Compendium item search?
+    searchHint: What compendiums to search for items for in-sheet item adds?
   chat:
     dicepool: Dice Pool
     difficulty: Difficulty

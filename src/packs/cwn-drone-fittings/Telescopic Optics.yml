@@ -5,6 +5,7 @@ data:
     to read a newspaper. Integral low-light sensors allow it to see in all but total
     darkness.
   mass: 1
+  type: drone
 img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
 name: Telescopic Optics
 type: shipFitting

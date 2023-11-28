@@ -6,6 +6,7 @@ data:
     a week of audiovisual data per unit used. This fitting can be added more than
     once.
   mass: 1
+  type: drone
 img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
 name: Memory Banks
 type: shipFitting

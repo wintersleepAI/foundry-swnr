@@ -65,7 +65,7 @@ export const registerSettings = function (): void {
     default: "none", // The default value for the setting
     onChange: (value) => {
       // A callback function which triggers when the setting is changed
-    }
+    },
   });
 
   game.settings.register("swnr", "attackRoll", {
@@ -108,5 +108,23 @@ export const registerSettings = function (): void {
     config: true,
     type: Boolean,
     default: true,
+  });
+
+  game.settings.register("swnr", "search", {
+    name: "swnr.settings.search",
+    hint: "swnr.settings.searchHint",
+    scope: "world",
+    config: true,
+    type: String,
+    choices: {
+      swnOnly: "Defined SWN Compendium Only",
+      cwnOnly: "Defined CWN Compendium Only",
+      swnCWN: "Defined SWN AND SWN Compendium",
+      search: "Compendium with the matching type exclusively",
+    },
+    default: "swnOnly", // The default value for the setting
+    onChange: (value) => {
+      // A callback function which triggers when the setting is changed
+    },
   });
 };

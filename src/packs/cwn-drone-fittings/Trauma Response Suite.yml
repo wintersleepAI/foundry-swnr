@@ -1,13 +1,14 @@
 data:
   cost: 0.25
-  description: "An array of injectors, scalpels, sutures, and trauma chems are built\
-    \ into the\n drone, allowing it to function as a medkit and\n make Heal skill\
-    \ checks for a medically-competent\n pilot or an on-site doc in need of a kit.\
-    \ Such medical efforts require a Main Action from the pilot \nas usual, and flying\
-    \ drones apply a -2 penalty to\nthe skill check due to their innate instability.\
-    \ Up \nto six pharmaceutical doses of the pilot\u2019s choice \ncan be loaded\
-    \ into the drone."
+  description: >-
+    An array of injectors, scalpels, sutures, and trauma chems are built into the
+    drone, allowing it to function as a medkit and make Heal skill checks for a medically-competent
+    pilot or an on-site doc in need of a kit. Such medical efforts require a Main
+    Action from the pilot as usual, and flying drones apply a -2 penalty to the skill
+    check due to their innate instability. Up to six pharmaceutical doses of the pilot`s
+    choice can be loaded into the drone.
   mass: 1
+  type: drone
 img: systems/swnr/assets/icons/game-icons.net/item-icons/power-generator.svg
 name: Trauma Response Suite
 type: shipFitting
