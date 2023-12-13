@@ -103,7 +103,7 @@
       <div>
         {{localize 'swnr.sheet.hit-dice'}}:
         <input
-          class="w-8 border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          class="w-16 border text-center px-3 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           type="number"
           name="data.hitDice"
           min="1"
@@ -250,6 +250,43 @@
           value="{{actor.data.data.saves}}"
         />
       </div>
+      {{#if (useCWNArmor)}}
+      <h3 class="text-lg">Soak
+          <a class="scene-button px-2.5" title='{{localize 'swnr.sheet.scene'}}'>
+            <i class="fas fa-hourglass-end"></i>
+          </a>
+      </h3>
+      <div>
+        Base Soak: 
+        <input
+          class="border border-gray-800 px-1 text-center bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md w-6"
+          type="number"
+          name="data.baseSoakTotal.value"
+          min="0"
+          step="1"
+          value="{{actor.data.data.baseSoakTotal.value}}"
+        />
+        / 
+        <input
+          class="border border-gray-800 px-1 text-center bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md w-6"
+          type="number"
+          name="data.baseSoakTotal.max"
+          min="0"
+          step="1"
+          value="{{actor.data.data.baseSoakTotal.max}}"
+        />
+      </div>
+      <div>
+        Total Soak: 
+        <span
+          class="border border-gray-800 px-3 w-16 text-center bg-gray-400 bg-opacity-75 text-gray-300 cursor-not-allowed placeholder-opacity-75 rounded-md w-6"
+         >{{actor.data.data.soakTotal.value}}</span>
+        / 
+        <span
+          class="border border-gray-800 px-3 w-16 text-center bg-gray-400 bg-opacity-75 text-gray-300 cursor-not-allowed placeholder-opacity-75 rounded-md w-6"
+         >{{actor.data.data.soakTotal.max}}</span>
+      </div>
+      {{/if}}
     </div>
     <div class="md:col-span-2 lg:col-span-1 flex flex-col gap-1">
       <h3 class="text-lg">{{localize 'swnr.effort.title'}}</h3>

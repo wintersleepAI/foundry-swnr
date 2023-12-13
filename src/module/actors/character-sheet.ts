@@ -695,6 +695,38 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     }
   }
 
+  async _onGenerateChar (event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    const template = "systems/swnr/templates/dialogs/generate-char.html";
+    const data = {
+      actor: this.actor,
+      itemTypes: this.actor.itemTypes,
+    };
+    const html = await renderTemplate(template, data);
+    this.popUpDialog?.close();
+
+    const _generateChar = async (html: HTMLFormElement) => {
+      const form = <HTMLFormElement>html[0].querySelector("form");
+    };
+    this.popUpDialog = new Dialog(
+      {
+        title: game.i18n.format("swnr.dialog.generate-char", {
+          actor: this.actor.name,
+        }),
+        content: html,
+        default: "saveChanges",
+        buttons: {
+          saveChanges: {
+            label: game.i18n.localize("swnr.dialog.save-changes"),
+            callback: _generateChar,
+          },
+        },
+      },
+      { classes: ["swnr"] }
+    );
+    await this.popUpDialog.render(true);
+  }
+
   async _onConfigureActor(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     const template = "systems/swnr/templates/dialogs/tweak-char.html";
@@ -791,6 +823,15 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
         icon: "fas fa-code",
         onclick: (ev) => this._onConfigureActor(ev),
       });
+      // check on adding character generation button
+      if (this.actor.items.size === 0) {
+        buttons.splice(1, 0, {
+          label: game.i18n.localize("swnr.sheet.generate"),
+          class: "generate-character",
+          icon: "fas fa-dice",
+          onclick: (ev) => this._onGenerateChar(ev),
+        });
+      }
     }
     return buttons;
   }

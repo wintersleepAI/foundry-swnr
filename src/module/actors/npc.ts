@@ -16,6 +16,27 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
     }
   }
 
+  prepareDerivedData(): void {
+    const data = this.data.data;
+    const useCWNArmor = game.settings.get("swnr", "useCWNArmor") ? true : false;
+    const useTrauma = game.settings.get("swnr", "useTrauma") ? true : false;
+    if (data.settings == null) {
+      data.settings = {
+        useCWNArmor: useCWNArmor,
+        useTrauma: useTrauma,
+      };
+    } else {
+      data.settings.useCWNArmor = useCWNArmor;
+      data.settings.useTrauma = useTrauma;
+    }
+    if (data.baseSoakTotal.max > 0) {
+      data.soakTotal.max += data.baseSoakTotal.max;
+    }
+    if (data.baseSoakTotal.value > 0) {
+      data.soakTotal.value += data.baseSoakTotal.value;
+    }
+  }
+
   // Set the max/value health based on D8 hit dice
   async rollHitDice(forceDieRoll: boolean): Promise<void> {
     if (!forceDieRoll && this.data.data["health_max_modified"]) {

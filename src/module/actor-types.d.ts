@@ -489,6 +489,10 @@ declare interface SWNRNPCData extends SWNRLivingTemplateBase {
       contents: string;
     };
   };
+  baseSoakTotal: {
+    value: number;
+    max: number;
+  };
 }
 interface PCActorSource {
   type: "character";

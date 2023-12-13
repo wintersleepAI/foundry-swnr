@@ -72,6 +72,7 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
       };
     } else {
       data.settings.useCWNArmor = useCWNArmor;
+      data.settings.useTrauma = useTrauma;
     }
     if (useTrauma) {
       data.modifiedTraumaTarget = data.traumaTarget;

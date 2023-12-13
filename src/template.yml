@@ -162,6 +162,9 @@ Actor:
       public:
         label: Public Notes
         contents: ""
+    baseSoakTotal:
+      value: 0
+      max: 0
   faction:
     description: ""
     health:
