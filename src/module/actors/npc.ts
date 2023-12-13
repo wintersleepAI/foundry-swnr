@@ -14,6 +14,7 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
     } else {
       this.data.data.settings.useCWNArmor = useCWNArmor;
     }
+    this.data.data.access.max = this.data.data.skillBonus;
   }
 
   prepareDerivedData(): void {
