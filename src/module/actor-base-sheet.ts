@@ -329,4 +329,31 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
       });
     });
   }
+
+  async _resetSoak(): Promise<void> {
+    if (game.settings.get("swnr", "useCWNArmor")) {
+      if (this.actor.type == "npc") {
+        const maxSoak = this.actor.data.data.baseSoakTotal.max;
+        await this.actor.update({
+          "data.baseSoakTotal.value": maxSoak,
+        });
+      }
+
+      const armorWithSoak = <SWNRBaseItem<"armor">[]>(
+        this.actor.items.filter(
+          (i) =>
+            i.data.type === "armor" &&
+            i.data.data.use &&
+            i.data.data.location === "readied" &&
+            i.data.data.soak.value < i.data.data.soak.max
+        )
+      );
+      for (const armor of armorWithSoak) {
+        const soak = armor.data.data.soak.max;
+        await armor.update({
+          "data.soak.value": soak,
+        });
+      }
+    }
+  }
 }

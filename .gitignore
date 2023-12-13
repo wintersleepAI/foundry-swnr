@@ -7,5 +7,6 @@ src/module/entities.ts
 src/module/documents.ts
 data/
 .vscode/launch.json
+.DS_Store
 data10/
 foundry10/

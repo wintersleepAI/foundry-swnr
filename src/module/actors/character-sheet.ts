@@ -495,26 +495,6 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     this._resetSoak();
   }
 
-  async _resetSoak(): Promise<void> {
-    if (game.settings.get("swnr", "useCWNArmor")) {
-      const armorWithSoak = <SWNRBaseItem<"armor">[]>(
-        this.actor.items.filter(
-          (i) =>
-            i.data.type === "armor" &&
-            i.data.data.use &&
-            i.data.data.location === "readied" &&
-            i.data.data.soak.value < i.data.data.soak.max
-        )
-      );
-      for (const armor of armorWithSoak) {
-        const soak = armor.data.data.soak.max;
-        await armor.update({
-          "data.soak.value": soak,
-        });
-      }
-    }
-  }
-
   async _onRest(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
 

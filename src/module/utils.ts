@@ -301,6 +301,13 @@ export async function applyHealthDrop(total: number): Promise<void> {
           await showValueChange(t, "0xFFA500", soakValue - newSoak);
         }
       }
+      if (total > 0 && actor.type == "npc") {
+        const soakValue = actor.data.data.baseSoakTotal.value;
+        const newSoak = Math.max(soakValue - total, 0);
+        total -= soakValue - newSoak;
+        await actor.update({ "data.baseSoakTotal.value": newSoak });
+        await showValueChange(t, "0xFFA500", soakValue - newSoak);
+      }
     }
     const oldHealth = actor.data.data.health.value;
     if (total != 0) {

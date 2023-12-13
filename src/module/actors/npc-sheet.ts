@@ -61,6 +61,7 @@ export class NPCActorSheet extends BaseActorSheet<NPCActorSheetData> {
     html.find(".skill").on("click", this._onSkill.bind(this));
     html.find(".saving-throw").on("click", this._onSavingThrow.bind(this));
     html.find(".hit-dice-roll").on("click", this._onHitDice.bind(this));
+    html.find(".scene-button").on("click", this._onScene.bind(this));
     html
       .find('[name="data.health.max"]')
       .on("input", this._onHPMaxChange.bind(this));
@@ -195,6 +196,21 @@ export class NPCActorSheet extends BaseActorSheet<NPCActorSheetData> {
       { actor: this.actor.name }
     );
     roll.toMessage({ flavor, speaker: { actor: this.actor.id } });
+  }
+
+  async _onScene(event: JQuery.ClickEvent): Promise<void> {
+    event.preventDefault();
+    await this.actor.update({
+      data: {
+        effort: { scene: 0 },
+        tweak: {
+          extraEffort: {
+            scene: 0,
+          },
+        },
+      },
+    });
+    this._resetSoak();
   }
 
   /** @override */
