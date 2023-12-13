@@ -1,6 +1,11 @@
 import { SWNRBaseActor } from "../base-actor";
 
 export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
+  static numberRegex = /^\d+$/;
+  static hitDiceD8Regex = /^\d+d$/;
+  static hitDiceRegex = /^\d+[Dd]\d+$/;
+  static hpRegex = /^\d+\s?[hH][pP]\s?$/;
+
   prepareBaseData(): void {
     const e = this.data.data.effort;
     e.value = e.max - e.current - e.scene - e.day;
@@ -44,20 +49,63 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
       //For debug: console.log("You have modified the NPCs max health. Not rolling");
       return;
     }
-    //For debug: console.log("rolling NPC hit dice", this);
-    if (this.data.data.hitDice != null && this.data.data.hitDice > 0) {
-      //For debug: console.log(`Updating health using ${this.data.data.hitDice} hit die `);
-      const roll = new Roll(`${this.data.data.hitDice}d8`);
-      await roll.roll({ async: true });
-      if (roll != undefined && roll.total != undefined) {
-        const newHealth = roll.total;
-        await this.update({
-          "data.health.max": newHealth,
-          "data.health.value": newHealth,
-        });
+    let hitDice = this.data.data.hitDice;
+    if (hitDice == null || hitDice == "0" || hitDice == "") {
+      return;
+    }
+    if (hitDice.includes("+")) {
+      const split = hitDice.split("+", 2);
+      hitDice = split[0].trim();
+      if (split.length > 1) {
+        const soak = split[1].trim();
+        if (SWNRNPCActor.numberRegex.test(soak)) {
+          if (game.settings.get("swnr", "useCWNArmor") == false) {
+            ui.notifications?.info(
+              "NPC has soak, but CWN Armor is disabled. Ignoring soak"
+            );
+          } else {
+            await this.update({
+              "data.baseSoakTotal.max": parseInt(soak),
+              "data.baseSoakTotal.value": parseInt(soak),
+            });
+          }
+        } else {
+          ui.notifications?.error(
+            "NPC soak must be a number, not " + soak + " Not rolling Hit Dice"
+          );
+          return;
+        }
       }
+    }
+    //For debug: console.log("rolling NPC hit dice", this);
+    let dieRoll = "";
+    if (SWNRNPCActor.numberRegex.test(hitDice)) {
+      dieRoll = `${hitDice}d8`;
+    } else if (SWNRNPCActor.hitDiceD8Regex.test(hitDice)) {
+      dieRoll = `${hitDice}8`;
+    } else if (SWNRNPCActor.hitDiceRegex.test(hitDice)) {
+      dieRoll = `${hitDice}`;
+    } else if (SWNRNPCActor.hpRegex.test(hitDice)) {
+      hitDice = hitDice.toLowerCase().split("hp")[0].trim();
+      dieRoll = `${hitDice}`;
     } else {
-      //For debug: console.log("NPC has no hit dice, not rolling health");
+      ui.notifications?.error(
+        "NPC hit dice must be a number, Nd, NdX, N HP (where N/X are numbers)  not " +
+          hitDice +
+          " Not rolling Hit Dice"
+      );
+      return;
+    }
+    //For debug: console.log(`Updating health using ${hitDice} hit die. Roll ${dieRoll} `);
+
+    const roll = new Roll(`${dieRoll}`);
+    await roll.roll({ async: true });
+    if (roll != undefined && roll.total != undefined) {
+      const newHealth = roll.total;
+      await this.update({
+        "data.health.max": newHealth,
+        "data.health.value": newHealth,
+      });
     }
   }
 

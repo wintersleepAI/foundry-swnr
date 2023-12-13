@@ -3,7 +3,7 @@ title: "Stars Without Number: Revised and Cities Without Number"
 description: >-
   A system for playing Stars Without Number: Revised and Cities Without Number.
   CWN is in beta state (check system settings for options).
-version: 1.0.7
+version: 1.1.0
 authors: [
   {
     "name": "wintersleepAI"
@@ -312,7 +312,7 @@ compatibility:
 url: "https://github.com/wintersleepAI/foundry-swnr"
 manifest: >-
   https://github.com/wintersleepAI/foundry-swnr/releases/latest/download/system.json
-download: "https://github.com/wintersleepAI/foundry-swnr/releases/download/v1.0.7/v1.0.7.zip"
+download: "https://github.com/wintersleepAI/foundry-swnr/releases/download/v1.1.0/v1.1.0.zip"
 license: "https://github.com/wintersleepAI/foundry-swnr/blob/master/LICENSE.txt"
 readme: ""
 bugs: "https://github.com/wintersleepAI/foundry-swnr/issues"

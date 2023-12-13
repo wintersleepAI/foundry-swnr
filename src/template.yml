@@ -142,7 +142,7 @@ Actor:
     attacks:
       bonusDamage: 0
       number: 1
-    hitDice: 0
+    hitDice: "0"
     armorType: "street"
     moralScore: 6
     saves: 15

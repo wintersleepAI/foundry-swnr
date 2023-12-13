@@ -100,14 +100,21 @@
           value="{{actor.data.data.health.max}}"
         />
       </div>
-      <div>
+      <div title="The number of hit dice to roll. If the die button is never clicked
+or the HP field is never set, this roll for each token created.
+
+A number like '3' will roll 3d8 (no quotes in the field). 
+Can also be '3d' or '3d8' to get the same roll.
+'3d12' would change the size of the hit dice to be 12.
+Setting the field to '3 hp' will set the HP to be 3 with no roll.
+'3d + 2' with CWN armor would roll 3d8 for the HP and set the soak to 2.
+'3d8 + 2' or '3 + 2' would be the same. 
+'3 hp + 2' will give a fixed HP of 3 and a soak of 2.">
+ 
         {{localize 'swnr.sheet.hit-dice'}}:
         <input
-          class="w-16 border text-center px-3 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-          type="number"
+          class="w-20 border text-center px-3 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="data.hitDice"
-          min="1"
-          step="1"
           value="{{actor.data.data.hitDice}}"
         />
         <a class="hit-dice-roll">
