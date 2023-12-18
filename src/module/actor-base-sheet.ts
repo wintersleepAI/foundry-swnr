@@ -43,7 +43,9 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
   async populateItemList(
     itemType: string,
     candiateItems: { [name: string]: Item },
-    itemSubType?: string
+    displayNames: { [name: string]: string },
+    itemSubType?: string,
+    prefix = false
   ): Promise<void> {
     const gameGen = game?.release?.generation;
     for (const e of game.packs) {
@@ -53,8 +55,10 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
       ) {
         //console.log("Checking pack ", e.metadata, " ", e.name);
         if (gameGen <= 10 && e.metadata.private == true) {
+          console.log("Skipping due to private pack ", e.metadata.label);
           continue;
         } else if (gameGen > 10 && e.metadata.ownership.PLAYER == "NONE") {
+          console.log("Skipping due to private pack ", e.metadata.label);
           continue;
         }
         const items = itemSubType ? (await e.getDocuments()).filter(
@@ -65,10 +69,14 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
           : (await e.getDocuments()).filter(
               (i) => (<SWNRBaseItem>i).type == itemType
             );
-        //console.log("Found items ", items.length, " : ", items);
+        // console.log(`Pack ${e.metadata.label.startsWith("CWN")}-${e.metadata.label} Found items ${items.length} - ${items}`);
         if (items.length) {
           for (const ci of items.map((item) => item.toObject())) {
-            candiateItems[ci.name] = ci;
+            const name = ci.name;
+            if (prefix && e.metadata.label.startsWith("CWN")) {
+              displayNames[name] = `${name} (CWN)`;
+            }
+            candiateItems[name] = ci;
           }
         }
       }
@@ -86,6 +94,15 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
       cyberware: ["cyberware"],
       focus: ["foci"],
       weapon: ["heavy", "melee", "ranged"],
+      power: [
+        "psi-metapsionics",
+        "psi-precognition",
+        "psi-telekinesis",
+        "psi-telepathy",
+        "psi-teleportation",
+        "psi-biopsionics",
+      ],
+      edge: [],
     };
     const cwnMappings: { [name: string]: Array<string> } = {
       armor: ["cwnarmor"],
@@ -94,10 +111,12 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
       item: ["cwnitems"],
       edge: ["cwnedge"],
       weapon: ["cwnweapon"],
+      power: [],
     };
 
     const candiateItems: { [name: string]: Item } = {};
     const itemType = $(event.currentTarget).data("itemType");
+    const displayNames: { [name: string]: string } = {};
     const givenName = $(event.currentTarget).data("itemName");
     const itemSubType = $(event.currentTarget).data("itemSubtype");
     let selectedMapping = swnMappings;
@@ -109,13 +128,29 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
       if (itemType in selectedMapping) {
         for (const val of cwnMappings[itemType]) {
           selectedMapping[itemType].push(val);
+          //Not ideal to get the pack again, but it's the easiest way to get
+          //the items right now
+          const itemPack = game.packs.get(`swnr.${val}`);
+          if (itemPack == null || itemPack == undefined) {
+            continue;
+          }
+          const convert = await itemPack.getDocuments();
+          for (const item of convert.map((i) => i.toObject())) {
+            displayNames[item.name] = `${item.name} (CWN)`;
+          }
         }
       } else {
         selectedMapping[itemType] = cwnMappings[itemType];
       }
     }
     if (searchType == "search" || selectedMapping[itemType] == undefined) {
-      await this.populateItemList(itemType, candiateItems, itemSubType);
+      await this.populateItemList(
+        itemType,
+        candiateItems,
+        displayNames,
+        itemSubType,
+        true
+      );
     } else {
       if (selectedMapping[itemType]) {
         for (const itemPackName of selectedMapping[itemType]) {
@@ -137,7 +172,11 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
       const sortedNames = keys.sort();
       for (const label of sortedNames) {
         const cand = candiateItems[label];
-        itemOptions += `<option value='${label}'>${cand.name}</option>`;
+        if (displayNames[label]) {
+          itemOptions += `<option value='${label}'>${displayNames[label]}</option>`;
+        } else {
+          itemOptions += `<option value='${label}'>${cand.name}</option>`;
+        }
       }
       const dialogTemplate = `
       <div class="flex flex-col -m-2 p-2 pb-4 space-y-2">
