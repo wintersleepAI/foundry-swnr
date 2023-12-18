@@ -423,6 +423,7 @@ Item:
       type: none
       max: 0
       value: 0
+      burst: false
     trauma:
       die: ""
       rating: ""

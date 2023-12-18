@@ -51,6 +51,7 @@
   </div>
   <div class="flex flexrow gap-2">
 
+
     {{#if data.data.settings.useTrauma}}
 
       <!-- Trauma -->
@@ -127,6 +128,16 @@
             />
           </div>
         </div>
+      </div>
+
+
+      <div class="flex flex-row items-center">
+        {{localize 'swnr.sheet.burst'}}:
+            <input
+              type="checkbox"
+              name="data.ammo.burst"
+              {{checked data.data.ammo.burst}}
+            />
       </div>
       {{/if}}
     </div>

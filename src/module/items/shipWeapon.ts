@@ -29,9 +29,11 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
     abMod: number,
     mod: number,
     weaponAb: number,
-    npcSkill: number
+    npcSkill: number,
+    useBurst: boolean
   ): Promise<void> {
     const template = "systems/swnr/templates/chat/attack-roll.html";
+    const burstFire = useBurst ? 2 : 0;
 
     const attackRollDie = game.settings.get("swnr", "attackRoll");
     const rollData = {
@@ -42,10 +44,12 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
       weaponAb,
       npcSkill,
       attackRollDie,
+      burstFire,
     };
+
     const hitRollStr =
-      "@attackRollDie + @skillMod + @statMod + @abMod + @mod +@weaponAb +@npcSkill";
-    const damageRollStr = `${this.data.data.damage} + @statMod`;
+      "@attackRollDie + @skillMod + @statMod + @abMod + @mod + @weaponAb + @npcSkill + @burstFire";
+    const damageRollStr = `${this.data.data.damage} + @statMod + @burstFire`;
     const hitRoll = new Roll(hitRollStr, rollData);
     await hitRoll.roll({ async: true });
     const damageRoll = new Roll(damageRollStr, rollData);
@@ -83,8 +87,21 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
       damageExplain: damageRollStr,
     };
 
+    if (
+      useBurst &&
+      this.ammo.type !== "infinite" &&
+      this.ammo.type !== "none" &&
+      this.ammo.value < 3
+    ) {
+      ui.notifications?.error(
+        `Your ${this.name} is does not have enough ammo to burst!`
+      );
+      return;
+    }
+
     if (this.data.data.ammo.type !== "none") {
-      const newAmmoTotal = this.data.data.ammo.value - 1;
+      const ammoUsed = useBurst ? 3 : 1;
+      const newAmmoTotal = this.data.data.ammo.value - ammoUsed;
       await this.update({ "data.ammo.value": newAmmoTotal }, {});
       if (newAmmoTotal === 0)
         ui.notifications?.warn(`Your ${this.name} is now out of ammo!`);
@@ -226,6 +243,12 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
           form.querySelector('[name="stat"]')
         ))?.value;
 
+        const burstFire = (<HTMLInputElement>(
+          form.querySelector('[name="burstFire"]')
+        ))?.checked
+          ? true
+          : false;
+
         let skillMod = 0;
         let statMod = 0;
         let abMod = 0;
@@ -268,7 +291,8 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
           abMod,
           mod,
           weaponAb,
-          npcSkill
+          npcSkill,
+          burstFire
         );
       };
 

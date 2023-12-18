@@ -76,6 +76,12 @@
           class="w-10 text-center px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md" />
       </div>
 
+      {{#if (and weapon.ammo.burst (ne 'none' weapon.ammo.type)) }}
+      <div class="flex flex-col ">
+        <label for="burstFire">{{localize 'swnr.weapon.burst'}}: </label>
+        <input type="checkbox" name="burstFire" id="burstFire" {{checked burstFireHasAmmo}}>
+      </div>
+      {{/if}}
     </div>
   </div>
 </form>

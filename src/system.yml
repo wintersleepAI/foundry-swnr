@@ -306,9 +306,9 @@ languages:
 gridDistance: 2
 gridUnits: "m"
 compatibility: 
-  - minimum: 8.6
-    verified: 10
-    maximum: 11
+  - minimum: "10.291"
+    verified: "11"
+    maximum: "11"
 url: "https://github.com/wintersleepAI/foundry-swnr"
 manifest: >-
   https://github.com/wintersleepAI/foundry-swnr/releases/latest/download/system.json

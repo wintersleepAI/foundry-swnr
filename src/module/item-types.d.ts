@@ -121,6 +121,7 @@ declare interface SWNRShipWeaponData
     type: SWNRWeaponAmmoTypes;
     max: number;
     value: number;
+    burst: boolean;
   };
   trauma: {
     die: null | string;
