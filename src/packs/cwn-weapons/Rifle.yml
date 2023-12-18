@@ -16,7 +16,7 @@ data:
   range:
     max: 400
     normal: 200
-  secondStat: None
+  secondStat: none
   shock:
     ac: 0
     dmg: 0

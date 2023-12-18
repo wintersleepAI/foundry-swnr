@@ -7,9 +7,9 @@ data:
     value: 0
   cost: None
   damage: 1d2
-  description: "Knives, clubs, swords, and other simple melee weap- ons are available\
-    \ almost anywhere on the street. Par- ticularly impoverished gangers sometimes\
-    \ fashion makeshift machetes and improvised shivs when better can\u2019t be obtained.\
+  description: "Knives, clubs, swords, and other simple melee weapons are available\
+    \ almost anywhere on the street. Particularly impoverished gangers sometimes fashion\
+    \ makeshift machetes and improvised shivs when better can\u2019t be obtained.\
     \ Such weapons are effectively free, but have a -1 penalty to hit and damage rolls\
     \ due to their ungainly make."
   encumbrance: 0

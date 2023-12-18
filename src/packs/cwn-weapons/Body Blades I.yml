@@ -18,7 +18,7 @@ data:
   range:
     max: 0
     normal: 0
-  secondStat: None
+  secondStat: none
   shock:
     ac: 15
     dmg: 2
