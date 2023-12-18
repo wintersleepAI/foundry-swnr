@@ -1,4 +1,5 @@
 import { SWNRBaseActor } from "../base-actor";
+import { SWNRBaseItem } from "../base-item";
 
 export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
   static numberRegex = /^\d+$/;
@@ -40,6 +41,17 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
     }
     if (data.baseSoakTotal.value > 0) {
       data.soakTotal.value += data.baseSoakTotal.value;
+    }
+
+    // AC
+    const armor = <SWNRBaseItem<"armor">[]>(
+      this.items.filter((i) => i.data.type === "armor")
+    );
+    for (const a of armor) {
+      if (a.data.data.soak.max > 0) {
+        data.soakTotal.max += a.data.data.soak.max;
+        data.soakTotal.value += a.data.data.soak.value;
+      }
     }
   }
 
