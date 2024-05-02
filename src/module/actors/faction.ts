@@ -214,7 +214,7 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
       assetIncome -
       assetMaintTotal +
       costFromAssetsOver;
-    let new_creds = this.data.data.facCreds + income;
+    let new_creds = Math.ceil(this.data.data.facCreds + income);
 
     const assetsWithTurn = assets.filter((i) => i.data.data.turnRoll);
     let msg = `<b>Income this round: ${income}</b>.<br> From ratings: ${
