@@ -78,7 +78,7 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
       html.find(".message-header").remove();
       content = html.html().toString();
     }
-    const log = this.data.data.log;
+    const log = this.system.log;
     log.push(content);
     await this.update({
       data: {
@@ -92,7 +92,7 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
     desc: string,
     effect: string
   ): Promise<void> {
-    const tags = this.data.data.tags;
+    const tags = this.system.tags;
     const tag: SWNRTag = {
       name,
       desc,
@@ -112,7 +112,7 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
       ui.notifications?.error(`Error unable to find tag ${name}`);
       return;
     }
-    const tags = this.data.data.tags;
+    const tags = this.system.tags;
     tags.push(match[0]);
     await this.update({
       data: {
@@ -127,19 +127,19 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
     name: string,
     imgPath: string | null
   ): Promise<void> {
-    if (hp > this.data.data.health.max) {
+    if (hp > this.system.health.max) {
       ui.notifications?.error(
-        `Error HP of new base (${hp}) cannot be greater than faction max HP (${this.data.data.health.max})`
+        `Error HP of new base (${hp}) cannot be greater than faction max HP (${this.system.health.max})`
       );
       return;
     }
-    if (hp > this.data.data.facCreds) {
+    if (hp > this.system.facCreds) {
       ui.notifications?.error(
-        `Error HP of new base (${hp}) cannot be greater than facCred  (${this.data.data.facCreds})`
+        `Error HP of new base (${hp}) cannot be greater than facCred  (${this.system.facCreds})`
       );
       return;
     }
-    const newFacCreds = this.data.data.facCreds - hp;
+    const newFacCreds = this.system.facCreds - hp;
     await this.update({ data: { facCreds: newFacCreds } });
     await this.createEmbeddedDocuments(
       "Item",
@@ -182,28 +182,28 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
     const assets = <SWNRBaseItem<"asset">[]>(
       this.items.filter((i) => i.type === "asset")
     );
-    const wealthIncome = Math.ceil(this.data.data.wealthRating / 2);
+    const wealthIncome = Math.ceil(this.system.wealthRating / 2);
     const cunningForceIncome = Math.floor(
-      (this.data.data.cunningRating + this.data.data.forceRating) / 4
+      (this.system.cunningRating + this.system.forceRating) / 4
     );
     const assetIncome = assets
-      .map((i) => i.data.data.income)
+      .map((i) => i.system.income)
       .reduce((i, n) => i + n, 0);
-    const assetWithMaint = assets.filter((i) => i.data.data.maintenance);
+    const assetWithMaint = assets.filter((i) => i.system.maintenance);
     const assetMaintTotal = assetWithMaint
-      .map((i) => i.data.data.maintenance)
+      .map((i) => i.system.maintenance)
       .reduce((i, n) => i + n, 0);
 
     const cunningAssetsOverLimit = Math.min(
-      this.data.data.cunningRating - this.data.data.cunningAssets.length,
+      this.system.cunningRating - this.system.cunningAssets.length,
       0
     );
     const forceAssetsOverLimit = Math.min(
-      this.data.data.forceRating - this.data.data.forceAssets.length,
+      this.system.forceRating - this.system.forceAssets.length,
       0
     );
     const wealthAssetsOverLimit = Math.min(
-      this.data.data.wealthRating - this.data.data.wealthAssets.length,
+      this.system.wealthRating - this.system.wealthAssets.length,
       0
     );
     const costFromAssetsOver =
@@ -214,9 +214,9 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
       assetIncome -
       assetMaintTotal +
       costFromAssetsOver;
-    let new_creds = Math.ceil(this.data.data.facCreds + income);
+    let new_creds = Math.ceil(this.system.facCreds + income);
 
-    const assetsWithTurn = assets.filter((i) => i.data.data.turnRoll);
+    const assetsWithTurn = assets.filter((i) => i.system.turnRoll);
     let msg = `<b>Income this round: ${income}</b>.<br> From ratings: ${
       wealthIncome + cunningForceIncome
     } (W:${wealthIncome} C+F:${cunningForceIncome})<br>From assets: ${assetIncome}.<br>Maintenance -${assetMaintTotal}.<br>`;
@@ -231,7 +231,7 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
       longMsg += "Assets with turn notes/rolls:<br>";
     }
     for (const a of assetsWithTurn) {
-      longMsg += `<i>${a.name}</i>: ${a.data.data.turnRoll} <br>`;
+      longMsg += `<i>${a.name}</i>: ${a.system.turnRoll} <br>`;
     }
     const aitems: Record<string, unknown>[] = [];
 
@@ -240,7 +240,7 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
         //Marking all assets unusable would still not bring money above, can mark all w/maint as unusable.
         for (let i = 0; i < assetWithMaint.length; i++) {
           const asset = assetWithMaint[i];
-          const assetCost = asset.data.data.maintenance;
+          const assetCost = asset.system.maintenance;
           new_creds += assetCost; // return the money
           aitems.push({ _id: asset.id, data: { unusable: true } });
         }
@@ -252,7 +252,7 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
         msg += ` <b>Out of money and unable to pay for all assets</b>, need to make assets unusable. Mark unusable for assets to cover facCreds: ${income}<br>`;
       }
     }
-    msg += `<b> Old FacCreds: ${this.data.data.facCreds}. New FacCreds: ${new_creds}</b><br>`;
+    msg += `<b> Old FacCreds: ${this.system.facCreds}. New FacCreds: ${new_creds}</b><br>`;
     await this.update({ data: { facCreds: new_creds } });
     const title = `New Turn for ${this.name}`;
     await this.logMessage(title, msg, longMsg);
@@ -273,7 +273,7 @@ export class SWNRFactionActor extends SWNRBaseActor<"faction"> {
       ratingLevel = 0;
     }
     const targetLevel = parseInt(ratingLevel) + 1;
-    let xp = this.data.data.xp;
+    let xp = this.system.xp;
     if (targetLevel in HEALTH__XP_TABLE) {
       const req_xp = HEALTH__XP_TABLE[targetLevel];
       if (req_xp > xp) {

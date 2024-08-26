@@ -34,7 +34,7 @@
       {{/if}}
     >
       {{#select skill.defaultStat}}
-      {{#each data.data.stats as |box name |}}
+      {{#each system.stats as |box name |}}
       <option value="{{name}}">
         {{localize (concat "swnr.stat.long." name)}}: 
         {{numberFormat box.mod decimals=0 sign=true}}

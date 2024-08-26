@@ -1,5 +1,5 @@
 <div class="chat-card">
-  <h3 title="{{ weapon.data.data.description }}">{{ weapon.name }}</h3>
+  <h3 title="{{ weapon.system.description }}">{{ weapon.name }}</h3>
 
   <span title="{{ diceTooltip.hitExplain }}" class="roll roll-hit">{{{ diceTooltip.hit }}}</span>
   <span>{{localize 'swnr.weapon.damage'}}:</span>
@@ -8,19 +8,19 @@
    {{ shock_content }}
    <span class="roll roll-shock roll-damage">{{{ shock_roll }}}</span>
   {{/if}}
-  {{#if (ne weapon.data.data.ammo.type 'none')}}
-    {{#if (ne weapon.data.data.ammo.type 'infinite')}}
+  {{#if (ne weapon.system.ammo.type 'none')}}
+    {{#if (ne weapon.system.ammo.type 'infinite')}}
       <div class="ammo-{{ ammoRatio }}">
-        {{localize 'swnr.weapon.ammo'}}: {{ weapon.data.data.ammo.value }}/{{
-        weapon.data.data.ammo.max }}
+        {{localize 'swnr.weapon.ammo'}}: {{ weapon.system.ammo.value }}/{{
+        weapon.system.ammo.max }}
       </div>
     {{/if}}
   {{/if}}
-  {{#if weapon.data.data.qualities}}
-  <div>{{localize 'swnr.sheet.ship.qualities'}}: {{ weapon.data.data.qualities }}</div>
+  {{#if weapon.system.qualities}}
+  <div>{{localize 'swnr.sheet.ship.qualities'}}: {{ weapon.system.qualities }}</div>
   {{/if}}
 
-  {{#if weapon.data.data.settings.useTrauma}}
+  {{#if weapon.system.settings.useTrauma}}
     <span>{{localize 'swnr.weapon.trauma.label'}}:</span>
     {{#if traumaRollRender}}
     <span class="roll">
@@ -36,10 +36,10 @@
     {{/if}}
   {{/if}}
 
-  {{#if weapon.data.data.save}}
+  {{#if weapon.system.save}}
   <div class="card-buttons">
-      <button data-action="save" data-save="{{weapon.data.data.save}}">
-          Save {{weapon.data.data.save}}
+      <button data-action="save" data-save="{{weapon.system.save}}">
+          Save {{weapon.system.save}}
       </button>
   </div>
   {{/if}}

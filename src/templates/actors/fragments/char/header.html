@@ -39,7 +39,7 @@
             min="1"
             step="1"
             name="data.level.value"
-            value="{{actor.data.data.level.value}}"
+            value="{{actor.system.level.value}}"
             data-dtype="Number"
           />
         </div>
@@ -59,7 +59,7 @@
             name="data.level.exp"
             min="0"
             data-dtype="Number"
-            value="{{actor.data.data.level.exp}}"
+            value="{{actor.system.level.exp}}"
           /><span>/</span
           ><input
             class="w-8 text-left pr-1.5 py-3.5 subfield "
@@ -68,7 +68,7 @@
             name="data.level.expToLevel"
             min="0"
             data-dtype="Number"
-            value="{{actor.data.data.level.expToLevel}}"
+            value="{{actor.system.level.expToLevel}}"
           />
         </div>
       </div>
@@ -85,7 +85,7 @@
             type="number"
             step="1"
             name="data.health.value"
-            value="{{actor.data.data.health.value}}"
+            value="{{actor.system.health.value}}"
             data-dtype="Number"
             min="0"
           /><span>/</span
@@ -93,7 +93,7 @@
             class="w-8 text-left pr-1.5 py-3.5  bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
             type="number"
             name="data.health.max"
-            value="{{actor.data.data.health.max}}"
+            value="{{actor.system.health.max}}"
             step="1"
             min="1"
             data-dtype="Number"
@@ -110,11 +110,11 @@
             class="w-8 text-right pl-1.5 py-3.5 bg-gray-400  placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
             type="number"
             name="data.systemStrain.value"
-            value="{{actor.data.data.systemStrain.value}}"
+            value="{{actor.system.systemStrain.value}}"
             data-dtype="Number"
           />/<span
             class="inline-block text-left text-gray-300 cursor-not-allowed w-8 subfield"
-            >{{actor.data.data.systemStrain.max}}</span
+            >{{actor.system.systemStrain.max}}</span
           >
         </div>
       </div>
@@ -124,10 +124,10 @@
         
         <div class="text-left"> 
           <label class="pr-3"><b>
-            {{#if actor.data.data.settings.useCWNArmor}}
+            {{#if actor.system.settings.useCWNArmor}}
               {{localize 'swnr.armor.ranged'}}
             {{/if}}
-          {{localize 'swnr.sheet.ac'}}</label> {{actor.data.data.ac}}</b>
+          {{localize 'swnr.sheet.ac'}}</label> {{actor.system.ac}}</b>
         </div>
       </div>
 
@@ -142,7 +142,7 @@
           min="-9"
           max="99"
           data-dtype="Number"
-          value="{{actor.data.data.ab}}"
+          value="{{actor.system.ab}}"
         />
       </div>  
       <div class="flex gap-2 items-center">
@@ -151,7 +151,7 @@
         >
           <div
             class="bg-green-500 h-full rounded-full"
-            style="width: min(calc(100% * {{actor.data.data.health.value}}/{{actor.data.data.health.max}}));"
+            style="width: min(calc(100% * {{actor.system.health.value}}/{{actor.system.health.max}}));"
           ></div>
         </div>
       </div>
@@ -161,17 +161,17 @@
         >
           <div
             class="bg-blue-500 h-full rounded-full"
-            style="width: min(calc(100% * {{actor.data.data.systemStrain.value}}/{{actor.data.data.systemStrain.max}}));"
+            style="width: min(calc(100% * {{actor.system.systemStrain.value}}/{{actor.system.systemStrain.max}}));"
           ></div>
         </div>
       </div>
       <div class="flex gap-2 items-center">
         <!-- meleeAC -->
-        {{#if actor.data.data.settings.useCWNArmor}}
+        {{#if actor.system.settings.useCWNArmor}}
           <div class="ac flex flex-row justify-around items-center text-lg">
           <label class="px-4"><b>
               {{localize 'swnr.armor.melee'}}
-            {{localize 'swnr.sheet.ac'}}</label> {{actor.data.data.meleeAc}}</b>
+            {{localize 'swnr.sheet.ac'}}</label> {{actor.system.meleeAc}}</b>
           </div>
           {{/if}}
       </div>
@@ -185,7 +185,7 @@
             name="data.speed"
             min="0"
             step="1"
-            value="{{actor.data.data.speed}}"
+            value="{{actor.system.speed}}"
           />
           <div
             class="rounded-r-md text-base pl-0.5 pr-1"
@@ -204,7 +204,7 @@
           data-save-type="physical"
           class="save sheet-button gap-2"
         >
-          v{{actor.data.data.save.physical}} {{localize
+          v{{actor.system.save.physical}} {{localize
           'swnr.sheet.saves.physical'}}
           <i class="fas fa-dice-d20"></i>
         </div>
@@ -212,14 +212,14 @@
           data-save-type="evasion"
           class="save sheet-button gap-2"
         >
-          v{{actor.data.data.save.evasion}} {{localize 'swnr.sheet.saves.evasion'}}
+          v{{actor.system.save.evasion}} {{localize 'swnr.sheet.saves.evasion'}}
           <i class="fas fa-dice-d20"></i>
         </div>
         <div
           data-save-type="mental"
           class="save sheet-button gap-2"
         >
-          v{{actor.data.data.save.mental}} {{localize 'swnr.sheet.saves.mental'}}
+          v{{actor.system.save.mental}} {{localize 'swnr.sheet.saves.mental'}}
           <i class="fas fa-dice-d20"></i>
         </div>
         {{#if useHomebrewLuckSave}}
@@ -227,7 +227,7 @@
           data-save-type="luck"
           class="save sheet-button gap-2"
         >
-          v{{actor.data.data.save.luck}} {{localize 'swnr.sheet.saves.luck'}}
+          v{{actor.system.save.luck}} {{localize 'swnr.sheet.saves.luck'}}
           <i class="fas fa-dice-d20"></i>
         </div>
         {{/if}}

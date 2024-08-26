@@ -28,29 +28,29 @@
           <a>{{item.name}}</a>
         </div>
         <div>
-          {{item.data.data.damage}}
+          {{item.system.damage}}
         </div>
         <div>
-          {{item.data.data.qualities}}
+          {{item.system.qualities}}
         </div>
         <div class="item-controls  text-right">
-          {{#if (ne item.data.data.ammo.type "none")}}
+          {{#if (ne item.system.ammo.type "none")}}
           <a class="item-control item-reload text-gray-400 hover:text-purple-800 transition-colors"
             title="{{localize 'swnr.sheet.reload-item'}}">
             <i class="fas fa-retweet"></i>
           </a>
           {{/if}}
-          <a class="item-control item-toggle-jury  {{#unless item.data.data.juryRigged}}item-working{{/unless}}"
+          <a class="item-control item-toggle-jury  {{#unless item.system.juryRigged}}item-working{{/unless}}"
             title='{{localize 'swnr.sheet.jury-rig'}}'>
-            <i class="fas fa-tape {{#unless item.data.data.juryRigged}}item-working{{/unless}} "></i>
+            <i class="fas fa-tape {{#unless item.system.juryRigged}}item-working{{/unless}} "></i>
           </a>
-          <a class="item-control item-toggle-broken  {{#unless item.data.data.broken}}item-working{{/unless}}"
+          <a class="item-control item-toggle-broken  {{#unless item.system.broken}}item-working{{/unless}}"
             title='{{localize 'swnr.sheet.break-item'}}'>
-            <i class="fas fa-heart-broken {{#unless item.data.data.broken}}item-working{{/unless}}"></i>
+            <i class="fas fa-heart-broken {{#unless item.system.broken}}item-working{{/unless}}"></i>
           </a>
-          <a class="item-control item-toggle-destroy  {{#unless item.data.data.destroyed}}item-working{{/unless}}"
+          <a class="item-control item-toggle-destroy  {{#unless item.system.destroyed}}item-working{{/unless}}"
             title='{{localize 'swnr.sheet.destroy-item'}}'>
-            <i class="fas fa-skull-crossbones {{#unless item.data.data.destroyed}}item-working{{/unless}}"></i>
+            <i class="fas fa-skull-crossbones {{#unless item.system.destroyed}}item-working{{/unless}}"></i>
           </a>
           <a class="item-control item-edit text-gray-400 hover:text-purple-800 transition-colors" 
             title='{{localize 'swnr.sheet.edit-item'}}'><i class="fas fa-edit"></i></a>

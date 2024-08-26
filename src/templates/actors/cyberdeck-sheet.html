@@ -28,12 +28,12 @@
             <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
               <input
                 class="w-6 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-                type="number" step="1" name="data.health.value" value="{{actor.data.data.health.value}}"
+                type="number" step="1" name="data.health.value" value="{{actor.system.health.value}}"
                 data-dtype="Number" min="0" /><span>/</span>
                 <span 
                     class="w-8 text-left pr-1.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
                 >
-                  {{actor.data.data.health.max}}
+                  {{actor.system.health.max}}
                 </span>
             </div>
             <label
@@ -54,7 +54,7 @@
               >
                 <div
                   class="bg-green-500 h-full rounded-full"
-                  style="width: min(calc(100% * {{actor.data.data.health.value}}/{{actor.data.data.health.max}}));"
+                  style="width: min(calc(100% * {{actor.system.health.value}}/{{actor.system.health.max}}));"
                 ></div>
               </div>
             </div>
@@ -67,10 +67,10 @@
             <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
               <span
                 class="cursor-not-allowed w-6 text-right pl-1.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield">
-                {{actor.data.data.memory.value}}
+                {{actor.system.memory.value}}
                 </span><span>/</span><input
                 class="w-6 text-left pr-1.5  bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-                type="number" name="data.memory.max" value="{{actor.data.data.memory.max}}" step="1" min="1"
+                type="number" name="data.memory.max" value="{{actor.system.memory.max}}" step="1" min="1"
                 data-dtype="Number" />
             </div>
             <label
@@ -84,7 +84,7 @@
               >
                 <div
                   class="bg-purple-500 h-full rounded-full"
-                  style="width: min(calc(100% * {{actor.data.data.memory.value}}/{{actor.data.data.memory.max}}));"
+                  style="width: min(calc(100% * {{actor.system.memory.value}}/{{actor.system.memory.max}}));"
                 ></div>
               </div>
             </div>
@@ -97,10 +97,10 @@
             <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
               <span
                 class="cursor-not-allowed w-8 text-right pl-1.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield">
-                {{actor.data.data.cpu.value}}
+                {{actor.system.cpu.value}}
                 </span><span>/</span><input
                 class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-                type="number" name="data.cpu.max" value="{{actor.data.data.cpu.max}}" step="1" min="1"
+                type="number" name="data.cpu.max" value="{{actor.system.cpu.max}}" step="1" min="1"
                 data-dtype="Number" />
             </div>
             <label
@@ -114,7 +114,7 @@
               >
                 <div
                   class="bg-yellow-400 h-full rounded-full"
-                  style="width: min(calc(100% * {{actor.data.data.cpu.value}}/{{actor.data.data.cpu.max}}));"
+                  style="width: min(calc(100% * {{actor.system.cpu.value}}/{{actor.system.cpu.max}}));"
                 ></div>
               </div>
             </div>
@@ -127,7 +127,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.encumberance" value="{{actor.data.data.encumberance}}" data-dtype="Number" min="0" />
+              type="number" step="1" name="data.encumberance" value="{{actor.system.encumberance}}" data-dtype="Number" min="0" />
           </div>
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
@@ -140,7 +140,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.bonusAccess" value="{{actor.data.data.bonusAccess}}" data-dtype="Number" min="0" />
+              type="number" step="1" name="data.bonusAccess" value="{{actor.system.bonusAccess}}" data-dtype="Number" min="0" />
           </div>
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
@@ -153,7 +153,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.baseShielding" value="{{actor.data.data.baseShielding}}" data-dtype="Number" min="0" />
+              type="number" step="1" name="data.baseShielding" value="{{actor.system.baseShielding}}" data-dtype="Number" min="0" />
           </div>
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
@@ -166,7 +166,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.bonusShielding" value="{{actor.data.data.bonusShielding}}" data-dtype="Number" min="0" />
+              type="number" step="1" name="data.bonusShielding" value="{{actor.system.bonusShielding}}" data-dtype="Number" min="0" />
           </div>
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
@@ -176,14 +176,14 @@
 
         <div class="mass flex flex-col justify-center items-center">
           <div class="flex flexrow">
-            {{localize 'swnr.sheet.cyberdeck.neuralBuffer'}}:<input type="checkbox" name="data.neuralBuffer" {{checked data.data.neuralBuffer}}>
+            {{localize 'swnr.sheet.cyberdeck.neuralBuffer'}}:<input type="checkbox" name="data.neuralBuffer" {{checked system.neuralBuffer}}>
           </div>
           <div class="flex flexrow">
-            {{localize 'swnr.sheet.cyberdeck.wirelessConnectionPenalty'}}:<input type="checkbox" name="data.wirelessConnectionPenalty" {{checked data.data.wirelessConnectionPenalty}}>
+            {{localize 'swnr.sheet.cyberdeck.wirelessConnectionPenalty'}}:<input type="checkbox" name="data.wirelessConnectionPenalty" {{checked system.wirelessConnectionPenalty}}>
           </div>
 
           <div class="flex flexrow">
-            {{localize 'swnr.sheet.cyberdeck.crownPenalty'}}:<input type="checkbox" name="data.crownPenalty" {{checked data.data.crownPenalty}}>
+            {{localize 'swnr.sheet.cyberdeck.crownPenalty'}}:<input type="checkbox" name="data.crownPenalty" {{checked system.crownPenalty}}>
           </div>
         </div>
 
@@ -193,7 +193,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-20 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.cost" value="{{actor.data.data.cost}}" data-dtype="Number" min="0" />
+              type="number" step="1" name="data.cost" value="{{actor.system.cost}}" data-dtype="Number" min="0" />
           </div>
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
@@ -236,11 +236,11 @@
                   
                   <span 
                     class="inline-block text-right text-gray-300 cursor-not-allowed w-8 subfield"
-                  >{{hacker.data.data.health.value}}</span>
+                  >{{hacker.system.health.value}}</span>
                   <span>/</span>
                   <span 
                     class="inline-block text-left text-gray-300 cursor-not-allowed w-8 subfield"
-                  >{{hacker.data.data.health.max}}</span>
+                  >{{hacker.system.health.max}}</span>
                 </div>
               </div>
               <!-- bar -->
@@ -250,7 +250,7 @@
                 >
                   <div
                     class="bg-green-500 h-full rounded-full"
-                    style="width: min(calc(100% * {{hacker.data.data.health.value}}/{{hacker.data.data.health.max}}));"
+                    style="width: min(calc(100% * {{hacker.system.health.value}}/{{hacker.system.health.max}}));"
                   ></div>
                 </div>
               </div>
@@ -330,8 +330,8 @@
                           <a></a>
                         </div>
                         <a>{{item.name}}</a> 
-                        {{#if item.data.data.useAffects}}
-                          [{{item.data.data.useAffects}}]
+                        {{#if item.system.useAffects}}
+                          [{{item.system.useAffects}}]
                         {{/if}}
                       </div>
                       <div class="item-controls  text-right">
@@ -344,7 +344,7 @@
                     </div>
                   </li>
                   {{/each}}
-                  {{#times actor.data.data.cpu.value}}
+                  {{#times actor.system.cpu.value}}
                   <li class="item-alternating">
                     <div class="item flexrow
                       {{#if (mod2Offset @this ../activePrograms.length) }}

@@ -15,28 +15,28 @@
           class="transition-opacity opacity-0 group-hover:opacity-100 border-2 border-trueGray-600 bg-trueGray-700 --mt-5 p-1 --z-10 relative rounded-md text-trueGray-200"
         >
           <div>
-            Hit: {{numberFormat (concat hitBonus item.data.data.ab)
+            Hit: {{numberFormat (concat hitBonus item.system.ab)
             sign=true}}
           </div>
           <div>
-            Damage: {{item.data.data.damage}}{{numberFormat
+            Damage: {{item.system.damage}}{{numberFormat
             damageBonus sign=true}}
           </div>
-          {{#if (ne item.data.data.ammo.type "none")}}
-            {{#if (ne item.data.data.ammo.type "infinite")}}
+          {{#if (ne item.system.ammo.type "none")}}
+            {{#if (ne item.system.ammo.type "infinite")}}
             <div>
-              Ammo: {{item.data.data.ammo.value}}/{{item.data.data.ammo.max}}
+              Ammo: {{item.system.ammo.value}}/{{item.system.ammo.max}}
             </div>
             {{/if}}
           {{/if}}
-          {{#if item.data.data.shock.dmg}}
+          {{#if item.system.shock.dmg}}
           <div>
-            Shock: {{item.data.data.shock.dmg}}/{{item.data.data.shock.ac}}
+            Shock: {{item.system.shock.dmg}}/{{item.system.shock.ac}}
           </div>
           {{/if}}
-          {{#if item.data.data.range.normal}}
+          {{#if item.system.range.normal}}
           <div>
-            Range: {{item.data.data.range.normal}}/{{item.data.data.range.max}}
+            Range: {{item.system.range.normal}}/{{item.system.range.max}}
           </div>
           {{/if}}
           <div class="w-full absolute -left-0 -bottom-4 flex justify-around">
@@ -55,7 +55,7 @@
     </div>
   </a>
   <div class="item-controls flex gap-1">
-          {{#if (ne item.data.data.ammo.type "none")}}
+          {{#if (ne item.system.ammo.type "none")}}
 
               <a
                 class="item-control item-reload text-gray-400 hover:text-purple-800 transition-colors"

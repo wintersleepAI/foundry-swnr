@@ -264,9 +264,9 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     const li = $(event.currentTarget).parents(".item");
     const item = this.actor.getEmbeddedDocument("Item", li.data("itemId"));
     if (!item) return;
-    const ammo_max = item.data.data.ammo?.max;
+    const ammo_max = item.system.ammo?.max;
     if (ammo_max != null) {
-      if (item.data.data.ammo.value < ammo_max) {
+      if (item.system.ammo.value < ammo_max) {
         await item.update({ "data.ammo.value": ammo_max });
         const content = `<p> Reloaded ${item.name} </p>`;
         ChatMessage.create({
@@ -286,7 +286,7 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     event.stopPropagation();
     const wrapper = $(event.currentTarget).parents(".item");
     const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
-    const new_break_status = !item?.data.data.broken;
+    const new_break_status = !item?.system.broken;
     if (item instanceof Item)
       await item?.update({
         "data.broken": new_break_status,
@@ -300,7 +300,7 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     event.stopPropagation();
     const wrapper = $(event.currentTarget).parents(".item");
     const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
-    const new_destroy_status = !item?.data.data.destroyed;
+    const new_destroy_status = !item?.system.destroyed;
     if (item instanceof Item)
       await item?.update({
         "data.destroyed": new_destroy_status,
@@ -314,7 +314,7 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
     event.stopPropagation();
     const wrapper = $(event.currentTarget).parents(".item");
     const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
-    const new_jury_status = !item?.data.data.juryRigged;
+    const new_jury_status = !item?.system.juryRigged;
     if (item instanceof Item)
       await item?.update({
         "data.destroyed": false,
@@ -372,7 +372,7 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
   async _resetSoak(): Promise<void> {
     if (game.settings.get("swnr", "useCWNArmor")) {
       if (this.actor.type == "npc") {
-        const maxSoak = this.actor.data.data.baseSoakTotal.max;
+        const maxSoak = this.actor.system.baseSoakTotal.max;
         await this.actor.update({
           "data.baseSoakTotal.value": maxSoak,
         });
@@ -382,13 +382,13 @@ export class BaseActorSheet<T extends ActorSheet.Data> extends ActorSheet<
         this.actor.items.filter(
           (i) =>
             i.data.type === "armor" &&
-            i.data.data.use &&
-            i.data.data.location === "readied" &&
-            i.data.data.soak.value < i.data.data.soak.max
+            i.system.use &&
+            i.system.location === "readied" &&
+            i.system.soak.value < i.system.soak.max
         )
       );
       for (const armor of armorWithSoak) {
-        const soak = armor.data.data.soak.max;
+        const soak = armor.system.soak.max;
         await armor.update({
           "data.soak.value": soak,
         });

@@ -1,17 +1,17 @@
 <form class=" -m-2 p-2 pb-4 flex flexcol gap-1 justify-between">
   <div class="mb-4">
     <label for="advantageInit">{{localize 'swnr.dialog.tweak.adv-init'}}: </label>
-    <input type="checkbox" name="advantageInit" id="advantageInit" {{checked actor.data.data.tweak.advInit}}>
+    <input type="checkbox" name="advantageInit" id="advantageInit" {{checked actor.system.tweak.advInit}}>
   </div>
   {{#if (ne itemTypes.skill.length 0)}}
     <div>
       <label for="quickSkill1">{{localize 'swnr.dialog.tweak.quick-skill-1'}}: </label>
       <select name="quickSkill1"  
                   class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-        {{#select actor.data.data.tweak.quickSkill1}}
+        {{#select actor.system.tweak.quickSkill1}}
         <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
         {{#each itemTypes.skill }}
-        <option value="{{this.id}}">{{this.name}} {{this.data.data.rank}}</option>
+        <option value="{{this.id}}">{{this.name}} {{this.system.rank}}</option>
         {{/each}}
         {{/select}}
       </select>
@@ -20,10 +20,10 @@
       <label for="quickSkill2">{{localize 'swnr.dialog.tweak.quick-skill-1'}}: </label>
       <select name="quickSkill2"  
                   class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-        {{#select actor.data.data.tweak.quickSkill2}}
+        {{#select actor.system.tweak.quickSkill2}}
         <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
         {{#each itemTypes.skill }}
-        <option value="{{this.id}}">{{this.name}} {{this.data.data.rank}}</option>
+        <option value="{{this.id}}">{{this.name}} {{this.system.rank}}</option>
         {{/each}}
         {{/select}}
       </select>
@@ -32,10 +32,10 @@
       <label for="quickSkill3">{{localize 'swnr.dialog.tweak.quick-skill-1'}}: </label>
       <select name="quickSkill3"  
                   class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-        {{#select actor.data.data.tweak.quickSkill3}}
+        {{#select actor.system.tweak.quickSkill3}}
         <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
         {{#each itemTypes.skill }}
-        <option value="{{this.id}}">{{this.name}} {{this.data.data.rank}}</option>
+        <option value="{{this.id}}">{{this.name}} {{this.system.rank}}</option>
         {{/each}}
         {{/select}}
       </select>
@@ -45,7 +45,7 @@
     <label for="extraEffort">{{localize 'swnr.dialog.tweak.extra-effort-name'}}: </label>
     <input type="input" name="extraEffortName" id="extraEffort"
       class="w-32 text-center px-1.5 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-      value="{{actor.data.data.tweak.extraEffortName}}">
+      value="{{actor.system.tweak.extraEffortName}}">
   </div>
 
   
@@ -53,26 +53,26 @@
     <label for="debtDisplay">{{localize 'swnr.dialog.tweak.debtDisplay'}}: </label>
     <input type="input" name="debtDisplay" id="debtDisplay"
       class="w-32 text-center px-1.5 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-      value="{{actor.data.data.tweak.debtDisplay}}">
+      value="{{actor.system.tweak.debtDisplay}}">
   </div>
 
   <div  class="mb-4">
     <label for="balanceDisplay">{{localize 'swnr.dialog.tweak.balanceDisplay'}}: </label>
     <input type="input" name="balanceDisplay" id="balanceDisplay"
       class="w-32 text-center px-1.5 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-      value="{{actor.data.data.tweak.balanceDisplay}}">
+      value="{{actor.system.tweak.balanceDisplay}}">
   </div>
 
   <div  class="mb-4">
     <label for="owedDisplay">{{localize 'swnr.dialog.tweak.owedDisplay'}}: </label>
     <input type="input" name="owedDisplay" id="owedDisplay"
       class="w-32 text-center px-1.5 py-0.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-      value="{{actor.data.data.tweak.owedDisplay}}">
+      value="{{actor.system.tweak.owedDisplay}}">
   </div>
 
 
   <div  class="mb-4">
     <label for="showResourceList">{{localize 'swnr.dialog.tweak.show-resource-list'}}: </label>
-    <input type="checkbox" name="showResourceList" id="showResourceList" {{checked actor.data.data.tweak.showResourceList}}>
+    <input type="checkbox" name="showResourceList" id="showResourceList" {{checked actor.system.tweak.showResourceList}}>
   </div>
 </form>

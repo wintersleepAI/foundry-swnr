@@ -1,65 +1,65 @@
 <div class="chat-card">
-  <h3 title="{{ power.data.data.description }}">{{ power.name }}</h3>
+  <h3 title="{{ power.system.description }}">{{ power.name }}</h3>
 
   <div class="chat-desc">
-    {{#if (wouldTrim power.data.data.description 200)}}
+    {{#if (wouldTrim power.system.description 200)}}
       <span class="hiddenShort">
-        {{{trim power.data.data.description 200}}}
+        {{{trim power.system.description 200}}}
         <div class="border border-gray-700 placeholder-blue-800 pt-0">
           <button class="longShowDesc">Show Long Desc.</button>
         </div>
       </span>
       <div class="border border-gray-700 placeholder-blue-800 pt-0">
         <span style="display:none" class="hiddenLong">
-        {{{ power.data.data.description }}}
+        {{{ power.system.description }}}
         <button class="longHideDesc">Hide Long Desc.</button>
         </span>
       </div>
     {{else}}
       <span>
-        {{{power.data.data.description }}}
+        {{{power.system.description }}}
       </span>
     {{/if}}
   </div>
 
-  {{#if power.data.data.range}}
+  {{#if power.system.range}}
       <div >
-        {{localize 'swnr.sheet.powers.range'}}: {{ power.data.data.range }}
+        {{localize 'swnr.sheet.powers.range'}}: {{ power.system.range }}
       </div>
   {{/if}}
 
-  {{#if power.data.data.duration}}
+  {{#if power.system.duration}}
       <div >
-        {{localize 'swnr.sheet.powers.duration'}}: {{ power.data.data.duration }}
+        {{localize 'swnr.sheet.powers.duration'}}: {{ power.system.duration }}
       </div>
   {{/if}}
 
-  {{#if power.data.data.roll}}
+  {{#if power.system.roll}}
     <span>{{localize 'swnr.sheet.powers.roll'}}:</span>
     <span class="roll roll-damage">{{{ powerRoll }}}</span>
   {{/if}}
 
-  {{#if power.data.data.save}}
+  {{#if power.system.save}}
   <div class="card-buttons">
-      <button data-action="save" data-save="{{power.data.data.save}}">
-          Save {{power.data.data.save}}
+      <button data-action="save" data-save="{{power.system.save}}">
+          Save {{power.system.save}}
       </button>
   </div>
   {{/if}}
 
-  {{#if power.data.data.skill}}
+  {{#if power.system.skill}}
   <div class="card-buttons">
-      <button data-action="skill" data-skill="{{power.data.data.skill}}">
-          {{power.data.data.skill}}
+      <button data-action="skill" data-skill="{{power.system.skill}}">
+          {{power.system.skill}}
       </button>
   </div>
   {{/if}}
 
 
-  {{#if power.data.data.effort}}
+  {{#if power.system.effort}}
   <div class="card-buttons">
-      <button data-action="effort" data-effort="{{power.data.data.effort}}">
-          Use {{power.data.data.effort}} effort
+      <button data-action="effort" data-effort="{{power.system.effort}}">
+          Use {{power.system.effort}} effort
       </button>
   </div>
   {{/if}}

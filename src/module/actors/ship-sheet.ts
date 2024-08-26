@@ -36,9 +36,9 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     if (data instanceof Promise) data = await data;
 
     const crewArray: Array<SWNRCharacterActor | SWNRNPCActor> = [];
-    if (this.actor.data.data.crewMembers) {
-      for (let i = 0; i < this.actor.data.data.crewMembers.length; i++) {
-        const cId = this.actor.data.data.crewMembers[i];
+    if (this.actor.system.crewMembers) {
+      for (let i = 0; i < this.actor.system.crewMembers.length; i++) {
+        const cId = this.actor.system.crewMembers[i];
         const crewMember = game.actors?.get(cId);
         if (
           crewMember &&
@@ -178,7 +178,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     const value = event.target?.value;
     const resourceType = $(event.currentTarget).data("rlType");
     const idx = $(event.currentTarget).parents(".item").data("rlIdx");
-    const resourceList = duplicate(this.actor.data.data.cargoCarried);
+    const resourceList = duplicate(this.actor.system.cargoCarried);
     resourceList[idx][resourceType] = value;
     await this.actor.update({ "data.cargoCarried": resourceList });
   }
@@ -187,7 +187,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     event.preventDefault();
     event.stopPropagation();
     const idx = $(event.currentTarget).parents(".item").data("rlIdx");
-    const resourceList = duplicate(this.actor.data.data.cargoCarried);
+    const resourceList = duplicate(this.actor.system.cargoCarried);
     resourceList.splice(idx, 1);
     await this.actor.update({ "data.cargoCarried": resourceList });
   }
@@ -195,7 +195,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
   async _onResourceCreate(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     //console.log("Changing HP Max" , this.actor);
-    let resourceList = this.actor.data.data.cargoCarried;
+    let resourceList = this.actor.system.cargoCarried;
     if (!resourceList) {
       resourceList = [];
     }
@@ -218,21 +218,21 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     paymentType: "payment" | "maintenance"
   ): Promise<void> {
     // if a new payment type is added this function needs to be refactored
-    let shipPool = this.actor.data.data.creditPool;
+    let shipPool = this.actor.system.creditPool;
     const paymentAmount =
       paymentType == "payment"
-        ? this.actor.data.data.paymentAmount
-        : this.actor.data.data.maintenanceCost;
+        ? this.actor.system.paymentAmount
+        : this.actor.system.maintenanceCost;
     //Assume its payment and change if maintenance
 
     const lastPayDate =
       paymentType == "payment"
-        ? this.actor.data.data.lastPayment
-        : this.actor.data.data.lastMaintenance;
+        ? this.actor.system.lastPayment
+        : this.actor.system.lastMaintenance;
     const monthSchedule =
       paymentType == "payment"
-        ? this.actor.data.data.paymentMonths
-        : this.actor.data.data.maintenanceMonths;
+        ? this.actor.system.paymentMonths
+        : this.actor.system.maintenanceMonths;
 
     if (paymentAmount > shipPool) {
       ui.notifications?.error(
@@ -278,8 +278,8 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     // Roll skill, show name, skill, attr if != ""
     const rollMode = game.settings.get("core", "rollMode");
     const formula = `2d6 + @npcCrewSkill`;
-    const npcCrewSkill = this.actor.data.data.crewSkillBonus
-      ? this.actor.data.data.crewSkillBonus
+    const npcCrewSkill = this.actor.system.crewSkillBonus
+      ? this.actor.system.crewSkillBonus
       : 0;
     const roll = new Roll(formula, {
       npcCrewSkill,
@@ -296,8 +296,8 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
   }
 
   async _setCaptSupport(dept: string): Promise<void> {
-    const deptSupport = this.actor.data.data.supportingDept
-      ? this.actor.data.data.supportingDept
+    const deptSupport = this.actor.system.supportingDept
+      ? this.actor.system.supportingDept
       : "";
     if (dept == deptSupport) {
       return;
@@ -322,9 +322,9 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       return;
     }
     const actionTitle = action.title ? action.title : actionName;
-    let cp = this.actor.data.data.commandPoints;
-    const actionsTaken = this.actor.data.data.actionsTaken
-      ? this.actor.data.data.actionsTaken
+    let cp = this.actor.system.commandPoints;
+    const actionsTaken = this.actor.system.actionsTaken
+      ? this.actor.system.actionsTaken
       : [];
     if (action.limit === "round" && actionsTaken.indexOf(actionName) >= 0) {
       ui.notifications?.info(
@@ -336,19 +336,19 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     if (actionName == "startRound") {
       let depts = ``;
       let roleOrder: string[] = [];
-      if (this.actor.data.data.roleOrder) {
+      if (this.actor.system.roleOrder) {
         // we may have set an order prior
-        roleOrder = this.actor.data.data.roleOrder;
+        roleOrder = this.actor.system.roleOrder;
       } else {
         // get the default list
-        for (const role in this.actor.data.data.roles) {
+        for (const role in this.actor.system.roles) {
           roleOrder.push(role);
         }
       }
       for (const role of roleOrder) {
         let roleName = "";
-        if (this.actor.data.data.roles[role]) {
-          const roleActor = game.actors?.get(this.actor.data.data.roles[role]);
+        if (this.actor.system.roles[role]) {
+          const roleActor = game.actors?.get(this.actor.system.roles[role]);
           if (roleActor && roleActor.name) {
             roleName = ` (${roleActor.name})`;
           }
@@ -402,8 +402,8 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       return;
     } else if (actionName == "endRound") {
       //endRound action is special. clear and reset.
-      const newCp = this.actor.data.data.npcCommandPoints
-        ? this.actor.data.data.npcCommandPoints
+      const newCp = this.actor.system.npcCommandPoints
+        ? this.actor.system.npcCommandPoints
         : 0;
       let actionsText =
         actionsTaken.length > 0 ? `Actions: <ul>` : "No actions.";
@@ -433,7 +433,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     }
     let actionCp = action.cp ? action.cp : 0;
     let supported = false;
-    let supportingDept = this.actor.data.data.supportingDept;
+    let supportingDept = this.actor.system.supportingDept;
     if (action.dept && action.dept == supportingDept) {
       // If captaint is supporting the department.
       actionCp += 2;
@@ -451,8 +451,8 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       diffText += ` (2d6: ${res.total})`;
     }
     const descText = action.desc ? action.desc : "";
-    const order = this.actor.data.data.roleOrder
-      ? ` (${this.actor.data.data.roleOrder.join(",")})`
+    const order = this.actor.system.roleOrder
+      ? ` (${this.actor.system.roleOrder.join(",")})`
       : "";
     if (action.skill) {
       // this action needs a skill roll
@@ -463,9 +463,9 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
 
       if (action.dept) {
         let foundActor = false; //might not be anyone in this dept/role
-        if (this.actor.data.data.roles[action.dept] != "") {
+        if (this.actor.system.roles[action.dept] != "") {
           const defaultActor = game.actors?.get(
-            this.actor.data.data.roles[action.dept]
+            this.actor.system.roles[action.dept]
           );
           if (defaultActor) {
             foundActor = true;
@@ -484,10 +484,10 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
                 //Find the attribute with the highest mod
                 for (const attr of action.attr) {
                   if (
-                    defaultActor.data.data.stats[attr] &&
-                    defaultActor.data.data.stats[attr].mod > tempMod
+                    defaultActor.system.stats[attr] &&
+                    defaultActor.system.stats[attr].mod > tempMod
                   ) {
-                    tempMod = defaultActor.data.data.stats[attr].mod;
+                    tempMod = defaultActor.system.stats[attr].mod;
                     const key = `swnr.stat.short.${attr}`;
                     attrName = `${game.i18n.localize(key)}\\`;
                   }
@@ -496,7 +496,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
               }
             }
             if (defaultActor.type == "npc") {
-              skillLevel = defaultActor.data.data.skillBonus;
+              skillLevel = defaultActor.system.skillBonus;
             }
             // Roll skill, show name, skill, attr if != ""
             const rollMode = game.settings.get("core", "rollMode");
@@ -518,8 +518,8 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
         }
         if (!foundActor) {
           // We are here means there is a skill but we don't know who it is for
-          skillLevel = this.actor.data.data.crewSkillBonus
-            ? this.actor.data.data.crewSkillBonus
+          skillLevel = this.actor.system.crewSkillBonus
+            ? this.actor.system.crewSkillBonus
             : 0;
           const rollMode = game.settings.get("core", "rollMode");
           const formula = `${dicePool} + @skillLevel`;
@@ -634,9 +634,9 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     );
 
     const disabledParts = shipInventory.filter(
-      (i) => i.data.data.broken == true && i.data.data.destroyed == false
+      (i) => i.system.broken == true && i.system.destroyed == false
     );
-    const shipClass = this.actor.data.data.shipClass;
+    const shipClass = this.actor.system.shipClass;
 
     let multiplier = 1;
     if (shipClass == "frigate") {
@@ -652,9 +652,9 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     const eitems: Record<string, unknown>[] = [];
     for (let i = 0; i < disabledParts.length; i++) {
       const item = disabledParts[i];
-      const itemCost = item.data.data.costMultiplier
-        ? item.data.data.cost * multiplier
-        : item.data.data.cost;
+      const itemCost = item.system.costMultiplier
+        ? item.system.cost * multiplier
+        : item.system.cost;
       disabledCosts += itemCost;
       itemsToFix.push(`${item.name} (${itemCost})`);
       eitems.push({ _id: item.id, data: { broken: false } });
@@ -677,7 +677,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
 
   _onTravel(event: JQuery.ClickEvent): void {
     event.preventDefault();
-    if (this.actor.data.data.spikeDrive.value <= 0) {
+    if (this.actor.system.spikeDrive.value <= 0) {
       ui.notifications?.error("Drive disabled.");
       return;
     }
@@ -720,7 +720,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
 
   async _onSensor(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
-    let defaultCommId: string | null = this.actor.data.data.roles.comms;
+    let defaultCommId: string | null = this.actor.system.roles.comms;
     let defaultComm: SWNRCharacterActor | SWNRNPCActor | null = null;
     if (defaultCommId) {
       const _temp = game.actors?.get(defaultCommId);
@@ -729,9 +729,9 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       }
     }
     const crewArray: Array<SWNRCharacterActor | SWNRNPCActor> = [];
-    if (this.actor.data.data.crewMembers) {
-      for (let i = 0; i < this.actor.data.data.crewMembers.length; i++) {
-        const cId = this.actor.data.data.crewMembers[i];
+    if (this.actor.system.crewMembers) {
+      for (let i = 0; i < this.actor.system.crewMembers.length; i++) {
+        const cId = this.actor.system.crewMembers[i];
         const crewMember = game.actors?.get(cId);
         if (
           crewMember &&
@@ -873,15 +873,15 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
 
   async _onSpike(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
-    if (this.actor.data.data.fuel.value <= 0) {
+    if (this.actor.system.fuel.value <= 0) {
       ui.notifications?.error("Out of fuel.");
       return;
     }
-    if (this.actor.data.data.spikeDrive.value <= 0) {
+    if (this.actor.system.spikeDrive.value <= 0) {
       ui.notifications?.error("Drive disabled.");
       return;
     }
-    let defaultPilotId: string | null = this.actor.data.data.roles.bridge;
+    let defaultPilotId: string | null = this.actor.system.roles.bridge;
     let defaultPilot: SWNRCharacterActor | SWNRNPCActor | null = null;
     if (defaultPilotId) {
       const _temp = game.actors?.get(defaultPilotId);
@@ -890,9 +890,9 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       }
     }
     const crewArray: Array<SWNRCharacterActor | SWNRNPCActor> = [];
-    if (this.actor.data.data.crewMembers) {
-      for (let i = 0; i < this.actor.data.data.crewMembers.length; i++) {
-        const cId = this.actor.data.data.crewMembers[i];
+    if (this.actor.system.crewMembers) {
+      for (let i = 0; i < this.actor.system.crewMembers.length; i++) {
+        const cId = this.actor.system.crewMembers[i];
         const crewMember = game.actors?.get(cId);
         if (
           crewMember &&
@@ -1108,7 +1108,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
 
   _onCalcCost(event: JQuery.ClickEvent): void {
     event.preventDefault();
-    const hullType = this.actor.data.data.shipHullType;
+    const hullType = this.actor.system.shipHullType;
     const d = new Dialog({
       title: "Calc Costs",
       content: `Do you want to calculate the cost based on your fittings and the hull ${hullType}`,

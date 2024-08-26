@@ -1,7 +1,7 @@
 <form class="{{cssClass}} -m-2 p-2 form-sheet">
   {{> "systems/swnr/templates/items/fragments/desc.html"}}
   {{localize 'swnr.foci.level'}}: <select class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md" name="data.level">
-        {{#select data.data.level}}
+        {{#select system.level}}
         <option value=""></option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -12,14 +12,14 @@
 
     <h3 class="text-base p-1">{{localize 'swnr.foci.level1'}}</h3>
     <div class="p-1 border-t border-black">
-      {{editor content=data.data.level1 target="data.level1" button=true owner=owner
+      {{editor content=system.level1 target="data.level1" button=true owner=owner
       editable=editable }}
     </div>
   </div>
   <div class="border border-black rounded-md bg-gray-400 bg-opacity-75">
     <h3 class="text-base p-1">{{localize 'swnr.foci.level2'}}</h3>
     <div class="p-1 border-t border-black">
-      {{editor content=data.data.level2 target="data.level2" button=true owner=owner
+      {{editor content=system.level2 target="data.level2" button=true owner=owner
       editable=editable }}
     </div>
   </div>

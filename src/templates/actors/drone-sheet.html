@@ -26,7 +26,7 @@
         <div class="name flex flex-col items-center">
           <select name="data.model"
             class="pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-            {{#select actor.data.data.model}}
+            {{#select actor.system.model}}
             <option value="">{{localize 'swnr.sheet.drone.models.custom'}}</option>
             <option value="primitiveDrone">
               {{localize 'swnr.sheet.drone.models.primitive-drone'}}
@@ -74,10 +74,10 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" step="1" name="data.health.value" value="{{actor.data.data.health.value}}"
+              type="number" step="1" name="data.health.value" value="{{actor.system.health.value}}"
               data-dtype="Number" min="0" /><span>/</span><input
               class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" name="data.health.max" value="{{actor.data.data.health.max}}" step="1" min="1"
+              type="number" name="data.health.max" value="{{actor.system.health.max}}" step="1" min="1"
               data-dtype="Number" />
           </div>
           <label
@@ -90,7 +90,7 @@
         <div class="ac flex flex-col items-center">
           <input
             class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-            type="number" min="0" name="data.ac" value="{{actor.data.data.ac}}" />
+            type="number" min="0" name="data.ac" value="{{actor.system.ac}}" />
           <label>{{localize 'swnr.sheet.armor-class'}}</label>
         </div>
 
@@ -102,7 +102,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.enc" value="{{actor.data.data.enc}}" data-dtype="Number" min="0" />
+              type="number" step="1" name="data.enc" value="{{actor.system.enc}}" data-dtype="Number" min="0" />
           </div>
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
@@ -115,7 +115,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.speed" value="{{actor.data.data.speed}}" data-dtype="Number"
+              type="number" step="1" name="data.speed" value="{{actor.system.speed}}" data-dtype="Number"
               min="0" />
           </div>
           <label
@@ -129,7 +129,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-16 text-center bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              name="data.moveType" value="{{actor.data.data.moveType}}" />
+              name="data.moveType" value="{{actor.system.moveType}}" />
           </div>
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
@@ -145,7 +145,7 @@
             <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
               <input
                 class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                type="number" step="1" name="data.tl" value="{{actor.data.data.tl}}" data-dtype="Number" min="0" />
+                type="number" step="1" name="data.tl" value="{{actor.system.tl}}" data-dtype="Number" min="0" />
             </div>
             <label
               class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
@@ -158,7 +158,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-20 text-center pl-0.5 py-1 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              name="data.range" value="{{actor.data.data.range}}" />
+              name="data.range" value="{{actor.system.range}}" />
           </div>
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
@@ -170,9 +170,9 @@
         <div class="fittings flex flex-col justify-center items-center">
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <span class="inline-block text-right text-gray-300 cursor-not-allowed w-8">
-              {{actor.data.data.fittings.value}}</span><span>/</span><input
+              {{actor.system.fittings.value}}</span><span>/</span><input
               class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" name="data.fittings.max" value="{{actor.data.data.fittings.max}}" step="1" min="1"
+              type="number" name="data.fittings.max" value="{{actor.system.fittings.max}}" step="1" min="1"
               data-dtype="Number" />
           </div>
           <label title="{{localize 'swnr.sheet.drone.fitTip'}}"
@@ -186,9 +186,9 @@
         <div class="hardpoints flex flex-col justify-center items-center">
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <span class="inline-block text-right text-gray-300 cursor-not-allowed w-8">
-              {{actor.data.data.hardpoints.value}}</span><span>/</span><input
+              {{actor.system.hardpoints.value}}</span><span>/</span><input
               class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" name="data.hardpoints.max" value="{{actor.data.data.hardpoints.max}}" step="1" min="1"
+              type="number" name="data.hardpoints.max" value="{{actor.system.hardpoints.max}}" step="1" min="1"
               data-dtype="Number" />
           </div>
           <label title="{{localize 'swnr.sheet.drone.fitTip'}}"
@@ -202,7 +202,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-20 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.cost" value="{{actor.data.data.cost}}" data-dtype="Number" min="0" />
+              type="number" step="1" name="data.cost" value="{{actor.system.cost}}" data-dtype="Number" min="0" />
           </div>
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
@@ -239,7 +239,7 @@
               min="1"
               step="1"
               name="data.traumaTarget"
-              value="{{actor.data.data.traumaTarget}}"
+              value="{{actor.system.traumaTarget}}"
               data-dtype="Number"
             />
             <label>{{localize 'swnr.sheet.traumaTarget'}}</label>
@@ -278,7 +278,7 @@
                   </li>
                 </div>
                 <div class="bg-gray-400 bg-opacity-75 border border-gray-700 rounded-md p-2 mt-4">
-                  {{editor content=data.data.description target="data.description" button=true
+                  {{editor content=system.description target="data.description" button=true
                   owner=owner editable=editable}}
                 </div>
               </div>
@@ -291,7 +291,7 @@
                   </li>
                 </div>
                 <div class="bg-gray-400 bg-opacity-75 border border-gray-700 rounded-md p-2 mt-4">
-                  {{editor content=data.data.mods target="data.mods" button=true
+                  {{editor content=system.mods target="data.mods" button=true
                   owner=owner editable=editable}}
                 </div>
               </div>

@@ -18,7 +18,7 @@
           class="w-24 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           type="text"
           name="data.damage"
-          value="{{data.data.damage}}"
+          value="{{system.damage}}"
         />
       </div>
       <div>
@@ -29,7 +29,7 @@
           name="data.ab"
           step="1"
           data-dtype="Number"
-          value="{{data.data.ab}}"
+          value="{{system.ab}}"
         />
       </div>
     </div>
@@ -43,7 +43,7 @@
           type="number"
           class="w-8 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="data.shock.dmg"
-          value="{{data.data.shock.dmg}}"
+          value="{{system.shock.dmg}}"
           min="0"
           step="1"
         />
@@ -52,11 +52,11 @@
         <div>{{localize 'swnr.weapon.shock.ac'}}:</div>
         <input class="w-8 text-center px-1.5 py-3 border border-gray-800
         bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75
-        rounded-md" type="number" name="data.shock.ac" value="{{data.data.shock.ac}}"
-        min="10" step="1" {{#if (lte data.data.shock.dmg 0)}} disabled {{/if}}>
+        rounded-md" type="number" name="data.shock.ac" value="{{system.shock.ac}}"
+        min="10" step="1" {{#if (lte system.shock.dmg 0)}} disabled {{/if}}>
       </div>
     </div>
-    {{#if data.data.settings.useTrauma}}
+    {{#if system.settings.useTrauma}}
     <!-- Trauma -->
     <div class="grid md:grid-cols-2 gap-1 pt-1">
       <h3 class="text-base w-full md:col-span-2">
@@ -68,7 +68,7 @@
           class="w-16 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="data.trauma.die"
           type="text"
-          value="{{data.data.trauma.die}}"
+          value="{{system.trauma.die}}"
         />
       </div>
       <div>
@@ -77,7 +77,7 @@
           type="number"
           class="w-8 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="data.trauma.rating"
-          value="{{data.data.trauma.rating}}"
+          value="{{system.trauma.rating}}"
           min="0"
           step="1"
         />
@@ -90,7 +90,7 @@
         class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
         name="data.stat"
       >
-        {{#select data.data.stat}}
+        {{#select system.stat}}
         <option value="str">{{localize 'swnr.stat.long.str'}}</option>
         <option value="dex">{{localize 'swnr.stat.long.dex'}}</option>
         <option value="con">{{localize 'swnr.stat.long.con'}}</option>
@@ -103,7 +103,7 @@
         class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
         name="data.secondStat"
       >
-        {{#select data.data.secondStat}}
+        {{#select system.secondStat}}
         <option value="none">{{localize 'swnr.ammo.none'}}</option>
         <option value="str">{{localize 'swnr.stat.long.str'}}</option>
         <option value="dex">{{localize 'swnr.stat.long.dex'}}</option>
@@ -124,7 +124,7 @@
           name="data.range.normal"
           min="0"
           data-dtype="Number"
-          value="{{data.data.range.normal}}"
+          value="{{system.range.normal}}"
         /> /
         <input
           type="number"
@@ -133,7 +133,7 @@
           name="data.range.max"
           min="0"
           data-dtype="Number"
-          value="{{data.data.range.max}}"
+          value="{{system.range.max}}"
         />
       </div>
       <div>
@@ -143,11 +143,11 @@
           class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
           name="data.skill"
         >
-          {{#select data.data.skill}}
+          {{#select system.skill}}
           <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
           {{#each actor.itemTypes.skill }}
           <option value="{{this.id}}">
-            {{this.name}} {{this.data.data.rank}}
+            {{this.name}} {{this.system.rank}}
           </option>
           {{/each}} {{/select}}
         </select>
@@ -162,7 +162,7 @@
           class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
           name="data.ammo.type"
         >
-          {{#select data.data.ammo.type}}
+          {{#select system.ammo.type}}
           <option value="none">{{localize 'swnr.ammo.none'}}</option>
           <option value="typeAPower">
             {{localize 'swnr.ammo.typeAPower'}}
@@ -177,7 +177,7 @@
           {{/select}}
         </select>
       </div>
-      {{#if (and (ne data.data.ammo.type "none") (ne data.data.ammo.type "infinite"))}}
+      {{#if (and (ne system.ammo.type "none") (ne system.ammo.type "infinite"))}}
       <div class="pl-2">
         {{localize 'swnr.sheet.magazine'}}:
         <div class="flex gap-1 items-center">
@@ -188,8 +188,8 @@
               type="number"
               class="w-10 text-right subfield"
               name="data.ammo.value"
-              max="{{data.data.ammo.max}}"
-              value="{{data.data.ammo.value}}"
+              max="{{system.ammo.max}}"
+              value="{{system.ammo.value}}"
               data-dtype="Number"
               step="1"
               min="0"
@@ -199,7 +199,7 @@
               type="number"
               class="w-10 text-left subfield"
               name="data.ammo.max"
-              value="{{data.data.ammo.max}}"
+              value="{{system.ammo.max}}"
               data-dtype="Number"
               step="1"
               min="0"
@@ -211,12 +211,12 @@
     </div>
     <div class="-flex grid grid-cols-2 flex-wrap gap-1">
       <div class="w-full text-base col-span-2">Quirks:</div>
-      {{#if (ne data.data.ammo.type "none")}}
+      {{#if (ne system.ammo.type "none")}}
       <label class="flex items-center gap-1">
         <input
           type="checkbox"
           name="data.ammo.longReload"
-          {{checked data.data.ammo.longReload}}
+          {{checked system.ammo.longReload}}
         />
         <div>{{localize 'swnr.sheet.longReload'}}</div>
       </label>
@@ -224,7 +224,7 @@
         <input
           type="checkbox"
           name="data.ammo.burst"
-          {{checked data.data.ammo.burst}}
+          {{checked system.ammo.burst}}
         />
         <div>{{localize 'swnr.sheet.burst'}}</div>
       </label>
@@ -233,7 +233,7 @@
         <input
           type="checkbox"
           name="data.ammo.suppress"
-          {{checked data.data.ammo.suppress}}
+          {{checked system.ammo.suppress}}
         />
         <div>{{localize 'swnr.sheet.suppress'}}</div>
       </label>
@@ -242,7 +242,7 @@
         <input
           type="checkbox"
           name="data.skillBoostsDamage"
-          {{checked data.data.skillBoostsDamage}}
+          {{checked system.skillBoostsDamage}}
       />
         <div>{{localize 'swnr.weapon.skillAddDamage'}}</div>
       </label>
@@ -251,7 +251,7 @@
         <input
           type="checkbox"
           name="data.skillBoostsShock"
-          {{checked data.data.skillBoostsShock}}
+          {{checked system.skillBoostsShock}}
       />
         <div>{{localize 'swnr.weapon.skillAddShockDamage'}}</div>
       </label>
@@ -264,7 +264,7 @@
           class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
           name="data.save"
         >
-          {{#select data.data.save}}
+          {{#select system.save}}
           <option value="">-</option>
           <option value="physical">{{localize 'swnr.sheet.saves.physical'}}</option>
           <option value="mental">{{localize 'swnr.sheet.saves.mental'}}</option>
@@ -278,13 +278,13 @@
     </div>
   </div>
   <div class="grid grid-cols-1">
-      {{#if data.data.remember}}
-        {{#if data.data.remember.use}}
+      {{#if system.remember}}
+        {{#if system.remember.use}}
           <label class="flex items-center gap-1">
             <input
               type="checkbox"
               name="data.remember.use"
-              {{checked data.data.remember.use}}
+              {{checked system.remember.use}}
             />
             <div>Use remembered attack (burst, mod, etc). <br>
               Uncheck to forget and ask on next to roll -- skill selection will remain.</div>

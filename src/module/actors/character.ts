@@ -16,7 +16,7 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
   }
 
   prepareBaseData(): void {
-    const data = this.data.data;
+    const data = this.system;
     calculateStats(data.stats);
     data.systemStrain.max = data.stats.con.total - data.systemStrain.permanent;
 
@@ -26,7 +26,7 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
     let cyberwareStrain = 0;
     //Sum up cyberware strain. force to number
     cyberwareStrain = cyberware.reduce(
-      (i, n) => i + Number(n.data.data.strain),
+      (i, n) => i + Number(n.system.strain),
       0
     );
 
@@ -58,11 +58,11 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
         .filter((i) => i.data.name === "Program")
     );
     if (programSkill && programSkill.length == 1) {
-      data.access.max += programSkill[0].data.data.rank;
+      data.access.max += programSkill[0].system.rank;
     }
   }
   prepareDerivedData(): void {
-    const data = this.data.data;
+    const data = this.system;
     const useCWNArmor = game.settings.get("swnr", "useCWNArmor") ? true : false;
     const useTrauma = game.settings.get("swnr", "useTrauma") ? true : false;
     if (data.settings == null) {
@@ -82,38 +82,38 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
       this.items.filter(
         (i) =>
           i.data.type === "armor" &&
-          i.data.data.use &&
-          i.data.data.location === "readied"
+          i.system.use &&
+          i.system.location === "readied"
       )
     );
-    const shields = armor.filter((i) => i.data.data.shield);
+    const shields = armor.filter((i) => i.system.shield);
     let armorId = "";
     let baseAc = data.baseAc;
     let baseMeleeAc = data.baseAc;
     for (const a of armor) {
-      if (a.data.data.ac > baseAc) {
-        baseAc = a.data.data.ac;
-        if (a.data.data.meleeAc) {
-          baseMeleeAc = a.data.data.meleeAc;
+      if (a.system.ac > baseAc) {
+        baseAc = a.system.ac;
+        if (a.system.meleeAc) {
+          baseMeleeAc = a.system.meleeAc;
           if (useTrauma) {
             data.modifiedTraumaTarget =
-              data.traumaTarget + a.data.data.traumaDiePenalty;
+              data.traumaTarget + a.system.traumaDiePenalty;
           }
         }
         if (a.id) {
           armorId = a.id;
         }
       }
-      if (a.data.data.soak.max > 0) {
-        data.soakTotal.max += a.data.data.soak.max;
-        data.soakTotal.value += a.data.data.soak.value;
+      if (a.system.soak.max > 0) {
+        data.soakTotal.max += a.system.soak.max;
+        data.soakTotal.value += a.system.soak.value;
       }
     }
     for (const shield of shields) {
-      if (shield.data.data.shieldACBonus && shield.id != armorId) {
-        baseAc += shield.data.data.shieldACBonus;
-        if (shield.data.data.shieldMeleeACBonus) {
-          baseMeleeAc += shield.data.data.shieldMeleeACBonus;
+      if (shield.system.shieldACBonus && shield.id != armorId) {
+        baseAc += shield.system.shieldACBonus;
+        if (shield.system.shieldMeleeACBonus) {
+          baseMeleeAc += shield.system.shieldMeleeACBonus;
         }
       }
     }
@@ -127,7 +127,7 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
       this.items.filter(
         (i) =>
           i.data.type === "skill" &&
-          i.data.data.source.toLocaleLowerCase() ===
+          i.system.source.toLocaleLowerCase() ===
             game.i18n.localize("swnr.skills.labels.psionic").toLocaleLowerCase()
       )
     );
@@ -137,7 +137,7 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
         1,
         1 +
           Math.max(data.stats.con.mod, data.stats.wis.mod) +
-          Math.max(0, ...psychicSkills.map((i) => i.data.data.rank))
+          Math.max(0, ...psychicSkills.map((i) => i.system.rank))
       ) + effort.bonus;
     effort.value = effort.max - effort.current - effort.scene - effort.day;
 
@@ -168,25 +168,25 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
     ): number {
       let itemSize = 1;
       if (i.data.type === "item") {
-        const itemData = i.data.data;
+        const itemData = i.system;
         const bundle = itemData.bundle;
         itemSize = Math.ceil(
           itemData.quantity / (bundle.bundled ? bundle.amount : 1)
         );
       } else {
-        if (i.data.data.quantity) {
+        if (i.system.quantity) {
           // Weapons and armor can have qty
-          itemSize = i.data.data.quantity;
+          itemSize = i.system.quantity;
         }
       }
-      return itemSize * i.data.data.encumbrance;
+      return itemSize * i.system.encumbrance;
     };
     encumbrance.ready.value = inventory
-      .filter((i) => i.data.data.location === "readied")
+      .filter((i) => i.system.location === "readied")
       .map(itemInvCost)
       .reduce((i, n) => i + n, 0);
     encumbrance.stowed.value = inventory
-      .filter((i) => i.data.data.location === "stowed")
+      .filter((i) => i.system.location === "stowed")
       .map(itemInvCost)
       .reduce((i, n) => i + n, 0);
 
@@ -195,22 +195,22 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
     );
 
     powers.sort(function (a, b) {
-      if (a.data.data.source == b.data.data.source) {
-        return a.data.data.level - b.data.data.level;
+      if (a.system.source == b.system.source) {
+        return a.system.level - b.system.level;
       } else {
-        return a.data.data.source.localeCompare(b.data.data.source);
+        return a.system.source.localeCompare(b.system.source);
       }
     });
     data["powers"] = powers;
 
     const favs = <SWNRBaseItem[]>(
-      this.items.filter((i) => i.data.data["favorite"])
+      this.items.filter((i) => i.system["favorite"])
     );
     data["favorites"] = favs;
   }
 
   async rollSave(save: string): Promise<void> {
-    const target = <number>this.data.data.save[save];
+    const target = <number>this.system.save[save];
     if (isNaN(target)) {
       ui.notifications?.error("Unable to find save: " + save);
       return;
@@ -313,8 +313,8 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
     options: DocumentModificationOptions,
     userId: string
   ): void {
-    if (this.data.data.cyberdecks && this.data.data.cyberdecks.length > 0) {
-      for (const deckId of this.data.data.cyberdecks) {
+    if (this.system.cyberdecks && this.system.cyberdecks.length > 0) {
+      for (const deckId of this.system.cyberdecks) {
         const deck = game.actors?.get(deckId);
         if (deck) {
           deck.sheet?.render();

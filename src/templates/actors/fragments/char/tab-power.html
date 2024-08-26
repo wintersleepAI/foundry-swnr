@@ -28,18 +28,18 @@
                   <div class="item-image" style="background-image: url({{item.img}})"><a></a></div>
                   <div class="item-name item-click item-rollable flexrow pr-2.0">                
                     <a>{{item.name}}
-                    {{#if item.data.data.complication}}
+                    {{#if item.system.complication}}
                       *
                     {{/if}}</a>
                   </div>
                   <div class="item field-short text-center">
-                    {{item.data.data.strain}}
+                    {{item.system.strain}}
                   </div>
                   <div class="field-short">
-                    {{item.data.data.concealment}}
+                    {{item.system.concealment}}
                   </div>
                   <div class="item pr-2.0">
-                    {{item.data.data.effect}}
+                    {{item.system.effect}}
                   </div>
                   <div class="item-controls text-right flex-shrink field-short">
                     <a class="item-control item-edit text-gray-400 hover:text-purple-800 transition-colors" title='{{localize 'swnr.sheet.edit-item'}}'>
@@ -80,17 +80,17 @@
             </div>
           </li>
           <ol class="item-list">
-          {{#each actor.data.data.powers as |pwr i|}}
+          {{#each actor.system.powers as |pwr i|}}
             <li class="item-entry">
               <div class="item flexrow py-3.0" data-item-id="{{pwr.id}}">
                 <div class="item-name item-click item-rollable flexrow pr-2.0">                
                   <a>{{pwr.name}}</a>
                 </div>
                 <div class="item  text-center" style="text-transform: capitalize;">
-                  {{pwr.data.data.source}}
+                  {{pwr.system.source}}
                 </div>
                 <div class="item pr-2.0 text-center">
-                  {{pwr.data.data.level}}
+                  {{pwr.system.level}}
                 </div>
                 <div class="item-controls text-center flex-shrink text-gray-400 hover:text-purple-800 transition-colors">
                   <a class="item-control item-edit" title='{{localize 'swnr.sheet.edit-item'}}'>
@@ -101,7 +101,7 @@
               </li>
           {{/each}}
         </div>
-        {{#if actor.data.data.tweak.showResourceList}}
+        {{#if actor.system.tweak.showResourceList}}
         <div class="resource-list mt-8">
             <li class="item-titles flexrow">
             <!--<div class="item-caret"><!--<i class="fas fa-caret-down"></i></div>-->
@@ -115,7 +115,7 @@
             </div>
           </li>
           <ol class="item-list">
-          {{#each actor.data.data.tweak.resourceList as |item id|}}
+          {{#each actor.system.tweak.resourceList as |item id|}}
           <li class="item-entry">
             <div class="item flexrow" data-rl-idx="{{id}}">
                 <input

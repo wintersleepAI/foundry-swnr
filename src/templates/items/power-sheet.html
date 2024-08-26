@@ -7,7 +7,7 @@
         type="text"
         class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-opacity-75 rounded-md"
         name="data.source"
-        value="{{data.data.source}}"
+        value="{{system.source}}"
       />
     </div>
     <div>
@@ -16,7 +16,7 @@
         type="number"
         class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-opacity-75 rounded-md"
         name="data.level"
-        value="{{data.data.level}}"
+        value="{{system.level}}"
         step="1"
         min="0"
         max="5"
@@ -28,7 +28,7 @@
         type="text"
         class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-opacity-75 rounded-md"
         name="data.roll"
-        value="{{data.data.roll}}"
+        value="{{system.roll}}"
       />
     </div>
 
@@ -38,7 +38,7 @@
         type="text"
         class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-opacity-75 rounded-md"
         name="data.duration"
-        value="{{data.data.duration}}"
+        value="{{system.duration}}"
       />
     </div>
 
@@ -48,7 +48,7 @@
           class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
           name="data.save"
         >
-          {{#select data.data.save}}
+          {{#select system.save}}
           <option value="">-</option>
           <option value="physical">{{localize 'swnr.sheet.saves.physical'}}</option>
           <option value="mental">{{localize 'swnr.sheet.saves.mental'}}</option>
@@ -67,7 +67,7 @@
         type="text"
         class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-opacity-75 rounded-md"
         name="data.range"
-        value="{{data.data.range}}"
+        value="{{system.range}}"
       />
     </div>
     <div class="flex flex-col">
@@ -76,7 +76,7 @@
         type="text"
         class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-opacity-75 rounded-md"
         name="data.skill"
-        value="{{data.data.skill}}"
+        value="{{system.skill}}"
       />
     </div>
 
@@ -87,7 +87,7 @@
           class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
           name="data.effort"
         >
-          {{#select data.data.effort}}
+          {{#select system.effort}}
           <option value="">-</option>
           <option value="day">{{localize 'swnr.effort.day'}}</option>
           <option value="scene">{{localize 'swnr.effort.scene'}}</option>
@@ -102,7 +102,7 @@
           class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-opacity-75 rounded-md"
           type="checkbox"
           name="data.prepared"
-          {{checked data.data.prepared}}
+          {{checked system.prepared}}
       />
         <div>{{localize 'swnr.sheet.powers.prepared'}}</div>
       </label>

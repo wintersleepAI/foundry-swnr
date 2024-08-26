@@ -4,7 +4,7 @@
   <div class="flex gap-1 justify-between">
     <div class="items-center">
       <div>
-        {{#if data.data.settings.useCWNArmor}}
+        {{#if system.settings.useCWNArmor}}
           {{localize 'swnr.armor.ranged'}}
         {{/if}}
         {{localize 'swnr.sheet.armor-class'}}:
@@ -17,10 +17,10 @@
         name="data.ac"
         min="0"
         data-dtype="Number"
-        value="{{data.data.ac}}"
+        value="{{system.ac}}"
       />
     </div>
-    {{#if data.data.settings.useCWNArmor}}
+    {{#if system.settings.useCWNArmor}}
       <div class="items-center">
         <div>
             {{localize 'swnr.armor.melee'}}
@@ -34,7 +34,7 @@
           name="data.meleeAc"
           min="0"
           data-dtype="Number"
-          value="{{data.data.meleeAc}}"
+          value="{{system.meleeAc}}"
         />
       </div>
 
@@ -50,7 +50,7 @@
             name="data.soak.value"
             min="0"
             data-dtype="Number"
-            value="{{data.data.soak.value}}"
+            value="{{system.soak.value}}"
           /> /
           <input
             type="number"
@@ -59,14 +59,14 @@
             name="data.soak.max"
             min="0"
             data-dtype="Number"
-            value="{{data.data.soak.max}}"
+            value="{{system.soak.max}}"
           />
         </div> 
       </div>
 
     {{/if}}
 
-    {{#if data.data.settings.useCWNArmor}}
+    {{#if system.settings.useCWNArmor}}
     </div>
     <div class="flex gap-1 justify-between">
     {{/if}}
@@ -82,7 +82,7 @@
           name="data.dr"
           min="0"
           data-dtype="Number"
-          value="{{data.data.dr}}"
+          value="{{system.dr}}"
         />
       </div> --}}
 
@@ -92,7 +92,7 @@
           name="data.type"
           class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
         >
-          {{#select data.data.type}}
+          {{#select system.type}}
           <option value="primitive">
             {{localize 'swnr.armor.type.primitive'}}
           </option>
@@ -101,7 +101,7 @@
           <option value="powered">{{localize 'swnr.armor.type.powered'}}</option>
           {{/select}}
         </select>
-        {{#if data.data.settings.useTrauma}}
+        {{#if system.settings.useTrauma}}
           <div>
             {{localize 'swnr.armor.traumaMod'}}:
             <input
@@ -111,7 +111,7 @@
               name="data.traumaDiePenalty"
               min="0"
               data-dtype="Number"
-              value="{{data.data.traumaDiePenalty}}"
+              value="{{system.traumaDiePenalty}}"
             />
           </div>
         {{/if}}
@@ -119,26 +119,26 @@
       </div>
       <div class="flex flexcol">
         <label class="">
-          <input type="checkbox" name="data.shield" {{checked data.data.shield}} />
+          <input type="checkbox" name="data.shield" {{checked system.shield}} />
           {{localize 'swnr.armor.shield'}}
         </label>
-        {{#if data.data.settings.useCWNArmor}}
+        {{#if system.settings.useCWNArmor}}
         <label class="">
-          <input type="checkbox" name="data.isSubtle" {{checked data.data.isSubtle}} />
+          <input type="checkbox" name="data.isSubtle" {{checked system.isSubtle}} />
           {{localize 'swnr.armor.subtle'}}
         </label>
         <label class="">
-          <input type="checkbox" name="data.isHeavy" {{checked data.data.isHeavy}} />
+          <input type="checkbox" name="data.isHeavy" {{checked system.isHeavy}} />
           {{localize 'swnr.armor.heavy'}}
         </label>
         {{/if}}
 
       </div>
       <div class="flex flexcol">
-        {{#if data.data.shield}}
+        {{#if system.shield}}
           <div class="items-center">
             <div>
-              {{#if data.data.settings.useCWNArmor}}
+              {{#if system.settings.useCWNArmor}}
                 {{localize 'swnr.armor.ranged'}}
               {{/if}}          
               {{localize 'swnr.armor.shieldAC'}}:
@@ -151,11 +151,11 @@
               name="data.shieldACBonus"
               min="0"
               data-dtype="Number"
-              value="{{data.data.shieldACBonus}}"
+              value="{{system.shieldACBonus}}"
             />
           </div>
 
-          {{#if data.data.settings.useCWNArmor}}
+          {{#if system.settings.useCWNArmor}}
             <div class="items-center">
               <div>
                 {{localize 'swnr.armor.melee'}}
@@ -169,7 +169,7 @@
                 name="data.shieldMeleeACBonus"
                 min="0"
                 data-dtype="Number"
-                value="{{data.data.shieldMeleeACBonus}}"
+                value="{{system.shieldMeleeACBonus}}"
               />
             </div>
 

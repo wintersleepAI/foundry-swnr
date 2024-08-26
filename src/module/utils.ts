@@ -258,7 +258,7 @@ export async function applyHealthDrop(total: number): Promise<void> {
       continue;
     }
     if (actor.type == "cyberdeck") {
-      const shielding = actor.data.data.health.value;
+      const shielding = actor.system.health.value;
       if (total > 0) {
         // take from shielding first
         const newShielding = Math.max(shielding - total, 0);
@@ -270,7 +270,7 @@ export async function applyHealthDrop(total: number): Promise<void> {
           const hacker = actor.getHacker();
           // damage still to player
           if (hacker) {
-            const oldHealth = hacker.data.data.health.value;
+            const oldHealth = hacker.system.health.value;
             const newHealth = Math.max(oldHealth - total, 0);
             const damage = oldHealth - newHealth;
             await hacker.update({ "data.health.value": newHealth });
@@ -287,14 +287,14 @@ export async function applyHealthDrop(total: number): Promise<void> {
         actor.items.filter(
           (i) =>
             i.data.type === "armor" &&
-            i.data.data.use &&
-            i.data.data.location === "readied" &&
-            i.data.data.soak.value > 0
+            i.system.use &&
+            i.system.location === "readied" &&
+            i.system.soak.value > 0
         )
       );
       for (const armor of armorWithSoak) {
         if (total > 0) {
-          const soakValue = armor.data.data.soak.value;
+          const soakValue = armor.system.soak.value;
           const newSoak = Math.max(soakValue - total, 0);
           total -= soakValue - newSoak;
           await armor.update({ "data.soak.value": newSoak });
@@ -302,20 +302,20 @@ export async function applyHealthDrop(total: number): Promise<void> {
         }
       }
       if (total > 0 && actor.type == "npc") {
-        const soakValue = actor.data.data.baseSoakTotal.value;
+        const soakValue = actor.system.baseSoakTotal.value;
         const newSoak = Math.max(soakValue - total, 0);
         total -= soakValue - newSoak;
         await actor.update({ "data.baseSoakTotal.value": newSoak });
         await showValueChange(t, "0xFFA500", soakValue - newSoak);
       }
     }
-    const oldHealth = actor.data.data.health.value;
+    const oldHealth = actor.system.health.value;
     if (total != 0) {
       let newHealth = oldHealth - total;
       if (newHealth < 0) {
         newHealth = 0;
-      } else if (newHealth > actor.data.data.health.max) {
-        newHealth = actor.data.data.health.max;
+      } else if (newHealth > actor.system.health.max) {
+        newHealth = actor.system.health.max;
       }
       //console.log(`Updating ${actor.name} health to ${newHealth}`);
       await actor.update({ "data.health.value": newHealth });
@@ -411,7 +411,7 @@ export async function _onChatCardAction(
     }
     for (const t of targets) {
       if (t.type == "npc") {
-        const skill = t.data.data.skillBonus;
+        const skill = t.system.skillBonus;
         const roll = new Roll("2d6 + @skill", { skill });
         await roll.roll({ async: true });
         const flavor = game.i18n.format(
@@ -434,10 +434,10 @@ export async function _onChatCardAction(
                 (<SWNRBaseItem<"skill">>candidates[0])
               );
               const dice =
-                skillItem.data.data.pool === "ask"
+                skillItem.system.pool === "ask"
                   ? "2d6"
-                  : skillItem.data.data.pool;
-              const skillRank = skillItem.data.data.rank;
+                  : skillItem.system.pool;
+              const skillRank = skillItem.system.rank;
 
               const statShortName = game.i18n.localize(
                 "swnr.stat.short." + stat
@@ -475,11 +475,11 @@ export async function _onChatCardAction(
 
     for (const t of targets) {
       if (t.type === "character") {
-        if (t.data.data.effort.value == 0) {
+        if (t.system.effort.value == 0) {
           ui.notifications?.info(`${t.name} has no available effort`);
           return;
         }
-        const updated_effort = t.data.data.effort[effort] + 1;
+        const updated_effort = t.system.effort[effort] + 1;
         const effort_key = `data.effort.${effort}`;
         await t.update({ [effort_key]: updated_effort });
       }

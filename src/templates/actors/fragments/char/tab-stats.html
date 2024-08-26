@@ -20,7 +20,7 @@
             <th class="px-1">{{localize 'swnr.sheet.modifier'}}</th>
           </tr>
         </thead>
-        {{#each actor.data.data.stats as |stat key|}}
+        {{#each actor.system.stats as |stat key|}}
         <tr>
           <td>
             <label for="data.stats.{{key}}.base" class="resource-label px-1">
@@ -84,10 +84,10 @@
             type="number"
             min="0"
             name="data.systemStrain.permanent"
-            value="{{actor.data.data.systemStrain.permanent}}"
+            value="{{actor.system.systemStrain.permanent}}"
           /> + <span
               class="inline-block text-left text-gray-300 cursor-not-allowed w-8"
-              >{{actor.data.data.systemStrain.cyberware}}</span>
+              >{{actor.system.systemStrain.cyberware}}</span>
         </div>
       </div>
       <div class="armor flex flexrow items-center">
@@ -98,7 +98,7 @@
           min="1"
           step="1"
           name="data.baseAc"
-          value="{{actor.data.data.baseAc}}"
+          value="{{actor.system.baseAc}}"
           data-dtype="Number"
         />
       </div>
@@ -107,7 +107,7 @@
         <input
           class="w-6   text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="data.hitDie"
-          value="{{actor.data.data.hitDie}}"
+          value="{{actor.system.hitDie}}"
         />
       </div>
 
@@ -120,7 +120,7 @@
           min="1"
           step="1"
           name="data.traumaTarget"
-          value="{{actor.data.data.traumaTarget}}"
+          value="{{actor.system.traumaTarget}}"
           data-dtype="Number"
         />
       </div>
@@ -154,7 +154,7 @@
                     <div class="item-image" style="background-image: url({{item.img}})"><a></a></div>
                     <a>{{item.name}}</a>
                   </div>
-                  <div class="flex-shrink w-8">{{item.data.data.level}}</div>
+                  <div class="flex-shrink w-8">{{item.system.level}}</div>
                   <div class="item-controls w-20  text-right">
                     <a class="item-control item-edit text-gray-400 hover:text-purple-800 transition-colors" title='{{localize 'swnr.sheet.edit-item'}}'>
                       <i class="fas fa-edit"></i></a>

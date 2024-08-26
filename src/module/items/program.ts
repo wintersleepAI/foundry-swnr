@@ -30,11 +30,11 @@ export class SWNRProgram extends SWNRBaseItem<"program"> {
       ui.notifications?.info("Rolling program without a cyberdeck");
       return;
     }
-    if (cyberdeck.data.data.crownPenalty) {
+    if (cyberdeck.system.crownPenalty) {
       skillRollData.crownPenalty = -1;
     }
 
-    if (cyberdeck.data.data.wirelessConnectionPenalty) {
+    if (cyberdeck.system.wirelessConnectionPenalty) {
       skillRollData.wirelessPenalty = -2;
     }
     const hacker = cyberdeck.getHacker();
@@ -44,15 +44,15 @@ export class SWNRProgram extends SWNRBaseItem<"program"> {
       if (hacker.type == "character") {
         const skill = (<SWNRCharacterActor>hacker).getSkill("Program");
         if (skill) {
-          if (skill.data.data.pool != "ask") {
-            skillRollData.skillRoll = skill.data.data.pool;
+          if (skill.system.pool != "ask") {
+            skillRollData.skillRoll = skill.system.pool;
           }
-          skillRollData.skillMod = skill.data.data.rank;
+          skillRollData.skillMod = skill.system.rank;
           level = skillRollData.skillMod;
         }
-        skillRollData.attrMod = hacker.data.data.stats.int.mod;
+        skillRollData.attrMod = hacker.system.stats.int.mod;
       } else if (hacker.type == "npc") {
-        skillRollData.skillMod = hacker.data.data.skillBonus;
+        skillRollData.skillMod = hacker.system.skillBonus;
         level = skillRollData.skillMod;
       } else {
         ui.notifications?.error(
@@ -61,8 +61,8 @@ export class SWNRProgram extends SWNRBaseItem<"program"> {
         return;
       }
     }
-    if (this.data.data.skillCheckMod) {
-      skillRollData.skillCheckMod = this.data.data.skillCheckMod;
+    if (this.system.skillCheckMod) {
+      skillRollData.skillCheckMod = this.system.skillCheckMod;
     }
     let programRoll = "";
     let traumaRoll = "";

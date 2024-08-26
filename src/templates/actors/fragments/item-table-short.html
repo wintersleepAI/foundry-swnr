@@ -9,9 +9,9 @@
           <a>{{item.name}}</a>
         </div>
         <div class="item-controls text-right flex-shrink">
-            {{#if item.data.data.ammo}}
+            {{#if item.system.ammo}}
 
-            {{#if (ne item.data.data.ammo.type "none")}}
+            {{#if (ne item.system.ammo.type "none")}}
                 <a
                   class="item-control item-reload text-gray-400 hover:text-purple-800 transition-colors"
                   title="{{localize 'swnr.sheet.reload-item'}}"

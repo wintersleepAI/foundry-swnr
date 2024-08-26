@@ -33,7 +33,7 @@ $(document).ready(function(){
         <option value=""></option>
         {{#each this.[1] as |faitems|}}
         <option value="{{faitems.id}}">{{faitems.name}} HP(
-          {{faitems.data.data.health.value}}/{{faitems.data.data.health.max}})</option>
+          {{faitems.system.health.value}}/{{faitems.system.health.max}})</option>
         {{/each}}
       </select>
     </div>

@@ -8,19 +8,19 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
   static hpRegex = /^\d+\s?[hH][pP]\s?$/;
 
   prepareBaseData(): void {
-    const e = this.data.data.effort;
+    const e = this.system.effort;
     e.value = e.max - e.current - e.scene - e.day;
     const useCWNArmor = game.settings.get("swnr", "useCWNArmor") ? true : false;
     const useCWNTrauma = game.settings.get("swnr", "useTrauma") ? true : false;
-    if (this.data.data.settings == null) {
-      this.data.data.settings = {
+    if (this.system.settings == null) {
+      this.system.settings = {
         useCWNArmor: useCWNArmor,
         useTrauma: useCWNTrauma,
       };
     } else {
-      this.data.data.settings.useCWNArmor = useCWNArmor;
+      this.system.settings.useCWNArmor = useCWNArmor;
     }
-    this.data.data.access.max = this.data.data.skillBonus;
+    this.system.access.max = this.system.skillBonus;
   }
 
   prepareDerivedData(): void {
@@ -48,9 +48,9 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
       this.items.filter((i) => i.data.type === "armor")
     );
     for (const a of armor) {
-      if (a.data.data.soak.max > 0) {
-        data.soakTotal.max += a.data.data.soak.max;
-        data.soakTotal.value += a.data.data.soak.value;
+      if (a.system.soak.max > 0) {
+        data.soakTotal.max += a.system.soak.max;
+        data.soakTotal.value += a.system.soak.value;
       }
     }
   }
@@ -60,12 +60,12 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
     if (
       !forceDieRoll &&
       this.data.data["health_max_modified"] &&
-      this.data.data.health.max >= 0
+      this.system.health.max >= 0
     ) {
       //For debug: console.log("You have modified the NPCs max health. Not rolling");
       return;
     }
-    let hitDice = this.data.data.hitDice;
+    let hitDice = this.system.hitDice;
     if (hitDice == null || hitDice == "0" || hitDice == "") {
       return;
     }
@@ -129,10 +129,10 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
     const roll = new Roll("1d20");
     await roll.roll({ async: true });
     const flavor = game.i18n.format(
-      parseInt(roll.result) >= this.data.data.saves
+      parseInt(roll.result) >= this.system.saves
         ? game.i18n.localize("swnr.npc.saving.success")
         : game.i18n.localize("swnr.npc.saving.failure"),
-      { actor: this.name, target: this.data.data.saves }
+      { actor: this.name, target: this.system.saves }
     );
     roll.toMessage({ flavor, speaker: { actor: this.id } });
   }
@@ -173,8 +173,8 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
     options: any,
     userId: string
   ): void {
-    if (this.data.data.cyberdecks && this.data.data.cyberdecks.length > 0) {
-      for (const deckId of this.data.data.cyberdecks) {
+    if (this.system.cyberdecks && this.system.cyberdecks.length > 0) {
+      for (const deckId of this.system.cyberdecks) {
         const deck = game.actors?.get(deckId);
         if (deck) {
           deck.sheet?.render();

@@ -4,17 +4,17 @@ export class SWNRCombatant extends Combatant {
     const actor = this.actor;
     if (actor && game.system.data.initiative) {
       const init = game.system.data.initiative;
-      if (actor.type == "character" && actor.data.data.tweak?.advInit) {
+      if (actor.type == "character" && actor.system.tweak?.advInit) {
         return `{${game.system.data.initiative},${game.system.data.initiative}}kh`;
       }
       if (actor.type == "ship") {
-        if (actor.data.data.roles.bridge != "") {
-          const pilot = game.actors?.get(actor.data.data.roles.bridge);
+        if (actor.system.roles.bridge != "") {
+          const pilot = game.actors?.get(actor.system.roles.bridge);
           if (pilot && pilot.type == "character") {
             const mod =
-              pilot.data.data.stats.int.mod >= pilot.data.data.stats.dex.mod
-                ? pilot.data.data.stats.int.mod
-                : pilot.data.data.stats.dex.mod;
+              pilot.system.stats.int.mod >= pilot.system.stats.dex.mod
+                ? pilot.system.stats.int.mod
+                : pilot.system.stats.dex.mod;
             return `1d8+${mod}`;
           }
         }

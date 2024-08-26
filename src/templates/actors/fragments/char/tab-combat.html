@@ -1,6 +1,6 @@
 <div class="tab combat" data-group="primary" data-tab="combat">
   <div class="flex gap-2">
-    {{#each actor.data.data.favorites as |fav id|}}
+    {{#each actor.system.favorites as |fav id|}}
       <div class="item skill skillRoll flex flex-grow space-y-1 items-center" data-item-id="{{fav.id}}">
         <a class="fav-button inline-flex gap-1">
             <div class="flex-shrink">
@@ -16,19 +16,19 @@
   <div class="grid grid-cols-3 mt-2">
     <div>
       {{>
-      "systems/swnr/templates/actors/fragments/quick-skill.html" quickskill=actor.data.data.tweak.quickSkill1
+      "systems/swnr/templates/actors/fragments/quick-skill.html" quickskill=actor.system.tweak.quickSkill1
       skills=itemTypes.skill
       type=actor.type actor=actor}}
     </div>
     <div>
       {{>
-      "systems/swnr/templates/actors/fragments/quick-skill.html" quickskill=actor.data.data.tweak.quickSkill2
+      "systems/swnr/templates/actors/fragments/quick-skill.html" quickskill=actor.system.tweak.quickSkill2
       skills=itemTypes.skill
       type=actor.type actor=actor}}
     </div>
     <div>
       {{>
-      "systems/swnr/templates/actors/fragments/quick-skill.html" quickskill=actor.data.data.tweak.quickSkill3
+      "systems/swnr/templates/actors/fragments/quick-skill.html" quickskill=actor.system.tweak.quickSkill3
       skills=itemTypes.skill
       type=actor.type actor=actor}}
     </div>
@@ -56,7 +56,7 @@
               <a class="inline-flex flex-wrap gap-2">
                 <i class="fas fa-dice-d20"></i>
                 {{zeroWidthBreaker item.name}}
-                {{numberFormat item.data.data.rank decimals=0 sign=true}}
+                {{numberFormat item.system.rank decimals=0 sign=true}}
               </a>
             </div>
             {{/each}}
@@ -73,11 +73,11 @@
         </h4>
         <div class="space-y-2">
           {{#each itemTypes.weapon as |item id|}} 
-          {{#if (eq item.data.data.location "readied")}}
+          {{#if (eq item.system.location "readied")}}
           {{>
           "systems/swnr/templates/actors/fragments/weapon.html" item=item
           damageBonus=(getPCStatModForWeapon actor item true)
-          hitBonus=(concat actor.data.data.ab (getPCStatModForWeapon actor item false))
+          hitBonus=(concat actor.system.ab (getPCStatModForWeapon actor item false))
           type=actor.type actor=actor}} 
           {{/if}}
           {{/each}}
@@ -87,17 +87,17 @@
         <h4 class="text-lg underline">
           {{localize 'swnr.item.locationReadied'}}  {{localize 'swnr.sheet.tabs.armor'}}
         </h4>
-          {{#if actor.data.data.settings.useTrauma}}
-            ({{localize 'swnr.sheet.traumaTarget'}}: {{actor.data.data.modifiedTraumaTarget}})
+          {{#if actor.system.settings.useTrauma}}
+            ({{localize 'swnr.sheet.traumaTarget'}}: {{actor.system.modifiedTraumaTarget}})
           {{/if}}
-          {{#if actor.data.data.settings.useCWNArmor}}
-            ({{localize 'swnr.armor.soak.label'}} Total: {{actor.data.data.soakTotal.value}}/{{actor.data.data.soakTotal.max}} )
+          {{#if actor.system.settings.useCWNArmor}}
+            ({{localize 'swnr.armor.soak.label'}} Total: {{actor.system.soakTotal.value}}/{{actor.system.soakTotal.max}} )
           {{/if}}
   
         <div class="flex flex-col">
 
           {{#each itemTypes.armor as |item id|}} 
-            {{#if (eq item.data.data.location "readied")}}
+            {{#if (eq item.system.location "readied")}}
 
               {{>
               "systems/swnr/templates/actors/fragments/armor.html" item=item

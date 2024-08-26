@@ -15,10 +15,10 @@ export class SWNRCyberdeckActor extends SWNRBaseActor<"cyberdeck"> {
     const actor = game.actors?.get(data.hackerId);
     if (data.neuralBuffer && actor) {
       if (actor.type === "character") {
-        const nbBonus = actor.data.data.level.value * 3;
+        const nbBonus = actor.system.level.value * 3;
         data.health.max += nbBonus;
       } else if (actor.type === "npc") {
-        const nbBonus = actor.data.data.hitDice * 3;
+        const nbBonus = actor.system.hitDice * 3;
         data.health.max += nbBonus;
       }
     }
@@ -27,7 +27,7 @@ export class SWNRCyberdeckActor extends SWNRBaseActor<"cyberdeck"> {
     ) as SWNRProgram[];
 
     const activePrograms: number = programs.filter(
-      (item): item is SWNRProgram => item.data.data.type === "running"
+      (item): item is SWNRProgram => item.system.type === "running"
     ).length;
 
     data.cpu.value = data.cpu.max - activePrograms;
@@ -38,7 +38,7 @@ export class SWNRCyberdeckActor extends SWNRBaseActor<"cyberdeck"> {
     const actor = game.actors?.get(actorId);
     if (actor) {
       if (actor.type === "character" || actor.type === "npc") {
-        const hackerId = this.data.data.hackerId;
+        const hackerId = this.system.hackerId;
         //Only add crew once
         if (hackerId) {
           //only one crew member allowed
@@ -49,7 +49,7 @@ export class SWNRCyberdeckActor extends SWNRBaseActor<"cyberdeck"> {
           await this.update({
             "data.hackerId": actorId,
           });
-          const cyberdecks = actor.data.data.cyberdecks;
+          const cyberdecks = actor.system.cyberdecks;
           if (this.id && cyberdecks.indexOf(this.id) === -1) {
             cyberdecks.push(this.id);
             await actor.update({
@@ -66,7 +66,7 @@ export class SWNRCyberdeckActor extends SWNRBaseActor<"cyberdeck"> {
               type: "item",
               img: "systems/swnr/assets/icons/cyberdeck.png",
               data: {
-                encumbrance: this.data.data.encumberance,
+                encumbrance: this.system.encumberance,
               },
             },
           ],
@@ -85,7 +85,7 @@ export class SWNRCyberdeckActor extends SWNRBaseActor<"cyberdeck"> {
   }
 
   getHacker(): SWNRBaseActor<"character"> | SWNRBaseActor<"npc"> | null {
-    const hackerId = this.data.data.hackerId;
+    const hackerId = this.system.hackerId;
     if (hackerId) {
       const actor = game.actors?.get(hackerId);
       if (actor && (actor.type == "character" || actor.type == "npc")) {
@@ -96,7 +96,7 @@ export class SWNRCyberdeckActor extends SWNRBaseActor<"cyberdeck"> {
   }
 
   async removeCrew(actorId: string): Promise<void> {
-    const hackerId = this.data.data.hackerId;
+    const hackerId = this.system.hackerId;
     //Only remove if there;
     if (hackerId !== actorId) {
       ui.notifications?.error(
@@ -115,7 +115,7 @@ export class SWNRCyberdeckActor extends SWNRBaseActor<"cyberdeck"> {
         this.id &&
         (actor.type === "character" || actor.type === "npc")
       ) {
-        const cyberdeck = actor.data.data.cyberdecks;
+        const cyberdeck = actor.system.cyberdecks;
         const idx = cyberdeck.indexOf(this.id);
         if (idx != -1) {
           cyberdeck.splice(idx, 1);

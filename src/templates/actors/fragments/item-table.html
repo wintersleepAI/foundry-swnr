@@ -27,19 +27,19 @@
         <div class="item-name item-click item-rollable flexrow pr-2.0">
           <a>{{item.name}}</a>
             {{#if (eq item.type "armor")}}
-              {{#if (ne item.data.data.soak.max 0)}}
-              ({{item.data.data.soak.value}}/{{item.data.data.soak.max}})
+              {{#if (ne item.system.soak.max 0)}}
+              ({{item.system.soak.value}}/{{item.system.soak.max}})
               {{/if}}
             {{/if}}
         </div>
-        <div class="text-center">{{ item.data.data.encumbrance }} </div>
+        <div class="text-center">{{ item.system.encumbrance }} </div>
         {{#if (eq ../itemType "item")}}
-          <div class="text-center"> {{ item.data.data.quantity }} </div>
+          <div class="text-center"> {{ item.system.quantity }} </div>
         {{/if}}
         <div class="item">
           <select class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
             name="items.{{item.id}}.data.location">
-            {{#select item.data.data.location}}
+            {{#select item.system.location}}
             <option value="readied">
               {{localize 'swnr.item.locationReadied'}}
             </option>

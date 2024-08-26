@@ -26,7 +26,7 @@
         <div class="cargo flex flex-col justify-center items-center">
           <input name="data.mechHullType"
             class="col-span-2 px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75  rounded-md"
-            type="text" value="{{actor.data.data.mechHullType}}" />
+            type="text" value="{{actor.system.mechHullType}}" />
           <span>{{localize 'swnr.sheet.mech.mech-hull'}}</span>
         </div>
 
@@ -34,7 +34,7 @@
         <div class="cargo flex flex-col justify-center items-center">
           <select name="data.mechClass"
             class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-            {{#select actor.data.data.mechClass}}
+            {{#select actor.system.mechClass}}
             <option value="suit">
               {{localize 'swnr.sheet.mech.mechClass.suit'}}
             </option>
@@ -60,7 +60,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.speed" value="{{actor.data.data.speed}}" data-dtype="Number" min="0" />
+              type="number" step="1" name="data.speed" value="{{actor.system.speed}}" data-dtype="Number" min="0" />
           </div>
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
@@ -73,7 +73,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-20 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.maintenanceCost" value="{{actor.data.data.maintenanceCost}}" data-dtype="Number" min="0" />
+              type="number" step="1" name="data.maintenanceCost" value="{{actor.system.maintenanceCost}}" data-dtype="Number" min="0" />
           </div>
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
@@ -86,7 +86,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-20 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.cost" value="{{actor.data.data.cost}}" data-dtype="Number" min="0" />
+              type="number" step="1" name="data.cost" value="{{actor.system.cost}}" data-dtype="Number" min="0" />
           </div>
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
@@ -121,7 +121,7 @@
               min="1"
               step="1"
               name="data.traumaTarget"
-              value="{{actor.data.data.traumaTarget}}"
+              value="{{actor.system.traumaTarget}}"
               data-dtype="Number"
             />
             <label>{{localize 'swnr.sheet.traumaTarget'}}</label>

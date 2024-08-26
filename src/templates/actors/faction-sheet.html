@@ -20,7 +20,7 @@
       <div class="flexrow items-center">
         <span>
           {{localize 'swnr.sheet.faction.active'}}:
-          <input type="checkbox" name="data.active" {{checked data.data.active}}>
+          <input type="checkbox" name="data.active" {{checked system.active}}>
 
         </span>
       </div>
@@ -32,10 +32,10 @@
         <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
           <input
             class="w-8 text-right pl-1.5  bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-            type="number" step="1" name="data.health.value" value="{{actor.data.data.health.value}}" data-dtype="Number"
+            type="number" step="1" name="data.health.value" value="{{actor.system.health.value}}" data-dtype="Number"
             min="0" /><span>/</span>
           <span
-            class="inline-block text-left text-gray-300 cursor-not-allowed w-8 subfield">{{actor.data.data.health.max}}</span>
+            class="inline-block text-left text-gray-300 cursor-not-allowed w-8 subfield">{{actor.system.health.max}}</span>
         </div>
         <div>{{localize 'swnr.sheet.hp'}}</div>
       </div>
@@ -44,7 +44,7 @@
       <div class="flex-col text-center items-center p-2">
         <select class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
           name="data.forceRating">
-          {{#select data.data.forceRating}}
+          {{#select system.forceRating}}
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -66,7 +66,7 @@
       <div class="flex-col text-center items-center p-2">
         <select class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
           name="data.cunningRating">
-          {{#select data.data.cunningRating}}
+          {{#select system.cunningRating}}
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -88,7 +88,7 @@
       <div class="flex-col text-center items-center p-2">
         <select class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
           name="data.wealthRating">
-          {{#select data.data.wealthRating}}
+          {{#select system.wealthRating}}
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -113,7 +113,7 @@
       <div class="flex flex-col items-center p-2">
         <input
           class="w-8 text-center px-1.5  border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-          type="number" step="1" data-dtype="Number" name="data.facCreds" value="{{data.data.facCreds}}" />
+          type="number" step="1" data-dtype="Number" name="data.facCreds" value="{{system.facCreds}}" />
         <div>{{localize 'swnr.sheet.faction.facCreds'}}</div>
       </div>
 
@@ -121,7 +121,7 @@
       <div class="flex flex-col items-center p-2">
         <input
           class="w-8 text-center px-1.5  border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-          type="number" step="1" data-dtype="Number" name="data.xp" value="{{data.data.xp}}" />
+          type="number" step="1" data-dtype="Number" name="data.xp" value="{{system.xp}}" />
         <div>{{localize 'swnr.sheet.faction.xp'}}</div>
       </div>
 
@@ -129,7 +129,7 @@
       <div class="flex flex-col items-center p-2">
         <input
           class="w-32 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-          name="data.homeworld" value="{{data.data.homeworld}}" />
+          name="data.homeworld" value="{{system.homeworld}}" />
         <div>{{localize 'swnr.sheet.faction.homeworld'}}</div>
       </div>
 
@@ -143,7 +143,7 @@
       <div class="flex flex-col items-center p-2 mt-12">
         <input
           class="w-32 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-          name="data.factionGoal" value="{{data.data.factionGoal}}" />
+          name="data.factionGoal" value="{{system.factionGoal}}" />
         <div>
           {{localize 'swnr.sheet.faction.factionGoal'}}
           <a class="set-goal text-gray-400 hover:text-red-600 transition-colors"
@@ -157,9 +157,9 @@
       <div class="flex flex3 flex-col items-center p-2">
         {{!-- <input
           class="min-w-full text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-          name="data.factionGoalDesc" value="{{data.data.factionGoalDesc}}" /> --}}
+          name="data.factionGoalDesc" value="{{system.factionGoalDesc}}" /> --}}
         <div class="bg-gray-400 bg-opacity-75 border border-gray-700 rounded-md p-2 w-96">
-          {{editor content=data.data.factionGoalDesc target="data.factionGoalDesc" button=true owner=owner
+          {{editor content=system.factionGoalDesc target="data.factionGoalDesc" button=true owner=owner
           editable=editable
           }}
         </div>
@@ -197,21 +197,21 @@
           <div class="flexrow flex-grow">
             {{>
             "systems/swnr/templates/actors/fragments/faction-assets.html"
-            type="asset" assetType="cunning" name="Cunning" assets=data.data.cunningAssets
+            type="asset" assetType="cunning" name="Cunning" assets=system.cunningAssets
             }}
           </div>
 
           <div class="flexrow flex-grow">
             {{>
             "systems/swnr/templates/actors/fragments/faction-assets.html"
-            type="asset" assetType="wealth" name="Wealth" assets=data.data.wealthAssets
+            type="asset" assetType="wealth" name="Wealth" assets=system.wealthAssets
             }}
           </div>
 
           <div class="flexrow flex-grow">
             {{>
             "systems/swnr/templates/actors/fragments/faction-assets.html"
-            type="asset" assetType="force" name="Force" assets=data.data.forceAssets
+            type="asset" assetType="force" name="Force" assets=system.forceAssets
             }}
           </div>
         </div>
@@ -220,14 +220,14 @@
             <h2 class="text-base p-1">{{localize 'swnr.sheet.description'}}</h2>
             <div class="p-1 border-t border-black">
               {{!-- TODO: fix is for wrapping around text, because this is a little fixed --}}
-              {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable
+              {{editor content=system.description target="data.description" button=true owner=owner editable=editable
               }}
             </div>
           </div>
         </div>
         <div class="tab assets min-h-full" data-group="primary" data-tab="tags">
           <div class="p-2">
-            {{#each actor.data.data.tags as |tag id|}}
+            {{#each actor.system.tags as |tag id|}}
             <div class="p-1 border-b border-black tagdiv" data-idx="{{id}}">
               <a class="item-control faction-tag-delete text-gray-400 hover:text-red-600 transition-colors"
                 title='{{localize 'swnr.sheet.faction.remove-tag'}}'><i class="fas fa-trash"></i></a>
@@ -258,7 +258,7 @@
           </div>
           <div class="p-2">
             
-            {{#each actor.data.data.log as |logentry id|}}
+            {{#each actor.system.log as |logentry id|}}
             <div class="p-1 border-b border-black logdiv" data-idx="{{id}}">
               <a class="item-control faction-log-delete text-gray-400 hover:text-red-600 transition-colors"
                 title='{{localize 'swnr.sheet.faction.remove-log'}}'><i class="fas fa-trash"></i></a>

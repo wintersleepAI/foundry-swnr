@@ -3,7 +3,7 @@ import { SWNRBaseItem } from "../base-item";
 export class SWNRShipDefense extends SWNRBaseItem<"shipDefense"> {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async roll(_shiftKey = false): Promise<void> {
-    if (this.data.data.broken || this.data.data.destroyed) {
+    if (this.system.broken || this.system.destroyed) {
       ui.notifications?.error(
         "Defense is broken/disabled or destroyed. Cannot use!"
       );

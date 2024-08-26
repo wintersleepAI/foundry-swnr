@@ -5,7 +5,7 @@
       {{localize 'swnr.sheet.program.type'}}:
        <select name="data.type"
         class="border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-        {{#select data.data.type}}
+        {{#select system.type}}
         <option value="verb">
           {{localize 'swnr.sheet.program.verb'}}
         </option>
@@ -29,11 +29,11 @@
             name="data.cost"
             min="0"
             data-dtype="Number"
-            value="{{data.data.cost}}"
+            value="{{system.cost}}"
           />
     </div>
 
-    {{#if (eq item.data.data.type "verb")}}
+    {{#if (eq item.system.type "verb")}}
     
     <div class="flex flex-col items-center">
        {{localize 'swnr.sheet.program.accessCost'}}:
@@ -44,7 +44,7 @@
             name="data.accessCost"
             min="0"
             data-dtype="Number"
-            value="{{data.data.accessCost}}"
+            value="{{system.accessCost}}"
           />
     </div>
 
@@ -53,7 +53,7 @@
     <div class="flexrow items-center">
         <span>
           {{localize 'swnr.sheet.program.selfTerminating'}}:
-          <input type="checkbox" name="data.selfTerminating" {{checked data.data.selfTerminating}}>
+          <input type="checkbox" name="data.selfTerminating" {{checked system.selfTerminating}}>
 
         </span>
     </div>
@@ -61,11 +61,11 @@
     {{/if}}
 
 
-    {{#if (eq item.data.data.type "subject")}}
+    {{#if (eq item.system.type "subject")}}
     <!-- placeholder-->
     {{/if}}
 
-    {{#if (ne item.data.data.type "datafile")}}
+    {{#if (ne item.system.type "datafile")}}
 
     <div class="flex flex-col items-center">
        {{localize 'swnr.sheet.program.skillCheckMod'}}:
@@ -75,12 +75,12 @@
             step="1"
             name="data.skillCheckMod"
             data-dtype="Number"
-            value="{{data.data.skillCheckMod}}"
+            value="{{system.skillCheckMod}}"
           />
     </div>
 
     <div class="flex flex-col items-center">
-      {{#if (eq item.data.data.type "subject")}}
+      {{#if (eq item.system.type "subject")}}
          {{localize 'swnr.sheet.program.affect'}}:
       {{else}}
          {{localize 'swnr.sheet.program.use'}}:
@@ -90,13 +90,13 @@
             class="w-32 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
             name="data.useAffects"
             min="0"
-            value="{{data.data.useAffects}}"
+            value="{{system.useAffects}}"
           />
     </div>
 
 
     <div class="flex flex-col items-center">
-      {{#if (eq item.data.data.type "subject")}}
+      {{#if (eq item.system.type "subject")}}
          {{localize 'swnr.sheet.program.target'}}:
       {{else}}
          {{localize 'swnr.sheet.program.targetAllowed'}}:
@@ -105,7 +105,7 @@
             class="w-32 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
             name="data.target"
             min="0"
-            value="{{data.data.target}}"
+            value="{{system.target}}"
           />
     </div>
     {{/if}}

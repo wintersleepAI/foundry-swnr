@@ -10,13 +10,13 @@
         name="items.{{item.id}}.data.quantity"
         min="0"
         step="1"
-        value="{{item.data.data.quantity}}"
+        value="{{item.system.quantity}}"
       />
     </div>
     {{/if}} {{#if (eq type 'character')}}
     <div>
       <select class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md" name="items.{{item.id}}.data.location">
-        {{#select item.data.data.location}}
+        {{#select item.system.location}}
         <option value="readied">
           {{localize 'swnr.item.locationReadied'}}
         </option>

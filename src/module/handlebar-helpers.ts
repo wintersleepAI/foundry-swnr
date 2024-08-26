@@ -76,7 +76,7 @@ export default function registerHelpers(): void {
       weapon: SWNRWeapon,
       forDamage = false
     ): number => {
-      const skillID = weapon.data.data.skill;
+      const skillID = weapon.system.skill;
       let skillItem = actor.getEmbeddedDocument("Item", skillID) as
         | (Item & { data: { type: "skill" } })
         | undefined;
@@ -85,14 +85,14 @@ export default function registerHelpers(): void {
       }
       //console.log({ skillID, skillItem });
       const skillBonus: number =
-        forDamage && weapon.data.data.skillBoostsDamage
-          ? skillItem?.data.data.rank ?? -1
+        forDamage && weapon.system.skillBoostsDamage
+          ? skillItem?.system.rank ?? -1
           : 0;
       const untrainedPenalty = skillBonus === -1 ? -1 : 0;
-      const stats = actor.data.data.stats;
-      const statsToCheck = [stats[weapon.data.data.stat].mod];
-      if (weapon.data.data.secondStat !== "none")
-        statsToCheck.push(stats[weapon.data.data.secondStat]?.mod || 0);
+      const stats = actor.system.stats;
+      const statsToCheck = [stats[weapon.system.stat].mod];
+      if (weapon.system.secondStat !== "none")
+        statsToCheck.push(stats[weapon.system.secondStat]?.mod || 0);
       return Math.max(...statsToCheck) + skillBonus + untrainedPenalty;
     }
   );

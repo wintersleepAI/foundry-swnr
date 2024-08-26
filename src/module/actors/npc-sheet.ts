@@ -169,7 +169,7 @@ export class NPCActorSheet extends BaseActorSheet<NPCActorSheetData> {
     const roll = new Roll("2d6");
     await roll.roll({ async: true });
     const flavor =
-      +(roll.terms[0]?.total ?? 0) > this.actor.data.data.moralScore
+      +(roll.terms[0]?.total ?? 0) > this.actor.system.moralScore
         ? game.i18n.localize("swnr.npc.morale.failure")
         : game.i18n.localize("swnr.npc.morale.success");
     roll.toMessage({ flavor, speaker: { actor: this.actor.id } });
@@ -185,7 +185,7 @@ export class NPCActorSheet extends BaseActorSheet<NPCActorSheetData> {
     event.preventDefault();
     event.stopPropagation();
     const trained = event.currentTarget.dataset.skillType === "trained";
-    const skill = trained ? this.actor.data.data.skillBonus : 0;
+    const skill = trained ? this.actor.system.skillBonus : 0;
 
     const roll = new Roll("2d6 + @skill", { skill });
     await roll.roll({ async: true });

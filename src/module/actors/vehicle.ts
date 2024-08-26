@@ -23,10 +23,10 @@ export class SWNRVehicleActor extends SWNRBaseActor<"vehicle"> {
         i.type === "shipFitting"
     );
     const totalMass = shipInventory
-      .map((i) => i.data.data.mass)
+      .map((i) => i.system.mass)
       .reduce((i, n) => i + n, 0);
     const totalPower = shipInventory
-      .map((i) => i.data.data.power)
+      .map((i) => i.system.power)
       .reduce((i, n) => i + n, 0);
     const totalHardpoint = shipInventory
       .filter((i) => i.type === "shipWeapon")
@@ -40,10 +40,10 @@ export class SWNRVehicleActor extends SWNRBaseActor<"vehicle"> {
   async addCrew(actorId: string): Promise<void> {
     const actor = game.actors?.get(actorId);
     if (actor) {
-      const crewMembers = this.data.data.crewMembers;
+      const crewMembers = this.system.crewMembers;
       //Only add crew once
       if (crewMembers.indexOf(actorId) == -1) {
-        let crew = this.data.data.crew.current;
+        let crew = this.system.crew.current;
         crew += 1;
         crewMembers.push(actorId);
         await this.update({
@@ -57,14 +57,14 @@ export class SWNRVehicleActor extends SWNRBaseActor<"vehicle"> {
   }
 
   async removeCrew(actorId: string): Promise<void> {
-    const crewMembers = this.data.data.crewMembers;
+    const crewMembers = this.system.crewMembers;
     //Only remove if there
     const idx = crewMembers.indexOf(actorId);
     if (idx == -1) {
       ui.notifications?.error("Crew member not found");
     } else {
       crewMembers.splice(idx, 1);
-      let crew = this.data.data.crew.current;
+      let crew = this.system.crew.current;
       crew -= 1;
       await this.update({
         "data.crew.current": crew,

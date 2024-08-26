@@ -6,17 +6,17 @@
       {{localize 'swnr.weapon.damageFormula'}}:
       <input
         class="w-32 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-        type="text" name="data.damage" value="{{data.data.damage}}" />
+        type="text" name="data.damage" value="{{system.damage}}" />
     </div>
 
-    {{#if (ne item.data.data.type "drone")}}
+    {{#if (ne item.system.type "drone")}}
 
     <!-- hardpoint -->
     <div class="flex flex-col items-center">
       {{localize 'swnr.sheet.ship.hard-points'}}:
       <input type="number"
         class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-        step="1" name="data.hardpoint" min="0" data-dtype="Number" value="{{data.data.hardpoint}}" />
+        step="1" name="data.hardpoint" min="0" data-dtype="Number" value="{{system.hardpoint}}" />
     </div>
     {{/if}}
 
@@ -24,7 +24,7 @@
     <div>
       <div> {{localize 'swnr.item.techlevel'}}: </div>
       <select class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md" name="data.tl">
-        {{#select data.data.tl}}
+        {{#select system.tl}}
         <option value="">{{localize 'swnr.ammo.none'}}</option>
         <option value="4">4</option>
         <option value="5">5</option>
@@ -38,7 +38,7 @@
       {{localize 'swnr.sheet.ship.qualities'}}:
       <input
         class="w-32 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-        type="text"  name="data.qualities" value="{{data.data.qualities}}" />
+        type="text"  name="data.qualities" value="{{system.qualities}}" />
     </div>
 
     <!-- ab -->
@@ -46,13 +46,13 @@
       {{localize 'swnr.sheet.attack-bonus'}}:
       <input
         class="w-32 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-        type="number" step="1" data-dtype="Number" name="data.ab" value="{{data.data.ab}}" />
+        type="number" step="1" data-dtype="Number" name="data.ab" value="{{system.ab}}" />
     </div>
   </div>
   <div class="flex flexrow gap-2">
 
 
-    {{#if data.data.settings.useTrauma}}
+    {{#if system.settings.useTrauma}}
 
       <!-- Trauma -->
       <div class="grid md:grid-cols-2 gap-1 pt-1">
@@ -65,7 +65,7 @@
             class="w-16 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
             name="data.trauma.die"
             type="text"
-            value="{{data.data.trauma.die}}"
+            value="{{system.trauma.die}}"
           />
         </div>
         <div>
@@ -74,7 +74,7 @@
             type="number"
             class="w-8 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
             name="data.trauma.rating"
-            value="{{data.data.trauma.rating}}"
+            value="{{system.trauma.rating}}"
             min="0"
             step="1"
           />
@@ -91,7 +91,7 @@
           class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
           name="data.ammo.type"
         >
-          {{#select data.data.ammo.type}}
+          {{#select system.ammo.type}}
           <option value="none">{{localize 'swnr.ammo.none'}}</option>
           <option value="ammo">{{localize 'swnr.ammo.ammo'}}</option>
           <option value="missile">{{localize 'swnr.ammo.missile'}}</option>
@@ -99,7 +99,7 @@
           {{/select}}
         </select>
       </div>
-      {{#if (and (ne data.data.ammo.type "none") (ne data.data.ammo.type "infinite"))}}
+      {{#if (and (ne system.ammo.type "none") (ne system.ammo.type "infinite"))}}
       <div class="pl-2">
         {{localize 'swnr.sheet.magazine'}}:
         <div class="flex gap-1 items-center">
@@ -110,8 +110,8 @@
               type="number"
               class="w-10 text-right subfield"
               name="data.ammo.value"
-              max="{{data.data.ammo.max}}"
-              value="{{data.data.ammo.value}}"
+              max="{{system.ammo.max}}"
+              value="{{system.ammo.value}}"
               data-dtype="Number"
               step="1"
               min="0"
@@ -121,7 +121,7 @@
               type="number"
               class="w-10 text-left subfield"
               name="data.ammo.max"
-              value="{{data.data.ammo.max}}"
+              value="{{system.ammo.max}}"
               data-dtype="Number"
               step="1"
               min="0"
@@ -136,7 +136,7 @@
             <input
               type="checkbox"
               name="data.ammo.burst"
-              {{checked data.data.ammo.burst}}
+              {{checked system.ammo.burst}}
             />
       </div>
       {{/if}}

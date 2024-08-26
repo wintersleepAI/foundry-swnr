@@ -17,7 +17,7 @@
           {{#select weapon.skill}}
           <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
           {{#each skills }}
-          <option value="{{this.id}}">{{this.name}} {{this.data.data.rank}}</option>
+          <option value="{{this.id}}">{{this.name}} {{this.system.rank}}</option>
           {{/each}}
           {{/select}}
         </select>

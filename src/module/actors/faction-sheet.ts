@@ -114,7 +114,7 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
               ))?.value;
               if (log) {
                 this.actor.logMessage("Manual Faction Log", log);
-                // const logEntries = this.actor.data.data.log;
+                // const logEntries = this.actor.system.log;
                 // logEntries.push(log);
                 // await this.actor.update({ data: { log: logEntries } });
               }
@@ -139,7 +139,7 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
     const div = $(event.currentTarget).parents(".logdiv");
     const p = $(event.currentTarget).parents();
     const idx = div.data("idx");
-    const logs = this.actor.data.data.log;
+    const logs = this.actor.system.log;
     const log = logs[idx];
     // if (!tag) {
     //   ui.notifications?.info("Issue deleting tag");
@@ -170,7 +170,7 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
   async _onDelLogAll(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
-    const logs = this.actor.data.data.log;
+    const logs = this.actor.system.log;
     // if (!tag) {
     //   ui.notifications?.info("Issue deleting tag");
     //   return;
@@ -199,7 +199,7 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
     const div = $(event.currentTarget).parents(".tagdiv");
     const p = $(event.currentTarget).parents();
     const idx = div.data("idx");
-    const tags = this.actor.data.data.tags;
+    const tags = this.actor.system.tags;
     const tag = tags[idx];
     // if (!tag) {
     //   ui.notifications?.info("Issue deleting tag");
@@ -523,7 +523,7 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
       ui.notifications?.error("Cannot find asset.");
       return;
     }
-    const new_status = !asset?.data.data.unusable;
+    const new_status = !asset?.system.unusable;
     if (asset instanceof Item)
       await asset?.update({
         data: {
@@ -544,7 +544,7 @@ export class FactionActorSheet extends BaseActorSheet<FactionActorSheetData> {
       ui.notifications?.error("Cannot find asset.");
       return;
     }
-    const new_status = !asset?.data.data.stealthed;
+    const new_status = !asset?.system.stealthed;
     if (asset instanceof Item)
       await asset?.update({
         data: {

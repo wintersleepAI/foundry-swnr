@@ -49,7 +49,7 @@
       <select name="stat"
         class="w-32 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
         {{#select defaultStat}}
-        {{#each comm.data.data.stats as |box name |}}
+        {{#each comm.system.stats as |box name |}}
         <option value="{{name}}">{{localize (concat "swnr.stat.long." name)}}</option>
         {{/each}}
         {{/select}}

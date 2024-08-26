@@ -12,7 +12,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
   }
 
   get ammo(): this["data"]["data"]["ammo"] {
-    return this.data.data.ammo;
+    return this.system.ammo;
   }
 
   get canBurstFire(): boolean {
@@ -79,7 +79,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       modifier,
       damageBonus,
       effectiveSkillRank: skillMod < 0 ? -2 : skillMod,
-      shockDmg: this.data.data.shock?.dmg > 0 ? this.data.data.shock.dmg : 0,
+      shockDmg: this.system.shock?.dmg > 0 ? this.system.shock.dmg : 0,
       attackRollDie,
     };
     let dieString =
@@ -89,11 +89,11 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     const useA = game.settings.get("swnr", "useCWNArmor") ? true : false;
     if (
       useA &&
-      this.data.data.range.normal <= 1 &&
-      this.data.data.ammo.type == "none"
+      this.system.range.normal <= 1 &&
+      this.system.ammo.type == "none"
     ) {
       if (this.actor.type == "character" || this.actor.type == "npc") {
-        if (this.actor.data.data.meleeAb) {
+        if (this.actor.system.meleeAb) {
           dieString =
             "@attackRollDie + @burstFire + @modifier + @actor.meleeAb + @weapon.ab + @stat + @effectiveSkillRank";
         }
@@ -104,7 +104,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     const hitExplainTip = "1d20 +burst +mod +CharAB +WpnAB +Stat +Skill";
     rollData.hitRoll = +(hitRoll.dice[0].total?.toString() ?? 0);
     const damageRoll = new Roll(
-      this.data.data.damage + " + @burstFire + @stat + @damageBonus",
+      this.system.damage + " + @burstFire + @stat + @damageBonus",
       rollData
     );
     await damageRoll.roll({ async: true });
@@ -120,12 +120,12 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     let traumaRollRender: null | string = null;
     let traumaDamage: null | string = null;
     if (
-      this.data.data.settings?.useTrauma &&
-      this.data.data.trauma.die != null &&
-      this.data.data.trauma.die !== "none" &&
-      this.data.data.trauma.rating != null
+      this.system.settings?.useTrauma &&
+      this.system.trauma.die != null &&
+      this.system.trauma.die !== "none" &&
+      this.system.trauma.rating != null
     ) {
-      const traumaRoll = new Roll(this.data.data.trauma.die);
+      const traumaRoll = new Roll(this.system.trauma.die);
       await traumaRoll.roll({ async: true });
       traumaRollRender = await traumaRoll.render();
       if (
@@ -135,7 +135,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
         damageRoll?.total
       ) {
         const traumaDamageRoll = new Roll(
-          `${damageRoll.total} * ${this.data.data.trauma.rating}`
+          `${damageRoll.total} * ${this.system.trauma.rating}`
         );
         await traumaDamageRoll.roll({ async: true });
         traumaDamage = await traumaDamageRoll.render();
@@ -148,11 +148,11 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     let shock_roll: string | null = null;
     // Show shock damage
     if (game.settings.get("swnr", "addShockMessage")) {
-      if (this.data.data.shock && this.data.data.shock.dmg > 0) {
-        shock_content = `Shock Damage  AC ${this.data.data.shock.ac}`;
+      if (this.system.shock && this.system.shock.dmg > 0) {
+        shock_content = `Shock Damage  AC ${this.system.shock.ac}`;
         const _shockRoll = new Roll(
           " @shockDmg + @stat " +
-            (this.data.data.skillBoostsShock ? ` + ${damageBonus}` : ""),
+            (this.system.skillBoostsShock ? ` + ${damageBonus}` : ""),
           rollData
         );
         await _shockRoll.roll({ async: true });
@@ -172,7 +172,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       effectiveSkillRank: rollData.effectiveSkillRank,
       diceTooltip,
       ammoRatio: Math.clamped(
-        Math.floor((this.data.data.ammo.value * 20) / this.data.data.ammo.max),
+        Math.floor((this.system.ammo.value * 20) / this.system.ammo.max),
         0,
         20
       ),
@@ -187,10 +187,10 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     // const results = dice.reduce((a, b) => a.concat(b.results), [])
     const diceData = Roll.fromTerms([PoolTerm.fromRolls(rollArray)]);
     if (
-      this.data.data.ammo.type !== "none" &&
-      this.data.data.ammo.type !== "infinite"
+      this.system.ammo.type !== "none" &&
+      this.system.ammo.type !== "infinite"
     ) {
-      const newAmmoTotal = this.data.data.ammo.value - 1 - burstFire;
+      const newAmmoTotal = this.system.ammo.value - 1 - burstFire;
       await this.update({ "data.ammo.value": newAmmoTotal }, {});
       if (newAmmoTotal === 0)
         ui.notifications?.warn(`Your ${this.name} is now out of ammo!`);
@@ -228,15 +228,15 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       actorName: this.actor?.name,
       weaponName: this.name,
     });
-    const ammo = this.data.data.ammo;
+    const ammo = this.system.ammo;
     const burstFireHasAmmo =
       ammo.type !== "none" && ammo.burst && ammo.value >= 3;
 
     let dmgBonus = 0;
 
     // for finesse weapons take the stat with the higher mod
-    let statName = this.data.data.stat;
-    const secStatName = this.data.data.secondStat;
+    let statName = this.system.stat;
+    const secStatName = this.system.secondStat;
     // check if there is 2nd stat name and its mod is better
     if (
       secStatName != null &&
@@ -248,26 +248,26 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     }
 
     // Set to not ask and just roll
-    if (!shiftKey && this.data.data.remember && this.data.data.remember.use) {
+    if (!shiftKey && this.system.remember && this.system.remember.use) {
       const stat = this.actor.data.data["stats"]?.[statName] || {
         mod: 0,
       };
 
       const skill = this.actor.getEmbeddedDocument(
         "Item",
-        this.data.data.skill
+        this.system.skill
       ) as SWNRBaseItem<"skill">;
-      const skillMod = skill.data.data.rank < 0 ? -2 : skill.data.data.rank;
+      const skillMod = skill.system.rank < 0 ? -2 : skill.system.rank;
 
       if (this.actor?.type == "character") {
-        dmgBonus = this.data.data.skillBoostsDamage ? skill.data.data.rank : 0;
+        dmgBonus = this.system.skillBoostsDamage ? skill.system.rank : 0;
       }
       return this.rollAttack(
         dmgBonus,
         stat.mod,
         skillMod,
-        this.data.data.remember.modifier,
-        this.data.data.remember.burst
+        this.system.remember.modifier,
+        this.system.remember.burst
       );
     }
 
@@ -276,7 +276,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       weapon: this.data.data,
       skills: this.actor.itemTypes.skill,
       statName: statName,
-      skill: this.data.data.skill,
+      skill: this.system.skill,
       burstFireHasAmmo,
     };
     const template = "systems/swnr/templates/dialogs/roll-attack.html";
@@ -295,7 +295,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
 
       const skillId =
         (<HTMLSelectElement>form.querySelector('[name="skill"]'))?.value ||
-        this.data.data.skill;
+        this.system.skill;
 
       if (!this.actor) {
         console.log("Error actor no longer exists ");
@@ -314,11 +314,11 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
           : 0;
         if (npcSkillMod) skillMod = npcSkillMod;
       } else {
-        skillMod = skill.data.data.rank < 0 ? -2 : skill.data.data.rank;
+        skillMod = skill.system.rank < 0 ? -2 : skill.system.rank;
       }
       // for finesse weapons take the stat with the higher mod
-      let statName = this.data.data.stat;
-      const secStatName = this.data.data.secondStat;
+      let statName = this.system.stat;
+      const secStatName = this.system.secondStat;
       // check if there is 2nd stat name and its mod is better
       if (
         secStatName != null &&
@@ -338,13 +338,13 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       // const skill = this.actor.items.filter(w => w.)
       // Burst is +2 To hit and to damage
       if (this.actor?.type == "character") {
-        dmgBonus = this.data.data.skillBoostsDamage ? skill.data.data.rank : 0;
+        dmgBonus = this.system.skillBoostsDamage ? skill.system.rank : 0;
       } else if (this.actor?.type == "npc") {
-        dmgBonus = this.data.data.skillBoostsDamage
-          ? this.actor.data.data.skillBonus
+        dmgBonus = this.system.skillBoostsDamage
+          ? this.actor.system.skillBonus
           : 0;
-        if (this.actor.data.data.attacks.bonusDamage) {
-          dmgBonus += this.actor.data.data.attacks.bonusDamage;
+        if (this.actor.system.attacks.bonusDamage) {
+          dmgBonus += this.actor.system.attacks.bonusDamage;
         }
       }
       // If remember is checked, set the skill and data

@@ -3,12 +3,12 @@
     <input
       type="checkbox"
       name="items.{{item.id}}.data.use"
-      {{checked item.data.data.use}}
+      {{checked item.system.use}}
     />
     <span class="ml-1 item-name">{{item.name}}
       {{#if (eq item.type "armor")}}
-        {{#if (ne item.data.data.soak.max 0)}}
-         ({{item.data.data.soak.value}}/{{item.data.data.soak.max}})
+        {{#if (ne item.system.soak.max 0)}}
+         ({{item.system.soak.value}}/{{item.system.soak.max}})
         {{/if}}
       {{/if}}
     </span>

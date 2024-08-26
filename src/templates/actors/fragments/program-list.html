@@ -42,17 +42,17 @@
           </span>
           <a>{{item.name}}</a>
           {{#unless (eq ../subtype "subject")}}
-              {{#if item.data.data.useAffects}}
-              [{{item.data.data.useAffects}}]
+              {{#if item.system.useAffects}}
+              [{{item.system.useAffects}}]
               {{/if}}
           {{/unless}}
         </div>
         <div class="field-long">
-          {{ item.data.data.target }}
+          {{ item.system.target }}
         </div>
         {{#if (eq ../subtype "verb")}}
         <div class="field-short">
-          {{item.data.data.accessCost}}
+          {{item.system.accessCost}}
         </div>
         {{/if}}
         <div class="item-controls text-right field-short">

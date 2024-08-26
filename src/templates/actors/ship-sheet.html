@@ -28,7 +28,7 @@
           <!-- Ship / Hull class -->
           <select name="data.shipHullType"
             class="pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-            {{#select actor.data.data.shipHullType}}
+            {{#select actor.system.shipHullType}}
             <option value="strikeFighter">
               {{localize 'swnr.sheet.ship.shipHullType.strikeFighter'}}
             </option>
@@ -55,7 +55,7 @@
         <div class="cargo flex flex-col justify-center items-center">
           <select name="data.shipClass"
             class="pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-            {{#select actor.data.data.shipClass}}
+            {{#select actor.system.shipClass}}
             <option value="fighter">
               {{localize 'swnr.sheet.ship.shipClass.fighter'}}
             </option>
@@ -75,10 +75,10 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" step="1" name="data.cargo.value" value="{{actor.data.data.cargo.value}}" data-dtype="Number"
+              type="number" step="1" name="data.cargo.value" value="{{actor.system.cargo.value}}" data-dtype="Number"
               min="0" /><span>/</span><input
               class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" name="data.cargo.max" value="{{actor.data.data.cargo.max}}" step="1" min="1"
+              type="number" name="data.cargo.max" value="{{actor.system.cargo.max}}" step="1" min="1"
               data-dtype="Number" />
           </div>
           <label
@@ -97,10 +97,10 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" step="1" name="data.fuel.value" value="{{actor.data.data.fuel.value}}" data-dtype="Number"
+              type="number" step="1" name="data.fuel.value" value="{{actor.system.fuel.value}}" data-dtype="Number"
               min="0" /><span>/</span><input
               class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" name="data.fuel.max" value="{{actor.data.data.fuel.max}}" step="1" min="1"
+              type="number" name="data.fuel.max" value="{{actor.system.fuel.max}}" step="1" min="1"
               data-dtype="Number" />
           </div>
           <label
@@ -114,10 +114,10 @@
           <div class="w-30 border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-12 text-right pl-0.5 py-1.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" step="1" name="data.lifeSupportDays.value" value="{{actor.data.data.lifeSupportDays.value}}"
+              type="number" step="1" name="data.lifeSupportDays.value" value="{{actor.system.lifeSupportDays.value}}"
               data-dtype="Number" min="0" /><span>/</span><input
               class="w-12 text-left pr-0.5 py-1.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" name="data.lifeSupportDays.max" value="{{actor.data.data.lifeSupportDays.max}}" step="1"
+              type="number" name="data.lifeSupportDays.max" value="{{actor.system.lifeSupportDays.max}}" step="1"
               min="1" data-dtype="Number" />
           </div>
           <label
@@ -136,14 +136,14 @@
                 <div class="w-36 text-center border border-gray-800 bg-gray-400 mx-auto rounded-md items-center">
                   <input
                     class="w-8 text-center py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-                    type="number" step="1" name="data.crew.min" value="{{actor.data.data.crew.min}}" data-dtype="Number"
+                    type="number" step="1" name="data.crew.min" value="{{actor.system.crew.min}}" data-dtype="Number"
                     min="0" /><span class="w-2">/</span>
                   <input
                     class="w-8 text-center  py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-                    type="number" step="1" name="data.crew.current" value="{{actor.data.data.crew.current}}"
+                    type="number" step="1" name="data.crew.current" value="{{actor.system.crew.current}}"
                     data-dtype="Number" min="0" /><span class="w-2">/</span><input
                     class="w-12 text-center  py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-                    type="number" name="data.crew.max" value="{{actor.data.data.crew.max}}" step="1" min="1"
+                    type="number" name="data.crew.max" value="{{actor.system.crew.max}}" step="1" min="1"
                     data-dtype="Number" />
                 </div>
                 <label
@@ -159,7 +159,7 @@
                 <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
                   <input
                     class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                    type="number" step="1" name="data.speed" value="{{actor.data.data.speed}}" data-dtype="Number"
+                    type="number" step="1" name="data.speed" value="{{actor.system.speed}}" data-dtype="Number"
                     min="0" />
                 </div>
                 <label
@@ -182,7 +182,7 @@
                     min="1"
                     step="1"
                     name="data.traumaTarget"
-                    value="{{actor.data.data.traumaTarget}}"
+                    value="{{actor.system.traumaTarget}}"
                     data-dtype="Number"
                   />
                   <label title="{{localize 'swnr.sheet.traumaTarget'}}">TT</label>
@@ -203,10 +203,10 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" step="1" name="data.spikeDrive.value" value="{{actor.data.data.spikeDrive.value}}"
+              type="number" step="1" name="data.spikeDrive.value" value="{{actor.system.spikeDrive.value}}"
               data-dtype="Number" min="0" /><span>/</span><input
               class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" name="data.spikeDrive.max" value="{{actor.data.data.spikeDrive.max}}" step="1" min="1"
+              type="number" name="data.spikeDrive.max" value="{{actor.system.spikeDrive.max}}" step="1" min="1"
               data-dtype="Number" />
           </div>
           <label
@@ -332,7 +332,7 @@
                           <div>
                             <select name="data.roles.bridge"
                               class="pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-                              {{#select actor.data.data.roles.bridge}}
+                              {{#select actor.system.roles.bridge}}
                               <option value=""></option>
                               {{#each crewArray as | crew id| }}
                               <option value="{{crew.id}}">{{crew.name}}</option>
@@ -350,7 +350,7 @@
                           <div>
                             <select name="data.roles.captain"
                               class="pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-                              {{#select actor.data.data.roles.captain}}
+                              {{#select actor.system.roles.captain}}
                               <option value=""></option>
                               {{#each crewArray as | crew id| }}
                               <option value="{{crew.id}}">{{crew.name}}</option>
@@ -368,7 +368,7 @@
                           <div>
                             <select name="data.roles.comms"
                               class="pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-                              {{#select actor.data.data.roles.comms}}
+                              {{#select actor.system.roles.comms}}
                               <option value=""></option>
                               {{#each crewArray as | crew id| }}
                               <option value="{{crew.id}}">{{crew.name}}</option>
@@ -386,7 +386,7 @@
                           <div>
                             <select name="data.roles.engineering"
                               class="pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-                              {{#select actor.data.data.roles.engineering}}
+                              {{#select actor.system.roles.engineering}}
                               <option value=""></option>
                               {{#each crewArray as | crew id| }}
                               <option value="{{crew.id}}">{{crew.name}}</option>
@@ -404,7 +404,7 @@
                           <div>
                             <select name="data.roles.gunnery"
                               class="pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-                              {{#select actor.data.data.roles.gunnery}}
+                              {{#select actor.system.roles.gunnery}}
                               <option value=""></option>
                               {{#each crewArray as | crew id| }}
                               <option value="{{crew.id}}">{{crew.name}}</option>
@@ -436,7 +436,7 @@
                   <div class="cost flex flex2 flex-col items-center">
                     <input
                       class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                      type="number" name="data.cost" value="{{actor.data.data.cost}}" />
+                      type="number" name="data.cost" value="{{actor.system.cost}}" />
                     <label>{{localize 'swnr.sheet.ship.cost'}}</label>
                   </div>
                 </div>
@@ -445,10 +445,10 @@
                 <div class="amountOwed flex flex-col items-center">
                   <input
                     class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                    type="number" min="0" name="data.amountOwed" value="{{actor.data.data.amountOwed}}" />
+                    type="number" min="0" name="data.amountOwed" value="{{actor.system.amountOwed}}" />
                   <label>{{localize 'swnr.sheet.ship.amount-owed'}}
                     <a class="credits-change text-gray-100 hover:text-green-400 transition-colors"
-                    title="{{localize 'swnr.sheet.credit-change'}} {{actor.data.data.tweak.debtDisplay}}"
+                    title="{{localize 'swnr.sheet.credit-change'}} {{actor.system.tweak.debtDisplay}}"
                     data-credit-type="amountOwed">
                       <i class="fas fa-coins"></i>
                     </a> 
@@ -460,10 +460,10 @@
                 <div class="creditPool flex flex-col items-center">
                   <input
                     class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                    type="number" min="0" name="data.creditPool" value="{{actor.data.data.creditPool}}" />
+                    type="number" min="0" name="data.creditPool" value="{{actor.system.creditPool}}" />
                   <label>{{localize 'swnr.sheet.ship.credit-pool'}}
                     <a class="credits-change text-gray-100 hover:text-green-400 transition-colors"
-                    title="{{localize 'swnr.sheet.credit-change'}} {{actor.data.data.tweak.debtDisplay}}"
+                    title="{{localize 'swnr.sheet.credit-change'}} {{actor.system.tweak.debtDisplay}}"
                     data-credit-type="creditPool">
                       <i class="fas fa-coins"></i>
                     </a> 
@@ -483,7 +483,7 @@
                 <div class="maintenanceCost flex flex-col items-center">
                   <input
                     class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                    type="number" min="0" name="data.maintenanceCost" value="{{actor.data.data.maintenanceCost}}" />
+                    type="number" min="0" name="data.maintenanceCost" value="{{actor.system.maintenanceCost}}" />
                   <label>{{localize 'swnr.sheet.ship.maintenance-cost'}}</label>
                 </div>
 
@@ -494,16 +494,16 @@
                       <input
                         class="w-10 text-center py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
                         type="number" step="1" name="data.lastMaintenance.year"
-                        value="{{actor.data.data.lastMaintenance.year}}" data-dtype="Number" min="0" />
+                        value="{{actor.system.lastMaintenance.year}}" data-dtype="Number" min="0" />
                       <span class="w-2">/</span>
                       <input
                         class="w-4 text-center  py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
                         type="number" step="1" name="data.lastMaintenance.month"
-                        value="{{actor.data.data.lastMaintenance.month}}" data-dtype="Number" min="0" />
+                        value="{{actor.system.lastMaintenance.month}}" data-dtype="Number" min="0" />
                       <span class="w-2">/</span>
                       <input
                         class="w-4 text-center  py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                        type="number" name="data.lastMaintenance.day" value="{{actor.data.data.lastMaintenance.day}}"
+                        type="number" name="data.lastMaintenance.day" value="{{actor.system.lastMaintenance.day}}"
                         step="1" min="1" data-dtype="Number" />
                     </div>
                     <label>{{localize 'swnr.sheet.ship.last-maintenance'}}</label>
@@ -514,7 +514,7 @@
                 <div class="maintenanceMonths flex flex-col items-center text-center">
                   <input
                     class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                    type="number" min="0" name="data.maintenanceMonths" value="{{actor.data.data.maintenanceMonths}}" />
+                    type="number" min="0" name="data.maintenanceMonths" value="{{actor.system.maintenanceMonths}}" />
                   <label>{{localize 'swnr.sheet.ship.maintenance-months'}}</label>
                 </div>
 
@@ -532,7 +532,7 @@
                 <div class="paymentAmount flex flex-col items-center">
                   <input
                     class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                    type="number" min="0" name="data.paymentAmount" value="{{actor.data.data.paymentAmount}}" />
+                    type="number" min="0" name="data.paymentAmount" value="{{actor.system.paymentAmount}}" />
                   <label>{{localize 'swnr.sheet.ship.payment-amount'}}</label>
                 </div>
 
@@ -544,17 +544,17 @@
                     <div class="w-36 text-center border border-gray-800 bg-gray-400 mx-auto rounded-md items-center">
                       <input
                         class="w-10 text-center py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                        type="number" step="1" name="data.lastPayment.year" value="{{actor.data.data.lastPayment.year}}"
+                        type="number" step="1" name="data.lastPayment.year" value="{{actor.system.lastPayment.year}}"
                         data-dtype="Number" min="0" />
                       <span class="w-2">/</span>
                       <input
                         class="w-4 text-center  py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
                         type="number" step="1" name="data.lastPayment.month"
-                        value="{{actor.data.data.lastPayment.month}}" data-dtype="Number" min="0" />
+                        value="{{actor.system.lastPayment.month}}" data-dtype="Number" min="0" />
                       <span class="w-2">/</span>
                       <input
                         class="w-4 text-center  py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                        type="number" name="data.lastPayment.day" value="{{actor.data.data.lastPayment.day}}" step="1"
+                        type="number" name="data.lastPayment.day" value="{{actor.system.lastPayment.day}}" step="1"
                         min="1" data-dtype="Number" />
                     </div>
                     <label>{{localize 'swnr.sheet.ship.last-payment'}}</label>
@@ -566,7 +566,7 @@
                 <div class="paymentMonths flex flex-col items-center">
                   <input
                     class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                    type="number" min="0" name="data.paymentMonths" value="{{actor.data.data.paymentMonths}}" />
+                    type="number" min="0" name="data.paymentMonths" value="{{actor.system.paymentMonths}}" />
                   <label>{{localize 'swnr.sheet.ship.payment-months'}}</label>
                 </div>
 
@@ -583,7 +583,7 @@
                 <div class="operatingCost flex flex-col items-center text-center">
                   <input
                     class="w-24 text-center px-1.5 py-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-                    type="number" min="0" name="data.operatingCost" value="{{actor.data.data.operatingCost}}" />
+                    type="number" min="0" name="data.operatingCost" value="{{actor.system.operatingCost}}" />
                   <label>{{localize 'swnr.sheet.ship.operating-cost'}}</label>
                 </div>
 
@@ -618,7 +618,7 @@
                 </div>
               </li>
               <ol class="item-list">
-                {{#each actor.data.data.cargoCarried as |item id|}}
+                {{#each actor.system.cargoCarried as |item id|}}
                 <li class="item-entry">
                   <div class="item flexrow text-center" data-rl-idx="{{id}}">
                     <input

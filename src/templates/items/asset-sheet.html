@@ -8,10 +8,10 @@
       <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md w-24">
         <input
           class="w-8 text-right pl-1.5  bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-          type="number" step="1" name="data.health.value" value="{{data.data.health.value}}" data-dtype="Number"
+          type="number" step="1" name="data.health.value" value="{{system.health.value}}" data-dtype="Number"
           min="0" /><span>/</span><input
           class="w-8 text-left pr-1.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-          type="number" name="data.health.max" value="{{data.data.health.max}}" step="1" min="1"
+          type="number" name="data.health.max" value="{{system.health.max}}" step="1" min="1"
           data-dtype="Number" />
       </div>
     </div>
@@ -22,7 +22,7 @@
       {{localize 'swnr.sheet.faction.assetType'}}:
       <select class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
         name="data.assetType">
-        {{#select data.data.assetType}}
+        {{#select system.assetType}}
         <option value="cunning">Cunning</option>
         <option value="force">Force</option>
         <option value="wealth">Wealth</option>
@@ -35,7 +35,7 @@
       <div>{{localize 'swnr.sheet.faction.rating'}}</div>
 
       <select class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md" name="data.rating">
-        {{#select data.data.rating}}
+        {{#select system.rating}}
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -53,7 +53,7 @@
       {{localize 'swnr.item.cost'}}:
       <input type="number"
         class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-        step="1" name="data.cost" min="0" data-dtype="Number" value="{{data.data.cost}}" />
+        step="1" name="data.cost" min="0" data-dtype="Number" value="{{system.cost}}" />
     </div>
 
     <!-- tl -->
@@ -61,7 +61,7 @@
 
       <div>{{localize 'swnr.sheet.faction.tl'}} </div>
       <select class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md" name="data.tl">
-        {{#select data.data.tl}}
+        {{#select system.tl}}
         <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -77,7 +77,7 @@
       {{localize 'swnr.sheet.faction.attackSource'}}:
       <select class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
         name="data.attackSource">
-        {{#select data.data.attackSource}}
+        {{#select system.attackSource}}
         <option value=""></option>
         <option value="cunning">Cunning</option>
         <option value="force">Force</option>
@@ -91,7 +91,7 @@
       {{localize 'swnr.sheet.faction.attackTarget'}}:
       <select class="px-1 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
         name="data.attackTarget">
-        {{#select data.data.attackTarget}}
+        {{#select system.attackTarget}}
         <option value=""></option>
         <option value="cunning">Cunning</option>
         <option value="force">Force</option>
@@ -105,7 +105,7 @@
       <div>{{localize 'swnr.sheet.faction.attackDamage'}}:</div>
       <input
         class="w-12 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-        type="text" name="data.attackDamage" value="{{data.data.attackDamage}}" />
+        type="text" name="data.attackDamage" value="{{system.attackDamage}}" />
     </div>
 
     <!-- counter Damage-->
@@ -113,7 +113,7 @@
       <div>{{localize 'swnr.sheet.faction.counter'}}:</div>
       <input
         class="w-12 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-        type="text" name="data.counter" value="{{data.data.counter}}" />
+        type="text" name="data.counter" value="{{system.counter}}" />
     </div>
 
     <!--income -->
@@ -121,7 +121,7 @@
       {{localize 'swnr.sheet.faction.income'}}:
       <input type="number"
         class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-        step="1" name="data.income" min="0" data-dtype="Number" value="{{data.data.income}}" />
+        step="1" name="data.income" min="0" data-dtype="Number" value="{{system.income}}" />
     </div>
 
     <!--maintenance -->
@@ -129,13 +129,13 @@
       {{localize 'swnr.sheet.faction.maintenance'}}:
       <input type="number"
         class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-        step="1" name="data.maintenance" min="0" data-dtype="Number" value="{{data.data.maintenance}}" />
+        step="1" name="data.maintenance" min="0" data-dtype="Number" value="{{system.maintenance}}" />
     </div>
 
     <!-- Base of influence -->
     <div class="flex flexrow items-center">
       <div>{{localize 'swnr.sheet.faction.baseOfInfluence'}}:
-      <input type="checkbox" name="data.baseOfInfluence" {{checked data.data.baseOfInfluence}}></div>
+      <input type="checkbox" name="data.baseOfInfluence" {{checked system.baseOfInfluence}}></div>
     </div>
 
     <!-- location -->
@@ -143,7 +143,7 @@
       {{localize 'swnr.sheet.faction.location'}}:
       <input
         class="w-32 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-        type="text" name="data.location" value="{{data.data.location}}" />
+        type="text" name="data.location" value="{{system.location}}" />
     </div>  
 
     <!-- note -->
@@ -151,7 +151,7 @@
       {{localize 'swnr.sheet.faction.note'}}:
       <input
         class="w-32 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-        type="text" name="data.note" value="{{data.data.note}}" />
+        type="text" name="data.note" value="{{system.note}}" />
     </div>
 
     <!-- attackSpecial -->
@@ -159,7 +159,7 @@
       {{localize 'swnr.sheet.faction.attackSpecial'}}:
       <input
         class="w-32 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-        type="text" name="data.attackSpecial" value="{{data.data.attackSpecial}}" />
+        type="text" name="data.attackSpecial" value="{{system.attackSpecial}}" />
     </div>
 
     <!-- turnRoll -->
@@ -167,19 +167,19 @@
       {{localize 'swnr.sheet.faction.turnRoll'}}:
       <input
         class="w-32 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-        type="text" name="data.turnRoll" value="{{data.data.turnRoll}}" />
+        type="text" name="data.turnRoll" value="{{system.turnRoll}}" />
     </div>
 
     <!-- unusable -->
     <div class="flex flexrow items-center">
       <div>{{localize 'swnr.sheet.faction.unusable'}}:
-      <input type="checkbox" name="data.unusable" {{checked data.data.unusable}}></div>
+      <input type="checkbox" name="data.unusable" {{checked system.unusable}}></div>
     </div>
 
     <!-- stealthed -->
     <div class="flex flexrow items-center">
       <div>{{localize 'swnr.sheet.faction.stealthed'}}:
-      <input type="checkbox" name="data.stealthed" {{checked data.data.stealthed}}></div>
+      <input type="checkbox" name="data.stealthed" {{checked system.stealthed}}></div>
     </div>
 
     <!-- turnRoll -->
@@ -187,7 +187,7 @@
       {{localize 'swnr.sheet.faction.turnRoll'}}:
       <input
         class="w-32 text-center px-1.5 py-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-        type="text" name="data.turnRoll" value="{{data.data.turnRoll}}" />
+        type="text" name="data.turnRoll" value="{{system.turnRoll}}" />
     </div> --}}
 
 

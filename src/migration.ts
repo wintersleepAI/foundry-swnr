@@ -29,7 +29,7 @@ type ClientDocumentConstructor<
 
 const VERSION_KEY = "systemMigrationVersion";
 let newVersion: VersionString = "0.0";
-Hooks.on("init", () => (newVersion = game.system.data.version as never));
+Hooks.on("init", () => (newVersion = game.system.version as never));
 const _allMigrations = new Array<MigrationData<ClientDocumentConstructor>>();
 
 class MigrationError extends Error {

@@ -7,7 +7,7 @@
       <select name="skill"
         class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
         {{#each skills }}
-        <option value="{{this.id}}">{{this.name}} {{this.data.data.rank}}</option>
+        <option value="{{this.id}}">{{this.name}} {{this.system.rank}}</option>
         {{/each}}
       </select>
     </div>
@@ -18,7 +18,7 @@
       <select name="stat"
         class="w-32 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
         {{#select defaultStat}}
-        {{#each actor.data.data.stats as |box name |}}
+        {{#each actor.system.stats as |box name |}}
         <option value="{{name}}">
           {{localize (concat "swnr.stat.long." name)}}
           {{numberFormat box.mod decimals=0 sign=true}}

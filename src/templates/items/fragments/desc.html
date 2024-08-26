@@ -15,7 +15,7 @@
       type="checkbox"
       name="data.favorite"
       class="pt-4 bg-gray-400"
-      {{checked data.data.favorite}}
+      {{checked system.favorite}}
     />
   </div>
 </div>
@@ -23,6 +23,6 @@
   <h2 class="text-base p-1">{{localize 'swnr.sheet.description'}}</h2>
   <div class="p-1 border-t border-black">
     {{!-- TODO: fix is for wrapping around text, because this is a little fixed --}}
-    {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable }}
+    {{editor content=system.description target="data.description" button=true owner=owner editable=editable }}
   </div>
 </div>

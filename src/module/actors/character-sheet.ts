@@ -144,7 +144,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
         data: {
           credits: {
             [currencyType]:
-              this.actor.data.data.credits[currencyType] +
+              this.actor.system.credits[currencyType] +
               parseInt(await amount),
           },
         },
@@ -159,7 +159,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       return;
     }
     const attrShort = $(event.currentTarget).data("attr");
-    const attr = this.actor.data.data.stats[attrShort];
+    const attr = this.actor.system.stats[attrShort];
     const msg = game.i18n.format("swnr.chat.statRollFlavor", {
       name: this.actor?.name,
       stat: attrShort,
@@ -223,7 +223,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     const value = event.target?.value;
     const resourceType = $(event.currentTarget).data("rlType");
     const idx = $(event.currentTarget).parents(".item").data("rlIdx");
-    const resourceList = duplicate(this.actor.data.data.tweak.resourceList);
+    const resourceList = duplicate(this.actor.system.tweak.resourceList);
     resourceList[idx][resourceType] = value;
     await this.actor.update({ "data.tweak.resourceList": resourceList });
   }
@@ -232,7 +232,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     event.preventDefault();
     event.stopPropagation();
     const idx = $(event.currentTarget).parents(".item").data("rlIdx");
-    const resourceList = duplicate(this.actor.data.data.tweak.resourceList);
+    const resourceList = duplicate(this.actor.system.tweak.resourceList);
     resourceList.splice(idx, 1);
     await this.actor.update({ "data.tweak.resourceList": resourceList });
   }
@@ -241,14 +241,14 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     event.preventDefault();
     //console.log("Changing HP Max" , this.actor);
     await this.actor.update({
-      "data.health_max_modified": this.actor.data.data.level.value,
+      "data.health_max_modified": this.actor.system.level.value,
     });
   }
 
   async _onResourceCreate(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     //console.log("Changing HP Max" , this.actor);
-    let resourceList = this.actor.data.data.tweak.resourceList;
+    let resourceList = this.actor.system.tweak.resourceList;
     if (!resourceList) {
       resourceList = [];
     }
@@ -309,9 +309,9 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     );
     if (item.type == "skill") {
       const skill = <SWNRBaseItem<"skill">>item;
-      const rank = skill.data.data.rank;
+      const rank = skill.system.rank;
       if (rank > 0) {
-        const lvl = this.actor.data.data.level.value;
+        const lvl = this.actor.system.level.value;
         if (rank == 1 && lvl < 3) {
           ui.notifications?.error(
             "Must be at least level 3 (edit manually to override)"
@@ -334,14 +334,14 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       }
       const skillCost = rank + 2;
       const isPsy =
-        skill.data.data.source.toLocaleLowerCase() ===
+        skill.system.source.toLocaleLowerCase() ===
         game.i18n.localize("swnr.skills.labels.psionic").toLocaleLowerCase()
           ? true
           : false;
       const skillPointsAvail = isPsy
-        ? this.actor.data.data.unspentPsySkillPoints +
-          this.actor.data.data.unspentSkillPoints
-        : this.actor.data.data.unspentSkillPoints;
+        ? this.actor.system.unspentPsySkillPoints +
+          this.actor.system.unspentSkillPoints
+        : this.actor.system.unspentSkillPoints;
       if (skillCost > skillPointsAvail) {
         ui.notifications?.error(
           `Not enough skill points. Have: ${skillPointsAvail}, need: ${skillCost}`
@@ -355,13 +355,13 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       if (isPsy) {
         const newPsySkillPoints = Math.max(
           0,
-          this.actor.data.data.unspentPsySkillPoints - skillCost
+          this.actor.system.unspentPsySkillPoints - skillCost
         );
-        let newSkillPoints = this.actor.data.data.unspentSkillPoints;
-        if (skillCost > this.actor.data.data.unspentPsySkillPoints) {
+        let newSkillPoints = this.actor.system.unspentSkillPoints;
+        if (skillCost > this.actor.system.unspentPsySkillPoints) {
           //Not enough psySkillPoints, dip into regular
           newSkillPoints -=
-            skillCost - this.actor.data.data.unspentPsySkillPoints;
+            skillCost - this.actor.system.unspentPsySkillPoints;
         }
         await this.actor.update({
           "data.unspentSkillPoints": newSkillPoints,
@@ -372,7 +372,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
         );
       } else {
         const newSkillPoints =
-          this.actor.data.data.unspentSkillPoints - skillCost;
+          this.actor.system.unspentSkillPoints - skillCost;
         await this.actor.update({ "data.unspentSkillPoints": newSkillPoints });
         ui.notifications?.info(`Removed ${skillCost} skill points`);
       }
@@ -553,7 +553,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     // 1e psy 1d4, expert 1d6, warrior 1d8
 
     event.preventDefault();
-    const currentLevel = this.actor.data.data.level.value;
+    const currentLevel = this.actor.system.level.value;
     const lastModified = this.actor.data.data["health_max_modified"];
     if (currentLevel <= lastModified) {
       ui.notifications?.info(
@@ -563,12 +563,12 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     }
     // const lastLevel =
     // currentLevel === 1 ? 0 : this.actor.getFlag("swnr", "lastHpLevel");
-    const health = this.actor.data.data.health;
+    const health = this.actor.system.health;
     const currentHp = health.max;
-    const hd = this.actor.data.data.hitDie;
+    const hd = this.actor.system.hitDie;
     //todo: sort out health boosts from classes.
-    const constBonus = this.actor.data.data.stats.con.mod;
-    //console.log(currentLevel, this.actor.data.data.stats.con, this.actor.data.data.stats.con.mod)
+    const constBonus = this.actor.system.stats.con.mod;
+    //console.log(currentLevel, this.actor.system.stats.con, this.actor.system.stats.con.mod)
     const perLevel = `max(${hd} + ${constBonus}, 1)`;
 
     const _rollHP = async () => {
@@ -602,7 +602,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
       }
     };
 
-    if (this.actor.data.data.hitDie) {
+    if (this.actor.system.hitDie) {
       const performHPRoll: boolean = await new Promise((resolve) => {
         Dialog.confirm({
           title: game.i18n.format("swnr.dialog.hp.title", {
@@ -795,6 +795,7 @@ export class CharacterActorSheet extends BaseActorSheet<CharacterActorSheetData>
     const buttons = super._getHeaderButtons();
     // Token Configuration
     const canConfigure = game.user?.isGM || this.actor.isOwner;
+    console.log("This.options", this.options);
     if (this.options.editable && canConfigure) {
       // Insert tweaks into first spot on the array
       buttons.splice(0, 0, {

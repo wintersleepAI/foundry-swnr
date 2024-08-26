@@ -18,7 +18,7 @@
 
       </tr>
     </thead>
-    {{#each actor.data.data.stats as |stat key|}}
+    {{#each actor.system.stats as |stat key|}}
     <tr>
       <td class="attrClick pr-1" data-attr="{{key}}">
         <label for="data.stats.{{key}}.base" class="resource-label px-1">
@@ -67,13 +67,13 @@
 <div class="flex-col flex gap-1">
   <div class="flex flexrow">
     <div class="flex gap-1 items-center">
-      <div><h3>{{localize 'swnr.effort.title'}} {{actor.data.data.effort.value}}/{{actor.data.data.effort.max}}</h3></div>
+      <div><h3>{{localize 'swnr.effort.title'}} {{actor.system.effort.value}}/{{actor.system.effort.max}}</h3></div>
       <div
         class="bg-purple-300 border border-purple-900 w-full rounded-full h-4 overflow-hidden"
       >
         <div
           class="bg-purple-500 h-full rounded-full"
-          style="width: min(calc(100% * {{actor.data.data.effort.value}}/{{actor.data.data.effort.max}}));"
+          style="width: min(calc(100% * {{actor.system.effort.value}}/{{actor.system.effort.max}}));"
         ></div>
       </div>
     </div>
@@ -89,7 +89,7 @@
         type="number"
         step="1"
         name="data.effort.bonus"
-        value="{{actor.data.data.effort.bonus}}"
+        value="{{actor.system.effort.bonus}}"
         data-dtype="Number"
       />
     </div>
@@ -105,7 +105,7 @@
         step="1"
         max="{{concat data.effort.current data.effort.value}}"
         name="data.effort.current"
-        value="{{actor.data.data.effort.current}}"
+        value="{{actor.system.effort.current}}"
         data-dtype="Number"
       />
     </div>
@@ -120,7 +120,7 @@
         step="1"
         max="{{concat data.effort.scene data.effort.value}}"
         name="data.effort.scene"
-        value="{{actor.data.data.effort.scene}}"
+        value="{{actor.system.effort.scene}}"
         data-dtype="Number"
       />
     </div>
@@ -135,27 +135,27 @@
         step="1"
         max="{{concat data.effort.day data.effort.value}}"
         name="data.effort.day"
-        value="{{actor.data.data.effort.day}}"
+        value="{{actor.system.effort.day}}"
         data-dtype="Number"
       />
     </div>
   </div>
 
 </div>
-{{#if actor.data.data.tweak.extraEffortName}}
+{{#if actor.system.tweak.extraEffortName}}
 <div class="flex-col flex gap-1">
   <div class="flex flexrow">
     <div class="flex gap-1 items-center">
       <div>
-        <h3>{{ actor.data.data.tweak.extraEffortName }} {{localize 'swnr.effort.title'}}
-        {{actor.data.data.tweak.extraEffort.value}}/{{actor.data.data.tweak.extraEffort.max}}
+        <h3>{{ actor.system.tweak.extraEffortName }} {{localize 'swnr.effort.title'}}
+        {{actor.system.tweak.extraEffort.value}}/{{actor.system.tweak.extraEffort.max}}
       </div>
       <div
         class="bg-purple-300 border border-purple-900 w-full rounded-full h-4 overflow-hidden"
       >
         <div
           class="bg-purple-500 h-full rounded-full"
-          style="width: min(calc(100% * {{actor.data.data.tweak.extraEffort.value}}/{{actor.data.data.tweak.extraEffort.max}}));"
+          style="width: min(calc(100% * {{actor.system.tweak.extraEffort.value}}/{{actor.system.tweak.extraEffort.max}}));"
         ></div>
       </div>
     </div>
@@ -171,7 +171,7 @@
         type="number"
         step="1"
         name="data.tweak.extraEffort.max"
-        value="{{actor.data.data.tweak.extraEffort.max}}"
+        value="{{actor.system.tweak.extraEffort.max}}"
         data-dtype="Number"
       />
     </div>
@@ -184,7 +184,7 @@
         type="number"
         step="1"
         name="data.tweak.extraEffort.bonus"
-        value="{{actor.data.data.tweak.extraEffort.bonus}}"
+        value="{{actor.system.tweak.extraEffort.bonus}}"
         data-dtype="Number"
       />
     </div>
@@ -199,7 +199,7 @@
         step="1"
         max="{{concat data.tweak.extraEffort.current data.tweak.extraEffort.value}}"
         name="data.tweak.extraEffort.current"
-        value="{{actor.data.data.tweak.extraEffort.current}}"
+        value="{{actor.system.tweak.extraEffort.current}}"
         data-dtype="Number"
       />
     </div>
@@ -217,7 +217,7 @@
         step="1"
         max="{{concat data.tweak.extraEffort.scene data.tweak.extraEffort.value}}"
         name="data.tweak.extraEffort.scene"
-        value="{{actor.data.data.tweak.extraEffort.scene}}"
+        value="{{actor.system.tweak.extraEffort.scene}}"
         data-dtype="Number"
       />
     </div>
@@ -232,7 +232,7 @@
         step="1"
         max="{{concat data.tweak.extraEffort.day data.tweak.extraEffort.value}}"
         name="data.tweak.extraEffort.day"
-        value="{{actor.data.data.tweak.extraEffort.day}}"
+        value="{{actor.system.tweak.extraEffort.day}}"
         data-dtype="Number"
       />
     </div>

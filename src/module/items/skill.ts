@@ -49,11 +49,11 @@ export class SWNRSkill extends SWNRBaseItem<"skill"> {
     const skillName = this.name;
 
     // Set to not ask and just roll
-    if (!shiftKey && this.data.data.remember && this.data.data.remember.use) {
-      const modifier = this.data.data.remember.modifier;
-      const defaultStat = this.data.data.defaultStat;
-      const dice = this.data.data.pool;
-      const skillRank = this.data.data.rank;
+    if (!shiftKey && this.system.remember && this.system.remember.use) {
+      const modifier = this.system.remember.modifier;
+      const defaultStat = this.system.defaultStat;
+      const dice = this.system.pool;
+      const skillRank = this.system.rank;
       if (defaultStat == "ask" || dice == "ask") {
         ui.notifications?.info(
           "Quick roll set, but dice or stat is set to ask"
@@ -77,8 +77,8 @@ export class SWNRSkill extends SWNRBaseItem<"skill"> {
       }
     }
     const modifier =
-      this.data.data.remember && this.data.data.remember.modifier
-        ? this.data.data.remember.modifier
+      this.system.remember && this.system.remember.modifier
+        ? this.system.remember.modifier
         : 0;
     const title = `${game.i18n.localize("swnr.chat.skillCheck")}: ${skillName}`;
     const dialogData = {

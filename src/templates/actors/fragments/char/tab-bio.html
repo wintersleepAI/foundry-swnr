@@ -7,7 +7,7 @@
       <input
       class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
       name="data.class"
-      value="{{actor.data.data.class}}"
+      value="{{actor.system.class}}"
       placeholder="{{localize 'swnr.sheet.class'}}"
       type="text"
     />
@@ -15,33 +15,32 @@
       class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
       name="data.species"
       type="text"
-      value="{{actor.data.data.species}}"
+      value="{{actor.system.species}}"
       placeholder="{{localize 'swnr.sheet.species'}}"
     />
     <input
       class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
       name="data.homeworld"
-      value="{{actor.data.data.homeworld}}"
+      value="{{actor.system.homeworld}}"
       placeholder="{{localize 'swnr.sheet.homeworld'}}"
       type="text"
     />
     <input
       class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
       name="data.background"
-      value="{{actor.data.data.background}}"
+      value="{{actor.system.background}}"
       placeholder="{{localize 'swnr.sheet.background'}}"
       type="text"
     />
     <input
       class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
       name="data.employer"
-      value="{{actor.data.data.employer}}"
+      value="{{actor.system.employer}}"
       placeholder="{{localize 'swnr.sheet.employer'}}"
       type="text"
     />
   </div>
   <div class="bg-gray-400 bg-opacity-75 border border-gray-700 rounded-md p-2 mt-4">
-    {{editor content=data.data.biography target="data.biography" button=true
-    owner=owner editable=editable}}
+    {{editor enrichedBiography target="system.biography" button=true editable=editable }}
   </div>
 </div>

@@ -7,7 +7,7 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
   popUpDialog?: Dialog;
 
   get ammo(): this["data"]["data"]["ammo"] {
-    return this.data.data.ammo;
+    return this.system.ammo;
   }
 
   get hasAmmo(): boolean {
@@ -49,7 +49,7 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
 
     const hitRollStr =
       "@attackRollDie + @skillMod + @statMod + @abMod + @mod + @weaponAb + @npcSkill + @burstFire";
-    const damageRollStr = `${this.data.data.damage} + @statMod + @burstFire`;
+    const damageRollStr = `${this.system.damage} + @statMod + @burstFire`;
     const hitRoll = new Roll(hitRollStr, rollData);
     await hitRoll.roll({ async: true });
     const damageRoll = new Roll(damageRollStr, rollData);
@@ -58,12 +58,12 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
     let traumaRollRender: null | string = null;
     let traumaDamage: null | string = null;
     if (
-      this.data.data.settings?.useTrauma &&
-      this.data.data.trauma.die != null &&
-      this.data.data.trauma.die !== "none" &&
-      this.data.data.trauma.rating != null
+      this.system.settings?.useTrauma &&
+      this.system.trauma.die != null &&
+      this.system.trauma.die !== "none" &&
+      this.system.trauma.rating != null
     ) {
-      const traumaRoll = new Roll(this.data.data.trauma.die);
+      const traumaRoll = new Roll(this.system.trauma.die);
       await traumaRoll.roll({ async: true });
       traumaRollRender = await traumaRoll.render();
       if (
@@ -73,7 +73,7 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
         damageRoll?.total
       ) {
         const traumaDamageRoll = new Roll(
-          `${damageRoll.total} * ${this.data.data.trauma.rating}`
+          `${damageRoll.total} * ${this.system.trauma.rating}`
         );
         await traumaDamageRoll.roll({ async: true });
         traumaDamage = await traumaDamageRoll.render();
@@ -99,9 +99,9 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
       return;
     }
 
-    if (this.data.data.ammo.type !== "none") {
+    if (this.system.ammo.type !== "none") {
       const ammoUsed = useBurst ? 3 : 1;
-      const newAmmoTotal = this.data.data.ammo.value - ammoUsed;
+      const newAmmoTotal = this.system.ammo.value - ammoUsed;
       await this.update({ "data.ammo.value": newAmmoTotal }, {});
       if (newAmmoTotal === 0)
         ui.notifications?.warn(`Your ${this.name} is now out of ammo!`);
@@ -143,7 +143,7 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
       new Error(message);
       return;
     }
-    if (this.data.data.broken || this.data.data.destroyed) {
+    if (this.system.broken || this.system.destroyed) {
       ui.notifications?.error(
         "Weapon is broken/disabled or destroyed. Cannot fire!"
       );
@@ -162,10 +162,10 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
     ) {
       let defaultGunnerId: string | null = null;
       // if there is one crew member or there is a gunner
-      if (this.actor.data.data.crewMembers.length == 1) {
-        defaultGunnerId = this.actor.data.data.crewMembers[0];
+      if (this.actor.system.crewMembers.length == 1) {
+        defaultGunnerId = this.actor.system.crewMembers[0];
       } else if (this.actor.type == "ship") {
-        defaultGunnerId = this.actor.data.data.roles.gunnery;
+        defaultGunnerId = this.actor.system.roles.gunnery;
       }
       //get the gunner if exists
       let defaultGunner: SWNRCharacterActor | SWNRNPCActor | null = null;
@@ -176,9 +176,9 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
         }
       }
       const crewArray: Array<SWNRCharacterActor | SWNRNPCActor> = [];
-      if (this.actor.data.data.crewMembers) {
-        for (let i = 0; i < this.actor.data.data.crewMembers.length; i++) {
-          const cId = this.actor.data.data.crewMembers[i];
+      if (this.actor.system.crewMembers) {
+        for (let i = 0; i < this.actor.system.crewMembers.length; i++) {
+          const cId = this.actor.system.crewMembers[i];
           const crewMember = game.actors?.get(cId);
           if (
             crewMember &&
@@ -279,7 +279,7 @@ export class SWNRShipWeapon extends SWNRBaseItem<"shipWeapon"> {
             }
           }
           if (shooter.type == "character" || shooter.type == "npc") {
-            abMod = shooter.data.data.ab;
+            abMod = shooter.system.ab;
           }
           shooterName = shooter.name;
         }

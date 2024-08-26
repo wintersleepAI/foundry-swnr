@@ -11,7 +11,7 @@ export class SWNRPower extends SWNRBaseItem<"power"> {
       new Error(message);
       return;
     }
-    const powerRoll = new Roll(this.data.data.roll ? this.data.data.roll : "0");
+    const powerRoll = new Roll(this.system.roll ? this.system.roll : "0");
     await powerRoll.roll({ async: true });
     const dialogData = {
       actor: this.actor.data,

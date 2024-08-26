@@ -32,9 +32,9 @@ export class VehicleActorSheet extends VehicleBaseActorSheet<VehicleActorSheetDa
     if (data instanceof Promise) data = await data;
 
     const crewArray: Array<SWNRCharacterActor | SWNRNPCActor> = [];
-    if (this.actor.data.data.crewMembers) {
-      for (let i = 0; i < this.actor.data.data.crewMembers.length; i++) {
-        const cId = this.actor.data.data.crewMembers[i];
+    if (this.actor.system.crewMembers) {
+      for (let i = 0; i < this.actor.system.crewMembers.length; i++) {
+        const cId = this.actor.system.crewMembers[i];
         const crewMember = game.actors?.get(cId);
         if (
           crewMember &&

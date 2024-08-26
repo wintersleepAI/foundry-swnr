@@ -26,7 +26,7 @@
         <div class="cargo flex flex-col justify-center items-center">
           <select name="data.size"
             class="pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-            {{#select actor.data.data.size}}
+            {{#select actor.system.size}}
             <option value="s">
               {{localize 'swnr.sheet.vehicle.vehicle-class.s'}}
             </option>
@@ -52,7 +52,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.speed" value="{{actor.data.data.speed}}" data-dtype="Number" min="0" />
+              type="number" step="1" name="data.speed" value="{{actor.system.speed}}" data-dtype="Number" min="0" />
           </div>
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
@@ -66,7 +66,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.kmph" value="{{actor.data.data.kmph}}" data-dtype="Number" min="0" />
+              type="number" step="1" name="data.kmph" value="{{actor.system.kmph}}" data-dtype="Number" min="0" />
           </div>
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
@@ -79,7 +79,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.tonnage" value="{{actor.data.data.tonnage}}" data-dtype="Number"
+              type="number" step="1" name="data.tonnage" value="{{actor.system.tonnage}}" data-dtype="Number"
               min="0" />
           </div>
           <label
@@ -93,7 +93,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-8 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.tl" value="{{actor.data.data.tl}}" data-dtype="Number" min="0" />
+              type="number" step="1" name="data.tl" value="{{actor.system.tl}}" data-dtype="Number" min="0" />
           </div>
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
@@ -106,7 +106,7 @@
           <div class="border border-gray-800 bg-gray-400 mx-auto rounded-md">
             <input
               class="w-20 text-center pl-0.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number" step="1" name="data.cost" value="{{actor.data.data.cost}}" data-dtype="Number" min="0" />
+              type="number" step="1" name="data.cost" value="{{actor.system.cost}}" data-dtype="Number" min="0" />
           </div>
           <label
             class="hp-label hover:text-shadow hover:text-shadow-blueGray-600 cursor-pointer transition-text-shadow">
@@ -119,14 +119,14 @@
           <div class="w-36 text-center border border-gray-800 bg-gray-400 mx-auto rounded-md items-center">
             <input
               class="w-8 text-center py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" step="1" name="data.crew.min" value="{{actor.data.data.crew.min}}" data-dtype="Number"
+              type="number" step="1" name="data.crew.min" value="{{actor.system.crew.min}}" data-dtype="Number"
               min="0" /><span class="w-2">/</span>
             <input
               class="w-8 text-center  py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" step="1" name="data.crew.current" value="{{actor.data.data.crew.current}}"
+              type="number" step="1" name="data.crew.current" value="{{actor.system.crew.current}}"
               data-dtype="Number" min="0" /><span class="w-2">/</span><input
               class="w-12 text-center  py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md subfield"
-              type="number" name="data.crew.max" value="{{actor.data.data.crew.max}}" step="1" min="1"
+              type="number" name="data.crew.max" value="{{actor.system.crew.max}}" step="1" min="1"
               data-dtype="Number" />
           </div>
           <label
@@ -144,7 +144,7 @@
               min="1"
               step="1"
               name="data.traumaTarget"
-              value="{{actor.data.data.traumaTarget}}"
+              value="{{actor.system.traumaTarget}}"
               data-dtype="Number"
             />
             <label>{{localize 'swnr.sheet.traumaTarget'}}</label>
@@ -185,7 +185,7 @@
                   </li>
                 </div>
                 <div class="bg-gray-400 bg-opacity-75 border border-gray-700 rounded-md p-2 mt-4">
-                  {{editor content=data.data.description target="data.description" button=true
+                  {{editor content=system.description target="data.description" button=true
                   owner=owner editable=editable}}
                 </div>
               </div>
@@ -198,7 +198,7 @@
                   </li>
                 </div>
                 <div class="bg-gray-400 bg-opacity-75 border border-gray-700 rounded-md p-2 mt-4">
-                  {{editor content=data.data.mods target="data.mods" button=true
+                  {{editor content=system.mods target="data.mods" button=true
                   owner=owner editable=editable}}
                 </div>
               </div>

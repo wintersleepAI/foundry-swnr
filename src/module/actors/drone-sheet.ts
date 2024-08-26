@@ -32,9 +32,9 @@ export class DroneActorSheet extends VehicleBaseActorSheet<DroneActorSheetData> 
     if (data instanceof Promise) data = await data;
 
     let pilot: SWNRCharacterActor | SWNRNPCActor | null = null;
-    if (this.actor.data.data.crewMembers.length > 0) {
+    if (this.actor.system.crewMembers.length > 0) {
       //should only be 1 or 0 but grabbing first in case it changes.
-      const cId = this.actor.data.data.crewMembers[0];
+      const cId = this.actor.system.crewMembers[0];
       const crewMember = game.actors?.get(cId);
       if (crewMember) {
         if (crewMember.type == "character" || crewMember.type == "npc") {
