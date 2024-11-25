@@ -1,3 +1,8 @@
+# Development Note Nov 2024
+This project is no longer under development, but a re-write of the system is under progress to support v12+ of Foundry using their new data model and AppV2 frameworks. This will be entirely in native Javascript and will support SWN, CWN, and AWN. There is a small chance that this will support WWN also.
+
+If you are a developer (either CSS/HTML or JS) and want to contribute please reach out to wintersleep1832 on discord.
+
 # Stars Without Number: Revised
 
 _The year is 3200 and mankind's empire lies in ashes._
@@ -11,13 +16,6 @@ _Will you be among them once more?_
 The is the open-source unofficial foundry system for Stars Without Number: Revised and Cities Without Number.
 This project originally began as a fork of SpiceKing's SWNR system.
 
-## Development Note June 2023
-This project is still under active development, but is worked on sporadically when life allows.  Right now 
-there are plans to add CWN features, fix a few issues introduced by foundry v10, fix issues for foundry v11, 
-and eventually try to clean up some code issues (e.g. technical debt). 
-
-Some of this debt relates to the dated type-script definitions, which results in compilation errors for TypeScript
-and complicated code base for certain components. 
 
 ## Features
 
