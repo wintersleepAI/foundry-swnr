@@ -1,7 +1,7 @@
-# Development Note Nov 2024
-This project is no longer under development, but a re-write of the system is under progress to support v12+ of Foundry using their new data model and AppV2 frameworks. This will be entirely in native Javascript and will support SWN, CWN, and AWN. There is a small chance that this will support WWN also.
+# Development Note April 2025
+This project is no longer under development, but a complete re-write of the system to support v12+ of Foundry using their new data model and AppV2 frameworks is done. This is entirely in native Javascript and will support SWN, CWN, and AWN. 
 
-If you are a developer (either CSS/HTML or JS) and want to contribute please reach out to wintersleep1832 on discord.
+You can find the updated repo at [https://github.com/wintersleepAI/swnr](https://github.com/wintersleepAI/swnr)
 
 # Stars Without Number: Revised
 
@@ -61,4 +61,4 @@ The contents of `src/packs/` are mostly text from [SWN Revised Edition (Free Ver
 
 ## Abandonment
 
-This project is in active development.
+This project is no longer in development. See the replacement package at [https://github.com/wintersleepAI/swnr](https://github.com/wintersleepAI/swnr)
